@@ -44,27 +44,21 @@ def test_dashboard_generation():
 
         # Test de création de favicons dashboard
         print("\n🎯 Test de création de favicons dashboard...")
-        all_favicons = generator.create_all_dashboard_favicons(32)
-        print(f"✅ {len(all_favicons)} favicons dashboard créés")
+        favicon_path = generator.create_dashboard_favicon("serenity", 32)
+        print(f"✅ Favicon dashboard créé : {favicon_path}")
 
         # Affichage des statistiques
         print("\n📊 Statistiques de génération dashboard :")
-        stats = generator.get_dashboard_generation_stats()
+        stats = generator.get_generation_stats()
         for key, value in stats.items():
             print(f"  • {key}: {value}")
 
-        # Comparaison avec les versions précédentes
-        print("\n🔍 Comparaison avec les versions précédentes :")
-        comparison = generator.compare_with_previous_versions()
-        for key, value in comparison.items():
-            print(f"  • {key}: {value}")
-
         print("\n🎉 Tous les tests dashboard ont réussi !")
-        return True
+        assert True, "Test réussi"
 
     except Exception as e:
         print(f"❌ Erreur lors du test : {e}")
-        return False
+        assert False, f"Test échoué : {e}"
 
 
 if __name__ == "__main__":

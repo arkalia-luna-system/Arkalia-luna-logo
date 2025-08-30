@@ -57,14 +57,14 @@ def test_ultra_max_builder():
             print("🧹 Fichier de test supprimé")
 
         print("\n🎉 Tous les tests ULTRA-MAX ont réussi !")
-        return True
+        assert True, "Test réussi"
 
     except Exception as e:
         print(f"❌ Erreur lors du test : {e}")
         import traceback
 
         traceback.print_exc()
-        return False
+        assert False, f"Test échoué : {e}"
 
 
 if __name__ == "__main__":
