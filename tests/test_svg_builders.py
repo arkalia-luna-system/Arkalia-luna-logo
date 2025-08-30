@@ -46,14 +46,14 @@ class TestSVGBuilder:
             mock_variant.colors.secondary = "#16213e"
             mock_variant.colors.accent = "#0f3460"
             mock_variant.colors.glow = "#e94560"
-            
+
             self.variants_manager.get_variant.return_value = mock_variant
 
             # Mock des méthodes privées pour éviter les erreurs SVG
             with patch.object(self.builder, "build_logo") as mock_build:
                 mock_drawing = Mock()
                 mock_build.return_value = mock_drawing
-                
+
                 # Test que la méthode ne lève plus d'exception
                 self.builder.save_logo("test", 200, Path("test.svg"))
 
@@ -656,9 +656,7 @@ class TestAIMoonSVGBuilder:
 
         with patch.object(
             self.builder, "build_ai_moon_logo", return_value=mock_drawing
-        ), patch.object(
-            self.builder, "build_logo", return_value=mock_drawing
-        ):
+        ), patch.object(self.builder, "build_logo", return_value=mock_drawing):
             output_path = Path("test.svg")
             result = self.builder.save_ai_moon_logo("test", 200, output_path)
 

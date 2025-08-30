@@ -101,8 +101,12 @@ class SimpleAdvancedSVGBuilder(SVGBuilder):
         )
 
         # Stops du gradient de bordure
-        border_gradient.add_stop_color(offset="0%", color=variant.colors.glow, opacity=0.8)
-        border_gradient.add_stop_color(offset="100%", color=variant.colors.primary, opacity=0.2)
+        border_gradient.add_stop_color(
+            offset="0%", color=variant.colors.glow, opacity=0.8
+        )
+        border_gradient.add_stop_color(
+            offset="100%", color=variant.colors.primary, opacity=0.2
+        )
 
         defs.add(border_gradient)
 

@@ -5,7 +5,6 @@ Construction de logos ultra-réalistes avec effets organiques et IA
 
 import math
 import random
-from pathlib import Path
 from typing import Optional, Tuple
 
 import svgwrite

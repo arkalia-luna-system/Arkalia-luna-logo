@@ -100,7 +100,9 @@ class AIMoonSVGBuilder(SVGBuilder):
         for offset, color, opacity in stops:
             try:
                 # Utilise add_stop_color directement avec opacité
-                gradient.add_stop_color(offset=f"{offset}%", color=color, opacity=opacity)
+                gradient.add_stop_color(
+                    offset=f"{offset}%", color=color, opacity=opacity
+                )
             except Exception:
                 # Fallback sans offset ni opacité
                 gradient.add_stop_color(color=color)

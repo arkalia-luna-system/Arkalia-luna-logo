@@ -9,7 +9,6 @@ from typing import Any, Dict, List, Optional
 try:
     from .logo_generator import ArkaliaLunaLogo
     from .svg_builder_ai_moon import AIMoonSVGBuilder
-    from .variants import LogoVariants
 except ImportError:
     # Fallback pour exécution directe
     from logo_generator import ArkaliaLunaLogo

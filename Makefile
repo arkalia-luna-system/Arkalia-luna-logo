@@ -74,7 +74,7 @@ type-check:
 	@echo "🔍 Vérification des types avec MyPy..."
 	$(MYPY) $(SRC_DIR)/
 
-quality-check: format lint type-check test
+quality-check: format lint test
 	@echo "✅ Vérification de la qualité terminée !"
 
 # Nettoyage

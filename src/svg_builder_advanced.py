@@ -92,8 +92,12 @@ class AdvancedSVGBuilder(SVGBuilder):
         )
 
         # Stops avec syntaxe correcte
-        border_gradient.add_stop_color(offset="0%", color=variant.colors.glow, opacity=0.8)
-        border_gradient.add_stop_color(offset="100%", color=variant.colors.primary, opacity=0.2)
+        border_gradient.add_stop_color(
+            offset="0%", color=variant.colors.glow, opacity=0.8
+        )
+        border_gradient.add_stop_color(
+            offset="100%", color=variant.colors.primary, opacity=0.2
+        )
 
         defs.add(border_gradient)
 
@@ -171,8 +175,12 @@ class AdvancedSVGBuilder(SVGBuilder):
         )
 
         # Stops du gradient neuronal
-        neural_gradient.add_stop_color(offset="0%", color=variant.colors.primary, opacity=1.0)
-        neural_gradient.add_stop_color(offset="100%", color=variant.colors.accent, opacity=0.6)
+        neural_gradient.add_stop_color(
+            offset="0%", color=variant.colors.primary, opacity=1.0
+        )
+        neural_gradient.add_stop_color(
+            offset="100%", color=variant.colors.accent, opacity=0.6
+        )
 
         defs.add(neural_gradient)
 
