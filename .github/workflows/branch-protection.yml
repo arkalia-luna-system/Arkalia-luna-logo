@@ -21,23 +21,40 @@ jobs:
         # Vérifier que le titre du PR suit les conventions
         PR_TITLE="${{ github.event.pull_request.title }}"
         
-        # Validation en deux étapes pour plus de clarté
-        PR_TYPE=$(echo "$PR_TITLE" | cut -d':' -f1)
+        # Validation stricte des titres de PR
+        # Format 1: type: description (sans scope)
+        # Format 2: type(scope): description (avec scope)
         
-        # Vérifier le format général
-        if [[ ! "$PR_TITLE" =~ ^(feat|fix|docs|style|refactor|test|chore|perf|ci|build|revert): ]]; then
-          # Vérifier si c'est un format avec scope
-          if [[ ! "$PR_TITLE" =~ ^(feat|fix|docs|style|refactor|test|chore|perf|ci|build|revert)\([a-z0-9_-]+\): ]]; then
-            echo "❌ Le titre du PR doit suivre le format: type(scope): description"
-            echo "Exemples: feat(logo): ajouter nouveau style, fix: corriger erreur"
-            echo "Formats acceptés:"
-            echo "  - feat(logo): ajouter nouveau style"
-            echo "  - fix: corriger erreur"
-            echo "  - docs: mise à jour README"
-            echo "  - style: reformater le code"
-            exit 1
+        # Vérifier si c'est un format sans scope
+        if [[ "$PR_TITLE" =~ ^(feat|fix|docs|style|refactor|test|chore|perf|ci|build|revert): ]]; then
+          # Vérifier qu'il y a une description après les deux-points
+          if [[ "$PR_TITLE" =~ ^(feat|fix|docs|style|refactor|test|chore|perf|ci|build|revert):[[:space:]] ]]; then
+            echo "✅ Titre de PR valide (sans scope): $PR_TITLE"
+            exit 0
           fi
         fi
+        
+        # Vérifier si c'est un format avec scope
+        if [[ "$PR_TITLE" =~ ^(feat|fix|docs|style|refactor|test|chore|perf|ci|build|revert)\([a-z_-]+\): ]]; then
+          # Vérifier qu'il y a une description après les deux-points
+          if [[ "$PR_TITLE" =~ ^(feat|fix|docs|style|refactor|test|chore|perf|ci|build|revert)\([a-z_-]+\):[[:space:]] ]]; then
+            echo "✅ Titre de PR valide (avec scope): $PR_TITLE"
+            exit 0
+          fi
+        fi
+        
+        # Si on arrive ici, le titre est invalide
+        echo "❌ Le titre du PR doit suivre le format: type(scope): description"
+        echo "Exemples: feat(logo): ajouter nouveau style, fix: corriger erreur"
+        echo "Formats acceptés:"
+        echo "  - feat(logo): ajouter nouveau style"
+        echo "  - fix: corriger erreur"
+        echo "  - docs: mise à jour README"
+        echo "  - style: reformater le code"
+        echo "Règles:"
+        echo "  - Le scope doit contenir uniquement des lettres, tirets et underscores"
+        echo "  - Il doit y avoir une description après les deux-points"
+        exit 1
         echo "✅ Titre du PR valide: $PR_TITLE"
         
     - name: Check Branch Naming
