@@ -12,7 +12,7 @@ def convert_svg_to_png():
     try:
         subprocess.run(["rsvg-convert", "--version"], capture_output=True, check=True)
         print("✅ rsvg-convert disponible")
-    except:
+    except (subprocess.CalledProcessError, FileNotFoundError):
         print("❌ rsvg-convert non disponible, utilisation de cairosvg")
         use_cairosvg = True
     else:

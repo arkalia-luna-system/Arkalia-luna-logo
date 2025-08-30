@@ -130,9 +130,7 @@ class UltimateLogoGenerator(ArkaliaLunaLogo):
             return favicon_path
 
         except Exception as e:
-            self.logger.error(
-                f"❌ Erreur création favicon ULTIME '{variant_name}': {e}"
-            )
+            self.logger.error(f"❌ Erreur création favicon ULTIME '{variant_name}': {e}")
             raise
 
     def set_cosmic_complexity(self, complexity: float) -> None:
@@ -224,9 +222,7 @@ class UltimateLogoGenerator(ArkaliaLunaLogo):
             self.ultimate_stats["ultimate_svg_logos"] = 0
             self.ultimate_stats["ultimate_png_favicons"] = 0
 
-            self.logger.info(
-                f"🧹 Nettoyage ULTIME terminé : {count} fichiers supprimés"
-            )
+            self.logger.info(f"🧹 Nettoyage ULTIME terminé : {count} fichiers supprimés")
             return count
 
         except Exception as e:

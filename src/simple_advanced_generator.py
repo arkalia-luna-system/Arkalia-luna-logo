@@ -131,9 +131,7 @@ class SimpleAdvancedLogoGenerator(ArkaliaLunaLogo):
     def toggle_performance_boost(self, enabled: bool = True) -> None:
         """Active/désactive le boost de performance"""
         self.performance_boost = enabled
-        self.logger.info(
-            f"⚡ Boost performance: {'activé' if enabled else 'désactivé'}"
-        )
+        self.logger.info(f"⚡ Boost performance: {'activé' if enabled else 'désactivé'}")
 
     def get_optimization_stats(self) -> Dict[str, Any]:
         """Retourne les statistiques d'optimisation"""
