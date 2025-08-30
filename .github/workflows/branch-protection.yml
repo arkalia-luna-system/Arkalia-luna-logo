@@ -38,11 +38,18 @@ jobs:
           exit 0
         fi
         
+        # Accepter les branches principales (main, develop)
+        if [[ "$BRANCH_NAME" =~ ^(main|develop)$ ]]; then
+          echo "✅ Branche principale acceptée: $BRANCH_NAME"
+          exit 0
+        fi
+        
         # Validation des autres branches selon les conventions
         if [[ ! "$BRANCH_NAME" =~ ^(feature|bugfix|hotfix|release|docs|refactor)/[a-z0-9-]+$ ]]; then
           echo "❌ Nom de branche invalide: $BRANCH_NAME"
           echo "Format attendu: type/description (ex: feature/new-logo-style)"
           echo "Ou branche Dependabot pour mises à jour automatiques"
+          echo "Ou branche principale (main, develop)"
           exit 1
         fi
         echo "✅ Nom de branche valide: $BRANCH_NAME"
