@@ -118,7 +118,9 @@ class DashboardLogoGenerator(ArkaliaLunaLogo):
     def toggle_synthetic_style(self, enabled: bool = True) -> None:
         """Active/désactive le style synthétique"""
         self.synthetic_style = enabled
-        self.logger.info(f"📊 Style synthétique: {'activé' if enabled else 'désactivé'}")
+        self.logger.info(
+            f"📊 Style synthétique: {'activé' if enabled else 'désactivé'}"
+        )
 
     def toggle_interface_optimization(self, enabled: bool = True) -> None:
         """Active/désactive l'optimisation interface"""
