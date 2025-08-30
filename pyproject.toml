@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "arkalia-luna-logo"
-dynamic = ["version"]
+version = "2.0.0"
 description = "🌙 Générateur de logos Arkalia-LUNA avec IA et effets avancés"
 readme = "README.md"
 license = {text = "MIT"}
@@ -72,9 +72,6 @@ Changelog = "https://github.com/arkalia-luna-system/Arkalia-luna-logo/blob/main/
 
 [project.scripts]
 arkalia-luna-logo = "src.cli:main"
-
-[tool.setuptools.dynamic]
-version = {attr = "src.__version__"}
 
 [tool.setuptools.packages.find]
 where = ["src"]
