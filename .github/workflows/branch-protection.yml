@@ -58,6 +58,12 @@ jobs:
           echo "   ❌ Format avec scope non reconnu"
         fi
         
+        # Accepter les titres de merge et de maintenance
+        if [[ "$PR_TITLE" =~ ^(Merge|merge|Update|update|Sync|sync|Release|release) ]]; then
+          echo "✅ Titre de PR de maintenance accepté: $PR_TITLE"
+          exit 0
+        fi
+        
         # Si on arrive ici, le titre est invalide
         echo "❌ Le titre du PR doit suivre le format: type(scope): description"
         echo "Exemples: feat(logo): ajouter nouveau style, fix: corriger erreur"
