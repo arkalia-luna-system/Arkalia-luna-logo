@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌙 Arkalia-LUNA Logo - Version Avancée Simplifiée</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #00d4ff, #ff00ff, #00ff88);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            color: #b0b0b0;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .variants-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .variant-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .variant-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .variant-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #00d4ff;
+        }
+
+        .logo-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .logo-svg {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto;
+            display: block;
+            filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.3));
+        }
+
+        .favicon-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .favicon-png {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto;
+            display: block;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 212, 255, 0.4);
+        }
+
+        .variant-info {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 15px;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+
+        .info-label {
+            color: #b0b0b0;
+        }
+
+        .info-value {
+            color: #00d4ff;
+            font-weight: bold;
+        }
+
+        .stats-section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .stats-title {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #00ff88;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            border: 1px solid rgba(0, 255, 136, 0.2);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #00ff88;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            color: #b0b0b0;
+            font-size: 0.9rem;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #b0b0b0;
+            font-size: 0.9rem;
+        }
+
+        .tech-badge {
+            display: inline-block;
+            background: linear-gradient(45deg, #00d4ff, #ff00ff);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin: 5px;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .variants-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .variant-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌙 Arkalia-LUNA Logo</h1>
+            <p>Version Avancée Simplifiée - Rendu Ultra-Professionnel avec Effets Visuels Exceptionnels</p>
+            <div style="margin-top: 20px;">
+                <span class="tech-badge">SVG Avancé</span>
+                <span class="tech-badge">Animations</span>
+                <span class="tech-badge">Gradients</span>
+                <span class="tech-badge">Filtres</span>
+                <span class="tech-badge">Particules</span>
+            </div>
+        </div>
+
+        <div class="stats-section">
+            <h2 class="stats-title">📊 Statistiques de Génération</h2>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">5</div>
+                    <div class="stat-label">Variantes Créées</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">10</div>
+                    <div class="stat-label">Fichiers Totaux</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">200x200</div>
+                    <div class="stat-label">Taille SVG</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">32x32</div>
+                    <div class="stat-label">Taille Favicon</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="variants-grid">
+            <!-- Variante Sérénité -->
+            <div class="variant-card">
+                <h3 class="variant-title">🌙 Sérénité</h3>
+                <div class="logo-container">
+                    <object class="logo-svg"
+                        data="exports-simple-advanced/arkalia-luna-simple-advanced-serenity-200.svg"
+                        type="image/svg+xml">
+                        <img src="exports-simple-advanced/favicon-simple-advanced-serenity-32.png" alt="Sérénité"
+                            style="width: 200px; height: 200px;">
+                    </object>
+                </div>
+                <div class="favicon-container">
+                    <img class="favicon-png" src="exports-simple-advanced/favicon-simple-advanced-serenity-32.png"
+                        alt="Favicon Sérénité">
+                </div>
+                <div class="variant-info">
+                    <div class="info-row">
+                        <span class="info-label">Type:</span>
+                        <span class="info-value">Sérénité</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Vitesse:</span>
+                        <span class="info-value">Lente</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Lueur:</span>
+                        <span class="info-value">Douce</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Variante Puissance -->
+            <div class="variant-card">
+                <h3 class="variant-title">⚡ Puissance</h3>
+                <div class="logo-container">
+                    <object class="logo-svg" data="exports-simple-advanced/arkalia-luna-simple-advanced-power-200.svg"
+                        type="image/svg+xml">
+                        <img src="exports-simple-advanced/favicon-simple-advanced-power-32.png" alt="Puissance"
+                            style="width: 200px; height: 200px;">
+                    </object>
+                </div>
+                <div class="favicon-container">
+                    <img class="favicon-png" src="exports-simple-advanced/favicon-simple-advanced-power-32.png"
+                        alt="Favicon Puissance">
+                </div>
+                <div class="variant-info">
+                    <div class="info-row">
+                        <span class="info-label">Type:</span>
+                        <span class="info-value">Puissance</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Vitesse:</span>
+                        <span class="info-value">Rapide</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Lueur:</span>
+                        <span class="info-value">Intense</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Variante Mystère -->
+            <div class="variant-card">
+                <h3 class="variant-title">🔮 Mystère</h3>
+                <div class="logo-container">
+                    <object class="logo-svg" data="exports-simple-advanced/arkalia-luna-simple-advanced-mystery-200.svg"
+                        type="image/svg+xml">
+                        <img src="exports-simple-advanced/favicon-simple-advanced-mystery-32.png" alt="Mystère"
+                            style="width: 200px; height: 200px;">
+                    </object>
+                </div>
+                <div class="favicon-container">
+                    <img class="favicon-png" src="exports-simple-advanced/favicon-simple-advanced-mystery-32.png"
+                        alt="Favicon Mystère">
+                </div>
+                <div class="variant-info">
+                    <div class="info-row">
+                        <span class="info-label">Type:</span>
+                        <span class="info-value">Mystère</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Vitesse:</span>
+                        <span class="info-value">Moyenne</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Lueur:</span>
+                        <span class="info-value">Mystérieuse</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Variante Éveil -->
+            <div class="variant-card">
+                <h3 class="variant-title">✨ Éveil</h3>
+                <div class="logo-container">
+                    <object class="logo-svg"
+                        data="exports-simple-advanced/arkalia-luna-simple-advanced-awakening-200.svg"
+                        type="image/svg+xml">
+                        <img src="exports-simple-advanced/favicon-simple-advanced-awakening-32.png" alt="Éveil"
+                            style="width: 200px; height: 200px;">
+                    </object>
+                </div>
+                <div class="favicon-container">
+                    <img class="favicon-png" src="exports-simple-advanced/favicon-simple-advanced-awakening-32.png"
+                        alt="Favicon Éveil">
+                </div>
+                <div class="variant-info">
+                    <div class="info-row">
+                        <span class="info-label">Type:</span>
+                        <span class="info-value">Éveil</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Vitesse:</span>
+                        <span class="info-value">Modérée</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Lueur:</span>
+                        <span class="info-value">Rayonnante</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Variante Énergie Créative -->
+            <div class="variant-card">
+                <h3 class="variant-title">🎇 Énergie Créative</h3>
+                <div class="logo-container">
+                    <object class="logo-svg"
+                        data="exports-simple-advanced/arkalia-luna-simple-advanced-creative-200.svg"
+                        type="image/svg+xml">
+                        <img src="exports-simple-advanced/favicon-simple-advanced-creative-32.png"
+                            alt="Énergie Créative" style="width: 200px; height: 200px;">
+                    </object>
+                </div>
+                <div class="favicon-container">
+                    <img class="favicon-png" src="exports-simple-advanced/favicon-simple-advanced-creative-32.png"
+                        alt="Favicon Énergie Créative">
+                </div>
+                <div class="variant-info">
+                    <div class="info-row">
+                        <span class="info-label">Type:</span>
+                        <span class="info-value">Énergie Créative</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Vitesse:</span>
+                        <span class="info-value">Très Rapide</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Lueur:</span>
+                        <span class="info-value">Dynamique</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>🌙 Arkalia-LUNA Logo Generator - Version Avancée Simplifiée v1.0.0</p>
+            <p>Généré avec des technologies SVG de pointe et des effets visuels exceptionnels</p>
+            <p style="margin-top: 15px;">
+                <span class="tech-badge">Python</span>
+                <span class="tech-badge">SVGWrite</span>
+                <span class="tech-badge">PIL</span>
+                <span class="tech-badge">Architecture Pro</span>
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>

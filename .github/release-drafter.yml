@@ -1,0 +1,117 @@
+# 🚀 Configuration Release Drafter - Arkalia-LUNA Logo Generator
+# Automatise la génération des notes de release basées sur les commits
+
+name-template: 'v$RESOLVED_VERSION'
+tag-template: 'v$RESOLVED_VERSION'
+categories:
+  - title: '🚀 Features'
+    labels:
+      - 'enhancement'
+      - 'feature'
+  - title: '🐛 Bug Fixes'
+    labels:
+      - 'bug'
+      - 'fix'
+  - title: '📚 Documentation'
+    labels:
+      - 'documentation'
+      - 'docs'
+  - title: '🧪 Tests'
+    labels:
+      - 'test'
+      - 'testing'
+  - title: '🔧 Maintenance'
+    labels:
+      - 'chore'
+      - 'refactor'
+      - 'ci'
+      - 'build'
+      - 'perf'
+  - title: '🚨 Breaking Changes'
+    labels:
+      - 'breaking-change'
+      - 'breaking'
+
+change-template: '- $TITLE @$AUTHOR (#$NUMBER)'
+change-title-escapes: '\<*_&' # You can add # and @  anywhere else
+
+version-resolver:
+  major:
+    labels:
+      - 'breaking-change'
+      - 'breaking'
+  minor:
+    labels:
+      - 'enhancement'
+      - 'feature'
+  patch:
+    labels:
+      - 'bug'
+      - 'fix'
+      - 'documentation'
+      - 'docs'
+      - 'test'
+      - 'testing'
+      - 'chore'
+      - 'refactor'
+      - 'ci'
+      - 'build'
+      - 'perf'
+
+template: |
+  ## 🎯 What's Changed
+
+  $CHANGES
+
+  ## 📊 Release Summary
+
+  **Version:** $RESOLVED_VERSION
+  **Release Date:** $RELEASE_DATE
+  **Total Changes:** $TOTAL_CHANGES
+
+  ### 📈 Statistics
+  - **Features:** $FEATURES_COUNT
+  - **Bug Fixes:** $BUG_FIXES_COUNT
+  - **Documentation:** $DOCUMENTATION_COUNT
+  - **Tests:** $TESTS_COUNT
+  - **Maintenance:** $MAINTENANCE_COUNT
+
+  ## 🔗 Links
+
+  - **Repository:** [GitHub](https://github.com/username/arkalia-luna-logo)
+  - **Documentation:** [Docs](https://github.com/username/arkalia-luna-logo/docs)
+  - **Issues:** [GitHub Issues](https://github.com/username/arkalia-luna-logo/issues)
+  - **Discussions:** [GitHub Discussions](https://github.com/username/username/arkalia-luna-logo/discussions)
+
+  ## 🚀 Installation
+
+  ```bash
+  # Installation depuis PyPI
+  pip install arkalia-luna-logo
+
+  # Installation depuis source
+  git clone https://github.com/username/arkalia-luna-logo.git
+  cd arkalia-luna-logo
+  pip install -e .
+  ```
+
+  ## 🧪 Testing
+
+  ```bash
+  # Tests complets
+  make test
+
+  # Qualité du code
+  make quality-check
+
+  # Performance
+  make benchmark
+  ```
+
+  ## 📝 Changelog Complet
+
+  Pour un changelog détaillé, consultez [CHANGELOG.md](CHANGELOG.md)
+
+  ---
+
+  *Release généré automatiquement par [Release Drafter](https://github.com/release-drafter/release-drafter)*

@@ -1,0 +1,159 @@
+# 🏷️ Configuration des Labels GitHub - Arkalia-LUNA Logo Generator
+
+# Labels de Type
+- name: "bug"
+  color: "d73a4a"
+  description: "Quelque chose ne fonctionne pas"
+
+- name: "documentation"
+  color: "0075ca"
+  description: "Améliorations ou ajouts à la documentation"
+
+- name: "duplicate"
+  color: "cfd3d7"
+  description: "Cette issue ou pull request existe déjà"
+
+- name: "enhancement"
+  color: "a2eeef"
+  description: "Nouvelle fonctionnalité ou amélioration"
+
+- name: "good first issue"
+  color: "7057ff"
+  description: "Bon point de départ pour les nouveaux contributeurs"
+
+- name: "help wanted"
+  color: "008672"
+  description: "Besoin d'aide supplémentaire"
+
+- name: "invalid"
+  color: "e4e669"
+  description: "Cette issue ou pull request n'est pas valide"
+
+- name: "question"
+  color: "d876e3"
+  description: "Question supplémentaire"
+
+- name: "wontfix"
+  color: "ffffff"
+  description: "Cette issue ou pull request ne sera pas traitée"
+
+# Labels de Priorité
+- name: "priority: critical"
+  color: "b60205"
+  description: "Blocage critique nécessitant une attention immédiate"
+
+- name: "priority: high"
+  color: "d93f0b"
+  description: "Priorité haute pour la prochaine release"
+
+- name: "priority: medium"
+  color: "fbca04"
+  description: "Priorité moyenne, peut attendre quelques releases"
+
+- name: "priority: low"
+  color: "0e8a16"
+  description: "Priorité basse, peut être implémentée plus tard"
+
+# Labels de Composant
+- name: "component: logo-generation"
+  color: "1d76db"
+  description: "Génération de logos et styles"
+
+- name: "component: cli"
+  color: "1d76db"
+  description: "Interface en ligne de commande"
+
+- name: "component: web-interface"
+  color: "1d76db"
+  description: "Interface web et démos"
+
+- name: "component: export"
+  color: "1d76db"
+  description: "Système d'export et formats"
+
+- name: "component: tests"
+  color: "1d76db"
+  description: "Tests et qualité du code"
+
+- name: "component: documentation"
+  color: "1d76db"
+  description: "Documentation et guides"
+
+- name: "component: ci-cd"
+  color: "1d76db"
+  description: "Intégration continue et déploiement"
+
+- name: "component: performance"
+  color: "1d76db"
+  description: "Optimisations et benchmarks"
+
+# Labels de Statut
+- name: "status: needs-triage"
+  color: "fef2c0"
+  description: "Nécessite une évaluation initiale"
+
+- name: "status: needs-discussion"
+  color: "fef2c0"
+  description: "Nécessite une discussion de l'équipe"
+
+- name: "status: in-progress"
+  color: "1d76db"
+  description: "Travail en cours"
+
+- name: "status: blocked"
+  color: "d93f0b"
+  description: "Bloqué par une autre issue ou dépendance"
+
+- name: "status: ready-for-review"
+  color: "0e8a16"
+  description: "Prêt pour la review"
+
+- name: "status: needs-testing"
+  color: "fbca04"
+  description: "Nécessite des tests supplémentaires"
+
+# Labels de Version
+- name: "version: v2.0.0"
+  color: "5319e7"
+  description: "Fonctionnalités pour la version 2.0.0"
+
+- name: "version: v2.1.0"
+  color: "5319e7"
+  description: "Fonctionnalités pour la version 2.1.0"
+
+- name: "version: v2.2.0"
+  color: "5319e7"
+  description: "Fonctionnalités pour la version 2.2.0"
+
+- name: "version: future"
+  color: "5319e7"
+  description: "Fonctionnalités pour les versions futures"
+
+# Labels Spéciaux
+- name: "breaking-change"
+  color: "b60205"
+  description: "Changement breaking nécessitant une migration"
+
+- name: "security"
+  color: "b60205"
+  description: "Problème de sécurité"
+
+- name: "performance"
+  color: "fbca04"
+  description: "Amélioration des performances"
+
+- name: "accessibility"
+  color: "0e8a16"
+  description: "Amélioration de l'accessibilité"
+
+- name: "internationalization"
+  color: "0e8a16"
+  description: "Support multi-langues"
+
+- name: "mobile"
+  color: "1d76db"
+  description: "Optimisation mobile"
+
+- name: "design"
+  color: "a2eeef"
+  description: "Améliorations du design et de l'UX"

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌙 Arkalia-LUNA Logo - Démo</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 2rem;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #e2e8f0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #60a5fa, #a855f7, #06b6d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .logo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .logo-item {
+            background: #1e293b;
+            padding: 2rem;
+            border-radius: 16px;
+            border: 2px solid #475569;
+            transition: all 0.3s ease;
+        }
+
+        .logo-item:hover {
+            border-color: #60a5fa;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(96, 165, 250, 0.2);
+        }
+
+        .logo-item h3 {
+            color: #60a5fa;
+            margin-bottom: 1rem;
+        }
+
+        .logo-svg {
+            width: 200px;
+            height: 200px;
+            margin: 1rem auto;
+            display: block;
+            filter: drop-shadow(0 0 20px rgba(96, 165, 250, 0.3));
+        }
+
+        .logo-svg:hover {
+            filter: drop-shadow(0 0 30px rgba(96, 165, 250, 0.6));
+            transform: scale(1.05);
+            transition: all 0.3s ease;
+        }
+
+        .description {
+            color: #cbd5e1;
+            line-height: 1.6;
+        }
+
+        .download-section {
+            margin: 3rem 0;
+            padding: 2rem;
+            background: #1e293b;
+            border-radius: 16px;
+            border: 1px solid #475569;
+        }
+
+        .download-btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: linear-gradient(45deg, #60a5fa, #a855f7);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            margin: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(96, 165, 250, 0.4);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>🌙 Arkalia-LUNA Logo</h1>
+        <p style="font-size: 1.2rem; color: #94a3b8; margin-bottom: 2rem;">
+            Logo techno-mystique avec réseau neuronal organique et Λ-core cristallin
+        </p>
+
+        <div class="logo-grid">
+            <div class="logo-item">
+                <h3>🌙 Version Sérénité</h3>
+                <svg class="logo-svg" viewBox="0 0 200 200">
+                    <!-- Halo respirant -->
+                    <circle cx="100" cy="100" r="95" fill="none" stroke="#60a5fa" stroke-width="1.5" opacity="0.7" />
+                    <!-- Lune holographique -->
+                    <circle cx="100" cy="100" r="70" fill="url(#moonGradient)" />
+                    <!-- Réseau neuronal -->
+                    <g fill="none" stroke="#06b6d4" stroke-width="1.2">
+                        <path d="M70 100 Q85 80 100 70 Q115 80 130 100" opacity="0.9" />
+                        <path d="M75 90 Q90 70 100 60 Q110 70 125 90" opacity="0.8" />
+                        <path d="M80 110 Q95 90 100 80 Q105 90 120 110" opacity="0.7" />
+                    </g>
+                    <!-- Λ-core -->
+                    <g fill="#60a5fa">
+                        <path d="M95 85 L100 95 L105 85 L100 100 Z" />
+                        <circle cx="100" cy="95" r="3" />
+                    </g>
+                </svg>
+                <p class="description">Halo doux, pulsations lentes, ambiance calme et mystique</p>
+            </div>
+
+            <div class="logo-item">
+                <h3>⚡ Version Puissance</h3>
+                <svg class="logo-svg" viewBox="0 0 200 200">
+                    <!-- Halo vibrant -->
+                    <circle cx="100" cy="100" r="95" fill="none" stroke="#a855f7" stroke-width="2" opacity="0.8" />
+                    <!-- Lune holographique -->
+                    <circle cx="100" cy="100" r="70" fill="url(#powerGradient)" />
+                    <!-- Réseau neuronal -->
+                    <g fill="none" stroke="#ec4899" stroke-width="1.5">
+                        <path d="M70 100 Q85 80 100 70 Q115 80 130 100" opacity="0.9" />
+                        <path d="M75 90 Q90 70 100 60 Q110 70 125 90" opacity="0.8" />
+                        <path d="M80 110 Q95 90 100 80 Q105 90 120 110" opacity="0.7" />
+                    </g>
+                    <!-- Λ-core -->
+                    <g fill="#a855f7">
+                        <path d="M95 85 L100 95 L105 85 L100 100 Z" />
+                        <circle cx="100" cy="95" r="3" />
+                    </g>
+                </svg>
+                <p class="description">Halo vibrant, réseau accéléré, énergie intense</p>
+            </div>
+        </div>
+
+        <div class="download-section">
+            <h3>📥 Télécharger le logo</h3>
+            <p style="margin-bottom: 2rem; color: #cbd5e1;">
+                Le logo Arkalia-LUNA est disponible en plusieurs formats
+            </p>
+            <a href="exports/svg/arkalia-luna-logo.svg" class="download-btn" download>
+                📁 Télécharger SVG
+            </a>
+            <a href="src/components/ArkaliaLogoFinal.jsx" class="download-btn" download>
+                ⚛️ Composant React
+            </a>
+        </div>
+    </div>
+
+    <defs>
+        <radialGradient id="moonGradient" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#1e3a8a" />
+            <stop offset="50%" stop-color="#3b82f6" />
+            <stop offset="100%" stop-color="#06b6d4" />
+        </radialGradient>
+        <radialGradient id="powerGradient" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#1e40af" />
+            <stop offset="50%" stop-color="#7c3aed" />
+            <stop offset="100%" stop-color="#ec4899" />
+        </radialGradient>
+    </defs>
+</body>
+
+</html>

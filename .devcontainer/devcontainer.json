@@ -1,0 +1,76 @@
+{
+    "name": "Arkalia-LUNA Logo Generator",
+    "image": "mcr.microsoft.com/devcontainers/python:3.11",
+    "features": {
+        "ghcr.io/devcontainers/features/git:1": {},
+        "ghcr.io/devcontainers/features/github-cli:1": {},
+        "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-python.python",
+                "ms-python.black-formatter",
+                "charliermarsh.ruff",
+                "ms-python.mypy-type-checker",
+                "ms-python.pylint",
+                "ms-python.pytest-adapter",
+                "ms-python.vscode-pylance",
+                "ms-vscode.vscode-json",
+                "yzhang.markdown-all-in-one",
+                "ms-vscode.vscode-yaml",
+                "eamodio.gitlens",
+                "github.copilot",
+                "github.copilot-chat"
+            ],
+            "settings": {
+                "python.defaultInterpreterPath": "/usr/local/bin/python",
+                "python.linting.enabled": true,
+                "python.linting.ruffEnabled": true,
+                "python.formatting.provider": "black",
+                "python.formatting.blackArgs": [
+                    "--line-length=88"
+                ],
+                "python.testing.pytestEnabled": true,
+                "python.testing.pytestArgs": [
+                    "tests/"
+                ],
+                "editor.formatOnSave": true,
+                "editor.codeActionsOnSave": {
+                    "source.organizeImports": true
+                },
+                "files.exclude": {
+                    "**/__pycache__": true,
+                    "**/*.pyc": true,
+                    "**/.pytest_cache": true,
+                    "**/.coverage": true,
+                    "**/htmlcov": true,
+                    "**/.mypy_cache": true,
+                    "**/.ruff_cache": true,
+                    "**/.benchmarks": true
+                }
+            }
+        }
+    },
+    "postCreateCommand": "pip install -e '.[dev]' && make pre-commit-install",
+    "remoteUser": "vscode",
+    "mounts": [
+        "source=${localWorkspaceFolder}/.git,target=/workspaces/.git,type=bind,consistency=cached"
+    ],
+    "workspaceMount": "source=${localWorkspaceFolder},target=/workspaces,type=bind,consistency=cached",
+    "workspaceFolder": "/workspaces",
+    "forwardPorts": [
+        8000,
+        8080
+    ],
+    "portsAttributes": {
+        "8000": {
+            "label": "Web Demo",
+            "onAutoForward": "notify"
+        },
+        "8080": {
+            "label": "Development Server",
+            "onAutoForward": "notify"
+        }
+    }
+}

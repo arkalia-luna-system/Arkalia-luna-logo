@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <!-- Gradients holographiques -->
+    <radialGradient id="moonGradient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#1e3a8a"/>
+      <stop offset="50%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
+    </radialGradient>
+    
+    <radialGradient id="haloGradient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#60a5fa" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#60a5fa" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Filtres lumineux -->
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="strongGlow">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Halo respirant mystique -->
+  <circle
+    cx="100"
+    cy="100"
+    r="95"
+    fill="none"
+    stroke="#60a5fa"
+    stroke-width="1.5"
+    opacity="0.7"
+    filter="url(#glow)"
+  />
+
+  <!-- Lune holographique principale -->
+  <circle
+    cx="100"
+    cy="100"
+    r="70"
+    fill="url(#moonGradient)"
+    filter="url(#glow)"
+  />
+
+  <!-- Réseau neuronal organique -->
+  <g fill="none" stroke="#06b6d4" stroke-width="1.2">
+    <!-- Réseau principal dense et organique -->
+    <path d="M70 100 Q85 80 100 70 Q115 80 130 100" opacity="0.9"/>
+    <path d="M75 90 Q90 70 100 60 Q110 70 125 90" opacity="0.8"/>
+    <path d="M80 110 Q95 90 100 80 Q105 90 120 110" opacity="0.7"/>
+    
+    <!-- Branches secondaires -->
+    <path d="M65 95 Q80 75 100 65" opacity="0.6"/>
+    <path d="M135 105 Q120 85 100 75" opacity="0.6"/>
+    
+    <!-- Connexions transversales -->
+    <path d="M85 85 Q100 75 115 85" opacity="0.5"/>
+    <path d="M90 115 Q100 105 110 115" opacity="0.5"/>
+    
+    <!-- Nœuds synaptiques -->
+    <circle cx="85" cy="80" r="1.5" fill="#06b6d4" opacity="0.8"/>
+    <circle cx="115" cy="80" r="1.5" fill="#06b6d4" opacity="0.8"/>
+    <circle cx="90" cy="110" r="1.5" fill="#06b6d4" opacity="0.8"/>
+    <circle cx="110" cy="110" r="1.5" fill="#06b6d4" opacity="0.8"/>
+  </g>
+
+  <!-- Λ-core cristallin rayonnant -->
+  <g fill="#60a5fa" filter="url(#strongGlow)">
+    <!-- Forme Λ stylisée -->
+    <path d="M95 85 L100 95 L105 85 L100 100 Z"/>
+    <!-- Rayonnement central -->
+    <circle cx="100" cy="95" r="3" fill="#60a5fa" opacity="0.9"/>
+  </g>
+
+  <!-- Effets de lumière supplémentaires -->
+  <circle
+    cx="100"
+    cy="100"
+    r="75"
+    fill="none"
+    stroke="#60a5fa"
+    stroke-width="0.5"
+    opacity="0.3"
+  />
+</svg>

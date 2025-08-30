@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xlink="http://www.w3.org/1999/xlink" baseProfile="full" height="200" version="1.1" viewBox="0 0 200 200" width="200">
+  <title>Logo Arkalia-LUNA - Style Dashboard</title>
+  <defs>
+    <radialGradient cx="50%" cy="50%" id="mainGradient-creative" r="50%">
+      <stop offset="0%" stop-color="#1e40af"/>
+      <stop offset="60%" stop-color="#06b6d4"/>
+      <stop offset="100%" stop-color="#1e40af"/>
+    </radialGradient>
+    <radialGradient cx="50%" cy="50%" id="haloGradient-creative" r="50%">
+      <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.8"/>
+      <stop offset="50%" stop-color="#f59e0b" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#f59e0b" stop-opacity="0.0"/>
+    </radialGradient>
+    <radialGradient cx="50%" cy="50%" id="coreGradient-creative" r="50%">
+      <stop offset="0%" stop-color="#1e40af" stop-opacity="1.0"/>
+      <stop offset="70%" stop-color="#ec4899" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#f59e0b" stop-opacity="0.6"/>
+    </radialGradient>
+    <filter id="glow-creative">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="2.0"/>
+    </filter>
+  </defs>
+  <circle cx="0" cy="0" fill="url(#mainGradient-creative)" filter="url(#glow-creative)" r="80"/>
+  <circle cx="0" cy="0" fill="none" filter="url(#glow-creative)" opacity="0.7" r="90" stroke="#f59e0b" stroke-width="2">
+    <animate attributeName="opacity" dur="1.5s" repeatCount="indefinite" values="0.7;0.3;0.7"/>
+  </circle>
+  <circle cx="100" cy="100" fill="none" opacity="0.4" r="100" stroke="#ec4899" stroke-width="1"/>
+  <circle cx="100" cy="100" fill="url(#coreGradient-creative)" filter="url(#glow-creative)" r="33"/>
+  <circle cx="100" cy="100" fill="none" opacity="0.8" r="34" stroke="#f59e0b" stroke-width="1"/>
+  <g fill="none" opacity="0.8" stroke="#ec4899" stroke-width="1.5">
+    <path d="M34 100 L166 100"/>
+    <path d="M34 85 L166 85"/>
+    <path d="M34 115 L166 115"/>
+    <path d="M100 34 L100 166"/>
+    <path d="M85 34 L85 166"/>
+    <path d="M115 34 L115 166"/>
+    <path d="M50 50 L150 150"/>
+    <path d="M50 150 L150 50"/>
+  </g>
+  <circle cx="100" cy="100" fill="#f59e0b" opacity="0.9" r="2">
+    <animate attributeName="opacity" begin="0.0s" dur="1.0s" repeatCount="indefinite" values="0.9;0.3;0.9"/>
+  </circle>
+  <circle cx="34" cy="100" fill="#f59e0b" opacity="0.9" r="2">
+    <animate attributeName="opacity" begin="0.1s" dur="1.0s" repeatCount="indefinite" values="0.9;0.3;0.9"/>
+  </circle>
+  <circle cx="166" cy="100" fill="#f59e0b" opacity="0.9" r="2">
+    <animate attributeName="opacity" begin="0.2s" dur="1.0s" repeatCount="indefinite" values="0.9;0.3;0.9"/>
+  </circle>
+  <circle cx="100" cy="34" fill="#f59e0b" opacity="0.9" r="2">
+    <animate attributeName="opacity" begin="0.30000000000000004s" dur="1.0s" repeatCount="indefinite" values="0.9;0.3;0.9"/>
+  </circle>
+  <circle cx="100" cy="166" fill="#f59e0b" opacity="0.9" r="2">
+    <animate attributeName="opacity" begin="0.4s" dur="1.0s" repeatCount="indefinite" values="0.9;0.3;0.9"/>
+  </circle>
+  <circle cx="50" cy="50" fill="#f59e0b" opacity="0.9" r="2">
+    <animate attributeName="opacity" begin="0.5s" dur="1.0s" repeatCount="indefinite" values="0.9;0.3;0.9"/>
+  </circle>
+  <circle cx="150" cy="150" fill="#f59e0b" opacity="0.9" r="2">
+    <animate attributeName="opacity" begin="0.6000000000000001s" dur="1.0s" repeatCount="indefinite" values="0.9;0.3;0.9"/>
+  </circle>
+  <circle cx="50" cy="150" fill="#f59e0b" opacity="0.9" r="2">
+    <animate attributeName="opacity" begin="0.7000000000000001s" dur="1.0s" repeatCount="indefinite" values="0.9;0.3;0.9"/>
+  </circle>
+  <circle cx="150" cy="50" fill="#f59e0b" opacity="0.9" r="2">
+    <animate attributeName="opacity" begin="0.8s" dur="1.0s" repeatCount="indefinite" values="0.9;0.3;0.9"/>
+  </circle>
+  <line opacity="0.6" stroke="#ec4899" stroke-width="1.5" x1="100" x2="170" y1="100" y2="100">
+    <animate attributeName="opacity" begin="0.0s" dur="1.5s" repeatCount="indefinite" values="0.6;1.0;0.6"/>
+  </line>
+  <line opacity="0.6" stroke="#ec4899" stroke-width="1.5" x1="100" x2="149" y1="100" y2="149">
+    <animate attributeName="opacity" begin="0.2s" dur="1.5s" repeatCount="indefinite" values="0.6;1.0;0.6"/>
+  </line>
+  <line opacity="0.6" stroke="#ec4899" stroke-width="1.5" x1="100" x2="100" y1="100" y2="170">
+    <animate attributeName="opacity" begin="0.4s" dur="1.5s" repeatCount="indefinite" values="0.6;1.0;0.6"/>
+  </line>
+  <line opacity="0.6" stroke="#ec4899" stroke-width="1.5" x1="100" x2="51" y1="100" y2="149">
+    <animate attributeName="opacity" begin="0.6000000000000001s" dur="1.5s" repeatCount="indefinite" values="0.6;1.0;0.6"/>
+  </line>
+  <line opacity="0.6" stroke="#ec4899" stroke-width="1.5" x1="100" x2="30" y1="100" y2="100">
+    <animate attributeName="opacity" begin="0.8s" dur="1.5s" repeatCount="indefinite" values="0.6;1.0;0.6"/>
+  </line>
+  <line opacity="0.6" stroke="#ec4899" stroke-width="1.5" x1="100" x2="51" y1="100" y2="51">
+    <animate attributeName="opacity" begin="1.0s" dur="1.5s" repeatCount="indefinite" values="0.6;1.0;0.6"/>
+  </line>
+  <line opacity="0.6" stroke="#ec4899" stroke-width="1.5" x1="100" x2="100" y1="100" y2="30">
+    <animate attributeName="opacity" begin="1.2000000000000002s" dur="1.5s" repeatCount="indefinite" values="0.6;1.0;0.6"/>
+  </line>
+  <line opacity="0.6" stroke="#ec4899" stroke-width="1.5" x1="100" x2="149" y1="100" y2="51">
+    <animate attributeName="opacity" begin="1.4000000000000001s" dur="1.5s" repeatCount="indefinite" values="0.6;1.0;0.6"/>
+  </line>
+</svg>

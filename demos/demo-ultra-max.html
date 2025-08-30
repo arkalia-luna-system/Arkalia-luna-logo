@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌙 Arkalia-LUNA Logo - Style ULTRA-MAX Exceptionnel</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #ff00ff, #00ffff, #ffff00, #ff0080);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: rainbow 3s ease-in-out infinite;
+        }
+
+        @keyframes rainbow {
+
+            0%,
+            100% {
+                filter: hue-rotate(0deg);
+            }
+
+            50% {
+                filter: hue-rotate(180deg);
+            }
+        }
+
+        .header p {
+            font-size: 1.3rem;
+            color: #b0b0b0;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .style-description {
+            background: rgba(255, 0, 255, 0.1);
+            border: 1px solid rgba(255, 0, 255, 0.3);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .style-description h3 {
+            color: #ff00ff;
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+
+        .style-description ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .style-description li {
+            background: rgba(255, 0, 255, 0.2);
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(255, 0, 255, 0.3);
+        }
+
+        .variants-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .variant-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 0, 255, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .variant-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 0, 255, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .variant-card:hover::before {
+            left: 100%;
+        }
+
+        .variant-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(255, 0, 255, 0.3);
+            border-color: rgba(255, 0, 255, 0.5);
+        }
+
+        .variant-title {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #ff00ff;
+            text-shadow: 0 0 10px rgba(255, 0, 255, 0.5);
+        }
+
+        .logo-container {
+            text-align: center;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .logo-svg {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto;
+            display: block;
+            filter: drop-shadow(0 0 25px rgba(255, 0, 255, 0.4));
+            transition: transform 0.3s ease;
+        }
+
+        .logo-svg:hover {
+            transform: scale(1.05);
+        }
+
+        .favicon-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .favicon-png {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto;
+            display: block;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .favicon-png:hover {
+            transform: scale(1.1);
+        }
+
+        .variant-info {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 15px;
+            border: 1px solid rgba(255, 0, 255, 0.2);
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+
+        .info-label {
+            color: #b0b0b0;
+        }
+
+        .info-value {
+            color: #ff00ff;
+            font-weight: bold;
+            text-shadow: 0 0 5px rgba(255, 0, 255, 0.5);
+        }
+
+        .stats-section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 0, 255, 0.2);
+            margin-bottom: 30px;
+        }
+
+        .stats-title {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #00ffff;
+            text-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0, 255, 255, 0.6);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #00ffff;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+        }
+
+        .stat-label {
+            color: #b0b0b0;
+            font-size: 0.9rem;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #b0b0b0;
+            font-size: 0.9rem;
+        }
+
+        .tech-badge {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff00ff, #00ffff, #ffff00);
+            color: white;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin: 5px;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .ultra-max-badge {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(45deg, #ff00ff, #00ffff);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            box-shadow: 0 0 30px rgba(255, 0, 255, 0.5);
+            animation: float 3s ease-in-out infinite;
+            z-index: 1000;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .variants-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 2.5rem;
+            }
+
+            .variant-card {
+                padding: 20px;
+            }
+
+            .ultra-max-badge {
+                position: static;
+                margin: 20px auto;
+                display: block;
+                width: fit-content;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="ultra-max-badge">🚀 ULTRA-MAX</div>
+
+    <div class="container">
+        <div class="header">
+            <h1>🌙 Arkalia-LUNA Logo</h1>
+            <p>Style ULTRA-MAX Exceptionnel - Effets Visuels EXTRÊMES et Animations Avancées</p>
+            <div style="margin-top: 20px;">
+                <span class="tech-badge">ULTRA-MAX</span>
+                <span class="tech-badge">Exceptionnel</span>
+                <span class="tech-badge">15+ Gradients</span>
+                <span class="tech-badge">Particules</span>
+                <span class="tech-badge">Animations</span>
+                <span class="tech-badge">Effets Complexes</span>
+            </div>
+        </div>
+
+        <div class="style-description">
+            <h3>🎯 Style ULTRA-MAX Exceptionnel</h3>
+            <p>Ce style ULTRA-MAX repousse les limites de la génération SVG : 15+ stops de gradient, particules animées,
+                filtres complexes, masques de profondeur, et animations multi-couches pour un rendu VISUEL EXCEPTIONNEL
+                !</p>
+            <ul>
+                <li>✅ 15+ Stops de gradient holographique</li>
+                <li>✅ Particules animées orbitales</li>
+                <li>✅ Filtres de lueur complexes</li>
+                <li>✅ Masques de profondeur</li>
+                <li>✅ Animations multi-couches</li>
+                <li>✅ Réseau neural ULTRA-MAX</li>
+                <li>✅ Effets de turbulence</li>
+                <li>✅ Rayons dynamiques</li>
+            </ul>
+        </div>
+
+        <div class="stats-section">
+            <h2 class="stats-title">📊 Statistiques de Génération ULTRA-MAX</h2>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">5</div>
+                    <div class="stat-label">Variantes ULTRA-MAX</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">10</div>
+                    <div class="stat-label">Fichiers Totaux</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">200x200</div>
+                    <div class="stat-label">Taille SVG</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">32x32</div>
+                    <div class="stat-label">Taille Favicon</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">15+</div>
+                    <div class="stat-label">Gradients</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">20</div>
+                    <div class="stat-label">Particules</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="variants-grid">
+            <!-- Variante Sérénité ULTRA-MAX -->
+            <div class="variant-card">
+                <h3 class="variant-title">🌙 Sérénité ULTRA-MAX</h3>
+                <div class="logo-container">
+                    <object class="logo-svg" data="exports-ultra-max/arkalia-luna-ultra-max-serenity-200.svg"
+                        type="image/svg+xml">
+                        <img src="exports-ultra-max/favicon-ultra-max-serenity-32.png" alt="Sérénité ULTRA-MAX"
+                            style="width: 200px; height: 200px;">
+                    </object>
+                </div>
+                <div class="favicon-container">
+                    <img class="favicon-png" src="exports-ultra-max/favicon-ultra-max-serenity-32.png"
+                        alt="Favicon Sérénité ULTRA-MAX">
+                </div>
+                <div class="variant-info">
+                    <div class="info-row">
+                        <span class="info-label">Type:</span>
+                        <span class="info-value">Sérénité ULTRA-MAX</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Vitesse:</span>
+                        <span class="info-value">Lente</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Style:</span>
+                        <span class="info-value">ULTRA-MAX</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Particules:</span>
+                        <span class="info-value">20</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Variante Puissance ULTRA-MAX -->
+            <div class="variant-card">
+                <h3 class="variant-title">⚡ Puissance ULTRA-MAX</h3>
+                <div class="logo-container">
+                    <object class="logo-svg" data="exports-ultra-max/arkalia-luna-ultra-max-power-200.svg"
+                        type="image/svg+xml">
+                        <img src="exports-ultra-max/favicon-ultra-max-power-32.png" alt="Puissance ULTRA-MAX"
+                            style="width: 200px; height: 200px;">
+                    </object>
+                </div>
+                <div class="favicon-container">
+                    <img class="favicon-png" src="exports-ultra-max/favicon-ultra-max-power-32.png"
+                        alt="Favicon Puissance ULTRA-MAX">
+                </div>
+                <div class="variant-info">
+                    <div class="info-row">
+                        <span class="info-label">Type:</span>
+                        <span class="info-value">Puissance ULTRA-MAX</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Vitesse:</span>
+                        <span class="info-value">Rapide</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Style:</span>
+                        <span class="info-value">ULTRA-MAX</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Particules:</span>
+                        <span class="info-value">20</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Variante Mystère ULTRA-MAX -->
+            <div class="variant-card">
+                <h3 class="variant-title">🔮 Mystère ULTRA-MAX</h3>
+                <div class="logo-container">
+                    <object class="logo-svg" data="exports-ultra-max/arkalia-luna-ultra-max-mystery-200.svg"
+                        type="image/svg+xml">
+                        <img src="exports-ultra-max/favicon-ultra-max-mystery-32.png" alt="Mystère ULTRA-MAX"
+                            style="width: 200px; height: 200px;">
+                    </object>
+                </div>
+                <div class="favicon-container">
+                    <img class="favicon-png" src="exports-ultra-max/favicon-ultra-max-mystery-32.png"
+                        alt="Favicon Mystère ULTRA-MAX">
+                </div>
+                <div class="variant-info">
+                    <div class="info-row">
+                        <span class="info-label">Type:</span>
+                        <span class="info-value">Mystère ULTRA-MAX</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Vitesse:</span>
+                        <span class="info-value">Moyenne</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Style:</span>
+                        <span class="info-value">ULTRA-MAX</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Particules:</span>
+                        <span class="info-value">20</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Variante Éveil ULTRA-MAX -->
+            <div class="variant-card">
+                <h3 class="variant-title">✨ Éveil ULTRA-MAX</h3>
+                <div class="logo-container">
+                    <object class="logo-svg" data="exports-ultra-max/arkalia-luna-ultra-max-awakening-200.svg"
+                        type="image/svg+xml">
+                        <img src="exports-ultra-max/favicon-ultra-max-awakening-32.png" alt="Éveil ULTRA-MAX"
+                            style="width: 200px; height: 200px;">
+                    </object>
+                </div>
+                <div class="favicon-container">
+                    <img class="favicon-png" src="exports-ultra-max/favicon-ultra-max-awakening-32.png"
+                        alt="Favicon Éveil ULTRA-MAX">
+                </div>
+                <div class="variant-info">
+                    <div class="info-row">
+                        <span class="info-label">Type:</span>
+                        <span class="info-value">Éveil ULTRA-MAX</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Vitesse:</span>
+                        <span class="info-value">Modérée</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Style:</span>
+                        <span class="info-value">ULTRA-MAX</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Particules:</span>
+                        <span class="info-value">20</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Variante Énergie Créative ULTRA-MAX -->
+            <div class="variant-card">
+                <h3 class="variant-title">🎇 Énergie Créative ULTRA-MAX</h3>
+                <div class="logo-container">
+                    <object class="logo-svg" data="exports-ultra-max/arkalia-luna-ultra-max-creative-200.svg"
+                        type="image/svg+xml">
+                        <img src="exports-ultra-max/favicon-ultra-max-creative-32.png" alt="Énergie Créative ULTRA-MAX"
+                            style="width: 200px; height: 200px;">
+                    </object>
+                </div>
+                <div class="favicon-container">
+                    <img class="favicon-png" src="exports-ultra-max/favicon-ultra-max-creative-32.png"
+                        alt="Favicon Énergie Créative ULTRA-MAX">
+                </div>
+                <div class="variant-info">
+                    <div class="info-row">
+                        <span class="info-label">Type:</span>
+                        <span class="info-value">Énergie Créative ULTRA-MAX</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Vitesse:</span>
+                        <span class="info-value">Très Rapide</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Style:</span>
+                        <span class="info-value">ULTRA-MAX</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Particules:</span>
+                        <span class="info-value">20</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>🌙 Arkalia-LUNA Logo Generator - Style ULTRA-MAX Exceptionnel v1.0.0</p>
+            <p>Généré avec des technologies SVG ULTRA-avancées et des effets visuels EXTRÊMES</p>
+            <p style="margin-top: 15px;">
+                <span class="tech-badge">Python</span>
+                <span class="tech-badge">SVGWrite</span>
+                <span class="tech-badge">PIL</span>
+                <span class="tech-badge">Architecture ULTRA-MAX</span>
+                <span class="tech-badge">15+ Gradients</span>
+                <span class="tech-badge">Particules</span>
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>

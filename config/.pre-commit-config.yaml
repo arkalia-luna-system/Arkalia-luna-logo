@@ -1,0 +1,87 @@
+# Configuration Pre-commit pour Arkalia-LUNA Logo Generator
+# Automatise la qualité du code avant chaque commit
+# Utilise les configurations du dossier config/
+
+repos:
+  # Formatage automatique avec Black
+  - repo: https://github.com/psf/black
+    rev: 23.12.1
+    hooks:
+      - id: black
+        language_version: python3
+        args: [--line-length=88, --target-version=py38]
+        types: [python]
+
+  # Linting rapide avec Ruff
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.1.6
+    hooks:
+      - id: ruff
+        args: [--fix, --exit-non-zero-on-fix]
+        types: [python]
+      - id: ruff-format
+        types: [python]
+
+  # Tri automatique des imports avec isort
+  - repo: https://github.com/pycqa/isort
+    rev: 5.13.2
+    hooks:
+      - id: isort
+        args: [--profile=black, --line-length=88]
+        types: [python]
+
+  # Vérification des types avec MyPy
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.8.0
+    hooks:
+      - id: mypy
+        args: [--strict, --ignore-missing-imports]
+        types: [python]
+        additional_dependencies: [types-all]
+
+  # Vérification de la sécurité des dépendances
+  - repo: https://github.com/PyCQA/bandit
+    rev: 1.7.5
+    hooks:
+      - id: bandit
+        args: [-r, src/, -f, json, -o, bandit-report.json]
+        types: [python]
+
+  # Vérification des fichiers de configuration
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      # Vérification des fichiers de base
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-toml
+      - id: check-json
+      - id: check-merge-conflict
+      - id: check-case-conflict
+
+      # Vérification des fichiers Python
+      - id: check-docstring-first
+      - id: check-ast
+      - id: check-json
+      - id: check-merge-conflict
+
+      # Vérification des fichiers de documentation
+      - id: check-markdown
+      - id: check-added-large-files
+      - id: check-merge-conflict
+
+  # Vérification des tests
+  - repo: local
+    hooks:
+      - id: pytest-check
+        name: pytest
+        entry: pytest
+        language: system
+        pass_filenames: false
+        always_run: true
+        args: [tests/, -v, --tb=short]
+
+# Configuration globale
+default_language_version:
+  python: python3

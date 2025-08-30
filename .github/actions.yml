@@ -1,0 +1,80 @@
+# 🔧 Configuration des Actions GitHub - Arkalia-LUNA Logo Generator
+
+# Actions disponibles
+actions:
+  - name: "Code Quality"
+    description: "Vérification de la qualité du code"
+    triggers: ["push", "pull_request"]
+
+  - name: "Testing"
+    description: "Exécution des tests"
+    triggers: ["push", "pull_request"]
+
+  - name: "Build"
+    description: "Construction du package"
+    triggers: ["push", "pull_request"]
+
+  - name: "Deploy"
+    description: "Déploiement automatique"
+    triggers: ["tag"]
+
+  - name: "Branch Protection"
+    description: "Protection des branches"
+    triggers: ["pull_request"]
+
+# Configuration des permissions
+permissions:
+  contents: read
+  issues: write
+  pull_requests: write
+  discussions: write
+  actions: read
+
+# Environnements
+environments:
+  production:
+    name: "Production"
+    url: "https://github.com/username/arkalia-luna-logo/releases"
+
+  staging:
+    name: "Staging"
+    url: "https://github.com/username/arkalia-luna-logo/actions"
+
+# Secrets requis
+secrets:
+  - name: "GITHUB_TOKEN"
+    description: "Token GitHub automatique"
+    required: true
+
+  - name: "PYPI_TOKEN"
+    description: "Token PyPI pour publication"
+    required: false
+
+  - name: "DOCKER_TOKEN"
+    description: "Token Docker Hub"
+    required: false
+
+# Configuration des notifications
+notifications:
+  - channel: "GitHub"
+    events: ["success", "failure", "cancelled"]
+
+  - channel: "Email"
+    events: ["failure"]
+    recipients: ["maintainers@example.com"]
+
+# Configuration des timeouts
+timeouts:
+  job: 60 # minutes
+  step: 10 # minutes
+
+# Configuration des runners
+runners:
+  - os: "ubuntu-latest"
+    python: ["3.8", "3.9", "3.10", "3.11", "3.12"]
+
+  - os: "windows-latest"
+    python: ["3.10", "3.11"]
+
+  - os: "macos-latest"
+    python: ["3.10", "3.11"]

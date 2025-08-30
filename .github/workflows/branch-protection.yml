@@ -1,0 +1,64 @@
+name: Branch Protection & PR Management
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+  push:
+    branches: [main, develop]
+
+jobs:
+  branch-protection:
+    name: Branch Protection Rules
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Validate PR Title
+      run: |
+        # Vérifier que le titre du PR suit les conventions
+        PR_TITLE="${{ github.event.pull_request.title }}"
+        if [[ ! "$PR_TITLE" =~ ^(feat|fix|docs|style|refactor|test|chore|perf|ci|build|revert)(\(.+\))?: ]]; then
+          echo "❌ Le titre du PR doit suivre le format: type(scope): description"
+          echo "Exemples: feat(logo): ajouter nouveau style, fix(tests): corriger erreur"
+          exit 1
+        fi
+        echo "✅ Titre du PR valide: $PR_TITLE"
+        
+    - name: Check Branch Naming
+      run: |
+        # Vérifier que la branche suit les conventions
+        BRANCH_NAME="${{ github.head_ref }}"
+        if [[ ! "$BRANCH_NAME" =~ ^(feature|bugfix|hotfix|release|docs|refactor)/[a-z0-9-]+$ ]]; then
+          echo "❌ Nom de branche invalide: $BRANCH_NAME"
+          echo "Format attendu: type/description (ex: feature/new-logo-style)"
+          exit 1
+        fi
+        echo "✅ Nom de branche valide: $BRANCH_NAME"
+        
+    - name: Validate Commit Messages
+      run: |
+        # Vérifier que les commits suivent les conventions
+        git log --oneline ${{ github.event.pull_request.base.sha }}..${{ github.event.pull_request.head.sha }} | while read commit; do
+          if [[ ! "$commit" =~ ^[a-f0-9]{7}\ (feat|fix|docs|style|refactor|test|chore|perf|ci|build|revert)(\(.+\))?: ]]; then
+            echo "❌ Commit invalide: $commit"
+            echo "Format attendu: type(scope): description"
+            exit 1
+          fi
+        done
+        echo "✅ Tous les commits sont valides"
+        
+  auto-merge:
+    name: Auto-merge PR
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request' && github.event.pull_request.auto_merge_enabled
+    needs: [branch-protection]
+    
+    steps:
+    - name: Enable auto-merge
+      run: |
+        gh pr merge --auto --merge "${{ github.event.pull_request.number }}"
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

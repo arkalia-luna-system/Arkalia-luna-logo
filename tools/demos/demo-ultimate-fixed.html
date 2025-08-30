@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arkalia-LUNA - Style ULTIME - Démo Corrigée</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #60a5fa, #06b6d4, #8b5cf6, #ec4899);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 8s ease-in-out infinite;
+            margin-bottom: 15px;
+        }
+        
+        .subtitle {
+            font-size: 1.3rem;
+            color: #94a3b8;
+            margin-bottom: 20px;
+        }
+        
+        .description {
+            font-size: 1.1rem;
+            color: #cbd5e1;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .variants-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .variant-card {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 25px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            transition: all 0.3s ease;
+        }
+        
+        .variant-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(96, 165, 250, 0.3);
+        }
+        
+        .variant-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #60a5fa;
+        }
+        
+        .variant-description {
+            color: #cbd5e1;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        
+        .logo-display {
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .logo-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+        
+        .logo-image:hover {
+            transform: scale(1.05);
+        }
+        
+        .favicon-display {
+            margin: 15px 0;
+            text-align: center;
+        }
+        
+        .favicon-image {
+            width: 64px;
+            height: 64px;
+            border-radius: 8px;
+            margin: 5px;
+            transition: transform 0.3s ease;
+        }
+        
+        .favicon-image:hover {
+            transform: scale(1.2);
+        }
+        
+        .stats-section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 40px 0;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .stats-title {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #60a5fa;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .stat-item {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 20px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #06b6d4;
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            color: #94a3b8;
+            font-size: 1rem;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #64748b;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        .error-message {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #fca5a5;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .success-message {
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            color: #86efac;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="title">Arkalia-LUNA</h1>
+            <p class="subtitle">Style ULTIME - Démo Corrigée</p>
+            <p class="description">
+                Version corrigée utilisant des images PNG pour un affichage garanti. 
+                Cette démo présente les logos ULTIMES d'Arkalia-LUNA avec leurs 5 variantes émotionnelles.
+            </p>
+        </div>
+
+        <div class="success-message">
+            ✅ Page corrigée - Utilisation d'images PNG pour un affichage optimal
+        </div>
+
+        <div class="variants-grid">
+            <!-- Sérénité -->
+            <div class="variant-card">
+                <h3 class="variant-title">🌙 Sérénité</h3>
+                <p class="variant-description">
+                    Halo lent, pulsations douces, couleurs bleues/argent subtiles. 
+                    État de calme et de paix intérieure.
+                </p>
+                <div class="logo-display">
+                    <img src="exports-ultimate/arkalia-luna-ultimate-serenity-200.png" 
+                         alt="Logo Sérénité" 
+                         class="logo-image"
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <div style="display:none; color: #ef4444; font-size: 0.9rem;">
+                        ❌ Image non trouvée - Utilisez le SVG original
+                    </div>
+                </div>
+                <div class="favicon-display">
+                    <img src="exports-ultimate/favicon-ultimate-serenity-32.png" 
+                         alt="Favicon Sérénité" 
+                         class="favicon-image">
+                </div>
+            </div>
+
+            <!-- Puissance -->
+            <div class="variant-card">
+                <h3 class="variant-title">⚡ Puissance</h3>
+                <p class="variant-description">
+                    Pulsations fortes, halo vibrant, réseau accéléré, bleu/violet intense. 
+                    Énergie et force créatrice.
+                </p>
+                <div class="logo-display">
+                    <img src="exports-ultimate/arkalia-luna-ultimate-power-200.png" 
+                         alt="Logo Puissance" 
+                         class="logo-image"
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <div style="display:none; color: #ef4444; font-size: 0.9rem;">
+                        ❌ Image non trouvée - Utilisez le SVG original
+                    </div>
+                </div>
+                <div class="favicon-display">
+                    <img src="exports-ultimate/favicon-ultimate-power-32.png" 
+                         alt="Favicon Puissance" 
+                         class="favicon-image">
+                </div>
+            </div>
+
+            <!-- Mystère -->
+            <div class="variant-card">
+                <h3 class="variant-title">🔮 Mystère</h3>
+                <p class="variant-description">
+                    Brumes mouvantes, réseau irrégulier, iridescence lunatique. 
+                    Mystère et intuition profonde.
+                </p>
+                <div class="logo-display">
+                    <img src="exports-ultimate/arkalia-luna-ultimate-mystery-200.png" 
+                         alt="Logo Mystère" 
+                         class="logo-image"
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <div style="display:none; color: #ef4444; font-size: 0.9rem;">
+                        ❌ Image non trouvée - Utilisez le SVG original
+                    </div>
+                </div>
+                <div class="favicon-display">
+                    <img src="exports-ultimate/favicon-ultimate-mystery-32.png" 
+                         alt="Favicon Mystère" 
+                         class="favicon-image">
+                </div>
+            </div>
+
+            <!-- Éveil -->
+            <div class="variant-card">
+                <h3 class="variant-title">✨ Éveil / Sagesse</h3>
+                <p class="variant-description">
+                    Halo rayonnant, cœur Λ clair, turquoise/doré. 
+                    Conscience élargie et sagesse.
+                </p>
+                <div class="logo-display">
+                    <img src="exports-ultimate/arkalia-luna-ultimate-awakening-200.png" 
+                         alt="Logo Éveil" 
+                         class="logo-image"
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <div style="display:none; color: #ef4444; font-size: 0.9rem;">
+                        ❌ Image non trouvée - Utilisez le SVG original
+                    </div>
+                </div>
+                <div class="favicon-display">
+                    <img src="exports-ultimate/favicon-ultimate-awakening-32.png" 
+                         alt="Favicon Éveil" 
+                         class="favicon-image">
+                </div>
+            </div>
+
+            <!-- Énergie Créative -->
+            <div class="variant-card">
+                <h3 class="variant-title">🎇 Énergie Créative</h3>
+                <p class="variant-description">
+                    Flux rapides, reflets multicolores holographiques. 
+                    Créativité et innovation.
+                </p>
+                <div class="logo-display">
+                    <img src="exports-ultimate/arkalia-luna-ultimate-creative-200.png" 
+                         alt="Logo Énergie Créative" 
+                         class="logo-image"
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <div style="display:none; color: #ef4444; font-size: 0.9rem;">
+                        ❌ Image non trouvée - Utilisez le SVG original
+                    </div>
+                </div>
+                <div class="favicon-display">
+                    <img src="exports-ultimate/favicon-ultimate-creative-32.png" 
+                         alt="Favicon Énergie Créative" 
+                         class="favicon-image">
+                </div>
+            </div>
+        </div>
+
+        <div class="stats-section">
+            <h2 class="stats-title">📊 Statistiques de Génération</h2>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">5</div>
+                    <div class="stat-label">Variantes Émotionnelles</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">10</div>
+                    <div class="stat-label">Fichiers Générés</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">200px</div>
+                    <div class="stat-label">Résolution Logo</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">32px</div>
+                    <div class="stat-label">Résolution Favicon</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>🎨 Arkalia-LUNA - Style ULTIME - Démo Corrigée</p>
+            <p>✨ Techno-mystique • Organique • Holographique • Lunaire</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,340 @@
+# 💬 Configuration des Discussions GitHub - Arkalia-LUNA Logo Generator
+# Organise les discussions par catégories et modération
+
+# Catégories de discussions
+categories:
+  - name: "🚀 Ideas & Suggestions"
+    description: "Proposez de nouvelles fonctionnalités et améliorations"
+    emoji: "🚀"
+    color: "0E8A16"
+    
+  - name: "🐛 Bug Reports"
+    description: "Signalez des bugs et problèmes rencontrés"
+    emoji: "🐛"
+    color: "D73A4A"
+    
+  - name: "❓ Questions & Help"
+    description: "Posez vos questions et demandez de l'aide"
+    emoji: "❓"
+    color: "0075CA"
+    
+  - name: "📚 Documentation"
+    description: "Discussions sur la documentation et les guides"
+    emoji: "📚"
+    color: "0075CA"
+    
+  - name: "🎨 Show & Tell"
+    description: "Partagez vos créations et exemples d'usage"
+    emoji: "🎨"
+    color: "5319E7"
+    
+  - name: "🔧 Technical Discussion"
+    description: "Discussions techniques avancées"
+    emoji: "🔧"
+    color: "1D76DB"
+    
+  - name: "📢 Announcements"
+    description: "Annonces officielles et mises à jour"
+    emoji: "📢"
+    color: "FEF2C0"
+    
+  - name: "🤝 Community"
+    description: "Discussions générales de la communauté"
+    emoji: "🤝"
+    color: "008672"
+
+# Modération et règles
+moderation:
+  # Règles de modération
+  rules:
+    - "Respectez tous les membres de la communauté"
+    - "Restez sur le sujet du projet Arkalia-LUNA Logo Generator"
+    - "Utilisez des titres clairs et descriptifs"
+    - "Recherchez avant de créer une nouvelle discussion"
+    - "Marquez les réponses comme solution si elles résolvent le problème"
+    
+  # Actions de modération
+  actions:
+    - "Les discussions inappropriées seront fermées"
+    - "Les spams et publicités seront supprimés"
+    - "Les discussions hors sujet seront déplacées ou fermées"
+    - "Les membres récurrents peuvent être temporairement suspendus"
+
+# Templates de discussions
+templates:
+  - name: "Feature Request"
+    category: "🚀 Ideas & Suggestions"
+    title: "🚀 [FEATURE] Titre de la fonctionnalité"
+    body: |
+      ## 🎯 Description
+      
+      **Fonctionnalité souhaitée :**
+      
+      ## 🎯 Problème à résoudre
+      
+      **Description du problème :**
+      
+      ## 💡 Solution proposée
+      
+      **Description de la solution :**
+      
+      ## 🔄 Alternatives considérées
+      
+      **Alternatives évaluées :**
+      
+      ## 📊 Impact et priorité
+      
+      - [ ] Critique pour le projet
+      - [ ] Améliore significativement l'expérience utilisateur
+      - [ ] Ajoute une valeur modérée
+      - [ ] Nice-to-have
+      
+      ## 🎨 Mockups et exemples
+      
+      **Si applicable, ajoutez des mockups :**
+      
+      ## 🔗 Liens utiles
+      
+      **Issues ou discussions liées :**
+      
+      ---
+      
+      *Utilisez les labels appropriés et assignez des composants*
+      
+  - name: "Bug Report"
+    category: "🐛 Bug Reports"
+    title: "🐛 [BUG] Description courte du bug"
+    body: |
+      ## 🐛 Description du bug
+      
+      **Description claire et concise :**
+      
+      ## 🔄 Étapes pour reproduire
+      
+      1. Aller à '...'
+      2. Cliquer sur '....'
+      3. Faire défiler jusqu'à '....'
+      4. Voir l'erreur
+      
+      ## ✅ Comportement attendu
+      
+      **Description de ce qui était attendu :**
+      
+      ## 📸 Captures d'écran
+      
+      **Si applicable, ajoutez des captures d'écran :**
+      
+      ## 🖥️ Environnement
+      
+      - **OS :** [ex: macOS 14.0, Ubuntu 22.04, Windows 11]
+      - **Version Python :** [ex: 3.10.14]
+      - **Version du package :** [ex: 2.0.0]
+      
+      ## 📝 Logs et erreurs
+      
+      **Logs d'erreur complets :**
+      ```
+      Traceback (most recent call last):
+        File "<stdin>", line 1, in <module>
+        ...
+      ```
+      
+      ## 🔍 Contexte supplémentaire
+      
+      **Informations supplémentaires :**
+      
+      ---
+      
+      *Utilisez les labels appropriés et assignez des composants*
+      
+  - name: "Question"
+    category: "❓ Questions & Help"
+    title: "❓ [QUESTION] Votre question"
+    body: |
+      ## ❓ Question
+      
+      **Votre question claire et concise :**
+      
+      ## 🔍 Contexte
+      
+      **Contexte de votre question :**
+      
+      ## 🎯 Ce que vous avez essayé
+      
+      **Solutions que vous avez testées :**
+      
+      ## 📚 Documentation consultée
+      
+      **Documentation que vous avez lue :**
+      
+      ## 🔗 Liens utiles
+      
+      **Ressources pertinentes :**
+      
+      ---
+      
+      *Utilisez les labels appropriés et assignez des composants*
+      
+  - name: "Show & Tell"
+    category: "🎨 Show & Tell"
+    title: "🎨 [SHOWCASE] Titre de votre création"
+    body: |
+      ## 🎨 Votre création
+      
+      **Description de ce que vous avez créé :**
+      
+      ## 🚀 Comment vous l'avez fait
+      
+      **Processus et techniques utilisés :**
+      
+      ## 📸 Résultat final
+      
+      **Images ou liens vers votre création :**
+      
+      ## 💡 Conseils et astuces
+      
+      **Conseils pour reproduire :**
+      
+      ## 🔗 Liens et ressources
+      
+      **Ressources utilisées :**
+      
+      ---
+      
+      *Partagez vos créations avec la communauté !*
+
+# Configuration des labels de discussions
+labels:
+  - name: "feature-request"
+    color: "0E8A16"
+    description: "Demande de nouvelle fonctionnalité"
+    
+  - name: "bug-report"
+    color: "D73A4A"
+    description: "Rapport de bug"
+    
+  - name: "question"
+    color: "0075CA"
+    description: "Question ou demande d'aide"
+    
+  - name: "documentation"
+    color: "0075CA"
+    description: "Discussion sur la documentation"
+    
+  - name: "showcase"
+    color: "5319E7"
+    description: "Partage de créations"
+    
+  - name: "technical"
+    color: "1D76DB"
+    description: "Discussion technique"
+    
+  - name: "announcement"
+    color: "FEF2C0"
+    description: "Annonce officielle"
+    
+  - name: "community"
+    color: "008672"
+    description: "Discussion communautaire"
+    
+  - name: "solved"
+    color: "0E8A16"
+    description: "Discussion résolue"
+    
+  - name: "needs-attention"
+    color: "FBCA04"
+    description: "Nécessite une attention particulière"
+
+# Configuration des réponses
+answers:
+  # Règles pour les réponses
+  rules:
+    - "Répondez de manière constructive et utile"
+    - "Citez la documentation quand c'est possible"
+    - "Proposez des solutions alternatives si applicable"
+    - "Marquez votre réponse comme solution si elle résout le problème"
+    
+  # Templates de réponses
+  templates:
+    - name: "Solution"
+      body: |
+        ## ✅ Solution
+        
+        **Voici la solution à votre problème :**
+        
+        ```python
+        # Code de la solution
+        ```
+        
+        ## 🔍 Explication
+        
+        **Pourquoi cette solution fonctionne :**
+        
+        ## 🔗 Ressources supplémentaires
+        
+        **Documentation et liens utiles :**
+        
+        ---
+        
+        *Marquez cette réponse comme solution si elle résout votre problème*
+        
+    - name: "Alternative"
+      body: |
+        ## 🔄 Solution alternative
+        
+        **Voici une approche différente :**
+        
+        ```python
+        # Code alternatif
+        ```
+        
+        ## ⚖️ Avantages et inconvénients
+        
+        **Comparaison avec d'autres solutions :**
+        
+        ## 🔗 Ressources
+        
+        **Documentation sur cette approche :**
+        
+        ---
+        
+        *Cette solution peut être plus adaptée selon votre cas d'usage*
+
+# Configuration des notifications
+notifications:
+  # Types de notifications
+  types:
+    - "Nouvelles discussions dans les catégories suivies"
+    - "Réponses à vos discussions"
+    - "Mentions dans les discussions"
+    - "Annonces officielles"
+    
+  # Fréquence des notifications
+  frequency:
+    - "Immédiat pour les mentions et réponses"
+    - "Quotidien pour les nouvelles discussions"
+    - "Hebdomadaire pour les résumés"
+    
+  # Canaux de notification
+  channels:
+    - "Email"
+    - "Notifications GitHub"
+    - "Webhooks (si configurés)"
+
+# Configuration des modérateurs
+moderators:
+  # Rôles des modérateurs
+  roles:
+    - "Mainteneurs du projet"
+    - "Contributeurs actifs"
+    - "Membres de la communauté expérimentés"
+    
+  # Permissions des modérateurs
+  permissions:
+    - "Fermer et rouvrir les discussions"
+    - "Déplacer les discussions entre catégories"
+    - "Marquer les réponses comme solution"
+    - "Modérer le contenu inapproprié"
+    - "Gérer les labels et catégories"
+
+# Configuration des discussions GitHub pour Arkalia-LUNA Logo Generator
