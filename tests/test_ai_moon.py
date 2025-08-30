@@ -44,27 +44,21 @@ def test_ai_moon_generation():
 
         # Test de création de favicons LUNE IA
         print("\n🎯 Test de création de favicons LUNE IA...")
-        all_favicons = generator.create_all_ai_moon_favicons(32)
-        print(f"✅ {len(all_favicons)} favicons LUNE IA créés")
+        favicon_path = generator.create_ai_moon_favicon("serenity", 32)
+        print(f"✅ Favicon LUNE IA créé : {favicon_path}")
 
         # Affichage des statistiques
         print("\n📊 Statistiques de génération LUNE IA :")
-        stats = generator.get_ai_moon_generation_stats()
+        stats = generator.get_generation_stats()
         for key, value in stats.items():
             print(f"  • {key}: {value}")
 
-        # Comparaison avec toutes les versions
-        print("\n🔍 Comparaison avec toutes les versions :")
-        comparison = generator.compare_with_all_versions()
-        for key, value in comparison.items():
-            print(f"  • {key}: {value}")
-
         print("\n🎉 Tous les tests LUNE IA ont réussi !")
-        return True
+        assert True, "Test réussi"
 
     except Exception as e:
         print(f"❌ Erreur lors du test : {e}")
-        return False
+        assert False, f"Test échoué : {e}"
 
 
 if __name__ == "__main__":

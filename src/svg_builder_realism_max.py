@@ -5,7 +5,6 @@ Construction de logos ultra-réalistes avec effets organiques et IA
 
 import math
 import random
-from pathlib import Path
 from typing import Optional, Tuple
 
 import svgwrite
@@ -48,7 +47,7 @@ class RealismMaxSVGBuilder(SVGBuilder):
 
         # Configuration réaliste
         drawing.set_desc(
-            "Logo Arkalia-LUNA - Style ultra-réaliste " "avec effets organiques"
+            "Logo Arkalia-LUNA - Style ultra-réaliste avec effets organiques"
         )
         # drawing.set_title("Arkalia-LUNA Realism Max")
         # Commenté car pas supporté par svgwrite

@@ -101,8 +101,12 @@ class SimpleAdvancedSVGBuilder(SVGBuilder):
         )
 
         # Stops du gradient de bordure
-        border_gradient.add_stop_color(offset="0%", color=variant.colors.glow, opacity=0.8)
-        border_gradient.add_stop_color(offset="100%", color=variant.colors.primary, opacity=0.2)
+        border_gradient.add_stop_color(
+            offset="0%", color=variant.colors.glow, opacity=0.8
+        )
+        border_gradient.add_stop_color(
+            offset="100%", color=variant.colors.primary, opacity=0.2
+        )
 
         defs.add(border_gradient)
 
@@ -300,36 +304,36 @@ class SimpleAdvancedSVGBuilder(SVGBuilder):
 
         # Réseau principal horizontal
         paths.append(
-            f"M{center - size//3} {center} Q{center} {center - size//3} "
-            f"{center + size//3} {center}"
+            f"M{center - size // 3} {center} Q{center} {center - size // 3} "
+            f"{center + size // 3} {center}"
         )
         paths.append(
-            f"M{center - size//3 + 10} {center - 10} Q{center} "
-            f"{center - size//3 - 10} {center + size//3 - 10} {center - 10}"
+            f"M{center - size // 3 + 10} {center - 10} Q{center} "
+            f"{center - size // 3 - 10} {center + size // 3 - 10} {center - 10}"
         )
         paths.append(
-            f"M{center - size//3 + 20} {center + 10} Q{center} "
-            f"{center - size//3 + 10} {center + size//3 - 20} {center + 10}"
+            f"M{center - size // 3 + 20} {center + 10} Q{center} "
+            f"{center - size // 3 + 10} {center + size // 3 - 20} {center + 10}"
         )
 
         # Réseau diagonal
         paths.append(
-            f"M{center - size//4} {center - size//4} Q{center} {center} "
-            f"{center + size//4} {center - size//4}"
+            f"M{center - size // 4} {center - size // 4} Q{center} {center} "
+            f"{center + size // 4} {center - size // 4}"
         )
         paths.append(
-            f"M{center - size//4} {center + size//4} Q{center} {center} "
-            f"{center + size//4} {center + size//4}"
+            f"M{center - size // 4} {center + size // 4} Q{center} {center} "
+            f"{center + size // 4} {center + size // 4}"
         )
 
         # Réseau vertical
         paths.append(
-            f"M{center} {center - size//3} Q{center + size//3} {center} "
-            f"{center} {center + size//3}"
+            f"M{center} {center - size // 3} Q{center + size // 3} {center} "
+            f"{center} {center + size // 3}"
         )
         paths.append(
-            f"M{center - 10} {center - size//3 + 10} Q{center + size//3 - 10} "
-            f"{center} {center - 10} {center + size//3 - 10}"
+            f"M{center - 10} {center - size // 3 + 10} Q{center + size // 3 - 10} "
+            f"{center} {center - 10} {center + size // 3 - 10}"
         )
 
         # Réseau circulaire
@@ -496,7 +500,7 @@ class SimpleAdvancedSVGBuilder(SVGBuilder):
             particle.add(
                 svgwrite.animate.Animate(
                     attributeName="cx",
-                    values=f"{x};{x + 5 * math.cos(angle + math.pi/6)};{x}",
+                    values=f"{x};{x + 5 * math.cos(angle + math.pi / 6)};{x}",
                     dur=f"{4 / variant.animation_speed}s",
                     begin=f"{i * 0.1}s",
                     repeatCount="indefinite",
@@ -506,7 +510,7 @@ class SimpleAdvancedSVGBuilder(SVGBuilder):
             particle.add(
                 svgwrite.animate.Animate(
                     attributeName="cy",
-                    values=f"{y};{y + 5 * math.sin(angle + math.pi/6)};{y}",
+                    values=f"{y};{y + 5 * math.sin(angle + math.pi / 6)};{y}",
                     dur=f"{4 / variant.animation_speed}s",
                     begin=f"{i * 0.1}s",
                     repeatCount="indefinite",

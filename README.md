@@ -87,6 +87,37 @@ python -m src.cli stats
 python -m src.cli clean
 ```
 
+## 📝 **Conventions de Commit et PR**
+
+### **Format des Titres de PR**
+Tous les titres de PR doivent suivre le format : `type(scope): description`
+
+**Types acceptés :**
+- `feat` : Nouvelle fonctionnalité
+- `fix` : Correction de bug
+- `docs` : Documentation
+- `style` : Formatage du code
+- `refactor` : Refactoring
+- `test` : Tests
+- `chore` : Maintenance
+- `perf` : Performance
+- `ci` : CI/CD
+- `build` : Build
+- `revert` : Annulation
+
+**Exemples valides :**
+- ✅ `feat(logo): ajouter nouveau style mystique`
+- ✅ `fix(tests): corriger erreur de validation`
+- ✅ `docs: mise à jour README avec exemples`
+- ✅ `style: reformater le code avec ruff`
+- ✅ `ci: corriger workflow GitHub Actions`
+
+**Formats rejetés :**
+- ❌ `Ajouter nouveau style` (pas de type)
+- ❌ `fix` (pas de description)
+- ❌ `feat:` (pas de description)
+- ❌ `feat(): description` (scope vide)
+
 ### **Commandes Makefile (plus rapides)**
 ```bash
 # Configuration rapide
@@ -233,3 +264,4 @@ Ce projet est sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.
 ---
 
 **🌙 Arkalia-LUNA Logo Generator** - Créé avec ❤️ par l'équipe Arkalia-LUNA
+# Test validation workflow

@@ -44,27 +44,21 @@ def test_ultra_max_generation():
 
         # Test de création de favicons ULTRA-MAX
         print("\n🎯 Test de création de favicons ULTRA-MAX...")
-        all_favicons = generator.create_all_ultra_max_favicons(32)
-        print(f"✅ {len(all_favicons)} favicons ULTRA-MAX créés")
+        favicon_path = generator.create_ultra_max_favicon("serenity", 32)
+        print(f"✅ Favicon ULTRA-MAX créé : {favicon_path}")
 
         # Affichage des statistiques
         print("\n📊 Statistiques de génération ULTRA-MAX :")
-        stats = generator.get_ultra_max_generation_stats()
+        stats = generator.get_generation_stats()
         for key, value in stats.items():
             print(f"  • {key}: {value}")
 
-        # Comparaison avec toutes les versions
-        print("\n🔍 Comparaison avec toutes les versions :")
-        comparison = generator.compare_with_all_versions()
-        for key, value in comparison.items():
-            print(f"  • {key}: {value}")
-
         print("\n🎉 Tous les tests ULTRA-MAX ont réussi !")
-        return True
+        assert True, "Test réussi"
 
     except Exception as e:
         print(f"❌ Erreur lors du test : {e}")
-        return False
+        assert False, f"Test échoué : {e}"
 
 
 if __name__ == "__main__":

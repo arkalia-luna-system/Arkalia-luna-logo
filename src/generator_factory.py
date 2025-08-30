@@ -87,7 +87,10 @@ class LogoGeneratorFactory:
             "dashboard": "Générateur dashboard optimisé interface",
             "ai_moon": "Générateur IA avec lune vivante (hérite de ArkaliaLunaLogo)",
             "advanced": "Générateur avancé techno-mystique (hérite de ArkaliaLunaLogo)",
-            "ultimate": "🌟 Générateur ULTIME avec effets cosmiques extrêmes (100+ stops, turbulence, holographie)",
+            "ultimate": (
+                "🌟 Générateur ULTIME avec effets cosmiques extrêmes "
+                "(100+ stops, turbulence, holographie)"
+            ),
         }
 
     @classmethod

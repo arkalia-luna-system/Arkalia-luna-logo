@@ -102,9 +102,15 @@ class DashboardSVGBuilder(SVGBuilder):
         )
 
         # Halo gradient avec 3 stops
-        halo_gradient.add_stop_color(offset="0%", color=variant.colors.glow, opacity=0.8)
-        halo_gradient.add_stop_color(offset="50%", color=variant.colors.glow, opacity=0.4)
-        halo_gradient.add_stop_color(offset="100%", color=variant.colors.glow, opacity=0.0)
+        halo_gradient.add_stop_color(
+            offset="0%", color=variant.colors.glow, opacity=0.8
+        )
+        halo_gradient.add_stop_color(
+            offset="50%", color=variant.colors.glow, opacity=0.4
+        )
+        halo_gradient.add_stop_color(
+            offset="100%", color=variant.colors.glow, opacity=0.0
+        )
 
         defs.add(halo_gradient)
 
@@ -116,9 +122,15 @@ class DashboardSVGBuilder(SVGBuilder):
         )
 
         # Core gradient avec 3 stops
-        core_gradient.add_stop_color(offset="0%", color=variant.colors.primary, opacity=1.0)
-        core_gradient.add_stop_color(offset="70%", color=variant.colors.accent, opacity=0.8)
-        core_gradient.add_stop_color(offset="100%", color=variant.colors.glow, opacity=0.6)
+        core_gradient.add_stop_color(
+            offset="0%", color=variant.colors.primary, opacity=1.0
+        )
+        core_gradient.add_stop_color(
+            offset="70%", color=variant.colors.accent, opacity=0.8
+        )
+        core_gradient.add_stop_color(
+            offset="100%", color=variant.colors.glow, opacity=0.6
+        )
 
         defs.add(core_gradient)
 
@@ -253,31 +265,31 @@ class DashboardSVGBuilder(SVGBuilder):
         paths = []
 
         # Réseau horizontal simple
-        paths.append(f"M{center - size//3} {center} L{center + size//3} {center}")
+        paths.append(f"M{center - size // 3} {center} L{center + size // 3} {center}")
         paths.append(
-            f"M{center - size//3} {center - 15} L{center + size//3} {center - 15}"
+            f"M{center - size // 3} {center - 15} L{center + size // 3} {center - 15}"
         )
         paths.append(
-            f"M{center - size//3} {center + 15} L{center + size//3} {center + 15}"
+            f"M{center - size // 3} {center + 15} L{center + size // 3} {center + 15}"
         )
 
         # Réseau vertical simple
-        paths.append(f"M{center} {center - size//3} L{center} {center + size//3}")
+        paths.append(f"M{center} {center - size // 3} L{center} {center + size // 3}")
         paths.append(
-            f"M{center - 15} {center - size//3} L{center - 15} {center + size//3}"
+            f"M{center - 15} {center - size // 3} L{center - 15} {center + size // 3}"
         )
         paths.append(
-            f"M{center + 15} {center - size//3} L{center + 15} {center + size//3}"
+            f"M{center + 15} {center - size // 3} L{center + 15} {center + size // 3}"
         )
 
         # Réseau diagonal simple
         paths.append(
-            f"M{center - size//4} {center - size//4} "
-            f"L{center + size//4} {center + size//4}"
+            f"M{center - size // 4} {center - size // 4} "
+            f"L{center + size // 4} {center + size // 4}"
         )
         paths.append(
-            f"M{center - size//4} {center + size//4} "
-            f"L{center + size//4} {center - size//4}"
+            f"M{center - size // 4} {center + size // 4} "
+            f"L{center + size // 4} {center - size // 4}"
         )
 
         return paths

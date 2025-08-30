@@ -1,1 +1,202 @@
-config/pyproject.toml
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "arkalia-luna-logo"
+version = "2.0.0"
+description = "🌙 Générateur de logos Arkalia-LUNA avec IA et effets avancés"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.8"
+authors = [
+    {name = "Arkalia-LUNA System", email = "contact@arkalia-luna.com"}
+]
+keywords = ["logo", "generator", "svg", "ai", "arkalia", "luna"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Designers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Artistic Software",
+    "Topic :: Multimedia :: Graphics",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+dependencies = [
+    "svgwrite>=1.4.3",
+    "Pillow>=9.0.0",
+    "numpy>=1.21.0",
+    "matplotlib>=3.5.0",
+    "click>=8.0.0",
+    "rich>=12.0.0",
+    "colorama>=0.4.4",
+    "tqdm>=4.64.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-cov>=4.0.0",
+    "pytest-mock>=3.8.0",
+    "black>=22.0.0",
+    "ruff>=0.0.200",
+    "mypy>=1.0.0",
+    "pre-commit>=2.20.0",
+    "tox>=4.0.0",
+]
+test = [
+    "pytest>=7.0.0",
+    "pytest-cov>=4.0.0",
+    "pytest-mock>=3.8.0",
+    "coverage>=6.0.0",
+]
+docs = [
+    "sphinx>=5.0.0",
+    "sphinx-rtd-theme>=1.0.0",
+    "myst-parser>=0.18.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/arkalia-luna-system/Arkalia-luna-logo"
+Documentation = "https://arkalia-luna-logo.readthedocs.io/"
+Repository = "https://github.com/arkalia-luna-system/Arkalia-luna-logo.git"
+"Bug Tracker" = "https://github.com/arkalia-luna-system/Arkalia-luna-logo/issues"
+Changelog = "https://github.com/arkalia-luna-system/Arkalia-luna-logo/blob/main/CHANGELOG.md"
+
+[project.scripts]
+arkalia-luna-logo = "src.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["*"]
+exclude = ["tests*", "*.tests*"]
+
+[tool.setuptools.package-data]
+"*" = ["*.svg", "*.png", "*.ico", "*.md", "*.txt", "*.yml", "*.yaml"]
+
+[tool.setuptools.exclude-package-data]
+"*" = ["*.pyc", "*.pyo", "*.pyd", "__pycache__", "*.so", "*.dll", "*.dylib"]
+
+[tool.setuptools.data-files]
+"share/arkalia-luna-logo" = [
+    "assets/generated/*.md",
+    "exports/*.svg",
+    "exports/*.png",
+    "exports/*.ico",
+]
+
+[tool.black]
+line-length = 88
+target-version = ['py38']
+include = '\.pyi?$'
+extend-exclude = '''
+/(
+  # directories
+  \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | build
+  | dist
+)/
+'''
+
+[tool.ruff]
+target-version = "py38"
+line-length = 88
+
+[tool.ruff.lint]
+select = [
+    "E",  # pycodestyle errors
+    "W",  # pycodestyle warnings
+    "F",  # pyflakes
+    "I",  # isort
+    "B",  # flake8-bugbear
+    "C4", # flake8-comprehensions
+    "UP", # pyupgrade
+]
+ignore = [
+    "E501",  # line too long, handled by black
+    "B008",  # do not perform function calls in argument defaults
+    "C901",  # too complex
+]
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = false
+warn_unused_configs = false
+disallow_untyped_defs = false
+disallow_incomplete_defs = false
+check_untyped_defs = false
+disallow_untyped_decorators = false
+no_implicit_optional = false
+warn_redundant_casts = false
+warn_unused_ignores = false
+warn_no_return = false
+warn_unreachable = false
+strict_equality = false
+ignore_missing_imports = true
+ignore_errors = true
+exclude = [
+    "src/svg_builder_*.py",
+    "src/*_generator.py",
+    "src/cli.py",
+    "src/__init__.py",
+    "src/variants.py"
+]
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["F401"]
+"tests/**/*.py" = ["B011", "S101"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-ra -q --strict-markers --strict-config"
+testpaths = ["tests", "src"]
+python_files = ["test_*.py", "*_test.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+markers = [
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+    "integration: marks tests as integration tests",
+    "unit: marks tests as unit tests",
+]
+
+[tool.coverage.run]
+source = ["src"]
+omit = [
+    "*/tests/*",
+    "*/test_*",
+    "*/__pycache__/*",
+    "*/venv/*",
+    "*/env/*",
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "if self.debug:",
+    "if settings.DEBUG",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if 0:",
+    "if __name__ == .__main__.:",
+    "class .*\\bProtocol\\):",
+    "@(abc\\.)?abstractmethod",
+]

@@ -1,21 +1,19 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 🌙 Arkalia-LUNA Logo Generator
 Générateur de logo techno-mystique avec variantes émotionnelles
 """
 
-import os
-import sys
 from pathlib import Path
-from typing import Dict, List, Tuple
-import svgwrite
-from PIL import Image, ImageDraw
+from typing import List
+
 import click
-from rich.console import Console
-from rich.table import Table
-from rich.progress import track
+import svgwrite
 from dotenv import load_dotenv
+from PIL import Image, ImageDraw
+from rich.console import Console
+from rich.progress import track
+from rich.table import Table
 
 # Configuration
 load_dotenv()
@@ -169,7 +167,7 @@ class ArkaliaLunaLogo:
     def generate_all_variants(self, size: int = 200) -> List[str]:
         """Génère toutes les variantes du logo"""
         console.print(
-            f"[bold blue]🎨 Génération de toutes les variantes Arkalia-LUNA...[/bold blue]"
+            "[bold blue]🎨 Génération de toutes les variantes Arkalia-LUNA...[/bold blue]"
         )
 
         generated_files = []
@@ -253,7 +251,7 @@ def generate(variant: str, size: int):
         filename = f"arkalia-luna-{variant}.svg"
         svg.saveas(filename)
 
-        console.print(f"[bold green]✅ Logo généré avec succès ![/bold green]")
+        console.print("[bold green]✅ Logo généré avec succès ![/bold green]")
         console.print(f"📁 Fichier : {filename}")
         console.print(f"🎨 Variante : {logo_gen.variants[variant]['name']}")
         console.print(f"📏 Taille : {size}x{size} pixels")
@@ -269,7 +267,7 @@ def generate_all(size: int):
     logo_gen = ArkaliaLunaLogo()
     generated_files = logo_gen.generate_all_variants(size)
 
-    console.print(f"\n[bold green]🎉 Génération terminée ![/bold green]")
+    console.print("\n[bold green]🎉 Génération terminée ![/bold green]")
     console.print(f"📁 {len(generated_files)} logos générés :")
 
     for filename in generated_files:
@@ -292,7 +290,7 @@ def favicon(variant: str, size: int):
 
     try:
         filename = logo_gen.create_favicon(variant, size)
-        console.print(f"[bold green]✅ Favicon généré ![/bold green]")
+        console.print("[bold green]✅ Favicon généré ![/bold green]")
         console.print(f"📁 Fichier : {filename}")
         console.print(f"🎨 Variante : {logo_gen.variants[variant]['name']}")
         console.print(f"📏 Taille : {size}x{size} pixels")

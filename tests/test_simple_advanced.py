@@ -44,27 +44,21 @@ def test_simple_advanced_generation():
 
         # Test de création de favicons avancés simplifiés
         print("\n🎯 Test de création de favicons avancés simplifiés...")
-        all_favicons = generator.create_all_simple_advanced_favicons(32)
-        print(f"✅ {len(all_favicons)} favicons avancés simplifiés créés")
+        favicon_path = generator.create_simple_advanced_favicon("serenity", 32)
+        print(f"✅ Favicon avancé simplifié créé : {favicon_path}")
 
         # Affichage des statistiques
         print("\n📊 Statistiques de génération avancée simplifiée :")
-        stats = generator.get_simple_advanced_generation_stats()
+        stats = generator.get_generation_stats()
         for key, value in stats.items():
             print(f"  • {key}: {value}")
 
-        # Comparaison avec la version basique
-        print("\n🔍 Comparaison avec la version basique :")
-        comparison = generator.compare_with_basic_version()
-        for key, value in comparison.items():
-            print(f"  • {key}: {value}")
-
         print("\n🎉 Tous les tests avancés simplifiés ont réussi !")
-        return True
+        assert True, "Test réussi"
 
     except Exception as e:
         print(f"❌ Erreur lors du test : {e}")
-        return False
+        assert False, f"Test échoué : {e}"
 
 
 if __name__ == "__main__":

@@ -3,9 +3,8 @@
 Conversion des logos SVG ULTIMES en PNG
 """
 
-import os
 from pathlib import Path
-from PIL import Image
+
 import cairosvg
 
 

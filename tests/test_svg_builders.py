@@ -46,14 +46,14 @@ class TestSVGBuilder:
             mock_variant.colors.secondary = "#16213e"
             mock_variant.colors.accent = "#0f3460"
             mock_variant.colors.glow = "#e94560"
-            
+
             self.variants_manager.get_variant.return_value = mock_variant
 
             # Mock des méthodes privées pour éviter les erreurs SVG
             with patch.object(self.builder, "build_logo") as mock_build:
                 mock_drawing = Mock()
                 mock_build.return_value = mock_drawing
-                
+
                 # Test que la méthode ne lève plus d'exception
                 self.builder.save_logo("test", 200, Path("test.svg"))
 
@@ -143,7 +143,6 @@ class TestAdvancedSVGBuilder:
         ) as mock_depth, patch.object(
             self.builder, "_add_neural_network_gradients"
         ) as mock_neural:
-
             self.builder.add_advanced_definitions(mock_drawing, variant)
 
             # Vérifie que TOUTES les méthodes sont appelées
@@ -207,7 +206,6 @@ class TestSimpleAdvancedSVGBuilder:
         ) as mock_glow, patch.object(
             self.builder, "_add_neural_network_gradients"
         ) as mock_neural:
-
             self.builder.add_advanced_definitions(mock_drawing, variant)
 
             # Vérifie que TOUTES les méthodes sont appelées
@@ -273,7 +271,6 @@ class TestDashboardSVGBuilder:
         ) as mock_core, patch.object(
             self.builder, "_add_glow_filter"
         ) as mock_glow:
-
             self.builder.add_dashboard_definitions(mock_drawing, variant)
 
             # Vérifie que TOUTES les méthodes sont appelées
@@ -344,7 +341,6 @@ class TestUltraMaxSVGBuilder:
         ) as mock_masks, patch.object(
             self.builder, "_add_ultra_max_patterns"
         ) as mock_patterns:
-
             self.builder.add_ultra_max_definitions(mock_drawing, variant)
 
             # Vérifie que TOUTES les méthodes sont appelées
@@ -453,7 +449,6 @@ class TestAIMoonSVGBuilder:
         ) as mock_depth, patch.object(
             self.builder, "_add_ai_neural_patterns"
         ) as mock_neural:
-
             self.builder.add_ai_moon_definitions(mock_drawing, variant)
 
             # Vérifie que TOUTES les méthodes sont appelées
@@ -633,7 +628,6 @@ class TestAIMoonSVGBuilder:
         ) as mock_particles, patch.object(
             self.builder, "add_ai_moon_rays"
         ) as mock_rays:
-
             mock_drawing = Mock()
             mock_create.return_value = mock_drawing
 
@@ -656,9 +650,7 @@ class TestAIMoonSVGBuilder:
 
         with patch.object(
             self.builder, "build_ai_moon_logo", return_value=mock_drawing
-        ), patch.object(
-            self.builder, "build_logo", return_value=mock_drawing
-        ):
+        ), patch.object(self.builder, "build_logo", return_value=mock_drawing):
             output_path = Path("test.svg")
             result = self.builder.save_ai_moon_logo("test", 200, output_path)
 

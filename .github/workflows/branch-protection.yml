@@ -20,20 +20,81 @@ jobs:
       run: |
         # Vérifier que le titre du PR suit les conventions
         PR_TITLE="${{ github.event.pull_request.title }}"
-        if [[ ! "$PR_TITLE" =~ ^(feat|fix|docs|style|refactor|test|chore|perf|ci|build|revert)(\(.+\))?: ]]; then
-          echo "❌ Le titre du PR doit suivre le format: type(scope): description"
-          echo "Exemples: feat(logo): ajouter nouveau style, fix(tests): corriger erreur"
-          exit 1
+        
+        echo "🔍 Validation du titre de PR: '$PR_TITLE'"
+        echo "📏 Longueur du titre: ${#PR_TITLE}"
+        
+        # Validation stricte des titres de PR
+        # Format 1: type: description (sans scope)
+        # Format 2: type(scope): description (avec scope)
+        
+        # Vérifier si c'est un format sans scope
+        if [[ "$PR_TITLE" =~ ^(feat|fix|docs|style|refactor|test|chore|perf|ci|build|revert): ]]; then
+          echo "   ✅ Format sans scope détecté"
+          # Vérifier qu'il y a une description après les deux-points
+          if [[ "$PR_TITLE" =~ ^(feat|fix|docs|style|refactor|test|chore|perf|ci|build|revert):[[:space:]] ]]; then
+            echo "   ✅ Espace après deux-points détecté"
+            echo "✅ Titre de PR valide (sans scope): $PR_TITLE"
+            exit 0
+          else
+            echo "   ❌ Pas d'espace après deux-points"
+          fi
+        else
+          echo "   ❌ Format sans scope non reconnu"
         fi
-        echo "✅ Titre du PR valide: $PR_TITLE"
+        
+        # Vérifier si c'est un format avec scope
+        if [[ "$PR_TITLE" =~ ^(feat|fix|docs|style|refactor|test|chore|perf|ci|build|revert)\([a-z_-]+\): ]]; then
+          echo "   ✅ Format avec scope détecté"
+          # Vérifier qu'il y a une description après les deux-points
+          if [[ "$PR_TITLE" =~ ^(feat|fix|docs|style|refactor|test|chore|perf|ci|build|revert)\([a-z_-]+\):[[:space:]] ]]; then
+            echo "   ✅ Espace après deux-points détecté"
+            echo "✅ Titre de PR valide (avec scope): $PR_TITLE"
+            exit 0
+          else
+            echo "   ❌ Pas d'espace après deux-points"
+          fi
+        else
+          echo "   ❌ Format avec scope non reconnu"
+        fi
+        
+        # Si on arrive ici, le titre est invalide
+        echo "❌ Le titre du PR doit suivre le format: type(scope): description"
+        echo "Exemples: feat(logo): ajouter nouveau style, fix: corriger erreur"
+        echo "Formats acceptés:"
+        echo "  - feat(logo): ajouter nouveau style"
+        echo "  - fix: corriger erreur"
+        echo "  - docs: mise à jour README"
+        echo "  - style: reformater le code"
+        echo "Règles:"
+        echo "  - Le scope doit contenir uniquement des lettres, tirets et underscores"
+        echo "  - Il doit y avoir une description après les deux-points"
+        echo "Titre reçu: '$PR_TITLE'"
+        exit 1
         
     - name: Check Branch Naming
       run: |
         # Vérifier que la branche suit les conventions
         BRANCH_NAME="${{ github.head_ref }}"
+        
+        # Accepter les branches Dependabot (mises à jour automatiques de dépendances)
+        if [[ "$BRANCH_NAME" =~ ^dependabot/ ]]; then
+          echo "✅ Branche Dependabot acceptée: $BRANCH_NAME"
+          exit 0
+        fi
+        
+        # Accepter les branches principales (main, develop)
+        if [[ "$BRANCH_NAME" =~ ^(main|develop)$ ]]; then
+          echo "✅ Branche principale acceptée: $BRANCH_NAME"
+          exit 0
+        fi
+        
+        # Validation des autres branches selon les conventions
         if [[ ! "$BRANCH_NAME" =~ ^(feature|bugfix|hotfix|release|docs|refactor)/[a-z0-9-]+$ ]]; then
           echo "❌ Nom de branche invalide: $BRANCH_NAME"
           echo "Format attendu: type/description (ex: feature/new-logo-style)"
+          echo "Ou branche Dependabot pour mises à jour automatiques"
+          echo "Ou branche principale (main, develop)"
           exit 1
         fi
         echo "✅ Nom de branche valide: $BRANCH_NAME"
@@ -49,6 +110,43 @@ jobs:
           fi
         done
         echo "✅ Tous les commits sont valides"
+        
+  push-validation:
+    name: Push Branch Validation
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push'
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Validate Branch Naming on Push
+      run: |
+        # Vérifier que la branche suit les conventions lors d'un push direct
+        BRANCH_NAME="${{ github.ref_name }}"
+        echo "🔍 Validation de la branche: $BRANCH_NAME"
+        
+        # Accepter les branches Dependabot (mises à jour automatiques de dépendances)
+        if [[ "$BRANCH_NAME" =~ ^dependabot/ ]]; then
+          echo "✅ Branche Dependabot acceptée: $BRANCH_NAME"
+          exit 0
+        fi
+        
+        # Accepter les branches principales (main, develop)
+        if [[ "$BRANCH_NAME" =~ ^(main|develop)$ ]]; then
+          echo "✅ Branche principale acceptée: $BRANCH_NAME"
+          exit 0
+        fi
+        
+        # Validation des autres branches selon les conventions
+        if [[ ! "$BRANCH_NAME" =~ ^(feature|bugfix|hotfix|release|docs|refactor)/[a-z0-9-]+$ ]]; then
+          echo "❌ Nom de branche invalide: $BRANCH_NAME"
+          echo "Format attendu: type/description (ex: feature/new-logo-style)"
+          echo "Ou branche Dependabot pour mises à jour automatiques"
+          echo "Ou branche principale (main, develop)"
+          exit 1
+        fi
+        echo "✅ Nom de branche valide: $BRANCH_NAME"
         
   auto-merge:
     name: Auto-merge PR
