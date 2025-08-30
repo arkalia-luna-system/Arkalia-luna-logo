@@ -21,26 +21,41 @@ jobs:
         # Vérifier que le titre du PR suit les conventions
         PR_TITLE="${{ github.event.pull_request.title }}"
         
+        echo "🔍 Validation du titre de PR: '$PR_TITLE'"
+        echo "📏 Longueur du titre: ${#PR_TITLE}"
+        
         # Validation stricte des titres de PR
         # Format 1: type: description (sans scope)
         # Format 2: type(scope): description (avec scope)
         
         # Vérifier si c'est un format sans scope
         if [[ "$PR_TITLE" =~ ^(feat|fix|docs|style|refactor|test|chore|perf|ci|build|revert): ]]; then
+          echo "   ✅ Format sans scope détecté"
           # Vérifier qu'il y a une description après les deux-points
           if [[ "$PR_TITLE" =~ ^(feat|fix|docs|style|refactor|test|chore|perf|ci|build|revert):[[:space:]] ]]; then
+            echo "   ✅ Espace après deux-points détecté"
             echo "✅ Titre de PR valide (sans scope): $PR_TITLE"
             exit 0
+          else
+            echo "   ❌ Pas d'espace après deux-points"
           fi
+        else
+          echo "   ❌ Format sans scope non reconnu"
         fi
         
         # Vérifier si c'est un format avec scope
         if [[ "$PR_TITLE" =~ ^(feat|fix|docs|style|refactor|test|chore|perf|ci|build|revert)\([a-z_-]+\): ]]; then
+          echo "   ✅ Format avec scope détecté"
           # Vérifier qu'il y a une description après les deux-points
           if [[ "$PR_TITLE" =~ ^(feat|fix|docs|style|refactor|test|chore|perf|ci|build|revert)\([a-z_-]+\):[[:space:]] ]]; then
+            echo "   ✅ Espace après deux-points détecté"
             echo "✅ Titre de PR valide (avec scope): $PR_TITLE"
             exit 0
+          else
+            echo "   ❌ Pas d'espace après deux-points"
           fi
+        else
+          echo "   ❌ Format avec scope non reconnu"
         fi
         
         # Si on arrive ici, le titre est invalide
@@ -54,8 +69,8 @@ jobs:
         echo "Règles:"
         echo "  - Le scope doit contenir uniquement des lettres, tirets et underscores"
         echo "  - Il doit y avoir une description après les deux-points"
+        echo "Titre reçu: '$PR_TITLE'"
         exit 1
-        echo "✅ Titre du PR valide: $PR_TITLE"
         
     - name: Check Branch Naming
       run: |
