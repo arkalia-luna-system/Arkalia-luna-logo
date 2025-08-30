@@ -265,31 +265,31 @@ class DashboardSVGBuilder(SVGBuilder):
         paths = []
 
         # Réseau horizontal simple
-        paths.append(f"M{center - size//3} {center} L{center + size//3} {center}")
+        paths.append(f"M{center - size // 3} {center} L{center + size // 3} {center}")
         paths.append(
-            f"M{center - size//3} {center - 15} L{center + size//3} {center - 15}"
+            f"M{center - size // 3} {center - 15} L{center + size // 3} {center - 15}"
         )
         paths.append(
-            f"M{center - size//3} {center + 15} L{center + size//3} {center + 15}"
+            f"M{center - size // 3} {center + 15} L{center + size // 3} {center + 15}"
         )
 
         # Réseau vertical simple
-        paths.append(f"M{center} {center - size//3} L{center} {center + size//3}")
+        paths.append(f"M{center} {center - size // 3} L{center} {center + size // 3}")
         paths.append(
-            f"M{center - 15} {center - size//3} L{center - 15} {center + size//3}"
+            f"M{center - 15} {center - size // 3} L{center - 15} {center + size // 3}"
         )
         paths.append(
-            f"M{center + 15} {center - size//3} L{center + 15} {center + size//3}"
+            f"M{center + 15} {center - size // 3} L{center + 15} {center + size // 3}"
         )
 
         # Réseau diagonal simple
         paths.append(
-            f"M{center - size//4} {center - size//4} "
-            f"L{center + size//4} {center + size//4}"
+            f"M{center - size // 4} {center - size // 4} "
+            f"L{center + size // 4} {center + size // 4}"
         )
         paths.append(
-            f"M{center - size//4} {center + size//4} "
-            f"L{center + size//4} {center - size//4}"
+            f"M{center - size // 4} {center + size // 4} "
+            f"L{center + size // 4} {center - size // 4}"
         )
 
         return paths

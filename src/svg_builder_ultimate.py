@@ -214,8 +214,8 @@ class UltimateSVGBuilder(SVGBuilder):
 
         # Forme organique cosmique complexe
         cosmic_organic_path = svgwrite.path.Path(
-            d=f"M {size//5} {size//5} Q {size//2} {size//10} {4*size//5} {size//5} "
-            f"Q {size//2} {4*size//5} {size//5} {4*size//5} Z",
+            d=f"M {size // 5} {size // 5} Q {size // 2} {size // 10} {4 * size // 5} {size // 5} "
+            f"Q {size // 2} {4 * size // 5} {size // 5} {4 * size // 5} Z",
             fill="white",
         )
         cosmic_organic_mask.add(cosmic_organic_path)
@@ -373,24 +373,24 @@ class UltimateSVGBuilder(SVGBuilder):
 
         # Réseau cosmique principal avec courbes complexes
         paths.append(
-            f"M{center - size//2.5} {center} Q{center} {center - size//2.5} "
-            f"{center + size//2.5} {center}"
+            f"M{center - size // 2.5} {center} Q{center} {center - size // 2.5} "
+            f"{center + size // 2.5} {center}"
         )
         paths.append(
-            f"M{center - size//2.5 + 15} {center - 15} Q{center} "
-            f"{center - size//2.5 - 15} {center + size//2.5 - 15} {center - 15}"
+            f"M{center - size // 2.5 + 15} {center - 15} Q{center} "
+            f"{center - size // 2.5 - 15} {center + size // 2.5 - 15} {center - 15}"
         )
         paths.append(
-            f"M{center - size//2.5 + 30} {center + 15} Q{center} "
-            f"{center - size//2.5 + 15} {center + size//2.5 - 30} {center + 15}"
+            f"M{center - size // 2.5 + 30} {center + 15} Q{center} "
+            f"{center - size // 2.5 + 15} {center + size // 2.5 - 30} {center + 15}"
         )
 
         # Réseau cosmique diagonal ULTIME
         paths.append(
-            f"M{center - size//3} {center - size//3} Q{center} {center} {center + size//3} {center - size//3}"
+            f"M{center - size // 3} {center - size // 3} Q{center} {center} {center + size // 3} {center - size // 3}"
         )
         paths.append(
-            f"M{center - size//3} {center + size//3} Q{center} {center} {center + size//3} {center + size//3}"
+            f"M{center - size // 3} {center + size // 3} Q{center} {center} {center + size // 3} {center + size // 3}"
         )
 
         # Réseau cosmique circulaire ULTIME
@@ -443,7 +443,7 @@ class UltimateSVGBuilder(SVGBuilder):
         cosmic_energy_aura.add(
             svgwrite.animate.Animate(
                 attributeName="r",
-                values=f"{size//2.5};{size//2.5 * 1.2};{size//2.5}",
+                values=f"{size // 2.5};{size // 2.5 * 1.2};{size // 2.5}",
                 dur=f"{4 / variant.animation_speed}s",
                 repeatCount="indefinite",
             )

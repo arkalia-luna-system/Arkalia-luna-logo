@@ -354,9 +354,9 @@ class UltraMaxSVGBuilder(SVGBuilder):
         for i in range(5):
             y_offset = (i - 2) * 20
             path_data = (
-                f"M{center - size//2.5} {center + y_offset} "
-                f"Q{center} {center - size//3 + y_offset} "
-                f"{center + size//2.5} {center + y_offset}"
+                f"M{center - size // 2.5} {center + y_offset} "
+                f"Q{center} {center - size // 3 + y_offset} "
+                f"{center + size // 2.5} {center + y_offset}"
             )
             paths.append(path_data)
 
@@ -364,9 +364,9 @@ class UltraMaxSVGBuilder(SVGBuilder):
         for i in range(5):
             x_offset = (i - 2) * 20
             path_data = (
-                f"M{center + x_offset} {center - size//2.5} "
-                f"Q{center + size//3 + x_offset} {center} "
-                f"{center + x_offset} {center + size//2.5}"
+                f"M{center + x_offset} {center - size // 2.5} "
+                f"Q{center + size // 3 + x_offset} {center} "
+                f"{center + x_offset} {center + size // 2.5}"
             )
             paths.append(path_data)
 
@@ -374,16 +374,16 @@ class UltraMaxSVGBuilder(SVGBuilder):
         for i in range(3):
             offset = (i - 1) * 15
             path_data = (
-                f"M{center - size//3 + offset} {center - size//3 + offset} "
+                f"M{center - size // 3 + offset} {center - size // 3 + offset} "
                 f"Q{center} {center} "
-                f"{center + size//3 + offset} {center + size//3 + offset}"
+                f"{center + size // 3 + offset} {center + size // 3 + offset}"
             )
             paths.append(path_data)
 
             path_data = (
-                f"M{center - size//3 + offset} {center + size//3 - offset} "
+                f"M{center - size // 3 + offset} {center + size // 3 - offset} "
                 f"Q{center} {center} "
-                f"{center + size//3 + offset} {center - size//3 - offset}"
+                f"{center + size // 3 + offset} {center - size // 3 - offset}"
             )
             paths.append(path_data)
 
