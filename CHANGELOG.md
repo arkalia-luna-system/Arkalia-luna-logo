@@ -86,18 +86,20 @@ et ce projet adhère au [Semantic Versioning](https://semver.org/lang/fr/).
 ## 📊 **Métriques de Qualité**
 
 ### **Version 2.0.0**
-- **Couverture de code** : 64%
-- **Tests** : 101 tests unitaires
-- **Styles de logos** : 5 styles différents
+- **Couverture de code** : 78% (+13 points)
+- **Tests** : 181 tests unitaires (+80 nouveaux)
+- **Styles de logos** : 8 styles différents
 - **Variantes émotionnelles** : 5 variantes
 - **Formats d'export** : SVG, PNG
 - **Compatibilité Python** : 3.8+
+- **Benchmarks** : 7 tests de performance
 
 ### **Objectifs Version 2.1.0**
-- **Couverture de code** : 75%
-- **Tests** : 150+ tests unitaires
-- **Styles de logos** : 6+ styles
+- **Couverture de code** : 85% (+7 points)
+- **Tests** : 200+ tests unitaires (+19 nouveaux)
+- **Styles de logos** : 8+ styles
 - **Formats d'export** : SVG, PNG, Lottie
+- **Benchmarks** : 10+ tests de performance
 - **Performance** : Génération <2s par logo
 
 ---

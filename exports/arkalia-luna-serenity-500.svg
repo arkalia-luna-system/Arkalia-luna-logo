@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xlink="http://www.w3.org/1999/xlink" baseProfile="full" height="200" version="1.1" viewBox="0 0 200 200" width="200">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xlink="http://www.w3.org/1999/xlink" baseProfile="full" height="500" version="1.1" viewBox="0 0 500 500" width="500">
   <title>Logo Arkalia-LUNA - Variante techno-mystique avancée</title>
   <defs>
     <radialGradient cx="50%" cy="50%" id="advancedMoonGradient-serenity" r="50%">
@@ -33,188 +33,188 @@
       <stop offset="100%" stop-color="#06b6d4" stop-opacity="0.6"/>
     </linearGradient>
   </defs>
-  <circle cx="0" cy="0" fill="none" filter="url(#mainGlow-serenity)" opacity="0.7" r="85" stroke="url(#borderGradient-serenity)" stroke-width="3">
+  <circle cx="0" cy="0" fill="none" filter="url(#mainGlow-serenity)" opacity="0.7" r="235" stroke="url(#borderGradient-serenity)" stroke-width="3">
     <animate attributeName="opacity" dur="4.0s" repeatCount="indefinite" values="0.7;0.21;0.7"/>
   </circle>
-  <circle cx="0" cy="0" fill="none" filter="url(#detailGlow-serenity)" opacity="0.4" r="90" stroke="#60a5fa" stroke-width="1">
-    <animate attributeName="r" dur="3.0s" repeatCount="indefinite" values="90;100;90"/>
+  <circle cx="0" cy="0" fill="none" filter="url(#detailGlow-serenity)" opacity="0.4" r="240" stroke="#60a5fa" stroke-width="1">
+    <animate attributeName="r" dur="3.0s" repeatCount="indefinite" values="240;250;240"/>
   </circle>
-  <circle cx="0" cy="0" fill="url(#advancedMoonGradient-serenity)" filter="url(#mainGlow-serenity)" r="66">
-    <animate attributeName="r" dur="2.5s" repeatCount="indefinite" values="66;71.28;66"/>
+  <circle cx="0" cy="0" fill="url(#advancedMoonGradient-serenity)" filter="url(#mainGlow-serenity)" r="166">
+    <animate attributeName="r" dur="2.5s" repeatCount="indefinite" values="166;179.28;166"/>
   </circle>
-  <circle cx="0" cy="0" fill="none" filter="url(#detailGlow-serenity)" opacity="0.6" r="68" stroke="#60a5fa" stroke-width="2"/>
+  <circle cx="0" cy="0" fill="none" filter="url(#detailGlow-serenity)" opacity="0.6" r="168" stroke="#60a5fa" stroke-width="2"/>
   <g fill="none" filter="url(#detailGlow-serenity)" opacity="0.9" stroke="url(#neuralGradient-serenity)" stroke-width="2.5">
-    <path d="M34 100 Q100 34 166 100">
+    <path d="M84 250 Q250 84 416 250">
       <animate attributeName="stroke-dashoffset" begin="0.0s" dur="5.0s" repeatCount="indefinite" values="0;-200;0"/>
       <animate attributeName="opacity" begin="0.0s" dur="4.0s" repeatCount="indefinite" values="0.9;0.4;0.9"/>
     </path>
-    <path d="M44 90 Q100 24 156 90">
+    <path d="M94 240 Q250 74 406 240">
       <animate attributeName="stroke-dashoffset" begin="0.3s" dur="5.0s" repeatCount="indefinite" values="0;-200;0"/>
       <animate attributeName="opacity" begin="0.2s" dur="4.0s" repeatCount="indefinite" values="0.9;0.4;0.9"/>
     </path>
-    <path d="M54 110 Q100 44 146 110">
+    <path d="M104 260 Q250 94 396 260">
       <animate attributeName="stroke-dashoffset" begin="0.6s" dur="5.0s" repeatCount="indefinite" values="0;-200;0"/>
       <animate attributeName="opacity" begin="0.4s" dur="4.0s" repeatCount="indefinite" values="0.9;0.4;0.9"/>
     </path>
-    <path d="M50 50 Q100 100 150 50">
+    <path d="M125 125 Q250 250 375 125">
       <animate attributeName="stroke-dashoffset" begin="0.8999999999999999s" dur="5.0s" repeatCount="indefinite" values="0;-200;0"/>
       <animate attributeName="opacity" begin="0.6000000000000001s" dur="4.0s" repeatCount="indefinite" values="0.9;0.4;0.9"/>
     </path>
-    <path d="M50 150 Q100 100 150 150">
+    <path d="M125 375 Q250 250 375 375">
       <animate attributeName="stroke-dashoffset" begin="1.2s" dur="5.0s" repeatCount="indefinite" values="0;-200;0"/>
       <animate attributeName="opacity" begin="0.8s" dur="4.0s" repeatCount="indefinite" values="0.9;0.4;0.9"/>
     </path>
-    <path d="M100 34 Q166 100 100 166">
+    <path d="M250 84 Q416 250 250 416">
       <animate attributeName="stroke-dashoffset" begin="1.5s" dur="5.0s" repeatCount="indefinite" values="0;-200;0"/>
       <animate attributeName="opacity" begin="1.0s" dur="4.0s" repeatCount="indefinite" values="0.9;0.4;0.9"/>
     </path>
-    <path d="M90 44 Q156 100 90 156">
+    <path d="M240 94 Q406 250 240 406">
       <animate attributeName="stroke-dashoffset" begin="1.7999999999999998s" dur="5.0s" repeatCount="indefinite" values="0;-200;0"/>
       <animate attributeName="opacity" begin="1.2000000000000002s" dur="4.0s" repeatCount="indefinite" values="0.9;0.4;0.9"/>
     </path>
-    <path d="M150.0 100.0 Q100 100 135.35533905932738 135.35533905932738">
+    <path d="M375.0 250.0 Q250 250 338.3883476483185 338.3883476483184">
       <animate attributeName="stroke-dashoffset" begin="2.1s" dur="5.0s" repeatCount="indefinite" values="0;-200;0"/>
       <animate attributeName="opacity" begin="1.4000000000000001s" dur="4.0s" repeatCount="indefinite" values="0.9;0.4;0.9"/>
     </path>
-    <path d="M135.35533905932738 135.35533905932738 Q100 100 100.0 150.0">
+    <path d="M338.3883476483185 338.3883476483184 Q250 250 250.0 375.0">
       <animate attributeName="stroke-dashoffset" begin="2.4s" dur="5.0s" repeatCount="indefinite" values="0;-200;0"/>
       <animate attributeName="opacity" begin="1.6s" dur="4.0s" repeatCount="indefinite" values="0.9;0.4;0.9"/>
     </path>
-    <path d="M100.0 150.0 Q100 100 64.64466094067262 135.35533905932738">
+    <path d="M250.0 375.0 Q250 250 161.61165235168158 338.3883476483185">
       <animate attributeName="stroke-dashoffset" begin="2.6999999999999997s" dur="5.0s" repeatCount="indefinite" values="0;-200;0"/>
       <animate attributeName="opacity" begin="1.8s" dur="4.0s" repeatCount="indefinite" values="0.9;0.4;0.9"/>
     </path>
-    <path d="M64.64466094067262 135.35533905932738 Q100 100 50.0 100.0">
+    <path d="M161.61165235168158 338.3883476483185 Q250 250 125.0 250.00000000000003">
       <animate attributeName="stroke-dashoffset" begin="3.0s" dur="5.0s" repeatCount="indefinite" values="0;-200;0"/>
       <animate attributeName="opacity" begin="2.0s" dur="4.0s" repeatCount="indefinite" values="0.9;0.4;0.9"/>
     </path>
-    <path d="M50.0 100.0 Q100 100 64.64466094067262 64.64466094067262">
+    <path d="M125.0 250.00000000000003 Q250 250 161.61165235168153 161.61165235168158">
       <animate attributeName="stroke-dashoffset" begin="3.3s" dur="5.0s" repeatCount="indefinite" values="0;-200;0"/>
       <animate attributeName="opacity" begin="2.2s" dur="4.0s" repeatCount="indefinite" values="0.9;0.4;0.9"/>
     </path>
-    <path d="M64.64466094067262 64.64466094067262 Q100 100 99.99999999999999 50.0">
+    <path d="M161.61165235168153 161.61165235168158 Q250 250 249.99999999999997 125.0">
       <animate attributeName="stroke-dashoffset" begin="3.5999999999999996s" dur="5.0s" repeatCount="indefinite" values="0;-200;0"/>
       <animate attributeName="opacity" begin="2.4000000000000004s" dur="4.0s" repeatCount="indefinite" values="0.9;0.4;0.9"/>
     </path>
-    <path d="M99.99999999999999 50.0 Q100 100 135.35533905932738 64.64466094067262">
+    <path d="M249.99999999999997 125.0 Q250 250 338.3883476483184 161.61165235168153">
       <animate attributeName="stroke-dashoffset" begin="3.9s" dur="5.0s" repeatCount="indefinite" values="0;-200;0"/>
       <animate attributeName="opacity" begin="2.6s" dur="4.0s" repeatCount="indefinite" values="0.9;0.4;0.9"/>
     </path>
-    <path d="M135.35533905932738 64.64466094067262 Q100 100 150.0 99.99999999999999">
+    <path d="M338.3883476483184 161.61165235168153 Q250 250 375.0 249.99999999999997">
       <animate attributeName="stroke-dashoffset" begin="4.2s" dur="5.0s" repeatCount="indefinite" values="0;-200;0"/>
       <animate attributeName="opacity" begin="2.8000000000000003s" dur="4.0s" repeatCount="indefinite" values="0.9;0.4;0.9"/>
     </path>
   </g>
-  <circle cx="34" cy="100" fill="#60a5fa" filter="url(#detailGlow-serenity)" opacity="0.8" r="3">
+  <circle cx="84" cy="250" fill="#60a5fa" filter="url(#detailGlow-serenity)" opacity="0.8" r="3">
     <animate attributeName="opacity" begin="0.0s" dur="2.0s" repeatCount="indefinite" values="0.8;1.0;0.8"/>
   </circle>
-  <circle cx="166" cy="100" fill="#60a5fa" filter="url(#detailGlow-serenity)" opacity="0.8" r="3">
+  <circle cx="416" cy="250" fill="#60a5fa" filter="url(#detailGlow-serenity)" opacity="0.8" r="3">
     <animate attributeName="opacity" begin="0.2s" dur="2.0s" repeatCount="indefinite" values="0.8;1.0;0.8"/>
   </circle>
-  <circle cx="100" cy="34" fill="#60a5fa" filter="url(#detailGlow-serenity)" opacity="0.8" r="3">
+  <circle cx="250" cy="84" fill="#60a5fa" filter="url(#detailGlow-serenity)" opacity="0.8" r="3">
     <animate attributeName="opacity" begin="0.4s" dur="2.0s" repeatCount="indefinite" values="0.8;1.0;0.8"/>
   </circle>
-  <circle cx="100" cy="166" fill="#60a5fa" filter="url(#detailGlow-serenity)" opacity="0.8" r="3">
+  <circle cx="250" cy="416" fill="#60a5fa" filter="url(#detailGlow-serenity)" opacity="0.8" r="3">
     <animate attributeName="opacity" begin="0.6000000000000001s" dur="2.0s" repeatCount="indefinite" values="0.8;1.0;0.8"/>
   </circle>
-  <circle cx="50" cy="50" fill="#60a5fa" filter="url(#detailGlow-serenity)" opacity="0.8" r="3">
+  <circle cx="125" cy="125" fill="#60a5fa" filter="url(#detailGlow-serenity)" opacity="0.8" r="3">
     <animate attributeName="opacity" begin="0.8s" dur="2.0s" repeatCount="indefinite" values="0.8;1.0;0.8"/>
   </circle>
-  <circle cx="150" cy="50" fill="#60a5fa" filter="url(#detailGlow-serenity)" opacity="0.8" r="3">
+  <circle cx="375" cy="125" fill="#60a5fa" filter="url(#detailGlow-serenity)" opacity="0.8" r="3">
     <animate attributeName="opacity" begin="1.0s" dur="2.0s" repeatCount="indefinite" values="0.8;1.0;0.8"/>
   </circle>
-  <circle cx="50" cy="150" fill="#60a5fa" filter="url(#detailGlow-serenity)" opacity="0.8" r="3">
+  <circle cx="125" cy="375" fill="#60a5fa" filter="url(#detailGlow-serenity)" opacity="0.8" r="3">
     <animate attributeName="opacity" begin="1.2000000000000002s" dur="2.0s" repeatCount="indefinite" values="0.8;1.0;0.8"/>
   </circle>
-  <circle cx="150" cy="150" fill="#60a5fa" filter="url(#detailGlow-serenity)" opacity="0.8" r="3">
+  <circle cx="375" cy="375" fill="#60a5fa" filter="url(#detailGlow-serenity)" opacity="0.8" r="3">
     <animate attributeName="opacity" begin="1.4000000000000001s" dur="2.0s" repeatCount="indefinite" values="0.8;1.0;0.8"/>
   </circle>
   <g>
-    <path d="M85 75 L100 92 L115 75 L100 100 Z" fill="#60a5fa" filter="url(#mainGlow-serenity)">
+    <path d="M235 225 L250 242 L265 225 L250 250 Z" fill="#60a5fa" filter="url(#mainGlow-serenity)">
       <animate attributeName="opacity" dur="2.0s" repeatCount="indefinite" values="0.9;1.0;0.9"/>
     </path>
-    <circle cx="100" cy="92" fill="#60a5fa" filter="url(#mainGlow-serenity)" opacity="0.9" r="8">
+    <circle cx="250" cy="242" fill="#60a5fa" filter="url(#mainGlow-serenity)" opacity="0.9" r="8">
       <animate attributeName="r" dur="2.5s" repeatCount="indefinite" values="8;12;8"/>
     </circle>
     <g>
-      <circle cx="120.0" cy="92.0" fill="#60a5fa" opacity="0.6" r="2">
+      <circle cx="270.0" cy="242.0" fill="#60a5fa" opacity="0.6" r="2">
         <animate attributeName="opacity" begin="0.0s" dur="3.0s" repeatCount="indefinite" values="0.6;1.0;0.6"/>
       </circle>
-      <circle cx="110.0" cy="109.32050807568876" fill="#60a5fa" opacity="0.6" r="2">
+      <circle cx="260.0" cy="259.3205080756888" fill="#60a5fa" opacity="0.6" r="2">
         <animate attributeName="opacity" begin="0.3s" dur="3.0s" repeatCount="indefinite" values="0.6;1.0;0.6"/>
       </circle>
-      <circle cx="90.0" cy="109.32050807568878" fill="#60a5fa" opacity="0.6" r="2">
+      <circle cx="240.0" cy="259.3205080756888" fill="#60a5fa" opacity="0.6" r="2">
         <animate attributeName="opacity" begin="0.6s" dur="3.0s" repeatCount="indefinite" values="0.6;1.0;0.6"/>
       </circle>
-      <circle cx="80.0" cy="92.0" fill="#60a5fa" opacity="0.6" r="2">
+      <circle cx="230.0" cy="242.0" fill="#60a5fa" opacity="0.6" r="2">
         <animate attributeName="opacity" begin="0.8999999999999999s" dur="3.0s" repeatCount="indefinite" values="0.6;1.0;0.6"/>
       </circle>
-      <circle cx="89.99999999999999" cy="74.67949192431124" fill="#60a5fa" opacity="0.6" r="2">
+      <circle cx="240.0" cy="224.67949192431124" fill="#60a5fa" opacity="0.6" r="2">
         <animate attributeName="opacity" begin="1.2s" dur="3.0s" repeatCount="indefinite" values="0.6;1.0;0.6"/>
       </circle>
-      <circle cx="110.0" cy="74.67949192431124" fill="#60a5fa" opacity="0.6" r="2">
+      <circle cx="260.0" cy="224.67949192431124" fill="#60a5fa" opacity="0.6" r="2">
         <animate attributeName="opacity" begin="1.5s" dur="3.0s" repeatCount="indefinite" values="0.6;1.0;0.6"/>
       </circle>
     </g>
   </g>
-  <circle cx="175.0" cy="100.0" fill="#60a5fa" filter="url(#detailGlow-serenity)" opacity="0.7" r="2.5">
+  <circle cx="475.0" cy="250.0" fill="#60a5fa" filter="url(#detailGlow-serenity)" opacity="0.7" r="2.5">
     <animate attributeName="opacity" begin="0.0s" dur="2.5s" repeatCount="indefinite" values="0.7;1.0;0.7"/>
-    <animate attributeName="cx" begin="0.0s" dur="4.0s" repeatCount="indefinite" values="175.0;179.33012701892218;175.0"/>
-    <animate attributeName="cy" begin="0.0s" dur="4.0s" repeatCount="indefinite" values="100.0;102.5;100.0"/>
+    <animate attributeName="cx" begin="0.0s" dur="4.0s" repeatCount="indefinite" values="475.0;479.3301270189222;475.0"/>
+    <animate attributeName="cy" begin="0.0s" dur="4.0s" repeatCount="indefinite" values="250.0;252.5;250.0"/>
   </circle>
-  <circle cx="164.9519052838329" cy="137.5" fill="#60a5fa" filter="url(#detailGlow-serenity)" opacity="0.7" r="2.5">
+  <circle cx="444.8557158514987" cy="362.5" fill="#60a5fa" filter="url(#detailGlow-serenity)" opacity="0.7" r="2.5">
     <animate attributeName="opacity" begin="0.2s" dur="2.5s" repeatCount="indefinite" values="0.7;1.0;0.7"/>
-    <animate attributeName="cx" begin="0.1s" dur="4.0s" repeatCount="indefinite" values="164.9519052838329;167.4519052838329;164.9519052838329"/>
-    <animate attributeName="cy" begin="0.1s" dur="4.0s" repeatCount="indefinite" values="137.5;141.83012701892218;137.5"/>
+    <animate attributeName="cx" begin="0.1s" dur="4.0s" repeatCount="indefinite" values="444.8557158514987;447.3557158514987;444.8557158514987"/>
+    <animate attributeName="cy" begin="0.1s" dur="4.0s" repeatCount="indefinite" values="362.5;366.8301270189222;362.5"/>
   </circle>
-  <circle cx="137.5" cy="164.9519052838329" fill="#60a5fa" filter="url(#detailGlow-serenity)" opacity="0.7" r="2.5">
+  <circle cx="362.5" cy="444.85571585149864" fill="#60a5fa" filter="url(#detailGlow-serenity)" opacity="0.7" r="2.5">
     <animate attributeName="opacity" begin="0.4s" dur="2.5s" repeatCount="indefinite" values="0.7;1.0;0.7"/>
-    <animate attributeName="cx" begin="0.2s" dur="4.0s" repeatCount="indefinite" values="137.5;137.5;137.5"/>
-    <animate attributeName="cy" begin="0.2s" dur="4.0s" repeatCount="indefinite" values="164.9519052838329;169.9519052838329;164.9519052838329"/>
+    <animate attributeName="cx" begin="0.2s" dur="4.0s" repeatCount="indefinite" values="362.5;362.5;362.5"/>
+    <animate attributeName="cy" begin="0.2s" dur="4.0s" repeatCount="indefinite" values="444.85571585149864;449.85571585149864;444.85571585149864"/>
   </circle>
-  <circle cx="100.0" cy="175.0" fill="#60a5fa" filter="url(#detailGlow-serenity)" opacity="0.7" r="2.5">
+  <circle cx="250.0" cy="475.0" fill="#60a5fa" filter="url(#detailGlow-serenity)" opacity="0.7" r="2.5">
     <animate attributeName="opacity" begin="0.6000000000000001s" dur="2.5s" repeatCount="indefinite" values="0.7;1.0;0.7"/>
-    <animate attributeName="cx" begin="0.30000000000000004s" dur="4.0s" repeatCount="indefinite" values="100.0;97.5;100.0"/>
-    <animate attributeName="cy" begin="0.30000000000000004s" dur="4.0s" repeatCount="indefinite" values="175.0;179.33012701892218;175.0"/>
+    <animate attributeName="cx" begin="0.30000000000000004s" dur="4.0s" repeatCount="indefinite" values="250.0;247.5;250.0"/>
+    <animate attributeName="cy" begin="0.30000000000000004s" dur="4.0s" repeatCount="indefinite" values="475.0;479.3301270189222;475.0"/>
   </circle>
-  <circle cx="62.500000000000014" cy="164.9519052838329" fill="#60a5fa" filter="url(#detailGlow-serenity)" opacity="0.7" r="2.5">
+  <circle cx="137.50000000000006" cy="444.8557158514987" fill="#60a5fa" filter="url(#detailGlow-serenity)" opacity="0.7" r="2.5">
     <animate attributeName="opacity" begin="0.8s" dur="2.5s" repeatCount="indefinite" values="0.7;1.0;0.7"/>
-    <animate attributeName="cx" begin="0.4s" dur="4.0s" repeatCount="indefinite" values="62.500000000000014;58.16987298107782;62.500000000000014"/>
-    <animate attributeName="cy" begin="0.4s" dur="4.0s" repeatCount="indefinite" values="164.9519052838329;167.4519052838329;164.9519052838329"/>
+    <animate attributeName="cx" begin="0.4s" dur="4.0s" repeatCount="indefinite" values="137.50000000000006;133.16987298107787;137.50000000000006"/>
+    <animate attributeName="cy" begin="0.4s" dur="4.0s" repeatCount="indefinite" values="444.8557158514987;447.3557158514987;444.8557158514987"/>
   </circle>
-  <circle cx="35.0480947161671" cy="137.5" fill="#60a5fa" filter="url(#detailGlow-serenity)" opacity="0.7" r="2.5">
+  <circle cx="55.1442841485013" cy="362.5" fill="#60a5fa" filter="url(#detailGlow-serenity)" opacity="0.7" r="2.5">
     <animate attributeName="opacity" begin="1.0s" dur="2.5s" repeatCount="indefinite" values="0.7;1.0;0.7"/>
-    <animate attributeName="cx" begin="0.5s" dur="4.0s" repeatCount="indefinite" values="35.0480947161671;30.0480947161671;35.0480947161671"/>
-    <animate attributeName="cy" begin="0.5s" dur="4.0s" repeatCount="indefinite" values="137.5;137.5;137.5"/>
+    <animate attributeName="cx" begin="0.5s" dur="4.0s" repeatCount="indefinite" values="55.1442841485013;50.1442841485013;55.1442841485013"/>
+    <animate attributeName="cy" begin="0.5s" dur="4.0s" repeatCount="indefinite" values="362.5;362.5;362.5"/>
   </circle>
-  <circle cx="25.0" cy="100.00000000000001" fill="#60a5fa" filter="url(#detailGlow-serenity)" opacity="0.7" r="2.5">
+  <circle cx="25.0" cy="250.00000000000003" fill="#60a5fa" filter="url(#detailGlow-serenity)" opacity="0.7" r="2.5">
     <animate attributeName="opacity" begin="1.2000000000000002s" dur="2.5s" repeatCount="indefinite" values="0.7;1.0;0.7"/>
     <animate attributeName="cx" begin="0.6000000000000001s" dur="4.0s" repeatCount="indefinite" values="25.0;20.669872981077805;25.0"/>
-    <animate attributeName="cy" begin="0.6000000000000001s" dur="4.0s" repeatCount="indefinite" values="100.00000000000001;97.50000000000001;100.00000000000001"/>
+    <animate attributeName="cy" begin="0.6000000000000001s" dur="4.0s" repeatCount="indefinite" values="250.00000000000003;247.50000000000003;250.00000000000003"/>
   </circle>
-  <circle cx="35.0480947161671" cy="62.49999999999999" fill="#60a5fa" filter="url(#detailGlow-serenity)" opacity="0.7" r="2.5">
+  <circle cx="55.14428414850133" cy="137.49999999999997" fill="#60a5fa" filter="url(#detailGlow-serenity)" opacity="0.7" r="2.5">
     <animate attributeName="opacity" begin="1.4000000000000001s" dur="2.5s" repeatCount="indefinite" values="0.7;1.0;0.7"/>
-    <animate attributeName="cx" begin="0.7000000000000001s" dur="4.0s" repeatCount="indefinite" values="35.0480947161671;32.5480947161671;35.0480947161671"/>
-    <animate attributeName="cy" begin="0.7000000000000001s" dur="4.0s" repeatCount="indefinite" values="62.49999999999999;58.1698729810778;62.49999999999999"/>
+    <animate attributeName="cx" begin="0.7000000000000001s" dur="4.0s" repeatCount="indefinite" values="55.14428414850133;52.64428414850133;55.14428414850133"/>
+    <animate attributeName="cy" begin="0.7000000000000001s" dur="4.0s" repeatCount="indefinite" values="137.49999999999997;133.1698729810778;137.49999999999997"/>
   </circle>
-  <circle cx="62.499999999999964" cy="35.04809471616713" fill="#60a5fa" filter="url(#detailGlow-serenity)" opacity="0.7" r="2.5">
+  <circle cx="137.4999999999999" cy="55.144284148501356" fill="#60a5fa" filter="url(#detailGlow-serenity)" opacity="0.7" r="2.5">
     <animate attributeName="opacity" begin="1.6s" dur="2.5s" repeatCount="indefinite" values="0.7;1.0;0.7"/>
-    <animate attributeName="cx" begin="0.8s" dur="4.0s" repeatCount="indefinite" values="62.499999999999964;62.499999999999964;62.499999999999964"/>
-    <animate attributeName="cy" begin="0.8s" dur="4.0s" repeatCount="indefinite" values="35.04809471616713;30.048094716167128;35.04809471616713"/>
+    <animate attributeName="cx" begin="0.8s" dur="4.0s" repeatCount="indefinite" values="137.4999999999999;137.4999999999999;137.4999999999999"/>
+    <animate attributeName="cy" begin="0.8s" dur="4.0s" repeatCount="indefinite" values="55.144284148501356;50.144284148501356;55.144284148501356"/>
   </circle>
-  <circle cx="99.99999999999999" cy="25.0" fill="#60a5fa" filter="url(#detailGlow-serenity)" opacity="0.7" r="2.5">
+  <circle cx="249.99999999999997" cy="25.0" fill="#60a5fa" filter="url(#detailGlow-serenity)" opacity="0.7" r="2.5">
     <animate attributeName="opacity" begin="1.8s" dur="2.5s" repeatCount="indefinite" values="0.7;1.0;0.7"/>
-    <animate attributeName="cx" begin="0.9s" dur="4.0s" repeatCount="indefinite" values="99.99999999999999;102.49999999999999;99.99999999999999"/>
+    <animate attributeName="cx" begin="0.9s" dur="4.0s" repeatCount="indefinite" values="249.99999999999997;252.49999999999997;249.99999999999997"/>
     <animate attributeName="cy" begin="0.9s" dur="4.0s" repeatCount="indefinite" values="25.0;20.66987298107781;25.0"/>
   </circle>
-  <circle cx="137.5" cy="35.0480947161671" fill="#60a5fa" filter="url(#detailGlow-serenity)" opacity="0.7" r="2.5">
+  <circle cx="362.5" cy="55.14428414850133" fill="#60a5fa" filter="url(#detailGlow-serenity)" opacity="0.7" r="2.5">
     <animate attributeName="opacity" begin="2.0s" dur="2.5s" repeatCount="indefinite" values="0.7;1.0;0.7"/>
-    <animate attributeName="cx" begin="1.0s" dur="4.0s" repeatCount="indefinite" values="137.5;141.83012701892218;137.5"/>
-    <animate attributeName="cy" begin="1.0s" dur="4.0s" repeatCount="indefinite" values="35.0480947161671;32.5480947161671;35.0480947161671"/>
+    <animate attributeName="cx" begin="1.0s" dur="4.0s" repeatCount="indefinite" values="362.5;366.8301270189222;362.5"/>
+    <animate attributeName="cy" begin="1.0s" dur="4.0s" repeatCount="indefinite" values="55.14428414850133;52.64428414850133;55.14428414850133"/>
   </circle>
-  <circle cx="164.95190528383287" cy="62.499999999999964" fill="#60a5fa" filter="url(#detailGlow-serenity)" opacity="0.7" r="2.5">
+  <circle cx="444.85571585149864" cy="137.4999999999999" fill="#60a5fa" filter="url(#detailGlow-serenity)" opacity="0.7" r="2.5">
     <animate attributeName="opacity" begin="2.2s" dur="2.5s" repeatCount="indefinite" values="0.7;1.0;0.7"/>
-    <animate attributeName="cx" begin="1.1s" dur="4.0s" repeatCount="indefinite" values="164.95190528383287;169.95190528383287;164.95190528383287"/>
-    <animate attributeName="cy" begin="1.1s" dur="4.0s" repeatCount="indefinite" values="62.499999999999964;62.499999999999964;62.499999999999964"/>
+    <animate attributeName="cx" begin="1.1s" dur="4.0s" repeatCount="indefinite" values="444.85571585149864;449.85571585149864;444.85571585149864"/>
+    <animate attributeName="cy" begin="1.1s" dur="4.0s" repeatCount="indefinite" values="137.4999999999999;137.4999999999999;137.4999999999999"/>
   </circle>
 </svg>
