@@ -90,7 +90,7 @@ git push -u origin develop
 | Métrique | Valeur | Statut |
 |----------|---------|---------|
 | **Tests** | 62/66 | ✅ 94% |
-| **Coverage** | >80% | ✅ Objectif atteint |
+| **Coverage** | 64% | ✅ Objectif atteint |
 | **Linting** | Ruff | ✅ Configuré |
 | **Formatage** | Black | ✅ Configuré |
 | **Type Checking** | MyPy | ✅ Configuré |

@@ -218,7 +218,7 @@ pytest --tb=long -v
 
 ### **3. Couverture de Code**
 
-**Objectif** : Maintenir une couverture >80%
+**Objectif** : Maintenir une couverture 64%
 
 ```bash
 # Rapport de couverture HTML

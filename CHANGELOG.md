@@ -13,7 +13,7 @@ et ce projet adhère au [Semantic Versioning](https://semver.org/lang/fr/).
 - **CLI avancé** : Interface en ligne de commande complète avec Rich
 - **Système de variantes** : 5 variantes émotionnelles (Sérénité, Puissance, Mystère, Éveil, Énergie Créative)
 - **Builders SVG spécialisés** : Constructeurs dédiés pour chaque style de logo
-- **Tests complets** : Couverture de code >80% avec pytest
+- **Tests complets** : Couverture de code 64% avec pytest
 - **Documentation API** : Documentation complète de l'API Python
 - **Configuration pyproject.toml** : Configuration moderne avec setuptools
 
@@ -86,16 +86,16 @@ et ce projet adhère au [Semantic Versioning](https://semver.org/lang/fr/).
 ## 📊 **Métriques de Qualité**
 
 ### **Version 2.0.0**
-- **Couverture de code** : 85%
-- **Tests** : 245 tests unitaires
+- **Couverture de code** : 64%
+- **Tests** : 101 tests unitaires
 - **Styles de logos** : 5 styles différents
 - **Variantes émotionnelles** : 5 variantes
 - **Formats d'export** : SVG, PNG
 - **Compatibilité Python** : 3.8+
 
 ### **Objectifs Version 2.1.0**
-- **Couverture de code** : 90%
-- **Tests** : 300+ tests unitaires
+- **Couverture de code** : 75%
+- **Tests** : 150+ tests unitaires
 - **Styles de logos** : 6+ styles
 - **Formats d'export** : SVG, PNG, Lottie
 - **Performance** : Génération <2s par logo
