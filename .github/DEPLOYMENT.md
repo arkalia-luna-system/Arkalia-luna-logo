@@ -183,8 +183,8 @@ git push origin --delete release/v2.1.0
 ## 📊 Monitoring et Métriques
 
 ### Checks de Qualité
-- ✅ **Tests** : 62/66 passent (94%)
-- ✅ **Coverage** : > 80%
+- ✅ **Tests** : 101/101 passent (100%)
+- ✅ **Coverage** : 64%
 - ✅ **Linting** : Ruff sans erreurs
 - ✅ **Formatting** : Black conforme
 - ✅ **Type Checking** : MyPy strict

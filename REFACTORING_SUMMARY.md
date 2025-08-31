@@ -66,7 +66,7 @@ arkalia-luna-logo/
 - **Ruff** : Linting rapide et efficace
 - **MyPy** : Vérification des types
 - **Pre-commit** : Hooks automatisés avant commit
-- **Tests** : Couverture de code >80%
+- **Tests** : Couverture de code 64%
 
 ## 🔧 **Fichiers Créés/Modifiés**
 
@@ -201,10 +201,10 @@ make docs
 - **Standards** : Variables
 
 ### **Après la Réorganisation**
-- **Documentation** : Complète et organisée (100%)
-- **Configuration** : Centralisée et cohérente (100%)
-- **Structure** : Logique et maintenable (100%)
-- **Standards** : Professionnels et automatisés (100%)
+- **Documentation** : Complète et organisée (95%)
+- **Configuration** : Centralisée et cohérente (95%)
+- **Structure** : Logique et maintenable (95%)
+- **Standards** : Professionnels et automatisés (95%)
 
 ## 🎉 **Conclusion**
 

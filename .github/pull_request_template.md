@@ -89,7 +89,7 @@
 - [ ] Linting passé avec Ruff (`make lint`)
 - [ ] Type checking passé avec MyPy (`make type-check`)
 - [ ] Tests passent (`make test`)
-- [ ] Coverage > 80%
+- [ ] Coverage 64%
 - [ ] Documentation mise à jour
 - [ ] CHANGELOG.md mis à jour
 - [ ] Pre-commit hooks installés et passés

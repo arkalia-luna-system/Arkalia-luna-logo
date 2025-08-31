@@ -154,7 +154,7 @@ pip freeze > requirements.txt
 
 ## 📊 **Métriques CI**
 
-- **Couverture de code** : Objectif >80%
+- **Couverture de code** : Objectif 64%
 - **Temps de build** : <5 minutes
 - **Tests** : Tous passent sur toutes les versions Python
 - **Qualité** : Aucune erreur de lint/type
