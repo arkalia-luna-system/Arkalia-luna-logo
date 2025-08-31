@@ -3,8 +3,7 @@ name: Branch Protection & PR Management
 on:
   pull_request:
     types: [opened, synchronize, reopened, ready_for_review]
-  push:
-    branches: [main, develop]
+  push:  # Se déclencher sur toutes les branches
 
 jobs:
   branch-protection:
