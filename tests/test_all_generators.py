@@ -68,7 +68,7 @@ class TestAIMoonGenerator:
 
         # Test avec une variante valide
         try:
-            svg_path = generator.generate_single_logo("serenity", size=100)
+            svg_path = generator.generate_svg_logo("serenity", size=100)
             assert svg_path.exists()
             assert svg_path.suffix == ".svg"
         except Exception as e:
@@ -91,7 +91,7 @@ class TestDashboardGenerator:
 
         # Test avec une variante valide
         try:
-            svg_path = generator.generate_single_logo("serenity", size=100)
+            svg_path = generator.generate_svg_logo("serenity", size=100)
             assert svg_path.exists()
             assert svg_path.suffix == ".svg"
         except Exception as e:
@@ -114,7 +114,7 @@ class TestUltraMaxGenerator:
 
         # Test avec une variante valide
         try:
-            svg_path = generator.generate_single_logo("serenity", size=100)
+            svg_path = generator.generate_svg_logo("serenity", size=100)
             assert svg_path.exists()
             assert svg_path.suffix == ".svg"
         except Exception as e:
@@ -137,7 +137,7 @@ class TestSimpleAdvancedGenerator:
 
         # Test avec une variante valide
         try:
-            svg_path = generator.generate_single_logo("serenity", size=100)
+            svg_path = generator.generate_svg_logo("serenity", size=100)
             assert svg_path.exists()
             assert svg_path.suffix == ".svg"
         except Exception as e:
