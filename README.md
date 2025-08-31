@@ -257,7 +257,7 @@ Ce projet est sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.
 - **Version** : 2.0.0
 - **Statut** : Production/Stable
 - **Python** : 3.8+
-- **Tests** : 100% de couverture
+- **Tests** : 64% de couverture
 - **CI/CD** : GitHub Actions automatisé
 - **Qualité** : Black + Ruff + MyPy
 
