@@ -134,10 +134,8 @@ class TestRealismMaxGeneratorCoverage:
             with patch.object(realism_generator.svg_builder, "save_logo") as mock_save:
                 mock_save.return_value = Path("test-logo.svg")
 
-                                # Test de la génération
-                _ = realism_generator.generate_realistic_logo(
-                    "serenity", 200, 0.95
-                )
+                # Test de la génération
+                _ = realism_generator.generate_realistic_logo("serenity", 200, 0.95)
 
                 # Vérifier que le chemin de sortie suit le format attendu
                 assert "arkalia-luna-realism-serenity-200.svg" in str(
@@ -378,10 +376,8 @@ class TestRealismMaxGeneratorCoverage:
             with patch.object(realism_generator.svg_builder, "save_logo") as mock_save:
                 mock_save.return_value = Path("test-logo.svg")
 
-                                # Test de la génération
-                _ = realism_generator.generate_realistic_logo(
-                    "serenity", 200, 0.95
-                )
+                # Test de la génération
+                _ = realism_generator.generate_realistic_logo("serenity", 200, 0.95)
 
                 # Vérifier que le builder a été appelé avec les bons paramètres
                 mock_save.assert_called_once()
@@ -415,10 +411,8 @@ class TestRealismMaxGeneratorCoverage:
                 mock_save.return_value = Path("test-logo.svg")
 
                 with patch.object(realism_generator.logger, "info") as mock_info:
-                                        # Test de la génération
-                    _ = realism_generator.generate_realistic_logo(
-                        "serenity", 200, 0.95
-                    )
+                    # Test de la génération
+                    _ = realism_generator.generate_realistic_logo("serenity", 200, 0.95)
 
                     # Vérifier que le succès a été loggé
                     assert mock_info.call_count >= 1

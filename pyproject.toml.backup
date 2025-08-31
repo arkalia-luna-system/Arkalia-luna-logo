@@ -55,6 +55,7 @@ test = [
     "pytest>=7.0.0",
     "pytest-cov>=4.0.0",
     "pytest-mock>=3.8.0",
+    "pytest-benchmark>=4.0.0",
     "coverage>=6.0.0",
 ]
 docs = [
@@ -96,6 +97,33 @@ exclude = ["tests*", "*.tests*"]
 line-length = 88
 target-version = ['py38']
 include = '\.pyi?$'
+extend-exclude = '''
+/(
+
+[tool.pytest-benchmark]
+# Configuration CI-friendly pour pytest-benchmark
+min_rounds = 2
+max_rounds = 5
+max_time = 1.0
+min_time = 0.001
+disable_gc = false
+warmup_iterations = 1000
+calibration_precision = 5
+timer = "time.perf_counter"
+show_stats = true
+show_outliers = true
+output_format = "text"
+  # directories
+  \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | build
+  | dist
+)/
+'''
 
 [tool.ruff]
 target-version = "py38"
@@ -187,17 +215,3 @@ exclude_lines = [
     "class .*\\bProtocol\\):",
     "@(abc\\.)?abstractmethod",
 ]
-
-[tool.pytest-benchmark]
-# Configuration CI-friendly pour pytest-benchmark
-min_rounds = 2
-max_rounds = 5
-max_time = 1.0
-min_time = 0.001
-disable_gc = false
-warmup_iterations = 1000
-calibration_precision = 5
-timer = "time.perf_counter"
-show_stats = true
-show_outliers = true
-output_format = "text"

@@ -66,7 +66,7 @@ arkalia-luna-logo/
 - **Ruff** : Linting rapide et efficace
 - **MyPy** : Vérification des types
 - **Pre-commit** : Hooks automatisés avant commit
-- **Tests** : Couverture de code 64%
+- **Tests** : Couverture de code 78% (+13 points)
 
 ## 🔧 **Fichiers Créés/Modifiés**
 

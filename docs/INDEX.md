@@ -32,7 +32,7 @@ Bienvenue dans la documentation complète d'Arkalia-LUNA Logo Generator ! Cette 
 ### **🏗️ Architecture et Code**
 - **Patterns de design** : Factory, Strategy, Template Method, Builder
 - **Structure modulaire** : Séparation des responsabilités
-- **Tests et qualité** : Couverture 64%, outils de qualité automatisés
+- **Tests et qualité** : Couverture 78% (+13 points), outils de qualité automatisés
 
 ### **🚀 Utilisation et Développement**
 - **Interface CLI** : Commandes complètes avec Rich
