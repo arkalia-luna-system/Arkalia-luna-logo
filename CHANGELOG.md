@@ -28,6 +28,7 @@ et ce projet adhère au [Semantic Versioning](https://semver.org/lang/fr/).
 - **Structure des exports** : Organisation cohérente des fichiers générés
 - **Gestion des erreurs** : Exceptions personnalisées et codes d'erreur
 - **Validation des paramètres** : Vérification des entrées utilisateur
+- **Warnings macOS** : Documentation des warnings normaux et inoffensifs
 
 ### 🗑️ **Supprimé**
 - **Ancienne architecture** : Remplacement par le nouveau système modulaire
