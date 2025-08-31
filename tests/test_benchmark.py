@@ -27,6 +27,7 @@ class TestLogoGeneratorBenchmark:
         def generate_logo():
             return generator.generate_svg_logo(variant, 100)
 
+        # Benchmark simple pour CI
         result = benchmark(generate_logo)
         assert result is not None
         assert "svg" in str(result).lower()
@@ -42,6 +43,7 @@ class TestLogoGeneratorBenchmark:
                 results.append(result)
             return results
 
+        # Benchmark simple pour CI
         results = benchmark(generate_multiple_sizes)
         assert len(results) == len(sizes)
         assert all("svg" in str(result).lower() for result in results)
@@ -57,6 +59,7 @@ class TestLogoGeneratorBenchmark:
                 results.append(result)
             return results
 
+        # Benchmark simple pour CI
         results = benchmark(switch_variants)
         assert len(results) == len(variants)
         assert all("svg" in str(result).lower() for result in results)
@@ -79,6 +82,7 @@ class TestSVGBuilderBenchmark:
         def create_drawing():
             return svg_builder.create_drawing(100, (0, 0, 100, 100))
 
+        # Benchmark simple pour CI
         result = benchmark(create_drawing)
         assert result is not None
         assert hasattr(result, "defs")
@@ -102,6 +106,7 @@ class TestSVGBuilderBenchmark:
             drawing = svg_builder.create_drawing(100)
             return drawing
 
+        # Benchmark simple pour CI
         result = benchmark(process_variant)
         assert result is not None
 
@@ -117,6 +122,7 @@ class TestCLIBenchmark:
 
             return src.cli
 
+        # Benchmark simple pour CI
         result = benchmark(import_cli)
         assert result is not None
 
@@ -127,6 +133,7 @@ class TestCLIBenchmark:
             # Simuler l'affichage de l'aide
             return "Usage: python -m src.cli [OPTIONS] COMMAND [ARGS]..."
 
+        # Benchmark simple pour CI
         result = benchmark(show_help)
         assert result is not None
         assert "Usage:" in result

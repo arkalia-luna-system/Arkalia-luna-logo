@@ -98,6 +98,20 @@ target-version = ['py38']
 include = '\.pyi?$'
 extend-exclude = '''
 /(
+
+[tool.pytest-benchmark]
+# Configuration CI-friendly pour pytest-benchmark
+min_rounds = 2
+max_rounds = 5
+max_time = 1.0
+min_time = 0.001
+disable_gc = false
+warmup_iterations = 1000
+calibration_precision = 5
+timer = "time.perf_counter"
+show_stats = true
+show_outliers = true
+output_format = "text"
   # directories
   \.eggs
   | \.git
