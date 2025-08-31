@@ -17,6 +17,9 @@ Bienvenue dans la documentation complète d'Arkalia-LUNA Logo Generator ! Cette 
 ### 🏗️ **Contributeur - Développement**
 - **[CONTRIBUTING.md](CONTRIBUTING.md)** - Guide de contribution et standards de code
 - **[CI-README.md](CI-README.md)** - Configuration CI/CD et tests
+- **[workflow-next-steps.md](workflow-next-steps.md)** - **🚨 ROADMAP STRATÉGIQUE** - Plan d'amélioration par phases
+- **[ROADMAP_PROGRESS.md](ROADMAP_PROGRESS.md)** - **📊 SUIVI DES PROGRÈS** - Avancement détaillé des phases
+- **[ROADMAP_SUMMARY.md](ROADMAP_SUMMARY.md)** - **🎯 SYNTHÈSE RAPIDE** - Vue d'ensemble en un coup d'œil
 
 ### 📋 **Référence - Informations Techniques**
 - **[CHANGELOG.md](../CHANGELOG.md)** - Historique des versions et changements
@@ -50,7 +53,9 @@ docs/
 ├── CONTRIBUTING.md            # Guide de contribution
 ├── CI-README.md               # Configuration CI/CD
 ├── README.md                  # Documentation du projet (obsolète)
-├── workflow-next-steps.md     # Workflow de développement
+├── workflow-next-steps.md     # **🚨 ROADMAP STRATÉGIQUE** - Plan d'amélioration par phases
+├── ROADMAP_PROGRESS.md        # **📊 SUIVI DES PROGRÈS** - Avancement détaillé
+├── ROADMAP_SUMMARY.md         # **🎯 SYNTHÈSE RAPIDE** - Vue d'ensemble
 ├── checklist-midjourney.md    # Checklist de qualité
 └── briefs/                    # Briefs créatifs
     ├── creative-brief.md      # Brief créatif principal
@@ -82,6 +87,7 @@ docs/
 | **Ajouter un style** | [CONTRIBUTING.md](CONTRIBUTING.md) | Nouvelles fonctionnalités |
 | **Configurer CI/CD** | [CI-README.md](CI-README.md) | Configuration CI |
 | **Comprendre l'architecture** | [ARCHITECTURE.md](ARCHITECTURE.md) | Vue d'ensemble |
+| **Suivre la roadmap** | [workflow-next-steps.md](workflow-next-steps.md) | **🚨 Plan d'amélioration** |
 
 ## 🎯 **Parcours Recommandés**
 
