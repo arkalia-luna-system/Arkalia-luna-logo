@@ -5,6 +5,7 @@ Tests de benchmark pour mesurer les performances du générateur de logos.
 import pytest
 
 from src.logo_generator import ArkaliaLunaLogo
+from src.variants import ColorScheme, LogoVariant, LogoVariants, VariantType
 
 
 class TestLogoGeneratorBenchmark:
@@ -68,7 +69,6 @@ class TestSVGBuilderBenchmark:
     def svg_builder(self):
         """Fixture pour le builder SVG."""
         from src.svg_builder_advanced import AdvancedSVGBuilder
-        from src.variants import LogoVariants
 
         variants = LogoVariants()
         return AdvancedSVGBuilder(variants)
@@ -85,13 +85,16 @@ class TestSVGBuilderBenchmark:
 
     def test_variant_processing_benchmark(self, benchmark, svg_builder):
         """Benchmark du traitement des variantes."""
-        from src.variants import LogoVariant, VariantType
 
         def process_variant():
+            colors = ColorScheme(
+                primary="#1e3a8a", secondary="#3b82f6", accent="#06b6d4", glow="#60a5fa"
+            )
+
             _ = LogoVariant(
                 name="serenity",
                 variant_type=VariantType.SERENITY,
-                colors=None,  # Utiliser des couleurs par défaut
+                colors=colors,
                 description="Test variant",
                 animation_speed=1.0,
                 glow_intensity=0.8,
