@@ -90,6 +90,47 @@ docs/
 2. **[README.md](../README.md)** - Vue d'ensemble des fonctionnalités
 3. **[API.md](API.md)** - Utilisation programmatique
 
+### **🧪 Structure des Tests**
+
+```mermaid
+graph TD
+    A[📁 Tests/] --> B[🔧 Tests de Base]
+    A --> C[📊 Tests de Couverture]
+    A --> D[⚡ Tests de Performance]
+    A --> E[🎨 Tests Spécialisés]
+    
+    %% Tests de base
+    B --> B1[test_all_generators.py]
+    B --> B2[test_variants.py]
+    B --> B3[test_svg_builders.py]
+    
+    %% Tests de couverture
+    C --> C1[test_cli_coverage.py]
+    C --> C2[test_generator_factory_coverage.py]
+    C --> C3[test_svg_builder_ultimate_coverage.py]
+    C --> C4[test_ultimate_generator_coverage.py]
+    C --> C5[test_realism_max_generator_coverage.py]
+    
+    %% Tests de performance
+    D --> D1[test_benchmark.py]
+    
+    %% Tests spécialisés
+    E --> E1[test_advanced.py]
+    E --> E2[test_ai_moon.py]
+    E --> E3[test_dashboard.py]
+    
+    %% Styles
+    classDef base fill:#e8f5e8,stroke:#2e7d32,stroke-width:2px
+    classDef coverage fill:#e3f2fd,stroke:#1565c0,stroke-width:2px
+    classDef performance fill:#fff3e0,stroke:#f57c00,stroke-width:2px
+    classDef special fill:#fce4ec,stroke:#c2185b,stroke-width:2px
+    
+    class B,B1,B2,B3 base
+    class C,C1,C2,C3,C4,C5 coverage
+    class D,D1 performance
+    class E,E1,E2,E3 special
+```
+
 ### **🔧 Développeur Intégrant**
 1. **[API.md](API.md)** - Documentation de l'API
 2. **[QUICKSTART.md](QUICKSTART.md)** - Exemples d'utilisation
