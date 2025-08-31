@@ -184,7 +184,7 @@ git push origin --delete release/v2.1.0
 
 ### Checks de Qualité
 - ✅ **Tests** : 101/101 passent (100%)
-- ✅ **Coverage** : 64%
+- ✅ **Coverage** : 78% (+13 points)
 - ✅ **Linting** : Ruff sans erreurs
 - ✅ **Formatting** : Black conforme
 - ✅ **Type Checking** : MyPy strict
