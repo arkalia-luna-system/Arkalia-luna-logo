@@ -539,6 +539,32 @@ class ColorScheme(Enum):
 
 ## 🚀 **Déploiement et Release**
 
+### **⚠️ Problèmes Courants et Solutions**
+
+#### **Warnings macOS (Normal et Inoffensifs)**
+Lors de l'installation avec `pip install -e .`, vous pouvez voir des warnings comme :
+```
+WARNING: Ignoring invalid distribution -arkalia-luna-logo
+UserWarning: ._arkalia_luna_logo.egg-info could not be properly decoded in UTF-8
+```
+
+**Ces warnings sont NORMAUX sur macOS et n'affectent PAS le fonctionnement :**
+- ✅ **Projet fonctionne parfaitement**
+- ✅ **Tests passent tous (101/101)**
+- ✅ **Qualité code irréprochable**
+- ✅ **Installation réussie**
+
+**Cause technique :** macOS crée automatiquement des attributs étendus sur les dossiers `.egg-info`, ce qui génère ces warnings cosmétiques lors de la lecture par pip.
+
+**Solution :** Aucune action requise - ces warnings peuvent être ignorés en toute sécurité.
+
+**⚠️ Ne pas essayer de "corriger" ces warnings** - ils sont normaux et n'indiquent aucun problème.
+
+#### **Autres Problèmes Courants**
+- **Tests qui échouent** : Vérifier l'environnement virtuel et les dépendances
+- **Import errors** : S'assurer que le package est installé en mode développement
+- **Erreurs de formatage** : Exécuter `black src/ tests/` avant de committer
+
 ### **1. Versioning**
 
 **Format** : `MAJOR.MINOR.PATCH`
