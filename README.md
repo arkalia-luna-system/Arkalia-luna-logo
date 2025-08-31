@@ -7,6 +7,8 @@
 [![Version](https://img.shields.io/badge/Version-2.0.0-orange.svg)](CHANGELOG.md)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![Ruff](https://img.shields.io/badge/lint-ruff-red.svg)](https://github.com/astral-sh/ruff)
+[![Tests](https://img.shields.io/badge/tests-151%20passed-brightgreen.svg)](tests/)
+[![Coverage](https://img.shields.io/badge/coverage-78%25-brightgreen.svg)](htmlcov/)
 
 ## 🎯 **Vue d'ensemble**
 
@@ -209,6 +211,16 @@ mypy src/ --strict
 
 ## 🚀 **Développement**
 
+### **🎯 Roadmap Stratégique**
+Le projet suit une **roadmap stratégique** en 4 phases pour atteindre l'excellence :
+
+- **🚨 Phase 1 (2-3 sem)** : Solidification technique (couverture 90%+, tests robustes)
+- **🚨 Phase 2 (3-4 sem)** : UX exceptionnelle (démo en ligne, onboarding simple)
+- **🟡 Phase 3 (2-3 sem)** : Distribution (PyPI, API externe)
+- **🟢 Phase 4 (4+ sem)** : Communauté (badges, communication externe)
+
+**📊 Suivi détaillé** : [Documentation complète](docs/ROADMAP_SUMMARY.md)
+
 ### **Ajout d'un Nouveau Style**
 1. Créer `svg_builder_*.py` héritant de `SVGBuilder`
 2. Implémenter la méthode abstraite `build_logo()`
@@ -224,15 +236,17 @@ mypy src/ --strict
 
 ## 📊 **Performance**
 
-### **Benchmark des Générateurs**
-- **Realism Max** : 0.0022s ⚡ (Le plus rapide)
-- **Dashboard** : 0.0038s
-- **AI-Moon** : 0.0065s
-- **Ultra-Max** : 0.0075s
-- **Ultimate** : 0.0074s
-- **Simple-Advanced** : 0.0083s
-- **Advanced** : 0.0084s
-- **Base** : 0.0130s
+### **Benchmark des Générateurs (Mise à jour)**
+- **Realism Max** : ~0.002s ⚡ (Le plus rapide)
+- **Dashboard** : ~0.004s
+- **AI-Moon** : ~0.007s
+- **Ultra-Max** : ~0.008s
+- **Ultimate** : ~0.007s
+- **Simple-Advanced** : ~0.008s
+- **Advanced** : ~0.008s
+- **Base** : ~0.013s
+
+*Note : Les temps varient selon la taille et la complexité du logo*
 
 ## 🤝 **Contribution**
 
@@ -257,13 +271,12 @@ Ce projet est sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.
 - **Version** : 2.0.0
 - **Statut** : Production/Stable
 - **Python** : 3.8+
-- **Tests** : 78% de couverture (+13 points)
-- **Tests créés** : 80 nouveaux tests de couverture
+- **Tests** : **151 tests passent** ✅
+- **Couverture** : **78%** (objectif 90%+)
 - **CI/CD** : GitHub Actions automatisé
 - **Qualité** : Black + Ruff + MyPy
-- **Benchmarks** : 7/7 tests de performance
+- **Benchmarks** : 7/7 tests de performance ✅
 
 ---
 
 **🌙 Arkalia-LUNA Logo Generator** - Créé avec ❤️ par l'équipe Arkalia-LUNA
-# Test validation workflow
