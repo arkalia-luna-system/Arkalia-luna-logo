@@ -43,12 +43,57 @@ src/
 
 ```mermaid
 graph TD
-    A[CLI] --> B[Generator Factory]
-    B --> C[Style Generators]
-    C --> D[SVG Builders]
-    C --> E[Variants Manager]
-    D --> F[SVG Output]
-    E --> G[Emotional Variants]
+    %% Interface utilisateur
+    A[🎨 CLI Interface<br/>Click + Rich] --> B[🏭 Generator Factory<br/>Pattern Factory]
+    
+    %% Générateurs de styles
+    B --> C[🎭 Style Generators<br/>8 styles uniques]
+    C --> C1[🌙 Base Generator]
+    C --> C2[📊 Dashboard Generator]
+    C --> C3[🌙 AI-Moon Generator]
+    C --> C4[🎨 Advanced Generator]
+    C --> C5[⚡ Simple-Advanced Generator]
+    C --> C6[🚀 Ultra-Max Generator]
+    C --> C7[🌍 Realism Max Generator]
+    C --> C8[🌟 Ultimate Generator]
+    
+    %% Builders SVG
+    C --> D[🔧 SVG Builders<br/>Pattern Builder]
+    D --> D1[🌙 BaseSVGBuilder]
+    D --> D2[📊 DashboardSVGBuilder]
+    D --> D3[🌙 AIMoonSVGBuilder]
+    D --> D4[🎨 AdvancedSVGBuilder]
+    D --> D5[⚡ SimpleAdvancedSVGBuilder]
+    D --> D6[🚀 UltraMaxSVGBuilder]
+    D --> D7[🌍 RealismMaxSVGBuilder]
+    D --> D8[🌟 UltimateSVGBuilder]
+    
+    %% Gestion des variantes
+    C --> E[🎭 Variants Manager<br/>5 variantes émotionnelles]
+    E --> E1[🌙 Sérénité]
+    E --> E2[⚡ Puissance]
+    E --> E3[🔮 Mystère]
+    E --> E4[✨ Éveil/Sagesse]
+    E --> E5[🎇 Énergie créative]
+    
+    %% Sortie et configuration
+    D --> F[📤 SVG Output<br/>Gradients + Filtres]
+    E --> G[🎨 Color Schemes<br/>Palettes dynamiques]
+    
+    %% Styles
+    classDef cli fill:#e1f5fe,stroke:#01579b,stroke-width:2px
+    classDef factory fill:#f3e5f5,stroke:#4a148c,stroke-width:2px
+    classDef generator fill:#e8f5e8,stroke:#1b5e20,stroke-width:2px
+    classDef builder fill:#fff3e0,stroke:#e65100,stroke-width:2px
+    classDef variant fill:#fce4ec,stroke:#880e4f,stroke-width:2px
+    classDef output fill:#e0f2f1,stroke:#004d40,stroke-width:2px
+    
+    class A cli
+    class B factory
+    class C,C1,C2,C3,C4,C5,C6,C7,C8 generator
+    class D,D1,D2,D3,D4,D5,D6,D7,D8 builder
+    class E,E1,E2,E3,E4,E5 variant
+    class F,G output
 ```
 
 ## 🔧 **Patterns de Design Implémentés**

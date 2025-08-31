@@ -70,6 +70,49 @@ svg_path = generator.generate_single_logo("serenity", size=200)
 print(f"Logo généré : {svg_path}")
 ```
 
+## 🔄 **Flux de Travail Recommandé**
+
+```mermaid
+flowchart TD
+    A[🚀 Démarrage] --> B[📥 Installation]
+    B --> C[🎨 Premier Logo]
+    C --> D[⚙️ Configuration]
+    D --> E[🔄 Développement]
+    
+    %% Installation
+    B --> B1[🐍 Python 3.8+]
+    B --> B2[📦 pip install -e .]
+    B --> B3[✅ Vérification]
+    
+    %% Premier Logo
+    C --> C1[🌟 Style Ultimate]
+    C --> C2[🌙 Variante Sérénité]
+    C --> C3[📁 Export SVG]
+    
+    %% Configuration
+    D --> D1[🎭 Variantes émotionnelles]
+    D --> D2[📏 Tailles multiples]
+    D --> D3[🎨 Styles personnalisés]
+    
+    %% Développement
+    E --> E1[🧪 Tests]
+    E --> E2[📚 Documentation]
+    E --> E3[🚀 Déploiement]
+    
+    %% Styles
+    classDef start fill:#e3f2fd,stroke:#1976d2,stroke-width:3px
+    classDef install fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
+    classDef logo fill:#e8f5e8,stroke:#388e3c,stroke-width:2px
+    classDef config fill:#fff3e0,stroke:#f57c00,stroke-width:2px
+    classDef dev fill:#fce4ec,stroke:#c2185b,stroke-width:2px
+    
+    class A start
+    class B,B1,B2,B3 install
+    class C,C1,C2,C3 logo
+    class D,D1,D2,D3 config
+    class E,E1,E2,E3 dev
+```
+
 ## 🌙 **Styles Disponibles Immédiatement**
 
 ### **1. ULTIME (Recommandé pour commencer)**

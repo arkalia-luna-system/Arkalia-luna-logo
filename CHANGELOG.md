@@ -13,7 +13,7 @@ et ce projet adhère au [Semantic Versioning](https://semver.org/lang/fr/).
 - **CLI avancé** : Interface en ligne de commande complète avec Rich
 - **Système de variantes** : 5 variantes émotionnelles (Sérénité, Puissance, Mystère, Éveil, Énergie Créative)
 - **Builders SVG spécialisés** : Constructeurs dédiés pour chaque style de logo
-- **Tests complets** : Couverture de code 64% avec pytest
+- **Tests complets** : Couverture de code 78% (+13 points) avec pytest
 - **Documentation API** : Documentation complète de l'API Python
 - **Configuration pyproject.toml** : Configuration moderne avec setuptools
 

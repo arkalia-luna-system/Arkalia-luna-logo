@@ -26,6 +26,65 @@ src/
 - **Builder Pattern** : Construction progressive des logos SVG
 - **Template Method** : Générateurs avec étapes communes
 
+### **Diagramme de Classes**
+
+```mermaid
+classDiagram
+    class LogoGeneratorFactory {
+        +create_generator(style: str) BaseLogoGenerator
+        +list_available_styles() List[str]
+        +get_generator_info(style: str) Dict
+    }
+    
+    class BaseLogoGenerator {
+        <<abstract>>
+        +generate_single_logo(variant: str, size: int) str
+        +generate_all_variants(size: int) Dict
+        +get_variant_info(variant: str) LogoVariant
+    }
+    
+    class UltimateLogoGenerator {
+        +generate_single_logo(variant: str, size: int) str
+        +enable_animations: bool
+        +enable_glow_effects: bool
+    }
+    
+    class BaseSVGBuilder {
+        <<abstract>>
+        +build_logo(variant: LogoVariant, size: int) str
+        +add_gradient_defs(svg: SVG) void
+        +add_glow_effects(svg: SVG, variant: LogoVariant) void
+    }
+    
+    class UltimateSVGBuilder {
+        +build_logo(variant: LogoVariant, size: int) str
+        +add_holographic_effects(svg: SVG) void
+        +add_neural_network(svg: SVG) void
+    }
+    
+    class LogoVariant {
+        +name: str
+        +variant_type: VariantType
+        +colors: ColorScheme
+        +animation_speed: float
+        +glow_intensity: float
+    }
+    
+    class ColorScheme {
+        +primary: str
+        +secondary: str
+        +accent: str
+        +glow: str
+    }
+    
+    LogoGeneratorFactory --> BaseLogoGenerator : creates
+    BaseLogoGenerator <|-- UltimateLogoGenerator : extends
+    BaseLogoGenerator --> BaseSVGBuilder : uses
+    BaseSVGBuilder <|-- UltimateSVGBuilder : extends
+    BaseLogoGenerator --> LogoVariant : generates
+    LogoVariant --> ColorScheme : has
+```
+
 ## 🔧 **Classes Principales**
 
 ### **LogoGeneratorFactory**

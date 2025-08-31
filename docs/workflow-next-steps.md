@@ -1,12 +1,33 @@
 # 🚀 Workflow - Prochaines Étapes Arkalia-LUNA
 
-## 📍 État actuel du projet
+## 🔄 **Workflow de Développement**
 
-✅ **Structure de dossiers** créée  
-✅ **Brief créatif** documenté  
-✅ **Prompts MidJourney** optimisés  
-✅ **Code React de base** développé  
-✅ **Checklist d'évaluation** préparée  
+```mermaid
+gantt
+    title Workflow Arkalia-LUNA Logo Generator
+    dateFormat  YYYY-MM-DD
+    section Phase 1: Concept
+    Brief créatif           :done, brief, 2024-12-01, 1d
+    Prompts MidJourney      :done, prompts, 2024-12-02, 1d
+    Structure dossiers      :done, structure, 2024-12-03, 1d
+    
+    section Phase 2: Génération
+    Génération MidJourney   :active, midjourney, 2024-12-19, 2h
+    Évaluation images       :evaluation, 2024-12-19, 30min
+    Sélection finale        :selection, 2024-12-19, 1h
+    
+    section Phase 3: Développement
+    Vectorisation SVG       :svg, after selection, 3h
+    Animation React         :react, after svg, 4h
+    Export Lottie           :lottie, after react, 3h
+    
+    section Phase 4: Finalisation
+    Tests & validation      :tests, after lottie, 2h
+    Documentation           :docs, after tests, 1h
+    Déploiement            :deploy, after docs, 1h
+```
+
+## 📍 État actuel du projet  
 
 ## 🎯 Prochaines actions immédiates
 

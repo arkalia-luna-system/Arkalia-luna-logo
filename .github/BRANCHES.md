@@ -166,7 +166,7 @@ git commit -m "refactor(svg): simplifier la logique de construction"
 ### Checks Obligatoires
 - ✅ Tests unitaires passent
 - ✅ Tests d'intégration passent
-- ✅ Code coverage 64%
+- ✅ Code coverage 78% (+13 points)
 - ✅ Linting (Ruff) sans erreurs
 - ✅ Formatage (Black) conforme
 - ✅ Type checking (MyPy) sans erreurs
@@ -198,7 +198,7 @@ git config alias.visual '!gitk'
 ## 📊 Monitoring et Métriques
 
 ### Qualité du Code
-- **Coverage** : Maintenu 64%
+- **Coverage** : Maintenu 78% (+13 points)
 - **Complexité** : Cyclomatic complexity < 10
 - **Maintenabilité** : Score A sur CodeClimate
 

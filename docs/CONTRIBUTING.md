@@ -220,6 +220,22 @@ pytest --tb=long -v
 
 **Objectif** : Maintenir une couverture 78% (actuellement atteinte)
 
+```mermaid
+pie title Couverture de Code Actuelle (78%)
+    "Tests existants" : 65
+    "Nouveaux tests CLI" : 5
+    "Nouveaux tests Factory" : 4
+    "Nouveaux tests Ultimate" : 3
+    "Nouveaux tests Realism Max" : 1
+```
+
+**📊 Détail de la couverture par module :**
+- **`src/cli.py`** : 92% (tests CLI complets)
+- **`src/generator_factory.py`** : 95% (tests Factory complets)
+- **`src/svg_builder_ultimate.py`** : 98% (tests Ultimate complets)
+- **`src/ultimate_generator.py`** : 81% (tests générateur complets)
+- **`src/realism_max_generator.py`** : 99% (tests Realism Max complets)
+
 ```bash
 # Rapport de couverture HTML
 pytest --cov=src --cov-report=html
