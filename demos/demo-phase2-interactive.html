@@ -152,25 +152,44 @@
 
         .generate-btn {
             width: 100%;
-            padding: 1rem;
+            padding: 1.2rem;
             background: linear-gradient(45deg, var(--primary), var(--secondary));
             color: white;
             border: none;
             border-radius: 12px;
-            font-size: 1.1rem;
-            font-weight: 600;
+            font-size: 1.2rem;
+            font-weight: 700;
             cursor: pointer;
             transition: all 0.3s ease;
             margin-top: 1rem;
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .generate-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .generate-btn:hover::before {
+            left: 100%;
         }
 
         .generate-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(96, 165, 250, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(96, 165, 250, 0.4);
         }
 
         .generate-btn:active {
-            transform: translateY(0);
+            transform: translateY(-1px);
         }
 
         .preview-section {
@@ -334,6 +353,64 @@
             }
         }
 
+        /* Nouvelles animations pour les effets visuels */
+        @keyframes pulse {
+            0% {
+                opacity: 0.3;
+                transform: scale(1);
+            }
+
+            100% {
+                opacity: 0.8;
+                transform: scale(1.05);
+            }
+        }
+
+        @keyframes network {
+
+            0%,
+            100% {
+                opacity: 0.7;
+                stroke-width: 1.2;
+            }
+
+            50% {
+                opacity: 1;
+                stroke-width: 1.8;
+            }
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+                opacity: 0.6;
+            }
+
+            50% {
+                transform: translateY(-5px);
+                opacity: 1;
+            }
+        }
+
+        /* Animation pour les particules avec délais différents */
+        .particle-1 {
+            animation-delay: 0s;
+        }
+
+        .particle-2 {
+            animation-delay: 0.5s;
+        }
+
+        .particle-3 {
+            animation-delay: 1s;
+        }
+
+        .particle-4 {
+            animation-delay: 1.5s;
+        }
+
         .notification {
             position: fixed;
             top: 2rem;
@@ -345,6 +422,8 @@
             transform: translateX(400px);
             transition: transform 0.3s ease;
             z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            min-width: 300px;
         }
 
         .notification.show {
@@ -352,11 +431,56 @@
         }
 
         .notification.success {
-            background: #10b981;
+            background: linear-gradient(45deg, #10b981, #059669);
+            border-left: 4px solid #34d399;
         }
 
         .notification.error {
-            background: #ef4444;
+            background: linear-gradient(45deg, #ef4444, #dc2626);
+            border-left: 4px solid #f87171;
+        }
+
+        .notification.warning {
+            background: linear-gradient(45deg, #f59e0b, #d97706);
+            border-left: 4px solid #fbbf24;
+        }
+
+        .notification.info {
+            background: linear-gradient(45deg, #3b82f6, #1d4ed8);
+            border-left: 4px solid #60a5fa;
+        }
+
+        /* Indicateurs de validation */
+        .control-item.valid input,
+        .control-item.valid select {
+            border-color: #10b981;
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+        }
+
+        .control-item.invalid input,
+        .control-item.invalid select {
+            border-color: #ef4444;
+            box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+        }
+
+        .validation-message {
+            font-size: 0.8rem;
+            margin-top: 0.25rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            display: none;
+        }
+
+        .validation-message.error {
+            background: rgba(239, 68, 68, 0.1);
+            color: #fca5a5;
+            border: 1px solid rgba(239, 68, 68, 0.2);
+        }
+
+        .validation-message.success {
+            background: rgba(16, 185, 129, 0.1);
+            color: #6ee7b7;
+            border: 1px solid rgba(16, 185, 129, 0.2);
         }
 
         @media (max-width: 1024px) {
@@ -428,10 +552,12 @@
                     <div class="control-item">
                         <label for="glow">Intensité de l'Aura</label>
                         <input type="range" id="glow" min="0" max="100" value="80">
+                        <span id="glow-help" class="validation-message"></span>
                     </div>
                     <div class="control-item">
                         <label for="animation">Vitesse d'Animation</label>
                         <input type="range" id="animation" min="0.5" max="2" step="0.1" value="1">
+                        <span id="animation-help" class="validation-message"></span>
                     </div>
                 </div>
 
@@ -593,18 +719,18 @@
                 logoInfo.style.display = 'block';
                 downloadActions.style.display = 'block';
                 showNotification('Logo généré avec succès !', 'success');
-            }, 1500);
+            }, 800); // Réduit de 1500ms à 800ms pour plus de réactivité
         }
 
-        // Mise à jour du logo
+        // Mise à jour du logo avec rendu SVG dynamique
         function updateLogo(variant, size, glow, animation) {
             const variantData = variants[variant];
 
-            // Mettre à jour les couleurs
-            logoSvg.style.setProperty('--primary', variantData.colors.primary);
-            logoSvg.style.setProperty('--secondary', variantData.colors.secondary);
-            logoSvg.style.setProperty('--accent', variantData.colors.accent);
-            logoSvg.style.setProperty('--glow', variantData.colors.glow);
+            // Créer un nouveau SVG dynamique
+            const newSvg = createDynamicSVG(variantData, size, glow, animation);
+
+            // Remplacer l'ancien SVG
+            logoSvg.innerHTML = newSvg;
 
             // Mettre à jour les informations
             document.getElementById('infoVariant').textContent = variantData.name;
@@ -614,7 +740,105 @@
 
             // Appliquer les effets visuels
             const glowIntensity = glow / 100;
-            logoSvg.style.filter = `drop-shadow(0 0 ${20 + glowIntensity * 30}px ${variantData.colors.glow}${Math.round(glowIntensity * 255).toString(16).padStart(2, '0')})`;
+            const glowRadius = 20 + glowIntensity * 30;
+            const glowOpacity = Math.round(glowIntensity * 255).toString(16).padStart(2, '0');
+
+            logoSvg.style.filter = `drop-shadow(0 0 ${glowRadius}px ${variantData.colors.glow}${glowOpacity})`;
+
+            // Animation de l'aura
+            if (glow > 0) {
+                logoSvg.style.animation = `glow ${2 / animation}s ease-in-out infinite alternate`;
+            } else {
+                logoSvg.style.animation = 'none';
+            }
+        }
+
+        // Création d'un SVG dynamique basé sur les paramètres
+        function createDynamicSVG(variantData, size, glow, animation) {
+            const center = 100;
+            const baseRadius = 70;
+            const auraRadius = 95;
+
+            // Calcul des couleurs avec transparence
+            const primaryColor = variantData.colors.primary;
+            const secondaryColor = variantData.colors.secondary;
+            const accentColor = variantData.colors.accent;
+            const glowColor = variantData.colors.glow;
+
+            // Intensité de l'aura
+            const auraOpacity = glow / 100;
+            const auraWidth = 1 + (glow / 100) * 2;
+
+            // Vitesse d'animation
+            const animDuration = 2 / animation;
+
+            return `
+                <!-- Aura dynamique -->
+                <circle cx="${center}" cy="${center}" r="${auraRadius}" 
+                        fill="none" 
+                        stroke="${glowColor}" 
+                        stroke-width="${auraWidth}" 
+                        opacity="${auraOpacity * 0.8}"
+                        style="animation: pulse ${animDuration}s ease-in-out infinite alternate;" />
+                
+                <!-- Halo secondaire -->
+                <circle cx="${center}" cy="${center}" r="${auraRadius - 10}" 
+                        fill="none" 
+                        stroke="${secondaryColor}" 
+                        stroke-width="0.5" 
+                        opacity="${auraOpacity * 0.4}" />
+                
+                <!-- Lune principale avec gradient dynamique -->
+                <defs>
+                    <radialGradient id="moonGradient-${variant}" cx="50%" cy="50%" r="50%">
+                        <stop offset="0%" stop-color="${primaryColor}" />
+                        <stop offset="50%" stop-color="${secondaryColor}" />
+                        <stop offset="100%" stop-color="${accentColor}" />
+                    </radialGradient>
+                </defs>
+                
+                <circle cx="${center}" cy="${center}" r="${baseRadius}" 
+                        fill="url(#moonGradient-${variant})" />
+                
+                <!-- Réseau neuronal avec animation -->
+                <g fill="none" stroke="${accentColor}" stroke-width="1.2" opacity="0.9">
+                    <path d="M70 100 Q85 80 100 70 Q115 80 130 100" 
+                          style="animation: network 1 ${animDuration}s ease-in-out infinite;" />
+                    <path d="M75 90 Q90 70 100 60 Q110 70 125 90" 
+                          style="animation: network 2 ${animDuration}s ease-in-out infinite;" />
+                    <path d="M80 110 Q95 90 100 80 Q105 90 120 110" 
+                          style="animation: network 3 ${animDuration}s ease-in-out infinite;" />
+                </g>
+                
+                <!-- Λ-core avec effet de brillance -->
+                <g fill="${glowColor}">
+                    <path d="M95 85 L100 95 L105 85 L100 100 Z" />
+                    <circle cx="100" cy="95" r="3" />
+                </g>
+                
+                <!-- Particules flottantes -->
+                <g fill="${accentColor}" opacity="0.6">
+                    <circle cx="85" cy="75" r="1" class="particle-1" style="animation-delay: 0s;" />
+                    <circle cx="115" cy="75" r="1" class="particle-2" style="animation-delay: 0.5s;" />
+                    <circle cx="90" cy="125" r="1" class="particle-3" style="animation-delay: 1s;" />
+                    <circle cx="110" cy="125" r="1" class="particle-4" style="animation-delay: 1.5s;" />
+                </g>
+            `;
+        }
+
+        // Prévisualisation en temps réel (sans clic sur générer)
+        function updatePreviewRealtime() {
+            const variant = document.getElementById('variant').value;
+            const size = parseInt(document.getElementById('size').value);
+            const glow = parseInt(document.getElementById('glow').value);
+            const animation = parseFloat(document.getElementById('animation').value);
+
+            // Mise à jour immédiate de l'aperçu
+            updateLogo(variant, size, glow, animation);
+
+            // Afficher les informations et actions
+            logoInfo.style.display = 'block';
+            downloadActions.style.display = 'block';
         }
 
         // Téléchargement SVG
@@ -645,6 +869,59 @@
             });
         }
 
+        // Validation des paramètres en temps réel
+        function validateParameters() {
+            const glow = parseInt(document.getElementById('glow').value);
+            const animation = parseFloat(document.getElementById('animation').value);
+            const glowHelp = document.getElementById('glow-help');
+            const animationHelp = document.getElementById('animation-help');
+            
+            let hasWarnings = false;
+            let warningMessage = '';
+
+            // Validation de l'aura
+            if (glow === 0) {
+                glowHelp.textContent = "⚠️ Aura désactivée - Le logo sera sans effet lumineux";
+                glowHelp.className = 'validation-message warning';
+                hasWarnings = true;
+                warningMessage += 'Aura désactivée, ';
+            } else if (glow < 20) {
+                glowHelp.textContent = "⚠️ Aura faible - L'effet lumineux sera subtil";
+                glowHelp.className = 'validation-message warning';
+                hasWarnings = true;
+                warningMessage += 'Aura faible, ';
+            } else {
+                glowHelp.textContent = "Contrôlez l'intensité de l'aura lumineuse autour du logo";
+                glowHelp.className = 'validation-message success';
+            }
+
+            // Validation de l'animation
+            if (animation < 0.8) {
+                animationHelp.textContent = "⚠️ Animation lente - Les effets seront plus doux";
+                animationHelp.className = 'validation-message warning';
+                hasWarnings = true;
+                warningMessage += 'Animation lente, ';
+            } else if (animation > 1.5) {
+                animationHelp.textContent = "⚠️ Animation rapide - Les effets seront dynamiques";
+                animationHelp.className = 'validation-message warning';
+                hasWarnings = true;
+                warningMessage += 'Animation rapide, ';
+            } else {
+                animationHelp.textContent = "Ajustez la vitesse des animations et effets visuels";
+                animationHelp.className = 'validation-message success';
+            }
+
+            // Afficher l'aperçu en temps réel si pas d'erreurs critiques
+            if (!hasWarnings) {
+                updatePreviewRealtime();
+            }
+
+            // Afficher un avertissement global si nécessaire
+            if (hasWarnings) {
+                showNotification(warningMessage + 'mais le logo reste fonctionnel', 'warning');
+            }
+        }
+
         // Notifications
         function showNotification(message, type) {
             const notification = document.getElementById('notification');
@@ -654,7 +931,7 @@
 
             setTimeout(() => {
                 notification.classList.remove('show');
-            }, 3000);
+            }, 4000); // Augmenté à 4 secondes pour une meilleure lisibilité
         }
 
         // Initialisation
