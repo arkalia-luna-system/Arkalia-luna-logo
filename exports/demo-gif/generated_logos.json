@@ -1,0 +1,27 @@
+[
+  {
+    "variant": "serenity",
+    "file": "exports/arkalia-luna-serenity-200.svg",
+    "duration": 0.016800642013549805
+  },
+  {
+    "variant": "power",
+    "file": "exports/arkalia-luna-power-200.svg",
+    "duration": 0.013841867446899414
+  },
+  {
+    "variant": "mystery",
+    "file": "exports/arkalia-luna-mystery-200.svg",
+    "duration": 0.015334606170654297
+  },
+  {
+    "variant": "awakening",
+    "file": "exports/arkalia-luna-awakening-200.svg",
+    "duration": 0.01639270782470703
+  },
+  {
+    "variant": "creative",
+    "file": "exports/arkalia-luna-creative-200.svg",
+    "duration": 0.016390323638916016
+  }
+]

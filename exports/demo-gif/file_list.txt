@@ -1,0 +1,2 @@
+file '/Volumes/T7/logo/arkalia-luna-logo/exports/demo-gif/frame_00_serenity.png'
+duration 1.5
