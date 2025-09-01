@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌙 Arkalia-LUNA Logo - Phase 2 - Démo Interactive</title>
+    <style>
+        :root {
+            --primary: #60a5fa;
+            --secondary: #a855f7;
+            --accent: #06b6d4;
+            --glow: #60a5fa;
+            --bg-dark: #0f172a;
+            --bg-card: #1e293b;
+            --text-light: #e2e8f0;
+            --text-muted: #94a3b8;
+            --border: #475569;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--bg-dark) 0%, #1e293b 100%);
+            color: var(--text-light);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(96, 165, 250, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+        h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--primary), var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: glow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                filter: drop-shadow(0 0 20px rgba(96, 165, 250, 0.3));
+            }
+
+            to {
+                filter: drop-shadow(0 0 30px rgba(96, 165, 250, 0.6));
+            }
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .phase-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: linear-gradient(45deg, var(--accent), var(--primary));
+            color: white;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .control-panel {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 2px solid var(--border);
+            height: fit-content;
+            position: sticky;
+            top: 2rem;
+        }
+
+        .control-group {
+            margin-bottom: 2rem;
+        }
+
+        .control-group h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .control-item {
+            margin-bottom: 1rem;
+        }
+
+        .control-item label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .control-item select,
+        .control-item input {
+            width: 100%;
+            padding: 0.75rem;
+            background: var(--bg-dark);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-light);
+            font-size: 1rem;
+        }
+
+        .control-item select:focus,
+        .control-item input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.1);
+        }
+
+        .generate-btn {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .generate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(96, 165, 250, 0.3);
+        }
+
+        .generate-btn:active {
+            transform: translateY(0);
+        }
+
+        .preview-section {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 2px solid var(--border);
+            text-align: center;
+        }
+
+        .preview-header {
+            margin-bottom: 2rem;
+        }
+
+        .preview-header h3 {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .logo-preview {
+            width: 300px;
+            height: 300px;
+            margin: 0 auto 2rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .logo-preview:hover {
+            transform: scale(1.05);
+            filter: drop-shadow(0 0 30px rgba(96, 165, 250, 0.4));
+        }
+
+        .logo-svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .logo-info {
+            background: var(--bg-dark);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+        }
+
+        .logo-info h4 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            text-align: left;
+        }
+
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .info-label {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .info-value {
+            color: var(--text-light);
+            font-weight: 600;
+        }
+
+        .download-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .download-btn {
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(45deg, var(--accent), var(--primary));
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(6, 182, 212, 0.4);
+        }
+
+        .stats-section {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 2px solid var(--border);
+            margin-bottom: 3rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 1.5rem;
+            background: var(--bg-dark);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .loading.show {
+            display: block;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid var(--border);
+            border-top: 4px solid var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .notification {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            color: white;
+            font-weight: 600;
+            transform: translateX(400px);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        .notification.success {
+            background: #10b981;
+        }
+
+        .notification.error {
+            background: #ef4444;
+        }
+
+        @media (max-width: 1024px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+
+            .control-panel {
+                position: static;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .logo-preview {
+                width: 250px;
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="phase-badge">🚀 Phase 2 - UX Exceptionnelle</div>
+            <h1>🌙 Arkalia-LUNA Logo</h1>
+            <p class="subtitle">Générateur de logos techno-mystiques avec interface interactive moderne</p>
+        </div>
+
+        <div class="main-content">
+            <div class="control-panel">
+                <div class="control-group">
+                    <h3>🎨 Variante Émotionnelle</h3>
+                    <div class="control-item">
+                        <label for="variant">Type de Variante</label>
+                        <select id="variant">
+                            <option value="serenity">🌙 Sérénité - Calme et mystique</option>
+                            <option value="power">⚡ Puissance - Énergique et intense</option>
+                            <option value="creative">🎨 Créatif - Artistique et innovant</option>
+                            <option value="mystery">🔮 Mystère - Enigmatique et profond</option>
+                            <option value="awakening">🌅 Éveil - Lumineux et inspirant</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <h3>📏 Dimensions</h3>
+                    <div class="control-item">
+                        <label for="size">Taille du Logo (px)</label>
+                        <select id="size">
+                            <option value="100">100x100 - Petit</option>
+                            <option value="200" selected>200x200 - Standard</option>
+                            <option value="500">500x500 - Grand</option>
+                            <option value="1000">1000x1000 - Très grand</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <h3>⚙️ Paramètres Avancés</h3>
+                    <div class="control-item">
+                        <label for="glow">Intensité de l'Aura</label>
+                        <input type="range" id="glow" min="0" max="100" value="80">
+                    </div>
+                    <div class="control-item">
+                        <label for="animation">Vitesse d'Animation</label>
+                        <input type="range" id="animation" min="0.5" max="2" step="0.1" value="1">
+                    </div>
+                </div>
+
+                <button class="generate-btn" onclick="generateLogo()">
+                    🚀 Générer le Logo
+                </button>
+            </div>
+
+            <div class="preview-section">
+                <div class="preview-header">
+                    <h3>👁️ Aperçu en Temps Réel</h3>
+                    <p>Votre logo personnalisé apparaîtra ici</p>
+                </div>
+
+                <div class="loading" id="loading">
+                    <div class="spinner"></div>
+                    <p>Génération en cours...</p>
+                </div>
+
+                <div class="logo-preview" id="logoPreview">
+                    <svg class="logo-svg" viewBox="0 0 200 200" id="logoSvg">
+                        <!-- Logo par défaut -->
+                        <circle cx="100" cy="100" r="95" fill="none" stroke="#60a5fa" stroke-width="1.5"
+                            opacity="0.7" />
+                        <circle cx="100" cy="100" r="70" fill="url(#defaultGradient)" />
+                        <g fill="none" stroke="#06b6d4" stroke-width="1.2">
+                            <path d="M70 100 Q85 80 100 70 Q115 80 130 100" opacity="0.9" />
+                            <path d="M75 90 Q90 70 100 60 Q110 70 125 90" opacity="0.8" />
+                            <path d="M80 110 Q95 90 100 80 Q105 90 120 110" opacity="0.7" />
+                        </g>
+                        <g fill="#60a5fa">
+                            <path d="M95 85 L100 95 L105 85 L100 100 Z" />
+                            <circle cx="100" cy="95" r="3" />
+                        </g>
+                    </svg>
+                </div>
+
+                <div class="logo-info" id="logoInfo" style="display: none;">
+                    <h4>📊 Informations du Logo</h4>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <span class="info-label">Variante</span>
+                            <span class="info-value" id="infoVariant">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Taille</span>
+                            <span class="info-value" id="infoSize">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Aura</span>
+                            <span class="info-value" id="infoGlow">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Animation</span>
+                            <span class="info-value" id="infoAnimation">-</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="download-actions" id="downloadActions" style="display: none;">
+                    <button class="download-btn" onclick="downloadSVG()">
+                        📁 Télécharger SVG
+                    </button>
+                    <button class="download-btn" onclick="downloadPNG()">
+                        🖼️ Télécharger PNG
+                    </button>
+                    <button class="download-btn" onclick="copyToClipboard()">
+                        📋 Copier le Code
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="stats-section">
+            <h3 style="text-align: center; color: var(--primary); margin-bottom: 2rem;">📈 Statistiques du Projet</h3>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">87%</div>
+                    <div class="stat-label">Couverture de Code</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">238</div>
+                    <div class="stat-label">Tests Totaux</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">5</div>
+                    <div class="stat-label">Générateurs</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">15</div>
+                    <div class="stat-label">Variantes</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="notification" id="notification"></div>
+
+    <defs>
+        <radialGradient id="defaultGradient" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#1e3a8a" />
+            <stop offset="50%" stop-color="#3b82f6" />
+            <stop offset="100%" stop-color="#06b6d4" />
+        </radialGradient>
+    </defs>
+
+    <script>
+        // Configuration des variantes
+        const variants = {
+            serenity: {
+                name: "Sérénité",
+                colors: { primary: "#1e3a8a", secondary: "#3b82f6", accent: "#06b6d4", glow: "#60a5fa" },
+                description: "Halo doux, pulsations lentes, ambiance calme et mystique"
+            },
+            power: {
+                name: "Puissance",
+                colors: { primary: "#1e40af", secondary: "#7c3aed", accent: "#ec4899", glow: "#a855f7" },
+                description: "Halo vibrant, réseau accéléré, énergie intense"
+            },
+            creative: {
+                name: "Créatif",
+                colors: { primary: "#059669", secondary: "#10b981", accent: "#f59e0b", glow: "#06b6d4" },
+                description: "Couleurs vives, formes organiques, inspiration artistique"
+            },
+            mystery: {
+                name: "Mystère",
+                colors: { primary: "#581c87", secondary: "#8b5cf6", accent: "#06b6d4", glow: "#a855f7" },
+                description: "Ombres profondes, lueurs mystérieuses, énigme"
+            },
+            awakening: {
+                name: "Éveil",
+                colors: { primary: "#dc2626", secondary: "#f59e0b", accent: "#10b981", glow: "#fbbf24" },
+                description: "Lumière dorée, renaissance, nouvelle conscience"
+            }
+        };
+
+        // Éléments DOM
+        const logoSvg = document.getElementById('logoSvg');
+        const logoInfo = document.getElementById('logoInfo');
+        const downloadActions = document.getElementById('downloadActions');
+        const loading = document.getElementById('loading');
+
+        // Fonction de génération du logo
+        function generateLogo() {
+            const variant = document.getElementById('variant').value;
+            const size = parseInt(document.getElementById('size').value);
+            const glow = parseInt(document.getElementById('glow').value);
+            const animation = parseFloat(document.getElementById('animation').value);
+
+            // Afficher le loading
+            loading.classList.add('show');
+            logoInfo.style.display = 'none';
+            downloadActions.style.display = 'none';
+
+            // Simuler la génération (dans un vrai projet, ce serait un appel API)
+            setTimeout(() => {
+                updateLogo(variant, size, glow, animation);
+                loading.classList.remove('show');
+                logoInfo.style.display = 'block';
+                downloadActions.style.display = 'block';
+                showNotification('Logo généré avec succès !', 'success');
+            }, 1500);
+        }
+
+        // Mise à jour du logo
+        function updateLogo(variant, size, glow, animation) {
+            const variantData = variants[variant];
+
+            // Mettre à jour les couleurs
+            logoSvg.style.setProperty('--primary', variantData.colors.primary);
+            logoSvg.style.setProperty('--secondary', variantData.colors.secondary);
+            logoSvg.style.setProperty('--accent', variantData.colors.accent);
+            logoSvg.style.setProperty('--glow', variantData.colors.glow);
+
+            // Mettre à jour les informations
+            document.getElementById('infoVariant').textContent = variantData.name;
+            document.getElementById('infoSize').textContent = `${size}x${size}px`;
+            document.getElementById('infoGlow').textContent = `${glow}%`;
+            document.getElementById('infoAnimation').textContent = `${animation}x`;
+
+            // Appliquer les effets visuels
+            const glowIntensity = glow / 100;
+            logoSvg.style.filter = `drop-shadow(0 0 ${20 + glowIntensity * 30}px ${variantData.colors.glow}${Math.round(glowIntensity * 255).toString(16).padStart(2, '0')})`;
+        }
+
+        // Téléchargement SVG
+        function downloadSVG() {
+            const svgData = new XMLSerializer().serializeToString(logoSvg);
+            const blob = new Blob([svgData], { type: 'image/svg+xml' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `arkalia-luna-${document.getElementById('variant').value}-${document.getElementById('size').value}.svg`;
+            a.click();
+            URL.revokeObjectURL(url);
+            showNotification('SVG téléchargé !', 'success');
+        }
+
+        // Téléchargement PNG (simulation)
+        function downloadPNG() {
+            showNotification('Fonctionnalité PNG en développement', 'error');
+        }
+
+        // Copie du code
+        function copyToClipboard() {
+            const svgData = new XMLSerializer().serializeToString(logoSvg);
+            navigator.clipboard.writeText(svgData).then(() => {
+                showNotification('Code SVG copié !', 'success');
+            }).catch(() => {
+                showNotification('Erreur lors de la copie', 'error');
+            });
+        }
+
+        // Notifications
+        function showNotification(message, type) {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.className = `notification ${type}`;
+            notification.classList.add('show');
+
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+
+        // Initialisation
+        document.addEventListener('DOMContentLoaded', () => {
+            // Générer le logo par défaut
+            generateLogo();
+
+            // Événements en temps réel
+            document.getElementById('variant').addEventListener('change', generateLogo);
+            document.getElementById('size').addEventListener('change', generateLogo);
+            document.getElementById('glow').addEventListener('input', generateLogo);
+            document.getElementById('animation').addEventListener('input', generateLogo);
+        });
+    </script>
+</body>
+
+</html>
