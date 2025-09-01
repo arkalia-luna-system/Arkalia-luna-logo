@@ -1,0 +1,1443 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌙 Arkalia-LUNA Logo - Phase 2 - Démo Interactive</title>
+    <style>
+        :root {
+            --primary: #60a5fa;
+            --secondary: #a855f7;
+            --accent: #06b6d4;
+            --glow: #60a5fa;
+            --bg-dark: #0f172a;
+            --bg-card: #1e293b;
+            --text-light: #e2e8f0;
+            --text-muted: #94a3b8;
+            --border: #475569;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--bg-dark) 0%, #1e293b 100%);
+            color: var(--text-light);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(96, 165, 250, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+        h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--primary), var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: glow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                filter: drop-shadow(0 0 20px rgba(96, 165, 250, 0.3));
+            }
+
+            to {
+                filter: drop-shadow(0 0 30px rgba(96, 165, 250, 0.6));
+            }
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .phase-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: linear-gradient(45deg, var(--accent), var(--primary));
+            color: white;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .control-panel {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 2px solid var(--border);
+            height: fit-content;
+            position: sticky;
+            top: 2rem;
+        }
+
+        .control-group {
+            margin-bottom: 2rem;
+        }
+
+        .control-group h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .control-item {
+            margin-bottom: 1rem;
+        }
+
+        .control-item label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .control-item select,
+        .control-item input {
+            width: 100%;
+            padding: 0.75rem;
+            background: var(--bg-dark);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-light);
+            font-size: 1rem;
+        }
+
+        .control-item select:focus,
+        .control-item input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.1);
+        }
+
+        .generate-btn {
+            width: 100%;
+            padding: 1.2rem;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .generate-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .generate-btn:hover::before {
+            left: 100%;
+        }
+
+        .generate-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(96, 165, 250, 0.4);
+        }
+
+        .generate-btn:active {
+            transform: translateY(-1px);
+        }
+
+        .preview-section {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 2px solid var(--border);
+            text-align: center;
+        }
+
+        .preview-header {
+            margin-bottom: 2rem;
+        }
+
+        .preview-header h3 {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .logo-preview {
+            width: 300px;
+            height: 300px;
+            margin: 0 auto 2rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .logo-preview:hover {
+            transform: scale(1.05);
+            filter: drop-shadow(0 0 30px rgba(96, 165, 250, 0.4));
+        }
+
+        .logo-svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .logo-info {
+            background: var(--bg-dark);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+        }
+
+        .logo-info h4 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            text-align: left;
+        }
+
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .info-label {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .info-value {
+            color: var(--text-light);
+            font-weight: 600;
+        }
+
+        .download-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .download-btn {
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(45deg, var(--accent), var(--primary));
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(6, 182, 212, 0.4);
+        }
+
+        .stats-section {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 2px solid var(--border);
+            margin-bottom: 3rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 1.5rem;
+            background: var(--bg-dark);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .loading.show {
+            display: block;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid var(--border);
+            border-top: 4px solid var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Nouvelles animations pour les effets visuels */
+        @keyframes pulse {
+            0% {
+                opacity: 0.3;
+                transform: scale(1);
+            }
+
+            100% {
+                opacity: 0.8;
+                transform: scale(1.05);
+            }
+        }
+
+        @keyframes network {
+
+            0%,
+            100% {
+                opacity: 0.7;
+                stroke-width: 1.2;
+            }
+
+            50% {
+                opacity: 1;
+                stroke-width: 1.8;
+            }
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+                opacity: 0.6;
+            }
+
+            50% {
+                transform: translateY(-5px);
+                opacity: 1;
+            }
+        }
+
+        /* Animations spécifiques aux variantes */
+        @keyframes softPulse {
+
+            0%,
+            100% {
+                opacity: 0.3;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.6;
+                transform: scale(1.02);
+            }
+        }
+
+        @keyframes intensePulse {
+
+            0%,
+            100% {
+                opacity: 0.6;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.9;
+                transform: scale(1.08);
+            }
+        }
+
+        @keyframes organicFlow {
+            0% {
+                stroke-dasharray: 0 1000;
+                opacity: 0.3;
+            }
+
+            50% {
+                stroke-dasharray: 500 500;
+                opacity: 0.7;
+            }
+
+            100% {
+                stroke-dasharray: 1000 0;
+                opacity: 0.3;
+            }
+        }
+
+        @keyframes mysteriousFade {
+
+            0%,
+            100% {
+                opacity: 0.2;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.4;
+                transform: scale(1.03);
+            }
+        }
+
+        @keyframes radiantGlow {
+
+            0%,
+            100% {
+                opacity: 0.6;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.8;
+                transform: scale(1.05);
+            }
+        }
+
+        /* Animations du réseau neuronal */
+        @keyframes gentleWave {
+
+            0%,
+            100% {
+                opacity: 0.7;
+                stroke-width: 1.2;
+            }
+
+            50% {
+                opacity: 0.9;
+                stroke-width: 1.4;
+            }
+        }
+
+        @keyframes dynamicPulse {
+
+            0%,
+            100% {
+                opacity: 0.8;
+                stroke-width: 1.5;
+            }
+
+            50% {
+                opacity: 1;
+                stroke-width: 2.2;
+            }
+        }
+
+        @keyframes playfulBounce {
+
+            0%,
+            100% {
+                opacity: 0.6;
+                stroke-width: 1.3;
+            }
+
+            50% {
+                opacity: 0.8;
+                stroke-width: 1.8;
+            }
+        }
+
+        @keyframes enigmaticFade {
+
+            0%,
+            100% {
+                opacity: 0.4;
+                stroke-width: 0.8;
+            }
+
+            50% {
+                opacity: 0.6;
+                stroke-width: 1.2;
+            }
+        }
+
+        @keyframes ascendingRise {
+
+            0%,
+            100% {
+                opacity: 0.7;
+                stroke-width: 1.1;
+            }
+
+            50% {
+                opacity: 0.9;
+                stroke-width: 1.5;
+            }
+        }
+
+        /* Animations des particules */
+        @keyframes gentleParticle {
+
+            0%,
+            100% {
+                transform: translateY(0px) scale(1);
+                opacity: 0.4;
+            }
+
+            50% {
+                transform: translateY(-8px) scale(1.2);
+                opacity: 0.8;
+            }
+        }
+
+        @keyframes dynamicParticle {
+
+            0%,
+            100% {
+                transform: translateY(0px) scale(1);
+                opacity: 0.5;
+            }
+
+            50% {
+                transform: translateY(-12px) scale(1.5);
+                opacity: 1;
+            }
+        }
+
+        @keyframes playfulParticle {
+
+            0%,
+            100% {
+                transform: translateY(0px) scale(1);
+                opacity: 0.4;
+            }
+
+            25% {
+                transform: translateY(-6px) scale(1.1);
+                opacity: 0.6;
+            }
+
+            75% {
+                transform: translateY(-10px) scale(1.3);
+                opacity: 0.8;
+            }
+        }
+
+        @keyframes enigmaticParticle {
+
+            0%,
+            100% {
+                transform: translateY(0px) scale(1);
+                opacity: 0.3;
+            }
+
+            50% {
+                transform: translateY(-5px) scale(1.1);
+                opacity: 0.5;
+            }
+        }
+
+        @keyframes ascendingParticle {
+
+            0%,
+            100% {
+                transform: translateY(0px) scale(1);
+                opacity: 0.5;
+            }
+
+            50% {
+                transform: translateY(-15px) scale(1.4);
+                opacity: 0.9;
+            }
+        }
+
+        /* Animations des effets supplémentaires */
+        @keyframes gentleRipple {
+
+            0%,
+            100% {
+                opacity: 0.2;
+                transform: scale(0.8);
+            }
+
+            50% {
+                opacity: 0.4;
+                transform: scale(1.1);
+            }
+        }
+
+        @keyframes dynamicRipple {
+
+            0%,
+            100% {
+                opacity: 0.3;
+                transform: scale(0.9);
+            }
+
+            50% {
+                opacity: 0.6;
+                transform: scale(1.2);
+            }
+        }
+
+        @keyframes playfulRipple {
+
+            0%,
+            100% {
+                opacity: 0.2;
+                transform: scale(0.85);
+            }
+
+            50% {
+                opacity: 0.5;
+                transform: scale(1.15);
+            }
+        }
+
+        @keyframes enigmaticRipple {
+
+            0%,
+            100% {
+                opacity: 0.1;
+                transform: scale(0.9);
+            }
+
+            50% {
+                opacity: 0.3;
+                transform: scale(1.05);
+            }
+        }
+
+        @keyframes ascendingRipple {
+
+            0%,
+            100% {
+                opacity: 0.3;
+                transform: scale(0.9);
+            }
+
+            50% {
+                opacity: 0.6;
+                transform: scale(1.2);
+            }
+        }
+
+        /* Animation pour les particules avec délais différents */
+        .particle-1 {
+            animation-delay: 0s;
+        }
+
+        .particle-2 {
+            animation-delay: 0.5s;
+        }
+
+        .particle-3 {
+            animation-delay: 1s;
+        }
+
+        .particle-4 {
+            animation-delay: 1.5s;
+        }
+
+        .notification {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            color: white;
+            font-weight: 600;
+            transform: translateX(400px);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            min-width: 300px;
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        .notification.success {
+            background: linear-gradient(45deg, #10b981, #059669);
+            border-left: 4px solid #34d399;
+        }
+
+        .notification.error {
+            background: linear-gradient(45deg, #ef4444, #dc2626);
+            border-left: 4px solid #f87171;
+        }
+
+        .notification.warning {
+            background: linear-gradient(45deg, #f59e0b, #d97706);
+            border-left: 4px solid #fbbf24;
+        }
+
+        .notification.info {
+            background: linear-gradient(45deg, #3b82f6, #1d4ed8);
+            border-left: 4px solid #60a5fa;
+        }
+
+        /* Indicateurs de validation */
+        .control-item.valid input,
+        .control-item.valid select {
+            border-color: #10b981;
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+        }
+
+        .control-item.invalid input,
+        .control-item.invalid select {
+            border-color: #ef4444;
+            box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+        }
+
+        .validation-message {
+            font-size: 0.8rem;
+            margin-top: 0.25rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            display: none;
+        }
+
+        .validation-message.error {
+            background: rgba(239, 68, 68, 0.1);
+            color: #fca5a5;
+            border: 1px solid rgba(239, 68, 68, 0.2);
+        }
+
+        .validation-message.success {
+            background: rgba(16, 185, 129, 0.1);
+            color: #6ee7b7;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+
+        @media (max-width: 1024px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+
+            .control-panel {
+                position: static;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .logo-preview {
+                width: 250px;
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="phase-badge">🚀 Phase 2 - UX Exceptionnelle</div>
+            <h1>🌙 Arkalia-LUNA Logo</h1>
+            <p class="subtitle">Générateur de logos techno-mystiques avec interface interactive moderne</p>
+        </div>
+
+        <div class="main-content">
+            <div class="control-panel">
+                <div class="control-group">
+                    <h3>🎨 Variante Émotionnelle</h3>
+                    <div class="control-item">
+                        <label for="variant">Type de Variante</label>
+                        <select id="variant">
+                            <option value="serenity">🌙 Sérénité - Calme et mystique</option>
+                            <option value="power">⚡ Puissance - Énergique et intense</option>
+                            <option value="creative">🎨 Créatif - Artistique et innovant</option>
+                            <option value="mystery">🔮 Mystère - Enigmatique et profond</option>
+                            <option value="awakening">🌅 Éveil - Lumineux et inspirant</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <h3>📏 Dimensions</h3>
+                    <div class="control-item">
+                        <label for="size">Taille du Logo (px)</label>
+                        <select id="size">
+                            <option value="100">100x100 - Petit</option>
+                            <option value="200" selected>200x200 - Standard</option>
+                            <option value="500">500x500 - Grand</option>
+                            <option value="1000">1000x1000 - Très grand</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <h3>⚙️ Paramètres Avancés</h3>
+                    <div class="control-item">
+                        <label for="glow">Intensité de l'Aura</label>
+                        <input type="range" id="glow" min="0" max="100" value="80">
+                        <span id="glow-help" class="validation-message"></span>
+                    </div>
+                    <div class="control-item">
+                        <label for="animation">Vitesse d'Animation</label>
+                        <input type="range" id="animation" min="0.5" max="2" step="0.1" value="1">
+                        <span id="animation-help" class="validation-message"></span>
+                    </div>
+                </div>
+
+                <button class="generate-btn" onclick="generateLogo()">
+                    🚀 Générer le Logo
+                </button>
+            </div>
+
+            <div class="preview-section">
+                <div class="preview-header">
+                    <h3>👁️ Aperçu en Temps Réel</h3>
+                    <p>Votre logo personnalisé apparaîtra ici</p>
+                </div>
+
+                <div class="loading" id="loading">
+                    <div class="spinner"></div>
+                    <p>Génération en cours...</p>
+                </div>
+
+                <div class="logo-preview" id="logoPreview">
+                    <svg class="logo-svg" viewBox="0 0 200 200" id="logoSvg">
+                        <!-- Logo par défaut -->
+                        <circle cx="100" cy="100" r="95" fill="none" stroke="#60a5fa" stroke-width="1.5"
+                            opacity="0.7" />
+                        <circle cx="100" cy="100" r="70" fill="url(#defaultGradient)" />
+                        <g fill="none" stroke="#06b6d4" stroke-width="1.2">
+                            <path d="M70 100 Q85 80 100 70 Q115 80 130 100" opacity="0.9" />
+                            <path d="M75 90 Q90 70 100 60 Q110 70 125 90" opacity="0.8" />
+                            <path d="M80 110 Q95 90 100 80 Q105 90 120 110" opacity="0.7" />
+                        </g>
+                        <g fill="#60a5fa">
+                            <path d="M95 85 L100 95 L105 85 L100 100 Z" />
+                            <circle cx="100" cy="95" r="3" />
+                        </g>
+                    </svg>
+                </div>
+
+                <div class="logo-info" id="logoInfo" style="display: none;">
+                    <h4>📊 Informations du Logo</h4>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <span class="info-label">Variante</span>
+                            <span class="info-value" id="infoVariant">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Taille</span>
+                            <span class="info-value" id="infoSize">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Aura</span>
+                            <span class="info-value" id="infoGlow">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Animation</span>
+                            <span class="info-value" id="infoAnimation">-</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="download-actions" id="downloadActions" style="display: none;">
+                    <button class="download-btn" onclick="downloadSVG()">
+                        📁 Télécharger SVG
+                    </button>
+                    <button class="download-btn" onclick="downloadPNG()">
+                        🖼️ Télécharger PNG
+                    </button>
+                    <button class="download-btn" onclick="copyToClipboard()">
+                        📋 Copier le Code
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="stats-section">
+            <h3 style="text-align: center; color: var(--primary); margin-bottom: 2rem;">📈 Statistiques du Projet</h3>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">87%</div>
+                    <div class="stat-label">Couverture de Code</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">238</div>
+                    <div class="stat-label">Tests Totaux</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">5</div>
+                    <div class="stat-label">Générateurs</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">15</div>
+                    <div class="stat-label">Variantes</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="notification" id="notification"></div>
+
+    <defs>
+        <radialGradient id="defaultGradient" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#1e3a8a" />
+            <stop offset="50%" stop-color="#3b82f6" />
+            <stop offset="100%" stop-color="#06b6d4" />
+        </radialGradient>
+    </defs>
+
+    <script>
+        // Configuration des variantes avec designs uniques
+        const variants = {
+            serenity: {
+                name: "Sérénité",
+                colors: {
+                    primary: "#1e3a8a",
+                    secondary: "#3b82f6",
+                    accent: "#06b6d4",
+                    glow: "#60a5fa",
+                    aura: "#e0f2fe"
+                },
+                description: "Halo doux, pulsations lentes, ambiance calme et mystique",
+                effects: {
+                    auraStyle: "soft",
+                    animationType: "gentle",
+                    particleCount: 3,
+                    glowIntensity: 0.8
+                }
+            },
+            power: {
+                name: "Puissance",
+                colors: {
+                    primary: "#1e40af",
+                    secondary: "#7c3aed",
+                    accent: "#ec4899",
+                    glow: "#a855f7",
+                    aura: "#fef3c7"
+                },
+                description: "Halo vibrant, réseau accéléré, énergie intense",
+                effects: {
+                    auraStyle: "intense",
+                    animationType: "dynamic",
+                    particleCount: 6,
+                    glowIntensity: 1.2
+                }
+            },
+            creative: {
+                name: "Créatif",
+                colors: {
+                    primary: "#059669",
+                    secondary: "#10b981",
+                    accent: "#f59e0b",
+                    glow: "#06b6d4",
+                    aura: "#fef7cd"
+                },
+                description: "Couleurs vives, formes organiques, inspiration artistique",
+                effects: {
+                    auraStyle: "organic",
+                    animationType: "playful",
+                    particleCount: 8,
+                    glowIntensity: 0.9
+                }
+            },
+            mystery: {
+                name: "Mystère",
+                colors: {
+                    primary: "#581c87",
+                    secondary: "#8b5cf6",
+                    accent: "#06b6d4",
+                    glow: "#a855f7",
+                    aura: "#f3e8ff"
+                },
+                description: "Ombres profondes, lueurs mystérieuses, énigme",
+                effects: {
+                    auraStyle: "mysterious",
+                    animationType: "enigmatic",
+                    particleCount: 5,
+                    glowIntensity: 0.7
+                }
+            },
+            awakening: {
+                name: "Éveil",
+                colors: {
+                    primary: "#dc2626",
+                    secondary: "#f59e0b",
+                    accent: "#10b981",
+                    glow: "#fbbf24",
+                    aura: "#fef3c7"
+                },
+                description: "Lumière dorée, renaissance, nouvelle conscience",
+                effects: {
+                    auraStyle: "radiant",
+                    animationType: "ascending",
+                    particleCount: 7,
+                    glowIntensity: 1.1
+                }
+            }
+        };
+
+        // Éléments DOM
+        const logoSvg = document.getElementById('logoSvg');
+        const logoInfo = document.getElementById('logoInfo');
+        const downloadActions = document.getElementById('downloadActions');
+        const loading = document.getElementById('loading');
+
+        // Fonction de génération du logo
+        function generateLogo() {
+            const variant = document.getElementById('variant').value;
+            const size = parseInt(document.getElementById('size').value);
+            const glow = parseInt(document.getElementById('glow').value);
+            const animation = parseFloat(document.getElementById('animation').value);
+
+            // Afficher le loading
+            loading.classList.add('show');
+            logoInfo.style.display = 'none';
+            downloadActions.style.display = 'none';
+
+            // Simuler la génération (dans un vrai projet, ce serait un appel API)
+            setTimeout(() => {
+                updateLogo(variant, size, glow, animation);
+                loading.classList.remove('show');
+                logoInfo.style.display = 'block';
+                downloadActions.style.display = 'block';
+                showNotification('Logo généré avec succès !', 'success');
+            }, 800); // Réduit de 1500ms à 800ms pour plus de réactivité
+        }
+
+        // Mise à jour du logo avec rendu SVG dynamique
+        function updateLogo(variant, size, glow, animation) {
+            const variantData = variants[variant];
+
+            // Créer un nouveau SVG dynamique
+            const newSvg = createDynamicSVG(variantData, size, glow, animation);
+
+            // Remplacer l'ancien SVG
+            logoSvg.innerHTML = newSvg;
+
+            // Mettre à jour les informations
+            document.getElementById('infoVariant').textContent = variantData.name;
+            document.getElementById('infoSize').textContent = `${size}x${size}px`;
+            document.getElementById('infoGlow').textContent = `${glow}%`;
+            document.getElementById('infoAnimation').textContent = `${animation}x`;
+
+            // Appliquer les effets visuels
+            const glowIntensity = glow / 100;
+            const glowRadius = 20 + glowIntensity * 30;
+            const glowOpacity = Math.round(glowIntensity * 255).toString(16).padStart(2, '0');
+
+            logoSvg.style.filter = `drop-shadow(0 0 ${glowRadius}px ${variantData.colors.glow}${glowOpacity})`;
+
+            // Animation de l'aura
+            if (glow > 0) {
+                logoSvg.style.animation = `glow ${2 / animation}s ease-in-out infinite alternate`;
+            } else {
+                logoSvg.style.animation = 'none';
+            }
+        }
+
+        // Création d'un SVG dynamique basé sur les paramètres et la variante
+        function createDynamicSVG(variantData, size, glow, animation) {
+            const center = 100;
+            const baseRadius = 70;
+            const auraRadius = 95;
+
+            // Calcul des couleurs avec transparence
+            const primaryColor = variantData.colors.primary;
+            const secondaryColor = variantData.colors.secondary;
+            const accentColor = variantData.colors.accent;
+            const glowColor = variantData.colors.glow;
+            const auraColor = variantData.colors.aura;
+
+            // Intensité de l'aura et effets
+            const auraOpacity = glow / 100;
+            const auraWidth = 1 + (glow / 100) * 2;
+            const glowIntensity = variantData.effects.glowIntensity;
+            const particleCount = variantData.effects.particleCount;
+
+            // Vitesse d'animation
+            const animDuration = 2 / animation;
+
+            // Styles d'aura spécifiques à chaque variante
+            const auraStyle = getAuraStyle(variantData.effects.auraStyle, auraRadius, auraColor, auraOpacity, auraWidth);
+
+            // Réseau neuronal spécifique à chaque variante
+            const neuralNetwork = getNeuralNetwork(variantData.effects.animationType, accentColor, animDuration);
+
+            // Particules spécifiques à chaque variante
+            const particles = getParticles(variantData.effects.animationType, accentColor, particleCount, animDuration);
+
+            return `
+                <!-- Aura dynamique spécifique à la variante -->
+                ${auraStyle}
+                
+                <!-- Lune principale avec gradient dynamique -->
+                <defs>
+                    <radialGradient id="moonGradient-${variantData.name.toLowerCase()}" cx="50%" cy="50%" r="50%">
+                        <stop offset="0%" stop-color="${primaryColor}" />
+                        <stop offset="50%" stop-color="${secondaryColor}" />
+                        <stop offset="100%" stop-color="${accentColor}" />
+                    </radialGradient>
+                    
+                    <!-- Filtres spécifiques à la variante -->
+                    <filter id="glow-${variantData.name.toLowerCase()}" x="-50%" y="-50%" width="200%" height="200%">
+                        <feGaussianBlur stdDeviation="${glowIntensity * 3}" result="coloredBlur"/>
+                        <feMerge> 
+                            <feMergeNode in="coloredBlur"/>
+                            <feMergeNode in="SourceGraphic"/>
+                        </feMerge>
+                    </filter>
+                </defs>
+                
+                <!-- Lune principale avec effets -->
+                <circle cx="${center}" cy="${center}" r="${baseRadius}" 
+                        fill="url(#moonGradient-${variantData.name.toLowerCase()})" 
+                        filter="url(#glow-${variantData.name.toLowerCase()})" />
+                
+                <!-- Réseau neuronal avec animation spécifique -->
+                ${neuralNetwork}
+                
+                <!-- Λ-core avec effet de brillance -->
+                <g fill="${glowColor}">
+                    <path d="M95 85 L100 95 L105 85 L100 100 Z" />
+                    <circle cx="100" cy="95" r="3" />
+                </g>
+                
+                <!-- Particules flottantes spécifiques à la variante -->
+                ${particles}
+                
+                <!-- Effets supplémentaires selon la variante -->
+                ${getAdditionalEffects(variantData.effects.animationType, accentColor, animDuration)}
+            `;
+        }
+
+        // Génération des styles d'aura selon la variante
+        function getAuraStyle(auraType, radius, color, opacity, width) {
+            switch (auraType) {
+                case 'soft':
+                    return `
+                        <circle cx="100" cy="100" r="${radius}" 
+                                fill="none" stroke="${color}" stroke-width="${width}" 
+                                opacity="${opacity * 0.6}"
+                                style="animation: softPulse 3s ease-in-out infinite;" />
+                        <circle cx="100" cy="100" r="${radius - 5}" 
+                                fill="none" stroke="${color}" stroke-width="0.5" 
+                                opacity="${opacity * 0.3}" />
+                    `;
+                case 'intense':
+                    return `
+                        <circle cx="100" cy="100" r="${radius}" 
+                                fill="none" stroke="${color}" stroke-width="${width * 1.5}" 
+                                opacity="${opacity * 0.9}"
+                                style="animation: intensePulse 1.5s ease-in-out infinite;" />
+                        <circle cx="100" cy="100" r="${radius - 8}" 
+                                fill="none" stroke="${color}" stroke-width="1" 
+                                opacity="${opacity * 0.5}" />
+                    `;
+                case 'organic':
+                    return `
+                        <path d="M${100 - radius} 100 Q${100 - radius / 2} ${100 - radius / 3} 100 ${100 - radius / 2} Q${100 + radius / 2} ${100 - radius / 3} ${100 + radius} 100 Q${100 + radius / 2} ${100 + radius / 3} 100 ${100 + radius / 2} Q${100 - radius / 2} ${100 + radius / 3} ${100 - radius} 100" 
+                              fill="none" stroke="${color}" stroke-width="${width}" 
+                              opacity="${opacity * 0.7}"
+                              style="animation: organicFlow 4s ease-in-out infinite;" />
+                    `;
+                case 'mysterious':
+                    return `
+                        <circle cx="100" cy="100" r="${radius}" 
+                                fill="none" stroke="${color}" stroke-width="${width}" 
+                                opacity="${opacity * 0.4}"
+                                style="animation: mysteriousFade 5s ease-in-out infinite;" />
+                        <circle cx="100" cy="100" r="${radius - 15}" 
+                                fill="none" stroke="${color}" stroke-width="0.8" 
+                                opacity="${opacity * 0.2}" />
+                    `;
+                case 'radiant':
+                    return `
+                        <circle cx="100" cy="100" r="${radius}" 
+                                fill="none" stroke="${color}" stroke-width="${width}" 
+                                opacity="${opacity * 0.8}"
+                                style="animation: radiantGlow 2s ease-in-out infinite;" />
+                        <circle cx="100" cy="100" r="${radius - 10}" 
+                                fill="none" stroke="${color}" stroke-width="1.2" 
+                                opacity="${opacity * 0.5}" />
+                    `;
+                default:
+                    return `
+                        <circle cx="100" cy="100" r="${radius}" 
+                                fill="none" stroke="${color}" stroke-width="${width}" 
+                                opacity="${opacity * 0.7}" />
+                    `;
+            }
+        }
+
+        // Génération du réseau neuronal selon le type d'animation
+        function getNeuralNetwork(animType, color, duration) {
+            const basePaths = [
+                'M70 100 Q85 80 100 70 Q115 80 130 100',
+                'M75 90 Q90 70 100 60 Q110 70 125 90',
+                'M80 110 Q95 90 100 80 Q105 90 120 110'
+            ];
+
+            switch (animType) {
+                case 'gentle':
+                    return basePaths.map((path, i) => `
+                        <path d="${path}" fill="none" stroke="${color}" stroke-width="1.2" 
+                              opacity="0.9" style="animation: gentleWave ${duration * 2}s ease-in-out infinite ${i * 0.3}s;" />
+                    `).join('');
+                case 'dynamic':
+                    return basePaths.map((path, i) => `
+                        <path d="${path}" fill="none" stroke="${color}" stroke-width="1.8" 
+                              opacity="1" style="animation: dynamicPulse ${duration}s ease-in-out infinite ${i * 0.2}s;" />
+                    `).join('');
+                case 'playful':
+                    return basePaths.map((path, i) => `
+                        <path d="${path}" fill="none" stroke="${color}" stroke-width="1.5" 
+                              opacity="0.8" style="animation: playfulBounce ${duration * 1.5}s ease-in-out infinite ${i * 0.4}s;" />
+                    `).join('');
+                case 'enigmatic':
+                    return basePaths.map((path, i) => `
+                        <path d="${path}" fill="none" stroke="${color}" stroke-width="1.0" 
+                              opacity="0.6" style="animation: enigmaticFade ${duration * 3}s ease-in-out infinite ${i * 0.5}s;" />
+                    `).join('');
+                case 'ascending':
+                    return basePaths.map((path, i) => `
+                        <path d="${path}" fill="none" stroke="${color}" stroke-width="1.3" 
+                              opacity="0.9" style="animation: ascendingRise ${duration * 2.5}s ease-in-out infinite ${i * 0.3}s;" />
+                    `).join('');
+                default:
+                    return basePaths.map((path, i) => `
+                        <path d="${path}" fill="none" stroke="${color}" stroke-width="1.2" 
+                              opacity="0.9" style="animation: network ${duration}s ease-in-out infinite ${i * 0.3}s;" />
+                    `).join('');
+            }
+        }
+
+        // Génération des particules selon le type d'animation
+        function getParticles(animType, color, count, duration) {
+            const positions = [
+                { x: 85, y: 75 }, { x: 115, y: 75 }, { x: 90, y: 125 }, { x: 110, y: 125 },
+                { x: 75, y: 85 }, { x: 125, y: 85 }, { x: 75, y: 115 }, { x: 125, y: 115 }
+            ];
+
+            return positions.slice(0, count).map((pos, i) => {
+                const delay = (i / count) * duration;
+                return `<circle cx="${pos.x}" cy="${pos.y}" r="1" fill="${color}" opacity="0.6" 
+                               style="animation: ${animType}Particle ${duration * 2}s ease-in-out infinite ${delay}s;" />`;
+            }).join('');
+        }
+
+        // Effets supplémentaires selon le type d'animation
+        function getAdditionalEffects(animType, color, duration) {
+            switch (animType) {
+                case 'gentle':
+                    return `<circle cx="100" cy="100" r="50" fill="none" stroke="${color}" stroke-width="0.5" opacity="0.3" 
+                                   style="animation: gentleRipple ${duration * 4}s ease-in-out infinite;" />`;
+                case 'dynamic':
+                    return `<circle cx="100" cy="100" r="60" fill="none" stroke="${color}" stroke-width="0.8" opacity="0.4" 
+                                   style="animation: dynamicRipple ${duration * 1.5}s ease-in-out infinite;" />`;
+                case 'playful':
+                    return `<circle cx="100" cy="100" r="55" fill="none" stroke="${color}" stroke-width="0.6" opacity="0.3" 
+                                   style="animation: playfulRipple ${duration * 2.5}s ease-in-out infinite;" />`;
+                case 'enigmatic':
+                    return `<circle cx="100" cy="100" r="45" fill="none" stroke="${color}" stroke-width="0.4" opacity="0.2" 
+                                   style="animation: enigmaticRipple ${duration * 5}s ease-in-out infinite;" />`;
+                case 'ascending':
+                    return `<circle cx="100" cy="100" r="65" fill="none" stroke="${color}" stroke-width="0.7" opacity="0.4" 
+                                   style="animation: ascendingRipple ${duration * 3}s ease-in-out infinite;" />`;
+                default:
+                    return '';
+            }
+        }
+
+        // Prévisualisation en temps réel (sans clic sur générer)
+        function updatePreviewRealtime() {
+            const variant = document.getElementById('variant').value;
+            const size = parseInt(document.getElementById('size').value);
+            const glow = parseInt(document.getElementById('glow').value);
+            const animation = parseFloat(document.getElementById('animation').value);
+
+            // Mise à jour immédiate de l'aperçu
+            updateLogo(variant, size, glow, animation);
+
+            // Afficher les informations et actions
+            logoInfo.style.display = 'block';
+            downloadActions.style.display = 'block';
+        }
+
+        // Téléchargement SVG
+        function downloadSVG() {
+            const svgData = new XMLSerializer().serializeToString(logoSvg);
+            const blob = new Blob([svgData], { type: 'image/svg+xml' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `arkalia-luna-${document.getElementById('variant').value}-${document.getElementById('size').value}.svg`;
+            a.click();
+            URL.revokeObjectURL(url);
+            showNotification('SVG téléchargé !', 'success');
+        }
+
+        // Téléchargement PNG (simulation)
+        function downloadPNG() {
+            showNotification('Fonctionnalité PNG en développement', 'error');
+        }
+
+        // Copie du code
+        function copyToClipboard() {
+            const svgData = new XMLSerializer().serializeToString(logoSvg);
+            navigator.clipboard.writeText(svgData).then(() => {
+                showNotification('Code SVG copié !', 'success');
+            }).catch(() => {
+                showNotification('Erreur lors de la copie', 'error');
+            });
+        }
+
+        // Validation des paramètres en temps réel
+        function validateParameters() {
+            const glow = parseInt(document.getElementById('glow').value);
+            const animation = parseFloat(document.getElementById('animation').value);
+            const glowHelp = document.getElementById('glow-help');
+            const animationHelp = document.getElementById('animation-help');
+
+            let hasWarnings = false;
+            let warningMessage = '';
+
+            // Validation de l'aura
+            if (glow === 0) {
+                glowHelp.textContent = "⚠️ Aura désactivée - Le logo sera sans effet lumineux";
+                glowHelp.className = 'validation-message warning';
+                hasWarnings = true;
+                warningMessage += 'Aura désactivée, ';
+            } else if (glow < 20) {
+                glowHelp.textContent = "⚠️ Aura faible - L'effet lumineux sera subtil";
+                glowHelp.className = 'validation-message warning';
+                hasWarnings = true;
+                warningMessage += 'Aura faible, ';
+            } else {
+                glowHelp.textContent = "Contrôlez l'intensité de l'aura lumineuse autour du logo";
+                glowHelp.className = 'validation-message success';
+            }
+
+            // Validation de l'animation
+            if (animation < 0.8) {
+                animationHelp.textContent = "⚠️ Animation lente - Les effets seront plus doux";
+                animationHelp.className = 'validation-message warning';
+                hasWarnings = true;
+                warningMessage += 'Animation lente, ';
+            } else if (animation > 1.5) {
+                animationHelp.textContent = "⚠️ Animation rapide - Les effets seront dynamiques";
+                animationHelp.className = 'validation-message warning';
+                hasWarnings = true;
+                warningMessage += 'Animation rapide, ';
+            } else {
+                animationHelp.textContent = "Ajustez la vitesse des animations et effets visuels";
+                animationHelp.className = 'validation-message success';
+            }
+
+            // Afficher l'aperçu en temps réel si pas d'erreurs critiques
+            if (!hasWarnings) {
+                updatePreviewRealtime();
+            }
+
+            // Afficher un avertissement global si nécessaire
+            if (hasWarnings) {
+                showNotification(warningMessage + 'mais le logo reste fonctionnel', 'warning');
+            }
+        }
+
+        // Notifications
+        function showNotification(message, type) {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.className = `notification ${type}`;
+            notification.classList.add('show');
+
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 4000); // Augmenté à 4 secondes pour une meilleure lisibilité
+        }
+
+        // Initialisation
+        document.addEventListener('DOMContentLoaded', () => {
+            // Générer le logo par défaut
+            generateLogo();
+
+            // Événements en temps réel
+            document.getElementById('variant').addEventListener('change', generateLogo);
+            document.getElementById('size').addEventListener('change', generateLogo);
+            document.getElementById('glow').addEventListener('input', generateLogo);
+            document.getElementById('animation').addEventListener('input', generateLogo);
+        });
+    </script>
+</body>
+
+</html>

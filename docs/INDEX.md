@@ -56,6 +56,8 @@ docs/
 ├── workflow-next-steps.md     # **🚨 ROADMAP STRATÉGIQUE** - Plan d'amélioration par phases
 ├── ROADMAP_PROGRESS.md        # **📊 SUIVI DES PROGRÈS** - Avancement détaillé
 ├── ROADMAP_SUMMARY.md         # **🎯 SYNTHÈSE RAPIDE** - Vue d'ensemble
+├── PHASE2_UX_EXCEPTIONNELLE.md # **🎨 PHASE 2** - UX Exceptionnelle - Plan stratégique
+├── PHASE2_PROGRESS.md         # **📊 PHASE 2** - Suivi des progrès détaillé
 ├── checklist-midjourney.md    # Checklist de qualité
 └── briefs/                    # Briefs créatifs
     ├── creative-brief.md      # Brief créatif principal
@@ -88,6 +90,8 @@ docs/
 | **Configurer CI/CD** | [CI-README.md](CI-README.md) | Configuration CI |
 | **Comprendre l'architecture** | [ARCHITECTURE.md](ARCHITECTURE.md) | Vue d'ensemble |
 | **Suivre la roadmap** | [workflow-next-steps.md](workflow-next-steps.md) | **🚨 Plan d'amélioration** |
+| **Phase 2 UX** | [PHASE2_UX_EXCEPTIONNELLE.md](PHASE2_UX_EXCEPTIONNELLE.md) | **🎨 UX Exceptionnelle** |
+| **Progrès Phase 2** | [PHASE2_PROGRESS.md](PHASE2_PROGRESS.md) | **📊 Suivi détaillé** |
 
 ## 🎯 **Parcours Recommandés**
 
