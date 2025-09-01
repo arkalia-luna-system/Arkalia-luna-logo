@@ -363,7 +363,7 @@ class TestLogoGenerator:
     def test_logger_integration(self, logo_generator, mock_variants_manager):
         """Test de l'intégration du logger"""
         # Vérifier que le logger est configuré
-        assert hasattr(logo_generator, 'logger')
+        assert hasattr(logo_generator, "logger")
         assert logo_generator.logger is not None
 
         # Test que les méthodes de logging sont appelées
@@ -375,7 +375,7 @@ class TestLogoGenerator:
     def test_variants_manager_integration(self, logo_generator, mock_variants_manager):
         """Test de l'intégration du manager de variantes"""
         # Vérifier que le manager est configuré
-        assert hasattr(logo_generator, 'variants_manager')
+        assert hasattr(logo_generator, "variants_manager")
         assert logo_generator.variants_manager is mock_variants_manager
 
         # Test des appels au manager
