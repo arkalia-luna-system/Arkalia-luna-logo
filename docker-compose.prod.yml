@@ -1,7 +1,7 @@
 # Docker Compose Production pour Arkalia-LUNA Logo Generator
 # Configuration optimisée pour la production
 
-version: '3.8'
+# version: '3.8'  # Obsolète dans Docker Compose v2
 
 services:
   # Application principale
@@ -30,7 +30,6 @@ services:
     networks:
       - arkalia-network
     deploy:
-      replicas: 3
       resources:
         limits:
           cpus: '1.0'
