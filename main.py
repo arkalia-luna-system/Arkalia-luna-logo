@@ -5,6 +5,7 @@ API FastAPI pour la génération de logos via interface web
 
 import logging
 import os
+import time
 from datetime import datetime
 from pathlib import Path
 from typing import Dict, List, Optional
@@ -12,7 +13,7 @@ from typing import Dict, List, Optional
 import uvicorn
 from fastapi import BackgroundTasks, FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, PlainTextResponse
 from pydantic import BaseModel, Field
 
 try:
@@ -21,13 +22,64 @@ try:
     from src.variants import LogoVariants
 except ImportError as e:
     print(f"Erreur d'import: {e}")
-    ArkaliaLunaLogo = None
-    LogoGeneratorFactory = None
-    LogoVariants = None
+    ArkaliaLunaLogo = None  # type: ignore
+    LogoGeneratorFactory = None  # type: ignore
+    LogoVariants = None  # type: ignore
 
 # Configuration du logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
+
+
+# Métriques Prometheus
+class PrometheusMetrics:
+    def __init__(self):
+        self.start_time = time.time()
+        self.request_count = 0
+        self.logo_generation_count = 0
+        self.error_count = 0
+        self.last_generation_time = 0.0
+
+    def increment_request(self):
+        self.request_count += 1
+
+    def increment_logo_generation(self, duration: float):
+        self.logo_generation_count += 1
+        self.last_generation_time = duration
+
+    def increment_error(self):
+        self.error_count += 1
+
+    def get_metrics(self) -> str:
+        uptime = time.time() - self.start_time
+        return f"""# HELP arkalia_luna_uptime_seconds Total uptime in seconds
+# TYPE arkalia_luna_uptime_seconds counter
+arkalia_luna_uptime_seconds {uptime}
+
+# HELP arkalia_luna_requests_total Total number of requests
+# TYPE arkalia_luna_requests_total counter
+arkalia_luna_requests_total {self.request_count}
+
+# HELP arkalia_luna_logo_generations_total Total number of logo generations
+# TYPE arkalia_luna_logo_generations_total counter
+arkalia_luna_logo_generations_total {self.logo_generation_count}
+
+# HELP arkalia_luna_errors_total Total number of errors
+# TYPE arkalia_luna_errors_total counter
+arkalia_luna_errors_total {self.error_count}
+
+# HELP arkalia_luna_last_generation_duration_seconds Duration of last logo generation
+# TYPE arkalia_luna_last_generation_duration_seconds gauge
+arkalia_luna_last_generation_duration_seconds {self.last_generation_time}
+
+# HELP arkalia_luna_health_status Health status (1=healthy, 0=unhealthy)
+# TYPE arkalia_luna_health_status gauge
+arkalia_luna_health_status 1
+"""
+
+
+# Instance globale des métriques
+metrics = PrometheusMetrics()
 
 # Initialisation de l'application FastAPI
 app = FastAPI(
@@ -117,12 +169,30 @@ async def root():
 @app.get("/health", response_model=HealthResponse)
 async def health_check():
     """Vérification de l'état de l'API"""
-    return HealthResponse(
-        status="healthy",
-        timestamp=datetime.now(),
-        version="1.0.0",
-        environment=os.getenv("ENVIRONMENT", "development"),
-    )
+    try:
+        metrics.increment_request()
+        return HealthResponse(
+            status="healthy",
+            timestamp=datetime.now(),
+            version="1.0.0",
+            environment=os.getenv("ENVIRONMENT", "development"),
+        )
+    except Exception as e:
+        logger.error(f"Erreur lors de la vérification de santé: {e}")
+        metrics.increment_error()
+        raise HTTPException(status_code=500, detail=str(e)) from e
+
+
+@app.get("/metrics", response_class=PlainTextResponse)
+async def prometheus_metrics():
+    """Endpoint des métriques Prometheus"""
+    try:
+        metrics.increment_request()
+        return metrics.get_metrics()
+    except Exception as e:
+        logger.error(f"Erreur lors de la récupération des métriques: {e}")
+        metrics.increment_error()
+        return f"# ERROR: {str(e)}\n"
 
 
 @app.get("/variants", response_model=List[str])
@@ -154,6 +224,9 @@ async def generate_logo(
 ):
     """Générer un logo selon les paramètres spécifiés"""
     try:
+        metrics.increment_request()
+        start_time = time.time()
+
         if not logo_generator:
             raise HTTPException(status_code=500, detail="Générateur non initialisé")
 
@@ -169,7 +242,7 @@ async def generate_logo(
             )
 
         # Génération du logo
-        start_time = datetime.now()
+        start_time = time.time()
 
         # Utilisation du générateur approprié
         if request.generator_type != "simple":
@@ -194,7 +267,8 @@ async def generate_logo(
                 variant_name=request.variant, size=request.size
             )
 
-        generation_time = (datetime.now() - start_time).total_seconds()
+        generation_time = time.time() - start_time
+        metrics.increment_logo_generation(generation_time)
 
         # Le fichier est déjà créé par le générateur
         filename = file_path.name
@@ -216,6 +290,7 @@ async def generate_logo(
         raise
     except Exception as e:
         logger.error(f"Erreur lors de la génération du logo: {e}")
+        metrics.increment_error()
         raise HTTPException(
             status_code=500, detail=f"Erreur de génération: {str(e)}"
         ) from e

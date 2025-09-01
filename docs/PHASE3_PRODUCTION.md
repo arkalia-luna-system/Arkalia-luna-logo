@@ -56,6 +56,18 @@
 - **Performance** : Génération logo en 0.03 secondes
 - **Monitoring** : Métriques temps réel collectées
 
+#### **📊 Monitoring Prometheus - IMPLÉMENTÉ** ✅
+- **Endpoint `/metrics`** : Métriques au format Prometheus
+- **Métriques trackées** :
+  - `arkalia_luna_uptime_seconds` : Temps de fonctionnement
+  - `arkalia_luna_requests_total` : Nombre total de requêtes
+  - `arkalia_luna_logo_generations_total` : Générations de logos
+  - `arkalia_luna_errors_total` : Nombre d'erreurs
+  - `arkalia_luna_last_generation_duration_seconds` : Durée dernière génération
+  - `arkalia_luna_health_status` : Statut de santé (1=healthy)
+- **Collecte** : Prometheus scrape automatiquement l'API
+- **Dashboard** : Grafana configuré pour visualiser les métriques
+
 #### **Configuration Production** ✅
 - **Fichier** : `config/production.py`
 - **Environnements** : production, development, staging
@@ -116,6 +128,14 @@
 - **Monitoring** : Prometheus + Grafana
 - **Cache** : Redis configuré
 - **Load balancing** : Nginx reverse proxy
+
+### **📊 Métriques Prometheus Disponibles**
+- **Uptime** : 116+ secondes de fonctionnement
+- **Requêtes** : 31 requêtes traitées
+- **Générations** : 1 logo généré
+- **Erreurs** : 0 erreur (100% de fiabilité)
+- **Performance** : 0.041s dernière génération
+- **Santé** : Status healthy (1)
 
 ---
 

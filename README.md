@@ -12,6 +12,7 @@
 [![Docker](https://img.shields.io/badge/docker-5%20services%20ready-blue.svg)](Dockerfile.prod)
 [![API](https://img.shields.io/badge/API-0.03s%20response-green.svg)](main.py)
 [![Monitoring](https://img.shields.io/badge/monitoring-Prometheus%20%2B%20Grafana-orange.svg)](monitoring/)
+[![Metrics](https://img.shields.io/badge/metrics-6%20tracked-blue.svg)](http://localhost:8000/metrics)
 
 ## 🎯 **Vue d'ensemble**
 
@@ -50,10 +51,11 @@ Arkalia-LUNA Logo Generator est un système complet de génération de logos vec
 
 ### **🚀 API FastAPI Production-Ready**
 - **API REST** complète avec FastAPI
-- **Endpoints** : `/health`, `/generate`, `/download`, `/stats`
+- **Endpoints** : `/health`, `/generate`, `/download`, `/stats`, `/metrics`
 - **Performance** : Génération de logo en 0.03 secondes
 - **Documentation** : Swagger UI automatique (`/docs`)
 - **Sécurité** : CORS, validation, gestion d'erreurs
+- **Monitoring** : Métriques Prometheus intégrées (6 métriques trackées)
 
 ### **🐳 Docker & Orchestration**
 - **Dockerfile.prod** optimisé pour la production
