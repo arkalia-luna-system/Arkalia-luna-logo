@@ -1,0 +1,71 @@
+{
+  "annotations": {"list": []},
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": null,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "type": "stat",
+      "title": "Uptime (s)",
+      "gridPos": {"h": 4, "w": 8, "x": 0, "y": 0},
+      "targets": [{
+        "expr": "arkalia_luna_uptime_seconds",
+        "legendFormat": "uptime"
+      }]
+    },
+    {
+      "type": "timeSeries",
+      "title": "Requests total",
+      "gridPos": {"h": 8, "w": 12, "x": 0, "y": 4},
+      "targets": [{
+        "expr": "sum(arkalia_luna_requests_total)"
+      }]
+    },
+    {
+      "type": "timeSeries",
+      "title": "Requests par route",
+      "gridPos": {"h": 8, "w": 12, "x": 12, "y": 4},
+      "targets": [{
+        "expr": "sum by (route) (arkalia_luna_requests_total)"
+      }]
+    },
+    {
+      "type": "timeSeries",
+      "title": "Générations par labels (variant,generator)",
+      "gridPos": {"h": 8, "w": 12, "x": 0, "y": 12},
+      "targets": [{
+        "expr": "sum by (variant,generator) (arkalia_luna_logo_generations_total)"
+      }]
+    },
+    {
+      "type": "timeSeries",
+      "title": "Durées (last/avg)",
+      "gridPos": {"h": 8, "w": 12, "x": 12, "y": 12},
+      "targets": [
+        {"expr": "arkalia_luna_last_generation_duration_seconds", "legendFormat": "last"},
+        {"expr": "arkalia_luna_avg_generation_duration_seconds", "legendFormat": "avg"}
+      ]
+    },
+    {
+      "type": "timeSeries",
+      "title": "Erreurs",
+      "gridPos": {"h": 6, "w": 24, "x": 0, "y": 20},
+      "targets": [{
+        "expr": "sum(arkalia_luna_errors_total)"
+      }]
+    }
+  ],
+  "refresh": "10s",
+  "schemaVersion": 38,
+  "style": "dark",
+  "tags": ["arkalia-luna", "monitoring"],
+  "templating": {"list": []},
+  "time": {"from": "now-6h", "to": "now"},
+  "timepicker": {},
+  "timezone": "",
+  "title": "Arkalia-LUNA Overview",
+  "version": 1
+}

@@ -36,46 +36,98 @@ class PrometheusMetrics:
     def __init__(self):
         self.start_time = time.time()
         self.request_count = 0
+        self.request_count_by_route: Dict[str, int] = {}
         self.logo_generation_count = 0
+        self.logo_generation_count_by_label: Dict[str, int] = {}
+        self.total_generation_time = 0.0
         self.error_count = 0
         self.last_generation_time = 0.0
 
-    def increment_request(self):
+    def increment_request(self, route: Optional[str] = None) -> None:
         self.request_count += 1
+        if route:
+            self.request_count_by_route[route] = (
+                self.request_count_by_route.get(route, 0) + 1
+            )
 
-    def increment_logo_generation(self, duration: float):
+    def increment_logo_generation(
+        self,
+        duration: float,
+        variant: Optional[str] = None,
+        generator: Optional[str] = None,
+    ) -> None:
         self.logo_generation_count += 1
         self.last_generation_time = duration
+        self.total_generation_time += duration
+        # label key format: variant|generator
+        label_key = f"variant={variant or 'unknown'},generator={generator or 'simple'}"
+        self.logo_generation_count_by_label[label_key] = (
+            self.logo_generation_count_by_label.get(label_key, 0) + 1
+        )
 
-    def increment_error(self):
+    def increment_error(self) -> None:
         self.error_count += 1
 
     def get_metrics(self) -> str:
         uptime = time.time() - self.start_time
-        return f"""# HELP arkalia_luna_uptime_seconds Total uptime in seconds
-# TYPE arkalia_luna_uptime_seconds counter
-arkalia_luna_uptime_seconds {uptime}
-
-# HELP arkalia_luna_requests_total Total number of requests
-# TYPE arkalia_luna_requests_total counter
-arkalia_luna_requests_total {self.request_count}
-
-# HELP arkalia_luna_logo_generations_total Total number of logo generations
-# TYPE arkalia_luna_logo_generations_total counter
-arkalia_luna_logo_generations_total {self.logo_generation_count}
-
-# HELP arkalia_luna_errors_total Total number of errors
-# TYPE arkalia_luna_errors_total counter
-arkalia_luna_errors_total {self.error_count}
-
-# HELP arkalia_luna_last_generation_duration_seconds Duration of last logo generation
-# TYPE arkalia_luna_last_generation_duration_seconds gauge
-arkalia_luna_last_generation_duration_seconds {self.last_generation_time}
-
-# HELP arkalia_luna_health_status Health status (1=healthy, 0=unhealthy)
-# TYPE arkalia_luna_health_status gauge
-arkalia_luna_health_status 1
-"""
+        lines: List[str] = []
+        # Uptime
+        lines.append("# HELP arkalia_luna_uptime_seconds Total uptime in seconds")
+        lines.append("# TYPE arkalia_luna_uptime_seconds counter")
+        lines.append(f"arkalia_luna_uptime_seconds {uptime}")
+        lines.append("")
+        # Requests total
+        lines.append("# HELP arkalia_luna_requests_total Total number of requests")
+        lines.append("# TYPE arkalia_luna_requests_total counter")
+        lines.append(f"arkalia_luna_requests_total {self.request_count}")
+        # Requests by route (labels)
+        for route, count in self.request_count_by_route.items():
+            lines.append(f'arkalia_luna_requests_total{{route="{route}"}} {count}')
+        lines.append("")
+        # Generations total
+        lines.append(
+            "# HELP arkalia_luna_logo_generations_total Total number of logo generations"
+        )
+        lines.append("# TYPE arkalia_luna_logo_generations_total counter")
+        lines.append(
+            f"arkalia_luna_logo_generations_total {self.logo_generation_count}"
+        )
+        # Generations by labels (variant, generator)
+        for label_key, count in self.logo_generation_count_by_label.items():
+            # label_key is already key=value pairs separated by comma
+            lines.append(f"arkalia_luna_logo_generations_total{{{label_key}}} {count}")
+        lines.append("")
+        # Errors
+        lines.append("# HELP arkalia_luna_errors_total Total number of errors")
+        lines.append("# TYPE arkalia_luna_errors_total counter")
+        lines.append(f"arkalia_luna_errors_total {self.error_count}")
+        lines.append("")
+        # Last and average duration
+        lines.append(
+            "# HELP arkalia_luna_last_generation_duration_seconds Duration of last logo generation"
+        )
+        lines.append("# TYPE arkalia_luna_last_generation_duration_seconds gauge")
+        lines.append(
+            f"arkalia_luna_last_generation_duration_seconds {self.last_generation_time}"
+        )
+        avg = (
+            self.total_generation_time / self.logo_generation_count
+            if self.logo_generation_count
+            else 0.0
+        )
+        lines.append(
+            "# HELP arkalia_luna_avg_generation_duration_seconds Average logo generation duration"
+        )
+        lines.append("# TYPE arkalia_luna_avg_generation_duration_seconds gauge")
+        lines.append(f"arkalia_luna_avg_generation_duration_seconds {avg}")
+        lines.append("")
+        # Health
+        lines.append(
+            "# HELP arkalia_luna_health_status Health status (1=healthy, 0=unhealthy)"
+        )
+        lines.append("# TYPE arkalia_luna_health_status gauge")
+        lines.append("arkalia_luna_health_status 1")
+        return "\n".join(lines) + "\n"
 
 
 # Instance globale des métriques
@@ -170,7 +222,7 @@ async def root():
 async def health_check():
     """Vérification de l'état de l'API"""
     try:
-        metrics.increment_request()
+        metrics.increment_request(route="/health")
         return HealthResponse(
             status="healthy",
             timestamp=datetime.now(),
@@ -187,7 +239,7 @@ async def health_check():
 async def prometheus_metrics():
     """Endpoint des métriques Prometheus"""
     try:
-        metrics.increment_request()
+        metrics.increment_request(route="/metrics")
         return metrics.get_metrics()
     except Exception as e:
         logger.error(f"Erreur lors de la récupération des métriques: {e}")
@@ -199,6 +251,7 @@ async def prometheus_metrics():
 async def get_available_variants():
     """Récupérer toutes les variantes disponibles"""
     try:
+        metrics.increment_request(route="/variants")
         variants = LogoVariants()
         return list(variants.get_all_variants().keys())
     except Exception as e:
@@ -210,6 +263,7 @@ async def get_available_variants():
 async def get_available_generators():
     """Récupérer tous les types de générateurs disponibles"""
     try:
+        metrics.increment_request(route="/generators")
         if generator_factory and hasattr(generator_factory, "get_available_generators"):
             return generator_factory.get_available_generators()
         return ["simple"]
@@ -224,7 +278,7 @@ async def generate_logo(
 ):
     """Générer un logo selon les paramètres spécifiés"""
     try:
-        metrics.increment_request()
+        metrics.increment_request(route="/generate")
         start_time = time.time()
 
         if not logo_generator:
@@ -268,7 +322,9 @@ async def generate_logo(
             )
 
         generation_time = time.time() - start_time
-        metrics.increment_logo_generation(generation_time)
+        metrics.increment_logo_generation(
+            generation_time, variant=request.variant, generator=request.generator_type
+        )
 
         # Le fichier est déjà créé par le générateur
         filename = file_path.name
