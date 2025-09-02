@@ -1,0 +1,45 @@
+name: Load Test (Artillery)
+
+on:
+  workflow_dispatch:
+    inputs:
+      target_url:
+        description: "URL cible de l'API (ex: http://localhost:8000)"
+        required: true
+        default: "http://localhost:8000"
+
+jobs:
+  artillery:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Artillery
+        run: |
+          npm i -g artillery@2
+
+      - name: Prepare scenario with target URL
+        run: |
+          cp performance/artillery.yml /tmp/artillery.yml
+          sed -i "s#target: \"http://localhost:8000\"#target: \"${{ github.event.inputs.target_url }}\"#" /tmp/artillery.yml || true
+
+      - name: Run Artillery
+        run: |
+          artillery run /tmp/artillery.yml --output artillery-report.json
+
+      - name: Upload report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: artillery-report
+          path: |
+            artillery-report.json
+            /tmp/artillery.yml
+
+
