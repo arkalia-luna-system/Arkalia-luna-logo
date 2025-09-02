@@ -311,8 +311,13 @@ class TestLogoGeneratorFactory:
         expected_keys = LogoGeneratorFactory.GENERATOR_TYPES
         for key in expected_keys:
             assert key in info
-            assert isinstance(info[key], str)
-            assert len(info[key]) > 0
+            assert isinstance(info[key], dict)
+            assert "name" in info[key]
+            assert "description" in info[key]
+            assert isinstance(info[key]["name"], str)
+            assert isinstance(info[key]["description"], str)
+            assert len(info[key]["name"]) > 0
+            assert len(info[key]["description"]) > 0
 
     def test_singleton_pattern(self):
         """Test du pattern Singleton"""

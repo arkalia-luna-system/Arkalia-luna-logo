@@ -9,7 +9,9 @@ from typing import Any, Dict, Optional
 from .advanced_logo_generator import AdvancedArkaliaLunaLogo
 from .ai_logo_generator import AILogoGenerator
 from .ai_moon_generator import AIMoonLogoGenerator
+from .cosmic_logo_generator import CosmicLogoGenerator
 from .dashboard_generator import DashboardLogoGenerator
+from .hyper_ai_generator import HyperAIGenerator
 from .logo_generator import ArkaliaLunaLogo
 from .realism_max_generator import RealismMaxLogoGenerator
 from .simple_advanced_generator import SimpleAdvancedLogoGenerator
@@ -34,6 +36,8 @@ class LogoGeneratorFactory:
         "advanced": AdvancedArkaliaLunaLogo,  # ✅ Maintenant hérite correctement
         "ultimate": UltimateLogoGenerator,  # 🌟 NOUVEAU : Générateur ULTIME cosmique
         "ai": AILogoGenerator,  # 🤖 NOUVEAU : Générateur IA avec Stable Diffusion
+        "cosmic": CosmicLogoGenerator,  # 🌌 NOUVEAU : Générateur COSMIQUE avec sphères lumineuses
+        "hyper_ai": HyperAIGenerator,  # 🧠 NOUVEAU : Générateur HYPER-IA avec ComfyUI + SDXL + ControlNet
     }
 
     @classmethod
@@ -117,6 +121,14 @@ class LogoGeneratorFactory:
             "ai": {
                 "name": "AI Generator",
                 "description": "🤖 Générateur IA avec Stable Diffusion local",
+            },
+            "cosmic": {
+                "name": "Cosmic Sphere",
+                "description": "🌌 Générateur COSMIQUE avec sphères lumineuses et réseaux neuronaux",
+            },
+            "hyper_ai": {
+                "name": "Hyper AI",
+                "description": "🧠 Générateur HYPER-IA avec ComfyUI + SDXL + ControlNet - INTELLIGENCE EXTRÊME",
             },
         }
 

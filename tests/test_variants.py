@@ -100,9 +100,20 @@ class TestLogoVariants:
         all_variants = variants_manager.get_all_variants()
 
         assert isinstance(all_variants, dict)
-        assert len(all_variants) == 5  # 5 variantes définies
+        assert len(all_variants) == 10  # 10 variantes définies
 
-        expected_variants = ["serenity", "power", "mystery", "awakening", "creative"]
+        expected_variants = [
+            "serenity",
+            "power",
+            "mystery",
+            "awakening",
+            "creative",
+            "rainy",
+            "stormy",
+            "explosive",
+            "sunny",
+            "snowy",
+        ]
         for variant_name in expected_variants:
             assert variant_name in all_variants
 
@@ -130,9 +141,20 @@ class TestLogoVariants:
         variant_list = variants_manager.list_variants()
 
         assert isinstance(variant_list, list)
-        assert len(variant_list) == 5
+        assert len(variant_list) == 10
 
-        expected_variants = ["serenity", "power", "mystery", "awakening", "creative"]
+        expected_variants = [
+            "serenity",
+            "power",
+            "mystery",
+            "awakening",
+            "creative",
+            "rainy",
+            "stormy",
+            "explosive",
+            "sunny",
+            "snowy",
+        ]
         for variant_name in expected_variants:
             assert variant_name in variant_list
 

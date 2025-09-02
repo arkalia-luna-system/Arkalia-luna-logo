@@ -72,9 +72,13 @@ class AILogoGenerator(ArkaliaLunaLogo):
                 self.model_id,
                 torch_dtype=torch.float16 if self.device == "cuda" else torch.float32,
                 use_safetensors=True,
-                safety_checker=None,  # Désactiver le filtre NSFW
-                requires_safety_checker=False,
             )
+
+            # Désactivation complète du filtre NSFW
+            if hasattr(self.ai_pipeline, "safety_checker"):
+                self.ai_pipeline.safety_checker = None
+            if hasattr(self.ai_pipeline, "feature_extractor"):
+                self.ai_pipeline.feature_extractor = None
 
             # Optimisations pour la vitesse
             if self.device == "cuda":
@@ -91,37 +95,37 @@ class AILogoGenerator(ArkaliaLunaLogo):
     def _create_prompt(self, variant_name: str, generator_style: str = "ai") -> str:
         """Crée un prompt spécialisé pour la variante émotionnelle"""
 
-        # Base du prompt
-        base_prompt = "Arkalia-LUNA logo, modern minimalist design, high quality, professional, safe for work, clean design"
+        # Base du prompt optimisé pour les logos
+        base_prompt = "professional logo design, minimalist, clean, high contrast, vector art style, centered composition"
 
-        # Prompts spécialisés par variante émotionnelle
+        # Prompts spécialisés par variante émotionnelle - OPTIMISÉS POUR LOGOS
         variant_prompts = {
-            "serenity": "calm blue tones, peaceful atmosphere, gentle glow, serene and mystical",
-            "power": "electric energy, vibrant colors, dynamic movement, powerful and intense",
-            "mystery": "dark purple tones, mysterious atmosphere, enigmatic glow, mystical and secretive",
-            "awakening": "golden light, wisdom symbols, enlightened energy, awakening and spiritual",
-            "creative": "rainbow colors, creative energy, artistic flow, innovative and inspiring",
-            "rainy": "grey tones, water droplets, melancholic but elegant, rainy atmosphere",
-            "stormy": "dark stormy colors, lightning bolts, explosive energy, dynamic and intense",
-            "explosive": "red orange yellow, explosive particles, radial energy, vibrant and energetic",
-            "sunny": "warm yellow orange, sun rays, bright and optimistic, cheerful energy",
-            "snowy": "white silver tones, crystalline structure, pure and clean, winter atmosphere",
+            "serenity": "soft blue gradient, circular design, peaceful waves, zen aesthetic, calm energy",
+            "power": "bold geometric shapes, electric blue and white, dynamic lines, strong presence, energy bolts",
+            "mystery": "deep purple gradient, mystical symbols, enigmatic patterns, cosmic elements, secretive aura",
+            "awakening": "golden yellow gradient, enlightenment symbols, radiant energy, spiritual awakening, wisdom",
+            "creative": "vibrant color palette, artistic brushstrokes, creative flow, innovative design, inspiration",
+            "rainy": "silver and blue tones, water drop patterns, elegant melancholy, refined sadness, artistic",
+            "stormy": "dark blue and white, lightning patterns, storm clouds, dynamic energy, powerful weather",
+            "explosive": "red orange yellow gradient, burst patterns, radial energy, explosive power, vibrant intensity",
+            "sunny": "warm yellow orange gradient, sun rays, bright optimism, cheerful energy, positive vibes",
+            "snowy": "white and silver gradient, crystalline patterns, pure elegance, winter beauty, clean perfection",
         }
 
-        # Style du générateur
+        # Style du générateur - OPTIMISÉ POUR LOGOS
         style_prompts = {
-            "ai": "AI-generated, futuristic, technological, neural network patterns",
-            "dashboard": "interface design, geometric patterns, modern UI elements",
-            "ai_moon": "lunar surface, moon craters, AI neural networks, cosmic technology",
-            "advanced": "advanced technology, complex patterns, sophisticated design",
-            "ultimate": "cosmic energy, stellar patterns, ultimate power, space technology",
+            "ai": "futuristic tech aesthetic, neural network patterns, AI-inspired geometry, modern technology",
+            "dashboard": "interface design elements, geometric precision, modern UI aesthetics, clean lines",
+            "ai_moon": "lunar surface textures, moon phases, cosmic technology, space-age design",
+            "advanced": "sophisticated patterns, advanced geometry, premium design, luxury aesthetic",
+            "ultimate": "cosmic energy patterns, stellar formations, ultimate power symbols, space technology",
         }
 
-        # Construction du prompt final
+        # Construction du prompt final - OPTIMISÉ
         variant_desc = variant_prompts.get(variant_name, "modern and elegant")
         style_desc = style_prompts.get(generator_style, "futuristic and modern")
 
-        final_prompt = f"{base_prompt}, {variant_desc}, {style_desc}, logo design, vector style, clean background, family friendly, appropriate content"
+        final_prompt = f"{base_prompt}, {variant_desc}, {style_desc}, centered logo, white background, high quality, professional branding, corporate identity, clean design, no text, symbol only"
 
         return final_prompt
 
@@ -145,17 +149,18 @@ class AILogoGenerator(ArkaliaLunaLogo):
             prompt = self._create_prompt(variant_name, generator_style)
             self.logger.info(f"📝 Prompt: {prompt}")
 
-            # Génération de l'image
+            # Génération de l'image avec paramètres optimisés
             with torch.no_grad():
                 image = self.ai_pipeline(
                     prompt=prompt,
                     height=size,
                     width=size,
-                    num_inference_steps=20,  # Rapide mais qualité correcte
-                    guidance_scale=7.5,
+                    num_inference_steps=30,  # Plus d'étapes pour meilleure qualité
+                    guidance_scale=8.0,  # Plus de guidance pour respecter le prompt
                     generator=torch.Generator(device=self.device).manual_seed(
                         42
                     ),  # Reproducible
+                    negative_prompt="blurry, low quality, distorted, ugly, bad anatomy, text, words, letters, watermark, signature",  # Éviter les défauts
                 ).images[0]
 
             # Construction du chemin de sortie
