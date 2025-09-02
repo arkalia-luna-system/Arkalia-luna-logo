@@ -11,10 +11,13 @@ from pathlib import Path
 from typing import Dict, List, Optional
 
 import uvicorn
-from fastapi import BackgroundTasks, FastAPI, HTTPException
+from fastapi import BackgroundTasks, FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, PlainTextResponse
 from pydantic import BaseModel, Field
+from slowapi import Limiter, _rate_limit_exceeded_handler
+from slowapi.errors import RateLimitExceeded
+from slowapi.util import get_remote_address
 
 try:
     from src.generator_factory import LogoGeneratorFactory
@@ -133,6 +136,9 @@ class PrometheusMetrics:
 # Instance globale des métriques
 metrics = PrometheusMetrics()
 
+# Rate limiter
+limiter = Limiter(key_func=get_remote_address)
+
 # Initialisation de l'application FastAPI
 app = FastAPI(
     title="Arkalia-LUNA Logo Generator API",
@@ -141,6 +147,10 @@ app = FastAPI(
     docs_url="/docs",
     redoc_url="/redoc",
 )
+
+# Configuration du rate limiter
+app.state.limiter = limiter
+app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 
 # Configuration CORS
 app.add_middleware(
@@ -273,8 +283,11 @@ async def get_available_generators():
 
 
 @app.post("/generate", response_model=LogoGenerationResponse)
+@limiter.limit("100/minute")
 async def generate_logo(
-    request: LogoGenerationRequest, background_tasks: BackgroundTasks
+    request: Request,
+    logo_request: LogoGenerationRequest,
+    background_tasks: BackgroundTasks,
 ):
     """Générer un logo selon les paramètres spécifiés"""
     try:
@@ -285,11 +298,11 @@ async def generate_logo(
             raise HTTPException(status_code=500, detail="Générateur non initialisé")
 
         logger.info(
-            f"🎨 Génération de logo: {request.variant} - {request.size}px - {request.generator_type}"
+            f"🎨 Génération de logo: {logo_request.variant} - {logo_request.size}px - {logo_request.generator_type}"
         )
 
         # Validation des paramètres
-        if request.size not in [50, 100, 200, 500]:
+        if logo_request.size not in [50, 100, 200, 500]:
             raise HTTPException(
                 status_code=400,
                 detail="Taille invalide. Utilisez: 50, 100, 200, ou 500",
@@ -299,31 +312,33 @@ async def generate_logo(
         start_time = time.time()
 
         # Utilisation du générateur approprié
-        if request.generator_type != "simple":
+        if logo_request.generator_type != "simple":
             if not generator_factory:
                 raise HTTPException(
                     status_code=500, detail="Factory de générateurs non initialisée"
                 )
-            generator = generator_factory.create_generator(request.generator_type)
+            generator = generator_factory.create_generator(logo_request.generator_type)
             if generator:
                 # Logique spécifique au générateur
                 file_path = generator.generate_svg_logo(
-                    variant_name=request.variant, size=request.size
+                    variant_name=logo_request.variant, size=logo_request.size
                 )
             else:
                 raise HTTPException(
                     status_code=400,
-                    detail=f"Type de générateur '{request.generator_type}' non supporté",
+                    detail=f"Type de générateur '{logo_request.generator_type}' non supporté",
                 )
         else:
             # Générateur simple par défaut
             file_path = logo_generator.generate_svg_logo(
-                variant_name=request.variant, size=request.size
+                variant_name=logo_request.variant, size=logo_request.size
             )
 
         generation_time = time.time() - start_time
         metrics.increment_logo_generation(
-            generation_time, variant=request.variant, generator=request.generator_type
+            generation_time,
+            variant=logo_request.variant,
+            generator=logo_request.generator_type,
         )
 
         # Le fichier est déjà créé par le générateur
@@ -336,7 +351,7 @@ async def generate_logo(
 
         return LogoGenerationResponse(
             success=True,
-            message=f"Logo {request.variant} généré avec succès",
+            message=f"Logo {logo_request.variant} généré avec succès",
             file_path=str(file_path),
             download_url=f"/download/{filename}",
             generation_time=generation_time,

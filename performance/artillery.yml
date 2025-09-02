@@ -1,0 +1,97 @@
+config:
+  target: "http://localhost:8000"
+  phases:
+    # Phase 1: Warm-up (50 RPS)
+    - duration: 30
+      arrivalRate: 50
+      name: "Warm-up 50 RPS"
+    # Phase 2: Load test (100 RPS)
+    - duration: 60
+      arrivalRate: 100
+      name: "Load test 100 RPS"
+    # Phase 3: Stress test (200 RPS)
+    - duration: 60
+      arrivalRate: 200
+      name: "Stress test 200 RPS"
+    # Phase 4: Peak test (500 RPS)
+    - duration: 30
+      arrivalRate: 500
+      name: "Peak test 500 RPS"
+    # Phase 5: Cool-down (50 RPS)
+    - duration: 30
+      arrivalRate: 50
+      name: "Cool-down 50 RPS"
+  defaults:
+    headers:
+      Content-Type: "application/json"
+  plugins:
+    metrics-by-endpoint: {}
+  ensure:
+    p95: 2000 # 95% des requêtes < 2s
+    p99: 5000 # 99% des requêtes < 5s
+    maxErrorRate: 5 # < 5% d'erreurs
+
+scenarios:
+  - name: "Health Check"
+    weight: 20
+    flow:
+      - get:
+          url: "/health"
+          expect:
+            - statusCode: 200
+
+  - name: "Get Variants"
+    weight: 15
+    flow:
+      - get:
+          url: "/variants"
+          expect:
+            - statusCode: 200
+
+  - name: "Get Generators"
+    weight: 15
+    flow:
+      - get:
+          url: "/generators"
+          expect:
+            - statusCode: 200
+
+  - name: "Generate Logo - Serenity"
+    weight: 25
+    flow:
+      - post:
+          url: "/generate"
+          json:
+            variant: "serenity"
+            size: 200
+            generator_type: "simple"
+          expect:
+            - statusCode: 200
+            - hasProperty: "success"
+            - hasProperty: "generation_time"
+
+  - name: "Generate Logo - Power"
+    weight: 15
+    flow:
+      - post:
+          url: "/generate"
+          json:
+            variant: "power"
+            size: 200
+            generator_type: "advanced"
+          expect:
+            - statusCode: 200
+            - hasProperty: "success"
+
+  - name: "Generate Logo - Mystery"
+    weight: 10
+    flow:
+      - post:
+          url: "/generate"
+          json:
+            variant: "mystery"
+            size: 500
+            generator_type: "ultimate"
+          expect:
+            - statusCode: 200
+            - hasProperty: "success"

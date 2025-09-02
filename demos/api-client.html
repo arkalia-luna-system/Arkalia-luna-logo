@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arkalia-LUNA API Client</title>
+    <style>
+        :root {
+            --primary: #6366f1;
+            --secondary: #8b5cf6;
+            --accent: #06b6d4;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --error: #ef4444;
+            --bg-dark: #0f172a;
+            --bg-card: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --border: #334155;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, var(--bg-dark) 0%, #1e1b4b 100%);
+            color: var(--text-primary);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .card h2 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .form-group select,
+        .form-group input {
+            width: 100%;
+            padding: 0.75rem;
+            background: var(--bg-dark);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-size: 1rem;
+        }
+
+        .form-group select:focus,
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+
+        .btn {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            width: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.3);
+        }
+
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .preview {
+            text-align: center;
+            padding: 2rem;
+            background: var(--bg-dark);
+            border-radius: 12px;
+            border: 2px dashed var(--border);
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .preview svg {
+            max-width: 100%;
+            max-height: 250px;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+        }
+
+        .preview-placeholder {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .status {
+            margin-top: 1rem;
+            padding: 0.75rem;
+            border-radius: 8px;
+            font-weight: 500;
+        }
+
+        .status.success {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--success);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+
+        .status.error {
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--error);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+        }
+
+        .status.loading {
+            background: rgba(6, 182, 212, 0.1);
+            color: var(--accent);
+            border: 1px solid rgba(6, 182, 212, 0.2);
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .stat {
+            text-align: center;
+            padding: 1rem;
+            background: var(--bg-dark);
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin-top: 0.25rem;
+        }
+
+        .loading-spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--primary);
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌙 Arkalia-LUNA API Client</h1>
+            <p>Interface interactive pour tester l'API de génération de logos</p>
+        </div>
+
+        <div class="grid">
+            <div class="card">
+                <h2>🎨 Configuration</h2>
+                <form id="logoForm">
+                    <div class="form-group">
+                        <label for="variant">Variante émotionnelle</label>
+                        <select id="variant" name="variant" required>
+                            <option value="serenity">Serenity (Sérénité)</option>
+                            <option value="power">Power (Puissance)</option>
+                            <option value="mystery">Mystery (Mystère)</option>
+                            <option value="awakening">Awakening (Éveil)</option>
+                            <option value="creative">Creative (Créativité)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="size">Taille (px)</label>
+                        <select id="size" name="size" required>
+                            <option value="50">50px</option>
+                            <option value="100">100px</option>
+                            <option value="200" selected>200px</option>
+                            <option value="500">500px</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="generator">Type de générateur</label>
+                        <select id="generator" name="generator" required>
+                            <option value="simple">Simple</option>
+                            <option value="advanced">Advanced</option>
+                            <option value="ultimate">Ultimate</option>
+                            <option value="ultra_max">Ultra Max</option>
+                            <option value="realism_max">Realism Max</option>
+                            <option value="ai_moon">AI Moon</option>
+                            <option value="dashboard">Dashboard</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn" id="generateBtn">
+                        <span id="btnText">Générer le logo</span>
+                        <span id="btnSpinner" class="loading-spinner" style="display: none;"></span>
+                    </button>
+                </form>
+
+                <div id="status" class="status" style="display: none;"></div>
+            </div>
+
+            <div class="card">
+                <h2>👁️ Aperçu</h2>
+                <div class="preview" id="preview">
+                    <div class="preview-placeholder">
+                        Sélectionnez les paramètres et cliquez sur "Générer le logo"
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>📊 Statistiques</h2>
+            <div class="stats" id="stats">
+                <div class="stat">
+                    <div class="stat-value" id="totalGenerated">0</div>
+                    <div class="stat-label">Logos générés</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value" id="avgTime">0ms</div>
+                    <div class="stat-label">Temps moyen</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value" id="lastTime">0ms</div>
+                    <div class="stat-label">Dernier temps</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value" id="successRate">100%</div>
+                    <div class="stat-label">Taux de succès</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        class ArkaliaAPIClient {
+            constructor() {
+                this.apiUrl = 'http://localhost:8000';
+                this.stats = {
+                    totalGenerated: 0,
+                    totalTime: 0,
+                    lastTime: 0,
+                    errors: 0
+                };
+                this.init();
+            }
+
+            init() {
+                this.form = document.getElementById('logoForm');
+                this.generateBtn = document.getElementById('generateBtn');
+                this.btnText = document.getElementById('btnText');
+                this.btnSpinner = document.getElementById('btnSpinner');
+                this.status = document.getElementById('status');
+                this.preview = document.getElementById('preview');
+
+                this.form.addEventListener('submit', (e) => this.handleSubmit(e));
+                this.loadAvailableOptions();
+            }
+
+            async loadAvailableOptions() {
+                try {
+                    // Charger les variantes disponibles
+                    const variantsResponse = await fetch(`${this.apiUrl}/variants`);
+                    const variants = await variantsResponse.json();
+
+                    const variantSelect = document.getElementById('variant');
+                    variantSelect.innerHTML = '';
+                    variants.forEach(variant => {
+                        const option = document.createElement('option');
+                        option.value = variant;
+                        option.textContent = variant.charAt(0).toUpperCase() + variant.slice(1);
+                        variantSelect.appendChild(option);
+                    });
+
+                    // Charger les générateurs disponibles
+                    const generatorsResponse = await fetch(`${this.apiUrl}/generators`);
+                    const generators = await generatorsResponse.json();
+
+                    const generatorSelect = document.getElementById('generator');
+                    generatorSelect.innerHTML = '';
+                    generators.forEach(generator => {
+                        const option = document.createElement('option');
+                        option.value = generator;
+                        option.textContent = generator.charAt(0).toUpperCase() + generator.slice(1);
+                        generatorSelect.appendChild(option);
+                    });
+
+                } catch (error) {
+                    console.error('Erreur lors du chargement des options:', error);
+                }
+            }
+
+            async handleSubmit(e) {
+                e.preventDefault();
+
+                const formData = new FormData(this.form);
+                const requestData = {
+                    variant: formData.get('variant'),
+                    size: parseInt(formData.get('size')),
+                    generator_type: formData.get('generator')
+                };
+
+                this.setLoading(true);
+                this.hideStatus();
+
+                try {
+                    const startTime = performance.now();
+
+                    const response = await fetch(`${this.apiUrl}/generate`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(requestData)
+                    });
+
+                    const endTime = performance.now();
+                    const duration = endTime - startTime;
+
+                    if (!response.ok) {
+                        const errorData = await response.json();
+                        throw new Error(errorData.detail || `Erreur HTTP ${response.status}`);
+                    }
+
+                    const data = await response.json();
+
+                    if (data.success) {
+                        await this.displayLogo(data.download_url);
+                        this.showStatus(`✅ Logo généré avec succès en ${data.generation_time.toFixed(3)}s`, 'success');
+                        this.updateStats(duration, false);
+                    } else {
+                        throw new Error(data.message || 'Erreur inconnue');
+                    }
+
+                } catch (error) {
+                    this.showStatus(`❌ Erreur: ${error.message}`, 'error');
+                    this.updateStats(0, true);
+                } finally {
+                    this.setLoading(false);
+                }
+            }
+
+            async displayLogo(downloadUrl) {
+                try {
+                    const response = await fetch(`${this.apiUrl}${downloadUrl}`);
+                    const svgText = await response.text();
+
+                    this.preview.innerHTML = svgText;
+                } catch (error) {
+                    console.error('Erreur lors du chargement du logo:', error);
+                    this.preview.innerHTML = '<div class="preview-placeholder">Erreur lors du chargement du logo</div>';
+                }
+            }
+
+            setLoading(loading) {
+                this.generateBtn.disabled = loading;
+                this.btnText.style.display = loading ? 'none' : 'inline';
+                this.btnSpinner.style.display = loading ? 'inline-block' : 'none';
+            }
+
+            showStatus(message, type) {
+                this.status.textContent = message;
+                this.status.className = `status ${type}`;
+                this.status.style.display = 'block';
+
+                if (type === 'success') {
+                    setTimeout(() => this.hideStatus(), 3000);
+                }
+            }
+
+            hideStatus() {
+                this.status.style.display = 'none';
+            }
+
+            updateStats(duration, isError) {
+                this.stats.totalGenerated++;
+                this.stats.totalTime += duration;
+                this.stats.lastTime = duration;
+
+                if (isError) {
+                    this.stats.errors++;
+                }
+
+                // Mettre à jour l'affichage
+                document.getElementById('totalGenerated').textContent = this.stats.totalGenerated;
+                document.getElementById('avgTime').textContent =
+                    `${Math.round(this.stats.totalTime / this.stats.totalGenerated)}ms`;
+                document.getElementById('lastTime').textContent = `${Math.round(duration)}ms`;
+
+                const successRate = ((this.stats.totalGenerated - this.stats.errors) / this.stats.totalGenerated * 100);
+                document.getElementById('successRate').textContent = `${Math.round(successRate)}%`;
+            }
+        }
+
+        // Initialiser l'application
+        document.addEventListener('DOMContentLoaded', () => {
+            new ArkaliaAPIClient();
+        });
+    </script>
+</body>
+
+</html>
