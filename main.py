@@ -40,11 +40,18 @@ class PrometheusMetrics:
         self.start_time = time.time()
         self.request_count = 0
         self.request_count_by_route: Dict[str, int] = {}
+        self.response_status_by_route: Dict[str, Dict[int, int]] = {}
         self.logo_generation_count = 0
         self.logo_generation_count_by_label: Dict[str, int] = {}
         self.total_generation_time = 0.0
         self.error_count = 0
         self.last_generation_time = 0.0
+        # Histogram (seconds)
+        self.duration_buckets = [0.005, 0.01, 0.02, 0.05, 0.1, 0.2, 0.5, 1.0]
+        self.bucket_counts: Dict[float, int] = dict.fromkeys(self.duration_buckets, 0)
+        self.bucket_inf_count = 0
+        self.hist_count = 0
+        self.hist_sum = 0.0
 
     def increment_request(self, route: Optional[str] = None) -> None:
         self.request_count += 1
@@ -71,6 +78,22 @@ class PrometheusMetrics:
     def increment_error(self) -> None:
         self.error_count += 1
 
+    def observe_generation_duration(self, duration: float) -> None:
+        placed = False
+        for b in self.duration_buckets:
+            if duration <= b:
+                self.bucket_counts[b] = self.bucket_counts.get(b, 0) + 1
+                placed = True
+                break
+        if not placed:
+            self.bucket_inf_count += 1
+        self.hist_sum += duration
+        self.hist_count += 1
+
+    def record_response_status(self, route: str, status_code: int) -> None:
+        by_status = self.response_status_by_route.setdefault(route, {})
+        by_status[status_code] = by_status.get(status_code, 0) + 1
+
     def get_metrics(self) -> str:
         uptime = time.time() - self.start_time
         lines: List[str] = []
@@ -86,6 +109,17 @@ class PrometheusMetrics:
         # Requests by route (labels)
         for route, count in self.request_count_by_route.items():
             lines.append(f'arkalia_luna_requests_total{{route="{route}"}} {count}')
+        lines.append("")
+        # Responses by route and status
+        lines.append(
+            "# HELP arkalia_luna_responses_total Total responses by status and route"
+        )
+        lines.append("# TYPE arkalia_luna_responses_total counter")
+        for route, by_status in self.response_status_by_route.items():
+            for status, count in by_status.items():
+                lines.append(
+                    f'arkalia_luna_responses_total{{route="{route}",status_code="{status}"}} {count}'
+                )
         lines.append("")
         # Generations total
         lines.append(
@@ -123,6 +157,25 @@ class PrometheusMetrics:
         )
         lines.append("# TYPE arkalia_luna_avg_generation_duration_seconds gauge")
         lines.append(f"arkalia_luna_avg_generation_duration_seconds {avg}")
+        lines.append("")
+        # Histogram
+        lines.append(
+            "# HELP arkalia_luna_generation_duration_seconds Logo generation duration histogram"
+        )
+        lines.append("# TYPE arkalia_luna_generation_duration_seconds histogram")
+        cumulative = 0
+        for b in sorted(self.duration_buckets):
+            cumulative += self.bucket_counts.get(b, 0)
+            lines.append(
+                f'arkalia_luna_generation_duration_seconds_bucket{{le="{b}"}} {cumulative}'
+            )
+        lines.append(
+            f'arkalia_luna_generation_duration_seconds_bucket{{le="+Inf"}} {cumulative + self.bucket_inf_count}'
+        )
+        lines.append(f"arkalia_luna_generation_duration_seconds_sum {self.hist_sum}")
+        lines.append(
+            f"arkalia_luna_generation_duration_seconds_count {self.hist_count}"
+        )
         lines.append("")
         # Health
         lines.append(
@@ -340,6 +393,7 @@ async def generate_logo(
             variant=logo_request.variant,
             generator=logo_request.generator_type,
         )
+        metrics.observe_generation_duration(generation_time)
 
         # Le fichier est déjà créé par le générateur
         filename = file_path.name
@@ -357,11 +411,16 @@ async def generate_logo(
             generation_time=generation_time,
         )
 
-    except HTTPException:
+    except HTTPException as http_exc:
+        try:
+            metrics.record_response_status(route="/generate", status_code=http_exc.status_code)  # type: ignore[attr-defined]
+        except Exception:
+            pass
         raise
     except Exception as e:
         logger.error(f"Erreur lors de la génération du logo: {e}")
         metrics.increment_error()
+        metrics.record_response_status(route="/generate", status_code=500)
         raise HTTPException(
             status_code=500, detail=f"Erreur de génération: {str(e)}"
         ) from e
