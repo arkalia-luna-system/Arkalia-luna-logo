@@ -14,6 +14,10 @@
 [![Monitoring](https://img.shields.io/badge/monitoring-Prometheus%20%2B%20Grafana-orange.svg)](monitoring/)
 [![Metrics](https://img.shields.io/badge/metrics-histogram%20%2B%20labels-blue.svg)](http://localhost:8000/metrics)
 
+[![Open to contributions](https://img.shields.io/badge/Open%20to-contributions-brightgreen.svg)](CONTRIBUTING.md)
+[![Good first issue](https://img.shields.io/badge/Good%20first-issue-blue.svg)](https://github.com/arkalia-luna-system/arkalia-luna-logo/labels/good%20first%20issue)
+[![Help wanted](https://img.shields.io/badge/Help-wanted-orange.svg)](https://github.com/arkalia-luna-system/arkalia-luna-logo/labels/help%20wanted)
+
 ## 🎯 **Vue d'ensemble**
 
 Arkalia-LUNA Logo Generator est un système complet de génération de logos vectoriels SVG avec **8 styles uniques** et **5 variantes émotionnelles** distinctes. L'architecture modulaire et professionnelle en fait un excellent projet vitrine pour GitHub, démontrant des compétences en Python avancé, design patterns, et génération de contenu graphique.
@@ -23,6 +27,68 @@ Arkalia-LUNA Logo Generator est un système complet de génération de logos vec
 ![Arkalia-LUNA Logo Generator Demo](exports/demo-gif/arkalia-luna-demo.gif)
 
 *Génération de logos en 0.03 secondes - 5 variantes émotionnelles*
+
+## 🎨 **Comparaison des 8 Styles de Logos**
+
+### **🌟 Variante Sérénité** (Halo doux, pulsations lentes)
+| Style | Logo | Description |
+|-------|------|-------------|
+| **🌙 Simple** | ![Simple Serenity](exports/screenshots/simple-serenity-200.svg) | Logo de base Arkalia-LUNA |
+| **📊 Dashboard** | ![Dashboard Serenity](exports/screenshots/dashboard-serenity-200.svg) | Interface optimisée et épurée |
+| **🌙 AI-Moon** | ![AI-Moon Serenity](exports/screenshots/ai_moon-serenity-200.svg) | IA réaliste avec lune vivante |
+| **🎨 Advanced** | ![Advanced Serenity](exports/screenshots/advanced-serenity-200.svg) | Techno-mystique avancé |
+| **⚡ Simple-Advanced** | ![Simple-Advanced Serenity](exports/screenshots/simple_advanced-serenity-200.svg) | Équilibré et configurable |
+| **🚀 Ultra-Max** | ![Ultra-Max Serenity](exports/screenshots/ultra_max-serenity-200.svg) | Effets exceptionnels et performance |
+| **🌍 Realism Max** | ![Realism Max Serenity](exports/screenshots/realism_max-serenity-200.svg) | Ultra-réaliste avec effets organiques |
+| **🌟 Ultimate** | ![Ultimate Serenity](exports/screenshots/ultimate-serenity-200.svg) | Cosmique extrême (100+ stops, holographie) |
+
+### **⚡ Variante Puissance** (Halo vibrant, réseau accéléré)
+| Style | Logo | Description |
+|-------|------|-------------|
+| **🌙 Simple** | ![Simple Power](exports/screenshots/simple-power-200.svg) | Logo de base Arkalia-LUNA |
+| **📊 Dashboard** | ![Dashboard Power](exports/screenshots/dashboard-power-200.svg) | Interface optimisée et épurée |
+| **🌙 AI-Moon** | ![AI-Moon Power](exports/screenshots/ai_moon-power-200.svg) | IA réaliste avec lune vivante |
+| **🎨 Advanced** | ![Advanced Power](exports/screenshots/advanced-power-200.svg) | Techno-mystique avancé |
+| **⚡ Simple-Advanced** | ![Simple-Advanced Power](exports/screenshots/simple_advanced-power-200.svg) | Équilibré et configurable |
+| **🚀 Ultra-Max** | ![Ultra-Max Power](exports/screenshots/ultra_max-power-200.svg) | Effets exceptionnels et performance |
+| **🌍 Realism Max** | ![Realism Max Power](exports/screenshots/realism_max-power-200.svg) | Ultra-réaliste avec effets organiques |
+| **🌟 Ultimate** | ![Ultimate Power](exports/screenshots/ultimate-power-200.svg) | Cosmique extrême (100+ stops, holographie) |
+
+### **🔮 Variante Mystère** (Brumes mouvantes, réseau irrégulier)
+| Style | Logo | Description |
+|-------|------|-------------|
+| **🌙 Simple** | ![Simple Mystery](exports/screenshots/simple-mystery-200.svg) | Logo de base Arkalia-LUNA |
+| **📊 Dashboard** | ![Dashboard Mystery](exports/screenshots/dashboard-mystery-200.svg) | Interface optimisée et épurée |
+| **🌙 AI-Moon** | ![AI-Moon Mystery](exports/screenshots/ai_moon-mystery-200.svg) | IA réaliste avec lune vivante |
+| **🎨 Advanced** | ![Advanced Mystery](exports/screenshots/advanced-mystery-200.svg) | Techno-mystique avancé |
+| **⚡ Simple-Advanced** | ![Simple-Advanced Mystery](exports/screenshots/simple_advanced-mystery-200.svg) | Équilibré et configurable |
+| **🚀 Ultra-Max** | ![Ultra-Max Mystery](exports/screenshots/ultra_max-mystery-200.svg) | Effets exceptionnels et performance |
+| **🌍 Realism Max** | ![Realism Max Mystery](exports/screenshots/realism_max-mystery-200.svg) | Ultra-réaliste avec effets organiques |
+| **🌟 Ultimate** | ![Ultimate Mystery](exports/screenshots/ultimate-mystery-200.svg) | Cosmique extrême (100+ stops, holographie) |
+
+### **✨ Variante Éveil/Sagesse** (Halo rayonnant, Λ-core clair)
+| Style | Logo | Description |
+|-------|------|-------------|
+| **🌙 Simple** | ![Simple Awakening](exports/screenshots/simple-awakening-200.svg) | Logo de base Arkalia-LUNA |
+| **📊 Dashboard** | ![Dashboard Awakening](exports/screenshots/dashboard-awakening-200.svg) | Interface optimisée et épurée |
+| **🌙 AI-Moon** | ![AI-Moon Awakening](exports/screenshots/ai_moon-awakening-200.svg) | IA réaliste avec lune vivante |
+| **🎨 Advanced** | ![Advanced Awakening](exports/screenshots/advanced-awakening-200.svg) | Techno-mystique avancé |
+| **⚡ Simple-Advanced** | ![Simple-Advanced Awakening](exports/screenshots/simple_advanced-awakening-200.svg) | Équilibré et configurable |
+| **🚀 Ultra-Max** | ![Ultra-Max Awakening](exports/screenshots/ultra_max-awakening-200.svg) | Effets exceptionnels et performance |
+| **🌍 Realism Max** | ![Realism Max Awakening](exports/screenshots/realism_max-awakening-200.svg) | Ultra-réaliste avec effets organiques |
+| **🌟 Ultimate** | ![Ultimate Awakening](exports/screenshots/ultimate-awakening-200.svg) | Cosmique extrême (100+ stops, holographie) |
+
+### **🎇 Variante Énergie Créative** (Flux rapides, reflets multicolores)
+| Style | Logo | Description |
+|-------|------|-------------|
+| **🌙 Simple** | ![Simple Creative](exports/screenshots/simple-creative-200.svg) | Logo de base Arkalia-LUNA |
+| **📊 Dashboard** | ![Dashboard Creative](exports/screenshots/dashboard-creative-200.svg) | Interface optimisée et épurée |
+| **🌙 AI-Moon** | ![AI-Moon Creative](exports/screenshots/ai_moon-creative-200.svg) | IA réaliste avec lune vivante |
+| **🎨 Advanced** | ![Advanced Creative](exports/screenshots/advanced-creative-200.svg) | Techno-mystique avancé |
+| **⚡ Simple-Advanced** | ![Simple-Advanced Creative](exports/screenshots/simple_advanced-creative-200.svg) | Équilibré et configurable |
+| **🚀 Ultra-Max** | ![Ultra-Max Creative](exports/screenshots/ultra_max-creative-200.svg) | Effets exceptionnels et performance |
+| **🌍 Realism Max** | ![Realism Max Creative](exports/screenshots/realism_max-creative-200.svg) | Ultra-réaliste avec effets organiques |
+| **🌟 Ultimate** | ![Ultimate Creative](exports/screenshots/ultimate-creative-200.svg) | Cosmique extrême (100+ stops, holographie) |
 
 ## ✨ **Fonctionnalités**
 

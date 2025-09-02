@@ -305,6 +305,9 @@
                     <a id="downloadLink" class="btn" href="#" download style="display:none; text-align:center;">
                         ⬇️ Télécharger le SVG
                     </a>
+                    <button id="downloadPNGButton" class="btn" style="display:none; text-align:center;">
+                        🖼️ Télécharger le PNG
+                    </button>
                 </div>
             </div>
         </div>
@@ -450,8 +453,66 @@
                     // Suggérer un nom de fichier à télécharger
                     link.setAttribute('download', urlObj.pathname.split('/').pop() || 'arkalia-luna.svg');
                     link.style.display = 'inline-block';
+
+                    // Afficher aussi le bouton PNG
+                    const pngButton = document.getElementById('downloadPNGButton');
+                    pngButton.style.display = 'inline-block';
                 } catch (e) {
                     console.warn('Impossible de préparer le lien de téléchargement:', e);
+                }
+            }
+
+            // Téléchargement PNG (conversion côté client)
+            downloadPNG() {
+                try {
+                    const svgElement = document.querySelector('#preview svg');
+                    if (!svgElement) {
+                        this.showStatus('❌ Aucun logo à convertir', 'error');
+                        return;
+                    }
+
+                    // Créer un canvas pour la conversion
+                    const canvas = document.createElement('canvas');
+                    const ctx = canvas.getContext('2d');
+                    const size = 400; // Taille PNG
+                    canvas.width = size;
+                    canvas.height = size;
+
+                    // Créer une image à partir du SVG
+                    const svgData = new XMLSerializer().serializeToString(svgElement);
+                    const svgBlob = new Blob([svgData], { type: 'image/svg+xml;charset=utf-8' });
+                    const svgUrl = URL.createObjectURL(svgBlob);
+
+                    const img = new Image();
+                    img.onload = () => {
+                        // Dessiner l'image sur le canvas
+                        ctx.fillStyle = '#0f172a'; // Fond sombre
+                        ctx.fillRect(0, 0, size, size);
+                        ctx.drawImage(img, 0, 0, size, size);
+
+                        // Convertir en PNG et télécharger
+                        canvas.toBlob((blob) => {
+                            const url = URL.createObjectURL(blob);
+                            const a = document.createElement('a');
+                            a.href = url;
+                            a.download = `arkalia-luna-${document.getElementById('variant').value}-${document.getElementById('size').value}.png`;
+                            a.click();
+                            URL.revokeObjectURL(url);
+                            URL.revokeObjectURL(svgUrl);
+                            this.showStatus('✅ PNG téléchargé !', 'success');
+                        }, 'image/png');
+                    };
+
+                    img.onerror = () => {
+                        this.showStatus('❌ Erreur lors de la conversion PNG', 'error');
+                        URL.revokeObjectURL(svgUrl);
+                    };
+
+                    img.src = svgUrl;
+
+                } catch (error) {
+                    console.error('Erreur conversion PNG:', error);
+                    this.showStatus('❌ Erreur lors de la conversion PNG', 'error');
                 }
             }
 
@@ -528,7 +589,12 @@
 
         // Initialiser l'application
         document.addEventListener('DOMContentLoaded', () => {
-            new ArkaliaAPIClient();
+            const client = new ArkaliaAPIClient();
+
+            // Event listener pour le bouton PNG
+            document.getElementById('downloadPNGButton').addEventListener('click', () => {
+                client.downloadPNG();
+            });
         });
     </script>
 </body>
