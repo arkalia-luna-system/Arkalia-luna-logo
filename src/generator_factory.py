@@ -77,20 +77,41 @@ class LogoGeneratorFactory:
         return generator
 
     @classmethod
-    def get_available_generators(cls) -> Dict[str, str]:
+    def get_available_generators(cls) -> Dict[str, Dict[str, str]]:
         """Retourne la liste des générateurs disponibles avec descriptions"""
         return {
-            "default": "Générateur de base standard",
-            "realism": "Générateur ultra-réaliste avec effets organiques",
-            "ultra_max": "Générateur ULTRA-MAX avec effets exceptionnels",
-            "simple_advanced": "Générateur simple-advanced équilibré",
-            "dashboard": "Générateur dashboard optimisé interface",
-            "ai_moon": "Générateur IA avec lune vivante (hérite de ArkaliaLunaLogo)",
-            "advanced": "Générateur avancé techno-mystique (hérite de ArkaliaLunaLogo)",
-            "ultimate": (
-                "🌟 Générateur ULTIME avec effets cosmiques extrêmes "
-                "(100+ stops, turbulence, holographie)"
-            ),
+            "default": {
+                "name": "Générateur de base",
+                "description": "Générateur de base standard",
+            },
+            "realism": {
+                "name": "Realism Max",
+                "description": "Générateur ultra-réaliste avec effets organiques",
+            },
+            "ultra_max": {
+                "name": "Ultra Max",
+                "description": "Générateur ULTRA-MAX avec effets exceptionnels",
+            },
+            "simple_advanced": {
+                "name": "Simple Advanced",
+                "description": "Générateur simple-advanced équilibré",
+            },
+            "dashboard": {
+                "name": "Dashboard",
+                "description": "Générateur dashboard optimisé interface",
+            },
+            "ai_moon": {
+                "name": "AI Moon",
+                "description": "Générateur IA avec lune vivante",
+            },
+            "advanced": {
+                "name": "Advanced",
+                "description": "Générateur avancé techno-mystique",
+            },
+            "ultimate": {
+                "name": "Ultimate",
+                "description": "🌟 Générateur ULTIME avec effets cosmiques extrêmes",
+            },
         }
 
     @classmethod

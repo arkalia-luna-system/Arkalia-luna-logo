@@ -3,7 +3,6 @@
 Script pour générer des screenshots comparatifs des 8 styles de logos
 """
 
-import os
 import subprocess
 from pathlib import Path
 
@@ -17,13 +16,13 @@ def generate_screenshots():
 
     # Styles disponibles (correspondant aux générateurs)
     styles = [
-        "simple",  # Logo de base
+        "default",  # Logo de base (simple)
         "dashboard",  # Dashboard
         "ai_moon",  # AI-Moon
         "advanced",  # Advanced
         "simple_advanced",  # Simple-Advanced
         "ultra_max",  # Ultra-Max
-        "realism_max",  # Realism Max
+        "realism",  # Realism Max (pas realism_max)
         "ultimate",  # Ultimate
     ]
 
@@ -51,11 +50,12 @@ def generate_screenshots():
 
         for variant in variants:
             try:
-                # Nom du fichier de sortie
-                filename = f"{style}-{variant}-200.svg"
+                # Nom du fichier de sortie (mapping pour affichage)
+                style_display = "simple" if style == "default" else style
+                filename = f"{style_display}-{variant}-200.svg"
                 output_path = output_dir / filename
 
-                # Commande CLI pour générer le logo
+                # Commande CLI pour générer le logo avec le générateur spécialisé
                 cmd = [
                     "python",
                     "-m",
@@ -65,6 +65,8 @@ def generate_screenshots():
                     variant,
                     "--size",
                     "200",
+                    "--generator",
+                    style,
                     "--output",
                     str(output_path),
                 ]

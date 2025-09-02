@@ -14,6 +14,7 @@ from rich.progress import track
 from rich.table import Table
 from rich.text import Text
 
+from .generator_factory import LogoGeneratorFactory
 from .logo_generator import ArkaliaLunaLogo
 
 # Configuration Rich
@@ -75,6 +76,33 @@ def cli(ctx, output_dir: Optional[str], verbose: bool):
 
 @cli.command()
 @click.pass_context
+def generators(ctx):
+    """Affiche les générateurs disponibles"""
+    try:
+        available_generators = LogoGeneratorFactory.get_available_generators()
+
+        # Création du tableau
+        table = Table(title="🔧 Générateurs Arkalia-LUNA Disponibles")
+        table.add_column("Type", style="cyan", no_wrap=True)
+        table.add_column("Nom", style="magenta")
+        table.add_column("Description", style="green")
+
+        for generator_type, generator_info in available_generators.items():
+            table.add_row(
+                generator_type,
+                generator_info.get("name", "N/A"),
+                generator_info.get("description", "N/A"),
+            )
+
+        console.print(table)
+
+    except Exception as e:
+        print_error(f"Impossible d'afficher les générateurs : {e}")
+        sys.exit(1)
+
+
+@cli.command()
+@click.pass_context
 def info(ctx):
     """Affiche les informations sur toutes les variantes disponibles"""
     try:
@@ -109,28 +137,40 @@ def info(ctx):
 @cli.command()
 @click.option("--variant", "-v", required=True, help="Nom de la variante")
 @click.option("--size", "-s", default=200, help="Taille du logo en pixels")
+@click.option(
+    "--generator",
+    "-g",
+    default="default",
+    help="Type de générateur (default, advanced, ultimate, ai_moon, dashboard, ultra_max, realism_max, simple_advanced)",
+)
 @click.option("--output", "-o", type=click.Path(), help="Chemin de sortie personnalisé")
 @click.pass_context
-def generate(ctx, variant: str, size: int, output: Optional[str]):
+def generate(ctx, variant: str, size: int, generator: str, output: Optional[str]):
     """Génère un logo SVG pour une variante spécifique"""
     try:
-        generator = ctx.obj["generator"]
+        # Création du générateur spécialisé via la factory
+        specialized_generator = LogoGeneratorFactory.create_generator(
+            generator_type=generator, output_dir=ctx.obj["output_dir"]
+        )
 
         # Validation de la variante
-        if not generator.validate_variant(variant):
+        if not specialized_generator.validate_variant(variant):
             print_error(f"Variante '{variant}' non reconnue")
             console.print(
-                f"Variantes disponibles : {', '.join(generator.list_all_variants())}"
+                f"Variantes disponibles : {', '.join(specialized_generator.list_all_variants())}"
             )
             sys.exit(1)
 
-        # Génération du logo
-        with console.status(f"[bold blue]Génération du logo '{variant}'..."):
-            output_path = generator.generate_svg_logo(variant, size)
+        # Génération du logo avec le générateur spécialisé
+        with console.status(
+            f"[bold blue]Génération du logo '{variant}' avec générateur '{generator}'..."
+        ):
+            output_path = specialized_generator.generate_svg_logo(variant, size)
 
         print_success("Logo généré avec succès !")
         console.print(f"📁 Fichier : {output_path}")
         console.print(f"🎨 Variante : {variant}")
+        console.print(f"🔧 Générateur : {generator}")
         console.print(f"📏 Taille : {size}x{size} pixels")
 
         # Déplacement si chemin personnalisé spécifié
