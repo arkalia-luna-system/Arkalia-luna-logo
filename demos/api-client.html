@@ -301,6 +301,11 @@
                         Sélectionnez les paramètres et cliquez sur "Générer le logo"
                     </div>
                 </div>
+                <div style="margin-top: 1rem; display:flex; gap:.75rem;">
+                    <a id="downloadLink" class="btn" href="#" download style="display:none; text-align:center;">
+                        ⬇️ Télécharger le SVG
+                    </a>
+                </div>
             </div>
         </div>
 
@@ -421,6 +426,7 @@
 
                     if (data.success) {
                         await this.displayLogo(data.download_url);
+                        this.setDownloadLink(data.download_url);
                         this.showStatus(`✅ Logo généré avec succès en ${data.generation_time.toFixed(3)}s`, 'success');
                         this.updateStats(duration, false);
                     } else {
@@ -432,6 +438,19 @@
                     this.updateStats(0, true);
                 } finally {
                     this.setLoading(false);
+                }
+            }
+
+            setDownloadLink(downloadUrl) {
+                try {
+                    const link = document.getElementById('downloadLink');
+                    link.href = `${this.apiUrl}${downloadUrl}`;
+                    const urlObj = new URL(link.href);
+                    // Suggérer un nom de fichier à télécharger
+                    link.setAttribute('download', urlObj.pathname.split('/').pop() || 'arkalia-luna.svg');
+                    link.style.display = 'inline-block';
+                } catch (e) {
+                    console.warn('Impossible de préparer le lien de téléchargement:', e);
                 }
             }
 
