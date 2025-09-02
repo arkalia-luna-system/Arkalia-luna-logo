@@ -149,14 +149,18 @@ class AILogoGenerator(ArkaliaLunaLogo):
             prompt = self._create_prompt(variant_name, generator_style)
             self.logger.info(f"📝 Prompt: {prompt}")
 
-            # Génération de l'image avec paramètres optimisés
+            # Génération de l'image avec paramètres optimisés pour performance
             with torch.no_grad():
+                # Optimisation des paramètres selon la taille
+                steps = 20 if size <= 200 else 30 if size <= 500 else 40
+                guidance = 7.5 if size <= 200 else 8.0
+
                 image = self.ai_pipeline(
                     prompt=prompt,
                     height=size,
                     width=size,
-                    num_inference_steps=30,  # Plus d'étapes pour meilleure qualité
-                    guidance_scale=8.0,  # Plus de guidance pour respecter le prompt
+                    num_inference_steps=steps,  # Optimisé selon la taille
+                    guidance_scale=guidance,  # Optimisé selon la taille
                     generator=torch.Generator(device=self.device).manual_seed(
                         42
                     ),  # Reproducible
@@ -175,6 +179,22 @@ class AILogoGenerator(ArkaliaLunaLogo):
         except Exception as e:
             self.logger.error(f"❌ Erreur génération IA '{variant_name}': {e}")
             raise
+
+    def cleanup_resources(self) -> None:
+        """Nettoie les ressources IA pour libérer la mémoire"""
+        if hasattr(self, "ai_pipeline") and self.ai_pipeline:
+            try:
+                if hasattr(self.ai_pipeline, "to"):
+                    self.ai_pipeline.to("cpu")
+                del self.ai_pipeline
+                self.ai_pipeline = None
+                self.logger.info("🧹 Ressources IA nettoyées")
+            except Exception as e:
+                self.logger.warning(f"⚠️ Erreur nettoyage ressources: {e}")
+
+    def __del__(self):
+        """Destructeur pour nettoyer les ressources"""
+        self.cleanup_resources()
 
     def generate_all_ai_variants(
         self, size: int = 200, generator_style: str = "ai"

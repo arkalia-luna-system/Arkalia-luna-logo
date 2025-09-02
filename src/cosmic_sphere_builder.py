@@ -25,6 +25,9 @@ class CosmicSphereBuilder(SVGBuilder):
     ) -> str:
         """Construit un logo avec sphère cosmique lumineuse"""
         try:
+            # Validation et optimisation des paramètres
+            size = self._validate_size_parameters(size)
+
             # Configuration de base
             center_x, center_y = size // 2, size // 2
             sphere_radius = size * 0.35
@@ -128,8 +131,9 @@ class CosmicSphereBuilder(SVGBuilder):
             )
         )
 
-        # Étoiles cosmiques
-        for _ in range(50):
+        # Étoiles cosmiques (optimisé pour performance)
+        star_count = min(50, max(20, int(size / 8)))
+        for _ in range(star_count):
             x = self._random_float(0, size)
             y = self._random_float(0, size)
             star_size = self._random_float(0.5, 2)
@@ -159,8 +163,9 @@ class CosmicSphereBuilder(SVGBuilder):
     ):
         """Ajoute la texture de surface de la sphère"""
 
-        # Crateres et reliefs
-        for _ in range(8):
+        # Crateres et reliefs (optimisé pour performance)
+        crater_count = min(8, max(4, int(radius / 20)))  # Adaptatif selon la taille
+        for _ in range(crater_count):
             angle = self._random_float(0, 2 * math.pi)
             distance = self._random_float(0.3, 0.8) * radius
             crater_x = cx + distance * math.cos(angle)
@@ -183,9 +188,10 @@ class CosmicSphereBuilder(SVGBuilder):
 
         colors = self._get_variant_colors(variant_name)
 
-        # Nœuds du réseau
+        # Nœuds du réseau (optimisé pour performance)
         nodes = []
-        for _ in range(15):
+        node_count = min(15, max(8, int(radius / 15)))  # Adaptatif selon la taille
+        for _ in range(node_count):
             angle = self._random_float(0, 2 * math.pi)
             distance = self._random_float(0.2, 0.9) * radius
             node_x = cx + distance * math.cos(angle)
@@ -259,7 +265,9 @@ class CosmicSphereBuilder(SVGBuilder):
 
         colors = self._get_variant_colors(variant_name)
 
-        for _ in range(30):
+        # Particules adaptatives selon la taille
+        particle_count = min(30, max(15, int(size / 10)))
+        for _ in range(particle_count):
             x = self._random_float(0, size)
             y = self._random_float(0, size)
             particle_size = self._random_float(0.5, 2)
@@ -368,6 +376,18 @@ class CosmicSphereBuilder(SVGBuilder):
         import random
 
         return random.uniform(min_val, max_val)
+
+    def _validate_size_parameters(self, size: int) -> int:
+        """Valide et optimise les paramètres de taille"""
+        # Limites de performance
+        min_size, max_size = 50, 2000
+        if size < min_size:
+            self.logger.warning(f"Taille {size} trop petite, utilisation de {min_size}")
+            return min_size
+        elif size > max_size:
+            self.logger.warning(f"Taille {size} trop grande, utilisation de {max_size}")
+            return max_size
+        return size
 
     def save_logo(
         self, svg_content: str, output_path: Path, variant_name: str = ""

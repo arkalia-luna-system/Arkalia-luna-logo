@@ -150,13 +150,15 @@ class LogoGeneratorFactory:
     def create_all_generators(
         cls, output_dir: Optional[Path] = None
     ) -> Dict[str, ArkaliaLunaLogo]:
-        """Crée tous les types de générateurs disponibles"""
+        """Crée tous les types de générateurs disponibles avec optimisations"""
         generators = {}
 
         for generator_type in cls.GENERATOR_TYPES:
             try:
                 generators[generator_type] = cls.create_generator(
-                    generator_type, output_dir, use_cache=False
+                    generator_type,
+                    output_dir,
+                    use_cache=True,  # Utiliser le cache pour performance
                 )
             except Exception as e:
                 # Log de l'erreur mais continue avec les autres
