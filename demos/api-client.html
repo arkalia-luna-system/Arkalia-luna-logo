@@ -355,6 +355,7 @@
 
                 this.form.addEventListener('submit', (e) => this.handleSubmit(e));
                 this.loadAvailableOptions();
+                this.startAutoRefresh();
             }
 
             async loadAvailableOptions() {
@@ -503,6 +504,25 @@
 
                 const successRate = ((this.stats.totalGenerated - this.stats.errors) / this.stats.totalGenerated * 100);
                 document.getElementById('successRate').textContent = `${Math.round(successRate)}%`;
+            }
+
+            startAutoRefresh() {
+                // Rafraîchir les stats côté serveur toutes les 5s
+                const refresh = async () => {
+                    try {
+                        const res = await fetch(`${this.apiUrl}/stats`, { cache: 'no-store' });
+                        if (!res.ok) return;
+                        const data = await res.json();
+                        if (data && typeof data.total_generated === 'number') {
+                            document.getElementById('totalGenerated').textContent = data.total_generated;
+                        }
+                    } catch (_) {
+                        // silencieux
+                    }
+                };
+                // premier run + intervalle
+                refresh();
+                this._statsInterval = setInterval(refresh, 5000);
             }
         }
 
