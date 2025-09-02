@@ -16,6 +16,12 @@ class VariantType(Enum):
     MYSTERY = "mystery"
     AWAKENING = "awakening"
     CREATIVE = "creative"
+    # Nouvelles variantes émotionnelles dynamiques
+    RAINY = "rainy"  # Pluie/Gris
+    STORMY = "stormy"  # Orage/Colère
+    EXPLOSIVE = "explosive"  # Vive/Explosion
+    SUNNY = "sunny"  # Ensoleillé
+    SNOWY = "snowy"  # Neige
 
 
 @dataclass
@@ -133,6 +139,72 @@ class LogoVariants:
                 ),
                 animation_speed=2.0,
                 glow_intensity=1.0,
+            ),
+            # Nouvelles variantes émotionnelles dynamiques
+            VariantType.RAINY.value: LogoVariant(
+                variant_type=VariantType.RAINY,
+                name="🌧️ Pluie/Gris",
+                description="Gouttes de pluie, nuages gris, ambiance mélancolique mais élégante",
+                colors=ColorScheme(
+                    primary="#4b5563",  # Gris foncé
+                    secondary="#6b7280",  # Gris moyen
+                    accent="#9ca3af",  # Gris clair
+                    glow="#d1d5db",  # Gris très clair
+                ),
+                animation_speed=0.6,
+                glow_intensity=0.4,
+            ),
+            VariantType.STORMY.value: LogoVariant(
+                variant_type=VariantType.STORMY,
+                name="⚡ Orage/Colère",
+                description="Éclairs zigzagants, nuages sombres, énergie explosive et dynamique",
+                colors=ColorScheme(
+                    primary="#1f2937",  # Noir-gris
+                    secondary="#4c1d95",  # Violet sombre
+                    accent="#fbbf24",  # Jaune éclair
+                    glow="#7c3aed",  # Violet éclair
+                ),
+                animation_speed=3.0,
+                glow_intensity=1.2,
+            ),
+            VariantType.EXPLOSIVE.value: LogoVariant(
+                variant_type=VariantType.EXPLOSIVE,
+                name="💥 Vive/Explosion",
+                description="Particules explosives, feux d'artifice, mouvement radial et énergique",
+                colors=ColorScheme(
+                    primary="#dc2626",  # Rouge vif
+                    secondary="#ea580c",  # Orange vif
+                    accent="#fbbf24",  # Jaune vif
+                    glow="#f97316",  # Orange éclatant
+                ),
+                animation_speed=2.5,
+                glow_intensity=1.5,
+            ),
+            VariantType.SUNNY.value: LogoVariant(
+                variant_type=VariantType.SUNNY,
+                name="☀️ Ensoleillé",
+                description="Rayons de soleil, chaleur et luminosité, optimisme et énergie positive",
+                colors=ColorScheme(
+                    primary="#f59e0b",  # Jaune doré
+                    secondary="#f97316",  # Orange chaud
+                    accent="#fbbf24",  # Jaune clair
+                    glow="#fef3c7",  # Jaune très clair
+                ),
+                animation_speed=1.8,
+                glow_intensity=1.1,
+            ),
+            VariantType.SNOWY.value: LogoVariant(
+                variant_type=VariantType.SNOWY,
+                name="❄️ Neige",
+                description="Flocons qui tombent, froid et pureté, sérénité cristalline",
+                colors=ColorScheme(
+                    primary="#f8fafc",  # Blanc pur
+                    secondary="#e2e8f0",  # Gris très clair
+                    accent="#cbd5e1",  # Gris clair
+                    glow="#f1f5f9",  # Blanc cassé
+                ),
+                animation_speed=0.4,
+                glow_intensity=0.3,
             ),
         }
 
