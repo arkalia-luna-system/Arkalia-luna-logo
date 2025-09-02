@@ -1,5 +1,7 @@
 {
-  "annotations": {"list": []},
+  "annotations": {
+    "list": []
+  },
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
@@ -10,105 +12,194 @@
     {
       "type": "stat",
       "title": "Uptime (s)",
-      "gridPos": {"h": 4, "w": 8, "x": 0, "y": 0},
-      "targets": [{
-        "expr": "arkalia_luna_uptime_seconds",
-        "legendFormat": "uptime"
-      }]
+      "gridPos": {
+        "h": 4,
+        "w": 8,
+        "x": 0,
+        "y": 0
+      },
+      "targets": [
+        {
+          "expr": "arkalia_luna_uptime_seconds",
+          "legendFormat": "uptime"
+        }
+      ]
     },
     {
       "type": "timeSeries",
       "title": "Requests total",
-      "gridPos": {"h": 8, "w": 12, "x": 0, "y": 4},
-      "targets": [{
-        "expr": "sum(arkalia_luna_requests_total)"
-      }]
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 4
+      },
+      "targets": [
+        {
+          "expr": "sum(arkalia_luna_requests_total)"
+        }
+      ]
     },
     {
       "type": "timeSeries",
       "title": "Requests par route",
-      "gridPos": {"h": 8, "w": 12, "x": 12, "y": 4},
-      "targets": [{
-        "expr": "sum by (route) (arkalia_luna_requests_total)"
-      }]
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 4
+      },
+      "targets": [
+        {
+          "expr": "sum by (route) (arkalia_luna_requests_total)"
+        }
+      ]
     },
     {
       "type": "timeSeries",
       "title": "Générations par labels (variant,generator)",
-      "gridPos": {"h": 8, "w": 12, "x": 0, "y": 12},
-      "targets": [{
-        "expr": "sum by (variant,generator) (arkalia_luna_logo_generations_total)"
-      }]
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 12
+      },
+      "targets": [
+        {
+          "expr": "sum by (variant,generator) (arkalia_luna_logo_generations_total)"
+        }
+      ]
     },
     {
       "type": "timeSeries",
       "title": "Durées (last/avg)",
-      "gridPos": {"h": 8, "w": 12, "x": 12, "y": 12},
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 12
+      },
       "targets": [
-        {"expr": "arkalia_luna_last_generation_duration_seconds", "legendFormat": "last"},
-        {"expr": "arkalia_luna_avg_generation_duration_seconds", "legendFormat": "avg"}
+        {
+          "expr": "arkalia_luna_last_generation_duration_seconds",
+          "legendFormat": "last"
+        },
+        {
+          "expr": "arkalia_luna_avg_generation_duration_seconds",
+          "legendFormat": "avg"
+        }
       ]
     },
     {
       "type": "timeSeries",
       "title": "Erreurs",
-      "gridPos": {"h": 6, "w": 24, "x": 0, "y": 20},
-      "targets": [{
-        "expr": "sum(arkalia_luna_errors_total)"
-      }]
+      "gridPos": {
+        "h": 6,
+        "w": 24,
+        "x": 0,
+        "y": 20
+      },
+      "targets": [
+        {
+          "expr": "sum(arkalia_luna_errors_total)"
+        }
+      ]
     },
     {
       "type": "timeSeries",
       "title": "Durée p95",
-      "gridPos": {"h": 6, "w": 12, "x": 0, "y": 26},
-      "targets": [{
-        "expr": "histogram_quantile(0.95, sum(rate(arkalia_luna_generation_duration_seconds_bucket[5m])) by (le))",
-        "legendFormat": "p95"
-      }]
+      "gridPos": {
+        "h": 6,
+        "w": 12,
+        "x": 0,
+        "y": 26
+      },
+      "targets": [
+        {
+          "expr": "histogram_quantile(0.95, sum(rate(arkalia_luna_generation_duration_seconds_bucket[5m])) by (le))",
+          "legendFormat": "p95"
+        }
+      ]
     },
     {
       "type": "timeSeries",
       "title": "Durée p99",
-      "gridPos": {"h": 6, "w": 12, "x": 12, "y": 26},
-      "targets": [{
-        "expr": "histogram_quantile(0.99, sum(rate(arkalia_luna_generation_duration_seconds_bucket[5m])) by (le))",
-        "legendFormat": "p99"
-      }]
+      "gridPos": {
+        "h": 6,
+        "w": 12,
+        "x": 12,
+        "y": 26
+      },
+      "targets": [
+        {
+          "expr": "histogram_quantile(0.99, sum(rate(arkalia_luna_generation_duration_seconds_bucket[5m])) by (le))",
+          "legendFormat": "p99"
+        }
+      ]
     },
     {
       "type": "timeSeries",
       "title": "Erreurs / min",
-      "gridPos": {"h": 6, "w": 12, "x": 0, "y": 32},
-      "targets": [{
-        "expr": "sum(rate(arkalia_luna_errors_total[5m])) * 60",
-        "legendFormat": "errors/min"
-      }]
+      "gridPos": {
+        "h": 6,
+        "w": 12,
+        "x": 0,
+        "y": 32
+      },
+      "targets": [
+        {
+          "expr": "sum(rate(arkalia_luna_errors_total[5m])) * 60",
+          "legendFormat": "errors/min"
+        }
+      ]
     },
     {
       "type": "timeSeries",
       "title": "Réponses par statut",
-      "gridPos": {"h": 6, "w": 12, "x": 12, "y": 32},
-      "targets": [{
-        "expr": "sum by (status_code) (rate(arkalia_luna_responses_total[5m]))",
-        "legendFormat": "{{status_code}}"
-      }]
+      "gridPos": {
+        "h": 6,
+        "w": 12,
+        "x": 12,
+        "y": 32
+      },
+      "targets": [
+        {
+          "expr": "sum by (status_code) (rate(arkalia_luna_responses_total[5m]))",
+          "legendFormat": "{{status_code}}"
+        }
+      ]
     },
     {
       "type": "timeSeries",
       "title": "Réponses route × statut",
-      "gridPos": {"h": 8, "w": 24, "x": 0, "y": 38},
-      "targets": [{
-        "expr": "sum by (route,status_code) (rate(arkalia_luna_responses_total[5m]))",
-        "legendFormat": "{{route}} {{status_code}}"
-      }]
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 38
+      },
+      "targets": [
+        {
+          "expr": "sum by (route,status_code) (rate(arkalia_luna_responses_total[5m]))",
+          "legendFormat": "{{route}} {{status_code}}"
+        }
+      ]
     }
   ],
   "refresh": "10s",
   "schemaVersion": 38,
   "style": "dark",
-  "tags": ["arkalia-luna", "monitoring"],
-  "templating": {"list": []},
-  "time": {"from": "now-6h", "to": "now"},
+  "tags": [
+    "arkalia-luna",
+    "monitoring"
+  ],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
   "timepicker": {},
   "timezone": "",
   "title": "Arkalia-LUNA Overview",
