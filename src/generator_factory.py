@@ -7,6 +7,7 @@ from pathlib import Path
 from typing import Any, Dict, Optional
 
 from .advanced_logo_generator import AdvancedArkaliaLunaLogo
+from .ai_logo_generator import AILogoGenerator
 from .ai_moon_generator import AIMoonLogoGenerator
 from .dashboard_generator import DashboardLogoGenerator
 from .logo_generator import ArkaliaLunaLogo
@@ -32,6 +33,7 @@ class LogoGeneratorFactory:
         "ai_moon": AIMoonLogoGenerator,  # ✅ Maintenant hérite correctement
         "advanced": AdvancedArkaliaLunaLogo,  # ✅ Maintenant hérite correctement
         "ultimate": UltimateLogoGenerator,  # 🌟 NOUVEAU : Générateur ULTIME cosmique
+        "ai": AILogoGenerator,  # 🤖 NOUVEAU : Générateur IA avec Stable Diffusion
     }
 
     @classmethod
@@ -111,6 +113,10 @@ class LogoGeneratorFactory:
             "ultimate": {
                 "name": "Ultimate",
                 "description": "🌟 Générateur ULTIME avec effets cosmiques extrêmes",
+            },
+            "ai": {
+                "name": "AI Generator",
+                "description": "🤖 Générateur IA avec Stable Diffusion local",
             },
         }
 
