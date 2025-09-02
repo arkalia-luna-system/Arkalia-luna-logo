@@ -58,15 +58,18 @@
 
 #### **📊 Monitoring Prometheus - IMPLÉMENTÉ** ✅
 - **Endpoint `/metrics`** : Métriques au format Prometheus
-- **Métriques trackées** :
+- **Métriques trackées (enrichies)** :
   - `arkalia_luna_uptime_seconds` : Temps de fonctionnement
-  - `arkalia_luna_requests_total` : Nombre total de requêtes
-  - `arkalia_luna_logo_generations_total` : Générations de logos
+  - `arkalia_luna_requests_total{route}` : Requêtes par route
+  - `arkalia_luna_responses_total{route,status_code}` : Réponses par statut
+  - `arkalia_luna_logo_generations_total{variant,generator}` : Générations par labels
+  - `arkalia_luna_last_generation_duration_seconds` : Dernière durée
+  - `arkalia_luna_avg_generation_duration_seconds` : Durée moyenne
+  - `arkalia_luna_generation_duration_seconds_bucket/_sum/_count` : Histogramme de durées
   - `arkalia_luna_errors_total` : Nombre d'erreurs
-  - `arkalia_luna_last_generation_duration_seconds` : Durée dernière génération
   - `arkalia_luna_health_status` : Statut de santé (1=healthy)
 - **Collecte** : Prometheus scrape automatiquement l'API
-- **Dashboard** : Grafana configuré pour visualiser les métriques
+- **Dashboard** : Grafana configuré pour visualiser les métriques (p95/p99, erreurs/min, statut par route)
 
 #### **Configuration Production** ✅
 - **Fichier** : `config/production.py`
@@ -134,7 +137,16 @@
 - **Requêtes** : 31 requêtes traitées
 - **Générations** : 1 logo généré
 - **Erreurs** : 0 erreur (100% de fiabilité)
-- **Performance** : 0.041s dernière génération
+- **Performance** : 0.041s dernière génération (quantiles via histogramme)
+
+---
+
+## 🧪 Tests de charge (CI) – NOUVEAU
+
+- **Workflow**: `.github/workflows/load-test.yml` (déclenchable à la demande)
+- **Entrée**: `target_url` pour cibler l’API (local ou déployée)
+- **SLA**: p95 < 2s, p99 < 5s, erreurs < 5%
+- **Artefacts**: rapport `artillery-report.json` attaché à l’exécution
 - **Santé** : Status healthy (1)
 
 ---

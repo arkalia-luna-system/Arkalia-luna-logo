@@ -93,7 +93,7 @@ docs/
 | **Suivre la roadmap** | [workflow-next-steps.md](workflow-next-steps.md) | **🚨 Plan d'amélioration** |
 | **Phase 2 UX** | [PHASE2_UX_EXCEPTIONNELLE.md](PHASE2_UX_EXCEPTIONNELLE.md) | **🎨 UX Exceptionnelle** |
 | **Progrès Phase 2** | [PHASE2_PROGRESS.md](PHASE2_PROGRESS.md) | **📊 Suivi détaillé** |
-| **Phase 3 Production** | [PHASE3_PRODUCTION.md](PHASE3_PRODUCTION.md) | **🚀 Déploiement TERMINÉ** ✅ |
+| **Phase 3 Production** | [PHASE3_PRODUCTION.md](PHASE3_PRODUCTION.md) | **🚀 Déploiement TERMINÉ** ✅ (Grafana avancé, histogrammes, CI Artillery) |
 
 ## 🎯 **Parcours Recommandés**
 
