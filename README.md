@@ -4,6 +4,7 @@
 
 [![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://python.org)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Release](https://img.shields.io/github/v/release/arkalia-luna-system/arkalia-luna-logo?include_prereleases)](https://github.com/arkalia-luna-system/arkalia-luna-logo/releases)
 [![Version](https://img.shields.io/badge/Version-2.0.0-orange.svg)](CHANGELOG.md)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![Ruff](https://img.shields.io/badge/lint-ruff-red.svg)](https://github.com/astral-sh/ruff)
@@ -21,6 +22,19 @@
 ## 🎯 **Vue d'ensemble**
 
 Arkalia-LUNA Logo Generator est un système complet de génération de logos vectoriels SVG avec **8 styles uniques** et **5 variantes émotionnelles** distinctes. L'architecture modulaire et professionnelle en fait un excellent projet vitrine pour GitHub, démontrant des compétences en Python avancé, design patterns, et génération de contenu graphique.
+
+## 🎯 **Cas d'Usage - Dans Quel Projet Utiliser Ce Générateur ?**
+
+| Type de Projet | Usage Recommandé | Bénéfice | Intégration |
+|----------------|------------------|----------|-------------|
+| **🌐 Applications Web** | Logos dynamiques selon le thème | Cohérence visuelle | API REST + Frontend |
+| **📱 Apps Mobiles** | Favicons et icônes adaptatives | Multi-résolution automatique | CLI dans CI/CD |
+| **📊 Dashboards Business** | Branding personnalisé | Identité professionnelle | Docker + monitoring |
+| **🎮 Plateformes Gaming** | Logos émotionnels immersifs | Engagement utilisateur | API temps réel |
+| **🤖 Projets IA/ML** | Visualisation d'émotions | Interface intuitive | Python natif |
+| **🏢 Solutions Entreprise** | Multi-tenant branding | Personnalisation client | API scalable |
+| **📚 Projets Open Source** | Branding cohérent | Identité communautaire | GitHub Actions |
+| **🎨 Outils Créatifs** | Assets vectoriels de qualité | Export professionnel | CLI + batch processing |
 
 ## 🎬 **Démonstration en Temps Réel**
 
