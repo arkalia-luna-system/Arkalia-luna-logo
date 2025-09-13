@@ -1,6 +1,8 @@
-# 🌙 Arkalia-LUNA Logo Generator
+# 🎨⚡️🤖 **Arkalia-LUNA Logo Generator**
 
-**Générateur de logos techno-mystiques avec variantes émotionnelles**
+> **🌍 English**: Professional SVG/PNG logo generator with 8 unique styles, emotional variants, FastAPI integration, monitoring & CI/CD - like Figma/Canva but for developers.
+
+> **🇫🇷 Français**: Générateur professionnel de logos SVG/PNG multi-styles avec variantes émotionnelles, API FastAPI, monitoring & CI/CD inclus - comme Figma/Canva mais pour développeurs.
 
 [![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://python.org)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
