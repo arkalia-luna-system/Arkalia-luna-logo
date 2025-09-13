@@ -19,7 +19,26 @@
 [![Good first issue](https://img.shields.io/badge/Good%20first-issue-blue.svg)](https://github.com/arkalia-luna-system/arkalia-luna-logo/labels/good%20first%20issue)
 [![Help wanted](https://img.shields.io/badge/Help-wanted-orange.svg)](https://github.com/arkalia-luna-system/arkalia-luna-logo/labels/help%20wanted)
 
+## 📋 **Table of Contents**
+
+- [🎯 Vue d'ensemble](#-vue-densemble)
+- [🎯 Cas d'Usage](#-cas-dusage---dans-quel-projet-utiliser-ce-générateur-)
+- [✨ Démonstration Live](#-démonstration-live)
+- [🚀 Installation](#-installation)
+- [💻 Utilisation](#-utilisation)
+- [🎨 Styles Disponibles](#-styles-disponibles)
+- [🔧 Configuration](#-configuration)
+- [📊 Monitoring](#-monitoring)
+- [🤝 Contribution](#-contribution)
+- [📚 Documentation](#-documentation)
+- [🛠️ Dépannage](#️-dépannage)
+- [📄 Licence](#-licence)
+
+---
+
 ## 🎯 **Vue d'ensemble**
+
+> **🌍 English**: Arkalia-LUNA Logo Generator is a complete SVG vector logo generation system with **8 unique styles** and **5 emotional variants**. Professional modular architecture perfect for showcase projects, demonstrating advanced Python skills, design patterns, and graphics generation.
 
 Arkalia-LUNA Logo Generator est un système complet de génération de logos vectoriels SVG avec **8 styles uniques** et **5 variantes émotionnelles** distinctes. L'architecture modulaire et professionnelle en fait un excellent projet vitrine pour GitHub, démontrant des compétences en Python avancé, design patterns, et génération de contenu graphique.
 
