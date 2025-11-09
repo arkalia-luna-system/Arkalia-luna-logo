@@ -19,7 +19,7 @@ class SVGBuilder(ABC):
         self.variants_manager = variants_manager
         self._validate_svgwrite()
 
-    def _validate_svgwrite(self):
+    def _validate_svgwrite(self) -> None:
         """Valide que svgwrite est correctement installé"""
         if svgwrite is None:
             raise ImportError(

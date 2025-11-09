@@ -21,7 +21,7 @@ from .logo_generator import ArkaliaLunaLogo
 console = Console()
 
 
-def print_banner():
+def print_banner() -> None:
     """Affiche la bannière Arkalia-LUNA"""
     banner = Text()
     banner.append("🌙 ", style="bold blue")
@@ -32,17 +32,17 @@ def print_banner():
     console.print(panel)
 
 
-def print_error(message: str):
+def print_error(message: str) -> None:
     """Affiche une erreur formatée"""
     console.print(f"[bold red]❌ Erreur :[/bold red] {message}")
 
 
-def print_success(message: str):
+def print_success(message: str) -> None:
     """Affiche un succès formaté"""
     console.print(f"[bold green]✅ Succès :[/bold green] {message}")
 
 
-def print_info(message: str):
+def print_info(message: str) -> None:
     """Affiche une information formatée"""
     console.print(f"[bold blue]Info :[/bold blue] {message}")
 
@@ -56,7 +56,7 @@ def print_info(message: str):
 )
 @click.option("--verbose", "-v", is_flag=True, help="Mode verbeux")
 @click.pass_context
-def cli(ctx: Context, output_dir: Optional[str], verbose: bool):
+def cli(ctx: Context, output_dir: Optional[str], verbose: bool) -> None:
     """🌙 Arkalia-LUNA Logo Generator - Interface CLI professionnelle"""
     ctx.ensure_object(dict)
 
@@ -79,7 +79,7 @@ def cli(ctx: Context, output_dir: Optional[str], verbose: bool):
 
 @cli.command()
 @click.pass_context
-def generators(ctx: Context):
+def generators(ctx: Context) -> None:
     """Affiche les générateurs disponibles"""
     try:
         available_generators = LogoGeneratorFactory.get_available_generators()
@@ -106,7 +106,7 @@ def generators(ctx: Context):
 
 @cli.command()
 @click.pass_context
-def info(ctx: Context):
+def info(ctx: Context) -> None:
     """Affiche les informations sur toutes les variantes disponibles"""
     try:
         generator = ctx.obj["generator"]
@@ -153,7 +153,7 @@ def info(ctx: Context):
 @click.pass_context
 def generate(
     ctx: Context, variant: str, size: int, generator: str, output: Optional[str]
-):
+) -> None:
     """Génère un logo SVG pour une variante spécifique"""
     try:
         # Création du générateur spécialisé via la factory
@@ -203,7 +203,7 @@ def generate(
     help="Génération parallèle (si supportée)",
 )
 @click.pass_context
-def generate_all(ctx: Context, size: int, parallel: bool):
+def generate_all(ctx: Context, size: int, parallel: bool) -> None:
     """Génère toutes les variantes du logo"""
     try:
         generator = ctx.obj["generator"]
@@ -245,7 +245,7 @@ def generate_all(ctx: Context, size: int, parallel: bool):
 @click.option("--size", "-s", default=32, help="Taille du favicon en pixels")
 @click.option("--output", "-o", type=click.Path(), help="Chemin de sortie personnalisé")
 @click.pass_context
-def favicon(ctx: Context, variant: str, size: int, output: Optional[str]):
+def favicon(ctx: Context, variant: str, size: int, output: Optional[str]) -> None:
     """Crée un favicon PNG pour une variante"""
     try:
         generator = ctx.obj["generator"]
@@ -282,7 +282,7 @@ def favicon(ctx: Context, variant: str, size: int, output: Optional[str]):
 @cli.command()
 @click.option("--size", "-s", default=32, help="Taille des favicons en pixels")
 @click.pass_context
-def favicon_all(ctx: Context, size: int):
+def favicon_all(ctx: Context, size: int) -> None:
     """Crée des favicons pour toutes les variantes"""
     try:
         generator = ctx.obj["generator"]
@@ -314,7 +314,7 @@ def favicon_all(ctx: Context, size: int):
 
 @cli.command()
 @click.pass_context
-def stats(ctx: Context):
+def stats(ctx: Context) -> None:
     """Affiche les statistiques de génération"""
     try:
         generator = ctx.obj["generator"]
@@ -341,7 +341,7 @@ def stats(ctx: Context):
 @cli.command()
 @click.option("--confirm", is_flag=True, help="Confirmation automatique")
 @click.pass_context
-def clean(ctx: Context, confirm: bool):
+def clean(ctx: Context, confirm: bool) -> None:
     """Nettoie tous les fichiers générés"""
     try:
         generator = ctx.obj["generator"]
@@ -367,7 +367,7 @@ def clean(ctx: Context, confirm: bool):
 
 @cli.command()
 @click.pass_context
-def version(ctx: Context):
+def version(ctx: Context) -> None:
     """Affiche la version du générateur"""
     from . import __version__
 

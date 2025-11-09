@@ -25,7 +25,7 @@ class AdvancedSVGBuilder(SVGBuilder):
         self.variants_manager = variants_manager
         self._validate_svgwrite()
 
-    def _validate_svgwrite(self):
+    def _validate_svgwrite(self) -> None:
         """Valide que svgwrite est correctement installé"""
         if not hasattr(svgwrite, "Drawing"):
             raise ImportError(

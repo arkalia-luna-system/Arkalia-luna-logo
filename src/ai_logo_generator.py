@@ -55,7 +55,7 @@ class AILogoGenerator(ArkaliaLunaLogo):
             self.logger.error(f"❌ Erreur génération IA '{variant_name}': {e}")
             raise
 
-    def _initialize_ai_pipeline(self):
+    def _initialize_ai_pipeline(self) -> None:
         """Initialise le pipeline Stable Diffusion"""
         try:
             if not StableDiffusionPipeline:

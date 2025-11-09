@@ -26,7 +26,7 @@ class UltraMaxSVGBuilder(SVGBuilder):
         self._validate_svgwrite()
         self._setup_random_seed()
 
-    def _validate_svgwrite(self):
+    def _validate_svgwrite(self) -> None:
         """Valide que svgwrite est correctement installé"""
         if not hasattr(svgwrite, "Drawing"):
             raise ImportError(
