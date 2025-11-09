@@ -11,7 +11,7 @@ from typing import Optional
 class SVGBuilder(ABC):
     """Classe de base abstraite pour tous les builders SVG"""
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.logger = logging.getLogger(self.__class__.__name__)
         self.builder_type = "base"
 

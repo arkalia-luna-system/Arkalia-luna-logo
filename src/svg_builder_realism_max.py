@@ -20,7 +20,7 @@ except ImportError:
 class RealismMaxSVGBuilder(SVGBuilder):
     """Constructeur SVG ultra-réaliste avec effets organiques et optimisations IA"""
 
-    def __init__(self, variants_manager: LogoVariants):
+    def __init__(self, variants_manager: LogoVariants) -> None:
         super().__init__(variants_manager)
         self._setup_realism_enhancements()
 

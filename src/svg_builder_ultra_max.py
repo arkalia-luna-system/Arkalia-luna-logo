@@ -21,7 +21,7 @@ except ImportError:
 class UltraMaxSVGBuilder(SVGBuilder):
     """Constructeur SVG ULTRA-MAX pour des logos Arkalia-LUNA exceptionnels"""
 
-    def __init__(self, variants_manager: LogoVariants):
+    def __init__(self, variants_manager: LogoVariants) -> None:
         self.variants_manager = variants_manager
         self._validate_svgwrite()
         self._setup_random_seed()

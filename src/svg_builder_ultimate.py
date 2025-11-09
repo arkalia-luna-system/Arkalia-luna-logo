@@ -23,7 +23,7 @@ class UltimateSVGBuilder(SVGBuilder):
     """Constructeur SVG ULTIME pour des logos Arkalia-LUNA
     avec effets cosmiques extrêmes"""
 
-    def __init__(self, variants_manager: LogoVariants):
+    def __init__(self, variants_manager: LogoVariants) -> None:
         super().__init__(variants_manager)
         self._setup_ultimate_enhancements()
 

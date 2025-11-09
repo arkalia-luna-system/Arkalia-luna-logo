@@ -22,7 +22,7 @@ class SimpleAdvancedSVGBuilder(SVGBuilder):
     Arkalia-LUNA impressionnants
     """
 
-    def __init__(self, variants_manager: LogoVariants):
+    def __init__(self, variants_manager: LogoVariants) -> None:
         self.variants_manager = variants_manager
         self._validate_svgwrite()
 

@@ -21,7 +21,7 @@ except ImportError:
 class AIMoonSVGBuilder(SVGBuilder):
     """Constructeur SVG ultra-avancé pour des logos LUNE IA VIVANTE"""
 
-    def __init__(self, variants_manager: LogoVariants):
+    def __init__(self, variants_manager: LogoVariants) -> None:
         super().__init__(variants_manager)
         self._setup_ai_enhancements()
 
