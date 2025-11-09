@@ -3,32 +3,35 @@ Builder spécialisé pour créer des logos avec sphères cosmiques lumineuses
 Inspiré des images d'inspiration de l'utilisateur
 """
 
+import logging
 import math
 from pathlib import Path
-from typing import Dict, Optional
+from typing import Dict
 
 import svgwrite
 
 try:
-    from .svg_builder_base import SVGBuilder
+    from .svg_builder import SVGBuilder
+    from .variants import LogoVariant, LogoVariants
 except ImportError:
     # Fallback pour exécution directe
-    from svg_builder_base import SVGBuilder
+    from svg_builder import SVGBuilder
+    from variants import LogoVariants
 
 
 class CosmicSphereBuilder(SVGBuilder):
     """Builder pour logos avec sphères cosmiques et réseaux neuronaux"""
 
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, variants_manager: LogoVariants) -> None:
+        super().__init__(variants_manager)
         self.builder_type = "cosmic_sphere"
+        self.logger = logging.getLogger(self.__class__.__name__)
 
     def build_logo(
         self,
         variant_name: str,
         size: int = 200,
-        output_dir: Optional[Path] = None,
-    ) -> str:
+    ) -> svgwrite.Drawing:
         """Construit un logo avec sphère cosmique lumineuse"""
         try:
             # Validation et optimisation des paramètres
@@ -91,7 +94,7 @@ class CosmicSphereBuilder(SVGBuilder):
                 variant_name,
             )
 
-            return dwg.tostring()
+            return dwg
 
         except Exception as e:
             self.logger.error(f"Erreur construction sphère cosmique: {e}")
