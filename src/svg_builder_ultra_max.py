@@ -33,7 +33,7 @@ class UltraMaxSVGBuilder(SVGBuilder):
                 "Module svgwrite requis. Installez-le avec: pip install svgwrite",
             )
 
-    def _setup_random_seed(self):
+    def _setup_random_seed(self) -> None:
         """Configure la graine aléatoire pour la cohérence"""
         random.seed(42)  # Graine fixe pour la cohérence
 

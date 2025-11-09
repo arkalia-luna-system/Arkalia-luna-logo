@@ -376,7 +376,7 @@ def version(ctx: Context) -> None:
     )
 
 
-def main():
+def main() -> None:
     """Point d'entrée principal"""
     try:
         cli()
