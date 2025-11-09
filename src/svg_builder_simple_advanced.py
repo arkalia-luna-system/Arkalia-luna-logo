@@ -70,9 +70,7 @@ class SimpleAdvancedSVGBuilder(SVGBuilder):
         # Gradients pour les réseaux neuronaux
         self._add_neural_network_gradients(defs, variant)
 
-    def _add_advanced_moon_gradient(
-        self, defs: Defs, variant: LogoVariant
-    ) -> None:
+    def _add_advanced_moon_gradient(self, defs: Defs, variant: LogoVariant) -> None:
         """Crée un gradient radial avancé avec multiples stops"""
         gradient_id = f"advancedMoonGradient-{variant.variant_type.value}"
 
@@ -127,9 +125,7 @@ class SimpleAdvancedSVGBuilder(SVGBuilder):
 
         defs.add(border_gradient)
 
-    def _add_advanced_glow_filters(
-        self, defs: Defs, variant: LogoVariant
-    ) -> None:
+    def _add_advanced_glow_filters(self, defs: Defs, variant: LogoVariant) -> None:
         """Crée des filtres de lueur avancés avec multiples effets"""
         # Filtre principal de lueur
         main_glow_id = f"mainGlow-{variant.variant_type.value}"
@@ -158,9 +154,7 @@ class SimpleAdvancedSVGBuilder(SVGBuilder):
 
         defs.add(detail_glow)
 
-    def _add_neural_network_gradients(
-        self, defs: Defs, variant: LogoVariant
-    ) -> None:
+    def _add_neural_network_gradients(self, defs: Defs, variant: LogoVariant) -> None:
         """Crée des gradients pour les réseaux neuronaux"""
         # Gradient linéaire pour les connexions
         neural_gradient_id = f"neuralGradient-{variant.variant_type.value}"

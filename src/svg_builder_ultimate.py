@@ -76,9 +76,7 @@ class UltimateSVGBuilder(SVGBuilder):
         # Motifs ULTIMES cosmiques (utilise la taille du paramètre)
         self._add_ultimate_patterns(defs, variant, 200)  # Taille par défaut
 
-    def _add_ultimate_gradients(
-        self, defs: Defs, variant: LogoVariant
-    ) -> None:
+    def _add_ultimate_gradients(self, defs: Defs, variant: LogoVariant) -> None:
         """Crée des gradients ULTIMES avec 100+ stops
         pour un réalisme cosmique parfait"""
         # Gradient principal cosmique ULTIME
@@ -208,9 +206,7 @@ class UltimateSVGBuilder(SVGBuilder):
 
         defs.add(cosmic_depth_filter)
 
-    def _add_ultimate_masks(
-        self, defs: Defs, variant: LogoVariant, size: int
-    ) -> None:
+    def _add_ultimate_masks(self, defs: Defs, variant: LogoVariant, size: int) -> None:
         """Crée des masques ULTIMES pour des effets cosmiques parfaits"""
         # Masque de profondeur cosmique ULTIME
         cosmic_depth_mask_id = f"ultimateCosmicDepthMask-{variant.variant_type.value}"

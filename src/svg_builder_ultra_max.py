@@ -84,9 +84,7 @@ class UltraMaxSVGBuilder(SVGBuilder):
         # Patterns ULTRA-MAX
         self._add_ultra_max_patterns(defs, variant)
 
-    def _add_ultra_max_gradients(
-        self, defs: Defs, variant: LogoVariant
-    ) -> None:
+    def _add_ultra_max_gradients(self, defs: Defs, variant: LogoVariant) -> None:
         """Crée des gradients ULTRA-MAX OPTIMISÉS pour la performance"""
         # Gradient principal ULTRA-MAX OPTIMISÉ (7 stops au lieu de 15+)
         main_gradient_id = f"ultraMaxMainGradient-{variant.variant_type.value}"
