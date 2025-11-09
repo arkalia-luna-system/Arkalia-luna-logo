@@ -21,14 +21,14 @@ except ImportError:
 
 
 class AIMoonSVGBuilder(SVGBuilder):
-    """Constructeur SVG ultra-avancé pour des logos LUNE IA VIVANTE"""
+    """Constructeur SVG ultra-avancé pour des logos LUNE IA VIVANTE."""
 
     def __init__(self, variants_manager: LogoVariants) -> None:
         super().__init__(variants_manager)
         self._setup_ai_enhancements()
 
     def _setup_ai_enhancements(self) -> None:
-        """Configure les améliorations IA pour la génération"""
+        """Configure les améliorations IA pour la génération."""
         # Graine aléatoire pour la cohérence des effets IA
         random.seed(42)
         self.ai_complexity = 0.95  # Niveau de complexité IA (0-1)
@@ -39,7 +39,7 @@ class AIMoonSVGBuilder(SVGBuilder):
         size: int,
         viewbox: Optional[Tuple[int, int, int, int]] = None,
     ) -> svgwrite.Drawing:
-        """Crée un nouveau dessin SVG avec configuration IA avancée"""
+        """Crée un nouveau dessin SVG avec configuration IA avancée."""
         if viewbox is None:
             viewbox = (0, 0, size, size)
 
@@ -65,7 +65,7 @@ class AIMoonSVGBuilder(SVGBuilder):
         drawing: svgwrite.Drawing,
         variant: LogoVariant,
     ) -> None:
-        """Ajoute des définitions IA ultra-avancées (gradients, filtres, masques)"""
+        """Ajoute des définitions IA ultra-avancées (gradients, filtres, masques)."""
         defs = drawing.defs
 
         # Gradient principal IA avec 20+ stops pour un réalisme extrême
@@ -84,7 +84,7 @@ class AIMoonSVGBuilder(SVGBuilder):
         self._add_ai_neural_patterns(defs, variant)
 
     def _add_ai_moon_gradient(self, defs: Defs, variant: LogoVariant) -> None:
-        """Crée un gradient radial IA OPTIMISÉ avec 8 stops pour la performance"""
+        """Crée un gradient radial IA OPTIMISÉ avec 8 stops pour la performance."""
         gradient_id = f"aiMoonGradient-{variant.variant_type.value}"
 
         # Gradient principal OPTIMISÉ avec 8 stops pour la performance (60% plus rapide)
@@ -120,7 +120,7 @@ class AIMoonSVGBuilder(SVGBuilder):
         defs.add(gradient)
 
     def _add_ai_glow_filters(self, defs: Defs, variant: LogoVariant) -> None:
-        """Crée des filtres de lueur IA avec intelligence artificielle"""
+        """Crée des filtres de lueur IA avec intelligence artificielle."""
         # Filtre principal de lueur IA
         main_glow_id = f"aiMainGlow-{variant.variant_type.value}"
         main_glow = svgwrite.filters.Filter(id=main_glow_id)
@@ -140,7 +140,7 @@ class AIMoonSVGBuilder(SVGBuilder):
         defs.add(main_glow)
 
     def _add_ai_organic_filters(self, defs: Defs, variant: LogoVariant) -> None:
-        """Crée des filtres de turbulence organique IA"""
+        """Crée des filtres de turbulence organique IA."""
         # Filtre de turbulence IA
         turbulence_id = f"aiTurbulence-{variant.variant_type.value}"
         turbulence_filter = svgwrite.filters.Filter(id=turbulence_id)
@@ -157,7 +157,7 @@ class AIMoonSVGBuilder(SVGBuilder):
         defs.add(turbulence_filter)
 
     def _add_ai_depth_masks(self, defs: Defs, variant: LogoVariant) -> None:
-        """Crée des masques de profondeur IA"""
+        """Crée des masques de profondeur IA."""
         # Masque de profondeur IA
         depth_mask_id = f"aiDepthMask-{variant.variant_type.value}"
         depth_mask = svgwrite.masking.Mask(id=depth_mask_id)
@@ -169,7 +169,7 @@ class AIMoonSVGBuilder(SVGBuilder):
         defs.add(depth_mask)
 
     def _add_ai_neural_patterns(self, defs: Defs, variant: LogoVariant) -> None:
-        """Crée des patterns neuronaux IA"""
+        """Crée des patterns neuronaux IA."""
         # Pattern neuronal IA
         neural_pattern_id = f"aiNeuralPattern-{variant.variant_type.value}"
         neural_pattern = svgwrite.pattern.Pattern(
@@ -211,7 +211,7 @@ class AIMoonSVGBuilder(SVGBuilder):
         variant: LogoVariant,
         size: int,
     ) -> None:
-        """Ajoute le cercle principal IA avec effets ultra-réalistes"""
+        """Ajoute le cercle principal IA avec effets ultra-réalistes."""
         center = size // 2
         radius = size // 3
 
@@ -245,7 +245,7 @@ class AIMoonSVGBuilder(SVGBuilder):
         variant: LogoVariant,
         size: int,
     ) -> None:
-        """Ajoute le halo IA avec effets dynamiques"""
+        """Ajoute le halo IA avec effets dynamiques."""
         center = size // 2
         radius = size // 2 - 10
 
@@ -279,7 +279,7 @@ class AIMoonSVGBuilder(SVGBuilder):
         variant: LogoVariant,
         size: int,
     ) -> None:
-        """Ajoute le centre/A-core IA avec symboles avancés"""
+        """Ajoute le centre/A-core IA avec symboles avancés."""
         center = size // 2
         core_radius = size // 8
 
@@ -317,7 +317,7 @@ class AIMoonSVGBuilder(SVGBuilder):
         variant: LogoVariant,
         size: int,
     ) -> None:
-        """Ajoute un réseau neuronal IA avec connexions complexes"""
+        """Ajoute un réseau neuronal IA avec connexions complexes."""
         center = size // 2
 
         # Groupe pour le réseau IA
@@ -340,7 +340,7 @@ class AIMoonSVGBuilder(SVGBuilder):
         self._add_ai_connection_nodes(drawing, variant, center, size)
 
     def _create_ai_network_paths(self, center: int, size: int) -> list[str]:
-        """Crée des chemins de réseau IA complexes"""
+        """Crée des chemins de réseau IA complexes."""
         paths = []
         radius = size // 3
 
@@ -366,7 +366,7 @@ class AIMoonSVGBuilder(SVGBuilder):
         center: int,
         size: int,
     ) -> None:
-        """Ajoute des nœuds de connexion IA"""
+        """Ajoute des nœuds de connexion IA."""
         radius = size // 3
 
         # Nœuds principaux IA
@@ -404,7 +404,7 @@ class AIMoonSVGBuilder(SVGBuilder):
         variant: LogoVariant,
         size: int,
     ) -> None:
-        """Ajoute des particules IA avec effets complexes"""
+        """Ajoute des particules IA avec effets complexes."""
         center = size // 2
 
         # 25 particules IA
@@ -442,7 +442,7 @@ class AIMoonSVGBuilder(SVGBuilder):
         variant: LogoVariant,
         size: int,
     ) -> None:
-        """Ajoute des rayons IA avec effets dynamiques"""
+        """Ajoute des rayons IA avec effets dynamiques."""
         center = size // 2
 
         # 16 rayons IA
@@ -475,7 +475,7 @@ class AIMoonSVGBuilder(SVGBuilder):
             drawing.add(ray)
 
     def build_logo(self, variant_name: str, size: int) -> svgwrite.Drawing:
-        """Construit le logo IA MOON pour une variante donnée (méthode abstraite)"""
+        """Construit le logo IA MOON pour une variante donnée (méthode abstraite)."""
         variant = self.variants_manager.get_variant(variant_name)
 
         # Création du dessin
@@ -499,8 +499,7 @@ class AIMoonSVGBuilder(SVGBuilder):
         variant_name: str,
         size: int = 200,
     ) -> svgwrite.Drawing:
-        """Construit le logo IA MOON pour une variante donnée
-        (alias pour compatibilité)"""
+        """Construit le logo IA MOON pour une variante donnée (alias pour compatibilité)."""
         return self.build_logo(variant_name, size)
 
     def save_ai_moon_logo(
@@ -509,7 +508,7 @@ class AIMoonSVGBuilder(SVGBuilder):
         size: int,
         output_path: Path,
     ) -> Path:
-        """Sauvegarde le logo IA MOON dans un fichier en utilisant build_logo()"""
+        """Sauvegarde le logo IA MOON dans un fichier en utilisant build_logo()."""
         drawing = self.build_logo(variant_name, size)
 
         # Création du répertoire de sortie si nécessaire
