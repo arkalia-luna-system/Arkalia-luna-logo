@@ -83,7 +83,7 @@ class HyperAIGenerator(ArkaliaLunaLogo):
         variant_name: str,
         size: int = 200,
         style: str = "cosmic_sphere",
-        emotion_prompt: str = None,
+        emotion_prompt: Optional[str] = None,
     ) -> Path:
         """Génère un logo avec IA hyper-intelligente"""
         try:
@@ -127,7 +127,9 @@ class HyperAIGenerator(ArkaliaLunaLogo):
             self.logger.error(f"❌ Erreur génération Hyper IA : {e}")
             raise
 
-    def _build_emotion_prompt(self, variant_data, emotion_prompt: str = None) -> str:
+    def _build_emotion_prompt(
+        self, variant_data, emotion_prompt: Optional[str] = None
+    ) -> str:
         """Construit un prompt émotionnel sophistiqué"""
         if emotion_prompt:
             return emotion_prompt

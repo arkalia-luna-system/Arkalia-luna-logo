@@ -154,7 +154,8 @@ exclude = [
 
 [tool.ruff.lint.per-file-ignores]
 "__init__.py" = ["F401"]
-"tests/**/*.py" = ["B011", "S101"]
+"src/**/*.py" = ["EXE002"]
+"tests/**/*.py" = ["B011", "S101", "EXE002"]
 
 [tool.ruff.format]
 quote-style = "double"

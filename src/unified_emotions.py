@@ -4,7 +4,7 @@ Mapping unifié entre émotions BBIA Reachy Sim et variantes Arkalia-LUNA
 Préparé pour intégration future avec /Volumes/T7/bbia-reachy-sim/
 """
 
-from typing import Dict, List, Optional
+from typing import ClassVar, Dict, List, Optional
 
 from .variants import VariantType
 
@@ -13,7 +13,7 @@ class UnifiedEmotions:
     """Mapping unifié des émotions entre BBIA Reachy Sim et Arkalia-LUNA"""
 
     # Mapping BBIA → Arkalia-LUNA
-    BBIA_TO_ARKALIA: Dict[str, VariantType] = {
+    BBIA_TO_ARKALIA: ClassVar[Dict[str, VariantType]] = {
         # Émotions SDK officiel (6)
         "neutral": VariantType.SERENITY,  # Neutre → Sérénité
         "happy": VariantType.CREATIVE,  # Joie → Créatif
@@ -31,7 +31,7 @@ class UnifiedEmotions:
     }
 
     # Mapping inverse Arkalia-LUNA → BBIA
-    ARKALIA_TO_BBIA: Dict[VariantType, List[str]] = {
+    ARKALIA_TO_BBIA: ClassVar[Dict[VariantType, List[str]]] = {
         VariantType.SERENITY: ["neutral", "calm"],
         VariantType.POWER: ["focused"],
         VariantType.MYSTERY: ["curious", "confused"],

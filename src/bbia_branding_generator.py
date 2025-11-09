@@ -89,9 +89,7 @@ class BBIABrandingGenerator(ArkaliaLunaLogo):
 
         return output_path
 
-    def generate_all_declinations(
-        self, sizes: list[int] | None = None
-    ) -> list[Path]:
+    def generate_all_declinations(self, sizes: list[int] | None = None) -> list[Path]:
         """
         Génère toutes les déclinaisons BBIA - PRÉPARÉ POUR INTÉGRATION FUTURE
 

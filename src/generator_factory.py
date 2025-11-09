@@ -3,7 +3,7 @@ Factory pattern optimisé pour la création des générateurs de logos
 """
 
 from pathlib import Path
-from typing import Any, Dict, Optional
+from typing import Any, ClassVar, Dict, Optional
 
 from .advanced_logo_generator import AdvancedArkaliaLunaLogo
 from .ai_logo_generator import AILogoGenerator
@@ -27,10 +27,10 @@ class LogoGeneratorFactory:
     """Factory optimisée pour la création des générateurs de logos"""
 
     # Cache des générateurs pour éviter la recréation (pattern Singleton)
-    _generators_cache: Dict[str, ArkaliaLunaLogo] = {}
+    _generators_cache: ClassVar[Dict[str, ArkaliaLunaLogo]] = {}
 
     # Mapping des types de générateurs - TOUS héritent maintenant de ArkaliaLunaLogo
-    GENERATOR_TYPES = {
+    GENERATOR_TYPES: ClassVar[Dict[str, type]] = {
         "default": ArkaliaLunaLogo,
         "realism": RealismMaxLogoGenerator,
         "ultra_max": UltraMaxLogoGenerator,

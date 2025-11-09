@@ -43,7 +43,7 @@ def print_success(message: str):
 
 def print_info(message: str):
     """Affiche une information formatée"""
-    console.print(f"[bold blue]ℹ️  Info :[/bold blue] {message}")
+    console.print(f"[bold blue]Info :[/bold blue] {message}")
 
 
 @click.group()
