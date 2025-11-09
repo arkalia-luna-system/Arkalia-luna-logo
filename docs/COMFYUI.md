@@ -12,7 +12,75 @@
 
 ## 📋 Vue d'Ensemble
 
+<div align="center">
+
 Le générateur **Hyper-AI** utilise ComfyUI, SDXL et ControlNet pour créer des logos d'une qualité professionnelle exceptionnelle avec une intelligence artificielle avancée.
+
+</div>
+
+### 🎯 À Quoi Sert ComfyUI ?
+
+**ComfyUI** est une interface graphique avancée pour la génération d'images par IA. Dans Arkalia-LUNA, il sert à :
+
+1. **🎨 Génération de logos ultra-réalistes** : Créer des logos avec une qualité professionnelle maximale, comparable aux outils commerciaux modernes (MidJourney, DALL-E, etc.)
+
+2. **🔧 Workflows personnalisables** : Construire des pipelines de génération visuels et modulaires via une interface graphique intuitive
+
+3. **🚀 Intégration SDXL** : Utiliser les modèles Stable Diffusion XL pour une qualité supérieure (résolution jusqu'à 1024x1024)
+
+4. **🎯 ControlNet** : Contrôler précisément la génération avec des masques, des guides de profondeur et des contours
+
+5. **🔌 API REST** : Intégrer la génération IA dans Arkalia-LUNA via l'API ComfyUI pour automatisation complète
+
+6. **⚡ Performance** : Utiliser l'accélération GPU (CUDA/MPS) pour des générations rapides
+
+**En résumé** : ComfyUI transforme Arkalia-LUNA d'un générateur SVG classique en un système de génération IA professionnel, capable de créer des logos d'une qualité comparable aux outils commerciaux modernes, tout en restant **local, gratuit et open-source**.
+
+### 🤔 ComfyUI vs Inkscape vs Figma
+
+<div align="center">
+
+| Caractéristique | ComfyUI | Inkscape | Figma |
+|:---------------:|:-------:|:--------:|:-----:|
+| **Type** | Génération IA | Design vectoriel | Design collaboratif |
+| **Méthode** | Prompts + Workflows | Dessin manuel | Design manuel |
+| **Création** | Automatique par IA | Manuelle | Manuelle |
+| **Format** | Raster (PNG/JPG) | Vectoriel (SVG) | Vectoriel (SVG) |
+| **Apprentissage** | Workflows visuels | Techniques de dessin | Interface design |
+| **Usage** | Génération rapide | Design précis | Design collaboratif |
+
+</div>
+
+**Différences clés** :
+
+- **Inkscape/Figma** : Vous dessinez manuellement, vous contrôlez chaque élément, vous créez vous-même
+- **ComfyUI** : Vous créez des workflows visuels (comme des nœuds connectés), l'IA génère l'image selon vos prompts et paramètres
+
+**Exemple concret** :
+- **Inkscape** : Vous dessinez un cercle, vous ajoutez des gradients, vous positionnez les éléments → Résultat : Logo SVG que vous avez créé manuellement
+- **ComfyUI** : Vous créez un workflow "Prompt → SDXL → ControlNet → Post-processing" → Résultat : Logo généré par IA selon votre description
+
+**Dans Arkalia-LUNA** :
+- Les générateurs SVG (default, ultimate, etc.) = Création manuelle programmée (comme Inkscape automatisé)
+- Le générateur Hyper-AI avec ComfyUI = Génération IA (comme MidJourney mais local)
+
+### 🎨 Workflow Hyper-AI
+
+```mermaid
+flowchart LR
+    A[🎨 Prompt] --> B[🧠 ComfyUI]
+    B --> C[📐 SDXL Base]
+    C --> D[🎯 ControlNet]
+    D --> E[✨ Post-Processing]
+    E --> F[🌙 Logo Final]
+    
+    style A fill:#e1f5fe,stroke:#01579b,stroke-width:2px
+    style B fill:#f3e5f5,stroke:#4a148c,stroke-width:2px
+    style C fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px
+    style D fill:#fff3e0,stroke:#e65100,stroke-width:2px
+    style E fill:#fce4ec,stroke:#880e4f,stroke-width:2px
+    style F fill:#e0f2f1,stroke:#004d40,stroke-width:3px
+```
 
 ### **Caractéristiques Principales**
 
@@ -31,13 +99,38 @@ Le générateur **Hyper-AI** utilise ComfyUI, SDXL et ControlNet pour créer des
 
 ## 🚀 Installation
 
-### **Prérequis**
+### 📋 Prérequis
 
-- Python 3.8+
-- PyTorch (avec CUDA si GPU disponible)
-- 10GB+ d'espace disque pour les modèles
+<div align="center">
 
-### **Installation Automatique**
+| Prérequis | Version | Description | Statut |
+|:---------:|:-------:|:-----------:|:------:|
+| **Python** | 3.8+ | Version Python requise | ✅ |
+| **PyTorch** | Dernière | Avec CUDA si GPU disponible | ✅ |
+| **Espace disque** | 10GB+ | Pour les modèles SDXL | ✅ |
+| **RAM** | 8GB+ | Mémoire recommandée | ✅ |
+| **GPU** | Optionnel | CUDA/MPS pour accélération | ⚠️ |
+
+</div>
+
+### ⚡ Méthodes d'Installation
+
+<div align="center">
+
+| Méthode | Commande | Avantages | Recommandé |
+|:-------:|:--------:|:---------:|:----------:|
+| **Automatique** | `bash scripts/install_comfyui.sh` | ✅ Rapide, tout-en-un | ⭐ Oui |
+| **Manuelle** | Étapes ci-dessous | ✅ Contrôle total | ⚠️ Avancé |
+
+</div>
+
+### 🔧 Installation Automatique
+
+<div align="center">
+
+**Méthode recommandée pour la plupart des utilisateurs**
+
+</div>
 
 ```bash
 # Depuis la racine du projet
@@ -46,7 +139,7 @@ source arkalia-luna-env/bin/activate
 bash scripts/install_comfyui.sh
 ```
 
-### **Installation Manuelle**
+### 🔨 Installation Manuelle
 
 ```bash
 # 1. Cloner ComfyUI (déjà fait si install_comfyui.sh exécuté)
@@ -71,7 +164,52 @@ wget -O models/controlnet/sd_xl_canny.safetensors \
 
 ## 🎯 Utilisation
 
-### **1. Démarrer ComfyUI**
+### 1️⃣ Démarrer ComfyUI
+
+#### 📋 Comparaison des Méthodes
+
+<div align="center">
+
+| Méthode | Commande | Usage | Avantages |
+|:-------:|:--------:|:-----:|:---------:|
+| **Script automatique** | `bash scripts/start_comfyui.sh` | Production | ✅ Gestion complète |
+| **Script de lancement** | `./launch_comfyui.sh` | Développement | ✅ Simple |
+| **Arrière-plan** | `nohup python main.py &` | Serveur | ✅ Détaché |
+| **Manuel** | `python main.py` | Debug | ✅ Contrôle total |
+
+</div>
+
+#### 🚀 Méthode 1 : Script Automatique (Recommandé)
+
+<div align="center">
+
+**⭐ Méthode recommandée pour production**
+
+</div>
+
+```bash
+cd /Volumes/T7/logo/arkalia-luna-logo
+bash scripts/start_comfyui.sh
+```
+
+<div align="center">
+
+| Fonctionnalité | Description | Statut |
+|:--------------:|:-----------:|:------:|
+| **Vérification installation** | Vérifie que ComfyUI est installé | ✅ |
+| **Vérification port** | Vérifie que le port est libre | ✅ |
+| **Démarrage arrière-plan** | Démarre ComfyUI en background | ✅ |
+| **Gestion PID** | Crée un fichier PID pour gestion | ✅ |
+| **Vérification réponse** | Vérifie que ComfyUI répond | ✅ |
+
+</div>
+
+**Arrêter ComfyUI** :
+```bash
+bash scripts/stop_comfyui.sh
+```
+
+#### 🔧 Méthode 2 : Script de Lancement
 
 ```bash
 cd /Volumes/T7/logo/arkalia-luna-logo
@@ -80,7 +218,16 @@ cd comfyui
 ./launch_comfyui.sh
 ```
 
-Ou manuellement :
+#### 🔄 Méthode 3 : En Arrière-Plan (Manuel)
+
+```bash
+cd /Volumes/T7/logo/arkalia-luna-logo
+source arkalia-luna-env/bin/activate
+cd comfyui
+nohup python main.py --listen 0.0.0.0 --port 8188 --output ../exports-hyper-ai > ../logs/comfyui.log 2>&1 &
+```
+
+#### 🛠️ Méthode 4 : Manuellement (Développement)
 
 ```bash
 cd comfyui
@@ -89,16 +236,179 @@ python main.py --listen 0.0.0.0 --port 8188 --output ../exports-hyper-ai
 
 **ComfyUI sera accessible sur** : http://localhost:8188
 
+**⚠️ Note** : Si le port 8188 est déjà utilisé, vous pouvez changer le port :
+```bash
+python main.py --listen 0.0.0.0 --port 8189 --output ../exports-hyper-ai
+```
+
+**Vérifier que ComfyUI fonctionne** :
+```bash
+curl http://localhost:8188/
+# Doit retourner HTTP 200
+
+# Ou ouvrir dans le navigateur : http://localhost:8188
+```
+
+**✅ ComfyUI est maintenant accessible !**
+
+**🎨 Interface ComfyUI** :
+ComfyUI a probablement ouvert automatiquement une fenêtre de navigateur avec l'interface graphique. C'est **normal** ! Cette interface vous permet de :
+- ✅ Créer des workflows visuels de génération IA
+- ✅ Tester les modèles SDXL et ControlNet
+- ✅ Générer des images avec des prompts personnalisés
+- ✅ Utiliser l'API pour intégration avec Arkalia-LUNA
+
+**Interface accessible sur** : http://localhost:8188
+
+### 🎛️ Gestion de ComfyUI
+
+<div align="center">
+
+| Action | Commande | Description |
+|:------:|:--------:|:-----------:|
+| **Démarrer** | `bash scripts/start_comfyui.sh` | Démarre ComfyUI |
+| **Arrêter** | `bash scripts/stop_comfyui.sh` | Arrête ComfyUI proprement |
+| **Vérifier statut** | `bash scripts/check_comfyui.sh` | ⭐ **RECOMMANDÉ** - Vérification complète |
+| **Vérifier logs** | `tail -f logs/comfyui.log` | Affiche les logs en temps réel |
+| **Vérifier manuellement** | `lsof -ti:8188` | Vérifie le port (doit retourner PID) |
+
+</div>
+
+### 🔍 Comment Vérifier que ComfyUI Fonctionne ?
+
+#### 📋 Méthodes de Vérification
+
+<div align="center">
+
+| Méthode | Commande | Avantages | Recommandé |
+|:-------:|:--------:|:---------:|:----------:|
+| **Script automatique** | `bash scripts/check_comfyui.sh` | ✅ Vérification complète | ⭐ Oui |
+| **Vérification manuelle** | Commandes ci-dessous | ✅ Contrôle détaillé | ⚠️ Avancé |
+| **Interface web** | http://localhost:8188 | ✅ Visuel | ✅ Simple |
+
+</div>
+
+#### 1️⃣ Script Automatique (Recommandé)
+
+<div align="center">
+
+**⭐ Méthode la plus simple et complète**
+
+</div>
+
+```bash
+bash scripts/check_comfyui.sh
+```
+
+<div align="center">
+
+| Vérification | Description | Statut |
+|:------------:|:-----------:|:------:|
+| **Processus** | ComfyUI est actif | ✅ |
+| **Port** | Port 8188 utilisé | ✅ |
+| **HTTP** | Interface répond (HTTP 200) | ✅ |
+| **Logs** | Logs accessibles | ✅ |
+
+</div>
+
+#### 2️⃣ Vérification Manuelle
+
+```bash
+# 1. Vérifier le processus
+ps aux | grep comfyui | grep -v grep
+
+# 2. Vérifier le port
+lsof -ti:8188
+
+# 3. Vérifier HTTP
+curl http://localhost:8188/
+# Doit retourner du HTML (code 200)
+
+# 4. Ouvrir dans le navigateur
+open http://localhost:8188  # macOS
+# ou simplement : http://localhost:8188
+```
+
+#### 3️⃣ Interface Web
+
+<div align="center">
+
+**Ouvrez votre navigateur** : **http://localhost:8188**
+
+</div>
+
+<div align="center">
+
+| Élément | Description | Statut |
+|:-------:|:-----------:|:------:|
+| **Interface graphique** | Nœuds (blocs connectés) | ✅ Visible |
+| **Espace de travail** | Création de workflows visuels | ✅ Disponible |
+| **Menus modèles** | Chargement de modèles | ✅ Accessible |
+| **Outils prompts** | Création de prompts et génération | ✅ Fonctionnel |
+
+</div>
+
+**💡 Comment utiliser l'interface** :
+1. **Créer un workflow** : Glissez-déposez des nœuds (Load Checkpoint, Text Prompt, etc.)
+2. **Connecter les nœuds** : Reliez-les pour créer un pipeline de génération
+3. **Configurer les paramètres** : Entrez votre prompt, choisissez le modèle
+4. **Générer** : Cliquez sur "Queue Prompt" pour lancer la génération
+5. **Résultat** : L'image générée apparaît dans l'interface
+
+**C'est comme créer un schéma visuel** qui dit à l'IA comment générer votre logo, plutôt que de le dessiner vous-même.
+
+**💡 Astuce** : Si vous ne voulez pas que le navigateur s'ouvre automatiquement, utilisez :
+```bash
+python main.py --listen 0.0.0.0 --port 8188 --output ../exports-hyper-ai --disable-auto-launch
+```
+
 ### **2. Utiliser le Générateur Hyper-AI**
 
-#### **Via CLI**
+<div align="center">
+
+**⭐ Méthode recommandée : Tout est automatique**
+
+</div>
+
+#### **🤔 Où Faire le Prompt ?**
+
+<div align="center">
+
+| Méthode | Où faire le prompt | Avantages | Recommandé |
+|:-------:|:------------------:|:---------:|:----------:|
+| **Via Arkalia-LUNA** | Dans votre projet Python | ✅ Automatique, workflow complet | ⭐ **OUI** |
+| **Via ComfyUI direct** | Dans l'interface web | ✅ Contrôle total, expérimentation | ⚠️ Avancé |
+
+</div>
+
+**💡 Réponse courte** : **Dans votre projet Arkalia-LUNA !** Le prompt est construit automatiquement selon la variante émotionnelle.
+
+#### **📋 Via CLI (Recommandé)**
 
 ```bash
 source arkalia-luna-env/bin/activate
-python -m src.cli generate --variant serenity --generator hyper_ai --size 200
+
+# Génération automatique
+# Le prompt est construit automatiquement selon la variante
+python -m src.cli generate \
+    --variant serenity \
+    --generator hyper_ai \
+    --size 512
 ```
 
-#### **Via API Python**
+**Comment ça marche ?**
+
+1. Vous spécifiez la variante (`serenity`, `power`, `mystery`, etc.)
+2. Arkalia-LUNA construit automatiquement :
+   - Le prompt selon la variante émotionnelle
+   - Le workflow ComfyUI complet
+   - Les paramètres (steps, CFG, etc.)
+3. ComfyUI génère l'image via l'API
+4. Le logo est sauvegardé dans `exports-hyper-ai/`
+
+**Vous n'avez rien à faire dans ComfyUI !** 🎉
+
+#### **📋 Via API Python**
 
 ```python
 from src.hyper_ai_generator import HyperAIGenerator
@@ -106,14 +416,32 @@ from src.hyper_ai_generator import HyperAIGenerator
 # Initialisation
 generator = HyperAIGenerator()
 
-# Génération d'un logo
+# Génération automatique
+# Le prompt est construit automatiquement selon la variante
 output_path = generator.generate_svg_logo(
-    variant_name="serenity",
-    size=200
+    variant_name="serenity",  # Variante émotionnelle
+    size=512
 )
 
-print(f"Logo généré : {output_path}")
+print(f"✅ Logo généré : {output_path}")
 ```
+
+#### **⚠️ Utilisation Directe de ComfyUI (Avancé)**
+
+Si vous voulez utiliser ComfyUI directement dans l'interface web, vous devez créer un workflow complet.
+
+**Erreur courante** : "Prompt has no outputs" = Workflow incomplet.
+
+**Solution** : Voir le guide complet : `docs/GUIDE_COMFYUI_UTILISATION.md`
+
+**Workflow minimum requis** :
+- CheckpointLoaderSimple (modèle)
+- CLIPTextEncode (prompt positif)
+- CLIPTextEncode (prompt négatif)
+- EmptyLatentImage (image latente)
+- KSampler (génération)
+- VAEDecode (décodage)
+- SaveImage (sauvegarde)
 
 ### **3. Générer Toutes les Variantes**
 
@@ -131,15 +459,27 @@ for logo_path in all_logos:
 
 ## 🔧 Configuration
 
-### **Workflow Templates**
+### 📋 Workflow Templates
 
-Le générateur Hyper-AI utilise des templates de workflow ComfyUI pré-configurés :
+<div align="center">
 
-- **cosmic_sphere** : Sphère cosmique avec réseaux neuronaux
-- **neural_network** : Réseau neuronal complexe
-- **crystal_core** : Cœur cristallin central
+**Templates de workflow ComfyUI pré-configurés**
 
-### **Modèles Disponibles**
+</div>
+
+<div align="center">
+
+| Template | Description | Usage | Statut |
+|:--------:|:-----------:|:-----:|:------:|
+| **cosmic_sphere** | Sphère cosmique avec réseaux neuronaux | ✅ Disponible | ✅ |
+| **neural_network** | Réseau neuronal complexe | ✅ Disponible | ✅ |
+| **crystal_core** | Cœur cristallin central | ✅ Disponible | ✅ |
+
+</div>
+
+**Emplacement** : `comfyui/workflows/`
+
+### 🤖 Modèles Disponibles
 
 | Modèle | Description | Taille | Statut |
 |:------:|:-----------:|:------:|:------:|
@@ -191,7 +531,26 @@ Génère un réseau neuronal avec :
 
 ## 🐛 Dépannage
 
-### **ComfyUI ne démarre pas**
+### ⚠️ Problèmes Courants
+
+<div align="center">
+
+| Problème | Symptôme | Solution | Statut |
+|:--------:|:--------:|:--------:|:------:|
+| **ComfyUI ne démarre pas** | Erreur au démarrage | Vérifier dépendances | ✅ |
+| **Modèles manquants** | Erreur de chargement | Télécharger modèles | ✅ |
+| **Erreur GPU** | CUDA non disponible | Installer PyTorch CUDA | ✅ |
+| **Port occupé** | Port 8188 utilisé | Changer le port | ✅ |
+
+</div>
+
+#### 1️⃣ ComfyUI ne démarre pas
+
+<div align="center">
+
+**Symptôme** : Erreur au démarrage ou crash immédiat
+
+</div>
 
 ```bash
 # Vérifier les dépendances
@@ -205,7 +564,13 @@ python --version  # Doit être 3.8+
 python -c "import torch; print(torch.__version__)"
 ```
 
-### **Modèles manquants**
+#### 2️⃣ Modèles manquants
+
+<div align="center">
+
+**Symptôme** : `ModelNotFoundError` ou erreur de chargement
+
+</div>
 
 ```bash
 # Vérifier les modèles installés
@@ -216,7 +581,13 @@ ls -lh comfyui/models/controlnet/
 bash scripts/install_comfyui.sh
 ```
 
-### **Erreur GPU**
+#### 3️⃣ Erreur GPU
+
+<div align="center">
+
+**Symptôme** : `CUDA not available` ou utilisation CPU uniquement
+
+</div>
 
 ```bash
 # Vérifier CUDA
@@ -224,6 +595,22 @@ python -c "import torch; print(torch.cuda.is_available())"
 
 # Si False, installer PyTorch avec CUDA
 pip install torch torchvision --index-url https://download.pytorch.org/whl/cu118
+```
+
+#### 4️⃣ Port Déjà Utilisé
+
+<div align="center">
+
+**Symptôme** : `Address already in use` sur le port 8188
+
+</div>
+
+```bash
+# Solution : Utiliser un autre port
+python comfyui/main.py --port 8189
+
+# Ou arrêter le processus existant
+bash scripts/stop_comfyui.sh
 ```
 
 ---
@@ -245,20 +632,34 @@ pip install torch torchvision --index-url https://download.pytorch.org/whl/cu118
 
 ## ✅ Tests
 
-### **Tests Unitaires**
+### 🧪 Tests Unitaires
+
+<div align="center">
+
+| Test | Description | Statut | Résultat |
+|:----:|:-----------:|:------:|:---------:|
+| **test_hyper_ai_generator.py** | Tests du générateur Hyper-AI | ✅ | 6 tests passants |
+
+</div>
 
 ```bash
 source arkalia-luna-env/bin/activate
 pytest tests/test_hyper_ai_generator.py -v
 ```
 
-**Résultats attendus** : 6 tests passants
+**Résultats attendus** : 6 tests passants ✅
 
-### **Test d'Intégration**
+### 🔗 Test d'Intégration
+
+<div align="center">
+
+**Workflow de test d'intégration complet**
+
+</div>
 
 ```bash
 # 1. Démarrer ComfyUI
-cd comfyui && ./launch_comfyui.sh &
+bash scripts/start_comfyui.sh
 
 # 2. Tester la génération
 python -m src.cli generate --variant serenity --generator hyper_ai --size 200
@@ -267,15 +668,31 @@ python -m src.cli generate --variant serenity --generator hyper_ai --size 200
 ls -lh exports-hyper-ai/
 ```
 
+<div align="center">
+
+| Étape | Action | Vérification |
+|:-----:|:------:|:------------:|
+| **1** | Démarrer ComfyUI | `bash scripts/check_comfyui.sh` |
+| **2** | Générer logo | Vérifier fichier créé |
+| **3** | Vérifier résultat | `ls -lh exports-hyper-ai/` |
+
+</div>
+
 ---
 
 ## 🎯 Prochaines Étapes
 
-1. ✅ **Installation** : ComfyUI installé
-2. ✅ **Tests** : Tests unitaires créés
-3. ⚠️ **Modèles** : Télécharger SDXL et ControlNet
-4. ⚠️ **Production** : Démarrer ComfyUI en production
-5. ⚠️ **Optimisation** : Optimiser les workflows
+<div align="center">
+
+| Étape | Description | Statut | Priorité |
+|:-----:|:-----------:|:------:|:--------:|
+| **Installation** | ComfyUI installé | ✅ | - |
+| **Tests** | Tests unitaires créés | ✅ | - |
+| **Modèles** | Télécharger SDXL et ControlNet | ⚠️ | 🚨 Haute |
+| **Production** | Démarrer ComfyUI en production | ⚠️ | ⚠️ Moyenne |
+| **Optimisation** | Optimiser les workflows | ⚠️ | ⚠️ Moyenne |
+
+</div>
 
 ---
 

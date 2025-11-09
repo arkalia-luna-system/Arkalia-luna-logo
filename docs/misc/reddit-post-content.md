@@ -16,7 +16,7 @@
 
 <div align="center">
 
-**I built a logo generator that creates 5 emotional variants in 0.016 seconds - with Docker, FastAPI, and real-time monitoring**
+**I built a logo generator that creates 11 styles × 10 variants (110 logos) in 0.016 seconds - with Docker, FastAPI, and real-time monitoring**
 
 </div>
 
@@ -27,8 +27,8 @@ Hey r/Python! 👋
 I've been working on this logo generator for a while and I'm really excited to share it with the community!
 
 ## 🎬 **What it does:**
-- Generates 8 unique logo styles with 5 emotional variants each
-- **40 different logos** in total
+- Generates 11 unique logo styles with 10 emotional variants each
+- **110 different logos** in total
 - **0.016 seconds** per logo generation
 - Full Docker infrastructure with monitoring
 
@@ -49,7 +49,7 @@ I've been working on this logo generator for a while and I'm really excited to s
 ## 🎨 **Demo:**
 ![Logo Generation Demo](https://github.com/arkalia-luna-system/Arkalia-luna-logo/raw/main/exports/demo-gif/arkalia-luna-demo.gif)
 
-*5 emotional variants generated in real-time*
+*10 emotional variants generated in real-time*
 
 ## 🚀 Performance
 
@@ -118,7 +118,7 @@ The project is open source and contributions are welcome! 🌟
 ## 🎯 **Subreddits ciblés :**
 
 ### **1. r/Python (4.5M membres)**
-- **Titre** : "I built a logo generator that creates 5 emotional variants in 0.016 seconds - with Docker, FastAPI, and real-time monitoring"
+- **Titre** : "I built a logo generator that creates 11 styles × 10 variants (110 logos) in 0.016 seconds - with Docker, FastAPI, and real-time monitoring"
 - **Flair** : "Showcase"
 - **Timing** : 14h-16h EST (pic d'activité)
 

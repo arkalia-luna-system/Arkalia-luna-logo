@@ -145,22 +145,55 @@ graph TD
     class F,G output
 ```
 
-## 🔧 **Patterns de Design Implémentés**
+## 🔧 Patterns de Design Implémentés
 
-### **1. Factory Pattern**
+### 1️⃣ Factory Pattern
+
+<div align="center">
+
+**Création dynamique des générateurs**
+
+</div>
+
 ```python
 # LogoGeneratorFactory - Création dynamique des générateurs
 generator = LogoGeneratorFactory.create_generator("ultimate")
+logo = generator.generate_single_logo("serenity", size=200)
 ```
 
-### **2. Strategy Pattern**
+**Exemple visuel** : ![Ultimate Serenity](../exports/screenshots/ultimate-serenity-200.svg)
+
+### 2️⃣ Strategy Pattern
+
+<div align="center">
+
+**Différents builders SVG pour chaque style**
+
+</div>
+
 ```python
 # Différents builders SVG pour chaque style
 builder = UltimateSVGBuilder()  # Stratégie Ultimate
 builder = RealismMaxSVGBuilder()  # Stratégie Realism
 ```
 
-### **3. Builder Pattern**
+<div align="center">
+
+| Builder | Logo Exemple | Performance |
+|:-------:|:------------:|:-----------:|
+| **UltimateSVGBuilder** | ![Ultimate](../exports/screenshots/ultimate-serenity-200.svg) | ✅ ~0.007s |
+| **RealismMaxSVGBuilder** | ![Realism Max](../exports/screenshots/realism_max-serenity-200.svg) | 🏆 ~0.002s |
+
+</div>
+
+### 3️⃣ Builder Pattern
+
+<div align="center">
+
+**Construction progressive des logos SVG**
+
+</div>
+
 ```python
 # Construction progressive des logos SVG
 svg = builder.create_drawing(size=200)
@@ -168,7 +201,14 @@ svg = builder.add_gradients(svg)
 svg = builder.add_effects(svg)
 ```
 
-### **4. Template Method**
+### 4️⃣ Template Method
+
+<div align="center">
+
+**Générateurs avec étapes communes**
+
+</div>
+
 ```python
 # Générateurs avec étapes communes
 class BaseLogoGenerator:
@@ -235,22 +275,43 @@ class BaseLogoGenerator:
 
 </div>
 
-## 🔮 **Évolutions Futures**
+## 🔮 Évolutions Futures
 
-### **Court terme (1-2 mois)**
-- Améliorer la couverture de code à 90%+
-- Optimiser les performances des builders SVG
-- Ajouter des tests de stress et de charge
+### 📅 Court Terme (1-2 mois)
 
-### **Moyen terme (3-6 mois)**
-- Implémenter le multithreading pour la génération
-- Ajouter un système de cache distribué (Redis déjà configuré)
-- Améliorer l'API REST (déjà implémentée)
+<div align="center">
 
-### **Long terme (6+ mois)**
-- Support des animations SVG avancées
-- Intégration avec des outils de design
-- Support des formats 3D et VR
+| Objectif | Description | Priorité | Statut |
+|:--------:|:-----------:|:--------:|:------:|
+| **Couverture** | Améliorer à 90%+ | 🚨 Haute | 🟡 En cours |
+| **Performance** | Optimiser builders SVG | ⚠️ Moyenne | 🟡 En cours |
+| **Tests** | Tests de stress et charge | ⚠️ Moyenne | ⏳ Planifié |
+
+</div>
+
+### 📅 Moyen Terme (3-6 mois)
+
+<div align="center">
+
+| Objectif | Description | Priorité | Statut |
+|:--------:|:-----------:|:--------:|:------:|
+| **Multithreading** | Génération parallèle | ⚠️ Moyenne | ⏳ Planifié |
+| **Cache distribué** | Redis (déjà configuré) | ⚠️ Moyenne | ✅ Infrastructure prête |
+| **API REST** | Améliorations (déjà implémentée) | ⚠️ Moyenne | ✅ Actif |
+
+</div>
+
+### 📅 Long Terme (6+ mois)
+
+<div align="center">
+
+| Objectif | Description | Priorité | Statut |
+|:--------:|:-----------:|:--------:|:------:|
+| **Animations SVG** | Support avancé | ⚠️ Basse | ⏳ Planifié |
+| **Intégration Design** | Outils de design | ⚠️ Basse | ⏳ Planifié |
+| **Formats 3D/VR** | Support 3D et VR | ⚠️ Basse | ⏳ Planifié |
+
+</div>
 
 ## 📚 Documentation Technique
 

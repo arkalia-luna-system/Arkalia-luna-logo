@@ -213,8 +213,8 @@ graph TB
 - **Retour utilisateur** > 4.5/5
 
 ### **🔧 Métriques Techniques**
-- **Couverture de code** maintenue à 87%+
-- **Tests automatisés** > 250
+- **Couverture de code** : 75% (objectif 90%+) ✅ **MIS À JOUR** (était 87%+)
+- **Tests automatisés** : 297 tests ✅ **MIS À JOUR** (était > 250)
 - **Déploiements** sans erreur
 - **Temps de réponse API** < 200ms
 - **Disponibilité** > 99.9%

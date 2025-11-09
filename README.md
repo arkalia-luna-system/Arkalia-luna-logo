@@ -67,11 +67,44 @@
 | **📚 Projets Open Source** | Branding cohérent | Identité communautaire | GitHub Actions |
 | **🎨 Outils Créatifs** | Assets vectoriels de qualité | Export professionnel | CLI + batch processing |
 
-## 🎬 **Démonstration en Temps Réel**
+## 🎬 Démonstration en Temps Réel
+
+<div align="center">
 
 ![Arkalia-LUNA Logo Generator Demo](exports/demo-gif/arkalia-luna-demo.gif)
 
-*Génération de logos en 0.03 secondes - 10 variantes émotionnelles*
+**⚡ Génération de logos en 0.03 secondes - 10 variantes émotionnelles**
+
+</div>
+
+### 🎨 Galerie Visuelle Complète
+
+<div align="center">
+
+#### 🌟 Tous les Styles - Variante Sérénité
+
+| Style | Logo | Performance | Complexité |
+|:-----:|:----:|:-----------:|:----------:|
+| **🌙 Base** | ![Simple Serenity](exports/screenshots/simple-serenity-200.svg) | ⚡ ~0.002s | ⭐ Simple |
+| **📊 Dashboard** | ![Dashboard Serenity](exports/screenshots/dashboard-serenity-200.svg) | ⚡ ~0.004s | ⭐⭐ Modéré |
+| **🌙 AI-Moon** | ![AI-Moon Serenity](exports/screenshots/ai_moon-serenity-200.svg) | ✅ ~0.007s | ⭐⭐⭐ Avancé |
+| **🎨 Advanced** | ![Advanced Serenity](exports/screenshots/advanced-serenity-200.svg) | ✅ ~0.006s | ⭐⭐⭐ Avancé |
+| **⚡ Simple-Advanced** | ![Simple-Advanced Serenity](exports/screenshots/simple_advanced-serenity-200.svg) | ⚡ ~0.005s | ⭐⭐ Modéré |
+| **🚀 Ultra-Max** | ![Ultra-Max Serenity](exports/screenshots/ultra_max-serenity-200.svg) | ✅ ~0.008s | ⭐⭐⭐⭐ Complexe |
+| **🌍 Realism Max** | ![Realism Max Serenity](exports/screenshots/realism_max-serenity-200.svg) | 🏆 ~0.002s | ⭐⭐⭐ Avancé |
+| **🌟 Ultimate** | ![Ultimate Serenity](exports/screenshots/ultimate-serenity-200.svg) | ✅ ~0.007s | ⭐⭐⭐⭐⭐ Extrême |
+
+#### ⚡ Comparaison Variantes - Style Dashboard
+
+| Variante | Logo | Caractéristique | Usage |
+|:--------:|:----:|:---------------:|:-----:|
+| **🌙 Sérénité** | ![Dashboard Serenity](exports/screenshots/dashboard-serenity-200.svg) | Calme et mystique | Applications calmes |
+| **⚡ Puissance** | ![Dashboard Power](exports/screenshots/dashboard-power-200.svg) | Énergique et dynamique | Applications dynamiques |
+| **🔮 Mystère** | ![Dashboard Mystery](exports/screenshots/dashboard-mystery-200.svg) | Intrigant et mystérieux | Applications créatives |
+| **✨ Éveil** | ![Dashboard Awakening](exports/screenshots/dashboard-awakening-200.svg) | Lumineux et éclairé | Applications éducatives |
+| **🎇 Créative** | ![Dashboard Creative](exports/screenshots/dashboard-creative-200.svg) | Coloré et créatif | Applications design |
+
+</div>
 
 ## 🎨 **Comparaison des 11 Styles de Logos**
 
@@ -137,40 +170,64 @@
 
 ## ✨ **Fonctionnalités**
 
-### 🎨 **11 Styles de Logos Uniques**
-- **🌙 Base (default)** : Logo standard Arkalia-LUNA
-- **📊 Dashboard** : Interface optimisée et épurée
-- **🌙 AI-Moon** : IA réaliste avec lune vivante
-- **🎨 Advanced** : Techno-mystique avancé
-- **⚡ Simple-Advanced** : Équilibré et configurable
-- **🚀 Ultra-Max** : Effets exceptionnels et performance
-- **🌍 Realism Max** : Ultra-réaliste avec effets organiques
-- **🌟 Ultimate** : Cosmique extrême (100+ stops, holographie)
-- **🤖 AI** : Génération IA avec Stable Diffusion
-- **🌌 Cosmic** : Sphères cosmiques et réseaux neuronaux
-- **🧠 Hyper-AI** : Intelligence artificielle avancée avec ComfyUI + SDXL + ControlNet
+### 🎨 11 Styles de Logos Uniques
 
-### 🌟 **10 Variantes Émotionnelles**
-- **🌙 Sérénité** : Halo doux, pulsations lentes, ambiance calme et mystique
-- **⚡ Puissance** : Halo vibrant, réseau accéléré, énergie intense  
-- **🔮 Mystère** : Brumes mouvantes, réseau irrégulier, ambiance mystérieuse
-- **✨ Éveil/Sagesse** : Halo rayonnant, Λ-core clair, sagesse éclairée
-- **🎇 Énergie créative** : Flux rapides, reflets multicolores, créativité débordante
-- **🌧️ Pluie/Gris** : Gouttes de pluie, nuages gris, ambiance mélancolique mais élégante
-- **⚡ Orage/Colère** : Éclairs zigzagants, nuages sombres, énergie explosive et dynamique
-- **💥 Vive/Explosion** : Particules explosives, feux d'artifice, mouvement radial et énergique
-- **☀️ Ensoleillé** : Rayons de soleil, chaleur et luminosité, optimisme et énergie positive
-- **❄️ Neige** : Flocons qui tombent, froid et pureté, sérénité cristalline
+<div align="center">
 
-### 🛠️ **Capacités Techniques**
-- **Génération SVG** haute qualité avec gradients et filtres
-- **Favicons PNG** personnalisables (16x16 à 512x512)
-- **Interface CLI** complète avec Click et Rich
-- **Architecture modulaire** avec séparation des responsabilités
-- **Factory Pattern** pour création dynamique de générateurs
-- **Système de logging** professionnel
-- **Gestion d'erreurs** robuste avec fallbacks
-- **Tests automatisés** inclus avec couverture complète
+| Style | Logo Exemple | Description | Performance |
+|:-----:|:------------:|:-----------:|:-----------:|
+| **🌙 Base** | ![Base Serenity](exports/screenshots/simple-serenity-200.svg) | Logo standard Arkalia-LUNA | ⚡ Rapide |
+| **📊 Dashboard** | ![Dashboard Serenity](exports/screenshots/dashboard-serenity-200.svg) | Interface optimisée et épurée | ⚡ Rapide |
+| **🌙 AI-Moon** | ![AI-Moon Serenity](exports/screenshots/ai_moon-serenity-200.svg) | IA réaliste avec lune vivante | ✅ Bon |
+| **🎨 Advanced** | ![Advanced Serenity](exports/screenshots/advanced-serenity-200.svg) | Techno-mystique avancé | ✅ Bon |
+| **⚡ Simple-Advanced** | ![Simple-Advanced Serenity](exports/screenshots/simple_advanced-serenity-200.svg) | Équilibré et configurable | ⚡ Rapide |
+| **🚀 Ultra-Max** | ![Ultra-Max Serenity](exports/screenshots/ultra_max-serenity-200.svg) | Effets exceptionnels et performance | ✅ Bon |
+| **🌍 Realism Max** | ![Realism Max Serenity](exports/screenshots/realism_max-serenity-200.svg) | Ultra-réaliste avec effets organiques | 🏆 Le plus rapide |
+| **🌟 Ultimate** | ![Ultimate Serenity](exports/screenshots/ultimate-serenity-200.svg) | Cosmique extrême (100+ stops, holographie) | ✅ Bon |
+| **🤖 AI** | - | Génération IA avec Stable Diffusion | ⚠️ Optionnel |
+| **🌌 Cosmic** | - | Sphères cosmiques et réseaux neuronaux | ✅ Bon |
+| **🧠 Hyper-AI** | - | ComfyUI + SDXL + ControlNet | ⚠️ Avancé |
+
+</div>
+
+> 📘 **En savoir plus** : Voir [COMFYUI.md](docs/COMFYUI.md) pour Hyper-AI
+
+### 🌟 10 Variantes Émotionnelles
+
+<div align="center">
+
+| Variante | Logo Dashboard | Logo Ultra-Max | Description |
+|:--------:|:--------------:|:---------------:|:-----------:|
+| **🌙 Sérénité** | ![Dashboard Serenity](exports/screenshots/dashboard-serenity-200.svg) | ![Ultra-Max Serenity](exports/screenshots/ultra_max-serenity-200.svg) | Halo doux, pulsations lentes |
+| **⚡ Puissance** | ![Dashboard Power](exports/screenshots/dashboard-power-200.svg) | ![Ultra-Max Power](exports/screenshots/ultra_max-power-200.svg) | Halo vibrant, réseau accéléré |
+| **🔮 Mystère** | ![Dashboard Mystery](exports/screenshots/dashboard-mystery-200.svg) | ![Ultra-Max Mystery](exports/screenshots/ultra_max-mystery-200.svg) | Brumes mouvantes, réseau irrégulier |
+| **✨ Éveil** | ![Dashboard Awakening](exports/screenshots/dashboard-awakening-200.svg) | ![Ultra-Max Awakening](exports/screenshots/ultra_max-awakening-200.svg) | Halo rayonnant, Λ-core clair |
+| **🎇 Créative** | ![Dashboard Creative](exports/screenshots/dashboard-creative-200.svg) | ![Ultra-Max Creative](exports/screenshots/ultra_max-creative-200.svg) | Flux rapides, reflets multicolores |
+
+</div>
+
+<div align="center">
+
+**Variantes Dynamiques** (Pluie, Orage, Explosive, Ensoleillé, Neige) disponibles dans tous les styles
+
+</div>
+
+### 🛠️ Capacités Techniques
+
+<div align="center">
+
+| Capacité | Détails | Exemple |
+|:--------:|:-------:|:-------:|
+| **Génération SVG** | Haute qualité avec gradients et filtres | ✅ Tous les logos |
+| **Favicons PNG** | Personnalisables (16x16 à 512x512) | ![Favicon](exports/unified/favicons/favicon-serenity-32.png) |
+| **Interface CLI** | Complète avec Click et Rich | ✅ Professionnelle |
+| **Architecture modulaire** | Séparation des responsabilités | ✅ Clean Code |
+| **Factory Pattern** | Création dynamique de générateurs | ✅ Extensible |
+| **Système de logging** | Professionnel et structuré | ✅ Traçabilité |
+| **Gestion d'erreurs** | Robuste avec fallbacks | ✅ Résilient |
+| **Tests automatisés** | Couverture complète (297 tests) | ✅ 75% coverage |
+
+</div>
 
 ## 🌐 **API Web & Déploiement**
 
@@ -189,7 +246,14 @@
 - **Sécurité** : Utilisateur non-root, health checks
 - **Scalabilité** : Prêt pour déploiement en production
 
-### **📊 Infrastructure Complète - VALIDÉE** ✅
+### 📊 Infrastructure Complète - VALIDÉE ✅
+
+<div align="center">
+
+**🐳 Docker Compose - 5 Services Orchestrés**
+
+</div>
+
 ```bash
 # Démarrage rapide avec Docker
 docker-compose -f docker-compose.prod.yml up -d
@@ -200,6 +264,28 @@ docker-compose -f docker-compose.prod.yml up -d
 # 📊 Prometheus : http://localhost:9090 (Métriques)
 # 📈 Grafana : http://localhost:3000 (Monitoring)
 # 💾 Redis : localhost:6379 (Cache)
+```
+
+### 🏗️ Architecture Infrastructure
+
+```mermaid
+graph TB
+    A[👤 Utilisateur] --> B[🌐 Nginx Reverse Proxy]
+    B --> C[🚀 FastAPI App]
+    C --> D[💾 Redis Cache]
+    C --> E[📊 Prometheus]
+    E --> F[📈 Grafana]
+    
+    C --> G[🎨 Logo Generator]
+    G --> H[📁 Exports]
+    
+    style A fill:#e1f5fe,stroke:#01579b,stroke-width:2px
+    style B fill:#fff3e0,stroke:#e65100,stroke-width:2px
+    style C fill:#e8f5e9,stroke:#1b5e20,stroke-width:3px
+    style D fill:#fce4ec,stroke:#880e4f,stroke-width:2px
+    style E fill:#f3e5f5,stroke:#4a148c,stroke-width:2px
+    style F fill:#e0f2f1,stroke:#004d40,stroke-width:2px
+    style G fill:#fff9c4,stroke:#f57f17,stroke-width:2px
 ```
 
 ### **⚡ Performance Exceptionnelle**
@@ -400,6 +486,11 @@ arkalia-luna-logo/
 │
 ├── tests/                       # Tests automatisés
 ├── docs/                        # Documentation
+│   ├── COMFYUI.md              # 🧠 Guide ComfyUI + Hyper-AI
+│   ├── QUICKSTART.md           # Guide de démarrage rapide
+│   ├── API.md                  # Documentation API complète
+│   ├── ARCHITECTURE.md         # Architecture technique
+│   └── INDEX.md                # Index de documentation
 ├── exports/                     # Exports générés
 │   ├── *.svg                   # Logos SVG (tous styles et variantes)
 │   ├── *.png                   # Favicons PNG
@@ -459,19 +550,43 @@ Le projet suit une **roadmap stratégique** en 4 phases pour atteindre l'excelle
 - **Tests de performance** : Benchmark des générateurs
 - **Tests de régression** : Validation des fonctionnalités
 
-## 📊 **Performance**
+## 📊 Performance
 
-### **Benchmark des Générateurs (Mise à jour)**
-- **Realism Max** : ~0.002s ⚡ (Le plus rapide)
-- **Dashboard** : ~0.004s
-- **AI-Moon** : ~0.007s
-- **Ultra-Max** : ~0.008s
-- **Ultimate** : ~0.007s
-- **Simple-Advanced** : ~0.008s
-- **Advanced** : ~0.008s
-- **Base** : ~0.013s
+### ⚡ Benchmark des Générateurs
 
-*Note : Les temps varient selon la taille et la complexité du logo*
+<div align="center">
+
+| Générateur | Temps | Performance | Logo Exemple |
+|:----------:|:-----:|:-----------:|:------------:|
+| **Realism Max** | ~0.002s | 🏆 Le plus rapide | ![Realism Max](../exports/screenshots/realism_max-serenity-200.svg) |
+| **Dashboard** | ~0.004s | ⚡ Rapide | ![Dashboard](../exports/screenshots/dashboard-serenity-200.svg) |
+| **AI-Moon** | ~0.007s | ✅ Bon | ![AI-Moon](../exports/screenshots/ai_moon-serenity-200.svg) |
+| **Ultra-Max** | ~0.008s | ✅ Bon | ![Ultra-Max](../exports/screenshots/ultra_max-serenity-200.svg) |
+| **Ultimate** | ~0.007s | ✅ Bon | ![Ultimate](../exports/screenshots/ultimate-serenity-200.svg) |
+| **Simple-Advanced** | ~0.008s | ✅ Bon | ![Simple-Advanced](../exports/screenshots/simple_advanced-serenity-200.svg) |
+| **Advanced** | ~0.008s | ✅ Bon | ![Advanced](../exports/screenshots/advanced-serenity-200.svg) |
+| **Base** | ~0.013s | ⚠️ Plus lent | ![Base](../exports/screenshots/simple-serenity-200.svg) |
+
+</div>
+
+> **Note** : Les temps varient selon la taille et la complexité du logo
+
+### 📈 Graphique de Performance
+
+```mermaid
+graph LR
+    A[Realism Max<br/>0.002s] -->|🏆| B[Fastest]
+    C[Dashboard<br/>0.004s] -->|⚡| D[Fast]
+    E[AI-Moon<br/>0.007s] -->|✅| F[Good]
+    G[Ultimate<br/>0.007s] -->|✅| F
+    H[Ultra-Max<br/>0.008s] -->|✅| F
+    I[Base<br/>0.013s] -->|⚠️| J[Slower]
+    
+    style A fill:#e8f5e9,stroke:#1b5e20,stroke-width:3px
+    style B fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px
+    style C fill:#fff3e0,stroke:#e65100,stroke-width:2px
+    style I fill:#ffebee,stroke:#c62828,stroke-width:2px
+```
 
 ## 🤝 **Contribution**
 
@@ -485,22 +600,49 @@ Le projet suit une **roadmap stratégique** en 4 phases pour atteindre l'excelle
 
 Ce projet est sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.
 
-## 🆘 **Support**
+## 🆘 Support
 
-- **Issues** : [GitHub Issues](https://github.com/arkalia-luna/arkalia-luna-logo/issues)
-- **Documentation** : [Documentation complète](docs/)
-- **Discussions** : [GitHub Discussions](https://github.com/arkalia-luna/arkalia-luna-logo/discussions)
+<div align="center">
 
-## 🌟 **Statut du Projet**
+| Support | Description | Lien Direct |
+|:-------:|:-----------:|:-----------:|
+| **Issues** | Bugs et demandes de fonctionnalités | [📘 GitHub Issues](https://github.com/arkalia-luna/arkalia-luna-logo/issues) |
+| **Discussions** | Questions et discussions générales | [📘 GitHub Discussions](https://github.com/arkalia-luna/arkalia-luna-logo/discussions) |
+| **Documentation** | Documentation complète | [📘 Voir docs/](docs/) |
 
-- **Version** : 2.0.0
-- **Statut** : Production/Stable
-- **Python** : 3.8+
-- **Tests** : **297 tests passent** ✅
-- **Couverture** : **75%** (objectif 90%+) ✅ **MIS À JOUR**
-- **CI/CD** : GitHub Actions automatisé
-- **Qualité** : Black + Ruff + MyPy
-- **Benchmarks** : 7/7 tests de performance ✅
+</div>
+
+### 📚 Navigation Rapide Documentation
+
+<div align="center">
+
+| Document | Description | Lien |
+|:--------:|:-----------:|:----:|
+| **📘 Index** | Navigation complète | [Voir](docs/INDEX.md) |
+| **🚀 Quickstart** | Démarrage rapide | [Voir](docs/QUICKSTART.md) |
+| **🧠 ComfyUI** | Génération IA avancée | [Voir](docs/COMFYUI.md) |
+| **📋 API** | Documentation API | [Voir](docs/API.md) |
+| **🏗️ Architecture** | Architecture technique | [Voir](docs/ARCHITECTURE.md) |
+| **🤝 Contributing** | Guide de contribution | [Voir](docs/CONTRIBUTING.md) |
+
+</div>
+
+## 🌟 Statut du Projet
+
+<div align="center">
+
+| Métrique | Valeur | Statut | Objectif |
+|:--------:|:------:|:------:|:--------:|
+| **Version** | 2.0.0 | ✅ | - |
+| **Statut** | Production/Stable | ✅ | - |
+| **Python** | 3.8+ | ✅ | - |
+| **Tests** | 297 tests passent | ✅ | - |
+| **Couverture** | 75% | ✅ | 90%+ |
+| **CI/CD** | GitHub Actions | ✅ | Automatisé |
+| **Qualité** | Black + Ruff + MyPy | ✅ | - |
+| **Benchmarks** | 7/7 tests | ✅ | - |
+
+</div>
 
 ---
 

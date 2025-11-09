@@ -53,18 +53,18 @@ arkalia-luna-logo/
 
 <div align="center">
 
-| Variante | Description | Caractéristiques |
-|:--------:|:-----------:|:----------------:|
-| 🌙 **Sérénité** | Halo doux, pulsations lentes | Ambiance calme et mystique |
-| ⚡ **Puissance** | Halo vibrant, réseau accéléré | Énergie intense et dynamique |
-| 🔮 **Mystère** | Brumes mouvantes, réseau irrégulier | Ambiance mystérieuse et intrigante |
-| ✨ **Éveil/Sagesse** | Halo rayonnant, Λ-core clair | Sagesse éclairée et lumineuse |
-| 🎇 **Énergie créative** | Flux rapides, reflets multicolores | Créativité débordante et colorée |
-| 🌧️ **Pluie** | Ambiance pluvieuse, réseau apaisé | Dynamique douce et apaisante |
-| ⛈️ **Orage** | Énergie électrique, réseau intense | Dynamique puissante et explosive |
-| 💥 **Explosive** | Énergie maximale, réseau accéléré | Dynamique extrême et vive |
-| ☀️ **Ensoleillé** | Luminosité intense, réseau clair | Dynamique lumineuse et positive |
-| ❄️ **Neige** | Pureté cristalline, réseau apaisé | Dynamique calme et sereine |
+| Variante | Logo Exemple | Description | Caractéristiques |
+|:--------:|:------------:|:-----------:|:----------------:|
+| 🌙 **Sérénité** | ![Serenity](../exports/arkalia-luna-serenity-200.svg) | Halo doux, pulsations lentes | Ambiance calme et mystique |
+| ⚡ **Puissance** | ![Power](../exports/arkalia-luna-power-200.svg) | Halo vibrant, réseau accéléré | Énergie intense et dynamique |
+| 🔮 **Mystère** | ![Mystery](../exports/arkalia-luna-mystery-200.svg) | Brumes mouvantes, réseau irrégulier | Ambiance mystérieuse et intrigante |
+| ✨ **Éveil/Sagesse** | ![Awakening](../exports/arkalia-luna-dashboard-awakening-200.svg) | Halo rayonnant, Λ-core clair | Sagesse éclairée et lumineuse |
+| 🎇 **Énergie créative** | ![Creative](../exports/arkalia-luna-dashboard-creative-200.svg) | Flux rapides, reflets multicolores | Créativité débordante et colorée |
+| 🌧️ **Pluie** | ![Rainy](../exports/arkalia-luna-dashboard-rainy-200.svg) | Ambiance pluvieuse, réseau apaisé | Dynamique douce et apaisante |
+| ⛈️ **Orage** | ![Stormy](../exports/arkalia-luna-dashboard-stormy-200.svg) | Énergie électrique, réseau intense | Dynamique puissante et explosive |
+| 💥 **Explosive** | ![Explosive](../exports/arkalia-luna-dashboard-explosive-200.svg) | Énergie maximale, réseau accéléré | Dynamique extrême et vive |
+| ☀️ **Ensoleillé** | ![Sunny](../exports/arkalia-luna-dashboard-sunny-200.svg) | Luminosité intense, réseau clair | Dynamique lumineuse et positive |
+| ❄️ **Neige** | ![Snowy](../exports/arkalia-luna-dashboard-snowy-200.svg) | Pureté cristalline, réseau apaisé | Dynamique calme et sereine |
 
 </div>
 

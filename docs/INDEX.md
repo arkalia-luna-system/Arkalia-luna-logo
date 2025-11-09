@@ -49,6 +49,21 @@ graph TD
     style E fill:#fce4ec,stroke:#880e4f,stroke-width:2px
 ```
 
+### ⚡ Quick Links
+
+<div align="center">
+
+| Besoin | Document | Lien Direct |
+|:------:|:--------:|:-----------:|
+| **🚀 Démarrer rapidement** | QUICKSTART.md | [📘 Voir](QUICKSTART.md) |
+| **📋 API complète** | API.md | [📘 Voir](API.md) |
+| **🏗️ Architecture** | ARCHITECTURE.md | [📘 Voir](ARCHITECTURE.md) |
+| **🤝 Contribuer** | CONTRIBUTING.md | [📘 Voir](CONTRIBUTING.md) |
+| **🧠 ComfyUI** | COMFYUI.md | [📘 Voir](COMFYUI.md) |
+| **📊 Roadmap** | roadmap/ROADMAP_SUMMARY.md | [📘 Voir](roadmap/ROADMAP_SUMMARY.md) |
+
+</div>
+
 ## 📖 Documentation par Niveau d'Expertise
 
 ### 🚀 Débutant - Premiers Pas
@@ -71,7 +86,8 @@ graph TD
 |:--------:|:-----------:|:-----------:|
 | **API.md** | Documentation complète de l'API Python | [📘 Voir](API.md) |
 | **ARCHITECTURE.md** | Architecture technique et patterns de design | [📘 Voir](ARCHITECTURE.md) |
-| **COMFYUI.md** | 🧠 ComfyUI + Hyper-AI Generator - Génération IA avancée | [📘 Voir](COMFYUI.md) |
+| **COMFYUI.md** | 🧠 ComfyUI + Hyper-AI Generator - Génération IA avancée (scripts start/stop inclus) | [📘 Voir](COMFYUI.md) |
+| **GUIDE_COMFYUI_UTILISATION.md** | 🎨 Guide d'utilisation ComfyUI - Où faire le prompt ? (Méthode 1 vs Méthode 2) | [📘 Voir](GUIDE_COMFYUI_UTILISATION.md) |
 
 </div>
 
@@ -121,6 +137,34 @@ graph TD
 **Styles disponibles** : Base, Dashboard, AI-Moon, Advanced, Simple-Advanced, Ultra-Max, Realism Max, Ultimate, AI, Cosmic, Hyper-AI
 
 **Variantes émotionnelles** : Sérénité, Puissance, Mystère, Éveil, Énergie Créative, Pluie/Gris, Orage/Colère, Vive/Explosion, Ensoleillé, Neige
+
+### 🎨 Exemples Visuels de Logos
+
+<div align="center">
+
+#### Variante Sérénité (Exemples)
+
+| Style | Logo | Description |
+|:-----:|:----:|:-----------:|
+| **Dashboard** | ![Dashboard Serenity](../exports/arkalia-luna-dashboard-serenity-200.svg) | Style professionnel épuré |
+| **Ultra-Max** | ![Ultra-Max Serenity](../exports/arkalia-luna-ultra-max-serenity-200.svg) | Effets avancés et dynamiques |
+| **Simple-Advanced** | ![Simple-Advanced Serenity](../exports/arkalia-luna-simple-advanced-serenity-200.svg) | Équilibre simplicité/sophistication |
+
+#### Variante Puissance (Exemples)
+
+| Style | Logo | Description |
+|:-----:|:----:|:-----------:|
+| **Dashboard** | ![Dashboard Power](../exports/arkalia-luna-dashboard-power-200.svg) | Énergie professionnelle |
+| **Ultra-Max** | ![Ultra-Max Power](../exports/arkalia-luna-ultra-max-power-200.svg) | Puissance dynamique |
+
+#### Variante Mystère (Exemples)
+
+| Style | Logo | Description |
+|:-----:|:----:|:-----------:|
+| **Dashboard** | ![Dashboard Mystery](../exports/arkalia-luna-dashboard-mystery-200.svg) | Ambiance mystérieuse |
+| **Ultra-Max** | ![Ultra-Max Mystery](../exports/arkalia-luna-ultra-max-mystery-200.svg) | Mystère intensifié |
+
+</div>
 
 ### 🏗️ Architecture et Code
 
@@ -306,22 +350,80 @@ graph TD
 - **Liens** : Navigation interne et externe
 - **Version** : Indiquer la version de la documentation
 
-## 🆘 **Besoin d'Aide ?**
+## 🎨 Showcase Visuel
 
-### **Questions Fréquentes**
-- **Installation** : Consultez [QUICKSTART.md](QUICKSTART.md)
-- **Utilisation** : Consultez [API.md](API.md)
-- **Développement** : Consultez [CONTRIBUTING.md](CONTRIBUTING.md)
+<div align="center">
 
-### **Support Communautaire**
-- **GitHub Issues** : Pour les bugs et demandes de fonctionnalités
-- **GitHub Discussions** : Pour les questions et discussions générales
-- **Pull Requests** : Pour les contributions de code
+### 🌟 Galerie de Tous les Styles
 
-### **Contact Direct**
-- **Email** : team@arkalia-luna.dev
-- **Auteur** : Athalia
-- **Projet** : Arkalia-LUNA
+**Variante Sérénité - Comparaison Visuelle**
+
+| Style | Logo | Performance | Complexité |
+|:-----:|:----:|:-----------:|:----------:|
+| **🌙 Base** | ![Base](../exports/screenshots/simple-serenity-200.svg) | ⚡ ~0.002s | ⭐ Simple |
+| **📊 Dashboard** | ![Dashboard](../exports/screenshots/dashboard-serenity-200.svg) | ⚡ ~0.004s | ⭐⭐ Modéré |
+| **🌙 AI-Moon** | ![AI-Moon](../exports/screenshots/ai_moon-serenity-200.svg) | ✅ ~0.007s | ⭐⭐⭐ Avancé |
+| **🎨 Advanced** | ![Advanced](../exports/screenshots/advanced-serenity-200.svg) | ✅ ~0.006s | ⭐⭐⭐ Avancé |
+| **⚡ Simple-Advanced** | ![Simple-Advanced](../exports/screenshots/simple_advanced-serenity-200.svg) | ⚡ ~0.005s | ⭐⭐ Modéré |
+| **🚀 Ultra-Max** | ![Ultra-Max](../exports/screenshots/ultra_max-serenity-200.svg) | ✅ ~0.008s | ⭐⭐⭐⭐ Complexe |
+| **🌍 Realism Max** | ![Realism Max](../exports/screenshots/realism_max-serenity-200.svg) | 🏆 ~0.002s | ⭐⭐⭐ Avancé |
+| **🌟 Ultimate** | ![Ultimate](../exports/screenshots/ultimate-serenity-200.svg) | ✅ ~0.007s | ⭐⭐⭐⭐⭐ Extrême |
+
+</div>
+
+### 🎭 Comparaison des Variantes
+
+<div align="center">
+
+**Style Dashboard - Toutes les Variantes**
+
+| Variante | Logo | Caractéristique |
+|:--------:|:----:|:---------------:|
+| **🌙 Sérénité** | ![Dashboard Serenity](../exports/screenshots/dashboard-serenity-200.svg) | Calme et mystique |
+| **⚡ Puissance** | ![Dashboard Power](../exports/screenshots/dashboard-power-200.svg) | Énergique et dynamique |
+| **🔮 Mystère** | ![Dashboard Mystery](../exports/screenshots/dashboard-mystery-200.svg) | Intrigant et mystérieux |
+| **✨ Éveil** | ![Dashboard Awakening](../exports/screenshots/dashboard-awakening-200.svg) | Lumineux et éclairé |
+| **🎇 Créative** | ![Dashboard Creative](../exports/screenshots/dashboard-creative-200.svg) | Coloré et créatif |
+
+</div>
+
+### 📱 Favicons Disponibles
+
+<div align="center">
+
+| Variante | Favicon 32x32 | Usage |
+|:--------:|:-------------:|:-----:|
+| **🌙 Sérénité** | ![Favicon Serenity](../exports/unified/favicons/favicon-serenity-32.png) | Applications calmes |
+| **⚡ Puissance** | ![Favicon Power](../exports/unified/favicons/favicon-power-32.png) | Applications dynamiques |
+| **🔮 Mystère** | ![Favicon Mystery](../exports/unified/favicons/favicon-mystery-32.png) | Applications créatives |
+| **✨ Éveil** | ![Favicon Awakening](../exports/unified/favicons/favicon-awakening-32.png) | Applications éducatives |
+| **🎇 Créative** | ![Favicon Creative](../exports/unified/favicons/favicon-creative-32.png) | Applications design |
+
+</div>
+
+## 🆘 Besoin d'Aide ?
+
+<div align="center">
+
+| Question | Document | Lien Direct |
+|:--------:|:--------:|:-----------:|
+| **Installation** | QUICKSTART.md | [📘 Voir](QUICKSTART.md) |
+| **Utilisation** | API.md | [📘 Voir](API.md) |
+| **Développement** | CONTRIBUTING.md | [📘 Voir](CONTRIBUTING.md) |
+
+</div>
+
+### 🤝 Support Communautaire
+
+<div align="center">
+
+| Support | Description | Lien |
+|:-------:|:-----------:|:----:|
+| **GitHub Issues** | Bugs et demandes de fonctionnalités | [📘 Voir](https://github.com/arkalia-luna/logo/issues) |
+| **GitHub Discussions** | Questions et discussions | [📘 Voir](https://github.com/arkalia-luna/logo/discussions) |
+| **Pull Requests** | Contributions de code | [📘 Voir](https://github.com/arkalia-luna/logo/pulls) |
+
+</div>
 
 ---
 

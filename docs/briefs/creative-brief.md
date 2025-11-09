@@ -85,15 +85,28 @@
 
 ## 🌀 Structure du Logo
 
-**Symbole central :** une Lune neuronale holographique (mi-organique, mi-technologique)  
-**Noyau cognitif :** un Λ (Lambda) subtil au centre → signature d'Arkalia  
-**Réseau neuronal :** visible, fluide, organique, lumineux  
-**Halo/aura :** respirant, raffiné, jamais kitsch
+<div align="center">
 
-**Variantes possibles :**
-- Pure (symbole isolé)
-- Illustrative (univers étoilé, brumes, constellations)
-- Runique (glyphe/cercle discret autour)
+| Élément | Description | Exemple Visuel |
+|:-------:|:-----------:|:--------------:|
+| **Symbole central** | Lune neuronale holographique (mi-organique, mi-technologique) | ![Ultimate Serenity](../exports/screenshots/ultimate-serenity-200.svg) |
+| **Noyau cognitif** | Λ (Lambda) subtil au centre → signature d'Arkalia | Visible dans tous les logos |
+| **Réseau neuronal** | Visible, fluide, organique, lumineux | ![AI-Moon Serenity](../exports/screenshots/ai_moon-serenity-200.svg) |
+| **Halo/aura** | Respirant, raffiné, jamais kitsch | ![Dashboard Serenity](../exports/screenshots/dashboard-serenity-200.svg) |
+
+</div>
+
+### 🎨 Variantes Possibles
+
+<div align="center">
+
+| Variante | Description | Exemple |
+|:--------:|:-----------:|:-------:|
+| **Pure** | Symbole isolé | ![Base Serenity](../exports/screenshots/simple-serenity-200.svg) |
+| **Illustrative** | Univers étoilé, brumes, constellations | ![Ultimate Serenity](../exports/screenshots/ultimate-serenity-200.svg) |
+| **Runique** | Glyphe/cercle discret autour | ![Advanced Serenity](../exports/screenshots/advanced-serenity-200.svg) |
+
+</div>
 
 ## ⚡ Variantes Émotionnelles
 

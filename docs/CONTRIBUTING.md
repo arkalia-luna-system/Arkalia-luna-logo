@@ -67,9 +67,19 @@ flowchart TD
 
 </div>
 
-## 🚀 **Premiers Pas**
+## 🚀 Premiers Pas
 
-### **1. Fork et Clone**
+### 1️⃣ Fork et Clone
+
+<div align="center">
+
+| Étape | Action | Commande |
+|:-----:|:------:|:--------:|
+| **1** | Forker sur GitHub | Via interface GitHub |
+| **2** | Cloner votre fork | `git clone https://github.com/VOTRE_USERNAME/logo.git` |
+| **3** | Ajouter upstream | `git remote add upstream https://github.com/arkalia-luna/logo.git` |
+
+</div>
 
 ```bash
 # 1. Forker le projet sur GitHub
@@ -81,7 +91,18 @@ cd logo
 git remote add upstream https://github.com/arkalia-luna/logo.git
 ```
 
-### **2. Configuration de l'Environnement**
+### 2️⃣ Configuration de l'Environnement
+
+<div align="center">
+
+| Étape | Commande | Statut |
+|:-----:|:--------:|:------:|
+| **Créer venv** | `python -m venv arkalia-luna-env` | ✅ |
+| **Activer** | `source arkalia-luna-env/bin/activate` | ✅ |
+| **Installer** | `pip install -e ".[dev]"` | ✅ |
+| **Vérifier** | `pytest tests/ -v` | ✅ |
+
+</div>
 
 ```bash
 # Créer l'environnement virtuel
@@ -100,7 +121,17 @@ pip install -e ".[dev]"
 pytest tests/ -v
 ```
 
-### **3. Branche de Développement**
+### 3️⃣ Branche de Développement
+
+<div align="center">
+
+| Type | Commande | Usage |
+|:----:|:--------:|:-----:|
+| **Feature** | `git checkout -b feature/nouvelle-fonctionnalite` | Nouvelle fonctionnalité |
+| **Fix** | `git checkout -b fix/correction-bug` | Correction de bug |
+| **Docs** | `git checkout -b docs/amelioration-doc` | Documentation |
+
+</div>
 
 ```bash
 # Créer une branche pour votre fonctionnalité
@@ -264,9 +295,13 @@ pytest -m "not slow"  # Tests rapides uniquement
 pytest --tb=long -v
 ```
 
-### **3. Couverture de Code**
+### 3. Couverture de Code
+
+<div align="center">
 
 **Objectif** : Maintenir une couverture 90% (actuellement 75%) ✅ **MIS À JOUR**
+
+</div>
 
 ```mermaid
 pie title Couverture de Code Actuelle (75%)
@@ -277,12 +312,19 @@ pie title Couverture de Code Actuelle (75%)
     "Nouveaux tests Realism Max" : 1
 ```
 
-**📊 Détail de la couverture par module :**
-- **`src/cli.py`** : 92% (tests CLI complets)
-- **`src/generator_factory.py`** : 95% (tests Factory complets)
-- **`src/svg_builder_ultimate.py`** : 98% (tests Ultimate complets)
-- **`src/ultimate_generator.py`** : 81% (tests générateur complets)
-- **`src/realism_max_generator.py`** : 99% (tests Realism Max complets)
+#### 📊 Détail de la Couverture par Module
+
+<div align="center">
+
+| Module | Couverture | Statut | Tests |
+|:------:|:----------:|:------:|:-----:|
+| **`src/cli.py`** | 92% | ✅ Excellent | Tests CLI complets |
+| **`src/generator_factory.py`** | 95% | ✅ Excellent | Tests Factory complets |
+| **`src/svg_builder_ultimate.py`** | 98% | ✅ Excellent | Tests Ultimate complets |
+| **`src/ultimate_generator.py`** | 81% | ✅ Bon | Tests générateur complets |
+| **`src/realism_max_generator.py`** | 99% | ✅ Excellent | Tests Realism Max complets |
+
+</div>
 
 ```bash
 # Rapport de couverture HTML
@@ -403,20 +445,34 @@ git push origin feature/nouvelle-fonctionnalite
 # 6. Créer une Pull Request sur GitHub
 ```
 
-### **2. Messages de Commit**
+### 2️⃣ Messages de Commit
+
+<div align="center">
 
 **Format** : `type(scope): description`
 
-**Types** :
-- `feat` : Nouvelle fonctionnalité
-- `fix` : Correction de bug
-- `docs` : Documentation
-- `style` : Formatage du code
-- `refactor` : Refactoring
-- `test` : Tests
-- `chore` : Maintenance
+</div>
 
-**Exemples** :
+#### 📋 Types de Commit
+
+<div align="center">
+
+| Type | Description | Exemple |
+|:----:|:-----------:|:-------:|
+| **`feat`** | Nouvelle fonctionnalité | `feat(generator): ajouter animations Lottie` |
+| **`fix`** | Correction de bug | `fix(svg): corriger rendu gradients` |
+| **`docs`** | Documentation | `docs(api): mettre à jour variantes` |
+| **`style`** | Formatage du code | `style: reformater avec black` |
+| **`refactor`** | Refactoring | `refactor(factory): simplifier création` |
+| **`test`** | Tests | `test(ultimate): ajouter tests performance` |
+| **`chore`** | Maintenance | `chore: mettre à jour dépendances` |
+| **`perf`** | Performance | `perf(builder): optimiser génération` |
+| **`ci`** | CI/CD | `ci: corriger workflow GitHub Actions` |
+
+</div>
+
+#### 💡 Exemples
+
 ```bash
 git commit -m "feat(generator): ajouter support des animations Lottie"
 git commit -m "fix(svg): corriger le rendu des gradients complexes"
@@ -511,9 +567,20 @@ def generate_logo(self, variant_name: str, size: int) -> str:
         raise
 ```
 
-## 📊 **Métriques et Qualité**
+## 📊 Métriques et Qualité
 
-### **1. Outils de Qualité**
+### 🔧 Outils de Qualité
+
+<div align="center">
+
+| Outil | Commande | Description | Statut |
+|:-----:|:--------:|:-----------:|:------:|
+| **Black** | `black --check src/ tests/` | Formatage du code | ✅ |
+| **Ruff** | `ruff check src/ tests/` | Linting rapide | ✅ |
+| **MyPy** | `mypy src/` | Vérification des types | ✅ |
+| **Pytest** | `pytest --cov=src` | Tests et couverture | ✅ |
+
+</div>
 
 ```bash
 # Vérification complète
@@ -525,6 +592,19 @@ ruff check src/ tests/
 mypy src/
 pytest --cov=src --cov-report=term-missing
 ```
+
+### 📊 Métriques de Qualité
+
+<div align="center">
+
+| Métrique | Valeur | Objectif | Statut |
+|:--------:|:------:|:--------:|:------:|
+| **Couverture** | 75% | 90%+ | 🟡 En cours |
+| **Tests** | 297 | - | ✅ |
+| **Linting** | 0 erreurs | 0 | ✅ |
+| **Types** | 95% annotés | 100% | 🟡 En cours |
+
+</div>
 
 ### **2. Pre-commit Hooks**
 
@@ -556,9 +636,40 @@ repos:
       - id: mypy
 ```
 
-## 🔮 **Ajout de Nouvelles Fonctionnalités**
+## 🔮 Ajout de Nouvelles Fonctionnalités
 
-### **1. Nouveau Style de Logo**
+### 🎨 Nouveau Style de Logo
+
+<div align="center">
+
+**Workflow de création d'un nouveau style**
+
+</div>
+
+```mermaid
+flowchart TD
+    A[🎨 Nouveau Style] --> B[📝 Créer Builder SVG]
+    B --> C[🏗️ Créer Générateur]
+    C --> D[🧪 Ajouter Tests]
+    D --> E[🏭 Mettre à jour Factory]
+    E --> F[📚 Mettre à jour Docs]
+    F --> G[✅ Style Disponible]
+    
+    style A fill:#e1f5fe,stroke:#01579b,stroke-width:2px
+    style G fill:#e8f5e9,stroke:#1b5e20,stroke-width:3px
+```
+
+<div align="center">
+
+| Étape | Fichier | Action |
+|:-----:|:-------:|:------:|
+| **1** | `src/svg_builder_nouveau_style.py` | Créer le builder SVG |
+| **2** | `src/nouveau_style_generator.py` | Créer le générateur |
+| **3** | `tests/test_nouveau_style.py` | Ajouter les tests |
+| **4** | `src/generator_factory.py` | Mettre à jour la factory |
+| **5** | `docs/API.md`, `README.md` | Mettre à jour la documentation |
+
+</div>
 
 ```bash
 # 1. Créer le builder SVG
@@ -577,7 +688,34 @@ touch tests/test_nouveau_style.py
 # Modifier docs/API.md et README.md
 ```
 
-### **2. Nouvelle Variante Émotionnelle**
+### 🎭 Nouvelle Variante Émotionnelle
+
+<div align="center">
+
+**Workflow de création d'une nouvelle variante**
+
+</div>
+
+```mermaid
+flowchart LR
+    A[🎭 Nouvelle Variante] --> B[📝 Ajouter Variant]
+    B --> C[🎨 Ajouter ColorScheme]
+    C --> D[🧪 Mettre à jour Tests]
+    D --> E[✅ Variante Disponible]
+    
+    style A fill:#e1f5fe,stroke:#01579b,stroke-width:2px
+    style E fill:#e8f5e9,stroke:#1b5e20,stroke-width:3px
+```
+
+<div align="center">
+
+| Étape | Fichier | Action |
+|:-----:|:-------:|:------:|
+| **1** | `src/variants.py` | Ajouter la variante |
+| **2** | `src/variants.py` | Ajouter ColorScheme |
+| **3** | `tests/test_variants.py` | Mettre à jour les tests |
+
+</div>
 
 ```python
 # 1. Ajouter dans src/variants.py

@@ -156,18 +156,29 @@ flowchart TD
 
 ## 🌙 **Styles Disponibles Immédiatement**
 
-### **1. ULTIME (Recommandé pour commencer)**
+### 1. ULTIME (Recommandé pour commencer)
+
+<div align="center">
+
+![Ultimate Serenity](../exports/screenshots/ultimate-serenity-200.svg)
+
+</div>
 
 ```bash
 source arkalia-luna-env/bin/activate
 python -m src.cli generate --variant serenity --generator ultimate --size 200
 ```
 
-**Pourquoi commencer par ULTIME ?**
-- ✅ Effets cosmiques ultra-réalistes
-- ✅ 100+ stops de gradients holographiques
-- ✅ Qualité professionnelle garantie
-- ✅ Compatible tous les usages
+<div align="center">
+
+| Avantage | Description | Statut |
+|:-------:|:-----------:|:------:|
+| **Effets cosmiques** | Ultra-réalistes | ✅ |
+| **Gradients** | 100+ stops holographiques | ✅ |
+| **Qualité** | Professionnelle garantie | ✅ |
+| **Compatibilité** | Tous les usages | ✅ |
+
+</div>
 
 ### **2. HYPER-AI (Génération IA avancée) 🧠**
 
@@ -182,52 +193,86 @@ python -m src.cli generate --variant serenity --generator hyper_ai --size 200
 - ✅ Qualité maximale avec modèles SDXL
 - ⚠️ Nécessite ComfyUI installé (voir section avancée)
 
-**Installation ComfyUI (optionnel) :**
+**Installation et démarrage ComfyUI (optionnel) :**
 ```bash
+# Installation
 bash scripts/install_comfyui.sh
-cd comfyui && ./launch_comfyui.sh
+
+# Démarrage (arrête automatiquement les anciens processus)
+bash scripts/start_comfyui.sh
+
+# Arrêt
+bash scripts/stop_comfyui.sh
 ```
 
-### **3. AI-MOON (Style organique)**
+**ComfyUI sera accessible sur** : http://localhost:8188
+
+### 3. AI-MOON (Style organique)
+
+<div align="center">
+
+![AI-Moon Serenity](../exports/screenshots/ai_moon-serenity-200.svg)
+
+</div>
 
 ```bash
 source arkalia-luna-env/bin/activate
 python -m src.cli generate --variant power --generator ai_moon --size 200
 ```
 
-**Idéal pour :**
-- Applications IA et machine learning
-- Interfaces organiques et fluides
-- Projets innovants et futuristes
+<div align="center">
 
-### **4. Dashboard (Style professionnel)**
+| Usage | Description | Exemple |
+|:-----:|:-----------:|:-------:|
+| **IA/ML** | Applications IA et machine learning | ✅ |
+| **Interfaces** | Organiques et fluides | ✅ |
+| **Projets** | Innovants et futuristes | ✅ |
+
+</div>
+
+### 4. Dashboard (Style professionnel)
+
+<div align="center">
+
+![Dashboard Serenity](../exports/screenshots/dashboard-serenity-200.svg)
+
+</div>
 
 ```bash
 source arkalia-luna-env/bin/activate
 python -m src.cli generate --variant mystery --generator dashboard --size 200
 ```
 
-**Parfait pour :**
-- Applications d'entreprise
-- Interfaces utilisateur
-- Documentation technique
+<div align="center">
 
-## 🎨 **Variantes Émotionnelles**
+| Usage | Description | Exemple |
+|:-----:|:-----------:|:-------:|
+| **Entreprise** | Applications d'entreprise | ✅ |
+| **Interfaces** | Interfaces utilisateur | ✅ |
+| **Documentation** | Documentation technique | ✅ |
 
-### **Les 10 Variantes Disponibles**
+</div>
 
-| Variante | Description | Utilisation |
-|----------|-------------|-------------|
-| **Sérénité** | Halo doux, pulsations lentes | Applications calmes, méditation |
-| **Puissance** | Halo vibrant, réseau accéléré | Applications dynamiques, gaming |
-| **Mystère** | Brumes mouvantes, réseau irrégulier | Applications créatives, art |
-| **Éveil** | Halo rayonnant, Λ-core clair | Applications éducatives, sagesse |
-| **Énergie Créative** | Flux rapides, reflets multicolores | Applications créatives, design |
-| **Pluie/Gris** | Gouttes de pluie, nuages gris | Ambiance mélancolique mais élégante |
-| **Orage/Colère** | Éclairs zigzagants, nuages sombres | Énergie explosive et dynamique |
-| **Vive/Explosion** | Particules explosives, feux d'artifice | Mouvement radial et énergique |
-| **Ensoleillé** | Rayons de soleil, chaleur et luminosité | Optimisme et énergie positive |
-| **Neige** | Flocons qui tombent, froid et pureté | Sérénité cristalline |
+## 🎨 Variantes Émotionnelles
+
+### Les 10 Variantes Disponibles
+
+<div align="center">
+
+| Variante | Logo Exemple | Description | Utilisation |
+|:--------:|:------------:|:-----------:|:-----------:|
+| **🌙 Sérénité** | ![Serenity](../exports/arkalia-luna-serenity-200.svg) | Halo doux, pulsations lentes | Applications calmes, méditation |
+| **⚡ Puissance** | ![Power](../exports/arkalia-luna-power-200.svg) | Halo vibrant, réseau accéléré | Applications dynamiques, gaming |
+| **🔮 Mystère** | ![Mystery](../exports/arkalia-luna-mystery-200.svg) | Brumes mouvantes, réseau irrégulier | Applications créatives, art |
+| **✨ Éveil** | ![Awakening](../exports/arkalia-luna-dashboard-awakening-200.svg) | Halo rayonnant, Λ-core clair | Applications éducatives, sagesse |
+| **🎇 Énergie Créative** | ![Creative](../exports/arkalia-luna-dashboard-creative-200.svg) | Flux rapides, reflets multicolores | Applications créatives, design |
+| **🌧️ Pluie/Gris** | ![Rainy](../exports/arkalia-luna-dashboard-rainy-200.svg) | Gouttes de pluie, nuages gris | Ambiance mélancolique mais élégante |
+| **⛈️ Orage/Colère** | ![Stormy](../exports/arkalia-luna-dashboard-stormy-200.svg) | Éclairs zigzagants, nuages sombres | Énergie explosive et dynamique |
+| **💥 Vive/Explosion** | ![Explosive](../exports/arkalia-luna-dashboard-explosive-200.svg) | Particules explosives, feux d'artifice | Mouvement radial et énergique |
+| **☀️ Ensoleillé** | ![Sunny](../exports/arkalia-luna-dashboard-sunny-200.svg) | Rayons de soleil, chaleur et luminosité | Optimisme et énergie positive |
+| **❄️ Neige** | ![Snowy](../exports/arkalia-luna-dashboard-snowy-200.svg) | Flocons qui tombent, froid et pureté | Sérénité cristalline |
+
+</div>
 
 ### **Génération de Toutes les Variantes**
 
@@ -239,9 +284,11 @@ arkalia-luna-logo generate-all --style ultimate
 arkalia-luna-logo generate serenity power --style ultimate
 ```
 
-## 📁 **Structure des Exports**
+## 📁 Structure des Exports
 
-### **Organisation Automatique**
+### 🗂️ Organisation Automatique
+
+<div align="center">
 
 ```
 exports/
@@ -252,14 +299,35 @@ exports/
 │   │   └── dashboard/          # Logos Dashboard
 │   └── favicons/               # Favicons PNG
 ├── svg/                         # Logos SVG individuels
-└── *.png                        # Favicons PNG individuels
+├── screenshots/                 # Screenshots de tous les styles
+└── demo-gif/                   # Démonstrations animées
 ```
 
-### **Nommage des Fichiers**
+</div>
 
-- **Format** : `arkalia-luna-{style}-{variant}-{size}.svg`
-- **Exemple** : `arkalia-luna-ultimate-serenity-200.svg`
-- **Tailles** : 100, 200, 300, 400, 500 pixels
+### 📝 Nommage des Fichiers
+
+<div align="center">
+
+| Format | Exemple | Description |
+|:------:|:-------:|:-----------:|
+| **Style-Variant-Size** | `arkalia-luna-ultimate-serenity-200.svg` | Format standard |
+| **Tailles disponibles** | 100, 200, 300, 400, 500 | Pixels |
+| **Formats** | SVG, PNG | Vectoriel et raster |
+
+</div>
+
+### 🎨 Exemples de Fichiers Générés
+
+<div align="center">
+
+| Type | Exemple | Emplacement |
+|:----:|:------:|:-----------:|
+| **Logo SVG** | `arkalia-luna-ultimate-serenity-200.svg` | `exports/unified/logos/ultimate/` |
+| **Favicon PNG** | `favicon-serenity-32.png` | `exports/unified/favicons/` |
+| **Screenshot** | `ultimate-serenity-200.svg` | `exports/screenshots/` |
+
+</div>
 
 ## 🔧 **Configuration Avancée**
 
@@ -346,7 +414,17 @@ pip install -e ".[dev]"
 chmod 755 exports/
 ```
 
-### **Logs de Débogage**
+### 🔍 Logs de Débogage
+
+<div align="center">
+
+| Mode | Commande | Description |
+|:----:|:--------:|:-----------:|
+| **Verbose** | `--verbose` | Mode verbeux avec détails |
+| **Debug** | `ARKALIA_LUNA_DEBUG=1` | Logs détaillés complets |
+| **Quiet** | `--quiet` | Mode silencieux |
+
+</div>
 
 ```bash
 # Activer le mode verbeux
@@ -356,6 +434,20 @@ arkalia-luna-logo --verbose generate serenity --style ultimate
 export ARKALIA_LUNA_DEBUG=1
 arkalia-luna-logo generate serenity --style ultimate
 ```
+
+### ❓ FAQ Rapide
+
+<div align="center">
+
+| Question | Réponse | Lien |
+|:--------:|:-------:|:----:|
+| **Quel style choisir ?** | Ultimate pour qualité maximale | [📘 Voir](#1-ultime-recommandé-pour-commencer) |
+| **Comment générer tous les logos ?** | `generate-all` avec style | [📘 Voir](#génération-de-toutes-les-variantes) |
+| **Où sont les logos générés ?** | `exports/unified/logos/` | [📘 Voir](#structure-des-exports) |
+| **Comment créer des favicons ?** | `favicon-all` avec taille | [📘 Voir](#créer-des-favicons) |
+| **API ne démarre pas ?** | Vérifier le port 8000 | [📘 Voir](#4-port-déjà-utilisé) |
+
+</div>
 
 ## 📚 **Prochaines Étapes**
 
@@ -401,7 +493,7 @@ def get_logo(variant):
 
 ## 🚀 **Utilisation Complète du Potentiel**
 
-### **API FastAPI (70% du potentiel inexploité)**
+### **API FastAPI (94% utilisé, 6% à exploiter)** ✅ **MIS À JOUR** (était 70%)
 
 ```bash
 # Activer l'environnement virtuel

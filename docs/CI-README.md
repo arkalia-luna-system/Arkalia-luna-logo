@@ -133,15 +133,32 @@ make install-package
 - [ ] Tests avec couverture OK
 - [ ] Build du package OK
 
-## 🐛 **Dépannage CI**
+## 🐛 Dépannage CI
 
-### **Erreurs Communes**
+### ⚠️ Erreurs Communes
 
-1. **Import Errors** : Vérifier les chemins dans `src/`
-2. **Dépendances** : Vérifier `requirements.txt` et `requirements-dev.txt`
-3. **Tests** : Vérifier la structure `tests/`
+<div align="center">
 
-### **Debug Local**
+| Erreur | Symptôme | Solution | Commande |
+|:------:|:--------:|:--------:|:--------:|
+| **Import Errors** | `ModuleNotFoundError` | Vérifier chemins `src/` | `python -c "import src"` |
+| **Dépendances** | `ImportError` | Vérifier requirements | `pip install -r requirements.txt` |
+| **Tests** | Tests qui failent | Vérifier structure `tests/` | `pytest tests/ -v` |
+| **Lint** | Erreurs de formatage | Formater le code | `black src/ tests/` |
+
+</div>
+
+### 🔍 Debug Local
+
+<div align="center">
+
+| Action | Commande | Description |
+|:------:|:--------:|:-----------:|
+| **CI Setup** | `make ci-setup` | Configuration CI locale |
+| **Dev Setup** | `make dev-setup` | Configuration développement |
+| **Pre-commit** | `make pre-commit` | Vérification complète |
+
+</div>
 
 ```bash
 # Configuration CI locale

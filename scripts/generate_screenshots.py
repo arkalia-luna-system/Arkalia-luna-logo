@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Script pour générer des screenshots comparatifs des 8 styles de logos
+Script pour générer des screenshots comparatifs des 11 styles de logos
 """
 
 import subprocess
@@ -14,7 +14,7 @@ def generate_screenshots():
     output_dir = Path("exports/screenshots")
     output_dir.mkdir(exist_ok=True)
 
-    # Styles disponibles (correspondant aux générateurs)
+    # Styles disponibles (correspondant aux générateurs) - 11 styles
     styles = [
         "default",  # Logo de base (simple)
         "dashboard",  # Dashboard
@@ -24,15 +24,23 @@ def generate_screenshots():
         "ultra_max",  # Ultra-Max
         "realism",  # Realism Max (pas realism_max)
         "ultimate",  # Ultimate
+        "ai",  # AI
+        "cosmic",  # Cosmic
+        "hyper_ai",  # Hyper-AI
     ]
 
-    # Variantes émotionnelles
+    # Variantes émotionnelles - 10 variantes (5 de base + 5 dynamiques)
     variants = [
         "serenity",  # Sérénité
         "power",  # Puissance
         "mystery",  # Mystère
         "awakening",  # Éveil/Sagesse
         "creative",  # Énergie créative
+        "rainy",  # Pluie
+        "stormy",  # Orage
+        "explosive",  # Explosif
+        "sunny",  # Ensoleillé
+        "snowy",  # Neige
     ]
 
     print("🎨 Génération des screenshots comparatifs...")
