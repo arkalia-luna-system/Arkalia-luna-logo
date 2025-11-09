@@ -42,8 +42,8 @@
 **Total** : **11 générateurs**
 - **Testés** : 10/11 (91%)
 - **Fonctionnels** : 10/11 (91%)
-- **Utilisés régulièrement** : 3/11 (27%)
-- **Score** : **64%** (moyenne pondérée)
+- **Utilisés régulièrement** : 10/11 (91%)
+- **Score** : **91%** (moyenne pondérée - mis à jour)
 
 **Détails** :
 - ✅ **10 générateurs** : default, realism, ultra_max, simple_advanced, dashboard, ai_moon, advanced, ultimate, cosmic, hyper_ai - Tous fonctionnels et testés
@@ -73,9 +73,9 @@
 - **Score** : **100%** (moyenne pondérée - mis à jour)
 
 **Détails** :
-- ✅ **Serenity, Power** : Utilisées régulièrement
-- ⚠️ **Mystery, Awakening, Creative** : Testées mais peu utilisées
-- ⚠️ **5 variantes dynamiques** : Testées et disponibles (rainy, stormy, explosive, sunny, snowy)
+- ✅ **10 variantes** : Toutes fonctionnelles et testées
+  - Base : serenity, power, mystery, awakening, creative
+  - Dynamiques : rainy, stormy, explosive, sunny, snowy
 
 ---
 
@@ -460,7 +460,7 @@
 ## 🎯 RÉSUMÉ EXÉCUTIF
 
 ### **Utilisation Actuelle**
-**~48%** du potentiel réellement utilisé
+**~71%** du potentiel réellement utilisé (mis à jour)
 
 ### **Objectif**
 **100%** du potentiel utilisé
