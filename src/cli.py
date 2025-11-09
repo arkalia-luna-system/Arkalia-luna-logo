@@ -143,7 +143,10 @@ def info(ctx):
     "--generator",
     "-g",
     default="default",
-    help="Type de générateur (default, advanced, ultimate, ai_moon, dashboard, ultra_max, realism_max, simple_advanced)",
+    help=(
+        "Type de générateur (default, advanced, ultimate, ai_moon, "
+        "dashboard, ultra_max, realism_max, simple_advanced)"
+    ),
 )
 @click.option("--output", "-o", type=click.Path(), help="Chemin de sortie personnalisé")
 @click.pass_context
@@ -159,14 +162,14 @@ def generate(ctx, variant: str, size: int, generator: str, output: Optional[str]
         # Validation de la variante
         if not specialized_generator.validate_variant(variant):
             print_error(f"Variante '{variant}' non reconnue")
-            console.print(
-                f"Variantes disponibles : {', '.join(specialized_generator.list_all_variants())}",
-            )
+            variants_list = ", ".join(specialized_generator.list_all_variants())
+            console.print(f"Variantes disponibles : {variants_list}")
             sys.exit(1)
 
         # Génération du logo avec le générateur spécialisé
         with console.status(
-            f"[bold blue]Génération du logo '{variant}' avec générateur '{generator}'...",
+            f"[bold blue]Génération du logo '{variant}' "
+            f"avec générateur '{generator}'...",
         ):
             output_path = specialized_generator.generate_svg_logo(variant, size)
 

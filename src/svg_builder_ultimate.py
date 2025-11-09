@@ -20,7 +20,8 @@ except ImportError:
 
 
 class UltimateSVGBuilder(SVGBuilder):
-    """Constructeur SVG ULTIME pour des logos Arkalia-LUNA avec effets cosmiques extrêmes"""
+    """Constructeur SVG ULTIME pour des logos Arkalia-LUNA
+    avec effets cosmiques extrêmes"""
 
     def __init__(self, variants_manager: LogoVariants):
         super().__init__(variants_manager)
@@ -75,7 +76,8 @@ class UltimateSVGBuilder(SVGBuilder):
         self._add_ultimate_patterns(defs, variant, 200)  # Taille par défaut
 
     def _add_ultimate_gradients(self, defs, variant: LogoVariant) -> None:
-        """Crée des gradients ULTIMES avec 100+ stops pour un réalisme cosmique parfait"""
+        """Crée des gradients ULTIMES avec 100+ stops
+        pour un réalisme cosmique parfait"""
         # Gradient principal cosmique ULTIME
         cosmic_gradient_id = f"ultimateCosmic-{variant.variant_type.value}"
         cosmic_gradient = gradients.RadialGradient(
@@ -227,8 +229,11 @@ class UltimateSVGBuilder(SVGBuilder):
 
         # Forme organique cosmique complexe
         cosmic_organic_path = svgwrite.path.Path(
-            d=f"M {size // 5} {size // 5} Q {size // 2} {size // 10} {4 * size // 5} {size // 5} "
-            f"Q {size // 2} {4 * size // 5} {size // 5} {4 * size // 5} Z",
+            d=(
+                f"M {size // 5} {size // 5} "
+                f"Q {size // 2} {size // 10} {4 * size // 5} {size // 5} "
+                f"Q {size // 2} {4 * size // 5} {size // 5} {4 * size // 5} Z"
+            ),
             fill="white",
         )
         cosmic_organic_mask.add(cosmic_organic_path)
@@ -406,16 +411,19 @@ class UltimateSVGBuilder(SVGBuilder):
             f"{center - size // 2.5 - 15} {center + size // 2.5 - 15} {center - 15}",
         )
         paths.append(
-            f"M{center - size // 2.5 + 30} {center + 15} Q{center} "
-            f"{center - size // 2.5 + 15} {center + size // 2.5 - 30} {center + 15}",
+            f"M{center - size // 2.5 + 30} {center + 15} "
+            f"Q{center} {center - size // 2.5 + 15} "
+            f"{center + size // 2.5 - 30} {center + 15}",
         )
 
         # Réseau cosmique diagonal ULTIME
         paths.append(
-            f"M{center - size // 3} {center - size // 3} Q{center} {center} {center + size // 3} {center - size // 3}",
+            f"M{center - size // 3} {center - size // 3} "
+            f"Q{center} {center} {center + size // 3} {center - size // 3}",
         )
         paths.append(
-            f"M{center - size // 3} {center + size // 3} Q{center} {center} {center + size // 3} {center + size // 3}",
+            f"M{center - size // 3} {center + size // 3} "
+            f"Q{center} {center} {center + size // 3} {center + size // 3}",
         )
 
         # Réseau cosmique circulaire ULTIME
@@ -598,7 +606,10 @@ class UltimateSVGBuilder(SVGBuilder):
 
         # Forme Λ principale cosmique
         cosmic_lambda = svgwrite.path.Path(
-            d=f"M{center - 20} {center - 35} L{center} {center - 10} L{center + 20} {center - 35} L{center} {center} Z",
+            d=(
+                f"M{center - 20} {center - 35} L{center} {center - 10} "
+                f"L{center + 20} {center - 35} L{center} {center} Z"
+            ),
             fill=variant.colors.glow,
             filter=f"url(#ultimateCosmicGlow-{variant.variant_type.value})",
         )
@@ -694,7 +705,8 @@ class UltimateSVGBuilder(SVGBuilder):
         variant_name: str,
         size: int = 200,
     ) -> svgwrite.Drawing:
-        """Construit le logo ULTIME pour une variante donnée (alias pour compatibilité)"""
+        """Construit le logo ULTIME pour une variante donnée
+        (alias pour compatibilité)"""
         return self.build_logo(variant_name, size)
 
     def save_ultimate_logo(

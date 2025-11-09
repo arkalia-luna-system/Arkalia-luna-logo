@@ -497,7 +497,8 @@ class AIMoonSVGBuilder(SVGBuilder):
         variant_name: str,
         size: int = 200,
     ) -> svgwrite.Drawing:
-        """Construit le logo IA MOON pour une variante donnée (alias pour compatibilité)"""
+        """Construit le logo IA MOON pour une variante donnée
+        (alias pour compatibilité)"""
         return self.build_logo(variant_name, size)
 
     def save_ai_moon_logo(

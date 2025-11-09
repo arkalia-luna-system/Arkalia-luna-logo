@@ -436,7 +436,8 @@ class DashboardSVGBuilder(SVGBuilder):
         variant_name: str,
         size: int = 200,
     ) -> svgwrite.Drawing:
-        """Construit le logo dashboard pour une variante donnée (alias pour compatibilité)"""
+        """Construit le logo dashboard pour une variante donnée
+        (alias pour compatibilité)"""
         return self.build_logo(variant_name, size)
 
     def save_dashboard_logo(

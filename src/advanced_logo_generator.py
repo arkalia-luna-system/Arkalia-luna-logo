@@ -107,7 +107,8 @@ class AdvancedArkaliaLunaLogo(ArkaliaLunaLogo):
 
         except Exception as e:
             self.logger.error(
-                f"❌ Erreur lors de la création du favicon avancé '{variant_name}': {e}",
+                f"❌ Erreur lors de la création du favicon avancé "
+                f"'{variant_name}': {e}",
             )
             raise
 

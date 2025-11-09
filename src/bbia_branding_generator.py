@@ -8,11 +8,11 @@ from pathlib import Path
 from typing import Optional
 
 try:
-    from .logo_generator import ArkaliaLunaLogo
     from .bbia_palette import BBIA_PALETTE
+    from .logo_generator import ArkaliaLunaLogo
 except ImportError:
-    from logo_generator import ArkaliaLunaLogo
     from bbia_palette import BBIA_PALETTE
+    from logo_generator import ArkaliaLunaLogo
 
 
 class BBIABrandingGenerator(ArkaliaLunaLogo):
@@ -90,7 +90,7 @@ class BBIABrandingGenerator(ArkaliaLunaLogo):
         return output_path
 
     def generate_all_declinations(
-        self, sizes: list[int] = [32, 512, 1024]
+        self, sizes: list[int] | None = None
     ) -> list[Path]:
         """
         Génère toutes les déclinaisons BBIA - PRÉPARÉ POUR INTÉGRATION FUTURE
@@ -101,6 +101,8 @@ class BBIABrandingGenerator(ArkaliaLunaLogo):
         Returns:
             Liste des fichiers générés
         """
+        if sizes is None:
+            sizes = [32, 512, 1024]
         declinations = ["mark_only", "vertical", "horizontal"]
         generated_files = []
 
@@ -111,7 +113,8 @@ class BBIABrandingGenerator(ArkaliaLunaLogo):
                     generated_files.append(output_path)
                 except Exception as e:
                     self.logger.error(
-                        f"Erreur génération déclinaison '{declination}' taille {size}: {e}"
+                        f"Erreur génération déclinaison '{declination}' "
+                        f"taille {size}: {e}"
                     )
                     continue
 

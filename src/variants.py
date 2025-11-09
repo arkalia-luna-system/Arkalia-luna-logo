@@ -143,7 +143,10 @@ class LogoVariants:
             VariantType.RAINY.value: LogoVariant(
                 variant_type=VariantType.RAINY,
                 name="🌧️ Pluie/Gris",
-                description="Gouttes de pluie, nuages gris, ambiance mélancolique mais élégante",
+                description=(
+                    "Gouttes de pluie, nuages gris, "
+                    "ambiance mélancolique mais élégante"
+                ),
                 colors=ColorScheme(
                     primary="#4b5563",  # Gris foncé
                     secondary="#6b7280",  # Gris moyen
@@ -156,7 +159,10 @@ class LogoVariants:
             VariantType.STORMY.value: LogoVariant(
                 variant_type=VariantType.STORMY,
                 name="⚡ Orage/Colère",
-                description="Éclairs zigzagants, nuages sombres, énergie explosive et dynamique",
+                description=(
+                    "Éclairs zigzagants, nuages sombres, "
+                    "énergie explosive et dynamique"
+                ),
                 colors=ColorScheme(
                     primary="#1f2937",  # Noir-gris
                     secondary="#4c1d95",  # Violet sombre
@@ -169,7 +175,10 @@ class LogoVariants:
             VariantType.EXPLOSIVE.value: LogoVariant(
                 variant_type=VariantType.EXPLOSIVE,
                 name="💥 Vive/Explosion",
-                description="Particules explosives, feux d'artifice, mouvement radial et énergique",
+                description=(
+                    "Particules explosives, feux d'artifice, "
+                    "mouvement radial et énergique"
+                ),
                 colors=ColorScheme(
                     primary="#dc2626",  # Rouge vif
                     secondary="#ea580c",  # Orange vif
@@ -182,7 +191,10 @@ class LogoVariants:
             VariantType.SUNNY.value: LogoVariant(
                 variant_type=VariantType.SUNNY,
                 name="☀️ Ensoleillé",
-                description="Rayons de soleil, chaleur et luminosité, optimisme et énergie positive",
+                description=(
+                    "Rayons de soleil, chaleur et luminosité, "
+                    "optimisme et énergie positive"
+                ),
                 colors=ColorScheme(
                     primary="#f59e0b",  # Jaune doré
                     secondary="#f97316",  # Orange chaud
@@ -195,7 +207,9 @@ class LogoVariants:
             VariantType.SNOWY.value: LogoVariant(
                 variant_type=VariantType.SNOWY,
                 name="❄️ Neige",
-                description="Flocons qui tombent, froid et pureté, sérénité cristalline",
+                description=(
+                    "Flocons qui tombent, froid et pureté, " "sérénité cristalline"
+                ),
                 colors=ColorScheme(
                     primary="#f8fafc",  # Blanc pur
                     secondary="#e2e8f0",  # Gris très clair

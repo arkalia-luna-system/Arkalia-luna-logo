@@ -36,8 +36,14 @@ class HyperAIGenerator(ArkaliaLunaLogo):
         return {
             "cosmic_sphere": {
                 "description": "Sphère cosmique avec réseaux neuronaux",
-                "prompt_template": "cosmic sphere, neural network, glowing orb, {emotion} colors, {style} aesthetic, high quality, professional logo design",
-                "negative_prompt": "text, watermark, signature, blurry, low quality, distorted",
+                "prompt_template": (
+                    "cosmic sphere, neural network, glowing orb, "
+                    "{emotion} colors, {style} aesthetic, high quality, "
+                    "professional logo design"
+                ),
+                "negative_prompt": (
+                    "text, watermark, signature, blurry, low quality, distorted"
+                ),
                 "controlnet_type": "canny",
                 "steps": 50,
                 "cfg": 8.0,
@@ -46,7 +52,10 @@ class HyperAIGenerator(ArkaliaLunaLogo):
             },
             "crystal_core": {
                 "description": "Cristal central avec particules",
-                "prompt_template": "crystal core, {emotion} energy, {style} design, glowing particles, cosmic background, logo design",
+                "prompt_template": (
+                    "crystal core, {emotion} energy, {style} design, "
+                    "glowing particles, cosmic background, logo design"
+                ),
                 "negative_prompt": "text, watermark, signature, blurry, low quality",
                 "controlnet_type": "depth",
                 "steps": 40,
@@ -56,7 +65,10 @@ class HyperAIGenerator(ArkaliaLunaLogo):
             },
             "neural_network": {
                 "description": "Réseau neuronal complexe",
-                "prompt_template": "neural network, {emotion} patterns, {style} technology, interconnected nodes, glowing connections, logo design",
+                "prompt_template": (
+                    "neural network, {emotion} patterns, {style} technology, "
+                    "interconnected nodes, glowing connections, logo design"
+                ),
                 "negative_prompt": "text, watermark, signature, blurry, low quality",
                 "controlnet_type": "openpose",
                 "steps": 45,
@@ -122,16 +134,47 @@ class HyperAIGenerator(ArkaliaLunaLogo):
 
         # Prompts émotionnels avancés basés sur les variantes
         emotion_prompts = {
-            "serenity": "calm blue cosmic energy, peaceful neural networks, serene glowing particles, zen-like tranquility, soft ethereal light",
-            "power": "electric energy bursts, powerful neural connections, intense glowing core, dynamic energy flows, strong presence",
-            "mystery": "mysterious purple depths, enigmatic patterns, secretive cosmic elements, hidden knowledge, mystical aura",
-            "awakening": "golden enlightenment, wisdom symbols, radiant energy, spiritual awakening, divine light",
-            "creative": "vibrant creative energy, artistic neural patterns, innovative design elements, inspiring colors, creative flow",
-            "rainy": "melancholic elegance, water droplet patterns, refined sadness, artistic melancholy, silver-blue tones",
-            "stormy": "explosive energy, lightning patterns, dynamic storm clouds, powerful weather, intense atmosphere",
-            "explosive": "radial energy bursts, explosive particles, vibrant intensity, dynamic power, energetic movement",
-            "sunny": "warm optimism, bright energy, cheerful atmosphere, positive vibes, golden light",
-            "snowy": "crystalline purity, winter elegance, clean perfection, pure beauty, silver-white tones",
+            "serenity": (
+                "calm blue cosmic energy, peaceful neural networks, "
+                "serene glowing particles, zen-like tranquility, "
+                "soft ethereal light"
+            ),
+            "power": (
+                "electric energy bursts, powerful neural connections, "
+                "intense glowing core, dynamic energy flows, strong presence"
+            ),
+            "mystery": (
+                "mysterious purple depths, enigmatic patterns, "
+                "secretive cosmic elements, hidden knowledge, mystical aura"
+            ),
+            "awakening": (
+                "golden enlightenment, wisdom symbols, radiant energy, "
+                "spiritual awakening, divine light"
+            ),
+            "creative": (
+                "vibrant creative energy, artistic neural patterns, "
+                "innovative design elements, inspiring colors, creative flow"
+            ),
+            "rainy": (
+                "melancholic elegance, water droplet patterns, "
+                "refined sadness, artistic melancholy, silver-blue tones"
+            ),
+            "stormy": (
+                "explosive energy, lightning patterns, dynamic storm clouds, "
+                "powerful weather, intense atmosphere"
+            ),
+            "explosive": (
+                "radial energy bursts, explosive particles, vibrant intensity, "
+                "dynamic power, energetic movement"
+            ),
+            "sunny": (
+                "warm optimism, bright energy, cheerful atmosphere, "
+                "positive vibes, golden light"
+            ),
+            "snowy": (
+                "crystalline purity, winter elegance, clean perfection, "
+                "pure beauty, silver-white tones"
+            ),
         }
 
         return emotion_prompts.get(
@@ -200,7 +243,9 @@ class HyperAIGenerator(ArkaliaLunaLogo):
             "7": {
                 "class_type": "SaveImage",
                 "inputs": {
-                    "filename_prefix": f"arkalia_hyper_{variant_data.variant_type.value}",
+                    "filename_prefix": (
+                        f"arkalia_hyper_{variant_data.variant_type.value}"
+                    ),
                     "images": ["6", 0],
                 },
             },
@@ -274,7 +319,8 @@ class HyperAIGenerator(ArkaliaLunaLogo):
                     continue
 
             self.logger.info(
-                f"🎉 Génération Hyper IA terminée : {len(generated_files)}/{len(variants)} logos créés",
+                f"🎉 Génération Hyper IA terminée : "
+                f"{len(generated_files)}/{len(variants)} logos créés",
             )
             return generated_files
 

@@ -125,7 +125,8 @@ class TestCLIInputValidation:
         assert result.exit_code == 2  # Click error pour argument manquant
 
     def test_favicon_command_missing_size(self, cli_runner, temp_output_dir):
-        """Test avec taille manquante pour favicon (devrait utiliser la valeur par défaut)"""
+        """Test avec taille manquante pour favicon
+        (devrait utiliser la valeur par défaut)"""
         result = cli_runner.invoke(
             cli,
             ["--output-dir", str(temp_output_dir), "favicon", "--variant", "serenity"],

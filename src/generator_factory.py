@@ -18,7 +18,8 @@ from .ultimate_generator import UltimateLogoGenerator
 from .ultra_max_generator import UltraMaxLogoGenerator
 
 # PRÉPARATION INTÉGRATION FUTURE BBIA
-# Décommenter quand /Users/athalia/Desktop/logo bbia/bbia_branding/ sera déplacé dans /Volumes/T7/bbia-branding/
+# Décommenter quand /Users/athalia/Desktop/logo bbia/bbia_branding/
+# sera déplacé dans /Volumes/T7/bbia-branding/
 # from .bbia_branding_generator import BBIABrandingGenerator
 
 
@@ -39,10 +40,12 @@ class LogoGeneratorFactory:
         "advanced": AdvancedArkaliaLunaLogo,  # ✅ Maintenant hérite correctement
         "ultimate": UltimateLogoGenerator,  # 🌟 NOUVEAU : Générateur ULTIME cosmique
         "ai": AILogoGenerator,  # 🤖 NOUVEAU : Générateur IA avec Stable Diffusion
-        "cosmic": CosmicLogoGenerator,  # 🌌 NOUVEAU : Générateur COSMIQUE avec sphères lumineuses
-        "hyper_ai": HyperAIGenerator,  # 🧠 NOUVEAU : Générateur HYPER-IA avec ComfyUI + SDXL + ControlNet
+        "cosmic": CosmicLogoGenerator,  # 🌌 NOUVEAU : Générateur COSMIQUE
+        # 🧠 NOUVEAU : Générateur HYPER-IA avec ComfyUI + SDXL + ControlNet
+        "hyper_ai": HyperAIGenerator,
         # PRÉPARATION INTÉGRATION FUTURE BBIA
-        # "bbia": BBIABrandingGenerator,  # 🤖 PRÉPARÉ : Générateur BBIA (à activer quand déplacé dans T7)
+        # 🤖 PRÉPARÉ : Générateur BBIA (à activer quand déplacé dans T7)
+        # "bbia": BBIABrandingGenerator,
     }
 
     @classmethod
@@ -129,16 +132,25 @@ class LogoGeneratorFactory:
             },
             "cosmic": {
                 "name": "Cosmic Sphere",
-                "description": "🌌 Générateur COSMIQUE avec sphères lumineuses et réseaux neuronaux",
+                "description": (
+                    "🌌 Générateur COSMIQUE avec sphères lumineuses "
+                    "et réseaux neuronaux"
+                ),
             },
             "hyper_ai": {
                 "name": "Hyper AI",
-                "description": "🧠 Générateur HYPER-IA avec ComfyUI + SDXL + ControlNet - INTELLIGENCE EXTRÊME",
+                "description": (
+                    "🧠 Générateur HYPER-IA avec ComfyUI + SDXL + ControlNet "
+                    "- INTELLIGENCE EXTRÊME"
+                ),
             },
             # PRÉPARATION INTÉGRATION FUTURE BBIA
             # "bbia": {
             #     "name": "BBIA Branding",
-            #     "description": "🤖 Générateur BBIA - Automatisation branding (à activer quand déplacé dans T7)",
+            #     "description": (
+            #         "🤖 Générateur BBIA - Automatisation branding "
+            #         "(à activer quand déplacé dans T7)"
+            #     ),
             # },
         }
 
@@ -184,11 +196,11 @@ class LogoGeneratorFactory:
         output_dir: Optional[Path] = None,
         variant: str = "serenity",
         size: int = 200,
-    ) -> Dict[str, float]:
+    ) -> Dict[str, Any]:
         """Benchmark de performance de tous les générateurs"""
         import time
 
-        results = {}
+        results: Dict[str, Any] = {}
         generators = cls.create_all_generators(output_dir)
 
         for generator_type, generator in generators.items():
@@ -229,6 +241,6 @@ def create_logo_generator(
 
 
 # Fonction utilitaire pour benchmark rapide
-def benchmark_all_generators(output_dir: Optional[Path] = None) -> Dict[str, float]:
+def benchmark_all_generators(output_dir: Optional[Path] = None) -> Dict[str, Any]:
     """Fonction utilitaire pour benchmark rapide de tous les générateurs"""
     return LogoGeneratorFactory.benchmark_generators(output_dir)

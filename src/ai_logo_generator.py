@@ -60,7 +60,8 @@ class AILogoGenerator(ArkaliaLunaLogo):
         try:
             if not StableDiffusionPipeline:
                 raise ImportError(
-                    "Diffusers non installé. Installez avec: pip install diffusers torch",
+                    "Diffusers non installé. "
+                    "Installez avec: pip install diffusers torch",
                 )
 
             self.logger.info(f"🤖 Chargement du modèle IA: {self.model_id}")
@@ -94,36 +95,89 @@ class AILogoGenerator(ArkaliaLunaLogo):
     def _create_prompt(self, variant_name: str, generator_style: str = "ai") -> str:
         """Crée un prompt spécialisé pour la variante émotionnelle"""
         # Base du prompt optimisé pour les logos
-        base_prompt = "professional logo design, minimalist, clean, high contrast, vector art style, centered composition"
+        base_prompt = (
+            "professional logo design, minimalist, clean, high contrast, "
+            "vector art style, centered composition"
+        )
 
         # Prompts spécialisés par variante émotionnelle - OPTIMISÉS POUR LOGOS
         variant_prompts = {
-            "serenity": "soft blue gradient, circular design, peaceful waves, zen aesthetic, calm energy",
-            "power": "bold geometric shapes, electric blue and white, dynamic lines, strong presence, energy bolts",
-            "mystery": "deep purple gradient, mystical symbols, enigmatic patterns, cosmic elements, secretive aura",
-            "awakening": "golden yellow gradient, enlightenment symbols, radiant energy, spiritual awakening, wisdom",
-            "creative": "vibrant color palette, artistic brushstrokes, creative flow, innovative design, inspiration",
-            "rainy": "silver and blue tones, water drop patterns, elegant melancholy, refined sadness, artistic",
-            "stormy": "dark blue and white, lightning patterns, storm clouds, dynamic energy, powerful weather",
-            "explosive": "red orange yellow gradient, burst patterns, radial energy, explosive power, vibrant intensity",
-            "sunny": "warm yellow orange gradient, sun rays, bright optimism, cheerful energy, positive vibes",
-            "snowy": "white and silver gradient, crystalline patterns, pure elegance, winter beauty, clean perfection",
+            "serenity": (
+                "soft blue gradient, circular design, peaceful waves, "
+                "zen aesthetic, calm energy"
+            ),
+            "power": (
+                "bold geometric shapes, electric blue and white, "
+                "dynamic lines, strong presence, energy bolts"
+            ),
+            "mystery": (
+                "deep purple gradient, mystical symbols, enigmatic patterns, "
+                "cosmic elements, secretive aura"
+            ),
+            "awakening": (
+                "golden yellow gradient, enlightenment symbols, "
+                "radiant energy, spiritual awakening, wisdom"
+            ),
+            "creative": (
+                "vibrant color palette, artistic brushstrokes, "
+                "creative flow, innovative design, inspiration"
+            ),
+            "rainy": (
+                "silver and blue tones, water drop patterns, "
+                "elegant melancholy, refined sadness, artistic"
+            ),
+            "stormy": (
+                "dark blue and white, lightning patterns, storm clouds, "
+                "dynamic energy, powerful weather"
+            ),
+            "explosive": (
+                "red orange yellow gradient, burst patterns, radial energy, "
+                "explosive power, vibrant intensity"
+            ),
+            "sunny": (
+                "warm yellow orange gradient, sun rays, bright optimism, "
+                "cheerful energy, positive vibes"
+            ),
+            "snowy": (
+                "white and silver gradient, crystalline patterns, "
+                "pure elegance, winter beauty, clean perfection"
+            ),
         }
 
         # Style du générateur - OPTIMISÉ POUR LOGOS
         style_prompts = {
-            "ai": "futuristic tech aesthetic, neural network patterns, AI-inspired geometry, modern technology",
-            "dashboard": "interface design elements, geometric precision, modern UI aesthetics, clean lines",
-            "ai_moon": "lunar surface textures, moon phases, cosmic technology, space-age design",
-            "advanced": "sophisticated patterns, advanced geometry, premium design, luxury aesthetic",
-            "ultimate": "cosmic energy patterns, stellar formations, ultimate power symbols, space technology",
+            "ai": (
+                "futuristic tech aesthetic, neural network patterns, "
+                "AI-inspired geometry, modern technology"
+            ),
+            "dashboard": (
+                "interface design elements, geometric precision, "
+                "modern UI aesthetics, clean lines"
+            ),
+            "ai_moon": (
+                "lunar surface textures, moon phases, cosmic technology, "
+                "space-age design"
+            ),
+            "advanced": (
+                "sophisticated patterns, advanced geometry, "
+                "premium design, luxury aesthetic"
+            ),
+            "ultimate": (
+                "cosmic energy patterns, stellar formations, "
+                "ultimate power symbols, space technology"
+            ),
         }
 
         # Construction du prompt final - OPTIMISÉ
         variant_desc = variant_prompts.get(variant_name, "modern and elegant")
         style_desc = style_prompts.get(generator_style, "futuristic and modern")
 
-        final_prompt = f"{base_prompt}, {variant_desc}, {style_desc}, centered logo, white background, high quality, professional branding, corporate identity, clean design, no text, symbol only"
+        final_prompt = (
+            f"{base_prompt}, {variant_desc}, {style_desc}, "
+            "centered logo, white background, high quality, "
+            "professional branding, corporate identity, clean design, "
+            "no text, symbol only"
+        )
 
         return final_prompt
 
@@ -139,7 +193,8 @@ class AILogoGenerator(ArkaliaLunaLogo):
                 raise RuntimeError("Pipeline IA non initialisé")
 
             self.logger.info(
-                f"🤖 Génération IA du logo '{variant_name}' style '{generator_style}' en taille {size}x{size}",
+                f"🤖 Génération IA du logo '{variant_name}' "
+                f"style '{generator_style}' en taille {size}x{size}",
             )
 
             # Validation de la variante
@@ -165,7 +220,10 @@ class AILogoGenerator(ArkaliaLunaLogo):
                     generator=torch.Generator(device=self.device).manual_seed(
                         42,
                     ),  # Reproducible
-                    negative_prompt="blurry, low quality, distorted, ugly, bad anatomy, text, words, letters, watermark, signature",  # Éviter les défauts
+                    negative_prompt=(
+                        "blurry, low quality, distorted, ugly, bad anatomy, "
+                        "text, words, letters, watermark, signature"
+                    ),  # Éviter les défauts
                 ).images[0]
 
             # Construction du chemin de sortie
@@ -205,7 +263,8 @@ class AILogoGenerator(ArkaliaLunaLogo):
         """Génère toutes les variantes en mode IA"""
         try:
             self.logger.info(
-                f"🤖 Génération IA de toutes les variantes style '{generator_style}' en taille {size}x{size}",
+                f"🤖 Génération IA de toutes les variantes "
+                f"style '{generator_style}' en taille {size}x{size}",
             )
 
             generated_files = []
@@ -221,7 +280,8 @@ class AILogoGenerator(ArkaliaLunaLogo):
                     continue
 
             self.logger.info(
-                f"🎉 Génération IA terminée : {len(generated_files)}/{len(variants)} logos créés",
+                f"🎉 Génération IA terminée : "
+                f"{len(generated_files)}/{len(variants)} logos créés",
             )
             return generated_files
 

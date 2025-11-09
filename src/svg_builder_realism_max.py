@@ -174,7 +174,8 @@ class RealismMaxSVGBuilder(SVGBuilder):
         defs.add(depth_mask)
 
     def build_logo(self, variant_name: str, size: int) -> svgwrite.Drawing:
-        """Construit le logo ultra-réaliste pour une variante donnée (méthode abstraite)"""
+        """Construit le logo ultra-réaliste pour une variante donnée
+        (méthode abstraite)"""
         variant = self.variants_manager.get_variant(variant_name)
 
         # Création du dessin

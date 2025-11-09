@@ -106,8 +106,9 @@ class TestRealismMaxGeneratorCoverage:
                 # Test avec niveau de réalisme extrême
                 result = realism_generator.generate_realistic_logo("serenity", 200, 1.5)
 
-                # Le niveau devrait être accepté (pas de validation stricte dans le code)
-                # Vérifier que le résultat est un Path et contient le bon nom de fichier
+                # Le niveau devrait être accepté
+                # (pas de validation stricte dans le code)
+                # Vérifier que le résultat est un Path et contient le bon nom
                 assert isinstance(result, Path)
                 assert "arkalia-luna-realism-serenity-200.svg" in str(result)
 
@@ -132,8 +133,9 @@ class TestRealismMaxGeneratorCoverage:
                     -0.5,
                 )
 
-                # Le niveau devrait être accepté (pas de validation stricte dans le code)
-                # Vérifier que le résultat est un Path et contient le bon nom de fichier
+                # Le niveau devrait être accepté
+                # (pas de validation stricte dans le code)
+                # Vérifier que le résultat est un Path et contient le bon nom
                 assert isinstance(result, Path)
                 assert "arkalia-luna-realism-serenity-200.svg" in str(result)
 
@@ -394,7 +396,8 @@ class TestRealismMaxGeneratorCoverage:
                         0.95,
                     )
 
-                    # Vérifier que le résultat est un Path et contient le bon nom de fichier
+                    # Vérifier que le résultat est un Path
+                    # et contient le bon nom de fichier
                     assert isinstance(result, Path)
                     assert "arkalia-luna-realism-serenity-200.svg" in str(result)
 

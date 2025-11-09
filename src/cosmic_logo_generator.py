@@ -35,6 +35,8 @@ class CosmicLogoGenerator(ArkaliaLunaLogo):
                 "Texture de surface réaliste",
                 "Filtres de glow avancés",
             ],
-            "inspiration": "Images d'inspiration utilisateur - esthétique cosmique moderne",
+            "inspiration": (
+                "Images d'inspiration utilisateur - esthétique cosmique moderne"
+            ),
             "quality": "Haute qualité - reproduction fidèle de l'inspiration",
         }

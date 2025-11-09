@@ -287,7 +287,8 @@ class TestRealismMaxSVGBuilder:
             final_count = len(drawing.elements) if drawing.elements else 0
             added_elements = final_count - initial_count
 
-            # Le nombre d'éléments ajoutés devrait être proche du nombre de particules attendu
+            # Le nombre d'éléments ajoutés devrait être proche
+            # du nombre de particules attendu
             assert added_elements >= 0
             if expected_particles > 0:
                 assert added_elements > 0

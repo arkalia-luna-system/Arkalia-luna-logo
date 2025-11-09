@@ -583,7 +583,8 @@ class SimpleAdvancedSVGBuilder(SVGBuilder):
         variant_name: str,
         size: int = 200,
     ) -> svgwrite.Drawing:
-        """Construit le logo avancé pour une variante donnée (alias pour compatibilité)"""
+        """Construit le logo avancé pour une variante donnée
+        (alias pour compatibilité)"""
         return self.build_logo(variant_name, size)
 
     def save_advanced_logo(

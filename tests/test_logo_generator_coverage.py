@@ -283,7 +283,8 @@ class TestLogoGenerator:
 
         count = logo_generator.cleanup_generated_files()
 
-        # Le nettoyage peut supprimer d'autres fichiers, on vérifie juste que nos fichiers sont supprimés
+        # Le nettoyage peut supprimer d'autres fichiers,
+        # on vérifie juste que nos fichiers sont supprimés
         assert count >= 2
         assert not any(f.exists() for f in test_files)
 
@@ -294,7 +295,8 @@ class TestLogoGenerator:
 
         count = logo_generator.cleanup_generated_files()
 
-        # Le nettoyage peut supprimer des fichiers existants, on vérifie juste le comportement
+        # Le nettoyage peut supprimer des fichiers existants,
+        # on vérifie juste le comportement
         assert count >= 0
 
     def test_cleanup_generated_files_exception_handling(
