@@ -14,7 +14,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 
 
 def generate_square_1_1(
-    source_svg: Path, output_dir: Path, sizes: list[int] | None = None
+    source_svg: Path, output_dir: Path, sizes: Optional[List[int]] = None
 ):
     """
     Génère les déclinaisons Square 1:1 (réseaux sociaux)
