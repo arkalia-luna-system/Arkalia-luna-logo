@@ -158,6 +158,20 @@ exclude = [
 module = [
     "svgwrite",
     "svgwrite.*",
+    "PIL",
+    "PIL.*",
+    "click",
+    "click.*",
+    "rich",
+    "rich.*",
+    "torch",
+    "torch.*",
+    "diffusers",
+    "diffusers.*",
+    "transformers",
+    "transformers.*",
+    "accelerate",
+    "accelerate.*",
 ]
 ignore_missing_imports = true
 
