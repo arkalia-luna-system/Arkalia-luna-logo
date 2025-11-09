@@ -27,7 +27,7 @@
 | Composant | Description | Statut |
 |:---------:|:-----------:|:------:|
 | **CI/CD complet** | GitHub Actions (tests, lint, type-check, coverage) | ✅ |
-| **Sécurité** | Bandit configuré, pre-commit hooks (8 hooks) | ✅ |
+| **Sécurité** | Bandit configuré, pre-commit hooks (7 hooks) | ✅ **MIS À JOUR** (était 8) |
 | **Tests** | 297 tests passent, 22 fichiers de test | ✅ **MIS À JOUR** (était 20) |
 | **Qualité** | Ruff + Black + MyPy strict | ✅ |
 | **Dependabot** | Mise à jour automatique | ✅ |

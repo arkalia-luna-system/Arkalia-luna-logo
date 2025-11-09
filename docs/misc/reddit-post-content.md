@@ -32,24 +32,38 @@ I've been working on this logo generator for a while and I'm really excited to s
 - **0.016 seconds** per logo generation
 - Full Docker infrastructure with monitoring
 
-## 🎯 **Tech Stack:**
-- **Python** with FastAPI
-- **Docker Compose** (5 services: app, redis, nginx, prometheus, grafana)
-- **Real-time monitoring** with Prometheus metrics
-- **SVG generation** with custom builders
-- **Factory Pattern** architecture
+## 🎯 Tech Stack
+
+<div align="center">
+
+| Technologie | Description | Statut |
+|:-----------:|:-----------:|:------:|
+| **Python** | FastAPI | ✅ |
+| **Docker Compose** | 5 services (app, redis, nginx, prometheus, grafana) | ✅ |
+| **Real-time monitoring** | Prometheus metrics | ✅ |
+| **SVG generation** | Custom builders | ✅ |
+| **Factory Pattern** | Architecture modulaire | ✅ |
+
+</div>
 
 ## 🎨 **Demo:**
 ![Logo Generation Demo](https://github.com/arkalia-luna-system/Arkalia-luna-logo/raw/main/exports/demo-gif/arkalia-luna-demo.gif)
 
 *5 emotional variants generated in real-time*
 
-## 🚀 **Performance:**
-- **API Response**: < 100ms
-- **Logo Generation**: 0.016 seconds
-- **Infrastructure**: 5 Docker services orchestrated
-- **Monitoring**: 6 Prometheus metrics tracked
-- **Uptime**: 629+ seconds (100% healthy)
+## 🚀 Performance
+
+<div align="center">
+
+| Métrique | Valeur | Statut |
+|:--------:|:------:|:------:|
+| **API Response** | < 100ms | ⚡ Rapide |
+| **Logo Generation** | 0.016 seconds | ⚡ Ultra-rapide |
+| **Infrastructure** | 5 Docker services | ✅ Orchestrés |
+| **Monitoring** | 6 Prometheus metrics | ✅ Trackés |
+| **Uptime** | 629+ seconds | ✅ 100% healthy |
+
+</div>
 
 ## 🛠️ **Architecture Highlights:**
 - **Modular design** with separation of concerns
@@ -58,9 +72,16 @@ I've been working on this logo generator for a while and I'm really excited to s
 - **Strategy Pattern** for emotional variants
 - **Professional CI/CD** with GitHub Actions
 
-## 📊 **Quality Metrics:**
-- **297 tests** passing ✅
-- **75% code coverage** (objectif 90%) ✅ **MIS À JOUR**
+## 📊 Quality Metrics
+
+<div align="center">
+
+| Métrique | Valeur | Statut |
+|:--------:|:------:|:------:|
+| **Tests** | 297 passing | ✅ |
+| **Code coverage** | 75% (objectif 90%) | ✅ **MIS À JOUR** |
+
+</div>
 - **Black + Ruff** formatting
 - **Type checking** with MyPy
 - **Security** with Bandit

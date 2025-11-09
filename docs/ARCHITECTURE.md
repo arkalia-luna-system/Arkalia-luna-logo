@@ -101,6 +101,9 @@ graph TD
     C --> C6[🚀 Ultra-Max Generator]
     C --> C7[🌍 Realism Max Generator]
     C --> C8[🌟 Ultimate Generator]
+    C --> C9[🌌 Cosmic Generator]
+    C --> C10[🧠 Hyper-AI Generator]
+    C --> C11[🤖 AI Generator]
     
     %% Builders SVG
     C --> D[🔧 SVG Builders<br/>Pattern Builder]
@@ -112,6 +115,7 @@ graph TD
     D --> D6[🚀 UltraMaxSVGBuilder]
     D --> D7[🌍 RealismMaxSVGBuilder]
     D --> D8[🌟 UltimateSVGBuilder]
+    D --> D9[🌌 CosmicSphereBuilder]
     
     %% Gestion des variantes
     C --> E[🎭 Variants Manager<br/>10 variantes émotionnelles]
@@ -199,7 +203,7 @@ class BaseLogoGenerator:
 | **Linting** | Ruff + Black | ✅ |
 | **Type checking** | MyPy strict | ✅ |
 | **Sécurité** | Bandit | ✅ |
-| **Pre-commit hooks** | 8 hooks configurés | ✅ |
+| **Pre-commit hooks** | 7 hooks configurés | ✅ **MIS À JOUR** (était 8) |
 
 </div>
 

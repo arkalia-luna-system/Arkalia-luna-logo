@@ -71,6 +71,7 @@ graph TD
 |:--------:|:-----------:|:-----------:|
 | **API.md** | Documentation complète de l'API Python | [📘 Voir](API.md) |
 | **ARCHITECTURE.md** | Architecture technique et patterns de design | [📘 Voir](ARCHITECTURE.md) |
+| **COMFYUI.md** | 🧠 ComfyUI + Hyper-AI Generator - Génération IA avancée | [📘 Voir](COMFYUI.md) |
 
 </div>
 
