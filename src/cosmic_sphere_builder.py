@@ -102,6 +102,7 @@ class CosmicSphereBuilder(SVGBuilder):
         dwg: svgwrite.Drawing,
         size: int,
         variant_name: str,
+    ) -> None:
     ):
         """Ajoute les gradients cosmiques"""
         # Gradient principal de la sphère
@@ -131,7 +132,7 @@ class CosmicSphereBuilder(SVGBuilder):
         crystal_gradient.add_stop_color(0.5, colors["center"], opacity=0.9)
         crystal_gradient.add_stop_color(1, colors["accent"], opacity=0.8)
 
-    def _add_glow_filters(self, dwg: svgwrite.Drawing):
+    def _add_glow_filters(self, dwg: svgwrite.Drawing) -> None:
         """Ajoute les filtres de glow simplifiés"""
         # Filtre de glow principal (simplifié)
         dwg.defs.add(dwg.filter(id="glow"))
@@ -144,6 +145,7 @@ class CosmicSphereBuilder(SVGBuilder):
         dwg: svgwrite.Drawing,
         size: int,
         variant_name: str,
+    ) -> None:
     ):
         """Ajoute le fond cosmique avec étoiles"""
         # Fond dégradé cosmique
@@ -179,6 +181,7 @@ class CosmicSphereBuilder(SVGBuilder):
         dwg: svgwrite.Drawing,
         cx: int,
         cy: int,
+    ) -> None:
         radius: float,
         variant_name: str,
     ):
@@ -201,6 +204,7 @@ class CosmicSphereBuilder(SVGBuilder):
         dwg: svgwrite.Drawing,
         cx: int,
         cy: int,
+    ) -> None:
         radius: float,
         variant_name: str,
     ):
@@ -228,6 +232,7 @@ class CosmicSphereBuilder(SVGBuilder):
         dwg: svgwrite.Drawing,
         cx: int,
         cy: int,
+    ) -> None:
         radius: float,
         variant_name: str,
     ):
@@ -277,6 +282,7 @@ class CosmicSphereBuilder(SVGBuilder):
         dwg: svgwrite.Drawing,
         cx: int,
         cy: int,
+    ) -> None:
         size: float,
         variant_name: str,
     ):
@@ -318,6 +324,7 @@ class CosmicSphereBuilder(SVGBuilder):
         dwg: svgwrite.Drawing,
         size: int,
         variant_name: str,
+    ) -> None:
     ):
         """Ajoute les particules cosmiques flottantes"""
         colors = self._get_variant_colors(variant_name)
@@ -344,6 +351,7 @@ class CosmicSphereBuilder(SVGBuilder):
         dwg: svgwrite.Drawing,
         cx: int,
         cy: int,
+    ) -> None:
         radius: float,
         variant_name: str,
     ):

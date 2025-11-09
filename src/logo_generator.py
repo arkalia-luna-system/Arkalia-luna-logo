@@ -28,7 +28,7 @@ class ArkaliaLunaLogo:
         # Configuration du logging
         self._setup_logging()
 
-    def _setup_logging(self):
+    def _setup_logging(self) -> None:
         """Configure le système de logging"""
         import logging
 
