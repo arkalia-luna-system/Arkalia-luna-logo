@@ -19,7 +19,7 @@ except ImportError:
 class CosmicSphereBuilder(SVGBuilder):
     """Builder pour logos avec sphères cosmiques et réseaux neuronaux"""
 
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__()
         self.builder_type = "cosmic_sphere"
 

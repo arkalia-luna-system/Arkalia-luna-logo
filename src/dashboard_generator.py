@@ -17,7 +17,7 @@ except ImportError:
 class DashboardLogoGenerator(ArkaliaLunaLogo):
     """Générateur dashboard optimisé pour les interfaces et réseaux"""
 
-    def __init__(self, output_dir: Optional[Path] = None):
+    def __init__(self, output_dir: Optional[Path] = None) -> None:
         super().__init__(output_dir)
         # Remplace le SVG builder par défaut par le Dashboard
         self.svg_builder = DashboardSVGBuilder(self.variants_manager)

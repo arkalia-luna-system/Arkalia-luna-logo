@@ -19,7 +19,7 @@ except ImportError:
 class ArkaliaLunaLogo:
     """Générateur principal des logos Arkalia-LUNA"""
 
-    def __init__(self, output_dir: Optional[Path] = None):
+    def __init__(self, output_dir: Optional[Path] = None) -> None:
         self.variants_manager = LogoVariants()
         self.svg_builder = AdvancedSVGBuilder(self.variants_manager)
         self.output_dir = output_dir or Path("exports")

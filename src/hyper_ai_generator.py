@@ -9,12 +9,13 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional
 
 from .logo_generator import ArkaliaLunaLogo
+from .variants import LogoVariant
 
 
 class HyperAIGenerator(ArkaliaLunaLogo):
     """Générateur ultra-intelligent avec ComfyUI + SDXL + ControlNet"""
 
-    def __init__(self, output_dir: Optional[Path] = None):
+    def __init__(self, output_dir: Optional[Path] = None) -> None:
         super().__init__(output_dir or Path("exports-hyper-ai"))
 
         self.logger.info("🧠 Hyper AI Generator initialisé avec succès")
@@ -128,7 +129,7 @@ class HyperAIGenerator(ArkaliaLunaLogo):
             raise
 
     def _build_emotion_prompt(
-        self, variant_data, emotion_prompt: Optional[str] = None
+        self, variant_data: LogoVariant, emotion_prompt: Optional[str] = None
     ) -> str:
         """Construit un prompt émotionnel sophistiqué"""
         if emotion_prompt:
@@ -188,7 +189,7 @@ class HyperAIGenerator(ArkaliaLunaLogo):
         self,
         workflow_template: Dict,
         emotion_prompt: str,
-        variant_data,
+        variant_data: LogoVariant,
         size: int,
     ) -> Dict:
         """Génère un workflow ComfyUI personnalisé"""

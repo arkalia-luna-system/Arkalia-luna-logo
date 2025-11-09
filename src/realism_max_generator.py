@@ -17,7 +17,7 @@ except ImportError:
 class RealismMaxLogoGenerator(ArkaliaLunaLogo):
     """Générateur de logos ultra-réalistes avec effets organiques"""
 
-    def __init__(self, output_dir: Optional[Path] = None):
+    def __init__(self, output_dir: Optional[Path] = None) -> None:
         super().__init__(output_dir)
         # Remplace le SVG builder par défaut par le Realism Max
         self.svg_builder = RealismMaxSVGBuilder(self.variants_manager)

@@ -17,7 +17,7 @@ except ImportError:
 class SimpleAdvancedLogoGenerator(ArkaliaLunaLogo):
     """Générateur simple-advanced avec équilibre performance/qualité"""
 
-    def __init__(self, output_dir: Optional[Path] = None):
+    def __init__(self, output_dir: Optional[Path] = None) -> None:
         super().__init__(output_dir)
         # Remplace le SVG builder par défaut par le Simple Advanced
         self.svg_builder = SimpleAdvancedSVGBuilder(self.variants_manager)

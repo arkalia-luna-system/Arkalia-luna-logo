@@ -12,7 +12,7 @@ from .logo_generator import ArkaliaLunaLogo
 class CosmicLogoGenerator(ArkaliaLunaLogo):
     """Générateur de logos avec sphères cosmiques et réseaux neuronaux"""
 
-    def __init__(self, output_dir: Optional[Path] = None):
+    def __init__(self, output_dir: Optional[Path] = None) -> None:
         # Appel du constructeur parent avec répertoire spécialisé
         super().__init__(output_dir or Path("exports-cosmic"))
 
