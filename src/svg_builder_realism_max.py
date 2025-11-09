@@ -7,6 +7,7 @@ import random
 from typing import Optional, Tuple
 
 import svgwrite
+from svgwrite.container import Defs
 
 try:
     from .svg_builder import SVGBuilder
@@ -75,7 +76,7 @@ class RealismMaxSVGBuilder(SVGBuilder):
         # Masques de profondeur réalistes
         self._add_depth_masks(defs, variant)
 
-    def _add_realistic_gradients(self, defs, variant: LogoVariant) -> None:
+    def _add_realistic_gradients(self, defs: Defs, variant: LogoVariant) -> None:
         """Crée des gradients réalistes optimisés (5-7 stops max pour la performance)"""
         gradient_id = f"realisticGradient-{variant.variant_type.value}"
 
@@ -126,7 +127,7 @@ class RealismMaxSVGBuilder(SVGBuilder):
 
         defs.add(border_gradient)
 
-    def _add_realistic_glow_filters(self, defs, variant: LogoVariant) -> None:
+    def _add_realistic_glow_filters(self, defs: Defs, variant: LogoVariant) -> None:
         """Crée des filtres de lueur réalistes optimisés"""
         # Filtre de lueur principal
         glow_filter_id = f"realisticGlowFilter-{variant.variant_type.value}"
@@ -138,7 +139,7 @@ class RealismMaxSVGBuilder(SVGBuilder):
 
         defs.add(glow_filter)
 
-    def _add_organic_filters(self, defs, variant: LogoVariant) -> None:
+    def _add_organic_filters(self, defs: Defs, variant: LogoVariant) -> None:
         """Crée des filtres organiques et de turbulence"""
         # Filtre de turbulence organique
         turbulence_filter_id = f"organicTurbulenceFilter-{variant.variant_type.value}"
@@ -155,7 +156,7 @@ class RealismMaxSVGBuilder(SVGBuilder):
 
         defs.add(turbulence_filter)
 
-    def _add_depth_masks(self, defs, variant: LogoVariant) -> None:
+    def _add_depth_masks(self, defs: Defs, variant: LogoVariant) -> None:
         """Crée des masques de profondeur réalistes"""
         # Masque de profondeur principal
         depth_mask_id = f"depthMask-{variant.variant_type.value}"

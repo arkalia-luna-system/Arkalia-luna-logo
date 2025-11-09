@@ -7,6 +7,7 @@ from pathlib import Path
 from typing import Optional, Tuple
 
 import svgwrite
+from svgwrite.container import Defs
 
 try:
     from .svg_builder import SVGBuilder
@@ -71,7 +72,7 @@ class DashboardSVGBuilder(SVGBuilder):
         # Filtre de lueur
         self._add_glow_filter(defs, variant)
 
-    def _add_main_gradient(self, defs, variant: LogoVariant) -> None:
+    def _add_main_gradient(self, defs: Defs, variant: LogoVariant) -> None:
         """Crée le gradient principal dashboard"""
         gradient_id = f"mainGradient-{variant.variant_type.value}"
 
@@ -100,7 +101,7 @@ class DashboardSVGBuilder(SVGBuilder):
 
         defs.add(gradient)
 
-    def _add_halo_gradient(self, defs, variant: LogoVariant) -> None:
+    def _add_halo_gradient(self, defs: Defs, variant: LogoVariant) -> None:
         """Crée un gradient pour le halo lumineux synthétique"""
         halo_gradient_id = f"haloGradient-{variant.variant_type.value}"
         halo_gradient = svgwrite.gradients.RadialGradient(
@@ -129,7 +130,7 @@ class DashboardSVGBuilder(SVGBuilder):
 
         defs.add(halo_gradient)
 
-    def _add_core_gradient(self, defs, variant: LogoVariant) -> None:
+    def _add_core_gradient(self, defs: Defs, variant: LogoVariant) -> None:
         """Crée un gradient pour le centre/A-core lumineux"""
         core_gradient_id = f"coreGradient-{variant.variant_type.value}"
         core_gradient = svgwrite.gradients.RadialGradient(
@@ -158,7 +159,7 @@ class DashboardSVGBuilder(SVGBuilder):
 
         defs.add(core_gradient)
 
-    def _add_glow_filter(self, defs, variant: LogoVariant) -> None:
+    def _add_glow_filter(self, defs: Defs, variant: LogoVariant) -> None:
         """Crée un filtre de lueur dashboard"""
         filter_id = f"glow-{variant.variant_type.value}"
         glow_filter = svgwrite.filters.Filter(id=filter_id)
