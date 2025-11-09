@@ -1,19 +1,39 @@
-# 🌙 CI/CD Guide - Arkalia-LUNA Logo Generator
+# 🌙 CI/CD Guide
 
-## 🎯 **Vue d'Ensemble**
+<div align="center">
+
+**⚙️ Configuration et utilisation de la CI/CD**
+
+*Arkalia-LUNA Logo Generator*
+
+</div>
+
+---
+
+## 🎯 Vue d'Ensemble
+
+<div align="center">
 
 Ce guide explique comment configurer et utiliser la CI/CD pour le projet Arkalia-LUNA Logo Generator.
 
-## 🚀 **Configuration CI**
+</div>
 
-### **GitHub Actions**
+## 🚀 Configuration CI
+
+### 🔧 GitHub Actions
+
+<div align="center">
 
 Le workflow CI est configuré dans `.github/workflows/ci.yml` et inclut :
 
-- **Tests multi-Python** (3.8, 3.9, 3.10, 3.11)
-- **Qualité du code** (flake8, black, mypy)
-- **Build automatique** sur main
-- **Couverture de code** avec Codecov
+| Fonctionnalité | Description | Statut |
+|:--------------:|:-----------:|:------:|
+| **Tests multi-Python** | 3.8, 3.9, 3.10, 3.11 | ✅ Actif |
+| **Qualité du code** | flake8, black, mypy | ✅ Actif |
+| **Build automatique** | Sur branche main | ✅ Actif |
+| **Couverture de code** | Codecov intégré | ✅ Actif |
+
+</div>
 
 ### **Pre-commit Hooks**
 
@@ -154,7 +174,7 @@ pip freeze > requirements.txt
 
 ## 📊 **Métriques CI**
 
-- **Couverture de code** : 78% atteint (+13 points)
+- **Couverture de code** : 75% (objectif 90%) ✅ **MIS À JOUR**
 - **Temps de build** : <5 minutes
 - **Tests** : Tous passent sur toutes les versions Python
 - **Qualité** : Aucune erreur de lint/type

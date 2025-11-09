@@ -1,12 +1,28 @@
-# 🚀 Guide de Démarrage Rapide - Arkalia-LUNA Logo Generator
+# 🚀 Guide de Démarrage Rapide
 
-## ⚡ **Installation en 5 Minutes**
+<div align="center">
 
-### **Prérequis Système**
+**⚡ Installation et premier logo en 5 minutes**
 
-- **Python** : 3.8 ou supérieur
-- **Pip** : Gestionnaire de packages Python
-- **Git** : Contrôle de version (optionnel)
+*Arkalia-LUNA Logo Generator*
+
+</div>
+
+---
+
+## ⚡ Installation en 5 Minutes
+
+### 📋 Prérequis Système
+
+<div align="center">
+
+| Prérequis | Version | Statut |
+|:---------:|:-------:|:------:|
+| **Python** | 3.8 ou supérieur | ✅ Requis |
+| **Pip** | Dernière version | ✅ Requis |
+| **Git** | Dernière version | ⚠️ Optionnel |
+
+</div>
 
 ### **Installation Rapide**
 
@@ -42,9 +58,15 @@ conda activate arkalia-luna
 pip install -e .
 ```
 
-## 🎯 **Premier Logo en 2 Minutes**
+## 🎯 Premier Logo en 2 Minutes
 
-### **Via Interface en Ligne de Commande**
+<div align="center">
+
+**⚡ Génération rapide de votre premier logo**
+
+</div>
+
+### 💻 Via Interface en Ligne de Commande
 
 ```bash
 # Activer l'environnement virtuel
@@ -63,7 +85,7 @@ python -m src.cli generate-all -s 200
 python -m src.cli favicon-all -s 32
 ```
 
-### **Via Code Python**
+### 🐍 Via Code Python
 
 ```python
 # Import rapide

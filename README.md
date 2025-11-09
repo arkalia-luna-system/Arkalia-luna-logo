@@ -11,7 +11,7 @@
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![Ruff](https://img.shields.io/badge/lint-ruff-red.svg)](https://github.com/astral-sh/ruff)
 [![Tests](https://img.shields.io/badge/tests-297%20passed-brightgreen.svg)](tests/)
-[![Coverage](https://img.shields.io/badge/coverage-87%25-brightgreen.svg)](htmlcov/)
+[![Coverage](https://img.shields.io/badge/coverage-75%25-yellow.svg)](htmlcov/)
 [![Docker](https://img.shields.io/badge/docker-5%20services%20ready-blue.svg)](Dockerfile.prod)
 [![API](https://img.shields.io/badge/API-0.03s%20response-green.svg)](main.py)
 [![Monitoring](https://img.shields.io/badge/monitoring-Prometheus%20%2B%20Grafana-orange.svg)](monitoring/)
@@ -493,8 +493,8 @@ Ce projet est sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.
 - **Version** : 2.0.0
 - **Statut** : Production/Stable
 - **Python** : 3.8+
-- **Tests** : **151 tests passent** ✅
-- **Couverture** : **78%** (objectif 90%+)
+- **Tests** : **297 tests passent** ✅
+- **Couverture** : **75%** (objectif 90%+) ✅ **MIS À JOUR**
 - **CI/CD** : GitHub Actions automatisé
 - **Qualité** : Black + Ruff + MyPy
 - **Benchmarks** : 7/7 tests de performance ✅

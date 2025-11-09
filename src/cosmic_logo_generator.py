@@ -19,7 +19,8 @@ class CosmicLogoGenerator(ArkaliaLunaLogo):
         self.logger.info("🌌 Cosmic Logo Generator initialisé avec succès")
 
         # Remplacement du SVG builder par le builder cosmique
-        self.svg_builder = CosmicSphereBuilder()
+        # Passage de variants_manager requis par CosmicSphereBuilder
+        self.svg_builder = CosmicSphereBuilder(self.variants_manager)
 
     def get_generator_stats(self) -> dict:
         """Retourne les statistiques du générateur cosmique"""

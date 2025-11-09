@@ -19,7 +19,7 @@ Arkalia-LUNA Logo Generator suit une architecture modulaire et extensible basée
 
 ### **3. Qualité et Robustesse**
 - **Tests complets** : **297 tests passent** ✅
-- **Couverture de code** : **87%** (objectif 90%+)
+- **Couverture de code** : **75%** (objectif 90%+) ✅ **MIS À JOUR**
 - **Validation** : Vérification des paramètres d'entrée
 - **Gestion d'erreurs** : Exceptions personnalisées
 - **Logs structurés** : Traçabilité complète
@@ -144,7 +144,7 @@ class BaseLogoGenerator:
 
 ### **Tests et Couverture**
 - **Tests totaux** : 297 tests ✅
-- **Couverture de code** : 87% (objectif 90%+)
+- **Couverture de code** : 75% (objectif 90%+) ✅ **MIS À JOUR**
 - **Modules testés** : 20/20
 - **Tests de performance** : 7/7 benchmarks ✅
 

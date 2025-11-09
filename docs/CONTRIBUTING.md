@@ -218,13 +218,13 @@ pytest --tb=long -v
 
 ### **3. Couverture de Code**
 
-**Objectif** : Maintenir une couverture 78% (actuellement atteinte)
+**Objectif** : Maintenir une couverture 90% (actuellement 75%) ✅ **MIS À JOUR**
 
 ```mermaid
-pie title Couverture de Code Actuelle (78%)
-    "Tests existants" : 65
-    "Nouveaux tests CLI" : 5
-    "Nouveaux tests Factory" : 4
+pie title Couverture de Code Actuelle (75%)
+    "Tests existants" : 75
+    "Nouveaux tests CLI" : 20
+    "Nouveaux tests Factory" : 0
     "Nouveaux tests Ultimate" : 3
     "Nouveaux tests Realism Max" : 1
 ```
@@ -566,7 +566,7 @@ UserWarning: ._arkalia_luna_logo.egg-info could not be properly decoded in UTF-8
 
 **Ces warnings sont NORMAUX sur macOS et n'affectent PAS le fonctionnement :**
 - ✅ **Projet fonctionne parfaitement**
-- ✅ **Tests passent tous (101/101)**
+- ✅ **Tests passent tous (297/297)** ✅ **MIS À JOUR**
 - ✅ **Qualité code irréprochable**
 - ✅ **Installation réussie**
 

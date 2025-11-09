@@ -1,37 +1,87 @@
-# 🎨 Brief Créatif - Arkalia-LUNA
+# 🎨 Brief Créatif
+
+<div align="center">
+
+**🌙 Arkalia-LUNA - Identité Visuelle**
+
+*Logo techno-mystique fusionnant IA futuriste et mysticisme lunaire*
+
+</div>
+
+---
 
 ## 🎯 Contexte & Objectif
 
-**Projet :** Arkalia-LUNA  
-**Nature :** Projet technologique multi-modulaire à la croisée de l'IA, de la cyber-introspection, du développement open-source et de l'art mystique digital.
+<div align="center">
 
-**But du logo :**
-- Servir d'emblème central (GitHub, docs, CLI/GUI, robots/dashboards)
-- Devenir la signature visuelle d'un univers techno-mystique
-- S'adapter en logo fixe, logo animé, variantes émotionnelles
+| Élément | Description |
+|:-------:|:-----------:|
+| **Projet** | Arkalia-LUNA |
+| **Nature** | Projet technologique multi-modulaire |
+| **Domaine** | IA, cyber-introspection, open-source, art mystique digital |
+
+</div>
+
+### 🎯 But du Logo
+
+<div align="center">
+
+| Objectif | Description |
+|:--------:|:-----------:|
+| 🎨 **Emblème central** | GitHub, docs, CLI/GUI, robots/dashboards |
+| ✨ **Signature visuelle** | Univers techno-mystique |
+| 🔄 **Adaptabilité** | Logo fixe, animé, variantes émotionnelles |
+
+</div>
 
 ## 🌌 ADN Visuel Arkalia-LUNA
 
-**Double identité :**
-- ⚙️ Tech avancée → IA locale, cognition, réseaux neuronaux, circuits vivants
-- 🌙 Mystique lunaire → intuition, ombre/lumière, mythologie cosmique
+### 🔀 Double Identité
 
-**Émotions à transmettre :** Sérénité, Puissance, Mystère, Confiance, Futurisme, Sagesse, Énergie, Élégance
+<div align="center">
 
-**Mots-clés style visuel :**
-- Lunaire (lune, éclats argentés, cycles)
-- Mystique raffiné (aura subtile, ésotérisme élégant)
-- Organique (neurones, flux lumineux, racines vivantes)
-- Éthéré (halos, brumes, iridescence)
-- Tech futuriste (holographie, fractales, circuits)
+| Identité | Caractéristiques |
+|:--------:|:----------------:|
+| ⚙️ **Tech avancée** | IA locale, cognition, réseaux neuronaux, circuits vivants |
+| 🌙 **Mystique lunaire** | Intuition, ombre/lumière, mythologie cosmique |
+
+</div>
+
+### 💫 Émotions à Transmettre
+
+<div align="center">
+
+🌙 **Sérénité** | ⚡ **Puissance** | 🔮 **Mystère** | 💎 **Confiance** | 🚀 **Futurisme** | ✨ **Sagesse** | ⚡ **Énergie** | 🎨 **Élégance**
+
+</div>
+
+### 🎨 Mots-Clés Style Visuel
+
+<div align="center">
+
+| Style | Description |
+|:-----:|:-----------:|
+| 🌙 **Lunaire** | Lune, éclats argentés, cycles |
+| ✨ **Mystique raffiné** | Aura subtile, ésotérisme élégant |
+| 🌿 **Organique** | Neurones, flux lumineux, racines vivantes |
+| ☁️ **Éthéré** | Halos, brumes, iridescence |
+| 🤖 **Tech futuriste** | Holographie, fractales, circuits |
+
+</div>
 
 ## 🎨 Palette de Couleurs
 
-**Base :** Bleu profond (couleur préférée, cœur de l'identité)  
-**Accents :** iridescents/holographiques (violet, turquoise, argent, reflets rosés/verts subtils)  
-**Effet global :** fluide, vivant, comme une sphère holographique neuronale
+<div align="center">
 
-**⚠️ Éviter :** noir néon cyberpunk basique (trop déjà vu)
+| Élément | Couleur | Description |
+|:-------:|:-------:|:-----------:|
+| **Base** | 🔵 Bleu profond | Couleur préférée, cœur de l'identité |
+| **Accents** | 🌈 Iridescents/holographiques | Violet, turquoise, argent, reflets rosés/verts subtils |
+| **Effet global** | ✨ Fluide, vivant | Sphère holographique neuronale |
+
+</div>
+
+> ⚠️ **À éviter** : Noir néon cyberpunk basique (trop déjà vu)
 
 ## 🌀 Structure du Logo
 
@@ -45,13 +95,23 @@
 - Illustrative (univers étoilé, brumes, constellations)
 - Runique (glyphe/cercle discret autour)
 
-## ⚡ Variantes Émotionnelles (Multi-Mood Pack)
+## ⚡ Variantes Émotionnelles
 
-1. **🌙 Sérénité** → halo lent, pulsations douces, couleurs bleues/argent subtiles
-2. **⚡ Puissance** → pulsations fortes, halo vibrant, réseau accéléré, bleu/violet intense
-3. **🔮 Mystère** → brumes mouvantes, réseau irrégulier, iridescence lunatique
-4. **✨ Éveil / Sagesse** → halo rayonnant, cœur Λ clair, turquoise/doré
-5. **🎇 Énergie créative** → flux rapides, reflets multicolores holographiques
+<div align="center">
+
+**Multi-Mood Pack**
+
+</div>
+
+| Variante | Caractéristiques | Couleurs |
+|:--------:|:----------------:|:--------:|
+| 🌙 **Sérénité** | Halo lent, pulsations douces | Bleues/argent subtiles |
+| ⚡ **Puissance** | Pulsations fortes, halo vibrant, réseau accéléré | Bleu/violet intense |
+| 🔮 **Mystère** | Brumes mouvantes, réseau irrégulier | Iridescence lunatique |
+| ✨ **Éveil/Sagesse** | Halo rayonnant, cœur Λ clair | Turquoise/doré |
+| 🎇 **Énergie créative** | Flux rapides, reflets multicolores | Holographiques |
+
+</div>
 
 ## 🛠️ Outils & Techniques
 

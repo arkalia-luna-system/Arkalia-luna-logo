@@ -65,14 +65,23 @@ check_git_status() {
     
     # Vérifier s'il y a des changements non commités
     if [ -n "$(git status --porcelain)" ]; then
-        print_warning "Il y a des changements non commités. Voulez-vous les commiter ? (y/n)"
-        read -r response
-        if [[ "$response" =~ ^[Yy]$ ]]; then
-            git add .
-            git commit -m "chore(ci): configuration initiale GitHub"
+        # Détecter si on est en mode interactif
+        if [ -t 0 ]; then
+            # Mode interactif : demander à l'utilisateur
+            print_warning "Il y a des changements non commités. Voulez-vous les commiter ? (y/n)"
+            read -r response
+            if [[ "$response" =~ ^[Yy]$ ]]; then
+                git add .
+                git commit -m "chore(ci): configuration initiale GitHub"
+            else
+                print_error "Veuillez commiter ou stasher vos changements avant de continuer."
+                exit 1
+            fi
         else
-            print_error "Veuillez commiter ou stasher vos changements avant de continuer."
-            exit 1
+            # Mode non-interactif : continuer sans commiter automatiquement
+            print_warning "Il y a des changements non commités (mode non-interactif détecté)."
+            print_status "Les changements ne seront pas commités automatiquement."
+            print_status "Vous pouvez les commiter manuellement plus tard si nécessaire."
         fi
     fi
     
@@ -112,15 +121,24 @@ setup_remotes() {
     # Vérifier si origin existe
     if ! git remote | grep -q "origin"; then
         print_status "Configuration du remote origin..."
-        echo "Veuillez entrer l'URL du repository GitHub :"
-        echo "Exemple : https://github.com/username/arkalia-luna-logo.git"
-        read -r github_url
-        
-        if [ -n "$github_url" ]; then
-            git remote add origin "$github_url"
-            print_success "Remote origin configuré : $github_url"
+        # Détecter si on est en mode interactif
+        if [ -t 0 ]; then
+            # Mode interactif : demander à l'utilisateur
+            echo "Veuillez entrer l'URL du repository GitHub :"
+            echo "Exemple : https://github.com/username/arkalia-luna-logo.git"
+            read -r github_url
+            
+            if [ -n "$github_url" ]; then
+                git remote add origin "$github_url"
+                print_success "Remote origin configuré : $github_url"
+            else
+                print_warning "Aucune URL fournie, remote origin non configuré"
+            fi
         else
-            print_warning "Aucune URL fournie, remote origin non configuré"
+            # Mode non-interactif : skip la configuration du remote
+            print_warning "Mode non-interactif détecté. Remote origin non configuré."
+            print_status "Vous pouvez configurer le remote manuellement avec :"
+            print_status "  git remote add origin <url>"
         fi
     else
         print_status "Remote origin existe déjà"

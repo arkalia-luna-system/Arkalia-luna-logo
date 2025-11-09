@@ -215,6 +215,96 @@ generator = SimpleAdvancedLogoGenerator()
 - Lisibilité optimale
 - Style polyvalent
 
+### **6. Realism Max**
+
+```python
+from src.realism_max_generator import RealismMaxLogoGenerator
+
+generator = RealismMaxLogoGenerator()
+# Ultra-réaliste avec effets organiques
+```
+
+**Caractéristiques :**
+- Effets ultra-réalistes
+- Textures organiques
+- Profondeur exceptionnelle
+- Qualité photographique
+
+### **7. Advanced**
+
+```python
+from src.advanced_logo_generator import AdvancedArkaliaLunaLogo
+
+generator = AdvancedArkaliaLunaLogo()
+# Techno-mystique avancé
+```
+
+**Caractéristiques :**
+- Style techno-mystique
+- Effets avancés
+- Ambiance futuriste
+- Design sophistiqué
+
+### **8. Default**
+
+```python
+from src.logo_generator import ArkaliaLunaLogo
+
+generator = ArkaliaLunaLogo()
+# Générateur de base standard
+```
+
+**Caractéristiques :**
+- Style de base
+- Simple et efficace
+- Performance optimale
+- Compatible tous usages
+
+### **9. Cosmic**
+
+```python
+from src.cosmic_logo_generator import CosmicLogoGenerator
+
+generator = CosmicLogoGenerator()
+# Sphères lumineuses et réseaux neuronaux
+```
+
+**Caractéristiques :**
+- Sphères cosmiques
+- Réseaux neuronaux
+- Effets lumineux
+- Ambiance spatiale
+
+### **10. Hyper-AI**
+
+```python
+from src.hyper_ai_generator import HyperAIGenerator
+
+generator = HyperAIGenerator()
+# ComfyUI + SDXL + ControlNet
+```
+
+**Caractéristiques :**
+- Intelligence extrême
+- Intégration ComfyUI
+- Modèles SDXL
+- ControlNet avancé
+
+### **11. AI Generator**
+
+```python
+from src.ai_logo_generator import AILogoGenerator
+
+generator = AILogoGenerator()
+# Stable Diffusion local (nécessite diffusers)
+```
+
+**Caractéristiques :**
+- Génération IA
+- Stable Diffusion
+- Requiert diffusers
+- Optionnel
+
 ## 🌙 **Variantes Émotionnelles**
 
 ### **LogoVariant**
@@ -238,13 +328,21 @@ variant = LogoVariant(
 - `glow_intensity: float` - Intensité du halo (0.0 à 1.0)
 - `color_scheme: ColorScheme` - Palette de couleurs
 
-### **Variantes Disponibles**
+### **Variantes Disponibles (10 variantes)**
 
+**Variantes de base (5) :**
 1. **Sérénité** : Halo doux, pulsations lentes
 2. **Puissance** : Halo vibrant, réseau accéléré
 3. **Mystère** : Brumes mouvantes, réseau irrégulier
 4. **Éveil** : Halo rayonnant, Λ-core clair
 5. **Énergie Créative** : Flux rapides, reflets multicolores
+
+**Variantes dynamiques (5) :**
+6. **Pluie** : Gouttes de pluie, nuages gris, mélancolie élégante
+7. **Orage** : Éclairs zigzagants, nuages sombres, énergie explosive
+8. **Explosif** : Particules explosives, feux d'artifice, mouvement radial
+9. **Ensoleillé** : Rayons de soleil, chaleur et luminosité, optimisme
+10. **Neige** : Flocons qui tombent, froid et pureté, sérénité cristalline
 
 ## 📁 **Gestion des Exports**
 

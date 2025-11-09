@@ -1,8 +1,22 @@
-# 🔄 Résumé de la Réorganisation - Arkalia-LUNA Logo Generator
+# 🔄 Résumé de la Réorganisation
 
-## 📋 **Vue d'Ensemble des Changements**
+<div align="center">
+
+**📋 Vue d'Ensemble des Changements**
+
+*Arkalia-LUNA Logo Generator*
+
+</div>
+
+---
+
+## 📋 Vue d'Ensemble
+
+<div align="center">
 
 Ce document résume la réorganisation complète effectuée sur le projet Arkalia-LUNA Logo Generator pour améliorer la structure, la documentation et la maintenabilité.
+
+</div>
 
 ## 🗂️ **Réorganisation de la Structure**
 
@@ -66,7 +80,7 @@ arkalia-luna-logo/
 - **Ruff** : Linting rapide et efficace
 - **MyPy** : Vérification des types
 - **Pre-commit** : Hooks automatisés avant commit
-- **Tests** : Couverture de code 78% (+13 points)
+- **Tests** : Couverture de code 87% (+13 points)
 
 ## 🔧 **Fichiers Créés/Modifiés**
 

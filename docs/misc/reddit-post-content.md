@@ -46,8 +46,8 @@ I've been working on this logo generator for a while and I'm really excited to s
 - **Professional CI/CD** with GitHub Actions
 
 ## 📊 **Quality Metrics:**
-- **297 tests** passing
-- **87% code coverage**
+- **297 tests** passing ✅
+- **75% code coverage** (objectif 90%) ✅ **MIS À JOUR**
 - **Black + Ruff** formatting
 - **Type checking** with MyPy
 - **Security** with Bandit
