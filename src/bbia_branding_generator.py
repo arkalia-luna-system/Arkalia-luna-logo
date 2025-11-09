@@ -5,7 +5,7 @@ Quand /Users/athalia/Desktop/logo bbia/bbia_branding/ sera déplacé dans /Volum
 """
 
 from pathlib import Path
-from typing import Optional
+from typing import List, Optional
 
 try:
     from .bbia_palette import BBIA_PALETTE
@@ -89,7 +89,9 @@ class BBIABrandingGenerator(ArkaliaLunaLogo):
 
         return output_path
 
-    def generate_all_declinations(self, sizes: list[int] | None = None) -> list[Path]:
+    def generate_all_declinations(
+        self, sizes: Optional[List[int]] = None
+    ) -> List[Path]:
         """
         Génère toutes les déclinaisons BBIA - PRÉPARÉ POUR INTÉGRATION FUTURE
 
