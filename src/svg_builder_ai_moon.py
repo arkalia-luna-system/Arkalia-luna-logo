@@ -6,7 +6,7 @@ Construction d'une LUNE IA VIVANTE ultra-réaliste avec effets EXTRÊMES.
 import math
 import random
 from pathlib import Path
-from typing import Optional, Tuple
+from typing import List, Optional, Tuple
 
 import svgwrite
 from svgwrite.container import Defs
@@ -339,7 +339,7 @@ class AIMoonSVGBuilder(SVGBuilder):
         # Nœuds de connexion IA
         self._add_ai_connection_nodes(drawing, variant, center, size)
 
-    def _create_ai_network_paths(self, center: int, size: int) -> list[str]:
+    def _create_ai_network_paths(self, center: int, size: int) -> List[str]:
         """Crée des chemins de réseau IA complexes."""
         paths = []
         radius = size // 3
