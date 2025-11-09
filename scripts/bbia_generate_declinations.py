@@ -8,6 +8,7 @@ Préparé pour intégration future avec /Volumes/T7/bbia-branding/
 
 import sys
 from pathlib import Path
+from typing import List, Optional
 
 # Ajouter le répertoire src au path
 sys.path.insert(0, str(Path(__file__).parent.parent))
@@ -32,6 +33,8 @@ def generate_square_1_1(
     # 3. Exporter en PNG aux tailles spécifiées
     # 4. Exporter en WebP pour optimisation
 
+    if sizes is None:
+        sizes = [32, 512, 1024]
     for size in sizes:
         output_path = output_dir / f"bbia_square_1_1_{size}x{size}.png"
         print(f"   ✅ {output_path.name} (à générer)")
