@@ -1,5 +1,6 @@
-"""🌙 AI MOON SVG Builder Module
-Construction d'une LUNE IA VIVANTE ultra-réaliste avec effets EXTRÊMES
+"""🌙 AI MOON SVG Builder Module.
+
+Construction d'une LUNE IA VIVANTE ultra-réaliste avec effets EXTRÊMES.
 """
 
 import math
