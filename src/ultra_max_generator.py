@@ -19,7 +19,7 @@ class UltraMaxLogoGenerator(ArkaliaLunaLogo):
     et optimisations de performance
     """
 
-    def __init__(self, output_dir: Optional[Path] = None):
+    def __init__(self, output_dir: Optional[Path] = None) -> None:
         super().__init__(output_dir)
         # Remplace le SVG builder par défaut par l'Ultra Max
         self.svg_builder = UltraMaxSVGBuilder(self.variants_manager)

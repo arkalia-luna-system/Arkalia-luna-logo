@@ -68,7 +68,7 @@ class LogoVariant:
 class LogoVariants:
     """Gestionnaire des variantes de logo"""
 
-    def __init__(self):
+    def __init__(self) -> None:
         self._variants = self._initialize_variants()
 
     def _initialize_variants(self) -> Dict[str, LogoVariant]:

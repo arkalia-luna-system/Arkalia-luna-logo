@@ -17,7 +17,7 @@ except ImportError:
 class UltimateLogoGenerator(ArkaliaLunaLogo):
     """Générateur de logos ULTIMES Arkalia-LUNA avec effets cosmiques extrêmes"""
 
-    def __init__(self, output_dir: Optional[Path] = None):
+    def __init__(self, output_dir: Optional[Path] = None) -> None:
         # Appel du constructeur parent avec répertoire spécialisé
         super().__init__(output_dir or Path("exports-ultimate"))
 
