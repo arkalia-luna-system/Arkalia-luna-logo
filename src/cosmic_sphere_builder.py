@@ -10,7 +10,11 @@ from typing import Dict, Optional
 
 import svgwrite
 
-from .svg_builder_base import SVGBuilder
+try:
+    from .svg_builder_base import SVGBuilder
+except ImportError:
+    # Fallback pour exécution directe
+    from svg_builder_base import SVGBuilder
 
 
 class CosmicSphereBuilder(SVGBuilder):
