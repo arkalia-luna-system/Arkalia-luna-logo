@@ -8,6 +8,7 @@ from pathlib import Path
 from typing import Optional, Tuple
 
 import svgwrite
+from svgwrite.container import Defs
 
 try:
     from .svg_builder import SVGBuilder
@@ -81,7 +82,7 @@ class AIMoonSVGBuilder(SVGBuilder):
         # Patterns neuronaux IA
         self._add_ai_neural_patterns(defs, variant)
 
-    def _add_ai_moon_gradient(self, defs, variant: LogoVariant) -> None:
+    def _add_ai_moon_gradient(self, defs: Defs, variant: LogoVariant) -> None:
         """Crée un gradient radial IA OPTIMISÉ avec 8 stops pour la performance"""
         gradient_id = f"aiMoonGradient-{variant.variant_type.value}"
 
@@ -117,7 +118,7 @@ class AIMoonSVGBuilder(SVGBuilder):
 
         defs.add(gradient)
 
-    def _add_ai_glow_filters(self, defs, variant: LogoVariant) -> None:
+    def _add_ai_glow_filters(self, defs: Defs, variant: LogoVariant) -> None:
         """Crée des filtres de lueur IA avec intelligence artificielle"""
         # Filtre principal de lueur IA
         main_glow_id = f"aiMainGlow-{variant.variant_type.value}"
@@ -137,7 +138,7 @@ class AIMoonSVGBuilder(SVGBuilder):
 
         defs.add(main_glow)
 
-    def _add_ai_organic_filters(self, defs, variant: LogoVariant) -> None:
+    def _add_ai_organic_filters(self, defs: Defs, variant: LogoVariant) -> None:
         """Crée des filtres de turbulence organique IA"""
         # Filtre de turbulence IA
         turbulence_id = f"aiTurbulence-{variant.variant_type.value}"
@@ -154,7 +155,7 @@ class AIMoonSVGBuilder(SVGBuilder):
 
         defs.add(turbulence_filter)
 
-    def _add_ai_depth_masks(self, defs, variant: LogoVariant) -> None:
+    def _add_ai_depth_masks(self, defs: Defs, variant: LogoVariant) -> None:
         """Crée des masques de profondeur IA"""
         # Masque de profondeur IA
         depth_mask_id = f"aiDepthMask-{variant.variant_type.value}"

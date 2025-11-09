@@ -7,6 +7,7 @@ from pathlib import Path
 from typing import List, Optional, Tuple
 
 import svgwrite
+from svgwrite.container import Defs
 
 try:
     from .svg_builder import SVGBuilder
@@ -73,7 +74,9 @@ class AdvancedSVGBuilder(SVGBuilder):
         # Gradients pour les réseaux neuronaux
         self._add_neural_network_gradients(defs, variant)
 
-    def _add_advanced_moon_gradient(self, defs, variant: LogoVariant) -> None:
+    def _add_advanced_moon_gradient(
+        self, defs: Defs, variant: LogoVariant
+    ) -> None:
         """Crée un gradient radial ultra-avancé avec multiples stops"""
         gradient_id = f"advancedMoonGradient-{variant.variant_type.value}"
 
@@ -114,7 +117,9 @@ class AdvancedSVGBuilder(SVGBuilder):
 
         defs.add(border_gradient)
 
-    def _add_advanced_glow_filters(self, defs, variant: LogoVariant) -> None:
+    def _add_advanced_glow_filters(
+        self, defs: Defs, variant: LogoVariant
+    ) -> None:
         """Crée des filtres de lueur ultra-avancés avec multiples effets"""
         # Filtre principal de lueur
         main_glow_id = f"mainGlow-{variant.variant_type.value}"
@@ -143,7 +148,9 @@ class AdvancedSVGBuilder(SVGBuilder):
 
         defs.add(detail_glow)
 
-    def _add_organic_turbulence_filters(self, defs, variant: LogoVariant) -> None:
+    def _add_organic_turbulence_filters(
+        self, defs: Defs, variant: LogoVariant
+    ) -> None:
         """Crée des filtres de turbulence pour l'effet organique"""
         # Filtre de turbulence principal
         turbulence_id = f"turbulence-{variant.variant_type.value}"
@@ -168,7 +175,7 @@ class AdvancedSVGBuilder(SVGBuilder):
 
         defs.add(turbulence_filter)
 
-    def _add_depth_masks(self, defs, variant: LogoVariant) -> None:
+    def _add_depth_masks(self, defs: Defs, variant: LogoVariant) -> None:
         """Crée des masques pour les effets de profondeur"""
         # Masque de profondeur principal
         depth_mask_id = f"depthMask-{variant.variant_type.value}"
@@ -180,7 +187,9 @@ class AdvancedSVGBuilder(SVGBuilder):
 
         defs.add(depth_mask)
 
-    def _add_neural_network_gradients(self, defs, variant: LogoVariant) -> None:
+    def _add_neural_network_gradients(
+        self, defs: Defs, variant: LogoVariant
+    ) -> None:
         """Crée des gradients pour les réseaux neuronaux"""
         # Gradient linéaire pour les connexions
         neural_gradient_id = f"neuralGradient-{variant.variant_type.value}"
