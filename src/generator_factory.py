@@ -1,5 +1,4 @@
-"""
-🌙 Generator Factory Module
+"""🌙 Generator Factory Module
 Factory pattern optimisé pour la création des générateurs de logos
 """
 
@@ -17,6 +16,10 @@ from .realism_max_generator import RealismMaxLogoGenerator
 from .simple_advanced_generator import SimpleAdvancedLogoGenerator
 from .ultimate_generator import UltimateLogoGenerator
 from .ultra_max_generator import UltraMaxLogoGenerator
+
+# PRÉPARATION INTÉGRATION FUTURE BBIA
+# Décommenter quand /Users/athalia/Desktop/logo bbia/bbia_branding/ sera déplacé dans /Volumes/T7/bbia-branding/
+# from .bbia_branding_generator import BBIABrandingGenerator
 
 
 class LogoGeneratorFactory:
@@ -38,6 +41,8 @@ class LogoGeneratorFactory:
         "ai": AILogoGenerator,  # 🤖 NOUVEAU : Générateur IA avec Stable Diffusion
         "cosmic": CosmicLogoGenerator,  # 🌌 NOUVEAU : Générateur COSMIQUE avec sphères lumineuses
         "hyper_ai": HyperAIGenerator,  # 🧠 NOUVEAU : Générateur HYPER-IA avec ComfyUI + SDXL + ControlNet
+        # PRÉPARATION INTÉGRATION FUTURE BBIA
+        # "bbia": BBIABrandingGenerator,  # 🤖 PRÉPARÉ : Générateur BBIA (à activer quand déplacé dans T7)
     }
 
     @classmethod
@@ -47,8 +52,7 @@ class LogoGeneratorFactory:
         output_dir: Optional[Path] = None,
         use_cache: bool = True,
     ) -> ArkaliaLunaLogo:
-        """
-        Crée un générateur de logo avec optimisations de performance
+        """Crée un générateur de logo avec optimisations de performance
 
         Args:
             generator_type: Type de générateur à créer
@@ -57,12 +61,13 @@ class LogoGeneratorFactory:
 
         Returns:
             Instance du générateur configuré
+
         """
         # Validation du type de générateur
         if generator_type not in cls.GENERATOR_TYPES:
             raise ValueError(
                 f"Type de générateur '{generator_type}' non reconnu. "
-                f"Types disponibles: {list(cls.GENERATOR_TYPES.keys())}"
+                f"Types disponibles: {list(cls.GENERATOR_TYPES.keys())}",
             )
 
         # Clé de cache unique
@@ -130,6 +135,11 @@ class LogoGeneratorFactory:
                 "name": "Hyper AI",
                 "description": "🧠 Générateur HYPER-IA avec ComfyUI + SDXL + ControlNet - INTELLIGENCE EXTRÊME",
             },
+            # PRÉPARATION INTÉGRATION FUTURE BBIA
+            # "bbia": {
+            #     "name": "BBIA Branding",
+            #     "description": "🤖 Générateur BBIA - Automatisation branding (à activer quand déplacé dans T7)",
+            # },
         }
 
     @classmethod
@@ -148,7 +158,8 @@ class LogoGeneratorFactory:
 
     @classmethod
     def create_all_generators(
-        cls, output_dir: Optional[Path] = None
+        cls,
+        output_dir: Optional[Path] = None,
     ) -> Dict[str, ArkaliaLunaLogo]:
         """Crée tous les types de générateurs disponibles avec optimisations"""
         generators = {}
@@ -188,7 +199,8 @@ class LogoGeneratorFactory:
                 if hasattr(generator, f"generate_{generator_type}_logo"):
                     method_name = f"generate_{generator_type}_logo"
                 elif hasattr(
-                    generator, f"generate_{generator_type.replace('_', '')}_logo"
+                    generator,
+                    f"generate_{generator_type.replace('_', '')}_logo",
                 ):
                     method_name = f"generate_{generator_type.replace('_', '')}_logo"
                 else:
@@ -209,7 +221,8 @@ class LogoGeneratorFactory:
 
 # Fonction utilitaire pour création rapide
 def create_logo_generator(
-    generator_type: str = "default", output_dir: Optional[Path] = None
+    generator_type: str = "default",
+    output_dir: Optional[Path] = None,
 ) -> ArkaliaLunaLogo:
     """Fonction utilitaire pour créer rapidement un générateur"""
     return LogoGeneratorFactory.create_generator(generator_type, output_dir)

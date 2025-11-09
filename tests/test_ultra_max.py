@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
-"""
-🌙 Test du système ULTRA-MAX Arkalia-LUNA Logo
+"""🌙 Test du système ULTRA-MAX Arkalia-LUNA Logo
 Teste la génération de logos ULTRA-MAX avec effets EXCEPTIONNELS
 """
 

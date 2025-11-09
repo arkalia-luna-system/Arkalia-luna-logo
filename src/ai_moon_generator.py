@@ -1,5 +1,4 @@
-"""
-🌙 AI Moon Generator Module
+"""🌙 AI Moon Generator Module
 Générateur de logos LUNE IA ultra-réaliste
 """
 
@@ -36,7 +35,7 @@ class AIMoonLogoGenerator(ArkaliaLunaLogo):
         try:
             self.logger.info(
                 f"🌙 LUNE IA : Génération du logo '{variant_name}' "
-                f"en taille {size}x{size}"
+                f"en taille {size}x{size}",
             )
 
             # Validation de la variante
@@ -56,7 +55,7 @@ class AIMoonLogoGenerator(ArkaliaLunaLogo):
 
         except Exception as e:
             self.logger.error(
-                f"❌ Erreur lors de la génération LUNE IA '{variant_name}': {e}"
+                f"❌ Erreur lors de la génération LUNE IA '{variant_name}': {e}",
             )
             raise
 
@@ -65,7 +64,7 @@ class AIMoonLogoGenerator(ArkaliaLunaLogo):
         try:
             self.logger.info(
                 f"🌙 LUNE IA : Génération de toutes les variantes "
-                f"en taille {size}x{size}"
+                f"en taille {size}x{size}",
             )
 
             generated_files = []
@@ -82,7 +81,7 @@ class AIMoonLogoGenerator(ArkaliaLunaLogo):
 
             self.logger.info(
                 f"🎉 Génération LUNE IA terminée : "
-                f"{len(generated_files)}/{len(variants)} logos créés"
+                f"{len(generated_files)}/{len(variants)} logos créés",
             )
             return generated_files
 
@@ -91,13 +90,16 @@ class AIMoonLogoGenerator(ArkaliaLunaLogo):
             raise
 
     def create_ai_moon_favicon(
-        self, variant_name: str, size: int = 32, ai_enhanced: bool = True
+        self,
+        variant_name: str,
+        size: int = 32,
+        ai_enhanced: bool = True,
     ) -> Path:
         """Crée un favicon LUNE IA avec effets IA"""
         try:
             self.logger.info(
                 f"🌙 LUNE IA : Création favicon '{variant_name}' "
-                f"effets IA: {ai_enhanced}"
+                f"effets IA: {ai_enhanced}",
             )
 
             # Utilise la méthode parent mais avec le builder AI Moon
@@ -105,7 +107,7 @@ class AIMoonLogoGenerator(ArkaliaLunaLogo):
 
         except Exception as e:
             self.logger.error(
-                f"❌ Erreur création favicon LUNE IA '{variant_name}': {e}"
+                f"❌ Erreur création favicon LUNE IA '{variant_name}': {e}",
             )
             raise
 
@@ -129,7 +131,7 @@ class AIMoonLogoGenerator(ArkaliaLunaLogo):
         """Active/désactive les effets organiques"""
         self.organic_effects = enabled
         self.logger.info(
-            f"🌱 Effets organiques: {'activés' if enabled else 'désactivés'}"
+            f"🌱 Effets organiques: {'activés' if enabled else 'désactivés'}",
         )
 
     def get_ai_stats(self) -> Dict[str, Any]:

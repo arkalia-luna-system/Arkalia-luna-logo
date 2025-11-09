@@ -1,5 +1,4 @@
-"""
-Tests de couverture pour améliorer la couverture de cli.py.
+"""Tests de couverture pour améliorer la couverture de cli.py.
 Objectif : 31% → 70%+
 """
 

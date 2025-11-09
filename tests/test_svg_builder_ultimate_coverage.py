@@ -1,5 +1,4 @@
-"""
-Tests de couverture pour améliorer la couverture de svg_builder_ultimate.py.
+"""Tests de couverture pour améliorer la couverture de svg_builder_ultimate.py.
 Objectif : 15% → 70%+
 Tests basés sur l'analyse du vrai code pour performance et précision.
 """
@@ -32,7 +31,10 @@ class TestUltimateSVGBuilderCoverage:
 
         # Créer des couleurs par défaut
         colors = ColorScheme(
-            primary="#4A90E2", secondary="#7B68EE", accent="#FF6B6B", glow="#FFD700"
+            primary="#4A90E2",
+            secondary="#7B68EE",
+            accent="#FF6B6B",
+            glow="#FFD700",
         )
 
         return LogoVariant(
@@ -82,7 +84,9 @@ class TestUltimateSVGBuilderCoverage:
         assert drawing.attribs["viewBox"] == "0 0 300 300"
 
     def test_ultimate_builder_add_ultimate_definitions(
-        self, ultimate_builder, mock_variant
+        self,
+        ultimate_builder,
+        mock_variant,
     ):
         """Test de l'ajout des définitions ultimate."""
         drawing = ultimate_builder.create_drawing(200)
@@ -209,7 +213,10 @@ class TestUltimateSVGBuilderCoverage:
         from src.variants import ColorScheme
 
         colors = ColorScheme(
-            primary="#4A90E2", secondary="#7B68EE", accent="#FF6B6B", glow="#FFD700"
+            primary="#4A90E2",
+            secondary="#7B68EE",
+            accent="#FF6B6B",
+            glow="#FFD700",
         )
 
         mock_variant = MagicMock()
@@ -219,7 +226,9 @@ class TestUltimateSVGBuilderCoverage:
         mock_variant.animation_speed = 1.0
 
         with patch.object(
-            ultimate_builder.variants_manager, "get_variant", return_value=mock_variant
+            ultimate_builder.variants_manager,
+            "get_variant",
+            return_value=mock_variant,
         ):
             # Test de la construction
             drawing = ultimate_builder.build_logo("serenity", 200)
@@ -233,7 +242,10 @@ class TestUltimateSVGBuilderCoverage:
         from src.variants import ColorScheme
 
         colors = ColorScheme(
-            primary="#4A90E2", secondary="#7B68EE", accent="#FF6B6B", glow="#FFD700"
+            primary="#4A90E2",
+            secondary="#7B68EE",
+            accent="#FF6B6B",
+            glow="#FFD700",
         )
 
         mock_variant = MagicMock()
@@ -243,7 +255,9 @@ class TestUltimateSVGBuilderCoverage:
         mock_variant.animation_speed = 1.0
 
         with patch.object(
-            ultimate_builder.variants_manager, "get_variant", return_value=mock_variant
+            ultimate_builder.variants_manager,
+            "get_variant",
+            return_value=mock_variant,
         ):
             # Test de l'alias
             drawing = ultimate_builder.build_ultimate_logo("serenity", 200)
@@ -265,13 +279,17 @@ class TestUltimateSVGBuilderCoverage:
                 # Test de la sauvegarde
                 output_path = tmp_path / "test-logo.svg"
                 result_path = ultimate_builder.save_ultimate_logo(
-                    "serenity", 200, output_path
+                    "serenity",
+                    200,
+                    output_path,
                 )
 
                 assert result_path == output_path
 
     def test_ultimate_builder_save_ultimate_logo_with_fallback(
-        self, ultimate_builder, tmp_path
+        self,
+        ultimate_builder,
+        tmp_path,
     ):
         """Test de la sauvegarde avec fallback en cas d'erreur."""
         # Mock de la variante et de build_logo
@@ -288,7 +306,9 @@ class TestUltimateSVGBuilderCoverage:
                 # Test de la sauvegarde avec fallback
                 output_path = tmp_path / "test-logo.svg"
                 result_path = ultimate_builder.save_ultimate_logo(
-                    "serenity", 200, output_path
+                    "serenity",
+                    200,
+                    output_path,
                 )
 
                 assert result_path == output_path
@@ -340,7 +360,9 @@ class TestUltimateSVGBuilderCoverage:
             assert True
 
     def test_ultimate_builder_performance_optimization(
-        self, ultimate_builder, mock_variant
+        self,
+        ultimate_builder,
+        mock_variant,
     ):
         """Test des optimisations de performance."""
         import time

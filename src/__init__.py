@@ -1,7 +1,7 @@
-"""
-🌙 Arkalia-LUNA Logo Generator
+"""🌙 Arkalia-LUNA Logo Generator.
+
 Package Python pour la génération de logos techno-mystiques
-avec optimisations de performance
+avec optimisations de performance.
 """
 
 __version__ = "2.0.0"  # Version majeure avec optimisations
@@ -36,32 +36,30 @@ from .variants import ColorScheme, LogoVariant, LogoVariants, VariantType
 # Configuration du package avec toutes les fonctionnalités
 __all__ = [
     # Classes principales
-    "ArkaliaLunaLogo",
-    "LogoVariant",
-    "LogoVariants",
-    "VariantType",
-    "ColorScheme",
-    # Générateurs spécialisés
-    "RealismMaxLogoGenerator",
-    "UltraMaxLogoGenerator",
-    "SimpleAdvancedLogoGenerator",
-    "DashboardLogoGenerator",
-    "AIMoonLogoGenerator",
     "AdvancedArkaliaLunaLogo",
-    "UltimateLogoGenerator",  # 🌟 NOUVEAU : Générateur ULTIME cosmique
-    # Builders SVG
-    "SVGBuilder",
-    "RealismMaxSVGBuilder",
-    "UltraMaxSVGBuilder",
-    "SimpleAdvancedSVGBuilder",
-    "DashboardSVGBuilder",
+    "AIMoonLogoGenerator",
     "AIMoonSVGBuilder",
     "AdvancedSVGBuilder",
+    "ArkaliaLunaLogo",
+    "ColorScheme",
+    "DashboardLogoGenerator",
+    "DashboardSVGBuilder",
+    "LogoVariant",
+    "LogoVariants",
+    "RealismMaxLogoGenerator",
+    "RealismMaxSVGBuilder",
+    "SimpleAdvancedLogoGenerator",
+    "SimpleAdvancedSVGBuilder",
+    "SVGBuilder",
+    "UltimateLogoGenerator",  # 🌟 NOUVEAU : Générateur ULTIME cosmique
     "UltimateSVGBuilder",  # 🌟 NOUVEAU : Builder ULTIME cosmique
+    "UltraMaxLogoGenerator",
+    "UltraMaxSVGBuilder",
+    "VariantType",
     # Factory et utilitaires
     "LogoGeneratorFactory",
-    "create_logo_generator",
     "benchmark_all_generators",
+    "create_logo_generator",
     # CLI
     "cli",
 ]

@@ -1,5 +1,4 @@
-"""
-🌙 Logo Variants Module
+"""🌙 Logo Variants Module
 Définition des variantes émotionnelles du logo Arkalia-LUNA
 """
 
@@ -214,7 +213,7 @@ class LogoVariants:
             available = list(self._variants.keys())
             raise ValueError(
                 f"Variante '{variant_name}' non reconnue. "
-                f"Variantes disponibles: {available}"
+                f"Variantes disponibles: {available}",
             )
         return self._variants[variant_name]
 

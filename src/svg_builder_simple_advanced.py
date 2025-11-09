@@ -1,5 +1,4 @@
-"""
-🌙 Simple Advanced SVG Builder Module
+"""🌙 Simple Advanced SVG Builder Module
 Construction des logos SVG Arkalia-LUNA simple-advanced
 """
 
@@ -20,7 +19,8 @@ except ImportError:
 
 class SimpleAdvancedSVGBuilder(SVGBuilder):
     """Constructeur SVG avancé mais simplifié pour des logos
-    Arkalia-LUNA impressionnants"""
+    Arkalia-LUNA impressionnants
+    """
 
     def __init__(self, variants_manager: LogoVariants):
         self.variants_manager = variants_manager
@@ -30,11 +30,13 @@ class SimpleAdvancedSVGBuilder(SVGBuilder):
         """Valide que svgwrite est correctement installé"""
         if not hasattr(svgwrite, "Drawing"):
             raise ImportError(
-                "Module svgwrite requis. Installez-le avec: pip install svgwrite"
+                "Module svgwrite requis. Installez-le avec: pip install svgwrite",
             )
 
     def create_drawing(
-        self, size: int, viewbox: Optional[Tuple[int, int, int, int]] = None
+        self,
+        size: int,
+        viewbox: Optional[Tuple[int, int, int, int]] = None,
     ) -> svgwrite.Drawing:
         """Crée un nouveau dessin SVG avec configuration avancée"""
         if viewbox is None:
@@ -51,7 +53,9 @@ class SimpleAdvancedSVGBuilder(SVGBuilder):
         return drawing
 
     def add_advanced_definitions(
-        self, drawing: svgwrite.Drawing, variant: LogoVariant
+        self,
+        drawing: svgwrite.Drawing,
+        variant: LogoVariant,
     ) -> None:
         """Ajoute des définitions avancées (gradients, filtres)"""
         defs = drawing.defs
@@ -71,7 +75,10 @@ class SimpleAdvancedSVGBuilder(SVGBuilder):
 
         # Gradient principal avec 6 stops pour une profondeur maximale
         gradient = svgwrite.gradients.RadialGradient(
-            id=gradient_id, cx="50%", cy="50%", r="50%"
+            id=gradient_id,
+            cx="50%",
+            cy="50%",
+            r="50%",
         )
 
         # Stops multiples pour un effet holographique
@@ -97,15 +104,22 @@ class SimpleAdvancedSVGBuilder(SVGBuilder):
         # Gradient secondaire pour l'effet de bordure
         border_gradient_id = f"borderGradient-{variant.variant_type.value}"
         border_gradient = svgwrite.gradients.RadialGradient(
-            id=border_gradient_id, cx="50%", cy="50%", r="50%"
+            id=border_gradient_id,
+            cx="50%",
+            cy="50%",
+            r="50%",
         )
 
         # Stops du gradient de bordure
         border_gradient.add_stop_color(
-            offset="0%", color=variant.colors.glow, opacity=0.8
+            offset="0%",
+            color=variant.colors.glow,
+            opacity=0.8,
         )
         border_gradient.add_stop_color(
-            offset="100%", color=variant.colors.primary, opacity=0.2
+            offset="100%",
+            color=variant.colors.primary,
+            opacity=0.2,
         )
 
         defs.add(border_gradient)
@@ -118,7 +132,7 @@ class SimpleAdvancedSVGBuilder(SVGBuilder):
 
         # Effet de flou gaussien principal
         fe_gaussian_blur_main = svgwrite.filters._feGaussianBlur(
-            stdDeviation=str(variant.glow_intensity * 4)
+            stdDeviation=str(variant.glow_intensity * 4),
         )
         main_glow.add(fe_gaussian_blur_main)
 
@@ -144,7 +158,11 @@ class SimpleAdvancedSVGBuilder(SVGBuilder):
         # Gradient linéaire pour les connexions
         neural_gradient_id = f"neuralGradient-{variant.variant_type.value}"
         neural_gradient = svgwrite.gradients.LinearGradient(
-            id=neural_gradient_id, x1="0%", y1="0%", x2="100%", y2="100%"
+            id=neural_gradient_id,
+            x1="0%",
+            y1="0%",
+            x2="100%",
+            y2="100%",
         )
 
         neural_gradient.add_stop_color(offset="0%", color=variant.colors.accent)
@@ -154,7 +172,10 @@ class SimpleAdvancedSVGBuilder(SVGBuilder):
         defs.add(neural_gradient)
 
     def add_advanced_halo(
-        self, drawing: svgwrite.Drawing, variant: LogoVariant, size: int
+        self,
+        drawing: svgwrite.Drawing,
+        variant: LogoVariant,
+        size: int,
     ) -> None:
         """Ajoute un halo avancé avec effets multiples"""
         center = size // 2
@@ -180,7 +201,7 @@ class SimpleAdvancedSVGBuilder(SVGBuilder):
                 f"{variant.glow_intensity}",
                 dur=f"{4 / variant.animation_speed}s",
                 repeatCount="indefinite",
-            )
+            ),
         )
 
         drawing.add(main_halo)
@@ -203,13 +224,16 @@ class SimpleAdvancedSVGBuilder(SVGBuilder):
                 values=f"{radius + 5};{radius + 15};{radius + 5}",
                 dur=f"{3 / variant.animation_speed}s",
                 repeatCount="indefinite",
-            )
+            ),
         )
 
         drawing.add(secondary_halo)
 
     def add_advanced_moon_core(
-        self, drawing: svgwrite.Drawing, variant: LogoVariant, size: int
+        self,
+        drawing: svgwrite.Drawing,
+        variant: LogoVariant,
+        size: int,
     ) -> None:
         """Ajoute un noyau lunaire avancé avec effets multiples"""
         center = size // 2
@@ -230,7 +254,7 @@ class SimpleAdvancedSVGBuilder(SVGBuilder):
                 values=f"{radius};{radius * 1.08};{radius}",
                 dur=f"{2.5 / variant.animation_speed}s",
                 repeatCount="indefinite",
-            )
+            ),
         )
 
         drawing.add(main_moon)
@@ -249,7 +273,10 @@ class SimpleAdvancedSVGBuilder(SVGBuilder):
         drawing.add(moon_border)
 
     def add_advanced_neural_network(
-        self, drawing: svgwrite.Drawing, variant: LogoVariant, size: int
+        self,
+        drawing: svgwrite.Drawing,
+        variant: LogoVariant,
+        size: int,
     ) -> None:
         """Ajoute un réseau neuronal avancé avec connexions complexes"""
         center = size // 2
@@ -277,7 +304,7 @@ class SimpleAdvancedSVGBuilder(SVGBuilder):
                     dur=f"{5 / variant.animation_speed}s",
                     begin=f"{i * 0.3}s",
                     repeatCount="indefinite",
-                )
+                ),
             )
 
             # Animation d'opacité
@@ -288,7 +315,7 @@ class SimpleAdvancedSVGBuilder(SVGBuilder):
                     dur=f"{4 / variant.animation_speed}s",
                     begin=f"{i * 0.2}s",
                     repeatCount="indefinite",
-                )
+                ),
             )
 
             network_group.add(path)
@@ -305,35 +332,35 @@ class SimpleAdvancedSVGBuilder(SVGBuilder):
         # Réseau principal horizontal
         paths.append(
             f"M{center - size // 3} {center} Q{center} {center - size // 3} "
-            f"{center + size // 3} {center}"
+            f"{center + size // 3} {center}",
         )
         paths.append(
             f"M{center - size // 3 + 10} {center - 10} Q{center} "
-            f"{center - size // 3 - 10} {center + size // 3 - 10} {center - 10}"
+            f"{center - size // 3 - 10} {center + size // 3 - 10} {center - 10}",
         )
         paths.append(
             f"M{center - size // 3 + 20} {center + 10} Q{center} "
-            f"{center - size // 3 + 10} {center + size // 3 - 20} {center + 10}"
+            f"{center - size // 3 + 10} {center + size // 3 - 20} {center + 10}",
         )
 
         # Réseau diagonal
         paths.append(
             f"M{center - size // 4} {center - size // 4} Q{center} {center} "
-            f"{center + size // 4} {center - size // 4}"
+            f"{center + size // 4} {center - size // 4}",
         )
         paths.append(
             f"M{center - size // 4} {center + size // 4} Q{center} {center} "
-            f"{center + size // 4} {center + size // 4}"
+            f"{center + size // 4} {center + size // 4}",
         )
 
         # Réseau vertical
         paths.append(
             f"M{center} {center - size // 3} Q{center + size // 3} {center} "
-            f"{center} {center + size // 3}"
+            f"{center} {center + size // 3}",
         )
         paths.append(
             f"M{center - 10} {center - size // 3 + 10} Q{center + size // 3 - 10} "
-            f"{center} {center - 10} {center + size // 3 - 10}"
+            f"{center} {center - 10} {center + size // 3 - 10}",
         )
 
         # Réseau circulaire
@@ -350,7 +377,11 @@ class SimpleAdvancedSVGBuilder(SVGBuilder):
         return paths
 
     def _add_neural_nodes(
-        self, drawing: svgwrite.Drawing, variant: LogoVariant, center: int, size: int
+        self,
+        drawing: svgwrite.Drawing,
+        variant: LogoVariant,
+        center: int,
+        size: int,
     ) -> None:
         """Ajoute des nœuds neuronaux lumineux"""
         # Nœuds principaux
@@ -382,13 +413,16 @@ class SimpleAdvancedSVGBuilder(SVGBuilder):
                     dur=f"{2 / variant.animation_speed}s",
                     begin=f"{i * 0.2}s",
                     repeatCount="indefinite",
-                )
+                ),
             )
 
             drawing.add(node)
 
     def add_advanced_lambda_core(
-        self, drawing: svgwrite.Drawing, variant: LogoVariant, size: int
+        self,
+        drawing: svgwrite.Drawing,
+        variant: LogoVariant,
+        size: int,
     ) -> None:
         """Ajoute un cœur Λ avancé avec effets cristallins"""
         center = size // 2
@@ -409,7 +443,7 @@ class SimpleAdvancedSVGBuilder(SVGBuilder):
                 values="0.9;1.0;0.9",
                 dur=f"{2 / variant.animation_speed}s",
                 repeatCount="indefinite",
-            )
+            ),
         )
 
         lambda_group.add(lambda_shape)
@@ -430,7 +464,7 @@ class SimpleAdvancedSVGBuilder(SVGBuilder):
                 values="8;12;8",
                 dur=f"{2.5 / variant.animation_speed}s",
                 repeatCount="indefinite",
-            )
+            ),
         )
 
         lambda_group.add(core_glow)
@@ -445,7 +479,10 @@ class SimpleAdvancedSVGBuilder(SVGBuilder):
             y = center - 8 + 20 * math.sin(angle)
 
             ray = svgwrite.shapes.Circle(
-                center=(x, y), r=2, fill=variant.colors.glow, opacity=0.6
+                center=(x, y),
+                r=2,
+                fill=variant.colors.glow,
+                opacity=0.6,
             )
 
             # Animation de pulsation
@@ -456,7 +493,7 @@ class SimpleAdvancedSVGBuilder(SVGBuilder):
                     dur=f"{3 / variant.animation_speed}s",
                     begin=f"{i * 0.3}s",
                     repeatCount="indefinite",
-                )
+                ),
             )
 
             light_effects.add(ray)
@@ -465,7 +502,10 @@ class SimpleAdvancedSVGBuilder(SVGBuilder):
         drawing.add(lambda_group)
 
     def add_advanced_particle_effects(
-        self, drawing: svgwrite.Drawing, variant: LogoVariant, size: int
+        self,
+        drawing: svgwrite.Drawing,
+        variant: LogoVariant,
+        size: int,
     ) -> None:
         """Ajoute des effets de particules avancés"""
         center = size // 2
@@ -493,7 +533,7 @@ class SimpleAdvancedSVGBuilder(SVGBuilder):
                     dur=f"{2.5 / variant.animation_speed}s",
                     begin=f"{i * 0.2}s",
                     repeatCount="indefinite",
-                )
+                ),
             )
 
             # Animation de mouvement orbital
@@ -504,7 +544,7 @@ class SimpleAdvancedSVGBuilder(SVGBuilder):
                     dur=f"{4 / variant.animation_speed}s",
                     begin=f"{i * 0.1}s",
                     repeatCount="indefinite",
-                )
+                ),
             )
 
             particle.add(
@@ -514,7 +554,7 @@ class SimpleAdvancedSVGBuilder(SVGBuilder):
                     dur=f"{4 / variant.animation_speed}s",
                     begin=f"{i * 0.1}s",
                     repeatCount="indefinite",
-                )
+                ),
             )
 
             drawing.add(particle)
@@ -539,13 +579,18 @@ class SimpleAdvancedSVGBuilder(SVGBuilder):
         return drawing
 
     def build_advanced_logo(
-        self, variant_name: str, size: int = 200
+        self,
+        variant_name: str,
+        size: int = 200,
     ) -> svgwrite.Drawing:
         """Construit le logo avancé pour une variante donnée (alias pour compatibilité)"""
         return self.build_logo(variant_name, size)
 
     def save_advanced_logo(
-        self, variant_name: str, size: int, output_path: Path
+        self,
+        variant_name: str,
+        size: int,
+        output_path: Path,
     ) -> Path:
         """Sauvegarde le logo avancé dans un fichier"""
         drawing = self.build_advanced_logo(variant_name, size)

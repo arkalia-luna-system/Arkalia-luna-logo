@@ -1,5 +1,4 @@
-"""
-🤖 AI Logo Generator Module
+"""🤖 AI Logo Generator Module
 Générateur de logos utilisant Stable Diffusion local
 """
 
@@ -42,7 +41,7 @@ class AILogoGenerator(ArkaliaLunaLogo):
         """Génère un logo IA pour une variante donnée"""
         try:
             self.logger.info(
-                f"🤖 Génération IA du logo '{variant_name}' en taille {size}x{size}"
+                f"🤖 Génération IA du logo '{variant_name}' en taille {size}x{size}",
             )
 
             # Validation de la variante
@@ -61,7 +60,7 @@ class AILogoGenerator(ArkaliaLunaLogo):
         try:
             if not StableDiffusionPipeline:
                 raise ImportError(
-                    "Diffusers non installé. Installez avec: pip install diffusers torch"
+                    "Diffusers non installé. Installez avec: pip install diffusers torch",
                 )
 
             self.logger.info(f"🤖 Chargement du modèle IA: {self.model_id}")
@@ -94,7 +93,6 @@ class AILogoGenerator(ArkaliaLunaLogo):
 
     def _create_prompt(self, variant_name: str, generator_style: str = "ai") -> str:
         """Crée un prompt spécialisé pour la variante émotionnelle"""
-
         # Base du prompt optimisé pour les logos
         base_prompt = "professional logo design, minimalist, clean, high contrast, vector art style, centered composition"
 
@@ -130,7 +128,10 @@ class AILogoGenerator(ArkaliaLunaLogo):
         return final_prompt
 
     def generate_ai_logo(
-        self, variant_name: str, size: int = 200, generator_style: str = "ai"
+        self,
+        variant_name: str,
+        size: int = 200,
+        generator_style: str = "ai",
     ) -> Path:
         """Génère un logo IA pour une variante donnée"""
         try:
@@ -138,7 +139,7 @@ class AILogoGenerator(ArkaliaLunaLogo):
                 raise RuntimeError("Pipeline IA non initialisé")
 
             self.logger.info(
-                f"🤖 Génération IA du logo '{variant_name}' style '{generator_style}' en taille {size}x{size}"
+                f"🤖 Génération IA du logo '{variant_name}' style '{generator_style}' en taille {size}x{size}",
             )
 
             # Validation de la variante
@@ -162,7 +163,7 @@ class AILogoGenerator(ArkaliaLunaLogo):
                     num_inference_steps=steps,  # Optimisé selon la taille
                     guidance_scale=guidance,  # Optimisé selon la taille
                     generator=torch.Generator(device=self.device).manual_seed(
-                        42
+                        42,
                     ),  # Reproducible
                     negative_prompt="blurry, low quality, distorted, ugly, bad anatomy, text, words, letters, watermark, signature",  # Éviter les défauts
                 ).images[0]
@@ -197,12 +198,14 @@ class AILogoGenerator(ArkaliaLunaLogo):
         self.cleanup_resources()
 
     def generate_all_ai_variants(
-        self, size: int = 200, generator_style: str = "ai"
+        self,
+        size: int = 200,
+        generator_style: str = "ai",
     ) -> List[Path]:
         """Génère toutes les variantes en mode IA"""
         try:
             self.logger.info(
-                f"🤖 Génération IA de toutes les variantes style '{generator_style}' en taille {size}x{size}"
+                f"🤖 Génération IA de toutes les variantes style '{generator_style}' en taille {size}x{size}",
             )
 
             generated_files = []
@@ -218,7 +221,7 @@ class AILogoGenerator(ArkaliaLunaLogo):
                     continue
 
             self.logger.info(
-                f"🎉 Génération IA terminée : {len(generated_files)}/{len(variants)} logos créés"
+                f"🎉 Génération IA terminée : {len(generated_files)}/{len(variants)} logos créés",
             )
             return generated_files
 

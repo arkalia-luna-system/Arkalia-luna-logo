@@ -1,6 +1,4 @@
-"""
-🧪 Tests pour le module variants
-"""
+"""🧪 Tests pour le module variants"""
 
 import sys
 from pathlib import Path
@@ -19,7 +17,10 @@ class TestColorScheme:
     def test_color_scheme_creation(self):
         """Test de création d'un schéma de couleurs"""
         colors = ColorScheme(
-            primary="#1e3a8a", secondary="#3b82f6", accent="#06b6d4", glow="#60a5fa"
+            primary="#1e3a8a",
+            secondary="#3b82f6",
+            accent="#06b6d4",
+            glow="#60a5fa",
         )
 
         assert colors.primary == "#1e3a8a"
@@ -30,7 +31,10 @@ class TestColorScheme:
     def test_color_scheme_to_dict(self):
         """Test de conversion en dictionnaire"""
         colors = ColorScheme(
-            primary="#1e3a8a", secondary="#3b82f6", accent="#06b6d4", glow="#60a5fa"
+            primary="#1e3a8a",
+            secondary="#3b82f6",
+            accent="#06b6d4",
+            glow="#60a5fa",
         )
 
         color_dict = colors.to_dict()
@@ -47,7 +51,10 @@ class TestLogoVariant:
     def test_logo_variant_creation(self):
         """Test de création d'une variante de logo"""
         colors = ColorScheme(
-            primary="#1e3a8a", secondary="#3b82f6", accent="#06b6d4", glow="#60a5fa"
+            primary="#1e3a8a",
+            secondary="#3b82f6",
+            accent="#06b6d4",
+            glow="#60a5fa",
         )
 
         variant = LogoVariant(
@@ -67,7 +74,10 @@ class TestLogoVariant:
     def test_logo_variant_to_dict(self):
         """Test de conversion en dictionnaire"""
         colors = ColorScheme(
-            primary="#1e3a8a", secondary="#3b82f6", accent="#06b6d4", glow="#60a5fa"
+            primary="#1e3a8a",
+            secondary="#3b82f6",
+            accent="#06b6d4",
+            glow="#60a5fa",
         )
 
         variant = LogoVariant(

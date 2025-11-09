@@ -1,5 +1,4 @@
-"""
-Tests pour améliorer la couverture du module generator_factory.py
+"""Tests pour améliorer la couverture du module generator_factory.py
 Objectif : 57% → 80% de couverture
 """
 
@@ -75,7 +74,7 @@ class TestLogoGeneratorFactory:
     def test_create_all_generators_success(self, temp_output_dir):
         """Test de création de tous les générateurs avec succès"""
         with patch(
-            "src.generator_factory.LogoGeneratorFactory.create_generator"
+            "src.generator_factory.LogoGeneratorFactory.create_generator",
         ) as mock_create:
             mock_create.return_value = Mock(spec=ArkaliaLunaLogo)
 
@@ -91,7 +90,7 @@ class TestLogoGeneratorFactory:
     def test_create_all_generators_with_errors(self, temp_output_dir):
         """Test de création de tous les générateurs avec erreurs"""
         with patch(
-            "src.generator_factory.LogoGeneratorFactory.create_generator"
+            "src.generator_factory.LogoGeneratorFactory.create_generator",
         ) as mock_create:
             # Simuler des erreurs pour certains générateurs
             def side_effect(generator_type, output_dir, use_cache=False):
@@ -113,7 +112,7 @@ class TestLogoGeneratorFactory:
     def test_benchmark_generators_success(self, temp_output_dir):
         """Test de benchmark des générateurs avec succès"""
         with patch(
-            "src.generator_factory.LogoGeneratorFactory.create_all_generators"
+            "src.generator_factory.LogoGeneratorFactory.create_all_generators",
         ) as mock_create_all:
             # Créer des générateurs mock avec méthodes de génération
             mock_generators = {}
@@ -125,7 +124,9 @@ class TestLogoGeneratorFactory:
             mock_create_all.return_value = mock_generators
 
             results = LogoGeneratorFactory.benchmark_generators(
-                temp_output_dir, "serenity", 200
+                temp_output_dir,
+                "serenity",
+                200,
             )
 
             # Vérifier que les résultats contiennent des temps
@@ -137,7 +138,7 @@ class TestLogoGeneratorFactory:
     def test_benchmark_generators_with_errors(self, temp_output_dir):
         """Test de benchmark des générateurs avec erreurs"""
         with patch(
-            "src.generator_factory.LogoGeneratorFactory.create_all_generators"
+            "src.generator_factory.LogoGeneratorFactory.create_all_generators",
         ) as mock_create_all:
             # Créer des générateurs mock avec erreurs
             mock_generators = {}
@@ -145,7 +146,7 @@ class TestLogoGeneratorFactory:
                 mock_gen = Mock(spec=ArkaliaLunaLogo)
                 if generator_type == "realism":
                     mock_gen.generate_svg_logo.side_effect = Exception(
-                        "Erreur de génération"
+                        "Erreur de génération",
                     )
                 else:
                     mock_gen.generate_svg_logo.return_value = Path("test.svg")
@@ -154,7 +155,9 @@ class TestLogoGeneratorFactory:
             mock_create_all.return_value = mock_generators
 
             results = LogoGeneratorFactory.benchmark_generators(
-                temp_output_dir, "serenity", 200
+                temp_output_dir,
+                "serenity",
+                200,
             )
 
             # Vérifier que les erreurs sont gérées
@@ -166,7 +169,7 @@ class TestLogoGeneratorFactory:
     def test_benchmark_generators_method_detection(self, temp_output_dir):
         """Test de détection automatique des méthodes de génération"""
         with patch(
-            "src.generator_factory.LogoGeneratorFactory.create_all_generators"
+            "src.generator_factory.LogoGeneratorFactory.create_all_generators",
         ) as mock_create_all:
             # Créer un générateur avec méthode spécifique
             mock_gen = Mock(spec=ArkaliaLunaLogo)
@@ -177,7 +180,9 @@ class TestLogoGeneratorFactory:
             mock_create_all.return_value = mock_generators
 
             results = LogoGeneratorFactory.benchmark_generators(
-                temp_output_dir, "serenity", 200
+                temp_output_dir,
+                "serenity",
+                200,
             )
 
             assert "realism" in results
@@ -186,7 +191,7 @@ class TestLogoGeneratorFactory:
     def test_benchmark_generators_fallback_method(self, temp_output_dir):
         """Test de fallback sur la méthode standard"""
         with patch(
-            "src.generator_factory.LogoGeneratorFactory.create_all_generators"
+            "src.generator_factory.LogoGeneratorFactory.create_all_generators",
         ) as mock_create_all:
             # Créer un générateur sans méthode spécifique
             mock_gen = Mock(spec=ArkaliaLunaLogo)
@@ -196,7 +201,9 @@ class TestLogoGeneratorFactory:
             mock_create_all.return_value = mock_generators
 
             results = LogoGeneratorFactory.benchmark_generators(
-                temp_output_dir, "serenity", 200
+                temp_output_dir,
+                "serenity",
+                200,
             )
 
             assert "custom" in results
@@ -205,7 +212,7 @@ class TestLogoGeneratorFactory:
     def test_benchmark_generators_different_variants(self, temp_output_dir):
         """Test de benchmark avec différentes variantes"""
         with patch(
-            "src.generator_factory.LogoGeneratorFactory.create_all_generators"
+            "src.generator_factory.LogoGeneratorFactory.create_all_generators",
         ) as mock_create_all:
             mock_gen = Mock(spec=ArkaliaLunaLogo)
             mock_gen.generate_svg_logo.return_value = Path("test.svg")
@@ -217,7 +224,9 @@ class TestLogoGeneratorFactory:
             variants = ["serenity", "power", "creative"]
             for variant in variants:
                 results = LogoGeneratorFactory.benchmark_generators(
-                    temp_output_dir, variant, 200
+                    temp_output_dir,
+                    variant,
+                    200,
                 )
                 assert "default" in results
                 assert isinstance(results["default"], float)
@@ -225,7 +234,7 @@ class TestLogoGeneratorFactory:
     def test_benchmark_generators_different_sizes(self, temp_output_dir):
         """Test de benchmark avec différentes tailles"""
         with patch(
-            "src.generator_factory.LogoGeneratorFactory.create_all_generators"
+            "src.generator_factory.LogoGeneratorFactory.create_all_generators",
         ) as mock_create_all:
             mock_gen = Mock(spec=ArkaliaLunaLogo)
             mock_gen.generate_svg_logo.return_value = Path("test.svg")
@@ -237,7 +246,9 @@ class TestLogoGeneratorFactory:
             sizes = [100, 200, 500, 1000]
             for size in sizes:
                 results = LogoGeneratorFactory.benchmark_generators(
-                    temp_output_dir, "serenity", size
+                    temp_output_dir,
+                    "serenity",
+                    size,
                 )
                 assert "default" in results
                 assert isinstance(results["default"], float)
@@ -249,10 +260,14 @@ class TestLogoGeneratorFactory:
 
         # Créer un générateur avec cache
         generator1 = LogoGeneratorFactory.create_generator(
-            "default", temp_output_dir, use_cache=True
+            "default",
+            temp_output_dir,
+            use_cache=True,
         )
         generator2 = LogoGeneratorFactory.create_generator(
-            "default", temp_output_dir, use_cache=True
+            "default",
+            temp_output_dir,
+            use_cache=True,
         )
 
         # Les deux devraient être la même instance (cache)
@@ -272,10 +287,14 @@ class TestLogoGeneratorFactory:
 
         # Créer des générateurs sans cache
         generator1 = LogoGeneratorFactory.create_generator(
-            "default", temp_output_dir, use_cache=False
+            "default",
+            temp_output_dir,
+            use_cache=False,
         )
         generator2 = LogoGeneratorFactory.create_generator(
-            "default", temp_output_dir, use_cache=False
+            "default",
+            temp_output_dir,
+            use_cache=False,
         )
 
         # Les deux devraient être des instances différentes
@@ -287,7 +306,8 @@ class TestLogoGeneratorFactory:
     def test_create_generator_invalid_type(self, temp_output_dir):
         """Test de création de générateur avec type invalide"""
         with pytest.raises(
-            ValueError, match="Type de générateur 'invalid_type' non reconnu"
+            ValueError,
+            match="Type de générateur 'invalid_type' non reconnu",
         ):
             LogoGeneratorFactory.create_generator("invalid_type", temp_output_dir)
 
@@ -295,7 +315,8 @@ class TestLogoGeneratorFactory:
         """Test de création de tous les types de générateurs"""
         for generator_type in LogoGeneratorFactory.GENERATOR_TYPES:
             generator = LogoGeneratorFactory.create_generator(
-                generator_type, temp_output_dir
+                generator_type,
+                temp_output_dir,
             )
             assert generator is not None
             assert hasattr(generator, "generate_svg_logo")
@@ -361,7 +382,7 @@ class TestUtilityFunctions:
     def test_benchmark_all_generators(self, temp_output_dir):
         """Test de la fonction utilitaire benchmark_all_generators"""
         with patch(
-            "src.generator_factory.LogoGeneratorFactory.benchmark_generators"
+            "src.generator_factory.LogoGeneratorFactory.benchmark_generators",
         ) as mock_benchmark:
             mock_benchmark.return_value = {"default": 0.001, "simple_advanced": 0.002}
 
@@ -380,7 +401,7 @@ class TestUtilityFunctions:
 
         # Faire un benchmark
         with patch(
-            "src.generator_factory.LogoGeneratorFactory.benchmark_generators"
+            "src.generator_factory.LogoGeneratorFactory.benchmark_generators",
         ) as mock_benchmark:
             mock_benchmark.return_value = {"default": 0.001}
 

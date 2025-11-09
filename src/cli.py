@@ -1,5 +1,4 @@
-"""
-🌙 CLI Module pour Arkalia-LUNA Logo Generator
+"""🌙 CLI Module pour Arkalia-LUNA Logo Generator
 Interface en ligne de commande pour la génération de logos
 """
 
@@ -49,7 +48,10 @@ def print_info(message: str):
 
 @click.group()
 @click.option(
-    "--output-dir", "-o", type=click.Path(), help="Répertoire de sortie personnalisé"
+    "--output-dir",
+    "-o",
+    type=click.Path(),
+    help="Répertoire de sortie personnalisé",
 )
 @click.option("--verbose", "-v", is_flag=True, help="Mode verbeux")
 @click.pass_context
@@ -150,20 +152,21 @@ def generate(ctx, variant: str, size: int, generator: str, output: Optional[str]
     try:
         # Création du générateur spécialisé via la factory
         specialized_generator = LogoGeneratorFactory.create_generator(
-            generator_type=generator, output_dir=ctx.obj["output_dir"]
+            generator_type=generator,
+            output_dir=ctx.obj["output_dir"],
         )
 
         # Validation de la variante
         if not specialized_generator.validate_variant(variant):
             print_error(f"Variante '{variant}' non reconnue")
             console.print(
-                f"Variantes disponibles : {', '.join(specialized_generator.list_all_variants())}"
+                f"Variantes disponibles : {', '.join(specialized_generator.list_all_variants())}",
             )
             sys.exit(1)
 
         # Génération du logo avec le générateur spécialisé
         with console.status(
-            f"[bold blue]Génération du logo '{variant}' avec générateur '{generator}'..."
+            f"[bold blue]Génération du logo '{variant}' avec générateur '{generator}'...",
         ):
             output_path = specialized_generator.generate_svg_logo(variant, size)
 
@@ -188,7 +191,10 @@ def generate(ctx, variant: str, size: int, generator: str, output: Optional[str]
 @cli.command()
 @click.option("--size", "-s", default=200, help="Taille des logos en pixels")
 @click.option(
-    "--parallel", "-p", is_flag=True, help="Génération parallèle (si supportée)"
+    "--parallel",
+    "-p",
+    is_flag=True,
+    help="Génération parallèle (si supportée)",
 )
 @click.pass_context
 def generate_all(ctx, size: int, parallel: bool):
@@ -199,7 +205,7 @@ def generate_all(ctx, size: int, parallel: bool):
 
         console.print(
             f"[bold blue]🎨 Génération de {len(variants)} variantes "
-            f"en taille {size}x{size}...[/bold blue]"
+            f"en taille {size}x{size}...[/bold blue]",
         )
 
         # Génération avec barre de progression
@@ -242,7 +248,7 @@ def favicon(ctx, variant: str, size: int, output: Optional[str]):
         if not generator.validate_variant(variant):
             print_error(f"Variante '{variant}' non reconnue")
             console.print(
-                f"Variantes disponibles : {', '.join(generator.list_all_variants())}"
+                f"Variantes disponibles : {', '.join(generator.list_all_variants())}",
             )
             sys.exit(1)
 
@@ -278,7 +284,7 @@ def favicon_all(ctx, size: int):
 
         console.print(
             f"[bold blue]🎨 Création de {len(variants)} favicons "
-            f"en taille {size}x{size}...[/bold blue]"
+            f"en taille {size}x{size}...[/bold blue]",
         )
 
         # Création avec barre de progression
@@ -337,7 +343,7 @@ def clean(ctx, confirm: bool):
         if not confirm:
             console.print(
                 "[bold yellow]⚠️  Attention :[/bold yellow] "
-                "Cette action supprimera tous les fichiers générés."
+                "Cette action supprimera tous les fichiers générés.",
             )
             if not click.confirm("Continuer ?"):
                 console.print("Opération annulée.")
@@ -360,7 +366,7 @@ def version(ctx):
     from . import __version__
 
     console.print(
-        f"[bold blue]🌙 Arkalia-LUNA Logo Generator v{__version__}[/bold blue]"
+        f"[bold blue]🌙 Arkalia-LUNA Logo Generator v{__version__}[/bold blue]",
     )
 
 

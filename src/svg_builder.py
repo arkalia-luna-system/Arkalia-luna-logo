@@ -1,5 +1,4 @@
-"""
-🌙 SVG Builder Module
+"""🌙 SVG Builder Module
 Construction des logos SVG Arkalia-LUNA de base
 """
 
@@ -24,7 +23,7 @@ class SVGBuilder(ABC):
         """Valide que svgwrite est correctement installé"""
         if svgwrite is None:
             raise ImportError(
-                "Module svgwrite requis. Installez-le avec: pip install svgwrite"
+                "Module svgwrite requis. Installez-le avec: pip install svgwrite",
             )
 
         if not hasattr(svgwrite, "Drawing"):
@@ -33,7 +32,6 @@ class SVGBuilder(ABC):
     @abstractmethod
     def build_logo(self, variant_name: str, size: int) -> svgwrite.Drawing:
         """Méthode abstraite à implémenter par chaque builder spécialisé"""
-        pass
 
     def save_logo(self, variant_name: str, size: int, output_path: Any) -> None:
         """Sauvegarde un logo SVG en utilisant build_logo()"""

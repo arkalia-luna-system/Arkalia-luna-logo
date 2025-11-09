@@ -1,5 +1,4 @@
-"""
-🌙 Realism Max SVG Builder Module
+"""🌙 Realism Max SVG Builder Module
 Construction de logos ultra-réalistes avec effets organiques et IA
 """
 
@@ -34,7 +33,9 @@ class RealismMaxSVGBuilder(SVGBuilder):
         self.ai_enhancement = True  # Amélioration IA active
 
     def create_drawing(
-        self, size: int, viewbox: Optional[Tuple[int, int, int, int]] = None
+        self,
+        size: int,
+        viewbox: Optional[Tuple[int, int, int, int]] = None,
     ) -> svgwrite.Drawing:
         """Crée un nouveau dessin SVG avec configuration réaliste"""
         if viewbox is None:
@@ -47,7 +48,7 @@ class RealismMaxSVGBuilder(SVGBuilder):
 
         # Configuration réaliste
         drawing.set_desc(
-            "Logo Arkalia-LUNA - Style ultra-réaliste avec effets organiques"
+            "Logo Arkalia-LUNA - Style ultra-réaliste avec effets organiques",
         )
         # drawing.set_title("Arkalia-LUNA Realism Max")
         # Commenté car pas supporté par svgwrite
@@ -55,7 +56,9 @@ class RealismMaxSVGBuilder(SVGBuilder):
         return drawing
 
     def add_realism_definitions(
-        self, drawing: svgwrite.Drawing, variant: LogoVariant
+        self,
+        drawing: svgwrite.Drawing,
+        variant: LogoVariant,
     ) -> None:
         """Ajoute des définitions ultra-réalistes (gradients, filtres, masques)"""
         defs = drawing.defs
@@ -78,7 +81,10 @@ class RealismMaxSVGBuilder(SVGBuilder):
 
         # Gradient principal optimisé avec 7 stops max
         gradient = svgwrite.gradients.RadialGradient(
-            id=gradient_id, cx="50%", cy="50%", r="50%"
+            id=gradient_id,
+            cx="50%",
+            cy="50%",
+            r="50%",
         )
 
         # Stops optimisés pour la performance
@@ -95,7 +101,9 @@ class RealismMaxSVGBuilder(SVGBuilder):
             try:
                 # Méthode correcte pour svgwrite
                 stop = svgwrite.gradients.Stop(
-                    offset=f"{offset}%", color=color, opacity=opacity
+                    offset=f"{offset}%",
+                    color=color,
+                    opacity=opacity,
                 )
                 gradient.add_stop(stop)
             except Exception:
@@ -107,7 +115,10 @@ class RealismMaxSVGBuilder(SVGBuilder):
         # Gradient de bordure réaliste
         border_gradient_id = f"realisticBorderGradient-{variant.variant_type.value}"
         border_gradient = svgwrite.gradients.RadialGradient(
-            id=border_gradient_id, cx="50%", cy="50%", r="50%"
+            id=border_gradient_id,
+            cx="50%",
+            cy="50%",
+            r="50%",
         )
 
         border_gradient.add_stop_color(offset="0%", color=variant.colors.glow)
@@ -135,7 +146,10 @@ class RealismMaxSVGBuilder(SVGBuilder):
 
         # Turbulence réaliste
         fe_turbulence = svgwrite.filters._feTurbulence(
-            type="fractalNoise", baseFrequency=0.01, numOctaves=3, seed=42
+            type="fractalNoise",
+            baseFrequency=0.01,
+            numOctaves=3,
+            seed=42,
         )
         turbulence_filter.add(fe_turbulence)
 
@@ -175,7 +189,10 @@ class RealismMaxSVGBuilder(SVGBuilder):
         return drawing
 
     def _add_realistic_logo_elements(
-        self, drawing: svgwrite.Drawing, variant: LogoVariant, size: int
+        self,
+        drawing: svgwrite.Drawing,
+        variant: LogoVariant,
+        size: int,
     ) -> None:
         """Ajoute les éléments du logo avec style réaliste"""
         # Cercle principal avec gradient réaliste

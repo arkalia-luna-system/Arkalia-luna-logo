@@ -1,5 +1,4 @@
-"""
-Base SVG Builder
+"""Base SVG Builder
 Classe de base pour tous les builders SVG
 """
 
@@ -18,10 +17,12 @@ class SVGBuilder(ABC):
 
     @abstractmethod
     def build_logo(
-        self, variant_name: str, size: int = 200, output_dir: Optional[Path] = None
+        self,
+        variant_name: str,
+        size: int = 200,
+        output_dir: Optional[Path] = None,
     ) -> str:
         """Construit un logo SVG pour une variante donnée"""
-        pass
 
     def get_builder_stats(self) -> dict:
         """Retourne les statistiques du builder"""

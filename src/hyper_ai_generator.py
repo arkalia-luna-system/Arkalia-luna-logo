@@ -1,5 +1,4 @@
-"""
-🧠 Hyper AI Generator
+"""🧠 Hyper AI Generator
 Générateur ultra-intelligent utilisant ComfyUI + SDXL + ControlNet
 Reproduction exacte de l'inspiration utilisateur
 """
@@ -90,17 +89,23 @@ class HyperAIGenerator(ArkaliaLunaLogo):
 
             # Sélection du workflow
             workflow = self.workflow_templates.get(
-                style, self.workflow_templates["cosmic_sphere"]
+                style,
+                self.workflow_templates["cosmic_sphere"],
             )
 
             # Génération du workflow ComfyUI
             comfyui_workflow = self._generate_comfyui_workflow(
-                workflow, emotion_prompt, variant_data, size
+                workflow,
+                emotion_prompt,
+                variant_data,
+                size,
             )
 
             # Exécution ComfyUI
             output_path = self._execute_comfyui_workflow(
-                comfyui_workflow, variant_name, size
+                comfyui_workflow,
+                variant_name,
+                size,
             )
 
             self.logger.info(f"✨ Logo Hyper IA généré : {output_path}")
@@ -130,17 +135,22 @@ class HyperAIGenerator(ArkaliaLunaLogo):
         }
 
         return emotion_prompts.get(
-            variant_data.variant_type.value, "cosmic energy, modern design"
+            variant_data.variant_type.value,
+            "cosmic energy, modern design",
         )
 
     def _generate_comfyui_workflow(
-        self, workflow_template: Dict, emotion_prompt: str, variant_data, size: int
+        self,
+        workflow_template: Dict,
+        emotion_prompt: str,
+        variant_data,
+        size: int,
     ) -> Dict:
         """Génère un workflow ComfyUI personnalisé"""
-
         # Prompt final
         final_prompt = workflow_template["prompt_template"].format(
-            emotion=emotion_prompt, style="futuristic tech"
+            emotion=emotion_prompt,
+            style="futuristic tech",
         )
 
         # Workflow ComfyUI complet
@@ -199,7 +209,10 @@ class HyperAIGenerator(ArkaliaLunaLogo):
         return workflow
 
     def _execute_comfyui_workflow(
-        self, workflow: Dict, variant_name: str, size: int
+        self,
+        workflow: Dict,
+        variant_name: str,
+        size: int,
     ) -> Path:
         """Exécute le workflow ComfyUI"""
         try:
@@ -220,6 +233,7 @@ class HyperAIGenerator(ArkaliaLunaLogo):
 
             result = subprocess.run(
                 cmd,
+                check=False,
                 cwd=self.comfyui_path,
                 capture_output=True,
                 text=True,
@@ -231,7 +245,7 @@ class HyperAIGenerator(ArkaliaLunaLogo):
 
             # Recherche du fichier généré
             output_files = list(
-                self.output_dir.glob(f"arkalia_hyper_{variant_name}*.png")
+                self.output_dir.glob(f"arkalia_hyper_{variant_name}*.png"),
             )
             if not output_files:
                 raise RuntimeError("Aucun fichier généré par ComfyUI")
@@ -260,7 +274,7 @@ class HyperAIGenerator(ArkaliaLunaLogo):
                     continue
 
             self.logger.info(
-                f"🎉 Génération Hyper IA terminée : {len(generated_files)}/{len(variants)} logos créés"
+                f"🎉 Génération Hyper IA terminée : {len(generated_files)}/{len(variants)} logos créés",
             )
             return generated_files
 

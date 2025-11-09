@@ -1,5 +1,4 @@
-"""
-🌙 Ultimate Logo Generator Module
+"""🌙 Ultimate Logo Generator Module
 Générateur de logos ULTIMES Arkalia-LUNA avec effets cosmiques extrêmes
 """
 
@@ -42,13 +41,16 @@ class UltimateLogoGenerator(ArkaliaLunaLogo):
         }
 
     def generate_ultimate_logo(
-        self, variant_name: str, size: int = 200, cosmic_level: float = 0.98
+        self,
+        variant_name: str,
+        size: int = 200,
+        cosmic_level: float = 0.98,
     ) -> Path:
         """Génère un logo ULTIME avec niveau cosmique configurable"""
         try:
             self.logger.info(
                 f"🌟 ULTIME : Génération du logo '{variant_name}' "
-                f"niveau cosmique {cosmic_level:.2f}"
+                f"niveau cosmique {cosmic_level:.2f}",
             )
 
             # Validation de la variante
@@ -78,13 +80,15 @@ class UltimateLogoGenerator(ArkaliaLunaLogo):
             raise
 
     def generate_all_ultimate_variants(
-        self, size: int = 200, cosmic_level: float = 0.98
+        self,
+        size: int = 200,
+        cosmic_level: float = 0.98,
     ) -> List[Path]:
         """Génère toutes les variantes en mode ULTIME"""
         try:
             self.logger.info(
                 f"🌟 ULTIME : Génération de toutes les variantes "
-                f"niveau cosmique {cosmic_level:.2f}"
+                f"niveau cosmique {cosmic_level:.2f}",
             )
 
             generated_files = []
@@ -93,7 +97,9 @@ class UltimateLogoGenerator(ArkaliaLunaLogo):
             for variant in variants:
                 try:
                     output_path = self.generate_ultimate_logo(
-                        variant, size, cosmic_level
+                        variant,
+                        size,
+                        cosmic_level,
                     )
                     generated_files.append(output_path)
                 except Exception as e:
@@ -102,7 +108,7 @@ class UltimateLogoGenerator(ArkaliaLunaLogo):
 
             self.logger.info(
                 f"✅ Génération ULTIME terminée : "
-                f"{len(generated_files)}/{len(variants)} logos créés"
+                f"{len(generated_files)}/{len(variants)} logos créés",
             )
             return generated_files
 
@@ -111,13 +117,16 @@ class UltimateLogoGenerator(ArkaliaLunaLogo):
             raise
 
     def create_ultimate_favicon(
-        self, variant_name: str, size: int = 32, cosmic_level: float = 0.98
+        self,
+        variant_name: str,
+        size: int = 32,
+        cosmic_level: float = 0.98,
     ) -> Path:
         """Crée un favicon ULTIME avec effets cosmiques"""
         try:
             self.logger.info(
                 f"🌟 ULTIME : Création favicon '{variant_name}' "
-                f"niveau cosmique {cosmic_level:.2f}"
+                f"niveau cosmique {cosmic_level:.2f}",
             )
 
             # Utilise la méthode parent mais avec le builder ULTIME
@@ -131,7 +140,7 @@ class UltimateLogoGenerator(ArkaliaLunaLogo):
 
         except Exception as e:
             self.logger.error(
-                f"❌ Erreur création favicon ULTIME '{variant_name}': {e}"
+                f"❌ Erreur création favicon ULTIME '{variant_name}': {e}",
             )
             raise
 
@@ -155,7 +164,7 @@ class UltimateLogoGenerator(ArkaliaLunaLogo):
         self.holographic_mode = enabled
         self.ultimate_stats["holographic_mode"] = enabled
         self.logger.info(
-            f"🌟 Mode holographique: {'activé' if enabled else 'désactivé'}"
+            f"🌟 Mode holographique: {'activé' if enabled else 'désactivé'}",
         )
 
     def get_ultimate_stats(self) -> Dict[str, Any]:
@@ -225,7 +234,7 @@ class UltimateLogoGenerator(ArkaliaLunaLogo):
             self.ultimate_stats["ultimate_png_favicons"] = 0
 
             self.logger.info(
-                f"🧹 Nettoyage ULTIME terminé : {count} fichiers supprimés"
+                f"🧹 Nettoyage ULTIME terminé : {count} fichiers supprimés",
             )
             return count
 

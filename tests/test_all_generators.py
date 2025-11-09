@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
-"""
-Tests complets pour tous les générateurs de logos Arkalia-LUNA
-"""
+"""Tests complets pour tous les générateurs de logos Arkalia-LUNA"""
 
 import sys
 from pathlib import Path
@@ -173,7 +171,7 @@ class TestIntegration:
                 assert generator is not None
             except Exception as e:
                 pytest.skip(
-                    f"Générateur {generator_class.__name__} non disponible: {e}"
+                    f"Générateur {generator_class.__name__} non disponible: {e}",
                 )
 
     def test_variants_consistency(self):

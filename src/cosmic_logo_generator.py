@@ -1,5 +1,4 @@
-"""
-🌌 Cosmic Logo Generator
+"""🌌 Cosmic Logo Generator
 Générateur spécialisé pour les logos avec sphères cosmiques lumineuses
 """
 

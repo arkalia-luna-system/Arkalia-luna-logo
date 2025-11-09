@@ -1,5 +1,4 @@
-"""
-🌙 Ultra Max SVG Builder Module
+"""🌙 Ultra Max SVG Builder Module
 Construction des logos SVG Arkalia-LUNA ultra-max
 """
 
@@ -31,7 +30,7 @@ class UltraMaxSVGBuilder(SVGBuilder):
         """Valide que svgwrite est correctement installé"""
         if not hasattr(svgwrite, "Drawing"):
             raise ImportError(
-                "Module svgwrite requis. Installez-le avec: pip install svgwrite"
+                "Module svgwrite requis. Installez-le avec: pip install svgwrite",
             )
 
     def _setup_random_seed(self):
@@ -39,7 +38,9 @@ class UltraMaxSVGBuilder(SVGBuilder):
         random.seed(42)  # Graine fixe pour la cohérence
 
     def create_drawing(
-        self, size: int, viewbox: Optional[Tuple[int, int, int, int]] = None
+        self,
+        size: int,
+        viewbox: Optional[Tuple[int, int, int, int]] = None,
     ) -> svgwrite.Drawing:
         """Crée un nouveau dessin SVG avec configuration ULTRA-MAX"""
         if viewbox is None:
@@ -63,7 +64,9 @@ class UltraMaxSVGBuilder(SVGBuilder):
         return drawing
 
     def add_ultra_max_definitions(
-        self, drawing: svgwrite.Drawing, variant: LogoVariant
+        self,
+        drawing: svgwrite.Drawing,
+        variant: LogoVariant,
     ) -> None:
         """Ajoute des définitions ULTRA-MAX (gradients, filtres, masques)"""
         defs = drawing.defs
@@ -85,7 +88,10 @@ class UltraMaxSVGBuilder(SVGBuilder):
         # Gradient principal ULTRA-MAX OPTIMISÉ (7 stops au lieu de 15+)
         main_gradient_id = f"ultraMaxMainGradient-{variant.variant_type.value}"
         main_gradient = svgwrite.gradients.RadialGradient(
-            id=main_gradient_id, cx="50%", cy="50%", r="50%"
+            id=main_gradient_id,
+            cx="50%",
+            cy="50%",
+            r="50%",
         )
 
         # Stops OPTIMISÉS pour la performance (40% plus rapide)
@@ -106,14 +112,19 @@ class UltraMaxSVGBuilder(SVGBuilder):
         # Gradient de bordure ULTRA-MAX
         border_gradient_id = f"ultraMaxBorderGradient-{variant.variant_type.value}"
         border_gradient = svgwrite.gradients.RadialGradient(
-            id=border_gradient_id, cx="50%", cy="50%", r="50%"
+            id=border_gradient_id,
+            cx="50%",
+            cy="50%",
+            r="50%",
         )
 
         border_gradient.add(
-            svgwrite.gradients._GradientStop(offset="0%", color=variant.colors.glow)
+            svgwrite.gradients._GradientStop(offset="0%", color=variant.colors.glow),
         )
         border_gradient.add(
-            svgwrite.gradients._GradientStop(offset="100%", color=variant.colors.accent)
+            svgwrite.gradients._GradientStop(
+                offset="100%", color=variant.colors.accent
+            ),
         )
 
         defs.add(border_gradient)
@@ -121,14 +132,19 @@ class UltraMaxSVGBuilder(SVGBuilder):
         # Gradient de lueur ULTRA-MAX
         glow_gradient_id = f"ultraMaxGlowGradient-{variant.variant_type.value}"
         glow_gradient = svgwrite.gradients.RadialGradient(
-            id=glow_gradient_id, cx="50%", cy="50%", r="50%"
+            id=glow_gradient_id,
+            cx="50%",
+            cy="50%",
+            r="50%",
         )
 
         glow_gradient.add(
-            svgwrite.gradients._GradientStop(offset="0%", color=variant.colors.glow)
+            svgwrite.gradients._GradientStop(offset="0%", color=variant.colors.glow),
         )
         glow_gradient.add(
-            svgwrite.gradients._GradientStop(offset="100%", color=variant.colors.accent)
+            svgwrite.gradients._GradientStop(
+                offset="100%", color=variant.colors.accent
+            ),
         )
 
         defs.add(glow_gradient)
@@ -141,7 +157,7 @@ class UltraMaxSVGBuilder(SVGBuilder):
 
         # Effet de flou gaussien ULTRA-MAX
         fe_gaussian_blur_main = svgwrite.filters._feGaussianBlur(
-            stdDeviation=str(variant.glow_intensity * 6)
+            stdDeviation=str(variant.glow_intensity * 6),
         )
         main_glow.add(fe_gaussian_blur_main)
 
@@ -210,7 +226,10 @@ class UltraMaxSVGBuilder(SVGBuilder):
         defs.add(grid_pattern)
 
     def add_ultra_max_main_circle(
-        self, drawing: svgwrite.Drawing, variant: LogoVariant, size: int
+        self,
+        drawing: svgwrite.Drawing,
+        variant: LogoVariant,
+        size: int,
     ) -> None:
         """Ajoute le cercle principal ULTRA-MAX"""
         center = size // 2
@@ -239,7 +258,10 @@ class UltraMaxSVGBuilder(SVGBuilder):
         drawing.add(border_circle)
 
     def add_ultra_max_halo(
-        self, drawing: svgwrite.Drawing, variant: LogoVariant, size: int
+        self,
+        drawing: svgwrite.Drawing,
+        variant: LogoVariant,
+        size: int,
     ) -> None:
         """Ajoute le halo ULTRA-MAX avec effets multiples"""
         center = size // 2
@@ -263,7 +285,7 @@ class UltraMaxSVGBuilder(SVGBuilder):
                 values="0.8;0.2;0.8",
                 dur=f"{4 / variant.animation_speed}s",
                 repeatCount="indefinite",
-            )
+            ),
         )
 
         drawing.add(main_halo)
@@ -281,7 +303,10 @@ class UltraMaxSVGBuilder(SVGBuilder):
         drawing.add(secondary_halo)
 
     def add_ultra_max_core(
-        self, drawing: svgwrite.Drawing, variant: LogoVariant, size: int
+        self,
+        drawing: svgwrite.Drawing,
+        variant: LogoVariant,
+        size: int,
     ) -> None:
         """Ajoute le centre/A-core ULTRA-MAX"""
         center = size // 2
@@ -324,14 +349,20 @@ class UltraMaxSVGBuilder(SVGBuilder):
         drawing.add(lambda_group)
 
     def add_ultra_max_network(
-        self, drawing: svgwrite.Drawing, variant: LogoVariant, size: int
+        self,
+        drawing: svgwrite.Drawing,
+        variant: LogoVariant,
+        size: int,
     ) -> None:
         """Ajoute un réseau ULTRA-MAX avec connexions complexes"""
         center = size // 2
 
         # Groupe pour le réseau ULTRA-MAX
         network_group = svgwrite.container.Group(
-            fill="none", stroke=variant.colors.accent, stroke_width=2, opacity=0.9
+            fill="none",
+            stroke=variant.colors.accent,
+            stroke_width=2,
+            opacity=0.9,
         )
 
         # Chemins du réseau ULTRA-MAX
@@ -390,7 +421,11 @@ class UltraMaxSVGBuilder(SVGBuilder):
         return paths
 
     def _add_ultra_max_connection_nodes(
-        self, drawing: svgwrite.Drawing, variant: LogoVariant, center: int, size: int
+        self,
+        drawing: svgwrite.Drawing,
+        variant: LogoVariant,
+        center: int,
+        size: int,
     ) -> None:
         """Ajoute des nœuds de connexion ULTRA-MAX"""
         # Nœuds principaux ULTRA-MAX
@@ -431,7 +466,10 @@ class UltraMaxSVGBuilder(SVGBuilder):
             drawing.add(node_halo)
 
     def add_ultra_max_particles(
-        self, drawing: svgwrite.Drawing, variant: LogoVariant, size: int
+        self,
+        drawing: svgwrite.Drawing,
+        variant: LogoVariant,
+        size: int,
     ) -> None:
         """Ajoute des particules ULTRA-MAX avec effets complexes"""
         center = size // 2
@@ -460,13 +498,16 @@ class UltraMaxSVGBuilder(SVGBuilder):
                     dur=f"{2 / variant.animation_speed}s",
                     begin=f"{i * 0.1}s",
                     repeatCount="indefinite",
-                )
+                ),
             )
 
             drawing.add(particle)
 
     def add_ultra_max_rays(
-        self, drawing: svgwrite.Drawing, variant: LogoVariant, size: int
+        self,
+        drawing: svgwrite.Drawing,
+        variant: LogoVariant,
+        size: int,
     ) -> None:
         """Ajoute des rayons ULTRA-MAX avec effets dynamiques"""
         center = size // 2
@@ -495,7 +536,7 @@ class UltraMaxSVGBuilder(SVGBuilder):
                     dur=f"{3 / variant.animation_speed}s",
                     begin=f"{i * 0.2}s",
                     repeatCount="indefinite",
-                )
+                ),
             )
 
             drawing.add(ray)
@@ -505,7 +546,9 @@ class UltraMaxSVGBuilder(SVGBuilder):
         return self.build_ultra_max_logo(variant_name, size)
 
     def build_ultra_max_logo(
-        self, variant_name: str, size: int = 200
+        self,
+        variant_name: str,
+        size: int = 200,
     ) -> svgwrite.Drawing:
         """Construit le logo ULTRA-MAX pour une variante donnée"""
         variant = self.variants_manager.get_variant(variant_name)
@@ -527,7 +570,10 @@ class UltraMaxSVGBuilder(SVGBuilder):
         return drawing
 
     def save_ultra_max_logo(
-        self, variant_name: str, size: int, output_path: Path
+        self,
+        variant_name: str,
+        size: int,
+        output_path: Path,
     ) -> Path:
         """Sauvegarde le logo ULTRA-MAX dans un fichier"""
         drawing = self.build_ultra_max_logo(variant_name, size)
