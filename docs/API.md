@@ -1,12 +1,28 @@
-# 🌙 API Documentation - Arkalia-LUNA Logo Generator
+# 🌙 API Documentation
 
-## 📋 **Vue d'Ensemble**
+<div align="center">
+
+**📋 Interface Programmatique Complète**
+
+*Arkalia-LUNA Logo Generator*
+
+</div>
+
+---
+
+## 📋 Vue d'Ensemble
+
+<div align="center">
 
 L'API Arkalia-LUNA Logo Generator fournit une interface programmatique complète pour la génération de logos techno-mystiques avec variantes émotionnelles.
 
-## 🏗️ **Architecture**
+</div>
 
-### **Structure des Modules**
+## 🏗️ Architecture
+
+### 📁 Structure des Modules
+
+<div align="center">
 
 ```
 src/
@@ -19,12 +35,45 @@ src/
 └── cli.py                        # Interface en ligne de commande
 ```
 
-### **Patterns de Design**
+</div>
 
-- **Factory Pattern** : `LogoGeneratorFactory` pour créer des générateurs
-- **Strategy Pattern** : Différents builders SVG pour chaque style
-- **Builder Pattern** : Construction progressive des logos SVG
-- **Template Method** : Générateurs avec étapes communes
+### 🎯 Patterns de Design
+
+<div align="center">
+
+| Pattern | Description | Utilisation |
+|:-------:|:-----------:|:-----------:|
+| **Factory Pattern** | `LogoGeneratorFactory` pour créer des générateurs | ✅ |
+| **Strategy Pattern** | Différents builders SVG pour chaque style | ✅ |
+| **Builder Pattern** | Construction progressive des logos SVG | ✅ |
+| **Template Method** | Générateurs avec étapes communes | ✅ |
+
+</div>
+
+### 🔄 Workflow de Génération
+
+```mermaid
+sequenceDiagram
+    participant U as Utilisateur
+    participant CLI as CLI/API
+    participant F as Factory
+    participant G as Generator
+    participant B as SVG Builder
+    participant V as Variants
+    
+    U->>CLI: Demande de génération
+    CLI->>F: create_generator(style)
+    F->>G: Nouveau générateur
+    CLI->>V: get_variant(name)
+    V-->>CLI: Variant config
+    CLI->>G: generate_single_logo(variant, size)
+    G->>B: build_logo(variant, size)
+    B->>B: add_gradients()
+    B->>B: add_effects()
+    B-->>G: SVG complet
+    G-->>CLI: Fichier SVG
+    CLI-->>U: Logo généré
+```
 
 ### **Diagramme de Classes**
 

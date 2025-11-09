@@ -1,30 +1,65 @@
-# 📊 Phase 2 - Suivi des Progrès - UX Exceptionnelle
+# 📊 Phase 2 - Suivi des Progrès
 
-## 🎯 **Statut Global de la Phase 2**
+<div align="center">
 
-- **Démarrage** : 15 novembre 2025
-- **Durée prévue** : 3-4 semaines (28 jours)
-- **Progression actuelle** : **Semaine 1 - Jour 1** ✅
-- **Objectif final** : Interface web moderne et intuitive
+**🎨 UX Exceptionnelle**
+
+*Interface web moderne et intuitive*
+
+</div>
 
 ---
 
-## 📅 **Timeline Détaillée avec Progrès**
+## 🎯 Statut Global
 
-### **🚀 Semaine 1 : Démo Interactive (7 jours)**
-- [x] **Jour 1** : Interface de base avec contrôles ✅
-  - Interface moderne avec design system
-  - Panneau de contrôle avec variantes
-  - Prévisualisation en temps réel
-  - Système de notifications
-- [ ] **Jour 2** : Intégration des variantes émotionnelles
-- [ ] **Jour 3** : Système de prévisualisation en temps réel
-- [ ] **Jour 4** : Fonctionnalités de téléchargement
-- [ ] **Jour 5** : Animations et effets visuels
-- [ ] **Jour 6** : Tests utilisateurs et feedback
-- [ ] **Jour 7** : Optimisations et finalisation
+<div align="center">
 
-**Progression Semaine 1** : **1/7 jours** (14%)
+| Métrique | Valeur | Statut |
+|:--------:|:------:|:------:|
+| **Démarrage** | 15 novembre 2025 | ✅ |
+| **Durée prévue** | 3-4 semaines (28 jours) | 🎯 |
+| **Progression actuelle** | Semaine 1 - Jour 1 | ✅ |
+| **Objectif final** | Interface web moderne | 🎯 |
+
+</div>
+
+### 📊 Timeline Visuelle
+
+```mermaid
+gantt
+    title Phase 2 - UX Exceptionnelle
+    dateFormat YYYY-MM-DD
+    section Semaine 1
+    Démo Interactive           :2025-11-15, 7d
+    section Semaine 2
+    Interface Web              :2025-11-22, 7d
+    section Semaine 3
+    Expérience Mobile          :2025-11-29, 7d
+    section Semaine 4
+    Finalisation               :2025-12-06, 7d
+```
+
+---
+
+## 📅 Timeline Détaillée avec Progrès
+
+### 🚀 Semaine 1 : Démo Interactive
+
+<div align="center">
+
+**Progression : 1/7 jours (14%)**
+
+</div>
+
+| Jour | Tâche | Statut | Détails |
+|:----:|:-----:|:------:|:--------|
+| **1** | Interface de base avec contrôles | ✅ | Interface moderne, panneau de contrôle, prévisualisation, notifications |
+| **2** | Intégration des variantes émotionnelles | ⏳ | À faire |
+| **3** | Système de prévisualisation en temps réel | ⏳ | À faire |
+| **4** | Fonctionnalités de téléchargement | ⏳ | À faire |
+| **5** | Animations et effets visuels | ⏳ | À faire |
+| **6** | Tests utilisateurs et feedback | ⏳ | À faire |
+| **7** | Optimisations et finalisation | ⏳ | À faire |
 
 ### **🌐 Semaine 2 : Interface Web (7 jours)**
 - [ ] **Jour 8** : Portail web principal

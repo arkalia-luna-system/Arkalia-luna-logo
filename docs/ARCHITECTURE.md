@@ -1,28 +1,63 @@
-# 🏗️ Architecture Technique - Arkalia-LUNA Logo Generator
+# 🏗️ Architecture Technique
 
-## 📋 **Vue d'Ensemble de l'Architecture**
+<div align="center">
+
+**🌙 Arkalia-LUNA Logo Generator**
+
+*Architecture modulaire et extensible*
+
+</div>
+
+---
+
+## 📋 Vue d'Ensemble
+
+<div align="center">
 
 Arkalia-LUNA Logo Generator suit une architecture modulaire et extensible basée sur des patterns de design éprouvés, permettant une génération de logos haute qualité avec une maintenance simplifiée.
 
-## 🎯 **Principes Architecturaux**
+</div>
 
-### **1. Séparation des Responsabilités**
-- **Générateurs** : Logique métier et orchestration
-- **Builders SVG** : Construction des éléments graphiques
-- **Variants** : Gestion des variantes émotionnelles
-- **CLI** : Interface utilisateur en ligne de commande
+## 🎯 Principes Architecturaux
 
-### **2. Extensibilité**
-- **Factory Pattern** : Ajout facile de nouveaux styles
-- **Strategy Pattern** : Interchangeabilité des builders
-- **Template Method** : Réutilisation du code commun
+### 1️⃣ Séparation des Responsabilités
 
-### **3. Qualité et Robustesse**
-- **Tests complets** : **297 tests passent** ✅
-- **Couverture de code** : **75%** (objectif 90%+) ✅ **MIS À JOUR**
-- **Validation** : Vérification des paramètres d'entrée
-- **Gestion d'erreurs** : Exceptions personnalisées
-- **Logs structurés** : Traçabilité complète
+<div align="center">
+
+| Composant | Responsabilité | Statut |
+|:---------:|:--------------:|:------:|
+| **Générateurs** | Logique métier et orchestration | ✅ |
+| **Builders SVG** | Construction des éléments graphiques | ✅ |
+| **Variants** | Gestion des variantes émotionnelles | ✅ |
+| **CLI** | Interface utilisateur en ligne de commande | ✅ |
+
+</div>
+
+### 2️⃣ Extensibilité
+
+<div align="center">
+
+| Pattern | Description | Statut |
+|:-------:|:-----------:|:------:|
+| **Factory Pattern** | Ajout facile de nouveaux styles | ✅ |
+| **Strategy Pattern** | Interchangeabilité des builders | ✅ |
+| **Template Method** | Réutilisation du code commun | ✅ |
+
+</div>
+
+### 3️⃣ Qualité et Robustesse
+
+<div align="center">
+
+| Métrique | Valeur | Statut |
+|:--------:|:------:|:------:|
+| **Tests complets** | 297 tests passent | ✅ |
+| **Couverture de code** | 75% (objectif 90%+) | ✅ **MIS À JOUR** |
+| **Validation** | Vérification des paramètres | ✅ |
+| **Gestion d'erreurs** | Exceptions personnalisées | ✅ |
+| **Logs structurés** | Traçabilité complète | ✅ |
+
+</div>
 
 ## 🏛️ **Structure des Modules**
 
@@ -140,33 +175,61 @@ class BaseLogoGenerator:
         # 4. Export
 ```
 
-## 📊 **Métriques de Qualité**
+## 📊 Métriques de Qualité
 
-### **Tests et Couverture**
-- **Tests totaux** : 297 tests ✅
-- **Couverture de code** : 75% (objectif 90%+) ✅ **MIS À JOUR**
-- **Modules testés** : 20/20
-- **Tests de performance** : 7/7 benchmarks ✅
+### 🧪 Tests et Couverture
 
-### **Qualité du Code**
-- **Linting** : Ruff + Black ✅
-- **Type checking** : MyPy strict ✅
-- **Sécurité** : Bandit ✅
-- **Pre-commit hooks** : 8 hooks configurés ✅
+<div align="center">
 
-## 🚀 **Performance et Optimisations**
+| Métrique | Valeur | Statut |
+|:--------:|:------:|:------:|
+| **Tests totaux** | 297 tests | ✅ |
+| **Couverture de code** | 75% (objectif 90%+) | ✅ **MIS À JOUR** |
+| **Modules testés** | 20/20 | ✅ |
+| **Tests de performance** | 7/7 benchmarks | ✅ |
 
-### **Benchmarks Actuels**
-- **Realism Max** : ~0.002s (le plus rapide)
-- **Dashboard** : ~0.004s
-- **AI-Moon** : ~0.007s
-- **Ultra-Max** : ~0.008s
-- **Ultimate** : ~0.007s
+</div>
 
-### **Optimisations Implémentées**
-- **Cache des générateurs** : Évite la recréation
-- **Lazy loading** : Chargement à la demande
-- **Gestion mémoire** : Nettoyage automatique des ressources
+### 🔍 Qualité du Code
+
+<div align="center">
+
+| Outil | Description | Statut |
+|:-----:|:-----------:|:------:|
+| **Linting** | Ruff + Black | ✅ |
+| **Type checking** | MyPy strict | ✅ |
+| **Sécurité** | Bandit | ✅ |
+| **Pre-commit hooks** | 8 hooks configurés | ✅ |
+
+</div>
+
+## 🚀 Performance et Optimisations
+
+### ⚡ Benchmarks Actuels
+
+<div align="center">
+
+| Générateur | Temps | Performance |
+|:----------:|:-----:|:-----------:|
+| **Realism Max** | ~0.002s | 🏆 Le plus rapide |
+| **Dashboard** | ~0.004s | ⚡ Rapide |
+| **AI-Moon** | ~0.007s | ✅ Bon |
+| **Ultra-Max** | ~0.008s | ✅ Bon |
+| **Ultimate** | ~0.007s | ✅ Bon |
+
+</div>
+
+### 🎯 Optimisations Implémentées
+
+<div align="center">
+
+| Optimisation | Description | Impact |
+|:------------:|:-----------:|:-----:|
+| **Cache des générateurs** | Évite la recréation | ⚡ Haute |
+| **Lazy loading** | Chargement à la demande | ⚡ Haute |
+| **Gestion mémoire** | Nettoyage automatique | ✅ Moyenne |
+
+</div>
 
 ## 🔮 **Évolutions Futures**
 
@@ -185,19 +248,41 @@ class BaseLogoGenerator:
 - Intégration avec des outils de design
 - Support des formats 3D et VR
 
-## 📚 **Documentation Technique**
+## 📚 Documentation Technique
 
-### **Fichiers de Référence**
-- `API.md` : Documentation complète de l'API
-- `CONTRIBUTING.md` : Guide de contribution
-- `QUICKSTART.md` : Guide de démarrage rapide
-- `ARCHITECTURE.md` : Ce document
+### 📖 Fichiers de Référence
 
-### **Exemples de Code**
-- `demos/` : Démonstrations HTML interactives
-- `tests/` : Exemples d'utilisation dans les tests
-- `tools/` : Scripts utilitaires et exemples
+<div align="center">
+
+| Document | Description | Lien |
+|:--------:|:-----------:|:----:|
+| **API.md** | Documentation complète de l'API | [📘 Voir API.md](API.md) |
+| **CONTRIBUTING.md** | Guide de contribution | [📘 Voir CONTRIBUTING.md](CONTRIBUTING.md) |
+| **QUICKSTART.md** | Guide de démarrage rapide | [📘 Voir QUICKSTART.md](QUICKSTART.md) |
+| **ARCHITECTURE.md** | Ce document | [📘 Voir ARCHITECTURE.md](ARCHITECTURE.md) |
+
+</div>
+
+### 💻 Exemples de Code
+
+<div align="center">
+
+| Ressource | Description | Emplacement |
+|:---------:|:-----------:|:-----------:|
+| **Démos HTML** | Démonstrations interactives | `../demos/` |
+| **Tests** | Exemples d'utilisation | `../tests/` |
+| **Scripts** | Utilitaires et exemples | `../tools/` |
+
+</div>
 
 ---
 
-**🏗️ Architecture Arkalia-LUNA Logo Generator** - Version 2.0.0
+<div align="center">
+
+---
+
+**🏗️ Architecture Arkalia-LUNA Logo Generator**
+
+*Version 2.0.0*
+
+</div>

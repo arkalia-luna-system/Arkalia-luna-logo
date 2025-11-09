@@ -1,23 +1,71 @@
-# 🤝 Guide de Contribution - Arkalia-LUNA Logo Generator
+# 🤝 Guide de Contribution
 
-## 🎯 **Bienvenue dans la Communauté !**
+<div align="center">
+
+**🌙 Arkalia-LUNA Logo Generator**
+
+*Bienvenue dans la communauté !*
+
+</div>
+
+---
+
+## 🎯 Bienvenue dans la Communauté !
+
+<div align="center">
 
 Merci de votre intérêt pour contribuer au projet Arkalia-LUNA Logo Generator ! Ce guide vous accompagnera dans votre parcours de contribution.
 
-## 📋 **Avant de Commencer**
+</div>
 
-### **Prérequis**
+### 🔄 Workflow de Contribution
 
-- **Python** : 3.8 ou supérieur
-- **Git** : Contrôle de version
-- **Connaissance** : Python, SVG, tests unitaires
-- **Environnement** : Environnement virtuel Python
+```mermaid
+flowchart TD
+    A[🎯 Découvrir le projet] --> B[🍴 Fork le projet]
+    B --> C[📥 Clone votre fork]
+    C --> D[🌿 Créer une branche]
+    D --> E[💻 Développer]
+    E --> F[✅ Tests]
+    F --> G[📝 Commit]
+    G --> H[📤 Push]
+    H --> I[🔀 Pull Request]
+    I --> J[👀 Review]
+    J --> K{Approuvé?}
+    K -->|Oui| L[✅ Merge]
+    K -->|Non| E
+    L --> M[🎉 Contribution acceptée!]
+    
+    style A fill:#e1f5fe,stroke:#01579b,stroke-width:2px
+    style M fill:#e8f5e9,stroke:#1b5e20,stroke-width:3px
+```
 
-### **Outils Recommandés**
+## 📋 Avant de Commencer
 
-- **IDE** : VS Code, PyCharm, ou Vim/Emacs
-- **Terminal** : iTerm2 (macOS), Windows Terminal, ou terminal Linux
-- **Git GUI** : GitKraken, SourceTree, ou GitHub Desktop
+### 📋 Prérequis
+
+<div align="center">
+
+| Prérequis | Version | Statut |
+|:---------:|:-------:|:------:|
+| **Python** | 3.8 ou supérieur | ✅ Requis |
+| **Git** | Dernière version | ✅ Requis |
+| **Connaissance** | Python, SVG, tests unitaires | ⚠️ Recommandé |
+| **Environnement** | Environnement virtuel Python | ✅ Requis |
+
+</div>
+
+### 🛠️ Outils Recommandés
+
+<div align="center">
+
+| Catégorie | Outils | Lien |
+|:---------:|:------:|:----:|
+| **IDE** | VS Code, PyCharm, Vim/Emacs | [📘 Voir](https://code.visualstudio.com/) |
+| **Terminal** | iTerm2, Windows Terminal, Terminal Linux | [📘 Voir](https://iterm2.com/) |
+| **Git GUI** | GitKraken, SourceTree, GitHub Desktop | [📘 Voir](https://www.gitkraken.com/) |
+
+</div>
 
 ## 🚀 **Premiers Pas**
 

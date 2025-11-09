@@ -1,24 +1,62 @@
-# 🚀 Guide de Configuration GitHub - Arkalia-LUNA Logo Generator
+# 🚀 Guide de Configuration GitHub
+
+<div align="center">
+
+**🌙 Arkalia-LUNA Logo Generator**
+
+*Configuration complète pour GitHub*
+
+</div>
+
+---
 
 ## 📋 État Actuel
 
-✅ **Repository Git local configuré**
-✅ **Branches `main` et `develop` créées**
-✅ **Configuration GitHub complète prête**
-✅ **Tests fonctionnels (297/297 passent)** ✅ **MIS À JOUR**
-✅ **Documentation professionnelle**
+<div align="center">
+
+| Élément | Statut | Détails |
+|:-------:|:------:|:--------|
+| **Repository Git local** | ✅ | Configuré |
+| **Branches** | ✅ | `main` et `develop` créées |
+| **Configuration GitHub** | ✅ | Complète prête |
+| **Tests fonctionnels** | ✅ | 297/297 passent |
+| **Documentation** | ✅ | Professionnelle |
+
+</div>
+
+### 🔄 Workflow de Configuration GitHub
+
+```mermaid
+flowchart TD
+    A[📋 État Actuel] --> B[🌐 Créer Repository GitHub]
+    B --> C[🔗 Configurer Remote]
+    C --> D[📤 Pousser Branches]
+    D --> E[🛡️ Protéger Branches]
+    E --> F[⚙️ Configurer CI/CD]
+    F --> G[📝 Templates PR/Issues]
+    G --> H[✅ Configuration Complète]
+    
+    style A fill:#e1f5fe,stroke:#01579b,stroke-width:2px
+    style H fill:#e8f5e9,stroke:#1b5e20,stroke-width:3px
+```
 
 ## 🔧 Prochaines Étapes
 
-### 1. **Créer le Repository GitHub**
+### 1️⃣ Créer le Repository GitHub
 
-1. **Aller sur GitHub.com**
-2. **Cliquer sur "New repository"**
-3. **Nom du repository :** `arkalia-luna-logo`
-4. **Description :** `Générateur de logos Arkalia-LUNA avec 11 styles et 10 variantes émotionnelles`
-5. **Visibilité :** Public ou Private (selon votre choix)
-6. **Ne PAS initialiser avec README** (nous avons déjà tout)
-7. **Cliquer sur "Create repository"**
+<div align="center">
+
+| Étape | Action | Détails |
+|:-----:|:------:|:--------|
+| **1** | Aller sur GitHub.com | [🌐 Ouvrir](https://github.com) |
+| **2** | Cliquer sur "New repository" | Bouton vert |
+| **3** | Nom du repository | `arkalia-luna-logo` |
+| **4** | Description | `Générateur de logos Arkalia-LUNA avec 11 styles et 10 variantes émotionnelles` |
+| **5** | Visibilité | Public ou Private |
+| **6** | README | ⚠️ Ne PAS initialiser (nous avons déjà tout) |
+| **7** | Créer | Cliquer sur "Create repository" |
+
+</div>
 
 ### 2. **Configurer le Remote**
 

@@ -26,7 +26,7 @@ def print_banner() -> None:
     banner = Text()
     banner.append("🌙 ", style="bold blue")
     banner.append("Arkalia-LUNA Logo Generator", style="bold white")
-    banner.append(" v1.0.0", style="dim white")
+    banner.append(" v2.0.0", style="dim white")
 
     panel = Panel(banner, border_style="blue", padding=(1, 2))
     console.print(panel)

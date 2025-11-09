@@ -390,18 +390,11 @@ arkalia-luna-logo/
 │
 ├── tests/                       # Tests automatisés
 ├── docs/                        # Documentation
-├── build/                       # Build séparé Python/React
-│   ├── python/                 # Fichiers Python
-│   └── react/                  # Composants React
-├── exports/                     # Exports unifiés
-│   ├── unified/                # Structure organisée
-│   │   ├── logos/              # Logos SVG
-│   │   ├── favicons/           # Favicons PNG
-│   │   └── logs/               # Fichiers de log
-│   ├── svg/                    # Versions vectorielles
-│   ├── react/                  # Composants React
-│   ├── lottie/                 # Animations Lottie
-│   └── print/                  # Versions print
+├── exports/                     # Exports générés
+│   ├── *.svg                   # Logos SVG (tous styles et variantes)
+│   ├── *.png                   # Favicons PNG
+│   ├── demo-gif/               # Démonstrations animées
+│   └── screenshots/            # Captures d'écran
 └── .github/                     # CI/CD GitHub Actions
 ```
 

@@ -1,6 +1,22 @@
-# 🎨 MidJourney Prompts - Arkalia-LUNA
+# 🎨 MidJourney Prompts
 
-## 🚀 Variante "Réseau+" (basée sur Image 3)
+<div align="center">
+
+**🌙 Arkalia-LUNA**
+
+*Prompts optimisés pour génération de logos*
+
+</div>
+
+---
+
+## 🚀 Variante "Réseau+"
+
+<div align="center">
+
+*Basée sur Image 3*
+
+</div>
 
 **Prompt principal :**
 ```

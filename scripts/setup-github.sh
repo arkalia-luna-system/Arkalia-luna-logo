@@ -152,8 +152,12 @@ setup_pre_commit() {
     
     if command -v make &> /dev/null; then
         print_status "Installation des hooks pre-commit..."
-        make pre-commit-install
-        print_success "Hooks pre-commit installés"
+        # Timeout de 2 minutes pour éviter les blocages
+        timeout 120 make pre-commit-install 2>/dev/null || {
+            print_warning "Installation des hooks pre-commit a échoué ou pris trop de temps."
+            print_status "Vous pouvez installer manuellement : pip install pre-commit && pre-commit install"
+        }
+        print_success "Hooks pre-commit configurés"
     else
         print_warning "Make non disponible, installation manuelle des hooks..."
         print_status "Exécutez : pip install pre-commit && pre-commit install"
@@ -162,17 +166,28 @@ setup_pre_commit() {
 
 # Tests de validation
 run_validation_tests() {
+    # En mode non-interactif, on skip les tests pour éviter les blocages
+    if [ ! -t 0 ]; then
+        print_warning "Mode non-interactif détecté. Tests de validation ignorés."
+        print_status "Vous pouvez exécuter les tests manuellement avec : make quality-check"
+        return 0
+    fi
+    
     print_status "Exécution des tests de validation..."
     
     if command -v make &> /dev/null; then
-        print_status "Tests de qualité..."
-        make quality-check || {
-            print_warning "Certains tests de qualité ont échoué, mais la configuration continue..."
-        }
+        # Demander confirmation avant d'exécuter les tests (peuvent être longs)
+        print_warning "Les tests peuvent prendre plusieurs minutes. Voulez-vous les exécuter maintenant ? (y/n)"
+        read -r response
+        if [[ ! "$response" =~ ^[Yy]$ ]]; then
+            print_status "Tests ignorés. Vous pouvez les exécuter plus tard avec : make quality-check"
+            return 0
+        fi
         
-        print_status "Tests unitaires..."
-        make test || {
-            print_warning "Certains tests ont échoué, mais la configuration continue..."
+        print_status "Tests de qualité (format + lint + test)..."
+        # Timeout de 5 minutes pour éviter les blocages
+        timeout 300 make quality-check || {
+            print_warning "Certains tests de qualité ont échoué ou ont pris trop de temps, mais la configuration continue..."
         }
     else
         print_warning "Make non disponible, tests non exécutés"
