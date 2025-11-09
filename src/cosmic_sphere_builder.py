@@ -12,7 +12,7 @@ import svgwrite
 
 try:
     from .svg_builder import SVGBuilder
-    from .variants import LogoVariant, LogoVariants
+    from .variants import LogoVariants
 except ImportError:
     # Fallback pour exécution directe
     from svg_builder import SVGBuilder
