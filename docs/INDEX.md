@@ -88,6 +88,8 @@ graph TD
 | **ARCHITECTURE.md** | Architecture technique et patterns de design | [📘 Voir](ARCHITECTURE.md) |
 | **COMFYUI.md** | 🧠 ComfyUI + Hyper-AI Generator - Génération IA avancée (scripts start/stop inclus) | [📘 Voir](COMFYUI.md) |
 | **GUIDE_COMFYUI_UTILISATION.md** | 🎨 Guide d'utilisation ComfyUI - Où faire le prompt ? (Méthode 1 vs Méthode 2) | [📘 Voir](GUIDE_COMFYUI_UTILISATION.md) |
+| **GUIDE_COMFYUI_ETAPE_PAR_ETAPE.md** | 📋 Guide ComfyUI étape par étape - Génération de logo (visuel) | [📘 Voir](GUIDE_COMFYUI_ETAPE_PAR_ETAPE.md) |
+| **GUIDE_INSTALLATION_MODELES.md** | 🔧 Guide d'installation des modèles ComfyUI (modèles manquants) | [📘 Voir](GUIDE_INSTALLATION_MODELES.md) |
 
 </div>
 

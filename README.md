@@ -186,7 +186,7 @@
 | **🌟 Ultimate** | ![Ultimate Serenity](exports/screenshots/ultimate-serenity-200.svg) | Cosmique extrême (100+ stops, holographie) | ✅ Bon |
 | **🤖 AI** | - | Génération IA avec Stable Diffusion | ⚠️ Optionnel |
 | **🌌 Cosmic** | - | Sphères cosmiques et réseaux neuronaux | ✅ Bon |
-| **🧠 Hyper-AI** | - | ComfyUI + SDXL + ControlNet | ⚠️ Avancé |
+| **🧠 Hyper-AI** | - | ComfyUI + SDXL + ControlNet | ✅ Fonctionnel |
 
 </div>
 

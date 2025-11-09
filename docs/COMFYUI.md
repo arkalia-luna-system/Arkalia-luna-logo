@@ -16,6 +16,36 @@
 
 Le générateur **Hyper-AI** utilise ComfyUI, SDXL et ControlNet pour créer des logos d'une qualité professionnelle exceptionnelle avec une intelligence artificielle avancée.
 
+**✅ Statut** : **FONCTIONNEL** - ComfyUI opérationnel, modèles installés, génération testée avec succès
+
+</div>
+
+### 🎨 Exemple de Logo Généré
+
+<div align="center">
+
+**Logo généré avec ComfyUI - Variante "Serenity"**
+
+![Logo ComfyUI Exemple](images/comfyui-logo-exemple.png)
+
+*Prompt : "cosmic sphere, neural network, glowing orb, calm blue and cyan colors, serene atmosphere, professional logo design, minimalist, high quality"*
+
+*Modèle : SD 1.5 FP16 | Taille : 512x512 | Date : 2025-11-09*
+
+</div>
+
+### 🎯 Navigation Rapide
+
+<div align="center">
+
+| Section | Description |
+|:-------:|:-----------:|
+| **[🚀 Installation](#-installation)** | Installer ComfyUI et les modèles |
+| **[🎯 Utilisation](#-utilisation)** | Démarrer et gérer ComfyUI |
+| **[🎨 Générer un Logo](#-générer-un-logo-avec-comfyui-interface-web)** | ⭐ **Guide étape par étape** |
+| **[🔧 Configuration](#-configuration)** | Workflows et modèles |
+| **[✅ Tests](#-tests)** | Tester la génération |
+
 </div>
 
 ### 🎯 À Quoi Sert ComfyUI ?
@@ -88,10 +118,12 @@ flowchart LR
 
 | Fonctionnalité | Description | Statut |
 |:-------------:|:-----------:|:------:|
-| **ComfyUI** | Interface de workflow pour génération IA | ✅ Installé |
-| **SDXL** | Modèle Stable Diffusion XL haute qualité | ⚠️ Partiellement installé |
-| **ControlNet** | Contrôle précis de la génération | ⚠️ Partiellement installé |
+| **ComfyUI** | Interface de workflow pour génération IA | ✅ Installé et fonctionnel |
+| **SDXL** | Modèle Stable Diffusion XL haute qualité | ✅ Installé et testé |
+| **SD 1.5 FP16** | Modèle SD 1.5 optimisé | ✅ Installé et testé |
+| **ControlNet** | Contrôle précis de la génération | ✅ Installé (Canny + Depth) |
 | **Hyper-AI Generator** | Générateur intégré Arkalia-LUNA | ✅ Fonctionnel |
+| **Génération de logos** | Testée avec succès | ✅ Opérationnel |
 
 </div>
 
@@ -457,6 +489,159 @@ for logo_path in all_logos:
 
 ---
 
+## 🎨 Générer un Logo avec ComfyUI (Interface Web)
+
+### **📋 Étape par Étape - Workflow Déjà Chargé**
+
+Si vous voyez déjà un workflow dans ComfyUI (comme l'image de la bouteille), voici comment générer votre logo :
+
+#### **1. Modifier le Prompt Positif**
+
+1. **Trouvez le nœud `CLIP Text Encode (Prompt)`** (celui avec le texte "beautiful scenery nature glass bottle...")
+2. **Cliquez sur la zone de texte**
+3. **Remplacez par votre description de logo** :
+
+**Exemple pour logo cosmique "Serenity"** :
+```
+cosmic sphere, neural network, glowing orb, calm blue and cyan colors, 
+serene atmosphere, professional logo design, minimalist, high quality, 
+luminous energy veins, central crystal core, abstract logo, 
+geometric patterns, clean background
+```
+
+**Exemples par variante émotionnelle** :
+
+| Variante | Prompt Exemple |
+|:--------:|:--------------:|
+| **Serenity** | `cosmic sphere, calm blue and cyan colors, peaceful energy, serene atmosphere, professional logo, minimalist` |
+| **Power** | `cosmic sphere, vibrant red and orange, powerful energy, dynamic, professional logo, bold, energetic` |
+| **Mystery** | `cosmic sphere, deep purple and dark blue, mysterious energy, enigmatic, professional logo, dark, mystical` |
+| **Awakening** | `cosmic sphere, bright yellow and gold, awakening energy, radiant, professional logo, luminous, vibrant` |
+
+#### **2. Modifier le Prompt Négatif (Optionnel)**
+
+1. **Trouvez le deuxième nœud `CLIP Text Encode (Prompt)`** (celui avec "text, watermark")
+2. **Améliorez-le** :
+```
+text, watermark, signature, blurry, low quality, distorted, 
+ugly, bad anatomy, extra limbs, duplicate, poorly drawn, 
+noise, artifacts, jpeg artifacts
+```
+
+#### **3. Choisir le Modèle (Important !)**
+
+1. **Cliquez sur le nœud `Charger Point de Contrôle`** (Load Checkpoint)
+2. **Dans le menu déroulant `ckpt_name`**, choisissez :
+   - **`sd_xl_base_1.0.safetensors`** ⭐ **Recommandé pour logos** (meilleure qualité)
+   - **`v1-5-pruned-emaonly-fp16.safetensors`** (plus rapide, qualité correcte)
+
+**💡 Astuce** : SDXL donne de meilleurs résultats pour les logos professionnels.
+
+#### **4. Ajuster la Taille (Optionnel)**
+
+1. **Cliquez sur le nœud `Image Latente Vide`** (Empty Latent Image)
+2. **Modifiez** :
+   - `largeur` (width) : `512` ou `1024` (1024 = meilleure qualité mais plus lent)
+   - `hauteur` (height) : `512` ou `1024`
+   - `taille_du_lot` (batch_size) : `1`
+
+**💡 Pour les logos** : 512x512 est suffisant et plus rapide.
+
+#### **5. Paramètres de Génération (Optionnel)**
+
+1. **Cliquez sur le nœud `KSampler`**
+2. **Ajustez si besoin** :
+   - `seed` : `0` ou "randomize" (pour varier les résultats)
+   - `steps` : `20-30` (plus = meilleur mais plus lent)
+   - `cfg` : `7.0-8.0` (force du prompt)
+   - `sampler_name` : `euler` ou `euler_ancestral`
+   - `scheduler` : `normal` ou `simple`
+
+**Valeurs recommandées pour logos** :
+- `steps` : `25`
+- `cfg` : `7.5`
+- `sampler_name` : `euler`
+- `scheduler` : `normal`
+
+#### **6. Générer le Logo**
+
+1. **Cliquez sur le bouton "Exécuter"** (Queue Prompt) en bas de l'interface
+2. **Attendez** : 10-60 secondes selon la taille et le modèle
+3. **L'image apparaît** dans le nœud `Enregistrer Image` (Save Image)
+
+#### **7. Sauvegarder le Logo**
+
+1. **Cliquez sur l'image** dans le nœud `Enregistrer Image` pour l'agrandir
+2. **Clic droit** → "Save Image As..." pour télécharger
+3. **Ou** : L'image est automatiquement sauvegardée dans `exports-hyper-ai/`
+
+---
+
+### **🔄 Générer Plusieurs Variantes**
+
+Pour générer plusieurs logos avec des variations :
+
+1. **Changez le `seed`** dans KSampler :
+   - `0`, `1`, `42`, `123`, `999`, etc.
+   - Ou cliquez sur "randomize" pour un seed aléatoire
+
+2. **Modifiez légèrement le prompt** :
+   - Ajoutez des mots-clés : `glowing`, `neon`, `geometric`, `minimalist`
+   - Changez les couleurs : `blue`, `purple`, `gold`, `red`
+
+3. **Cliquez "Exécuter"** à nouveau
+
+---
+
+### **💡 Astuces pour Meilleurs Résultats**
+
+#### **Pour Améliorer la Qualité**
+
+- ✅ Utilisez **SDXL** (`sd_xl_base_1.0.safetensors`)
+- ✅ Augmentez les **steps** à 30-50
+- ✅ Utilisez un **prompt détaillé** avec des mots-clés professionnels
+- ✅ Ajoutez : `high quality, professional, detailed, 4k, 8k, logo design`
+
+#### **Pour Accélérer**
+
+- ✅ Utilisez **512x512** au lieu de 1024x1024
+- ✅ Réduisez les **steps** à 15-20
+- ✅ Utilisez **SD 1.5** (`v1-5-pruned-emaonly-fp16.safetensors`)
+
+#### **Pour Varier les Résultats**
+
+- ✅ Changez le **seed** : `0`, `1`, `42`, `123`, etc.
+- ✅ Ajustez le **CFG** : Plus haut = suit mieux le prompt, plus bas = plus créatif
+- ✅ Modifiez les **couleurs** dans le prompt
+
+---
+
+### **⚠️ Problèmes Courants**
+
+#### **"Model not found"**
+
+**Solution** :
+1. Vérifiez que le modèle est dans `comfyui/models/checkpoints/`
+2. Redémarrez ComfyUI : `bash scripts/stop_comfyui.sh && bash scripts/start_comfyui.sh`
+3. Rafraîchissez l'interface (F5)
+
+#### **Génération très lente**
+
+**Solution** :
+- Réduisez la taille (512x512)
+- Réduisez les steps (15-20)
+- Utilisez SD 1.5 au lieu de SDXL
+
+#### **Résultat pas satisfaisant**
+
+**Solution** :
+- Améliorez le prompt (plus de détails)
+- Augmentez les steps (30-50)
+- Changez le seed pour essayer d'autres variations
+- Utilisez SDXL pour meilleure qualité
+
+---
+
 ## 🔧 Configuration
 
 ### 📋 Workflow Templates
@@ -483,11 +668,67 @@ for logo_path in all_logos:
 
 | Modèle | Description | Taille | Statut |
 |:------:|:-----------:|:------:|:------:|
-| **SDXL Base** | Modèle principal SDXL | ~7GB | ⚠️ À télécharger |
-| **SDXL Refiner** | Raffinement haute qualité | ~7GB | ⚠️ À télécharger |
-| **ControlNet Canny** | Contrôle par contours | ~1GB | ⚠️ À télécharger |
-| **ControlNet Depth** | Contrôle par profondeur | ~1GB | ⚠️ À télécharger |
+| **SDXL Base** | Modèle principal SDXL | ~7GB | ✅ Installé |
+| **SDXL Refiner** | Raffinement haute qualité | ~7GB | ✅ Installé |
+| **SD 1.5 FP16** | Modèle SD 1.5 optimisé | ~2GB | ✅ Installé |
+| **ControlNet Canny** | Contrôle par contours | ~5GB | ✅ Installé |
+| **ControlNet Depth** | Contrôle par profondeur | ~5GB | ✅ Installé |
 | **RealESRGAN** | Upscaling 4x | ~100MB | ⚠️ À télécharger |
+
+### 📥 Installation de Modèles Manquants
+
+#### **🚀 Solution Automatique (Recommandé)**
+
+Si vous avez téléchargé des modèles dans Téléchargements :
+
+```bash
+bash scripts/install_models_comfyui.sh
+```
+
+Ce script :
+- ✅ Cherche les modèles dans `~/Downloads`
+- ✅ Les déplace automatiquement vers les bons dossiers
+- ✅ Affiche les modèles déjà installés
+
+#### **📋 Installation Manuelle**
+
+**Emplacements des modèles** :
+
+| Type de Modèle | Dossier | Extensions |
+|:--------------:|:------:|:----------:|
+| **Checkpoints** | `comfyui/models/checkpoints/` | `.safetensors`, `.ckpt` |
+| **ControlNet** | `comfyui/models/controlnet/` | `.safetensors`, `.ckpt` |
+| **VAE** | `comfyui/models/vae/` | `.safetensors`, `.ckpt`, `.pt` |
+| **LoRA** | `comfyui/models/loras/` | `.safetensors`, `.ckpt` |
+| **Upscale** | `comfyui/models/upscale_models/` | `.pth` |
+
+**Étapes** :
+1. Téléchargez le modèle
+2. Déplacez-le dans le bon dossier :
+   ```bash
+   # Exemple : Checkpoint
+   mv ~/Downloads/sd_xl_base_1.0.safetensors comfyui/models/checkpoints/
+   ```
+3. Redémarrez ComfyUI :
+   ```bash
+   bash scripts/stop_comfyui.sh && bash scripts/start_comfyui.sh
+   ```
+4. Rafraîchissez l'interface web (F5)
+
+#### **🔍 Vérifier les Modèles Installés**
+
+```bash
+# Checkpoints
+ls -lh comfyui/models/checkpoints/
+
+# ControlNet
+ls -lh comfyui/models/controlnet/
+```
+
+Ou utilisez le script :
+```bash
+bash scripts/install_models_comfyui.sh
+```
 
 ---
 

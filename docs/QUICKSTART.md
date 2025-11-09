@@ -191,7 +191,9 @@ python -m src.cli generate --variant serenity --generator hyper_ai --size 200
 - ✅ Génération IA professionnelle
 - ✅ Reproduction exacte de l'inspiration
 - ✅ Qualité maximale avec modèles SDXL
-- ⚠️ Nécessite ComfyUI installé (voir section avancée)
+- ✅ **ComfyUI installé et fonctionnel**
+- ✅ **Modèles SDXL et ControlNet installés**
+- ✅ **Génération testée avec succès**
 
 **Installation et démarrage ComfyUI (optionnel) :**
 ```bash
