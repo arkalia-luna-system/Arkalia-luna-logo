@@ -167,7 +167,7 @@ class AIMoonSVGBuilder(SVGBuilder):
 
         defs.add(depth_mask)
 
-    def _add_ai_neural_patterns(self, defs, variant: LogoVariant) -> None:
+    def _add_ai_neural_patterns(self, defs: Defs, variant: LogoVariant) -> None:
         """Crée des patterns neuronaux IA"""
         # Pattern neuronal IA
         neural_pattern_id = f"aiNeuralPattern-{variant.variant_type.value}"
