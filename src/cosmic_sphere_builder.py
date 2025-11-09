@@ -5,8 +5,9 @@ Inspiré des images d'inspiration de l'utilisateur
 
 import logging
 import math
+import random
 from pathlib import Path
-from typing import Dict
+from typing import Any, Dict
 
 import svgwrite
 
@@ -436,8 +437,6 @@ class CosmicSphereBuilder(SVGBuilder):
 
     def _random_float(self, min_val: float, max_val: float) -> float:
         """Génère un nombre aléatoire entre min et max"""
-        import random
-
         return random.uniform(min_val, max_val)
 
     def _validate_size_parameters(self, size: int) -> int:
@@ -451,18 +450,3 @@ class CosmicSphereBuilder(SVGBuilder):
             self.logger.warning(f"Taille {size} trop grande, utilisation de {max_size}")
             return max_size
         return size
-
-    def save_logo(
-        self,
-        svg_content: str,
-        output_path: Path,
-        variant_name: str = "",
-    ) -> None:
-        """Sauvegarde le contenu SVG dans un fichier"""
-        try:
-            with open(output_path, "w", encoding="utf-8") as f:
-                f.write(svg_content)
-            self.logger.info(f"Logo cosmique sauvegardé : {output_path}")
-        except Exception as e:
-            self.logger.error(f"Erreur sauvegarde logo cosmique : {e}")
-            raise
