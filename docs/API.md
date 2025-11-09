@@ -439,13 +439,80 @@ except LogoGenerationError as e:
 - `LOGO_004` : Problème d'écriture du fichier
 - `LOGO_005` : Paramètres de configuration invalides
 
+## 🌐 **API REST FastAPI**
+
+### **Démarrage de l'API**
+
+```bash
+# Activer l'environnement virtuel
+source arkalia-luna-env/bin/activate
+
+# Démarrer l'API (script automatique)
+./scripts/start_api.sh
+
+# Ou manuellement
+python main.py
+```
+
+### **Endpoints Disponibles**
+
+- **`GET /`** : Informations de l'API
+- **`GET /health`** : Statut de santé
+- **`GET /docs`** : Swagger UI (documentation interactive)
+- **`GET /metrics`** : Métriques Prometheus
+- **`GET /stats`** : Statistiques de génération
+- **`POST /generate`** : Générer un logo
+- **`GET /download/{filename}`** : Télécharger un logo généré
+- **`GET /variants`** : Liste toutes les variantes disponibles
+- **`GET /generators`** : Liste tous les générateurs disponibles
+- **`DELETE /cleanup`** : Nettoie les fichiers générés
+
+### **Exemple d'Utilisation**
+
+```bash
+# Générer un logo via API
+curl -X POST "http://localhost:8000/generate" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "variant": "serenity",
+    "size": 200,
+    "generator_type": "ultimate"
+  }'
+```
+
+### **Swagger UI**
+
+Accéder à la documentation interactive : http://localhost:8000/docs
+
+### **Métriques Prometheus**
+
+Métriques disponibles sur : http://localhost:8000/metrics
+
+- `arkalia_luna_requests_total` : Nombre total de requêtes
+- `arkalia_luna_logo_generations_total` : Nombre de logos générés
+- `arkalia_luna_generation_duration_seconds` : Durée de génération
+- `arkalia_luna_errors_total` : Nombre d'erreurs
+- `arkalia_luna_health_status` : Statut de santé (1=healthy)
+
+### **Docker + Infrastructure**
+
+```bash
+# Démarrer toute l'infrastructure
+docker-compose -f docker-compose.prod.yml up -d
+
+# Services disponibles :
+# - API : http://localhost:8000
+# - Grafana : http://localhost:3000
+# - Prometheus : http://localhost:9090
+# - Nginx : http://localhost:80
+```
+
 ## 🔮 **Évolutions Futures**
 
 ### **Fonctionnalités Prévues**
 
 - **Animations Lottie** : Export vers format Lottie
 - **Templates personnalisables** : Création de styles personnalisés
-- **API REST** : Interface web pour la génération
 - **Plugins** : Système d'extensions
 - **Cloud rendering** : Génération distribuée
 
