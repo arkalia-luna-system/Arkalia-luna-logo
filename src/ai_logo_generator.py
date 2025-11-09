@@ -48,6 +48,18 @@ class AILogoGenerator(ArkaliaLunaLogo):
             if not self.variants_manager.validate_variant(variant_name):
                 raise ValueError(f"Variante '{variant_name}' non reconnue")
 
+            # Vérifier et initialiser le pipeline IA si nécessaire
+            if not self.ai_pipeline:
+                self.logger.warning(
+                    "Pipeline IA non initialisé, tentative d'initialisation..."
+                )
+                self._initialize_ai_pipeline()
+                if not self.ai_pipeline:
+                    raise RuntimeError(
+                        "Pipeline IA non disponible. "
+                        "Vérifiez que diffusers et torch sont installés."
+                    )
+
             # Utilisation de la génération IA
             return self.generate_ai_logo(variant_name, size, "ai")
 
