@@ -6,8 +6,7 @@ Inspiré des images d'inspiration de l'utilisateur
 import logging
 import math
 import random
-from pathlib import Path
-from typing import Any, Dict
+from typing import Dict
 
 import svgwrite
 
