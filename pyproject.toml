@@ -154,6 +154,13 @@ exclude = [
     "src/variants.py"
 ]
 
+[[tool.mypy.overrides]]
+module = [
+    "svgwrite",
+    "svgwrite.*",
+]
+ignore_missing_imports = true
+
 [tool.ruff.lint.per-file-ignores]
 "__init__.py" = ["F401"]
 "tests/*.py" = ["B011", "S101"]
