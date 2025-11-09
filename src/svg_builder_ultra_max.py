@@ -8,6 +8,7 @@ from pathlib import Path
 from typing import Optional, Tuple
 
 import svgwrite
+from svgwrite.container import Defs
 
 try:
     from .svg_builder import SVGBuilder
@@ -83,7 +84,9 @@ class UltraMaxSVGBuilder(SVGBuilder):
         # Patterns ULTRA-MAX
         self._add_ultra_max_patterns(defs, variant)
 
-    def _add_ultra_max_gradients(self, defs, variant: LogoVariant) -> None:
+    def _add_ultra_max_gradients(
+        self, defs: Defs, variant: LogoVariant
+    ) -> None:
         """Crée des gradients ULTRA-MAX OPTIMISÉS pour la performance"""
         # Gradient principal ULTRA-MAX OPTIMISÉ (7 stops au lieu de 15+)
         main_gradient_id = f"ultraMaxMainGradient-{variant.variant_type.value}"
@@ -149,7 +152,7 @@ class UltraMaxSVGBuilder(SVGBuilder):
 
         defs.add(glow_gradient)
 
-    def _add_ultra_max_filters(self, defs, variant: LogoVariant) -> None:
+    def _add_ultra_max_filters(self, defs: Defs, variant: LogoVariant) -> None:
         """Crée des filtres ULTRA-MAX"""
         # Filtre principal ULTRA-MAX
         main_glow_id = f"ultraMaxMainGlow-{variant.variant_type.value}"
@@ -178,7 +181,7 @@ class UltraMaxSVGBuilder(SVGBuilder):
 
         defs.add(turbulence_filter)
 
-    def _add_ultra_max_masks(self, defs, variant: LogoVariant) -> None:
+    def _add_ultra_max_masks(self, defs: Defs, variant: LogoVariant) -> None:
         """Crée des masques ULTRA-MAX"""
         # Masque de profondeur ULTRA-MAX
         depth_mask_id = f"ultraMaxDepthMask-{variant.variant_type.value}"
@@ -190,7 +193,7 @@ class UltraMaxSVGBuilder(SVGBuilder):
 
         defs.add(depth_mask)
 
-    def _add_ultra_max_patterns(self, defs, variant: LogoVariant) -> None:
+    def _add_ultra_max_patterns(self, defs: Defs, variant: LogoVariant) -> None:
         """Crée des patterns ULTRA-MAX"""
         # Pattern de grille ULTRA-MAX
         grid_pattern_id = f"ultraMaxGridPattern-{variant.variant_type.value}"

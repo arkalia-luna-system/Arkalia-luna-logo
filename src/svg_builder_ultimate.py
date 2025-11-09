@@ -9,6 +9,7 @@ from typing import Optional, Tuple
 
 import svgwrite
 from svgwrite import filters, gradients, masking
+from svgwrite.container import Defs
 
 try:
     from .svg_builder import SVGBuilder
@@ -75,7 +76,9 @@ class UltimateSVGBuilder(SVGBuilder):
         # Motifs ULTIMES cosmiques (utilise la taille du paramètre)
         self._add_ultimate_patterns(defs, variant, 200)  # Taille par défaut
 
-    def _add_ultimate_gradients(self, defs, variant: LogoVariant) -> None:
+    def _add_ultimate_gradients(
+        self, defs: Defs, variant: LogoVariant
+    ) -> None:
         """Crée des gradients ULTIMES avec 100+ stops
         pour un réalisme cosmique parfait"""
         # Gradient principal cosmique ULTIME
@@ -150,7 +153,7 @@ class UltimateSVGBuilder(SVGBuilder):
 
         defs.add(secondary_cosmic)
 
-    def _add_ultimate_filters(self, defs, variant: LogoVariant) -> None:
+    def _add_ultimate_filters(self, defs: Defs, variant: LogoVariant) -> None:
         """Crée des filtres ULTIMES cosmiques avec effets extrêmes"""
         # Filtre de lueur cosmique ULTIME
         cosmic_glow_id = f"ultimateCosmicGlow-{variant.variant_type.value}"
@@ -205,7 +208,9 @@ class UltimateSVGBuilder(SVGBuilder):
 
         defs.add(cosmic_depth_filter)
 
-    def _add_ultimate_masks(self, defs, variant: LogoVariant, size: int) -> None:
+    def _add_ultimate_masks(
+        self, defs: Defs, variant: LogoVariant, size: int
+    ) -> None:
         """Crée des masques ULTIMES pour des effets cosmiques parfaits"""
         # Masque de profondeur cosmique ULTIME
         cosmic_depth_mask_id = f"ultimateCosmicDepthMask-{variant.variant_type.value}"
@@ -240,7 +245,9 @@ class UltimateSVGBuilder(SVGBuilder):
 
         defs.add(cosmic_organic_mask)
 
-    def _add_ultimate_patterns(self, defs, variant: LogoVariant, size: int) -> None:
+    def _add_ultimate_patterns(
+        self, defs: Defs, variant: LogoVariant, size: int
+    ) -> None:
         """Crée des motifs ULTIMES cosmiques et organiques"""
         # Motif de surface cosmique ULTIME
         cosmic_surface_id = f"ultimateCosmicSurfacePattern-{variant.variant_type.value}"
