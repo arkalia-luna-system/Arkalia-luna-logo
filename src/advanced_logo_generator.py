@@ -1,5 +1,6 @@
-"""🌙 Advanced Logo Generator Module
-Générateur de logos avancés avec effets complexes
+"""🌙 Advanced Logo Generator Module.
+
+Générateur de logos avancés avec effets complexes.
 """
 
 from pathlib import Path

@@ -47,14 +47,20 @@ pip install -e .
 ### **Via Interface en Ligne de Commande**
 
 ```bash
+# Activer l'environnement virtuel
+source arkalia-luna-env/bin/activate
+
 # Générer un logo ULTIME (recommandé)
-arkalia-luna-logo generate serenity --style ultimate
+python -m src.cli generate -v serenity -g ultimate -s 200
+
+# Voir tous les générateurs disponibles
+python -m src.cli generators
 
 # Générer tous les logos d'un style
-arkalia-luna-logo generate-all --style ultimate
+python -m src.cli generate-all -s 200
 
 # Créer des favicons
-arkalia-luna-logo favicon-all
+python -m src.cli favicon-all -s 32
 ```
 
 ### **Via Code Python**
@@ -151,7 +157,7 @@ arkalia-luna-logo generate mystery --style dashboard
 
 ## 🎨 **Variantes Émotionnelles**
 
-### **Les 5 Variantes Disponibles**
+### **Les 10 Variantes Disponibles**
 
 | Variante | Description | Utilisation |
 |----------|-------------|-------------|
@@ -160,6 +166,11 @@ arkalia-luna-logo generate mystery --style dashboard
 | **Mystère** | Brumes mouvantes, réseau irrégulier | Applications créatives, art |
 | **Éveil** | Halo rayonnant, Λ-core clair | Applications éducatives, sagesse |
 | **Énergie Créative** | Flux rapides, reflets multicolores | Applications créatives, design |
+| **Pluie/Gris** | Gouttes de pluie, nuages gris | Ambiance mélancolique mais élégante |
+| **Orage/Colère** | Éclairs zigzagants, nuages sombres | Énergie explosive et dynamique |
+| **Vive/Explosion** | Particules explosives, feux d'artifice | Mouvement radial et énergique |
+| **Ensoleillé** | Rayons de soleil, chaleur et luminosité | Optimisme et énergie positive |
+| **Neige** | Flocons qui tombent, froid et pureté | Sérénité cristalline |
 
 ### **Génération de Toutes les Variantes**
 
@@ -331,16 +342,83 @@ def get_logo(variant):
     return send_file(svg_path, mimetype='image/svg+xml')
 ```
 
+## 🚀 **Utilisation Complète du Potentiel**
+
+### **API FastAPI (70% du potentiel inexploité)**
+
+```bash
+# Activer l'environnement virtuel
+source arkalia-luna-env/bin/activate
+
+# Démarrer l'API
+./scripts/start_api.sh
+
+# Accéder à Swagger UI
+# http://localhost:8000/docs
+
+# Tester la génération via API
+curl -X POST "http://localhost:8000/generate" \
+  -H "Content-Type: application/json" \
+  -d '{"variant": "serenity", "size": 200, "generator": "ultimate"}'
+```
+
+### **Docker + Monitoring (Infrastructure Production)**
+
+```bash
+# Démarrer toute l'infrastructure
+docker-compose -f docker-compose.prod.yml up -d
+
+# Services :
+# - API : http://localhost:8000
+# - Grafana : http://localhost:3000
+# - Prometheus : http://localhost:9090
+```
+
+### **Toutes les Variantes Dynamiques**
+
+```bash
+# 10 variantes totales (5 de base + 5 dynamiques)
+python -m src.cli generate -v rainy -g ultimate    # Pluie
+python -m src.cli generate -v stormy -g ultimate    # Orage
+python -m src.cli generate -v explosive -g ultimate # Explosif
+python -m src.cli generate -v sunny -g ultimate    # Ensoleillé
+python -m src.cli generate -v snowy -g ultimate     # Neige
+```
+
+### **Tous les Générateurs Avancés**
+
+```bash
+# 11 générateurs disponibles
+python -m src.cli generate -v serenity -g ultimate   # Cosmique extrême
+python -m src.cli generate -v power -g cosmic       # Sphères lumineuses
+python -m src.cli generate -v mystery -g hyper_ai    # Hyper-IA
+python -m src.cli generate -v awakening -g ai       # Stable Diffusion
+```
+
+### **Script d'Exploration Automatique**
+
+```bash
+# Explorer toutes les fonctionnalités
+./scripts/quick_explore.sh
+```
+
+**📊 Voir** : [docs/AUDIT_UTILISATION_POTENTIEL.md](AUDIT_UTILISATION_POTENTIEL.md) pour le détail complet
+
+---
+
 ## 🎉 **Félicitations !**
 
 Vous avez maintenant :
 - ✅ Installé Arkalia-LUNA Logo Generator
 - ✅ Généré votre premier logo
 - ✅ Compris l'architecture du projet
-- ✅ Personnalisé vos premiers logos
+- ✅ Découvert l'API FastAPI
+- ✅ Exploré Docker + Monitoring
 
-**Prochaine étape** : Consultez la [documentation API complète](API.md) pour explorer toutes les fonctionnalités avancées !
+**Prochaine étape** : Consultez la [documentation API complète](API.md) et [l'audit d'utilisation](AUDIT_UTILISATION_POTENTIEL.md) pour utiliser 100% du potentiel !
 
 ---
 
 **🚀 Guide créé pour une prise en main rapide et efficace - Version 2.0.0**
+
+*Dernière mise à jour : Novembre 2025*

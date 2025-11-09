@@ -1,8 +1,8 @@
 # 🎨⚡️🤖 **Arkalia-LUNA Logo Generator**
 
-> **🌍 English**: Professional SVG/PNG logo generator with 8 unique styles, emotional variants, FastAPI integration, monitoring & CI/CD - like Figma/Canva but for developers.
+> **🌍 English**: Professional SVG/PNG logo generator with 11 unique styles, 10 emotional variants, FastAPI integration, monitoring & CI/CD - like Figma/Canva but for developers.
 
-> **🇫🇷 Français**: Générateur professionnel de logos SVG/PNG multi-styles avec variantes émotionnelles, API FastAPI, monitoring & CI/CD inclus - comme Figma/Canva mais pour développeurs.
+> **🇫🇷 Français**: Générateur professionnel de logos SVG/PNG multi-styles avec 11 styles uniques, 10 variantes émotionnelles, API FastAPI, monitoring & CI/CD inclus - comme Figma/Canva mais pour développeurs.
 
 [![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://python.org)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
@@ -40,9 +40,9 @@
 
 ## 🎯 **Vue d'ensemble**
 
-> **🌍 English**: Arkalia-LUNA Logo Generator is a complete SVG vector logo generation system with **8 unique styles** and **5 emotional variants**. Professional modular architecture perfect for showcase projects, demonstrating advanced Python skills, design patterns, and graphics generation.
+> **🌍 English**: Arkalia-LUNA Logo Generator is a complete SVG vector logo generation system with **11 unique styles** and **10 emotional variants**. Professional modular architecture perfect for showcase projects, demonstrating advanced Python skills, design patterns, and graphics generation.
 
-Arkalia-LUNA Logo Generator est un système complet de génération de logos vectoriels SVG avec **8 styles uniques** et **5 variantes émotionnelles** distinctes. L'architecture modulaire et professionnelle en fait un excellent projet vitrine pour GitHub, démontrant des compétences en Python avancé, design patterns, et génération de contenu graphique.
+Arkalia-LUNA Logo Generator est un système complet de génération de logos vectoriels SVG avec **11 styles uniques** et **10 variantes émotionnelles** distinctes. L'architecture modulaire et professionnelle en fait un excellent projet vitrine pour GitHub, démontrant des compétences en Python avancé, design patterns, et génération de contenu graphique.
 
 ## 🎯 **Cas d'Usage - Dans Quel Projet Utiliser Ce Générateur ?**
 
@@ -61,9 +61,9 @@ Arkalia-LUNA Logo Generator est un système complet de génération de logos vec
 
 ![Arkalia-LUNA Logo Generator Demo](exports/demo-gif/arkalia-luna-demo.gif)
 
-*Génération de logos en 0.03 secondes - 5 variantes émotionnelles*
+*Génération de logos en 0.03 secondes - 10 variantes émotionnelles*
 
-## 🎨 **Comparaison des 8 Styles de Logos**
+## 🎨 **Comparaison des 11 Styles de Logos**
 
 ### **🌟 Variante Sérénité** (Halo doux, pulsations lentes)
 | Style | Logo | Description |
@@ -127,8 +127,8 @@ Arkalia-LUNA Logo Generator est un système complet de génération de logos vec
 
 ## ✨ **Fonctionnalités**
 
-### 🎨 **8 Styles de Logos Uniques**
-- **🌙 Base** : Logo standard Arkalia-LUNA
+### 🎨 **11 Styles de Logos Uniques**
+- **🌙 Base (default)** : Logo standard Arkalia-LUNA
 - **📊 Dashboard** : Interface optimisée et épurée
 - **🌙 AI-Moon** : IA réaliste avec lune vivante
 - **🎨 Advanced** : Techno-mystique avancé
@@ -136,13 +136,21 @@ Arkalia-LUNA Logo Generator est un système complet de génération de logos vec
 - **🚀 Ultra-Max** : Effets exceptionnels et performance
 - **🌍 Realism Max** : Ultra-réaliste avec effets organiques
 - **🌟 Ultimate** : Cosmique extrême (100+ stops, holographie)
+- **🤖 AI** : Génération IA avec Stable Diffusion
+- **🌌 Cosmic** : Sphères cosmiques et réseaux neuronaux
+- **🧠 Hyper-AI** : Intelligence artificielle avancée avec ComfyUI + SDXL + ControlNet
 
-### 🌟 **5 Variantes Émotionnelles**
+### 🌟 **10 Variantes Émotionnelles**
 - **🌙 Sérénité** : Halo doux, pulsations lentes, ambiance calme et mystique
 - **⚡ Puissance** : Halo vibrant, réseau accéléré, énergie intense  
 - **🔮 Mystère** : Brumes mouvantes, réseau irrégulier, ambiance mystérieuse
 - **✨ Éveil/Sagesse** : Halo rayonnant, Λ-core clair, sagesse éclairée
 - **🎇 Énergie créative** : Flux rapides, reflets multicolores, créativité débordante
+- **🌧️ Pluie/Gris** : Gouttes de pluie, nuages gris, ambiance mélancolique mais élégante
+- **⚡ Orage/Colère** : Éclairs zigzagants, nuages sombres, énergie explosive et dynamique
+- **💥 Vive/Explosion** : Particules explosives, feux d'artifice, mouvement radial et énergique
+- **☀️ Ensoleillé** : Rayons de soleil, chaleur et luminosité, optimisme et énergie positive
+- **❄️ Neige** : Flocons qui tombent, froid et pureté, sérénité cristalline
 
 ### 🛠️ **Capacités Techniques**
 - **Génération SVG** haute qualité avec gradients et filtres
@@ -223,11 +231,17 @@ pip install -e .
 
 ### **Interface CLI Principale**
 ```bash
+# Activer l'environnement virtuel
+source arkalia-luna-env/bin/activate
+
 # Voir toutes les variantes
 python -m src.cli info
 
+# Voir tous les générateurs disponibles
+python -m src.cli generators
+
 # Générer un logo spécifique
-python -m src.cli generate -v serenity -s 200
+python -m src.cli generate -v serenity -s 200 -g ultimate
 
 # Générer toutes les variantes
 python -m src.cli generate-all -s 200
@@ -240,6 +254,55 @@ python -m src.cli stats
 
 # Nettoyer les fichiers
 python -m src.cli clean
+```
+
+### **🚀 API FastAPI (Utilisation Complète)**
+```bash
+# Activer l'environnement virtuel
+source arkalia-luna-env/bin/activate
+
+# Démarrer l'API (script automatique)
+./scripts/start_api.sh
+
+# Ou manuellement
+python main.py
+
+# Accéder à Swagger UI
+# http://localhost:8000/docs
+
+# Générer un logo via API
+curl -X POST "http://localhost:8000/generate" \
+  -H "Content-Type: application/json" \
+  -d '{"variant": "serenity", "size": 200, "generator": "ultimate"}'
+```
+
+### **🐳 Docker + Infrastructure (Production-Ready)**
+```bash
+# Démarrer toute l'infrastructure
+docker-compose -f docker-compose.prod.yml up -d
+
+# Services disponibles :
+# 🌐 API : http://localhost:8000
+# 📊 Prometheus : http://localhost:9090
+# 📈 Grafana : http://localhost:3000
+# 🔄 Nginx : http://localhost:80
+```
+
+### **🎨 Utilisation Complète du Potentiel**
+```bash
+# Explorer toutes les fonctionnalités
+./scripts/quick_explore.sh
+
+# Générer avec tous les générateurs avancés
+python -m src.cli generate -v serenity -g ultimate    # Cosmique extrême
+python -m src.cli generate -v power -g cosmic          # Sphères lumineuses
+python -m src.cli generate -v mystery -g hyper_ai     # Hyper-IA
+python -m src.cli generate -v awakening -g ai        # Stable Diffusion
+
+# Tester toutes les variantes dynamiques
+for variant in rainy stormy explosive sunny snowy; do
+  python -m src.cli generate -v $variant -g ultimate
+done
 ```
 
 ## 📝 **Conventions de Commit et PR**
@@ -301,23 +364,29 @@ arkalia-luna-logo/
 │   ├── generator_factory.py     # Factory Pattern pour les générateurs
 │   ├── cli.py                   # Interface CLI professionnelle
 │   │
-│   ├── **8 Générateurs Uniques** :
-│   │   ├── dashboard_generator.py      # Interface optimisée
-│   │   ├── ai_moon_generator.py       # IA réaliste
-│   │   ├── advanced_logo_generator.py # Techno-mystique
-│   │   ├── simple_advanced_generator.py # Équilibré
-│   │   ├── ultra_max_generator.py     # Effets exceptionnels
-│   │   ├── realism_max_generator.py   # Ultra-réaliste
-│   │   └── ultimate_generator.py      # Cosmique extrême
+│   ├── **11 Générateurs Uniques** :
+│   │   ├── logo_generator.py              # Base (default)
+│   │   ├── dashboard_generator.py         # Interface optimisée
+│   │   ├── ai_moon_generator.py           # IA réaliste
+│   │   ├── advanced_logo_generator.py      # Techno-mystique
+│   │   ├── simple_advanced_generator.py  # Équilibré
+│   │   ├── ultra_max_generator.py         # Effets exceptionnels
+│   │   ├── realism_max_generator.py       # Ultra-réaliste
+│   │   ├── ultimate_generator.py          # Cosmique extrême
+│   │   ├── ai_logo_generator.py           # Génération IA (Stable Diffusion)
+│   │   ├── cosmic_logo_generator.py       # Sphères cosmiques
+│   │   └── hyper_ai_generator.py          # Hyper-IA (ComfyUI + SDXL)
 │   │
-│   └── **8 Builders SVG Spécialisés** :
-│       ├── svg_builder_dashboard.py      # Dashboard
-│       ├── svg_builder_ai_moon.py       # AI-Moon
-│       ├── svg_builder_advanced.py      # Advanced
+│   └── **Builders SVG Spécialisés** :
+│       ├── svg_builder.py                 # Base abstraite
+│       ├── svg_builder_dashboard.py       # Dashboard
+│       ├── svg_builder_ai_moon.py         # AI-Moon
+│       ├── svg_builder_advanced.py        # Advanced
 │       ├── svg_builder_simple_advanced.py # Simple-Advanced
-│       ├── svg_builder_ultra_max.py     # Ultra-Max
-│       ├── svg_builder_realism_max.py   # Realism Max
-│       └── svg_builder_ultimate.py      # Ultimate
+│       ├── svg_builder_ultra_max.py       # Ultra-Max
+│       ├── svg_builder_realism_max.py     # Realism Max
+│       ├── svg_builder_ultimate.py        # Ultimate
+│       └── cosmic_sphere_builder.py       # Cosmic
 │
 ├── tests/                       # Tests automatisés
 ├── docs/                        # Documentation
@@ -433,3 +502,5 @@ Ce projet est sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.
 ---
 
 **🌙 Arkalia-LUNA Logo Generator** - Créé avec ❤️ par l'équipe Arkalia-LUNA
+
+*Dernière mise à jour : Novembre 2025*

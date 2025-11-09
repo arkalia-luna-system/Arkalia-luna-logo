@@ -38,7 +38,7 @@ from .variants import ColorScheme, LogoVariant, LogoVariants, VariantType
 
 # Fonction de création rapide pour compatibilité
 def create_generator(generator_type: str = "default", **kwargs: Any) -> ArkaliaLunaLogo:
-    """Fonction de compatibilité pour créer rapidement un générateur"""
+    """Fonction de compatibilité pour créer rapidement un générateur."""
     return create_logo_generator(generator_type, **kwargs)
 
 
