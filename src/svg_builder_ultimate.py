@@ -235,8 +235,8 @@ class UltimateSVGBuilder(SVGBuilder):
 
         # Créer des cercles cosmiques organiques
         for _ in range(12):
-            x = random.randint(0, size // 3)
-            y = random.randint(0, size // 3)
+            x = random.randint(0, int(size // 3))
+            y = random.randint(0, int(size // 3))
             radius = random.randint(3, 10)
             opacity = random.uniform(0.15, 0.5)
 
@@ -258,10 +258,10 @@ class UltimateSVGBuilder(SVGBuilder):
 
         # Lignes de connexion neuronales cosmiques
         for _ in range(10):
-            x1 = random.randint(0, size // 1.5)
-            y1 = random.randint(0, size // 1.5)
-            x2 = random.randint(0, size // 1.5)
-            y2 = random.randint(0, size // 1.5)
+            x1 = random.randint(0, int(size // 1.5))
+            y1 = random.randint(0, int(size // 1.5))
+            x2 = random.randint(0, int(size // 1.5))
+            y2 = random.randint(0, int(size // 1.5))
 
             line = svgwrite.shapes.Line(
                 start=(x1, y1),

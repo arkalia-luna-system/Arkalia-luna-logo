@@ -6,7 +6,7 @@ Inspiré des images d'inspiration de l'utilisateur
 
 import math
 from pathlib import Path
-from typing import Dict
+from typing import Dict, Optional
 
 import svgwrite
 
@@ -21,7 +21,7 @@ class CosmicSphereBuilder(SVGBuilder):
         self.builder_type = "cosmic_sphere"
 
     def build_logo(
-        self, variant_name: str, size: int = 200, output_dir: Path = None
+        self, variant_name: str, size: int = 200, output_dir: Optional[Path] = None
     ) -> str:
         """Construit un logo avec sphère cosmique lumineuse"""
         try:
