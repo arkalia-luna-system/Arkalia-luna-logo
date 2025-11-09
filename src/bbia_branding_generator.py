@@ -30,7 +30,7 @@ class BBIABrandingGenerator(ArkaliaLunaLogo):
     - Respect du style guide BBIA
     """
 
-    def __init__(self, output_dir: Optional[Path] = None):
+    def __init__(self, output_dir: Optional[Path] = None) -> None:
         # Appel du constructeur parent
         super().__init__(output_dir or Path("exports-bbia"))
 

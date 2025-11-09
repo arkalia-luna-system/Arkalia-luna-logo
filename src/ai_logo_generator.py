@@ -23,7 +23,7 @@ except ImportError:
 class AILogoGenerator(ArkaliaLunaLogo):
     """Générateur de logos utilisant Stable Diffusion local"""
 
-    def __init__(self, output_dir: Optional[Path] = None):
+    def __init__(self, output_dir: Optional[Path] = None) -> None:
         # Appel du constructeur parent avec répertoire spécialisé
         super().__init__(output_dir or Path("exports-ai"))
 
@@ -251,7 +251,7 @@ class AILogoGenerator(ArkaliaLunaLogo):
             except Exception as e:
                 self.logger.warning(f"⚠️ Erreur nettoyage ressources: {e}")
 
-    def __del__(self):
+    def __del__(self) -> None:
         """Destructeur pour nettoyer les ressources"""
         self.cleanup_resources()
 

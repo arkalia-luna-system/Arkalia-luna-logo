@@ -7,6 +7,7 @@ from pathlib import Path
 from typing import Optional
 
 import click
+from click import Context
 from rich.console import Console
 from rich.panel import Panel
 from rich.progress import track
@@ -55,7 +56,7 @@ def print_info(message: str):
 )
 @click.option("--verbose", "-v", is_flag=True, help="Mode verbeux")
 @click.pass_context
-def cli(ctx, output_dir: Optional[str], verbose: bool):
+def cli(ctx: Context, output_dir: Optional[str], verbose: bool):
     """🌙 Arkalia-LUNA Logo Generator - Interface CLI professionnelle"""
     ctx.ensure_object(dict)
 
@@ -78,7 +79,7 @@ def cli(ctx, output_dir: Optional[str], verbose: bool):
 
 @cli.command()
 @click.pass_context
-def generators(ctx):
+def generators(ctx: Context):
     """Affiche les générateurs disponibles"""
     try:
         available_generators = LogoGeneratorFactory.get_available_generators()
@@ -105,7 +106,7 @@ def generators(ctx):
 
 @cli.command()
 @click.pass_context
-def info(ctx):
+def info(ctx: Context):
     """Affiche les informations sur toutes les variantes disponibles"""
     try:
         generator = ctx.obj["generator"]
@@ -150,7 +151,9 @@ def info(ctx):
 )
 @click.option("--output", "-o", type=click.Path(), help="Chemin de sortie personnalisé")
 @click.pass_context
-def generate(ctx, variant: str, size: int, generator: str, output: Optional[str]):
+def generate(
+    ctx: Context, variant: str, size: int, generator: str, output: Optional[str]
+):
     """Génère un logo SVG pour une variante spécifique"""
     try:
         # Création du générateur spécialisé via la factory
@@ -200,7 +203,7 @@ def generate(ctx, variant: str, size: int, generator: str, output: Optional[str]
     help="Génération parallèle (si supportée)",
 )
 @click.pass_context
-def generate_all(ctx, size: int, parallel: bool):
+def generate_all(ctx: Context, size: int, parallel: bool):
     """Génère toutes les variantes du logo"""
     try:
         generator = ctx.obj["generator"]
@@ -242,7 +245,7 @@ def generate_all(ctx, size: int, parallel: bool):
 @click.option("--size", "-s", default=32, help="Taille du favicon en pixels")
 @click.option("--output", "-o", type=click.Path(), help="Chemin de sortie personnalisé")
 @click.pass_context
-def favicon(ctx, variant: str, size: int, output: Optional[str]):
+def favicon(ctx: Context, variant: str, size: int, output: Optional[str]):
     """Crée un favicon PNG pour une variante"""
     try:
         generator = ctx.obj["generator"]
@@ -279,7 +282,7 @@ def favicon(ctx, variant: str, size: int, output: Optional[str]):
 @cli.command()
 @click.option("--size", "-s", default=32, help="Taille des favicons en pixels")
 @click.pass_context
-def favicon_all(ctx, size: int):
+def favicon_all(ctx: Context, size: int):
     """Crée des favicons pour toutes les variantes"""
     try:
         generator = ctx.obj["generator"]
@@ -311,7 +314,7 @@ def favicon_all(ctx, size: int):
 
 @cli.command()
 @click.pass_context
-def stats(ctx):
+def stats(ctx: Context):
     """Affiche les statistiques de génération"""
     try:
         generator = ctx.obj["generator"]
@@ -338,7 +341,7 @@ def stats(ctx):
 @cli.command()
 @click.option("--confirm", is_flag=True, help="Confirmation automatique")
 @click.pass_context
-def clean(ctx, confirm: bool):
+def clean(ctx: Context, confirm: bool):
     """Nettoie tous les fichiers générés"""
     try:
         generator = ctx.obj["generator"]
@@ -364,7 +367,7 @@ def clean(ctx, confirm: bool):
 
 @cli.command()
 @click.pass_context
-def version(ctx):
+def version(ctx: Context):
     """Affiche la version du générateur"""
     from . import __version__
 

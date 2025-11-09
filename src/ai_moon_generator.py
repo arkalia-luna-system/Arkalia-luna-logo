@@ -17,7 +17,7 @@ except ImportError:
 class AIMoonLogoGenerator(ArkaliaLunaLogo):
     """Générateur de la LUNE IA VIVANTE ultra-réaliste et organique"""
 
-    def __init__(self, output_dir: Optional[Path] = None):
+    def __init__(self, output_dir: Optional[Path] = None) -> None:
         # Appel du constructeur parent avec répertoire spécialisé
         super().__init__(output_dir or Path("exports-ai-moon"))
 
