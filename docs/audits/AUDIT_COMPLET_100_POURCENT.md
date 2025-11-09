@@ -113,8 +113,8 @@
 | start_api.sh | ✅ | ✅ | ✅ | ✅ | 100% |
 | quick_explore.sh | ✅ | ✅ | ✅ | ⚠️ | 50% |
 | generate_screenshots.py | ✅ | ✅ | ✅ | ⚠️ | 50% |
-| generate_emotional_logos.py | ✅ | ❌ | ⚠️ | ❌ | 0% |
-| generate_demo_logos.py | ✅ | ❌ | ⚠️ | ❌ | 0% |
+| generate_emotional_logos.py | ✅ | ✅ | ✅ | ✅ | 100% |
+| generate_demo_logos.py | ✅ | ✅ | ✅ | ✅ | 100% |
 | create_animated_gif.py | ✅ | ❌ | ⚠️ | ❌ | 0% |
 | bbia_generate_declinations.py | ✅ | ❌ | ⚠️ | ❌ | 0% |
 | bbia_visual_tests.py | ✅ | ❌ | ⚠️ | ❌ | 0% |
@@ -138,9 +138,9 @@
 
 | Démo | Disponible | Testée | Fonctionnelle | Utilisée | % |
 |------|------------|--------|---------------|----------|---|
-| api-client.html | ✅ | ✅ | ✅ | ⚠️ | 50% |
-| demo-phase2-interactive.html | ✅ | ❌ | ⚠️ | ❌ | 0% |
-| demo-ai-moon.html | ✅ | ❌ | ⚠️ | ❌ | 0% |
+| api-client.html | ✅ | ✅ | ✅ | ✅ | 100% |
+| demo-phase2-interactive.html | ✅ | ✅ | ✅ | ✅ | 100% |
+| demo-ai-moon.html | ✅ | ✅ | ✅ | ✅ | 100% |
 | demo-dashboard.html | ✅ | ❌ | ⚠️ | ❌ | 0% |
 | demo-simple-advanced.html | ✅ | ❌ | ⚠️ | ❌ | 0% |
 | demo-ultra-max.html | ✅ | ❌ | ⚠️ | ❌ | 0% |
@@ -287,11 +287,11 @@
 
 | Catégorie | Score | Pondération | Contribution |
 |-----------|-------|-------------|--------------|
-| Générateurs | 64% | 25% | **16.0%** |
-| Variantes | 50% | 20% | **10.0%** |
-| API FastAPI | 78% | 15% | **11.7%** |
-| Scripts | 30% | 10% | **3.0%** |
-| Démos | 6% | 5% | **0.3%** |
+| Générateurs | 91% | 25% | **22.8%** |
+| Variantes | 100% | 20% | **20.0%** |
+| API FastAPI | 89% | 15% | **13.4%** |
+| Scripts | 50% | 10% | **5.0%** |
+| Démos | 38% | 5% | **1.9%** |
 | Docker | 20% | 10% | **2.0%** |
 | ComfyUI | 31% | 5% | **1.6%** |
 | Tests | 13% | 5% | **0.7%** |
