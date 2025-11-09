@@ -37,9 +37,8 @@ def generate_screenshots():
 
     print("🎨 Génération des screenshots comparatifs...")
     print(f"📁 Dossier de sortie: {output_dir}")
-    print(
-        f"🎯 {len(styles)} styles × {len(variants)} variantes = {len(styles) * len(variants)} logos"
-    )
+    total_logos = len(styles) * len(variants)
+    print(f"🎯 {len(styles)} styles × {len(variants)} variantes = {total_logos} logos")
     print()
 
     generated_count = 0

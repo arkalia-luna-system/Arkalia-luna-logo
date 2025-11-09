@@ -23,7 +23,7 @@ def create_mockup_svg(
 ):
     """
     Crée un mockup SVG avec fond coloré pour test visuel
-    
+
     Args:
         logo_svg_path: Chemin vers le logo SVG
         background_color: Couleur de fond (hex)
@@ -48,7 +48,7 @@ def create_mockup_svg(
 def generate_visual_tests(bbia_branding_path: Path):
     """
     Génère tous les tests visuels BBIA
-    
+
     Args:
         bbia_branding_path: Chemin vers le projet BBIA Branding
     """
@@ -126,4 +126,3 @@ if __name__ == "__main__":
         print("📁 Utilisation du projet sur Desktop (temporaire)")
 
     generate_visual_tests(bbia_branding_path)
-

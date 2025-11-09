@@ -37,8 +37,10 @@ def generate_emotional_logos():
 
     print("🎨 Génération des logos émotionnels...")
     print(f"📁 Dossier de sortie: {output_dir}")
+    total_logos = len(emotional_variants) * len(generators)
     print(
-        f"🎯 {len(emotional_variants)} variantes × {len(generators)} générateurs = {len(emotional_variants) * len(generators)} logos"
+        f"🎯 {len(emotional_variants)} variantes × {len(generators)} "
+        f"générateurs = {total_logos} logos"
     )
     print()
 
