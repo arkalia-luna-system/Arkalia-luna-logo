@@ -1,13 +1,26 @@
-# 🚀 Reddit Post - Arkalia-LUNA Logo Generator
+# 🚀 Reddit Post
 
-## 📋 **Contenu du Post**
+<div align="center">
 
-### **Titre :**
-```
-I built a logo generator that creates 5 emotional variants in 0.016 seconds - with Docker, FastAPI, and real-time monitoring
-```
+**🌙 Arkalia-LUNA Logo Generator**
 
-### **Description :**
+*Contenu pour publication Reddit*
+
+</div>
+
+---
+
+## 📋 Contenu du Post
+
+### 📝 Titre
+
+<div align="center">
+
+**I built a logo generator that creates 5 emotional variants in 0.016 seconds - with Docker, FastAPI, and real-time monitoring**
+
+</div>
+
+### 📄 Description
 ```
 Hey r/Python! 👋
 

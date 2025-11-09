@@ -159,7 +159,8 @@ flowchart TD
 ### **1. ULTIME (Recommandé pour commencer)**
 
 ```bash
-arkalia-luna-logo generate serenity --style ultimate
+source arkalia-luna-env/bin/activate
+python -m src.cli generate --variant serenity --generator ultimate --size 200
 ```
 
 **Pourquoi commencer par ULTIME ?**
@@ -168,10 +169,30 @@ arkalia-luna-logo generate serenity --style ultimate
 - ✅ Qualité professionnelle garantie
 - ✅ Compatible tous les usages
 
-### **2. AI-MOON (Style organique)**
+### **2. HYPER-AI (Génération IA avancée) 🧠**
 
 ```bash
-arkalia-luna-logo generate power --style ai_moon
+source arkalia-luna-env/bin/activate
+python -m src.cli generate --variant serenity --generator hyper_ai --size 200
+```
+
+**Génération ultra-intelligente avec ComfyUI + SDXL + ControlNet :**
+- ✅ Génération IA professionnelle
+- ✅ Reproduction exacte de l'inspiration
+- ✅ Qualité maximale avec modèles SDXL
+- ⚠️ Nécessite ComfyUI installé (voir section avancée)
+
+**Installation ComfyUI (optionnel) :**
+```bash
+bash scripts/install_comfyui.sh
+cd comfyui && ./launch_comfyui.sh
+```
+
+### **3. AI-MOON (Style organique)**
+
+```bash
+source arkalia-luna-env/bin/activate
+python -m src.cli generate --variant power --generator ai_moon --size 200
 ```
 
 **Idéal pour :**
@@ -179,10 +200,11 @@ arkalia-luna-logo generate power --style ai_moon
 - Interfaces organiques et fluides
 - Projets innovants et futuristes
 
-### **3. Dashboard (Style professionnel)**
+### **4. Dashboard (Style professionnel)**
 
 ```bash
-arkalia-luna-logo generate mystery --style dashboard
+source arkalia-luna-env/bin/activate
+python -m src.cli generate --variant mystery --generator dashboard --size 200
 ```
 
 **Parfait pour :**

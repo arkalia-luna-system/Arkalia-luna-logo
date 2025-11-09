@@ -1,26 +1,56 @@
-# 📋 Checklist d'évaluation MidJourney - Arkalia-LUNA
+# 📋 Checklist d'Évaluation MidJourney
 
-## 🎯 Critères d'évaluation (1-5)
+<div align="center">
 
-### **Critères techniques**
-- **Lisibilité petit format** : Visible en favicon/CLI (16x16, 32x32) ?
-- **Réseau neuronal** : Organique, fluide, vivant ?
-- **Halo** : Respirant, élégant, pas statique ?
-- **Λ-core** : Visible, rayonnant, bien positionné ?
-- **Palette** : Bleu + iridescences cohérentes ?
+**🌙 Arkalia-LUNA**
 
-### **Critères artistiques**
-- **Mystique raffiné** : Pas cheap/occult, élégant ?
-- **Tech organique** : Pas angulaire/rigide, fluide ?
-- **Profondeur cosmique** : Pas plat, 3D, atmosphérique ?
-- **Équilibre global** : Lune + neurones + tech harmonieux ?
+*Critères d'évaluation (1-5)*
 
-## 🏆 Score total /40
+</div>
 
-**Excellent :** 35-40 points  
-**Très bon :** 30-34 points  
-**Bon :** 25-29 points  
-**À améliorer :** <25 points
+---
+
+## 🎯 Critères d'Évaluation
+
+### 🔧 Critères Techniques
+
+<div align="center">
+
+| Critère | Description | Score (1-5) |
+|:-------:|:-----------:|:-----------:|
+| **Lisibilité petit format** | Visible en favicon/CLI (16x16, 32x32) ? | ⭐⭐⭐⭐⭐ |
+| **Réseau neuronal** | Organique, fluide, vivant ? | ⭐⭐⭐⭐⭐ |
+| **Halo** | Respirant, élégant, pas statique ? | ⭐⭐⭐⭐⭐ |
+| **Λ-core** | Visible, rayonnant, bien positionné ? | ⭐⭐⭐⭐⭐ |
+| **Palette** | Bleu + iridescences cohérentes ? | ⭐⭐⭐⭐⭐ |
+
+</div>
+
+### 🎨 Critères Artistiques
+
+<div align="center">
+
+| Critère | Description | Score (1-5) |
+|:-------:|:-----------:|:-----------:|
+| **Mystique raffiné** | Pas cheap/occult, élégant ? | ⭐⭐⭐⭐⭐ |
+| **Tech organique** | Pas angulaire/rigide, fluide ? | ⭐⭐⭐⭐⭐ |
+| **Profondeur cosmique** | Pas plat, 3D, atmosphérique ? | ⭐⭐⭐⭐⭐ |
+| **Équilibre global** | Lune + neurones + tech harmonieux ? | ⭐⭐⭐⭐⭐ |
+
+</div>
+
+## 🏆 Score Total
+
+<div align="center">
+
+| Niveau | Points | Description |
+|:------:|:------:|:-----------:|
+| **Excellent** | 35-40 | 🏆 Qualité exceptionnelle |
+| **Très bon** | 30-34 | ⭐ Qualité élevée |
+| **Bon** | 25-29 | ✅ Qualité acceptable |
+| **À améliorer** | <25 | ⚠️ Nécessite des améliorations |
+
+</div>
 
 ## 📊 Grille d'évaluation
 
