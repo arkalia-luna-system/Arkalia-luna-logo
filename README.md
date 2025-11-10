@@ -57,7 +57,7 @@
 
 <table>
 <tr>
-<td align="center"><strong>🌙 Sérénité</strong><br/><img src="exports-ai/test-ai-serenity.png" width="220" alt="AI Serenity"><br/>Stable Diffusion v1.5</td>
+<td align="center"><strong>🌙 Sérénité</strong><br/><img src="exports-ai/test-ai-serenity-safe.png" width="220" alt="AI Serenity"><br/>Stable Diffusion v1.5</td>
 <td align="center"><strong>⚡ Puissance</strong><br/><img src="exports-ai/test-ai-power.png" width="220" alt="AI Power"><br/>Génération IA locale</td>
 </tr>
 <tr>
@@ -525,7 +525,7 @@ logo_path = generator.generate_svg_logo("serenity", size=200)
 <table>
 <tr>
 <td align="center"><strong>Vectoriel Ultimate</strong><br/><img src="exports/screenshots/ultimate-serenity-200.svg" width="150" alt="Ultimate Vectoriel"><br/>⚡ 0.007s<br/>SVG vectoriel</td>
-<td align="center"><strong>IA Stable Diffusion</strong><br/><img src="exports-ai/test-ai-serenity.png" width="150" alt="AI Serenity"><br/>🤖 ~5-10s<br/>PNG haute qualité</td>
+<td align="center"><strong>IA Stable Diffusion</strong><br/><img src="exports-ai/test-ai-serenity-safe.png" width="150" alt="AI Serenity"><br/>🤖 ~5-10s<br/>PNG haute qualité</td>
 <td align="center"><strong>IA ComfyUI SDXL</strong><br/><img src="exports-hyper-ai/ComfyUI_00001_.png" width="150" alt="Hyper-AI"><br/>🤖 ~10-30s<br/>1024x1024</td>
 </tr>
 </table>

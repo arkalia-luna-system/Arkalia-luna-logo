@@ -66,6 +66,10 @@ logs/
 
 # Exports temporaires
 exports-*/
+!exports-ai/
+!exports-hyper-ai/
+!exports-cosmic/
+!exports/screenshots/
 *.tmp
 *.temp
 
