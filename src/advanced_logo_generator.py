@@ -1,6 +1,6 @@
-"""
-🌙 Advanced Logo Generator Module
-Générateur de logos avancés avec effets complexes
+"""🌙 Advanced Logo Generator Module.
+
+Générateur de logos avancés avec effets complexes.
 """
 
 from pathlib import Path
@@ -18,7 +18,7 @@ except ImportError:
 class AdvancedArkaliaLunaLogo(ArkaliaLunaLogo):
     """Générateur principal des logos Arkalia-LUNA avec rendu exceptionnel"""
 
-    def __init__(self, output_dir: Optional[Path] = None):
+    def __init__(self, output_dir: Optional[Path] = None) -> None:
         # Appel du constructeur parent avec répertoire spécialisé
         super().__init__(output_dir or Path("exports-advanced"))
 
@@ -36,7 +36,7 @@ class AdvancedArkaliaLunaLogo(ArkaliaLunaLogo):
         try:
             self.logger.info(
                 f"🎨 Génération du logo SVG avancé '{variant_name}' "
-                f"en taille {size}x{size}"
+                f"en taille {size}x{size}",
             )
 
             # Validation de la variante
@@ -56,7 +56,7 @@ class AdvancedArkaliaLunaLogo(ArkaliaLunaLogo):
 
         except Exception as e:
             self.logger.error(
-                f"❌ Erreur lors de la génération du logo avancé '{variant_name}': {e}"
+                f"❌ Erreur lors de la génération du logo avancé '{variant_name}': {e}",
             )
             raise
 
@@ -65,7 +65,7 @@ class AdvancedArkaliaLunaLogo(ArkaliaLunaLogo):
         try:
             self.logger.info(
                 f"🚀 Génération de toutes les variantes avancées "
-                f"en taille {size}x{size}"
+                f"en taille {size}x{size}",
             )
 
             generated_files = []
@@ -82,7 +82,7 @@ class AdvancedArkaliaLunaLogo(ArkaliaLunaLogo):
 
             self.logger.info(
                 f"🎉 Génération avancée terminée : "
-                f"{len(generated_files)}/{len(variants)} logos créés"
+                f"{len(generated_files)}/{len(variants)} logos créés",
             )
             return generated_files
 
@@ -91,13 +91,16 @@ class AdvancedArkaliaLunaLogo(ArkaliaLunaLogo):
             raise
 
     def create_advanced_favicon(
-        self, variant_name: str, size: int = 32, advanced_effects: bool = True
+        self,
+        variant_name: str,
+        size: int = 32,
+        advanced_effects: bool = True,
     ) -> Path:
         """Crée un favicon avancé avec effets complexes"""
         try:
             self.logger.info(
                 f"🎨 Création favicon avancé '{variant_name}' "
-                f"effets avancés: {advanced_effects}"
+                f"effets avancés: {advanced_effects}",
             )
 
             # Utilise la méthode parent mais avec le builder avancé
@@ -105,7 +108,8 @@ class AdvancedArkaliaLunaLogo(ArkaliaLunaLogo):
 
         except Exception as e:
             self.logger.error(
-                f"❌ Erreur lors de la création du favicon avancé '{variant_name}': {e}"
+                f"❌ Erreur lors de la création du favicon avancé "
+                f"'{variant_name}': {e}",
             )
             raise
 

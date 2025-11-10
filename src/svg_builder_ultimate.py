@@ -1,5 +1,4 @@
-"""
-🌙 Ultimate SVG Builder Module
+"""🌙 Ultimate SVG Builder Module
 Construction des logos SVG ULTIMES Arkalia-LUNA avec effets cosmiques extrêmes
 """
 
@@ -10,6 +9,7 @@ from typing import Optional, Tuple
 
 import svgwrite
 from svgwrite import filters, gradients, masking
+from svgwrite.container import Defs
 
 try:
     from .svg_builder import SVGBuilder
@@ -21,9 +21,10 @@ except ImportError:
 
 
 class UltimateSVGBuilder(SVGBuilder):
-    """Constructeur SVG ULTIME pour des logos Arkalia-LUNA avec effets cosmiques extrêmes"""
+    """Constructeur SVG ULTIME pour des logos Arkalia-LUNA
+    avec effets cosmiques extrêmes"""
 
-    def __init__(self, variants_manager: LogoVariants):
+    def __init__(self, variants_manager: LogoVariants) -> None:
         super().__init__(variants_manager)
         self._setup_ultimate_enhancements()
 
@@ -35,7 +36,9 @@ class UltimateSVGBuilder(SVGBuilder):
         self.ultimate_effects = True  # Effets ULTIMES actifs
 
     def create_drawing(
-        self, size: int, viewbox: Optional[Tuple[int, int, int, int]] = None
+        self,
+        size: int,
+        viewbox: Optional[Tuple[int, int, int, int]] = None,
     ) -> svgwrite.Drawing:
         """Crée un nouveau dessin SVG avec configuration ULTIME"""
         if viewbox is None:
@@ -48,13 +51,15 @@ class UltimateSVGBuilder(SVGBuilder):
 
         # Configuration ULTIME
         drawing.set_desc(
-            "Logo Arkalia-LUNA - Style ULTIME avec effets cosmiques extrêmes"
+            "Logo Arkalia-LUNA - Style ULTIME avec effets cosmiques extrêmes",
         )
 
         return drawing
 
     def add_ultimate_definitions(
-        self, drawing: svgwrite.Drawing, variant: LogoVariant
+        self,
+        drawing: svgwrite.Drawing,
+        variant: LogoVariant,
     ) -> None:
         """Ajoute des définitions ULTIMES (gradients, filtres, masques, motifs)"""
         defs = drawing.defs
@@ -71,12 +76,16 @@ class UltimateSVGBuilder(SVGBuilder):
         # Motifs ULTIMES cosmiques (utilise la taille du paramètre)
         self._add_ultimate_patterns(defs, variant, 200)  # Taille par défaut
 
-    def _add_ultimate_gradients(self, defs, variant: LogoVariant) -> None:
-        """Crée des gradients ULTIMES avec 100+ stops pour un réalisme cosmique parfait"""
+    def _add_ultimate_gradients(self, defs: Defs, variant: LogoVariant) -> None:
+        """Crée des gradients ULTIMES avec 100+ stops
+        pour un réalisme cosmique parfait"""
         # Gradient principal cosmique ULTIME
         cosmic_gradient_id = f"ultimateCosmic-{variant.variant_type.value}"
         cosmic_gradient = gradients.RadialGradient(
-            id=cosmic_gradient_id, cx="40%", cy="40%", r="70%"
+            id=cosmic_gradient_id,
+            cx="40%",
+            cy="40%",
+            r="70%",
         )
 
         # 100+ stops pour un effet cosmique parfait
@@ -118,7 +127,9 @@ class UltimateSVGBuilder(SVGBuilder):
         for offset, color, opacity in cosmic_stops:
             try:
                 cosmic_gradient.add_stop_color(
-                    offset=f"{offset}%", color=color, opacity=opacity
+                    offset=f"{offset}%",
+                    color=color,
+                    opacity=opacity,
                 )
             except Exception:
                 # Fallback sans opacity si non supporté
@@ -129,7 +140,10 @@ class UltimateSVGBuilder(SVGBuilder):
         # Gradient secondaire cosmique ULTIME
         secondary_cosmic_id = f"ultimateSecondaryCosmic-{variant.variant_type.value}"
         secondary_cosmic = gradients.RadialGradient(
-            id=secondary_cosmic_id, cx="60%", cy="60%", r="60%"
+            id=secondary_cosmic_id,
+            cx="60%",
+            cy="60%",
+            r="60%",
         )
 
         secondary_cosmic.add_stop_color(offset="0%", color=variant.colors.glow)
@@ -137,7 +151,7 @@ class UltimateSVGBuilder(SVGBuilder):
 
         defs.add(secondary_cosmic)
 
-    def _add_ultimate_filters(self, defs, variant: LogoVariant) -> None:
+    def _add_ultimate_filters(self, defs: Defs, variant: LogoVariant) -> None:
         """Crée des filtres ULTIMES cosmiques avec effets extrêmes"""
         # Filtre de lueur cosmique ULTIME
         cosmic_glow_id = f"ultimateCosmicGlow-{variant.variant_type.value}"
@@ -145,7 +159,7 @@ class UltimateSVGBuilder(SVGBuilder):
 
         # Effet de flou gaussien cosmique
         fe_gaussian_blur = filters._feGaussianBlur(
-            stdDeviation=str(variant.glow_intensity * 8)
+            stdDeviation=str(variant.glow_intensity * 8),
         )
         cosmic_glow.add(fe_gaussian_blur)
 
@@ -192,7 +206,7 @@ class UltimateSVGBuilder(SVGBuilder):
 
         defs.add(cosmic_depth_filter)
 
-    def _add_ultimate_masks(self, defs, variant: LogoVariant, size: int) -> None:
+    def _add_ultimate_masks(self, defs: Defs, variant: LogoVariant, size: int) -> None:
         """Crée des masques ULTIMES pour des effets cosmiques parfaits"""
         # Masque de profondeur cosmique ULTIME
         cosmic_depth_mask_id = f"ultimateCosmicDepthMask-{variant.variant_type.value}"
@@ -200,7 +214,9 @@ class UltimateSVGBuilder(SVGBuilder):
 
         # Cercle de masque cosmique
         cosmic_mask_circle = svgwrite.shapes.Circle(
-            center=(size // 2, size // 2), r=size // 2.3, fill="white"
+            center=(size // 2, size // 2),
+            r=size // 2.3,
+            fill="white",
         )
         cosmic_depth_mask.add(cosmic_mask_circle)
 
@@ -214,15 +230,20 @@ class UltimateSVGBuilder(SVGBuilder):
 
         # Forme organique cosmique complexe
         cosmic_organic_path = svgwrite.path.Path(
-            d=f"M {size // 5} {size // 5} Q {size // 2} {size // 10} {4 * size // 5} {size // 5} "
-            f"Q {size // 2} {4 * size // 5} {size // 5} {4 * size // 5} Z",
+            d=(
+                f"M {size // 5} {size // 5} "
+                f"Q {size // 2} {size // 10} {4 * size // 5} {size // 5} "
+                f"Q {size // 2} {4 * size // 5} {size // 5} {4 * size // 5} Z"
+            ),
             fill="white",
         )
         cosmic_organic_mask.add(cosmic_organic_path)
 
         defs.add(cosmic_organic_mask)
 
-    def _add_ultimate_patterns(self, defs, variant: LogoVariant, size: int) -> None:
+    def _add_ultimate_patterns(
+        self, defs: Defs, variant: LogoVariant, size: int
+    ) -> None:
         """Crée des motifs ULTIMES cosmiques et organiques"""
         # Motif de surface cosmique ULTIME
         cosmic_surface_id = f"ultimateCosmicSurfacePattern-{variant.variant_type.value}"
@@ -235,13 +256,16 @@ class UltimateSVGBuilder(SVGBuilder):
 
         # Créer des cercles cosmiques organiques
         for _ in range(12):
-            x = random.randint(0, size // 3)
-            y = random.randint(0, size // 3)
+            x = random.randint(0, int(size // 3))
+            y = random.randint(0, int(size // 3))
             radius = random.randint(3, 10)
             opacity = random.uniform(0.15, 0.5)
 
             circle = svgwrite.shapes.Circle(
-                center=(x, y), r=radius, fill=variant.colors.primary, opacity=opacity
+                center=(x, y),
+                r=radius,
+                fill=variant.colors.primary,
+                opacity=opacity,
             )
             cosmic_surface_pattern.add(circle)
 
@@ -258,10 +282,10 @@ class UltimateSVGBuilder(SVGBuilder):
 
         # Lignes de connexion neuronales cosmiques
         for _ in range(10):
-            x1 = random.randint(0, size // 1.5)
-            y1 = random.randint(0, size // 1.5)
-            x2 = random.randint(0, size // 1.5)
-            y2 = random.randint(0, size // 1.5)
+            x1 = random.randint(0, int(size // 1.5))
+            y1 = random.randint(0, int(size // 1.5))
+            x2 = random.randint(0, int(size // 1.5))
+            y2 = random.randint(0, int(size // 1.5))
 
             line = svgwrite.shapes.Line(
                 start=(x1, y1),
@@ -275,7 +299,10 @@ class UltimateSVGBuilder(SVGBuilder):
         defs.add(cosmic_neural_pattern)
 
     def add_ultimate_cosmic_background(
-        self, drawing: svgwrite.Drawing, variant: LogoVariant, size: int
+        self,
+        drawing: svgwrite.Drawing,
+        variant: LogoVariant,
+        size: int,
     ) -> None:
         """Ajoute un arrière-plan cosmique ULTIME"""
         center = size // 2
@@ -305,7 +332,10 @@ class UltimateSVGBuilder(SVGBuilder):
             drawing.add(cosmic_connection)
 
     def add_ultimate_moon_core(
-        self, drawing: svgwrite.Drawing, variant: LogoVariant, size: int
+        self,
+        drawing: svgwrite.Drawing,
+        variant: LogoVariant,
+        size: int,
     ) -> None:
         """Ajoute un noyau lunaire ULTIME avec effets cosmiques"""
         center = size // 2
@@ -326,13 +356,16 @@ class UltimateSVGBuilder(SVGBuilder):
                 values=f"{radius};{radius * 1.1};{radius}",
                 dur=f"{3 / variant.animation_speed}s",
                 repeatCount="indefinite",
-            )
+            ),
         )
 
         drawing.add(ultimate_moon)
 
     def add_ultimate_neural_networks(
-        self, drawing: svgwrite.Drawing, variant: LogoVariant, size: int
+        self,
+        drawing: svgwrite.Drawing,
+        variant: LogoVariant,
+        size: int,
     ) -> None:
         """Ajoute des réseaux neuronaux ULTIMES cosmiques"""
         center = size // 2
@@ -360,7 +393,7 @@ class UltimateSVGBuilder(SVGBuilder):
                     dur=f"{6 / variant.animation_speed}s",
                     begin=f"{i * 0.4}s",
                     repeatCount="indefinite",
-                )
+                ),
             )
 
             cosmic_network.add(path)
@@ -374,23 +407,26 @@ class UltimateSVGBuilder(SVGBuilder):
         # Réseau cosmique principal avec courbes complexes
         paths.append(
             f"M{center - size // 2.5} {center} Q{center} {center - size // 2.5} "
-            f"{center + size // 2.5} {center}"
+            f"{center + size // 2.5} {center}",
         )
         paths.append(
             f"M{center - size // 2.5 + 15} {center - 15} Q{center} "
-            f"{center - size // 2.5 - 15} {center + size // 2.5 - 15} {center - 15}"
+            f"{center - size // 2.5 - 15} {center + size // 2.5 - 15} {center - 15}",
         )
         paths.append(
-            f"M{center - size // 2.5 + 30} {center + 15} Q{center} "
-            f"{center - size // 2.5 + 15} {center + size // 2.5 - 30} {center + 15}"
+            f"M{center - size // 2.5 + 30} {center + 15} "
+            f"Q{center} {center - size // 2.5 + 15} "
+            f"{center + size // 2.5 - 30} {center + 15}",
         )
 
         # Réseau cosmique diagonal ULTIME
         paths.append(
-            f"M{center - size // 3} {center - size // 3} Q{center} {center} {center + size // 3} {center - size // 3}"
+            f"M{center - size // 3} {center - size // 3} "
+            f"Q{center} {center} {center + size // 3} {center - size // 3}",
         )
         paths.append(
-            f"M{center - size // 3} {center + size // 3} Q{center} {center} {center + size // 3} {center + size // 3}"
+            f"M{center - size // 3} {center + size // 3} "
+            f"Q{center} {center} {center + size // 3} {center + size // 3}",
         )
 
         # Réseau cosmique circulaire ULTIME
@@ -407,7 +443,10 @@ class UltimateSVGBuilder(SVGBuilder):
         return paths
 
     def add_ultimate_energy_auras(
-        self, drawing: svgwrite.Drawing, variant: LogoVariant, size: int
+        self,
+        drawing: svgwrite.Drawing,
+        variant: LogoVariant,
+        size: int,
     ) -> None:
         """Ajoute des auras d'énergie cosmiques ULTIMES"""
         center = size // 2
@@ -446,13 +485,16 @@ class UltimateSVGBuilder(SVGBuilder):
                 values=f"{size // 2.5};{size // 2.5 * 1.2};{size // 2.5}",
                 dur=f"{4 / variant.animation_speed}s",
                 repeatCount="indefinite",
-            )
+            ),
         )
 
         drawing.add(cosmic_energy_aura)
 
     def add_ultimate_cosmic_particles(
-        self, drawing: svgwrite.Drawing, variant: LogoVariant, size: int
+        self,
+        drawing: svgwrite.Drawing,
+        variant: LogoVariant,
+        size: int,
     ) -> None:
         """Ajoute des particules cosmiques ULTIMES"""
         center = size // 2
@@ -481,13 +523,16 @@ class UltimateSVGBuilder(SVGBuilder):
                     dur=f"{2.5 / variant.animation_speed}s",
                     begin=f"{i * 0.1}s",
                     repeatCount="indefinite",
-                )
+                ),
             )
 
             drawing.add(cosmic_particle)
 
     def add_ultimate_holographic_effects(
-        self, drawing: svgwrite.Drawing, variant: LogoVariant, size: int
+        self,
+        drawing: svgwrite.Drawing,
+        variant: LogoVariant,
+        size: int,
     ) -> None:
         """Ajoute des effets holographiques ULTIMES cosmiques"""
         center = size // 2
@@ -515,7 +560,7 @@ class UltimateSVGBuilder(SVGBuilder):
                     dur=f"{3 / variant.animation_speed}s",
                     begin=f"{i * 0.2}s",
                     repeatCount="indefinite",
-                )
+                ),
             )
 
             drawing.add(holographic_reflection)
@@ -545,13 +590,16 @@ class UltimateSVGBuilder(SVGBuilder):
                     dur=f"{4 / variant.animation_speed}s",
                     begin=f"{i * 0.15}s",
                     repeatCount="indefinite",
-                )
+                ),
             )
 
             drawing.add(holographic_ray)
 
     def add_ultimate_mystical_symbols(
-        self, drawing: svgwrite.Drawing, variant: LogoVariant, size: int
+        self,
+        drawing: svgwrite.Drawing,
+        variant: LogoVariant,
+        size: int,
     ) -> None:
         """Ajoute des symboles mystiques ULTIMES cosmiques"""
         center = size // 2
@@ -561,7 +609,10 @@ class UltimateSVGBuilder(SVGBuilder):
 
         # Forme Λ principale cosmique
         cosmic_lambda = svgwrite.path.Path(
-            d=f"M{center - 20} {center - 35} L{center} {center - 10} L{center + 20} {center - 35} L{center} {center} Z",
+            d=(
+                f"M{center - 20} {center - 35} L{center} {center - 10} "
+                f"L{center + 20} {center - 35} L{center} {center} Z"
+            ),
             fill=variant.colors.glow,
             filter=f"url(#ultimateCosmicGlow-{variant.variant_type.value})",
         )
@@ -573,7 +624,7 @@ class UltimateSVGBuilder(SVGBuilder):
                 values="0.8;1.0;0.8",
                 dur=f"{2.5 / variant.animation_speed}s",
                 repeatCount="indefinite",
-            )
+            ),
         )
 
         lambda_group.add(cosmic_lambda)
@@ -594,7 +645,7 @@ class UltimateSVGBuilder(SVGBuilder):
                 values="12;18;12",
                 dur=f"{3 / variant.animation_speed}s",
                 repeatCount="indefinite",
-            )
+            ),
         )
 
         lambda_group.add(cosmic_core)
@@ -609,7 +660,10 @@ class UltimateSVGBuilder(SVGBuilder):
             y = center - 10 + 25 * math.sin(angle)
 
             cosmic_ray = svgwrite.shapes.Circle(
-                center=(x, y), r=3, fill=variant.colors.glow, opacity=0.7
+                center=(x, y),
+                r=3,
+                fill=variant.colors.glow,
+                opacity=0.7,
             )
 
             # Animation de pulsation cosmique ULTIME
@@ -620,7 +674,7 @@ class UltimateSVGBuilder(SVGBuilder):
                     dur=f"{3.5 / variant.animation_speed}s",
                     begin=f"{i * 0.2}s",
                     repeatCount="indefinite",
-                )
+                ),
             )
 
             cosmic_light_effects.add(cosmic_ray)
@@ -650,13 +704,19 @@ class UltimateSVGBuilder(SVGBuilder):
         return drawing
 
     def build_ultimate_logo(
-        self, variant_name: str, size: int = 200
+        self,
+        variant_name: str,
+        size: int = 200,
     ) -> svgwrite.Drawing:
-        """Construit le logo ULTIME pour une variante donnée (alias pour compatibilité)"""
+        """Construit le logo ULTIME pour une variante donnée
+        (alias pour compatibilité)"""
         return self.build_logo(variant_name, size)
 
     def save_ultimate_logo(
-        self, variant_name: str, size: int, output_path: Path
+        self,
+        variant_name: str,
+        size: int,
+        output_path: Path,
     ) -> Path:
         """Sauvegarde le logo ULTIME dans un fichier en utilisant build_logo()"""
         drawing = self.build_logo(variant_name, size)

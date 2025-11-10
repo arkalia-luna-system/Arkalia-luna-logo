@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
-"""
-🌙 Test du système LUNE IA Arkalia-LUNA Logo
+"""🌙 Test du système LUNE IA Arkalia-LUNA Logo
 Teste la génération de logos LUNE IA VIVANTE ultra-réalistes
 """
 

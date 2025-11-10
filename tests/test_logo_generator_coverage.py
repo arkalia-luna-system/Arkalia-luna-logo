@@ -1,5 +1,4 @@
-"""
-Tests pour améliorer la couverture du module logo_generator.py
+"""Tests pour améliorer la couverture du module logo_generator.py
 Objectif : 51% → 70% de couverture
 """
 
@@ -37,7 +36,10 @@ class TestLogoGenerator:
             animation_speed=1.0,
             glow_intensity=0.8,
             colors=ColorScheme(
-                primary="#1e3a8a", secondary="#3b82f6", accent="#06b6d4", glow="#60a5fa"
+                primary="#1e3a8a",
+                secondary="#3b82f6",
+                accent="#06b6d4",
+                glow="#60a5fa",
             ),
         )
         manager.get_variant_info.return_value = {
@@ -74,7 +76,9 @@ class TestLogoGenerator:
         mock_variants_manager.validate_variant.assert_called_once_with(variant_name)
 
     def test_generate_svg_logo_invalid_variant(
-        self, logo_generator, mock_variants_manager
+        self,
+        logo_generator,
+        mock_variants_manager,
     ):
         """Test de génération de logo SVG avec variante invalide"""
         mock_variants_manager.validate_variant.return_value = False
@@ -83,7 +87,9 @@ class TestLogoGenerator:
             logo_generator.generate_svg_logo("invalid", 200)
 
     def test_generate_svg_logo_exception_handling(
-        self, logo_generator, mock_svg_builder
+        self,
+        logo_generator,
+        mock_svg_builder,
     ):
         """Test de gestion d'exception lors de la génération"""
         mock_svg_builder.save_logo.side_effect = Exception("Erreur de sauvegarde")
@@ -101,7 +107,9 @@ class TestLogoGenerator:
         assert all(isinstance(f, Path) for f in generated_files)
 
     def test_generate_all_variants_with_errors(
-        self, logo_generator, mock_variants_manager
+        self,
+        logo_generator,
+        mock_variants_manager,
     ):
         """Test de génération de toutes les variantes avec erreurs partielles"""
         # Simuler une erreur pour une variante
@@ -120,7 +128,9 @@ class TestLogoGenerator:
             assert "creative.svg" in str(generated_files[1])
 
     def test_generate_all_variants_exception_handling(
-        self, logo_generator, mock_variants_manager
+        self,
+        logo_generator,
+        mock_variants_manager,
     ):
         """Test de gestion d'exception lors de la génération de toutes les variantes"""
         mock_variants_manager.list_variants.side_effect = Exception("Erreur de liste")
@@ -145,7 +155,9 @@ class TestLogoGenerator:
                 assert "favicon-serenity-32.png" in str(output_path)
 
     def test_create_favicon_exception_handling(
-        self, logo_generator, mock_variants_manager
+        self,
+        logo_generator,
+        mock_variants_manager,
     ):
         """Test de gestion d'exception lors de la création de favicon"""
         mock_variants_manager.get_variant.side_effect = Exception("Erreur de variante")
@@ -154,7 +166,9 @@ class TestLogoGenerator:
             logo_generator.create_favicon("serenity", 32)
 
     def test_create_favicon_all_variants_success(
-        self, logo_generator, mock_variants_manager
+        self,
+        logo_generator,
+        mock_variants_manager,
     ):
         """Test de création de favicons pour toutes les variantes avec succès"""
         size = 32
@@ -172,7 +186,9 @@ class TestLogoGenerator:
             assert all("favicon" in str(f) for f in generated_files)
 
     def test_create_favicon_all_variants_with_errors(
-        self, logo_generator, mock_variants_manager
+        self,
+        logo_generator,
+        mock_variants_manager,
     ):
         """Test de création de favicons avec erreurs partielles"""
         with patch.object(logo_generator, "create_favicon") as mock_create:
@@ -190,7 +206,9 @@ class TestLogoGenerator:
             assert "creative" in str(generated_files[1])
 
     def test_create_favicon_all_variants_exception_handling(
-        self, logo_generator, mock_variants_manager
+        self,
+        logo_generator,
+        mock_variants_manager,
     ):
         """Test de gestion d'exception lors de la création de tous les favicons"""
         mock_variants_manager.list_variants.side_effect = Exception("Erreur de liste")
@@ -210,7 +228,9 @@ class TestLogoGenerator:
         mock_variants_manager.get_variant_info.assert_called_once_with(variant_name)
 
     def test_get_variant_info_exception_handling(
-        self, logo_generator, mock_variants_manager
+        self,
+        logo_generator,
+        mock_variants_manager,
     ):
         """Test de gestion d'exception lors de la récupération d'informations"""
         mock_variants_manager.get_variant_info.side_effect = Exception("Erreur d'info")
@@ -263,7 +283,8 @@ class TestLogoGenerator:
 
         count = logo_generator.cleanup_generated_files()
 
-        # Le nettoyage peut supprimer d'autres fichiers, on vérifie juste que nos fichiers sont supprimés
+        # Le nettoyage peut supprimer d'autres fichiers,
+        # on vérifie juste que nos fichiers sont supprimés
         assert count >= 2
         assert not any(f.exists() for f in test_files)
 
@@ -274,11 +295,14 @@ class TestLogoGenerator:
 
         count = logo_generator.cleanup_generated_files()
 
-        # Le nettoyage peut supprimer des fichiers existants, on vérifie juste le comportement
+        # Le nettoyage peut supprimer des fichiers existants,
+        # on vérifie juste le comportement
         assert count >= 0
 
     def test_cleanup_generated_files_exception_handling(
-        self, logo_generator, temp_output_dir
+        self,
+        logo_generator,
+        temp_output_dir,
     ):
         """Test de gestion d'exception lors du nettoyage"""
         # Créer un fichier de test
@@ -287,7 +311,9 @@ class TestLogoGenerator:
 
         # Simuler une erreur lors de la suppression
         with patch.object(
-            Path, "unlink", side_effect=Exception("Erreur de suppression")
+            Path,
+            "unlink",
+            side_effect=Exception("Erreur de suppression"),
         ):
             with pytest.raises(Exception, match="Erreur de suppression"):
                 logo_generator.cleanup_generated_files()
@@ -322,7 +348,9 @@ class TestLogoGenerator:
         assert stats["available_variants"] == 3  # Mocké
 
     def test_get_generation_stats_exception_handling(
-        self, logo_generator, temp_output_dir
+        self,
+        logo_generator,
+        temp_output_dir,
     ):
         """Test de gestion d'exception lors de la récupération des statistiques"""
         # Simuler une erreur lors du glob
@@ -331,7 +359,9 @@ class TestLogoGenerator:
                 logo_generator.get_generation_stats()
 
     def test_generate_svg_logo_different_sizes(
-        self, logo_generator, mock_variants_manager
+        self,
+        logo_generator,
+        mock_variants_manager,
     ):
         """Test de génération de logo avec différentes tailles"""
         variant_name = "serenity"
@@ -343,7 +373,9 @@ class TestLogoGenerator:
             assert f"-{size}.svg" in str(output_path)
 
     def test_create_favicon_different_sizes(
-        self, logo_generator, mock_variants_manager
+        self,
+        logo_generator,
+        mock_variants_manager,
     ):
         """Test de création de favicon avec différentes tailles"""
         variant_name = "serenity"

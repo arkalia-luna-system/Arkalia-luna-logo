@@ -1,5 +1,4 @@
-"""
-Tests pour améliorer la couverture du module svg_builder_realism_max.py
+"""Tests pour améliorer la couverture du module svg_builder_realism_max.py
 Objectif : 29% → 90% de couverture
 """
 
@@ -26,7 +25,10 @@ class TestRealismMaxSVGBuilder:
             animation_speed=1.0,
             glow_intensity=0.8,
             colors=ColorScheme(
-                primary="#1e3a8a", secondary="#3b82f6", accent="#06b6d4", glow="#60a5fa"
+                primary="#1e3a8a",
+                secondary="#3b82f6",
+                accent="#06b6d4",
+                glow="#60a5fa",
             ),
         )
         return manager
@@ -285,7 +287,8 @@ class TestRealismMaxSVGBuilder:
             final_count = len(drawing.elements) if drawing.elements else 0
             added_elements = final_count - initial_count
 
-            # Le nombre d'éléments ajoutés devrait être proche du nombre de particules attendu
+            # Le nombre d'éléments ajoutés devrait être proche
+            # du nombre de particules attendu
             assert added_elements >= 0
             if expected_particles > 0:
                 assert added_elements > 0

@@ -1,5 +1,4 @@
-"""
-Tests étendus pour la couverture complète du module CLI
+"""Tests étendus pour la couverture complète du module CLI
 Objectif : 31% → 90% de couverture
 """
 
@@ -38,7 +37,8 @@ class TestCLIBasicFunctionality:
     def test_cli_version(self, cli_runner, temp_output_dir):
         """Test de la commande version"""
         result = cli_runner.invoke(
-            cli, ["--output-dir", str(temp_output_dir), "version"]
+            cli,
+            ["--output-dir", str(temp_output_dir), "version"],
         )
         assert result.exit_code == 0
         assert "Arkalia-LUNA Logo Generator v" in result.output
@@ -56,7 +56,8 @@ class TestCLIBasicFunctionality:
     def test_cli_clean_command_with_confirm(self, cli_runner, temp_output_dir):
         """Test de la commande clean avec confirmation"""
         result = cli_runner.invoke(
-            cli, ["--output-dir", str(temp_output_dir), "clean", "--confirm"]
+            cli,
+            ["--output-dir", str(temp_output_dir), "clean", "--confirm"],
         )
         assert result.exit_code == 0
 
@@ -101,7 +102,8 @@ class TestCLIInputValidation:
     def test_generate_command_missing_variant(self, cli_runner, temp_output_dir):
         """Test avec variante manquante"""
         result = cli_runner.invoke(
-            cli, ["--output-dir", str(temp_output_dir), "generate", "--size", "200"]
+            cli,
+            ["--output-dir", str(temp_output_dir), "generate", "--size", "200"],
         )
         assert result.exit_code == 2  # Click error pour argument manquant
 
@@ -117,12 +119,14 @@ class TestCLIInputValidation:
     def test_favicon_command_missing_variant(self, cli_runner, temp_output_dir):
         """Test avec variante manquante pour favicon"""
         result = cli_runner.invoke(
-            cli, ["--output-dir", str(temp_output_dir), "favicon", "--size", "32"]
+            cli,
+            ["--output-dir", str(temp_output_dir), "favicon", "--size", "32"],
         )
         assert result.exit_code == 2  # Click error pour argument manquant
 
     def test_favicon_command_missing_size(self, cli_runner, temp_output_dir):
-        """Test avec taille manquante pour favicon (devrait utiliser la valeur par défaut)"""
+        """Test avec taille manquante pour favicon
+        (devrait utiliser la valeur par défaut)"""
         result = cli_runner.invoke(
             cli,
             ["--output-dir", str(temp_output_dir), "favicon", "--variant", "serenity"],
@@ -145,11 +149,14 @@ class TestCLIWorkflowBasics:
         shutil.rmtree(temp_dir)
 
     def test_cli_initialization_with_custom_output_dir(
-        self, cli_runner, temp_output_dir
+        self,
+        cli_runner,
+        temp_output_dir,
     ):
         """Test d'initialisation avec répertoire de sortie personnalisé"""
         result = cli_runner.invoke(
-            cli, ["--output-dir", str(temp_output_dir), "--verbose", "info"]
+            cli,
+            ["--output-dir", str(temp_output_dir), "--verbose", "info"],
         )
         assert result.exit_code == 0
 
@@ -161,7 +168,8 @@ class TestCLIWorkflowBasics:
     def test_cli_verbose_mode(self, cli_runner, temp_output_dir):
         """Test du mode verbeux"""
         result = cli_runner.invoke(
-            cli, ["--output-dir", str(temp_output_dir), "--verbose", "info"]
+            cli,
+            ["--output-dir", str(temp_output_dir), "--verbose", "info"],
         )
         assert result.exit_code == 0
         # En mode verbeux, on devrait voir des informations supplémentaires
@@ -175,13 +183,15 @@ class TestCLIWorkflowBasics:
 
         # 2. Stats
         result2 = cli_runner.invoke(
-            cli, ["--output-dir", str(temp_output_dir), "stats"]
+            cli,
+            ["--output-dir", str(temp_output_dir), "stats"],
         )
         assert result2.exit_code == 0
 
         # 3. Version
         result3 = cli_runner.invoke(
-            cli, ["--output-dir", str(temp_output_dir), "version"]
+            cli,
+            ["--output-dir", str(temp_output_dir), "version"],
         )
         assert result3.exit_code == 0
 

@@ -1,5 +1,4 @@
-"""
-🌙 Realism Max Logo Generator Module
+"""🌙 Realism Max Logo Generator Module
 Générateur de logos ultra-réalistes avec effets organiques et IA
 """
 
@@ -18,20 +17,23 @@ except ImportError:
 class RealismMaxLogoGenerator(ArkaliaLunaLogo):
     """Générateur de logos ultra-réalistes avec effets organiques"""
 
-    def __init__(self, output_dir: Optional[Path] = None):
+    def __init__(self, output_dir: Optional[Path] = None) -> None:
         super().__init__(output_dir)
         # Remplace le SVG builder par défaut par le Realism Max
         self.svg_builder = RealismMaxSVGBuilder(self.variants_manager)
         self.logger.info("🌙 Realism Max Generator initialisé avec succès")
 
     def generate_realistic_logo(
-        self, variant_name: str, size: int = 200, realism_level: float = 0.95
+        self,
+        variant_name: str,
+        size: int = 200,
+        realism_level: float = 0.95,
     ) -> Path:
         """Génère un logo ultra-réaliste avec niveau de réalisme configurable"""
         try:
             self.logger.info(
                 f"🎨 Génération logo ultra-réaliste '{variant_name}' "
-                f"niveau {realism_level:.2f}"
+                f"niveau {realism_level:.2f}",
             )
 
             # Validation de la variante
@@ -54,13 +56,15 @@ class RealismMaxLogoGenerator(ArkaliaLunaLogo):
             raise
 
     def generate_all_realistic_variants(
-        self, size: int = 200, realism_level: float = 0.95
+        self,
+        size: int = 200,
+        realism_level: float = 0.95,
     ) -> List[Path]:
         """Génère toutes les variantes en mode ultra-réaliste"""
         try:
             self.logger.info(
                 f"🎨 Génération de toutes les variantes ultra-réalistes "
-                f"niveau {realism_level:.2f}"
+                f"niveau {realism_level:.2f}",
             )
 
             generated_files = []
@@ -69,7 +73,9 @@ class RealismMaxLogoGenerator(ArkaliaLunaLogo):
             for variant in variants:
                 try:
                     output_path = self.generate_realistic_logo(
-                        variant, size, realism_level
+                        variant,
+                        size,
+                        realism_level,
                     )
                     generated_files.append(output_path)
                 except Exception as e:
@@ -78,7 +84,7 @@ class RealismMaxLogoGenerator(ArkaliaLunaLogo):
 
             self.logger.info(
                 f"✅ Génération réaliste terminée : "
-                f"{len(generated_files)}/{len(variants)} logos créés"
+                f"{len(generated_files)}/{len(variants)} logos créés",
             )
             return generated_files
 
@@ -87,13 +93,16 @@ class RealismMaxLogoGenerator(ArkaliaLunaLogo):
             raise
 
     def create_realistic_favicon(
-        self, variant_name: str, size: int = 32, realism_level: float = 0.95
+        self,
+        variant_name: str,
+        size: int = 32,
+        realism_level: float = 0.95,
     ) -> Path:
         """Crée un favicon ultra-réaliste avec effets organiques"""
         try:
             self.logger.info(
                 f"🎨 Création favicon ultra-réaliste '{variant_name}' "
-                f"niveau {realism_level:.2f}"
+                f"niveau {realism_level:.2f}",
             )
 
             # Utilise la méthode parent mais avec le builder réaliste
@@ -101,6 +110,6 @@ class RealismMaxLogoGenerator(ArkaliaLunaLogo):
 
         except Exception as e:
             self.logger.error(
-                f"❌ Erreur création favicon réaliste '{variant_name}': {e}"
+                f"❌ Erreur création favicon réaliste '{variant_name}': {e}",
             )
             raise

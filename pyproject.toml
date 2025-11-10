@@ -42,6 +42,12 @@ dependencies = [
     "uvicorn[standard]>=0.20.0",
     "pydantic>=2.0.0",
     "slowapi>=0.1.9",
+    # IA Dependencies
+    "diffusers>=0.21.0",
+    "torch>=2.0.0",
+    "transformers>=4.30.0",
+    "accelerate>=0.20.0",
+    "safetensors>=0.3.0",
 ]
 
 [project.optional-dependencies]
@@ -115,11 +121,13 @@ select = [
     "B",  # flake8-bugbear
     "C4", # flake8-comprehensions
     "UP", # pyupgrade
+    "EXE", # executable files
 ]
 ignore = [
     "E501",  # line too long, handled by black
     "B008",  # do not perform function calls in argument defaults
     "C901",  # too complex
+    "EXE002",  # executable files without shebang (modules Python)
 ]
 
 [tool.mypy]
@@ -146,9 +154,30 @@ exclude = [
     "src/variants.py"
 ]
 
+[[tool.mypy.overrides]]
+module = [
+    "svgwrite",
+    "svgwrite.*",
+    "PIL",
+    "PIL.*",
+    "click",
+    "click.*",
+    "rich",
+    "rich.*",
+    "torch",
+    "torch.*",
+    "diffusers",
+    "diffusers.*",
+    "transformers",
+    "transformers.*",
+    "accelerate",
+    "accelerate.*",
+]
+ignore_missing_imports = true
+
 [tool.ruff.lint.per-file-ignores]
 "__init__.py" = ["F401"]
-"tests/**/*.py" = ["B011", "S101"]
+"tests/*.py" = ["B011", "S101"]
 
 [tool.ruff.format]
 quote-style = "double"

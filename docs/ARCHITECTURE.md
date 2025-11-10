@@ -1,43 +1,87 @@
-# 🏗️ Architecture Technique - Arkalia-LUNA Logo Generator
+# 🏗️ Architecture Technique
 
-## 📋 **Vue d'Ensemble de l'Architecture**
+<div align="center">
+
+**🌙 Arkalia-LUNA Logo Generator**
+
+*Architecture modulaire et extensible*
+
+</div>
+
+---
+
+## 📋 Vue d'Ensemble
+
+<div align="center">
 
 Arkalia-LUNA Logo Generator suit une architecture modulaire et extensible basée sur des patterns de design éprouvés, permettant une génération de logos haute qualité avec une maintenance simplifiée.
 
-## 🎯 **Principes Architecturaux**
+</div>
 
-### **1. Séparation des Responsabilités**
-- **Générateurs** : Logique métier et orchestration
-- **Builders SVG** : Construction des éléments graphiques
-- **Variants** : Gestion des variantes émotionnelles
-- **CLI** : Interface utilisateur en ligne de commande
+## 🎯 Principes Architecturaux
 
-### **2. Extensibilité**
-- **Factory Pattern** : Ajout facile de nouveaux styles
-- **Strategy Pattern** : Interchangeabilité des builders
-- **Template Method** : Réutilisation du code commun
+### 1️⃣ Séparation des Responsabilités
 
-### **3. Qualité et Robustesse**
-- **Tests complets** : **151 tests passent** ✅
-- **Couverture de code** : **78%** (objectif 90%+)
-- **Validation** : Vérification des paramètres d'entrée
-- **Gestion d'erreurs** : Exceptions personnalisées
-- **Logs structurés** : Traçabilité complète
+<div align="center">
+
+| Composant | Responsabilité | Statut |
+|:---------:|:--------------:|:------:|
+| **Générateurs** | Logique métier et orchestration | ✅ |
+| **Builders SVG** | Construction des éléments graphiques | ✅ |
+| **Variants** | Gestion des variantes émotionnelles | ✅ |
+| **CLI** | Interface utilisateur en ligne de commande | ✅ |
+
+</div>
+
+### 2️⃣ Extensibilité
+
+<div align="center">
+
+| Pattern | Description | Statut |
+|:-------:|:-----------:|:------:|
+| **Factory Pattern** | Ajout facile de nouveaux styles | ✅ |
+| **Strategy Pattern** | Interchangeabilité des builders | ✅ |
+| **Template Method** | Réutilisation du code commun | ✅ |
+
+</div>
+
+### 3️⃣ Qualité et Robustesse
+
+<div align="center">
+
+| Métrique | Valeur | Statut |
+|:--------:|:------:|:------:|
+| **Tests complets** | 297 tests passent | ✅ |
+| **Couverture de code** | 75% (objectif 90%+) | ✅ **MIS À JOUR** |
+| **Validation** | Vérification des paramètres | ✅ |
+| **Gestion d'erreurs** | Exceptions personnalisées | ✅ |
+| **Logs structurés** | Traçabilité complète | ✅ |
+
+</div>
 
 ## 🏛️ **Structure des Modules**
 
 ### **Organisation Hiérarchique**
 
 ```
-src/
-├── __init__.py                    # Point d'entrée et exports publics
-├── variants.py                    # Définitions des variantes émotionnelles
-├── svg_builder.py                # Builder SVG de base (classe abstraite)
-├── svg_builder_*.py              # Builders spécialisés par style
-├── *_generator.py                # Générateurs de logos par style
-├── generator_factory.py          # Factory pattern pour les générateurs
-├── logo_generator.py             # Générateur de base (classe abstraite)
-└── cli.py                        # Interface en ligne de commande
+arkalia-luna-logo/
+├── src/                           # Code source principal
+│   ├── __init__.py               # Point d'entrée et exports publics
+│   ├── variants.py                # Définitions des variantes émotionnelles
+│   ├── svg_builder.py            # Builder SVG de base (classe abstraite)
+│   ├── svg_builder_*.py          # Builders spécialisés par style
+│   ├── *_generator.py            # Générateurs de logos par style
+│   ├── generator_factory.py     # Factory pattern pour les générateurs
+│   ├── logo_generator.py         # Générateur de base (classe abstraite)
+│   └── cli.py                    # Interface en ligne de commande
+├── main.py                        # API FastAPI REST
+├── scripts/                       # Scripts d'automatisation
+│   ├── start_api.sh             # Démarrage API
+│   ├── quick_explore.sh         # Exploration fonctionnalités
+│   └── generate_*.py            # Scripts de génération
+├── docker-compose.prod.yml      # Infrastructure Docker
+├── monitoring/                    # Prometheus + Grafana
+└── nginx/                         # Configuration Nginx
 ```
 
 ### **Relations entre Modules**
@@ -48,7 +92,7 @@ graph TD
     A[🎨 CLI Interface<br/>Click + Rich] --> B[🏭 Generator Factory<br/>Pattern Factory]
     
     %% Générateurs de styles
-    B --> C[🎭 Style Generators<br/>8 styles uniques]
+    B --> C[🎭 Style Generators<br/>11 styles uniques]
     C --> C1[🌙 Base Generator]
     C --> C2[📊 Dashboard Generator]
     C --> C3[🌙 AI-Moon Generator]
@@ -57,6 +101,9 @@ graph TD
     C --> C6[🚀 Ultra-Max Generator]
     C --> C7[🌍 Realism Max Generator]
     C --> C8[🌟 Ultimate Generator]
+    C --> C9[🌌 Cosmic Generator]
+    C --> C10[🧠 Hyper-AI Generator]
+    C --> C11[🤖 AI Generator]
     
     %% Builders SVG
     C --> D[🔧 SVG Builders<br/>Pattern Builder]
@@ -68,9 +115,10 @@ graph TD
     D --> D6[🚀 UltraMaxSVGBuilder]
     D --> D7[🌍 RealismMaxSVGBuilder]
     D --> D8[🌟 UltimateSVGBuilder]
+    D --> D9[🌌 CosmicSphereBuilder]
     
     %% Gestion des variantes
-    C --> E[🎭 Variants Manager<br/>5 variantes émotionnelles]
+    C --> E[🎭 Variants Manager<br/>10 variantes émotionnelles]
     E --> E1[🌙 Sérénité]
     E --> E2[⚡ Puissance]
     E --> E3[🔮 Mystère]
@@ -97,22 +145,55 @@ graph TD
     class F,G output
 ```
 
-## 🔧 **Patterns de Design Implémentés**
+## 🔧 Patterns de Design Implémentés
 
-### **1. Factory Pattern**
+### 1️⃣ Factory Pattern
+
+<div align="center">
+
+**Création dynamique des générateurs**
+
+</div>
+
 ```python
 # LogoGeneratorFactory - Création dynamique des générateurs
 generator = LogoGeneratorFactory.create_generator("ultimate")
+logo = generator.generate_single_logo("serenity", size=200)
 ```
 
-### **2. Strategy Pattern**
+**Exemple visuel** : ![Ultimate Serenity](../exports/screenshots/ultimate-serenity-200.svg)
+
+### 2️⃣ Strategy Pattern
+
+<div align="center">
+
+**Différents builders SVG pour chaque style**
+
+</div>
+
 ```python
 # Différents builders SVG pour chaque style
 builder = UltimateSVGBuilder()  # Stratégie Ultimate
 builder = RealismMaxSVGBuilder()  # Stratégie Realism
 ```
 
-### **3. Builder Pattern**
+<div align="center">
+
+| Builder | Logo Exemple | Performance |
+|:-------:|:------------:|:-----------:|
+| **UltimateSVGBuilder** | ![Ultimate](../exports/screenshots/ultimate-serenity-200.svg) | ✅ ~0.007s |
+| **RealismMaxSVGBuilder** | ![Realism Max](../exports/screenshots/realism_max-serenity-200.svg) | 🏆 ~0.002s |
+
+</div>
+
+### 3️⃣ Builder Pattern
+
+<div align="center">
+
+**Construction progressive des logos SVG**
+
+</div>
+
 ```python
 # Construction progressive des logos SVG
 svg = builder.create_drawing(size=200)
@@ -120,7 +201,14 @@ svg = builder.add_gradients(svg)
 svg = builder.add_effects(svg)
 ```
 
-### **4. Template Method**
+### 4️⃣ Template Method
+
+<div align="center">
+
+**Générateurs avec étapes communes**
+
+</div>
+
 ```python
 # Générateurs avec étapes communes
 class BaseLogoGenerator:
@@ -131,64 +219,135 @@ class BaseLogoGenerator:
         # 4. Export
 ```
 
-## 📊 **Métriques de Qualité**
+## 📊 Métriques de Qualité
 
-### **Tests et Couverture**
-- **Tests totaux** : 151 tests ✅
-- **Couverture de code** : 78% (objectif 90%+)
-- **Modules testés** : 20/20
-- **Tests de performance** : 7/7 benchmarks ✅
+### 🧪 Tests et Couverture
 
-### **Qualité du Code**
-- **Linting** : Ruff + Black ✅
-- **Type checking** : MyPy strict ✅
-- **Sécurité** : Bandit ✅
-- **Pre-commit hooks** : 8 hooks configurés ✅
+<div align="center">
 
-## 🚀 **Performance et Optimisations**
+| Métrique | Valeur | Statut |
+|:--------:|:------:|:------:|
+| **Tests totaux** | 297 tests | ✅ |
+| **Couverture de code** | 75% (objectif 90%+) | ✅ **MIS À JOUR** |
+| **Modules testés** | 20/20 | ✅ |
+| **Tests de performance** | 7/7 benchmarks | ✅ |
 
-### **Benchmarks Actuels**
-- **Realism Max** : ~0.002s (le plus rapide)
-- **Dashboard** : ~0.004s
-- **AI-Moon** : ~0.007s
-- **Ultra-Max** : ~0.008s
-- **Ultimate** : ~0.007s
+</div>
 
-### **Optimisations Implémentées**
-- **Cache des générateurs** : Évite la recréation
-- **Lazy loading** : Chargement à la demande
-- **Gestion mémoire** : Nettoyage automatique des ressources
+### 🔍 Qualité du Code
 
-## 🔮 **Évolutions Futures**
+<div align="center">
 
-### **Court terme (1-2 mois)**
-- Améliorer la couverture de code à 90%+
-- Optimiser les performances des builders SVG
-- Ajouter des tests de stress et de charge
+| Outil | Description | Statut |
+|:-----:|:-----------:|:------:|
+| **Linting** | Ruff + Black | ✅ |
+| **Type checking** | MyPy strict | ✅ |
+| **Sécurité** | Bandit | ✅ |
+| **Pre-commit hooks** | 7 hooks configurés | ✅ **MIS À JOUR** (était 8) |
 
-### **Moyen terme (3-6 mois)**
-- Implémenter le multithreading pour la génération
-- Ajouter un système de cache distribué
-- Créer une API REST pour l'intégration
+</div>
 
-### **Long terme (6+ mois)**
-- Support des animations SVG avancées
-- Intégration avec des outils de design
-- Support des formats 3D et VR
+## 🚀 Performance et Optimisations
 
-## 📚 **Documentation Technique**
+### ⚡ Benchmarks Actuels
 
-### **Fichiers de Référence**
-- `API.md` : Documentation complète de l'API
-- `CONTRIBUTING.md` : Guide de contribution
-- `QUICKSTART.md` : Guide de démarrage rapide
-- `ARCHITECTURE.md` : Ce document
+<div align="center">
 
-### **Exemples de Code**
-- `demos/` : Démonstrations HTML interactives
-- `tests/` : Exemples d'utilisation dans les tests
-- `tools/` : Scripts utilitaires et exemples
+| Générateur | Temps | Performance |
+|:----------:|:-----:|:-----------:|
+| **Realism Max** | ~0.002s | 🏆 Le plus rapide |
+| **Dashboard** | ~0.004s | ⚡ Rapide |
+| **AI-Moon** | ~0.007s | ✅ Bon |
+| **Ultra-Max** | ~0.008s | ✅ Bon |
+| **Ultimate** | ~0.007s | ✅ Bon |
+
+</div>
+
+### 🎯 Optimisations Implémentées
+
+<div align="center">
+
+| Optimisation | Description | Impact |
+|:------------:|:-----------:|:-----:|
+| **Cache des générateurs** | Évite la recréation | ⚡ Haute |
+| **Lazy loading** | Chargement à la demande | ⚡ Haute |
+| **Gestion mémoire** | Nettoyage automatique | ✅ Moyenne |
+
+</div>
+
+## 🔮 Évolutions Futures
+
+### 📅 Court Terme (1-2 mois)
+
+<div align="center">
+
+| Objectif | Description | Priorité | Statut |
+|:--------:|:-----------:|:--------:|:------:|
+| **Couverture** | Améliorer à 90%+ | 🚨 Haute | 🟡 En cours |
+| **Performance** | Optimiser builders SVG | ⚠️ Moyenne | 🟡 En cours |
+| **Tests** | Tests de stress et charge | ⚠️ Moyenne | ⏳ Planifié |
+
+</div>
+
+### 📅 Moyen Terme (3-6 mois)
+
+<div align="center">
+
+| Objectif | Description | Priorité | Statut |
+|:--------:|:-----------:|:--------:|:------:|
+| **Multithreading** | Génération parallèle | ⚠️ Moyenne | ⏳ Planifié |
+| **Cache distribué** | Redis (déjà configuré) | ⚠️ Moyenne | ✅ Infrastructure prête |
+| **API REST** | Améliorations (déjà implémentée) | ⚠️ Moyenne | ✅ Actif |
+
+</div>
+
+### 📅 Long Terme (6+ mois)
+
+<div align="center">
+
+| Objectif | Description | Priorité | Statut |
+|:--------:|:-----------:|:--------:|:------:|
+| **Animations SVG** | Support avancé | ⚠️ Basse | ⏳ Planifié |
+| **Intégration Design** | Outils de design | ⚠️ Basse | ⏳ Planifié |
+| **Formats 3D/VR** | Support 3D et VR | ⚠️ Basse | ⏳ Planifié |
+
+</div>
+
+## 📚 Documentation Technique
+
+### 📖 Fichiers de Référence
+
+<div align="center">
+
+| Document | Description | Lien |
+|:--------:|:-----------:|:----:|
+| **API.md** | Documentation complète de l'API | [📘 Voir API.md](API.md) |
+| **CONTRIBUTING.md** | Guide de contribution | [📘 Voir CONTRIBUTING.md](CONTRIBUTING.md) |
+| **QUICKSTART.md** | Guide de démarrage rapide | [📘 Voir QUICKSTART.md](QUICKSTART.md) |
+| **ARCHITECTURE.md** | Ce document | [📘 Voir ARCHITECTURE.md](ARCHITECTURE.md) |
+
+</div>
+
+### 💻 Exemples de Code
+
+<div align="center">
+
+| Ressource | Description | Emplacement |
+|:---------:|:-----------:|:-----------:|
+| **Démos HTML** | Démonstrations interactives | `../demos/` |
+| **Tests** | Exemples d'utilisation | `../tests/` |
+| **Scripts** | Utilitaires et exemples | `../tools/` |
+
+</div>
 
 ---
 
-**🏗️ Architecture Arkalia-LUNA Logo Generator** - Version 2.0.0
+<div align="center">
+
+---
+
+**🏗️ Architecture Arkalia-LUNA Logo Generator**
+
+*Version 2.0.0*
+
+</div>

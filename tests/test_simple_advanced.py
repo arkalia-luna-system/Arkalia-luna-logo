@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
-"""
-🌙 Test du système avancé simplifié Arkalia-LUNA Logo
+"""🌙 Test du système avancé simplifié Arkalia-LUNA Logo
 Teste la génération de logos avancés simplifiés
 """
 
