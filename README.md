@@ -17,7 +17,76 @@
 
 **⚡ Génération Ultra-Rapide • 🎨 Qualité Professionnelle • 🤖 IA Intégrée • 🚀 Production-Ready**
 
-[🚀 Quick Start](#-quick-start-30-secondes) • [🎨 Galerie Complète](#-galerie-interactive-complète) • [🤖 Génération IA](#-génération-ia-avancée) • [💻 Utilisation](#-utilisation) • [🤝 Contribution](#-contribution)
+[🚀 Quick Start](#-quick-start-30-secondes) • [🎨 Galerie Complète](#-galerie-interactive-complète) • [🤖 Génération IA](#-génération-ia-avancée---showcase-visuel) • [💻 Utilisation](#-utilisation) • [🤝 Contribution](#-contribution)
+
+</div>
+
+---
+
+## 🎨 **Showcase IA - Logos Générés par Intelligence Artificielle**
+
+<div align="center">
+
+### **🤖 Découvrez la Puissance de l'IA - Qualité Professionnelle**
+
+**Logos générés avec Stable Diffusion, ComfyUI + SDXL, et Sphères Cosmiques**
+
+</div>
+
+### **🧠 Hyper-AI (ComfyUI + SDXL + ControlNet)**
+
+<div align="center">
+
+<table>
+<tr>
+<td align="center"><strong>Génération ComfyUI 1</strong><br/><img src="exports-hyper-ai/ComfyUI_00001_.png" width="250" alt="Hyper-AI Logo 1"><br/>SDXL + ControlNet</td>
+<td align="center"><strong>Génération ComfyUI 2</strong><br/><img src="exports-hyper-ai/ComfyUI_00002_.png" width="250" alt="Hyper-AI Logo 2"><br/>Résolution 1024x1024</td>
+</tr>
+<tr>
+<td colspan="2" align="center"><strong>Génération ComfyUI 3</strong><br/><img src="exports-hyper-ai/ComfyUI_00003_.png" width="250" alt="Hyper-AI Logo 3"><br/>Qualité Professionnelle</td>
+</tr>
+</table>
+
+**✨ Qualité comparable à MidJourney / DALL-E - 100% Local et Gratuit**
+
+</div>
+
+### **🤖 Stable Diffusion - Génération IA Locale**
+
+<div align="center">
+
+<table>
+<tr>
+<td align="center"><strong>🌙 Sérénité</strong><br/><img src="exports-ai/test-ai-serenity.png" width="220" alt="AI Serenity"><br/>Stable Diffusion v1.5</td>
+<td align="center"><strong>⚡ Puissance</strong><br/><img src="exports-ai/test-ai-power.png" width="220" alt="AI Power"><br/>Génération IA locale</td>
+</tr>
+<tr>
+<td align="center"><strong>✨ Sérénité Améliorée</strong><br/><img src="exports-ai/test-ai-serenity-improved.png" width="220" alt="AI Serenity Improved"><br/>Post-traitement avancé</td>
+<td align="center"><strong>⚡ Puissance Améliorée</strong><br/><img src="exports-ai/test-ai-power-improved.png" width="220" alt="AI Power Improved"><br/>Optimisation qualité</td>
+</tr>
+</table>
+
+**🎨 Logos générés avec Stable Diffusion - Qualité professionnelle**
+
+</div>
+
+### **🌌 Cosmic - Sphères Cosmiques avec Réseaux Neuronaux**
+
+<div align="center">
+
+<table>
+<tr>
+<td align="center"><strong>🌙 Sérénité</strong><br/><img src="exports-cosmic/test-cosmic-serenity.svg" width="180" alt="Cosmic Serenity"><br/>Sphère cosmique</td>
+<td align="center"><strong>⚡ Puissance</strong><br/><img src="exports-cosmic/test-cosmic-power.svg" width="180" alt="Cosmic Power"><br/>Réseaux neuronaux</td>
+<td align="center"><strong>🔮 Mystère</strong><br/><img src="exports-cosmic/test-cosmic-mystery.svg" width="180" alt="Cosmic Mystery"><br/>Cristaux centraux</td>
+</tr>
+<tr>
+<td align="center"><strong>✨ Éveil</strong><br/><img src="exports-cosmic/test-cosmic-awakening.svg" width="180" alt="Cosmic Awakening"><br/>Dégradés fluides</td>
+<td align="center"><strong>🎇 Créative</strong><br/><img src="exports-cosmic/test-cosmic-creative.svg" width="180" alt="Cosmic Creative"><br/>Particules cosmiques</td>
+</tr>
+</table>
+
+**⚡ Sphères cosmiques vectorielles - Génération ultra-rapide (0.005s)**
 
 </div>
 
@@ -311,7 +380,7 @@ Arkalia-LUNA Logo Generator est un générateur professionnel de logos avec **11
 
 ---
 
-## 🤖 **Génération IA Avancée**
+## 🤖 **Génération IA Avancée - Showcase Visuel**
 
 <div align="center">
 
@@ -319,7 +388,10 @@ Arkalia-LUNA Logo Generator est un générateur professionnel de logos avec **11
 
 Le projet intègre **3 générateurs IA** pour créer des logos avec intelligence artificielle, en plus des 8 générateurs vectoriels SVG.
 
+**🎨 Découvrez la puissance de l'IA en action !**
+
 </div>
+
 
 ### **🧠 Hyper-AI Generator (ComfyUI + SDXL + ControlNet)**
 
@@ -441,6 +513,24 @@ logo_path = generator.generate_svg_logo("serenity", size=200)
 </table>
 
 **⚡ Génération en 0.002s à 0.008s selon le style**
+
+</div>
+
+### **🎨 Comparaison Vectoriel vs IA - Même Variante Sérénité**
+
+<div align="center">
+
+**Découvrez la différence entre génération vectorielle et génération IA**
+
+<table>
+<tr>
+<td align="center"><strong>Vectoriel Ultimate</strong><br/><img src="exports/screenshots/ultimate-serenity-200.svg" width="150" alt="Ultimate Vectoriel"><br/>⚡ 0.007s<br/>SVG vectoriel</td>
+<td align="center"><strong>IA Stable Diffusion</strong><br/><img src="exports-ai/test-ai-serenity.png" width="150" alt="AI Serenity"><br/>🤖 ~5-10s<br/>PNG haute qualité</td>
+<td align="center"><strong>IA ComfyUI SDXL</strong><br/><img src="exports-hyper-ai/ComfyUI_00001_.png" width="150" alt="Hyper-AI"><br/>🤖 ~10-30s<br/>1024x1024</td>
+</tr>
+</table>
+
+**✨ Choisissez selon vos besoins : Rapidité (vectoriel) ou Qualité maximale (IA)**
 
 </div>
 
