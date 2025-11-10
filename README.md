@@ -2,7 +2,7 @@
 
 # 🌙⚡️🤖 Arkalia-LUNA Logo Generator
 
-**Générateur Professionnel de Logos Vectoriels avec IA**
+**Générateur de Logos Vectoriels avec IA**
 
 *11 Styles Uniques • 10 Variantes Émotionnelles • API FastAPI • Monitoring Intégré*
 
@@ -15,19 +15,15 @@
 
 <img src="exports/screenshots/ultimate-serenity-200.svg" width="200" alt="Logo Arkalia-LUNA Ultimate Serenity">
 
-**⚡ Génération Ultra-Rapide • 🎨 Qualité Professionnelle • 🤖 IA Intégrée • 🚀 Production-Ready**
+**⚡ Génération Rapide • 🎨 IA Intégrée • 🚀 Production-Ready**
 
 [🚀 Quick Start](#-quick-start-30-secondes) • [🎨 Galerie Complète](#-galerie-interactive-complète) • [🤖 Génération IA](#-génération-ia-avancée---showcase-visuel) • [💻 Utilisation](#-utilisation) • [🤝 Contribution](#-contribution)
 
 </div>
 
----
-
 ## 🎨 **Showcase IA - Logos Générés par Intelligence Artificielle**
 
 <div align="center">
-
-### **🤖 Découvrez la Puissance de l'IA - Qualité Professionnelle**
 
 **Logos générés avec Stable Diffusion, ComfyUI + SDXL, et Sphères Cosmiques**
 
@@ -43,11 +39,11 @@
 <td align="center"><strong>Génération ComfyUI 2</strong><br/><img src="exports-hyper-ai/ComfyUI_00002_.png" width="250" alt="Hyper-AI Logo 2"><br/>Résolution 1024x1024</td>
 </tr>
 <tr>
-<td colspan="2" align="center"><strong>Génération ComfyUI 3</strong><br/><img src="exports-hyper-ai/ComfyUI_00003_.png" width="250" alt="Hyper-AI Logo 3"><br/>Qualité Professionnelle</td>
+<td colspan="2" align="center"><strong>Génération ComfyUI 3</strong><br/><img src="exports-hyper-ai/ComfyUI_00003_.png" width="250" alt="Hyper-AI Logo 3"><br/>SDXL + ControlNet</td>
 </tr>
 </table>
 
-**✨ Qualité comparable à MidJourney / DALL-E - 100% Local et Gratuit**
+**✨ Génération IA locale - 100% Local et Gratuit**
 
 </div>
 
@@ -66,7 +62,7 @@
 </tr>
 </table>
 
-**🎨 Logos générés avec Stable Diffusion - Qualité professionnelle**
+**🎨 Logos générés avec Stable Diffusion**
 
 </div>
 
@@ -86,11 +82,9 @@
 </tr>
 </table>
 
-**⚡ Sphères cosmiques vectorielles - Génération ultra-rapide (0.005s)**
+**⚡ Sphères cosmiques vectorielles - Génération rapide (0.005s)**
 
 </div>
-
----
 
 ## 🚀 **Quick Start (30 secondes)**
 
@@ -100,7 +94,7 @@
 
 </div>
 
-### **Étape 1 : Installation** ⚙️
+#### **Étape 1 : Installation** ⚙️
 
 ```bash
 git clone https://github.com/arkalia-luna-system/Arkalia-luna-logo.git
@@ -110,7 +104,7 @@ source arkalia-luna-env/bin/activate  # Linux/Mac
 pip install -e ".[dev]"
 ```
 
-### **Étape 2 : Génération** 🎨
+#### **Étape 2 : Génération** 🎨
 
 ```bash
 # Générer un logo Ultimate en variante Sérénité
@@ -129,7 +123,7 @@ python -m src.cli generate -v serenity -s 200 -g ultimate
 
 </div>
 
-### **Étape 3 : Utilisation** 💻
+#### **Étape 3 : Utilisation** 💻
 
 ```bash
 # Voir toutes les variantes disponibles
@@ -145,19 +139,17 @@ python -m src.cli generate-all -s 200
 
 </div>
 
----
-
 ## 🎯 **Vue d'Ensemble - Toutes les Capacités**
 
 <div align="center">
 
-### **Un Système Complet de Génération de Logos avec IA Intégrée**
+### **Système de Génération de Logos avec IA Intégrée**
 
-Arkalia-LUNA Logo Generator est un générateur professionnel de logos avec **11 styles uniques** (8 vectoriels + 3 IA), **10 variantes émotionnelles**, API FastAPI, monitoring Prometheus/Grafana, et infrastructure Docker complète.
+Arkalia-LUNA Logo Generator est un générateur de logos avec **11 styles uniques** (8 vectoriels + 3 IA), **10 variantes émotionnelles**, API FastAPI, monitoring Prometheus/Grafana, et infrastructure Docker complète.
 
-**🌍 English**: Professional SVG/PNG logo generator with 11 unique styles (8 vectorial + 3 AI), 10 emotional variants, FastAPI integration, AI generation (Stable Diffusion, ComfyUI, SDXL), monitoring & CI/CD.
+**🌍 English**: SVG/PNG logo generator with 11 unique styles (8 vectorial + 3 AI), 10 emotional variants, FastAPI integration, AI generation (Stable Diffusion, ComfyUI, SDXL), monitoring & CI/CD.
 
-**🇫🇷 Français**: Générateur professionnel de logos SVG/PNG multi-styles avec 11 styles uniques (8 vectoriels + 3 IA), 10 variantes émotionnelles, API FastAPI, génération IA (Stable Diffusion, ComfyUI, SDXL), monitoring & CI/CD inclus.
+**🇫🇷 Français**: Générateur de logos SVG/PNG multi-styles avec 11 styles uniques (8 vectoriels + 3 IA), 10 variantes émotionnelles, API FastAPI, génération IA (Stable Diffusion, ComfyUI, SDXL), monitoring & CI/CD inclus.
 
 </div>
 
@@ -167,22 +159,20 @@ Arkalia-LUNA Logo Generator est un générateur professionnel de logos avec **11
 
 | Capacité | Détails | Quantité |
 |:--------:|:-------:|:--------:|
-| **🎨 Styles Vectoriels** | 8 générateurs SVG professionnels | 8 styles |
+| **🎨 Styles Vectoriels** | 8 générateurs SVG | 8 styles |
 | **🤖 Styles IA** | 3 générateurs avec intelligence artificielle | 3 styles |
 | **🌙 Variantes Émotionnelles** | 5 de base + 5 dynamiques | 10 variantes |
 | **🔄 Combinaisons Possibles** | Styles × Variantes | **110+ logos** |
-| **⚡ Performance Vectorielle** | Génération en 0.002s - 0.008s | Ultra-rapide |
-| **🤖 Performance IA** | Génération avec Stable Diffusion/ComfyUI | Qualité professionnelle |
+| **⚡ Performance Vectorielle** | Génération en 0.002s - 0.008s | Rapide |
+| **🤖 Performance IA** | Génération avec Stable Diffusion/ComfyUI | IA locale |
 | **📱 Formats Export** | SVG vectoriel + PNG favicon | 2 formats |
 | **🚀 API REST** | FastAPI avec Swagger UI | 9 endpoints |
 | **🐳 Docker** | 5 services orchestrés | Infrastructure complète |
 | **📊 Monitoring** | Prometheus + Grafana | Métriques en temps réel |
 | **🧪 Tests** | 297 tests automatisés | 75% couverture |
-| **🔧 CLI** | Interface en ligne de commande | Professionnelle |
+| **🔧 CLI** | Interface en ligne de commande | Disponible |
 
 </div>
-
----
 
 ## 🎨 **Galerie Interactive Complète**
 
@@ -194,7 +184,7 @@ Arkalia-LUNA Logo Generator est un générateur professionnel de logos avec **11
 
 </div>
 
-### **📊 Style Dashboard - Toutes les Variantes**
+### **📊 Style Dashboard**
 
 <div align="center">
 
@@ -217,7 +207,7 @@ Arkalia-LUNA Logo Generator est un générateur professionnel de logos avec **11
 
 </div>
 
-### **🌙 Style AI-Moon - Toutes les Variantes**
+### **🌙 Style AI-Moon**
 
 <div align="center">
 
@@ -240,7 +230,7 @@ Arkalia-LUNA Logo Generator est un générateur professionnel de logos avec **11
 
 </div>
 
-### **🌟 Style Ultimate - Toutes les Variantes**
+### **🌟 Style Ultimate**
 
 <div align="center">
 
@@ -263,7 +253,7 @@ Arkalia-LUNA Logo Generator est un générateur professionnel de logos avec **11
 
 </div>
 
-### **🚀 Style Ultra-Max - Toutes les Variantes**
+### **🚀 Style Ultra-Max**
 
 <div align="center">
 
@@ -286,7 +276,7 @@ Arkalia-LUNA Logo Generator est un générateur professionnel de logos avec **11
 
 </div>
 
-### **🌍 Style Realism Max - Toutes les Variantes**
+### **🌍 Style Realism Max**
 
 <div align="center">
 
@@ -309,7 +299,7 @@ Arkalia-LUNA Logo Generator est un générateur professionnel de logos avec **11
 
 </div>
 
-### **🎨 Style Advanced - Toutes les Variantes**
+### **🎨 Style Advanced**
 
 <div align="center">
 
@@ -332,7 +322,7 @@ Arkalia-LUNA Logo Generator est un générateur professionnel de logos avec **11
 
 </div>
 
-### **⚡ Style Simple-Advanced - Toutes les Variantes**
+### **⚡ Style Simple-Advanced**
 
 <div align="center">
 
@@ -355,7 +345,7 @@ Arkalia-LUNA Logo Generator est un générateur professionnel de logos avec **11
 
 </div>
 
-### **🌙 Style Base (Simple) - Toutes les Variantes**
+### **🌙 Style Base (Simple)**
 
 <div align="center">
 
@@ -378,31 +368,26 @@ Arkalia-LUNA Logo Generator est un générateur professionnel de logos avec **11
 
 </div>
 
----
-
-## 🤖 **Génération IA Avancée - Showcase Visuel**
+## 🤖 **Génération IA Avancée - Détails Techniques**
 
 <div align="center">
 
-### **3 Générateurs IA Professionnels - Intelligence Artificielle Intégrée**
+### **3 Générateurs IA - Intelligence Artificielle Intégrée**
 
 Le projet intègre **3 générateurs IA** pour créer des logos avec intelligence artificielle, en plus des 8 générateurs vectoriels SVG.
 
-**🎨 Découvrez la puissance de l'IA en action !**
-
 </div>
-
 
 ### **🧠 Hyper-AI Generator (ComfyUI + SDXL + ControlNet)**
 
 <div align="center">
 
-**Générateur Ultra-Intelligent avec ComfyUI**
+**Générateur avec ComfyUI**
 
 | Caractéristique | Détails |
 |:---------------:|:--------|
 | **Technologie** | ComfyUI + SDXL + ControlNet |
-| **Qualité** | Professionnelle (résolution jusqu'à 1024x1024) |
+| **Résolution** | Jusqu'à 1024x1024 |
 | **Modèles** | SDXL Base, ControlNet Canny, RealESRGAN |
 | **Workflows** | 3 templates pré-configurés (cosmic_sphere, neural_network, crystal_core) |
 | **Statut** | ✅ Fonctionnel - ComfyUI opérationnel, modèles installés |
@@ -431,7 +416,7 @@ logo_path = generator.generate_svg_logo("serenity", size=512)
 | Caractéristique | Détails |
 |:---------------:|:--------|
 | **Technologie** | Stable Diffusion v1.5 (local) |
-| **Format** | PNG haute qualité |
+| **Format** | PNG |
 | **Device** | CUDA (GPU) ou CPU |
 | **Modèle** | runwayml/stable-diffusion-v1-5 |
 | **Performance** | Génération IA en quelques secondes |
@@ -461,7 +446,7 @@ logo_path = generator.generate_svg_logo("serenity", size=512)
 | **Effets** | Réseaux neuronaux internes, cristaux centraux |
 | **Dégradés** | Bleu/violet/cyan fluides |
 | **Particules** | Cosmiques flottantes |
-| **Qualité** | Haute qualité vectorielle |
+| **Format** | SVG vectoriel |
 
 </div>
 
@@ -488,8 +473,6 @@ logo_path = generator.generate_svg_logo("serenity", size=200)
 | **Cosmic** | 1 style (cosmic) | SVG | ⚡ ~0.005s | Sphères cosmiques vectorielles |
 
 </div>
-
----
 
 ## 🎬 **Démonstration - Tous les Styles en Action**
 
@@ -520,21 +503,19 @@ logo_path = generator.generate_svg_logo("serenity", size=200)
 
 <div align="center">
 
-**Découvrez la différence entre génération vectorielle et génération IA**
+**Comparaison entre génération vectorielle et génération IA**
 
 <table>
 <tr>
 <td align="center"><strong>Vectoriel Ultimate</strong><br/><img src="exports/screenshots/ultimate-serenity-200.svg" width="150" alt="Ultimate Vectoriel"><br/>⚡ 0.007s<br/>SVG vectoriel</td>
-<td align="center"><strong>IA Stable Diffusion</strong><br/><img src="exports-ai/test-ai-serenity-safe.png" width="150" alt="AI Serenity"><br/>🤖 ~5-10s<br/>PNG haute qualité</td>
+<td align="center"><strong>IA Stable Diffusion</strong><br/><img src="exports-ai/test-ai-serenity-safe.png" width="150" alt="AI Serenity"><br/>🤖 ~5-10s<br/>PNG</td>
 <td align="center"><strong>IA ComfyUI SDXL</strong><br/><img src="exports-hyper-ai/ComfyUI_00001_.png" width="150" alt="Hyper-AI"><br/>🤖 ~10-30s<br/>1024x1024</td>
 </tr>
 </table>
 
-**✨ Choisissez selon vos besoins : Rapidité (vectoriel) ou Qualité maximale (IA)**
+**✨ Choisissez selon vos besoins : Rapidité (vectoriel) ou Génération IA**
 
 </div>
-
----
 
 ## 💻 **Exemples de Code avec Résultats Visuels**
 
@@ -591,7 +572,7 @@ print(f"✅ Logo Hyper-IA généré : {logo_path}")
 
 <div align="center">
 
-**Résultat : Logo PNG haute qualité généré avec ComfyUI + SDXL**
+**Résultat : Logo PNG généré avec ComfyUI + SDXL**
 
 </div>
 
@@ -685,7 +666,7 @@ arkalia-luna-env\Scripts\activate     # Windows
 pip install -e ".[dev]"
 ```
 
-### **Option 3 : Docker (Production-Ready)**
+### **Option 3 : Docker**
 
 ```bash
 # Démarrer toute l'infrastructure
@@ -720,8 +701,6 @@ bash scripts/install_comfyui.sh
 # Démarrage ComfyUI
 bash scripts/start_comfyui.sh
 ```
-
----
 
 ## 💻 **Utilisation**
 
@@ -796,8 +775,6 @@ for variant in rainy stormy explosive sunny snowy; do
 done
 ```
 
----
-
 ## 🎯 **Cas d'Usage - Dans Quel Projet Utiliser Ce Générateur ?**
 
 <div align="center">
@@ -806,17 +783,15 @@ done
 |----------------|------------------|----------|-------------|
 | **🌐 Applications Web** | Logos dynamiques selon le thème | Cohérence visuelle | API REST + Frontend |
 | **📱 Apps Mobiles** | Favicons et icônes adaptatives | Multi-résolution automatique | CLI dans CI/CD |
-| **📊 Dashboards Business** | Branding personnalisé | Identité professionnelle | Docker + monitoring |
+| **📊 Dashboards Business** | Branding personnalisé | Identité visuelle | Docker + monitoring |
 | **🎮 Plateformes Gaming** | Logos émotionnels immersifs | Engagement utilisateur | API temps réel |
 | **🤖 Projets IA/ML** | Visualisation d'émotions | Interface intuitive | Python natif + IA |
 | **🏢 Solutions Entreprise** | Multi-tenant branding | Personnalisation client | API scalable |
 | **📚 Projets Open Source** | Branding cohérent | Identité communautaire | GitHub Actions |
-| **🎨 Outils Créatifs** | Assets vectoriels de qualité | Export professionnel | CLI + batch processing |
-| **🧠 Projets IA Avancés** | Génération IA de logos | Qualité professionnelle | ComfyUI + SDXL |
+| **🎨 Outils Créatifs** | Assets vectoriels | Export SVG/PNG | CLI + batch processing |
+| **🧠 Projets IA Avancés** | Génération IA de logos | Génération IA locale | ComfyUI + SDXL |
 
 </div>
-
----
 
 ## 📊 **Performance**
 
@@ -847,8 +822,6 @@ done
 
 </div>
 
----
-
 ## 🏗️ **Architecture du Projet**
 
 ```
@@ -859,7 +832,7 @@ arkalia-luna-logo/
 │   ├── svg_builder.py           # Classe abstraite pour les builders SVG
 │   ├── logo_generator.py        # Générateur de base
 │   ├── generator_factory.py     # Factory Pattern pour les générateurs
-│   ├── cli.py                   # Interface CLI professionnelle
+│   ├── cli.py                   # Interface CLI
 │   │
 │   ├── **8 Générateurs Vectoriels SVG** :
 │   │   ├── logo_generator.py              # Base (default)
@@ -867,8 +840,8 @@ arkalia-luna-logo/
 │   │   ├── ai_moon_generator.py           # IA réaliste (vectoriel)
 │   │   ├── advanced_logo_generator.py      # Techno-mystique
 │   │   ├── simple_advanced_generator.py  # Équilibré
-│   │   ├── ultra_max_generator.py         # Effets exceptionnels
-│   │   ├── realism_max_generator.py       # Ultra-réaliste
+│   │   ├── ultra_max_generator.py         # Effets avancés
+│   │   ├── realism_max_generator.py       # Style réaliste
 │   │   └── ultimate_generator.py          # Cosmique extrême
 │   │
 │   ├── **3 Générateurs IA** :
@@ -905,11 +878,9 @@ arkalia-luna-logo/
 └── .github/                     # CI/CD GitHub Actions
 ```
 
----
-
 ## 🌐 **API Web & Déploiement**
 
-### **🚀 API FastAPI Production-Ready**
+### **🚀 API FastAPI**
 
 - **API REST** complète avec FastAPI
 - **9 Endpoints** : `/`, `/health`, `/generate`, `/download`, `/stats`, `/metrics`, `/variants`, `/generators`, `/cleanup`
@@ -954,8 +925,6 @@ graph TB
     style K fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px
 ```
 
----
-
 ## 🧪 **Tests et Qualité**
 
 ### **Tests Automatisés**
@@ -984,8 +953,6 @@ ruff check src/
 mypy src/ --strict
 ```
 
----
-
 ## 📝 **Conventions de Commit et PR**
 
 ### **Format des Titres de PR**
@@ -1012,8 +979,6 @@ Tous les titres de PR doivent suivre le format : `type(scope): description`
 - ✅ `style: reformater le code avec ruff`
 - ✅ `ci: corriger workflow GitHub Actions`
 
----
-
 ## 🤝 **Contribution**
 
 1. Fork le projet
@@ -1021,8 +986,6 @@ Tous les titres de PR doivent suivre le format : `type(scope): description`
 3. Commit les changements (`git commit -m 'feat(scope): Add AmazingFeature'`)
 4. Push vers la branche (`git push origin feature/AmazingFeature`)
 5. Ouvrir une Pull Request
-
----
 
 ## 📚 **Documentation**
 
@@ -1038,8 +1001,6 @@ Tous les titres de PR doivent suivre le format : `type(scope): description`
 | **🤝 Contributing** | Guide de contribution | [Voir](docs/CONTRIBUTING.md) |
 
 </div>
-
----
 
 ## 🌟 **Statut du Projet**
 
@@ -1060,13 +1021,9 @@ Tous les titres de PR doivent suivre le format : `type(scope): description`
 
 </div>
 
----
-
 ## 📄 **Licence**
 
 Ce projet est sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.
-
----
 
 <div align="center">
 
