@@ -144,8 +144,7 @@ class LogoVariants:
                 variant_type=VariantType.RAINY,
                 name="🌧️ Pluie/Gris",
                 description=(
-                    "Gouttes de pluie, nuages gris, "
-                    "ambiance mélancolique mais élégante"
+                    "Gouttes de pluie, nuages gris, ambiance mélancolique mais élégante"
                 ),
                 colors=ColorScheme(
                     primary="#4b5563",  # Gris foncé
@@ -160,8 +159,7 @@ class LogoVariants:
                 variant_type=VariantType.STORMY,
                 name="⚡ Orage/Colère",
                 description=(
-                    "Éclairs zigzagants, nuages sombres, "
-                    "énergie explosive et dynamique"
+                    "Éclairs zigzagants, nuages sombres, énergie explosive et dynamique"
                 ),
                 colors=ColorScheme(
                     primary="#1f2937",  # Noir-gris
@@ -208,7 +206,7 @@ class LogoVariants:
                 variant_type=VariantType.SNOWY,
                 name="❄️ Neige",
                 description=(
-                    "Flocons qui tombent, froid et pureté, " "sérénité cristalline"
+                    "Flocons qui tombent, froid et pureté, sérénité cristalline"
                 ),
                 colors=ColorScheme(
                     primary="#f8fafc",  # Blanc pur
