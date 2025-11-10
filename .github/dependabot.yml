@@ -35,20 +35,3 @@ updates:
     commit-message:
       prefix: "ci"
       include: "scope"
-
-  # Mise à jour des dépendances npm (si applicable)
-  - package-ecosystem: "npm"
-    directory: "/"
-    schedule:
-      interval: "weekly"
-      day: "monday"
-      time: "09:00"
-    open-pull-requests-limit: 5
-    assignees:
-      - "username"
-    labels:
-      - "dependencies"
-      - "javascript"
-    commit-message:
-      prefix: "chore"
-      include: "scope"

@@ -1,5 +1,4 @@
-"""
-Tests de couverture pour améliorer la couverture de realism_max_generator.py.
+"""Tests de couverture pour améliorer la couverture de realism_max_generator.py.
 Objectif : 27% → 70%+
 Tests basés sur l'analyse du vrai code pour performance et précision.
 """
@@ -55,14 +54,18 @@ class TestRealismMaxGeneratorCoverage:
         """Test de la génération d'un logo ultra-réaliste."""
         # Mock de la validation et du builder
         with patch.object(
-            realism_generator.variants_manager, "validate_variant", return_value=True
+            realism_generator.variants_manager,
+            "validate_variant",
+            return_value=True,
         ):
             with patch.object(realism_generator.svg_builder, "save_logo") as mock_save:
                 mock_save.return_value = Path("test-logo.svg")
 
                 # Test de la génération
                 result = realism_generator.generate_realistic_logo(
-                    "serenity", 200, 0.95
+                    "serenity",
+                    200,
+                    0.95,
                 )
 
                 # Vérifier que le résultat est un Path et contient le bon nom de fichier
@@ -71,12 +74,15 @@ class TestRealismMaxGeneratorCoverage:
                 mock_save.assert_called_once()
 
     def test_realism_generator_generate_realistic_logo_invalid_variant(
-        self, realism_generator
+        self,
+        realism_generator,
     ):
         """Test de la gestion d'erreur pour variante invalide."""
         # Mock de la validation qui échoue
         with patch.object(
-            realism_generator.variants_manager, "validate_variant", return_value=False
+            realism_generator.variants_manager,
+            "validate_variant",
+            return_value=False,
         ):
             with pytest.raises(ValueError) as exc_info:
                 realism_generator.generate_realistic_logo("invalid_variant", 200)
@@ -84,12 +90,15 @@ class TestRealismMaxGeneratorCoverage:
             assert "Variante 'invalid_variant' non reconnue" in str(exc_info.value)
 
     def test_realism_generator_generate_realistic_logo_realism_level_validation(
-        self, realism_generator
+        self,
+        realism_generator,
     ):
         """Test de la validation du niveau de réalisme."""
         # Mock de la validation
         with patch.object(
-            realism_generator.variants_manager, "validate_variant", return_value=True
+            realism_generator.variants_manager,
+            "validate_variant",
+            return_value=True,
         ):
             with patch.object(realism_generator.svg_builder, "save_logo") as mock_save:
                 mock_save.return_value = Path("test-logo.svg")
@@ -97,39 +106,49 @@ class TestRealismMaxGeneratorCoverage:
                 # Test avec niveau de réalisme extrême
                 result = realism_generator.generate_realistic_logo("serenity", 200, 1.5)
 
-                # Le niveau devrait être accepté (pas de validation stricte dans le code)
-                # Vérifier que le résultat est un Path et contient le bon nom de fichier
+                # Le niveau devrait être accepté
+                # (pas de validation stricte dans le code)
+                # Vérifier que le résultat est un Path et contient le bon nom
                 assert isinstance(result, Path)
                 assert "arkalia-luna-realism-serenity-200.svg" in str(result)
 
     def test_realism_generator_generate_realistic_logo_realism_level_minimum(
-        self, realism_generator
+        self,
+        realism_generator,
     ):
         """Test avec niveau de réalisme minimum."""
         # Mock de la validation
         with patch.object(
-            realism_generator.variants_manager, "validate_variant", return_value=True
+            realism_generator.variants_manager,
+            "validate_variant",
+            return_value=True,
         ):
             with patch.object(realism_generator.svg_builder, "save_logo") as mock_save:
                 mock_save.return_value = Path("test-logo.svg")
 
                 # Test avec niveau de réalisme très bas
                 result = realism_generator.generate_realistic_logo(
-                    "serenity", 200, -0.5
+                    "serenity",
+                    200,
+                    -0.5,
                 )
 
-                # Le niveau devrait être accepté (pas de validation stricte dans le code)
-                # Vérifier que le résultat est un Path et contient le bon nom de fichier
+                # Le niveau devrait être accepté
+                # (pas de validation stricte dans le code)
+                # Vérifier que le résultat est un Path et contient le bon nom
                 assert isinstance(result, Path)
                 assert "arkalia-luna-realism-serenity-200.svg" in str(result)
 
     def test_realism_generator_generate_realistic_logo_output_path_format(
-        self, realism_generator
+        self,
+        realism_generator,
     ):
         """Test du format du chemin de sortie."""
         # Mock de la validation et du builder
         with patch.object(
-            realism_generator.variants_manager, "validate_variant", return_value=True
+            realism_generator.variants_manager,
+            "validate_variant",
+            return_value=True,
         ):
             with patch.object(realism_generator.svg_builder, "save_logo") as mock_save:
                 mock_save.return_value = Path("test-logo.svg")
@@ -139,7 +158,7 @@ class TestRealismMaxGeneratorCoverage:
 
                 # Vérifier que le chemin de sortie suit le format attendu
                 assert "arkalia-luna-realism-serenity-200.svg" in str(
-                    mock_save.call_args[0][2]
+                    mock_save.call_args[0][2],
                 )
 
     def test_realism_generator_generate_all_realistic_variants(self, realism_generator):
@@ -151,7 +170,8 @@ class TestRealismMaxGeneratorCoverage:
             return_value=["serenity", "power"],
         ):
             with patch.object(
-                realism_generator, "generate_realistic_logo"
+                realism_generator,
+                "generate_realistic_logo",
             ) as mock_generate:
                 mock_generate.return_value = Path("test-logo.svg")
 
@@ -163,7 +183,8 @@ class TestRealismMaxGeneratorCoverage:
                 assert mock_generate.call_count == 2
 
     def test_realism_generator_generate_all_realistic_variants_with_errors(
-        self, realism_generator
+        self,
+        realism_generator,
     ):
         """Test de la gestion d'erreur lors de la génération de toutes les variantes."""
         # Mock de la liste des variantes et de la génération avec erreur
@@ -173,7 +194,8 @@ class TestRealismMaxGeneratorCoverage:
             return_value=["serenity", "power"],
         ):
             with patch.object(
-                realism_generator, "generate_realistic_logo"
+                realism_generator,
+                "generate_realistic_logo",
             ) as mock_generate:
                 mock_generate.side_effect = [
                     Path("test1.svg"),
@@ -188,12 +210,15 @@ class TestRealismMaxGeneratorCoverage:
                 assert results[0] == Path("test1.svg")
 
     def test_realism_generator_generate_all_realistic_variants_empty_list(
-        self, realism_generator
+        self,
+        realism_generator,
     ):
         """Test de la génération avec liste de variantes vide."""
         # Mock de la liste des variantes vide
         with patch.object(
-            realism_generator.variants_manager, "list_variants", return_value=[]
+            realism_generator.variants_manager,
+            "list_variants",
+            return_value=[],
         ):
             # Test de la génération sans variantes
             results = realism_generator.generate_all_realistic_variants(200, 0.95)
@@ -204,7 +229,8 @@ class TestRealismMaxGeneratorCoverage:
         """Test de la création d'un favicon ultra-réaliste."""
         # Mock de la méthode parent de la classe parent
         with patch.object(
-            realism_generator.__class__.__bases__[0], "create_favicon"
+            realism_generator.__class__.__bases__[0],
+            "create_favicon",
         ) as mock_parent:
             mock_parent.return_value = Path("favicon.png")
 
@@ -218,7 +244,8 @@ class TestRealismMaxGeneratorCoverage:
             mock_parent.assert_called_once_with("serenity", 32)
 
     def test_realism_generator_create_realistic_favicon_invalid_variant(
-        self, realism_generator
+        self,
+        realism_generator,
     ):
         """Test de la gestion d'erreur pour favicon avec variante invalide."""
         # Mock de la méthode parent qui lève une exception
@@ -235,12 +262,14 @@ class TestRealismMaxGeneratorCoverage:
             assert "Variante 'invalid_variant' non reconnue" in error_msg
 
     def test_realism_generator_create_realistic_favicon_different_sizes(
-        self, realism_generator
+        self,
+        realism_generator,
     ):
         """Test de la création de favicons avec différentes tailles."""
         # Mock de la méthode parent de la classe parent
         with patch.object(
-            realism_generator.__class__.__bases__[0], "create_favicon"
+            realism_generator.__class__.__bases__[0],
+            "create_favicon",
         ) as mock_parent:
             mock_parent.return_value = Path("favicon.png")
 
@@ -248,7 +277,9 @@ class TestRealismMaxGeneratorCoverage:
             sizes = [16, 32, 64, 128]
             for size in sizes:
                 result = realism_generator.create_realistic_favicon(
-                    "serenity", size, 0.95
+                    "serenity",
+                    size,
+                    0.95,
                 )
                 # Vérifier que le résultat est un Path et correspond au mock
                 assert isinstance(result, Path)
@@ -257,12 +288,14 @@ class TestRealismMaxGeneratorCoverage:
                 mock_parent.assert_called_with("serenity", size)
 
     def test_realism_generator_create_realistic_favicon_different_realism_levels(
-        self, realism_generator
+        self,
+        realism_generator,
     ):
         """Test de la création de favicons avec différents niveaux de réalisme."""
         # Mock de la méthode parent de la classe parent
         with patch.object(
-            realism_generator.__class__.__bases__[0], "create_favicon"
+            realism_generator.__class__.__bases__[0],
+            "create_favicon",
         ) as mock_parent:
             mock_parent.return_value = Path("favicon.png")
 
@@ -270,7 +303,9 @@ class TestRealismMaxGeneratorCoverage:
             levels = [0.1, 0.5, 0.95, 1.0]
             for level in levels:
                 result = realism_generator.create_realistic_favicon(
-                    "serenity", 32, level
+                    "serenity",
+                    32,
+                    level,
                 )
                 # Vérifier que le résultat est un Path et correspond au mock
                 assert isinstance(result, Path)
@@ -309,7 +344,9 @@ class TestRealismMaxGeneratorCoverage:
 
         # Mock de la validation et du builder
         with patch.object(
-            realism_generator.variants_manager, "validate_variant", return_value=True
+            realism_generator.variants_manager,
+            "validate_variant",
+            return_value=True,
         ):
             with patch.object(realism_generator.svg_builder, "save_logo") as mock_save:
                 mock_save.return_value = Path("test-logo.svg")
@@ -317,7 +354,9 @@ class TestRealismMaxGeneratorCoverage:
                 # Test de performance de génération
                 start_time = time.time()
                 result = realism_generator.generate_realistic_logo(
-                    "serenity", 200, 0.95
+                    "serenity",
+                    200,
+                    0.95,
                 )
                 end_time = time.time()
 
@@ -328,7 +367,9 @@ class TestRealismMaxGeneratorCoverage:
                 assert "arkalia-luna-realism-serenity-200.svg" in str(result)
 
     def test_realism_generator_output_directory_creation(
-        self, realism_generator, tmp_path
+        self,
+        realism_generator,
+        tmp_path,
     ):
         """Test de la création automatique du répertoire de sortie."""
         # Créer un nouveau répertoire
@@ -343,16 +384,20 @@ class TestRealismMaxGeneratorCoverage:
                 return_value=True,
             ):
                 with patch.object(
-                    realism_generator.svg_builder, "save_logo"
+                    realism_generator.svg_builder,
+                    "save_logo",
                 ) as mock_save:
                     mock_save.return_value = Path("test-logo.svg")
 
                     # Test de la génération
                     result = realism_generator.generate_realistic_logo(
-                        "serenity", 200, 0.95
+                        "serenity",
+                        200,
+                        0.95,
                     )
 
-                    # Vérifier que le résultat est un Path et contient le bon nom de fichier
+                    # Vérifier que le résultat est un Path
+                    # et contient le bon nom de fichier
                     assert isinstance(result, Path)
                     assert "arkalia-luna-realism-serenity-200.svg" in str(result)
 
@@ -360,7 +405,9 @@ class TestRealismMaxGeneratorCoverage:
         """Test de l'intégration avec la validation des variantes."""
         # Mock de la validation qui échoue
         with patch.object(
-            realism_generator.variants_manager, "validate_variant", return_value=False
+            realism_generator.variants_manager,
+            "validate_variant",
+            return_value=False,
         ):
             with pytest.raises(ValueError) as exc_info:
                 realism_generator.generate_realistic_logo("invalid_variant", 200)
@@ -371,7 +418,9 @@ class TestRealismMaxGeneratorCoverage:
         """Test de l'intégration avec le SVG builder."""
         # Mock de la validation
         with patch.object(
-            realism_generator.variants_manager, "validate_variant", return_value=True
+            realism_generator.variants_manager,
+            "validate_variant",
+            return_value=True,
         ):
             with patch.object(realism_generator.svg_builder, "save_logo") as mock_save:
                 mock_save.return_value = Path("test-logo.svg")
@@ -385,14 +434,16 @@ class TestRealismMaxGeneratorCoverage:
                 assert call_args[0] == "serenity"  # variant_name
                 assert call_args[1] == 200  # size
                 assert "arkalia-luna-realism-serenity-200.svg" in str(
-                    call_args[2]
+                    call_args[2],
                 )  # output_path
 
     def test_realism_generator_error_logging(self, realism_generator):
         """Test du logging des erreurs."""
         # Mock de la validation qui échoue
         with patch.object(
-            realism_generator.variants_manager, "validate_variant", return_value=False
+            realism_generator.variants_manager,
+            "validate_variant",
+            return_value=False,
         ):
             with patch.object(realism_generator.logger, "error") as mock_error:
                 with pytest.raises(ValueError):
@@ -405,7 +456,9 @@ class TestRealismMaxGeneratorCoverage:
         """Test du logging des succès."""
         # Mock de la validation et du builder
         with patch.object(
-            realism_generator.variants_manager, "validate_variant", return_value=True
+            realism_generator.variants_manager,
+            "validate_variant",
+            return_value=True,
         ):
             with patch.object(realism_generator.svg_builder, "save_logo") as mock_save:
                 mock_save.return_value = Path("test-logo.svg")
@@ -421,14 +474,18 @@ class TestRealismMaxGeneratorCoverage:
         """Test de la cohérence des extensions de fichiers."""
         # Mock de la validation et du builder
         with patch.object(
-            realism_generator.variants_manager, "validate_variant", return_value=True
+            realism_generator.variants_manager,
+            "validate_variant",
+            return_value=True,
         ):
             with patch.object(realism_generator.svg_builder, "save_logo") as mock_save:
                 mock_save.return_value = Path("test-logo.svg")
 
                 # Test de la génération
                 result = realism_generator.generate_realistic_logo(
-                    "serenity", 200, 0.95
+                    "serenity",
+                    200,
+                    0.95,
                 )
 
                 # Vérifier que l'extension est .svg

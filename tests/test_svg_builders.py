@@ -1,5 +1,4 @@
-"""
-🧪 Tests ULTRA-PERFORMANTS pour les SVG Builders
+"""🧪 Tests ULTRA-PERFORMANTS pour les SVG Builders
 Tests qui détectent TOUTES les erreurs et valident chaque détail
 """
 
@@ -82,7 +81,7 @@ class TestSVGBuilder:
             self.builder._validate_svgwrite()
         except Exception as e:
             pytest.fail(
-                f"La validation ne devrait pas échouer avec svgwrite valide: {e}"
+                f"La validation ne devrait pas échouer avec svgwrite valide: {e}",
             )
 
 
@@ -109,10 +108,11 @@ class TestAdvancedSVGBuilder:
 
         assert result == mock_drawing
         mock_drawing.set_desc.assert_called_once_with(
-            "Logo Arkalia-LUNA - Variante techno-mystique avancée"
+            "Logo Arkalia-LUNA - Variante techno-mystique avancée",
         )
         mock_svgwrite.Drawing.assert_called_once_with(
-            size=(200, 200), viewBox="0 0 200 200"
+            size=(200, 200),
+            viewBox="0 0 200 200",
         )
 
     def test_add_advanced_definitions_perfect(self):
@@ -133,15 +133,20 @@ class TestAdvancedSVGBuilder:
 
         # Mock des méthodes privées pour éviter les erreurs SVG
         with patch.object(
-            self.builder, "_add_advanced_moon_gradient"
+            self.builder,
+            "_add_advanced_moon_gradient",
         ) as mock_gradient, patch.object(
-            self.builder, "_add_advanced_glow_filters"
+            self.builder,
+            "_add_advanced_glow_filters",
         ) as mock_glow, patch.object(
-            self.builder, "_add_organic_turbulence_filters"
+            self.builder,
+            "_add_organic_turbulence_filters",
         ) as mock_organic, patch.object(
-            self.builder, "_add_depth_masks"
+            self.builder,
+            "_add_depth_masks",
         ) as mock_depth, patch.object(
-            self.builder, "_add_neural_network_gradients"
+            self.builder,
+            "_add_neural_network_gradients",
         ) as mock_neural:
             self.builder.add_advanced_definitions(mock_drawing, variant)
 
@@ -176,10 +181,11 @@ class TestSimpleAdvancedSVGBuilder:
 
         assert result == mock_drawing
         mock_drawing.set_desc.assert_called_once_with(
-            "Logo Arkalia-LUNA - Variante techno-mystique avancée"
+            "Logo Arkalia-LUNA - Variante techno-mystique avancée",
         )
         mock_svgwrite.Drawing.assert_called_once_with(
-            size=(200, 200), viewBox="0 0 200 200"
+            size=(200, 200),
+            viewBox="0 0 200 200",
         )
 
     def test_add_advanced_definitions_perfect(self):
@@ -200,11 +206,14 @@ class TestSimpleAdvancedSVGBuilder:
 
         # Mock des méthodes privées pour éviter les erreurs SVG
         with patch.object(
-            self.builder, "_add_advanced_moon_gradient"
+            self.builder,
+            "_add_advanced_moon_gradient",
         ) as mock_gradient, patch.object(
-            self.builder, "_add_advanced_glow_filters"
+            self.builder,
+            "_add_advanced_glow_filters",
         ) as mock_glow, patch.object(
-            self.builder, "_add_neural_network_gradients"
+            self.builder,
+            "_add_neural_network_gradients",
         ) as mock_neural:
             self.builder.add_advanced_definitions(mock_drawing, variant)
 
@@ -237,12 +246,13 @@ class TestDashboardSVGBuilder:
 
         assert result == mock_drawing
         mock_drawing.set_desc.assert_called_once_with(
-            "Logo Arkalia-LUNA - Style Dashboard"
+            "Logo Arkalia-LUNA - Style Dashboard",
         )
         # Note: set_title est commenté dans le code source
         # mock_drawing.set_title.assert_called_once_with("Arkalia-LUNA Dashboard Logo")
         mock_svgwrite.Drawing.assert_called_once_with(
-            size=(200, 200), viewBox="0 0 200 200"
+            size=(200, 200),
+            viewBox="0 0 200 200",
         )
 
     def test_add_dashboard_definitions_perfect(self):
@@ -263,13 +273,17 @@ class TestDashboardSVGBuilder:
 
         # Mock des méthodes privées pour éviter les erreurs SVG
         with patch.object(
-            self.builder, "_add_main_gradient"
+            self.builder,
+            "_add_main_gradient",
         ) as mock_main, patch.object(
-            self.builder, "_add_halo_gradient"
+            self.builder,
+            "_add_halo_gradient",
         ) as mock_halo, patch.object(
-            self.builder, "_add_core_gradient"
+            self.builder,
+            "_add_core_gradient",
         ) as mock_core, patch.object(
-            self.builder, "_add_glow_filter"
+            self.builder,
+            "_add_glow_filter",
         ) as mock_glow:
             self.builder.add_dashboard_definitions(mock_drawing, variant)
 
@@ -308,11 +322,12 @@ class TestUltraMaxSVGBuilder:
 
         assert result == mock_drawing
         mock_drawing.set_desc.assert_called_once_with(
-            "Logo Arkalia-LUNA - Style ULTRA-MAX"
+            "Logo Arkalia-LUNA - Style ULTRA-MAX",
         )
         mock_drawing.set_title.assert_called_once_with("Arkalia-LUNA Ultra-Max Logo")
         mock_svgwrite.Drawing.assert_called_once_with(
-            size=(200, 200), viewBox="0 0 200 200"
+            size=(200, 200),
+            viewBox="0 0 200 200",
         )
 
     def test_add_ultra_max_definitions_perfect(self):
@@ -333,13 +348,17 @@ class TestUltraMaxSVGBuilder:
 
         # Mock des méthodes privées pour éviter les erreurs SVG
         with patch.object(
-            self.builder, "_add_ultra_max_gradients"
+            self.builder,
+            "_add_ultra_max_gradients",
         ) as mock_gradients, patch.object(
-            self.builder, "_add_ultra_max_filters"
+            self.builder,
+            "_add_ultra_max_filters",
         ) as mock_filters, patch.object(
-            self.builder, "_add_ultra_max_masks"
+            self.builder,
+            "_add_ultra_max_masks",
         ) as mock_masks, patch.object(
-            self.builder, "_add_ultra_max_patterns"
+            self.builder,
+            "_add_ultra_max_patterns",
         ) as mock_patterns:
             self.builder.add_ultra_max_definitions(mock_drawing, variant)
 
@@ -414,11 +433,12 @@ class TestAIMoonSVGBuilder:
 
         assert result == mock_drawing
         mock_drawing.set_desc.assert_called_once_with(
-            "Logo Arkalia-LUNA - LUNE IA VIVANTE ultra-réaliste"
+            "Logo Arkalia-LUNA - LUNE IA VIVANTE ultra-réaliste",
         )
         mock_drawing.set_title.assert_called_once_with("Arkalia-LUNA AI Moon")
         mock_svgwrite.Drawing.assert_called_once_with(
-            size=(200, 200), viewBox="0 0 200 200"
+            size=(200, 200),
+            viewBox="0 0 200 200",
         )
 
     def test_add_ai_moon_definitions_perfect(self):
@@ -439,15 +459,20 @@ class TestAIMoonSVGBuilder:
 
         # Mock des méthodes privées pour éviter les erreurs SVG
         with patch.object(
-            self.builder, "_add_ai_moon_gradient"
+            self.builder,
+            "_add_ai_moon_gradient",
         ) as mock_gradient, patch.object(
-            self.builder, "_add_ai_glow_filters"
+            self.builder,
+            "_add_ai_glow_filters",
         ) as mock_glow, patch.object(
-            self.builder, "_add_ai_organic_filters"
+            self.builder,
+            "_add_ai_organic_filters",
         ) as mock_organic, patch.object(
-            self.builder, "_add_ai_depth_masks"
+            self.builder,
+            "_add_ai_depth_masks",
         ) as mock_depth, patch.object(
-            self.builder, "_add_ai_neural_patterns"
+            self.builder,
+            "_add_ai_neural_patterns",
         ) as mock_neural:
             self.builder.add_ai_moon_definitions(mock_drawing, variant)
 
@@ -614,19 +639,26 @@ class TestAIMoonSVGBuilder:
         self.variants_manager.get_variant.return_value = mock_variant
 
         with patch.object(self.builder, "create_drawing") as mock_create, patch.object(
-            self.builder, "add_ai_moon_definitions"
+            self.builder,
+            "add_ai_moon_definitions",
         ) as mock_defs, patch.object(
-            self.builder, "add_ai_moon_main_circle"
+            self.builder,
+            "add_ai_moon_main_circle",
         ) as mock_circle, patch.object(
-            self.builder, "add_ai_moon_halo"
+            self.builder,
+            "add_ai_moon_halo",
         ) as mock_halo, patch.object(
-            self.builder, "add_ai_moon_core"
+            self.builder,
+            "add_ai_moon_core",
         ) as mock_core, patch.object(
-            self.builder, "add_ai_moon_network"
+            self.builder,
+            "add_ai_moon_network",
         ) as mock_network, patch.object(
-            self.builder, "add_ai_moon_particles"
+            self.builder,
+            "add_ai_moon_particles",
         ) as mock_particles, patch.object(
-            self.builder, "add_ai_moon_rays"
+            self.builder,
+            "add_ai_moon_rays",
         ) as mock_rays:
             mock_drawing = Mock()
             mock_create.return_value = mock_drawing
@@ -649,7 +681,9 @@ class TestAIMoonSVGBuilder:
         mock_drawing = Mock()
 
         with patch.object(
-            self.builder, "build_ai_moon_logo", return_value=mock_drawing
+            self.builder,
+            "build_ai_moon_logo",
+            return_value=mock_drawing,
         ), patch.object(self.builder, "build_logo", return_value=mock_drawing):
             output_path = Path("test.svg")
             result = self.builder.save_ai_moon_logo("test", 200, output_path)
@@ -687,7 +721,7 @@ class TestSVGBuilderIntegration:
             for method_name in required_methods:
                 method = getattr(builder, method_name)
                 assert callable(
-                    method
+                    method,
                 ), f"{method_name} n'est pas callable dans {builder_class.__name__}"
 
                 # Vérifie que la méthode a une docstring
@@ -707,14 +741,19 @@ class TestSVGBuilderIntegration:
 
         for builder_class in builders:
             assert issubclass(
-                builder_class, SVGBuilder
+                builder_class,
+                SVGBuilder,
             ), f"{builder_class.__name__} n'hérite pas de SVGBuilder"
 
             # Vérifie que l'héritage est correct
             builder = builder_class(Mock(spec=LogoVariants))
             assert isinstance(
-                builder, SVGBuilder
-            ), f"Instance de {builder_class.__name__} n'est pas une instance de SVGBuilder"
+                builder,
+                SVGBuilder,
+            ), (
+                f"Instance de {builder_class.__name__} "
+                "n'est pas une instance de SVGBuilder"
+            )
 
     def test_all_builders_validate_svgwrite(self):
         """Test que tous les builders valident svgwrite"""
@@ -729,10 +768,11 @@ class TestSVGBuilderIntegration:
         for builder_class in builders:
             builder = builder_class(Mock(spec=LogoVariants))
             assert hasattr(
-                builder, "_validate_svgwrite"
+                builder,
+                "_validate_svgwrite",
             ), f"{builder_class.__name__} n'a pas de méthode _validate_svgwrite"
             assert callable(
-                builder._validate_svgwrite
+                builder._validate_svgwrite,
             ), f"_validate_svgwrite dans {builder_class.__name__} n'est pas callable"
 
     def test_all_builders_have_variants_manager(self):

@@ -6,6 +6,7 @@ API FastAPI pour la génération de logos via interface web
 import logging
 import os
 import time
+from contextlib import asynccontextmanager
 from datetime import datetime
 from pathlib import Path
 from typing import Dict, List, Optional
@@ -192,6 +193,39 @@ metrics = PrometheusMetrics()
 # Rate limiter
 limiter = Limiter(key_func=get_remote_address)
 
+# Variables globales
+logo_generator: Optional[ArkaliaLunaLogo] = None
+generator_factory: Optional[LogoGeneratorFactory] = None
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """Gestion du cycle de vie de l'application (startup/shutdown)"""
+    global logo_generator, generator_factory
+
+    # Startup
+    try:
+        # Initialisation du générateur de logos
+        logo_generator = ArkaliaLunaLogo()
+        generator_factory = LogoGeneratorFactory()
+
+        # Création des répertoires nécessaires
+        os.makedirs("exports", exist_ok=True)
+        os.makedirs("cache", exist_ok=True)
+        os.makedirs("logs", exist_ok=True)
+
+        logger.info("🚀 Arkalia-LUNA Logo Generator API démarrée avec succès")
+
+    except Exception as e:
+        logger.error(f"❌ Erreur lors du démarrage: {e}")
+        raise
+
+    yield
+
+    # Shutdown (nettoyage si nécessaire)
+    logger.info("🛑 Arrêt de l'API Arkalia-LUNA Logo Generator")
+
+
 # Initialisation de l'application FastAPI
 app = FastAPI(
     title="Arkalia-LUNA Logo Generator API",
@@ -199,6 +233,7 @@ app = FastAPI(
     version="1.0.0",
     docs_url="/docs",
     redoc_url="/redoc",
+    lifespan=lifespan,
 )
 
 # Configuration du rate limiter
@@ -241,33 +276,6 @@ class HealthResponse(BaseModel):
     timestamp: datetime
     version: str
     environment: str
-
-
-# Variables globales
-logo_generator: Optional[ArkaliaLunaLogo] = None
-generator_factory: Optional[LogoGeneratorFactory] = None
-
-
-@app.on_event("startup")
-async def startup_event():
-    """Initialisation au démarrage de l'application"""
-    global logo_generator, generator_factory
-
-    try:
-        # Initialisation du générateur de logos
-        logo_generator = ArkaliaLunaLogo()
-        generator_factory = LogoGeneratorFactory()
-
-        # Création des répertoires nécessaires
-        os.makedirs("exports", exist_ok=True)
-        os.makedirs("cache", exist_ok=True)
-        os.makedirs("logs", exist_ok=True)
-
-        logger.info("🚀 Arkalia-LUNA Logo Generator API démarrée avec succès")
-
-    except Exception as e:
-        logger.error(f"❌ Erreur lors du démarrage: {e}")
-        raise
 
 
 @app.get("/", response_model=Dict[str, str])

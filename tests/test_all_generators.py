@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
-"""
-Tests complets pour tous les générateurs de logos Arkalia-LUNA
-"""
+"""Tests complets pour tous les générateurs de logos Arkalia-LUNA"""
 
 import sys
 from pathlib import Path
@@ -25,7 +23,7 @@ class TestLogoVariants:
         """Test que les variantes sont correctement initialisées"""
         variants = LogoVariants()
         assert variants is not None
-        assert len(variants.get_all_variants()) == 5
+        assert len(variants.get_all_variants()) == 10
 
     def test_variant_types(self):
         """Test que tous les types de variantes existent"""
@@ -35,7 +33,18 @@ class TestLogoVariants:
         # get_all_variants retourne un dictionnaire {nom: LogoVariant}
         variant_names = list(all_variants.keys())
 
-        expected_names = ["serenity", "power", "mystery", "awakening", "creative"]
+        expected_names = [
+            "serenity",
+            "power",
+            "mystery",
+            "awakening",
+            "creative",
+            "rainy",
+            "stormy",
+            "explosive",
+            "sunny",
+            "snowy",
+        ]
         for name in expected_names:
             assert name in variant_names
 
@@ -162,7 +171,7 @@ class TestIntegration:
                 assert generator is not None
             except Exception as e:
                 pytest.skip(
-                    f"Générateur {generator_class.__name__} non disponible: {e}"
+                    f"Générateur {generator_class.__name__} non disponible: {e}",
                 )
 
     def test_variants_consistency(self):

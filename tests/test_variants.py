@@ -1,6 +1,4 @@
-"""
-🧪 Tests pour le module variants
-"""
+"""🧪 Tests pour le module variants"""
 
 import sys
 from pathlib import Path
@@ -19,7 +17,10 @@ class TestColorScheme:
     def test_color_scheme_creation(self):
         """Test de création d'un schéma de couleurs"""
         colors = ColorScheme(
-            primary="#1e3a8a", secondary="#3b82f6", accent="#06b6d4", glow="#60a5fa"
+            primary="#1e3a8a",
+            secondary="#3b82f6",
+            accent="#06b6d4",
+            glow="#60a5fa",
         )
 
         assert colors.primary == "#1e3a8a"
@@ -30,7 +31,10 @@ class TestColorScheme:
     def test_color_scheme_to_dict(self):
         """Test de conversion en dictionnaire"""
         colors = ColorScheme(
-            primary="#1e3a8a", secondary="#3b82f6", accent="#06b6d4", glow="#60a5fa"
+            primary="#1e3a8a",
+            secondary="#3b82f6",
+            accent="#06b6d4",
+            glow="#60a5fa",
         )
 
         color_dict = colors.to_dict()
@@ -47,7 +51,10 @@ class TestLogoVariant:
     def test_logo_variant_creation(self):
         """Test de création d'une variante de logo"""
         colors = ColorScheme(
-            primary="#1e3a8a", secondary="#3b82f6", accent="#06b6d4", glow="#60a5fa"
+            primary="#1e3a8a",
+            secondary="#3b82f6",
+            accent="#06b6d4",
+            glow="#60a5fa",
         )
 
         variant = LogoVariant(
@@ -67,7 +74,10 @@ class TestLogoVariant:
     def test_logo_variant_to_dict(self):
         """Test de conversion en dictionnaire"""
         colors = ColorScheme(
-            primary="#1e3a8a", secondary="#3b82f6", accent="#06b6d4", glow="#60a5fa"
+            primary="#1e3a8a",
+            secondary="#3b82f6",
+            accent="#06b6d4",
+            glow="#60a5fa",
         )
 
         variant = LogoVariant(
@@ -100,9 +110,20 @@ class TestLogoVariants:
         all_variants = variants_manager.get_all_variants()
 
         assert isinstance(all_variants, dict)
-        assert len(all_variants) == 5  # 5 variantes définies
+        assert len(all_variants) == 10  # 10 variantes définies
 
-        expected_variants = ["serenity", "power", "mystery", "awakening", "creative"]
+        expected_variants = [
+            "serenity",
+            "power",
+            "mystery",
+            "awakening",
+            "creative",
+            "rainy",
+            "stormy",
+            "explosive",
+            "sunny",
+            "snowy",
+        ]
         for variant_name in expected_variants:
             assert variant_name in all_variants
 
@@ -130,9 +151,20 @@ class TestLogoVariants:
         variant_list = variants_manager.list_variants()
 
         assert isinstance(variant_list, list)
-        assert len(variant_list) == 5
+        assert len(variant_list) == 10
 
-        expected_variants = ["serenity", "power", "mystery", "awakening", "creative"]
+        expected_variants = [
+            "serenity",
+            "power",
+            "mystery",
+            "awakening",
+            "creative",
+            "rainy",
+            "stormy",
+            "explosive",
+            "sunny",
+            "snowy",
+        ]
         for variant_name in expected_variants:
             assert variant_name in variant_list
 

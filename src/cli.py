@@ -1,5 +1,4 @@
-"""
-🌙 CLI Module pour Arkalia-LUNA Logo Generator
+"""🌙 CLI Module pour Arkalia-LUNA Logo Generator
 Interface en ligne de commande pour la génération de logos
 """
 
@@ -8,51 +7,56 @@ from pathlib import Path
 from typing import Optional
 
 import click
+from click import Context
 from rich.console import Console
 from rich.panel import Panel
 from rich.progress import track
 from rich.table import Table
 from rich.text import Text
 
+from .generator_factory import LogoGeneratorFactory
 from .logo_generator import ArkaliaLunaLogo
 
 # Configuration Rich
 console = Console()
 
 
-def print_banner():
+def print_banner() -> None:
     """Affiche la bannière Arkalia-LUNA"""
     banner = Text()
     banner.append("🌙 ", style="bold blue")
     banner.append("Arkalia-LUNA Logo Generator", style="bold white")
-    banner.append(" v1.0.0", style="dim white")
+    banner.append(" v2.0.0", style="dim white")
 
     panel = Panel(banner, border_style="blue", padding=(1, 2))
     console.print(panel)
 
 
-def print_error(message: str):
+def print_error(message: str) -> None:
     """Affiche une erreur formatée"""
     console.print(f"[bold red]❌ Erreur :[/bold red] {message}")
 
 
-def print_success(message: str):
+def print_success(message: str) -> None:
     """Affiche un succès formaté"""
     console.print(f"[bold green]✅ Succès :[/bold green] {message}")
 
 
-def print_info(message: str):
+def print_info(message: str) -> None:
     """Affiche une information formatée"""
-    console.print(f"[bold blue]ℹ️  Info :[/bold blue] {message}")
+    console.print(f"[bold blue]Info :[/bold blue] {message}")
 
 
 @click.group()
 @click.option(
-    "--output-dir", "-o", type=click.Path(), help="Répertoire de sortie personnalisé"
+    "--output-dir",
+    "-o",
+    type=click.Path(),
+    help="Répertoire de sortie personnalisé",
 )
 @click.option("--verbose", "-v", is_flag=True, help="Mode verbeux")
 @click.pass_context
-def cli(ctx, output_dir: Optional[str], verbose: bool):
+def cli(ctx: Context, output_dir: Optional[str], verbose: bool) -> None:
     """🌙 Arkalia-LUNA Logo Generator - Interface CLI professionnelle"""
     ctx.ensure_object(dict)
 
@@ -75,7 +79,34 @@ def cli(ctx, output_dir: Optional[str], verbose: bool):
 
 @cli.command()
 @click.pass_context
-def info(ctx):
+def generators(ctx: Context) -> None:
+    """Affiche les générateurs disponibles"""
+    try:
+        available_generators = LogoGeneratorFactory.get_available_generators()
+
+        # Création du tableau
+        table = Table(title="🔧 Générateurs Arkalia-LUNA Disponibles")
+        table.add_column("Type", style="cyan", no_wrap=True)
+        table.add_column("Nom", style="magenta")
+        table.add_column("Description", style="green")
+
+        for generator_type, generator_info in available_generators.items():
+            table.add_row(
+                generator_type,
+                generator_info.get("name", "N/A"),
+                generator_info.get("description", "N/A"),
+            )
+
+        console.print(table)
+
+    except Exception as e:
+        print_error(f"Impossible d'afficher les générateurs : {e}")
+        sys.exit(1)
+
+
+@cli.command()
+@click.pass_context
+def info(ctx: Context) -> None:
     """Affiche les informations sur toutes les variantes disponibles"""
     try:
         generator = ctx.obj["generator"]
@@ -109,28 +140,46 @@ def info(ctx):
 @cli.command()
 @click.option("--variant", "-v", required=True, help="Nom de la variante")
 @click.option("--size", "-s", default=200, help="Taille du logo en pixels")
+@click.option(
+    "--generator",
+    "-g",
+    default="default",
+    help=(
+        "Type de générateur (default, advanced, ultimate, ai_moon, "
+        "dashboard, ultra_max, realism_max, simple_advanced)"
+    ),
+)
 @click.option("--output", "-o", type=click.Path(), help="Chemin de sortie personnalisé")
 @click.pass_context
-def generate(ctx, variant: str, size: int, output: Optional[str]):
+def generate(
+    ctx: Context, variant: str, size: int, generator: str, output: Optional[str]
+) -> None:
     """Génère un logo SVG pour une variante spécifique"""
     try:
-        generator = ctx.obj["generator"]
+        # Création du générateur spécialisé via la factory
+        specialized_generator = LogoGeneratorFactory.create_generator(
+            generator_type=generator,
+            output_dir=ctx.obj["output_dir"],
+        )
 
         # Validation de la variante
-        if not generator.validate_variant(variant):
+        if not specialized_generator.validate_variant(variant):
             print_error(f"Variante '{variant}' non reconnue")
-            console.print(
-                f"Variantes disponibles : {', '.join(generator.list_all_variants())}"
-            )
+            variants_list = ", ".join(specialized_generator.list_all_variants())
+            console.print(f"Variantes disponibles : {variants_list}")
             sys.exit(1)
 
-        # Génération du logo
-        with console.status(f"[bold blue]Génération du logo '{variant}'..."):
-            output_path = generator.generate_svg_logo(variant, size)
+        # Génération du logo avec le générateur spécialisé
+        with console.status(
+            f"[bold blue]Génération du logo '{variant}' "
+            f"avec générateur '{generator}'...",
+        ):
+            output_path = specialized_generator.generate_svg_logo(variant, size)
 
         print_success("Logo généré avec succès !")
         console.print(f"📁 Fichier : {output_path}")
         console.print(f"🎨 Variante : {variant}")
+        console.print(f"🔧 Générateur : {generator}")
         console.print(f"📏 Taille : {size}x{size} pixels")
 
         # Déplacement si chemin personnalisé spécifié
@@ -148,10 +197,13 @@ def generate(ctx, variant: str, size: int, output: Optional[str]):
 @cli.command()
 @click.option("--size", "-s", default=200, help="Taille des logos en pixels")
 @click.option(
-    "--parallel", "-p", is_flag=True, help="Génération parallèle (si supportée)"
+    "--parallel",
+    "-p",
+    is_flag=True,
+    help="Génération parallèle (si supportée)",
 )
 @click.pass_context
-def generate_all(ctx, size: int, parallel: bool):
+def generate_all(ctx: Context, size: int, parallel: bool) -> None:
     """Génère toutes les variantes du logo"""
     try:
         generator = ctx.obj["generator"]
@@ -159,7 +211,7 @@ def generate_all(ctx, size: int, parallel: bool):
 
         console.print(
             f"[bold blue]🎨 Génération de {len(variants)} variantes "
-            f"en taille {size}x{size}...[/bold blue]"
+            f"en taille {size}x{size}...[/bold blue]",
         )
 
         # Génération avec barre de progression
@@ -193,7 +245,7 @@ def generate_all(ctx, size: int, parallel: bool):
 @click.option("--size", "-s", default=32, help="Taille du favicon en pixels")
 @click.option("--output", "-o", type=click.Path(), help="Chemin de sortie personnalisé")
 @click.pass_context
-def favicon(ctx, variant: str, size: int, output: Optional[str]):
+def favicon(ctx: Context, variant: str, size: int, output: Optional[str]) -> None:
     """Crée un favicon PNG pour une variante"""
     try:
         generator = ctx.obj["generator"]
@@ -202,7 +254,7 @@ def favicon(ctx, variant: str, size: int, output: Optional[str]):
         if not generator.validate_variant(variant):
             print_error(f"Variante '{variant}' non reconnue")
             console.print(
-                f"Variantes disponibles : {', '.join(generator.list_all_variants())}"
+                f"Variantes disponibles : {', '.join(generator.list_all_variants())}",
             )
             sys.exit(1)
 
@@ -230,7 +282,7 @@ def favicon(ctx, variant: str, size: int, output: Optional[str]):
 @cli.command()
 @click.option("--size", "-s", default=32, help="Taille des favicons en pixels")
 @click.pass_context
-def favicon_all(ctx, size: int):
+def favicon_all(ctx: Context, size: int) -> None:
     """Crée des favicons pour toutes les variantes"""
     try:
         generator = ctx.obj["generator"]
@@ -238,7 +290,7 @@ def favicon_all(ctx, size: int):
 
         console.print(
             f"[bold blue]🎨 Création de {len(variants)} favicons "
-            f"en taille {size}x{size}...[/bold blue]"
+            f"en taille {size}x{size}...[/bold blue]",
         )
 
         # Création avec barre de progression
@@ -262,7 +314,7 @@ def favicon_all(ctx, size: int):
 
 @cli.command()
 @click.pass_context
-def stats(ctx):
+def stats(ctx: Context) -> None:
     """Affiche les statistiques de génération"""
     try:
         generator = ctx.obj["generator"]
@@ -289,7 +341,7 @@ def stats(ctx):
 @cli.command()
 @click.option("--confirm", is_flag=True, help="Confirmation automatique")
 @click.pass_context
-def clean(ctx, confirm: bool):
+def clean(ctx: Context, confirm: bool) -> None:
     """Nettoie tous les fichiers générés"""
     try:
         generator = ctx.obj["generator"]
@@ -297,7 +349,7 @@ def clean(ctx, confirm: bool):
         if not confirm:
             console.print(
                 "[bold yellow]⚠️  Attention :[/bold yellow] "
-                "Cette action supprimera tous les fichiers générés."
+                "Cette action supprimera tous les fichiers générés.",
             )
             if not click.confirm("Continuer ?"):
                 console.print("Opération annulée.")
@@ -315,16 +367,16 @@ def clean(ctx, confirm: bool):
 
 @cli.command()
 @click.pass_context
-def version(ctx):
+def version(ctx: Context) -> None:
     """Affiche la version du générateur"""
     from . import __version__
 
     console.print(
-        f"[bold blue]🌙 Arkalia-LUNA Logo Generator v{__version__}[/bold blue]"
+        f"[bold blue]🌙 Arkalia-LUNA Logo Generator v{__version__}[/bold blue]",
     )
 
 
-def main():
+def main() -> None:
     """Point d'entrée principal"""
     try:
         cli()

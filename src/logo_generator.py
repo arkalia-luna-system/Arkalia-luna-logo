@@ -1,5 +1,4 @@
-"""
-🌙 Logo Generator Module
+"""🌙 Logo Generator Module
 Générateur principal des logos Arkalia-LUNA
 """
 
@@ -20,7 +19,7 @@ except ImportError:
 class ArkaliaLunaLogo:
     """Générateur principal des logos Arkalia-LUNA"""
 
-    def __init__(self, output_dir: Optional[Path] = None):
+    def __init__(self, output_dir: Optional[Path] = None) -> None:
         self.variants_manager = LogoVariants()
         self.svg_builder = AdvancedSVGBuilder(self.variants_manager)
         self.output_dir = output_dir or Path("exports")
@@ -29,7 +28,7 @@ class ArkaliaLunaLogo:
         # Configuration du logging
         self._setup_logging()
 
-    def _setup_logging(self):
+    def _setup_logging(self) -> None:
         """Configure le système de logging"""
         import logging
 
@@ -47,7 +46,7 @@ class ArkaliaLunaLogo:
         """Génère un logo SVG pour une variante donnée"""
         try:
             self.logger.info(
-                f"Génération du logo SVG '{variant_name}' en taille {size}x{size}"
+                f"Génération du logo SVG '{variant_name}' en taille {size}x{size}",
             )
 
             # Validation de la variante
@@ -65,7 +64,7 @@ class ArkaliaLunaLogo:
 
         except Exception as e:
             self.logger.error(
-                f"Erreur lors de la génération du logo '{variant_name}': {e}"
+                f"Erreur lors de la génération du logo '{variant_name}': {e}",
             )
             raise
 
@@ -73,7 +72,7 @@ class ArkaliaLunaLogo:
         """Génère toutes les variantes du logo"""
         try:
             self.logger.info(
-                f"Génération de toutes les variantes en taille {size}x{size}"
+                f"Génération de toutes les variantes en taille {size}x{size}",
             )
 
             generated_files = []
@@ -89,13 +88,13 @@ class ArkaliaLunaLogo:
 
             self.logger.info(
                 f"Génération terminée : "
-                f"{len(generated_files)}/{len(variants)} logos créés"
+                f"{len(generated_files)}/{len(variants)} logos créés",
             )
             return generated_files
 
         except Exception as e:
             self.logger.error(
-                f"Erreur lors de la génération de toutes les variantes: {e}"
+                f"Erreur lors de la génération de toutes les variantes: {e}",
             )
             raise
 
@@ -103,7 +102,7 @@ class ArkaliaLunaLogo:
         """Crée un favicon PNG pour une variante donnée"""
         try:
             self.logger.info(
-                f"Création du favicon '{variant_name}' en taille {size}x{size}"
+                f"Création du favicon '{variant_name}' en taille {size}x{size}",
             )
 
             # Validation de la variante
@@ -140,7 +139,7 @@ class ArkaliaLunaLogo:
 
         except Exception as e:
             self.logger.error(
-                f"Erreur lors de la création du favicon '{variant_name}': {e}"
+                f"Erreur lors de la création du favicon '{variant_name}': {e}",
             )
             raise
 
@@ -149,7 +148,7 @@ class ArkaliaLunaLogo:
         try:
             self.logger.info(
                 f"Création des favicons pour toutes les variantes "
-                f"en taille {size}x{size}"
+                f"en taille {size}x{size}",
             )
 
             generated_files = []
@@ -161,13 +160,13 @@ class ArkaliaLunaLogo:
                     generated_files.append(output_path)
                 except Exception as e:
                     self.logger.error(
-                        f"Échec de la création du favicon pour '{variant}': {e}"
+                        f"Échec de la création du favicon pour '{variant}': {e}",
                     )
                     continue
 
             self.logger.info(
                 f"Création des favicons terminée : "
-                f"{len(generated_files)}/{len(variants)} créés"
+                f"{len(generated_files)}/{len(variants)} créés",
             )
             return generated_files
 
@@ -181,7 +180,7 @@ class ArkaliaLunaLogo:
             return self.variants_manager.get_variant_info(variant_name)
         except Exception as e:
             self.logger.error(
-                f"Erreur lors de la récupération des infos de '{variant_name}': {e}"
+                f"Erreur lors de la récupération des infos de '{variant_name}': {e}",
             )
             raise
 
@@ -239,7 +238,7 @@ class ArkaliaLunaLogo:
                         f.stem.split("-")[2]
                         for f in svg_files
                         if f.stem.split("-")[2].isdigit()
-                    }
+                    },
                 ),
             }
 

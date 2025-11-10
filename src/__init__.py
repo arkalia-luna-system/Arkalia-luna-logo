@@ -1,8 +1,10 @@
-"""
-🌙 Arkalia-LUNA Logo Generator
+"""🌙 Arkalia-LUNA Logo Generator.
+
 Package Python pour la génération de logos techno-mystiques
-avec optimisations de performance
+avec optimisations de performance.
 """
+
+from typing import Any
 
 __version__ = "2.0.0"  # Version majeure avec optimisations
 __author__ = "Arkalia-LUNA Team"
@@ -33,45 +35,43 @@ from .ultimate_generator import UltimateLogoGenerator
 from .ultra_max_generator import UltraMaxLogoGenerator
 from .variants import ColorScheme, LogoVariant, LogoVariants, VariantType
 
-# Configuration du package avec toutes les fonctionnalités
-__all__ = [
-    # Classes principales
-    "ArkaliaLunaLogo",
-    "LogoVariant",
-    "LogoVariants",
-    "VariantType",
-    "ColorScheme",
-    # Générateurs spécialisés
-    "RealismMaxLogoGenerator",
-    "UltraMaxLogoGenerator",
-    "SimpleAdvancedLogoGenerator",
-    "DashboardLogoGenerator",
-    "AIMoonLogoGenerator",
-    "AdvancedArkaliaLunaLogo",
-    "UltimateLogoGenerator",  # 🌟 NOUVEAU : Générateur ULTIME cosmique
-    # Builders SVG
-    "SVGBuilder",
-    "RealismMaxSVGBuilder",
-    "UltraMaxSVGBuilder",
-    "SimpleAdvancedSVGBuilder",
-    "DashboardSVGBuilder",
-    "AIMoonSVGBuilder",
-    "AdvancedSVGBuilder",
-    "UltimateSVGBuilder",  # 🌟 NOUVEAU : Builder ULTIME cosmique
-    # Factory et utilitaires
-    "LogoGeneratorFactory",
-    "create_logo_generator",
-    "benchmark_all_generators",
-    # CLI
-    "cli",
-]
-
 
 # Fonction de création rapide pour compatibilité
-def create_generator(generator_type: str = "default", **kwargs):
-    """Fonction de compatibilité pour créer rapidement un générateur"""
+def create_generator(generator_type: str = "default", **kwargs: Any) -> ArkaliaLunaLogo:
+    """Fonction de compatibilité pour créer rapidement un générateur."""
     return create_logo_generator(generator_type, **kwargs)
 
 
-# Ajout à __all__ pour la compatibilité
-__all__.append("create_generator")
+# Configuration du package avec toutes les fonctionnalités
+__all__ = sorted(
+    [
+        # Classes principales
+        "AdvancedArkaliaLunaLogo",
+        "AIMoonLogoGenerator",
+        "AIMoonSVGBuilder",
+        "AdvancedSVGBuilder",
+        "ArkaliaLunaLogo",
+        "ColorScheme",
+        "DashboardLogoGenerator",
+        "DashboardSVGBuilder",
+        "LogoVariant",
+        "LogoVariants",
+        "RealismMaxLogoGenerator",
+        "RealismMaxSVGBuilder",
+        "SimpleAdvancedLogoGenerator",
+        "SimpleAdvancedSVGBuilder",
+        "SVGBuilder",
+        "UltimateLogoGenerator",  # 🌟 NOUVEAU : Générateur ULTIME cosmique
+        "UltimateSVGBuilder",  # 🌟 NOUVEAU : Builder ULTIME cosmique
+        "UltraMaxLogoGenerator",
+        "UltraMaxSVGBuilder",
+        "VariantType",
+        # Factory et utilitaires
+        "LogoGeneratorFactory",
+        "benchmark_all_generators",
+        "create_generator",
+        "create_logo_generator",
+        # CLI
+        "cli",
+    ]
+)

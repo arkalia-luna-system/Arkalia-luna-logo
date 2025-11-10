@@ -1,5 +1,4 @@
-"""
-🌙 Simple Advanced Logo Generator Module
+"""🌙 Simple Advanced Logo Generator Module
 Générateur de logos simple-advanced avec animations et optimisations
 """
 
@@ -18,7 +17,7 @@ except ImportError:
 class SimpleAdvancedLogoGenerator(ArkaliaLunaLogo):
     """Générateur simple-advanced avec équilibre performance/qualité"""
 
-    def __init__(self, output_dir: Optional[Path] = None):
+    def __init__(self, output_dir: Optional[Path] = None) -> None:
         super().__init__(output_dir)
         # Remplace le SVG builder par défaut par le Simple Advanced
         self.svg_builder = SimpleAdvancedSVGBuilder(self.variants_manager)
@@ -30,13 +29,16 @@ class SimpleAdvancedLogoGenerator(ArkaliaLunaLogo):
         self.performance_boost = True
 
     def generate_simple_advanced_logo(
-        self, variant_name: str, size: int = 200, complexity: float = 0.7
+        self,
+        variant_name: str,
+        size: int = 200,
+        complexity: float = 0.7,
     ) -> Path:
         """Génère un logo simple-advanced avec niveau de complexité configurable"""
         try:
             self.logger.info(
                 f"⚡ Génération logo simple-advanced '{variant_name}' "
-                f"complexité {complexity:.2f}"
+                f"complexité {complexity:.2f}",
             )
 
             # Validation de la variante
@@ -57,18 +59,20 @@ class SimpleAdvancedLogoGenerator(ArkaliaLunaLogo):
 
         except Exception as e:
             self.logger.error(
-                f"❌ Erreur génération simple-advanced '{variant_name}': {e}"
+                f"❌ Erreur génération simple-advanced '{variant_name}': {e}",
             )
             raise
 
     def generate_all_simple_advanced_variants(
-        self, size: int = 200, complexity: float = 0.7
+        self,
+        size: int = 200,
+        complexity: float = 0.7,
     ) -> List[Path]:
         """Génère toutes les variantes en mode simple-advanced"""
         try:
             self.logger.info(
                 f"⚡ Génération de toutes les variantes simple-advanced "
-                f"complexité {complexity:.2f}"
+                f"complexité {complexity:.2f}",
             )
 
             generated_files = []
@@ -77,18 +81,20 @@ class SimpleAdvancedLogoGenerator(ArkaliaLunaLogo):
             for variant in variants:
                 try:
                     output_path = self.generate_simple_advanced_logo(
-                        variant, size, complexity
+                        variant,
+                        size,
+                        complexity,
                     )
                     generated_files.append(output_path)
                 except Exception as e:
                     self.logger.error(
-                        f"❌ Échec variante simple-advanced '{variant}': {e}"
+                        f"❌ Échec variante simple-advanced '{variant}': {e}",
                     )
                     continue
 
             self.logger.info(
                 f"✅ Génération simple-advanced terminée : "
-                f"{len(generated_files)}/{len(variants)} logos créés"
+                f"{len(generated_files)}/{len(variants)} logos créés",
             )
             return generated_files
 
@@ -97,13 +103,16 @@ class SimpleAdvancedLogoGenerator(ArkaliaLunaLogo):
             raise
 
     def create_simple_advanced_favicon(
-        self, variant_name: str, size: int = 32, complexity: float = 0.7
+        self,
+        variant_name: str,
+        size: int = 32,
+        complexity: float = 0.7,
     ) -> Path:
         """Crée un favicon simple-advanced avec animations"""
         try:
             self.logger.info(
                 f"⚡ Création favicon simple-advanced '{variant_name}' "
-                f"complexité {complexity:.2f}"
+                f"complexité {complexity:.2f}",
             )
 
             # Utilise la méthode parent mais avec le builder simple-advanced
@@ -111,7 +120,7 @@ class SimpleAdvancedLogoGenerator(ArkaliaLunaLogo):
 
         except Exception as e:
             self.logger.error(
-                f"❌ Erreur création favicon simple-advanced '{variant_name}': {e}"
+                f"❌ Erreur création favicon simple-advanced '{variant_name}': {e}",
             )
             raise
 
@@ -132,7 +141,7 @@ class SimpleAdvancedLogoGenerator(ArkaliaLunaLogo):
         """Active/désactive le boost de performance"""
         self.performance_boost = enabled
         self.logger.info(
-            f"⚡ Boost performance: {'activé' if enabled else 'désactivé'}"
+            f"⚡ Boost performance: {'activé' if enabled else 'désactivé'}",
         )
 
     def get_optimization_stats(self) -> Dict[str, Any]:

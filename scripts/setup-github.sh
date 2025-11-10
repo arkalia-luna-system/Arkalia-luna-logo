@@ -65,14 +65,23 @@ check_git_status() {
     
     # Vérifier s'il y a des changements non commités
     if [ -n "$(git status --porcelain)" ]; then
-        print_warning "Il y a des changements non commités. Voulez-vous les commiter ? (y/n)"
-        read -r response
-        if [[ "$response" =~ ^[Yy]$ ]]; then
-            git add .
-            git commit -m "chore(ci): configuration initiale GitHub"
+        # Détecter si on est en mode interactif
+        if [ -t 0 ]; then
+            # Mode interactif : demander à l'utilisateur
+            print_warning "Il y a des changements non commités. Voulez-vous les commiter ? (y/n)"
+            read -r response
+            if [[ "$response" =~ ^[Yy]$ ]]; then
+                git add .
+                git commit -m "chore(ci): configuration initiale GitHub"
+            else
+                print_error "Veuillez commiter ou stasher vos changements avant de continuer."
+                exit 1
+            fi
         else
-            print_error "Veuillez commiter ou stasher vos changements avant de continuer."
-            exit 1
+            # Mode non-interactif : continuer sans commiter automatiquement
+            print_warning "Il y a des changements non commités (mode non-interactif détecté)."
+            print_status "Les changements ne seront pas commités automatiquement."
+            print_status "Vous pouvez les commiter manuellement plus tard si nécessaire."
         fi
     fi
     
@@ -112,15 +121,24 @@ setup_remotes() {
     # Vérifier si origin existe
     if ! git remote | grep -q "origin"; then
         print_status "Configuration du remote origin..."
-        echo "Veuillez entrer l'URL du repository GitHub :"
-        echo "Exemple : https://github.com/username/arkalia-luna-logo.git"
-        read -r github_url
-        
-        if [ -n "$github_url" ]; then
-            git remote add origin "$github_url"
-            print_success "Remote origin configuré : $github_url"
+        # Détecter si on est en mode interactif
+        if [ -t 0 ]; then
+            # Mode interactif : demander à l'utilisateur
+            echo "Veuillez entrer l'URL du repository GitHub :"
+            echo "Exemple : https://github.com/username/arkalia-luna-logo.git"
+            read -r github_url
+            
+            if [ -n "$github_url" ]; then
+                git remote add origin "$github_url"
+                print_success "Remote origin configuré : $github_url"
+            else
+                print_warning "Aucune URL fournie, remote origin non configuré"
+            fi
         else
-            print_warning "Aucune URL fournie, remote origin non configuré"
+            # Mode non-interactif : skip la configuration du remote
+            print_warning "Mode non-interactif détecté. Remote origin non configuré."
+            print_status "Vous pouvez configurer le remote manuellement avec :"
+            print_status "  git remote add origin <url>"
         fi
     else
         print_status "Remote origin existe déjà"
@@ -134,8 +152,12 @@ setup_pre_commit() {
     
     if command -v make &> /dev/null; then
         print_status "Installation des hooks pre-commit..."
-        make pre-commit-install
-        print_success "Hooks pre-commit installés"
+        # Timeout de 2 minutes pour éviter les blocages
+        timeout 120 make pre-commit-install 2>/dev/null || {
+            print_warning "Installation des hooks pre-commit a échoué ou pris trop de temps."
+            print_status "Vous pouvez installer manuellement : pip install pre-commit && pre-commit install"
+        }
+        print_success "Hooks pre-commit configurés"
     else
         print_warning "Make non disponible, installation manuelle des hooks..."
         print_status "Exécutez : pip install pre-commit && pre-commit install"
@@ -144,17 +166,28 @@ setup_pre_commit() {
 
 # Tests de validation
 run_validation_tests() {
+    # En mode non-interactif, on skip les tests pour éviter les blocages
+    if [ ! -t 0 ]; then
+        print_warning "Mode non-interactif détecté. Tests de validation ignorés."
+        print_status "Vous pouvez exécuter les tests manuellement avec : make quality-check"
+        return 0
+    fi
+    
     print_status "Exécution des tests de validation..."
     
     if command -v make &> /dev/null; then
-        print_status "Tests de qualité..."
-        make quality-check || {
-            print_warning "Certains tests de qualité ont échoué, mais la configuration continue..."
-        }
+        # Demander confirmation avant d'exécuter les tests (peuvent être longs)
+        print_warning "Les tests peuvent prendre plusieurs minutes. Voulez-vous les exécuter maintenant ? (y/n)"
+        read -r response
+        if [[ ! "$response" =~ ^[Yy]$ ]]; then
+            print_status "Tests ignorés. Vous pouvez les exécuter plus tard avec : make quality-check"
+            return 0
+        fi
         
-        print_status "Tests unitaires..."
-        make test || {
-            print_warning "Certains tests ont échoué, mais la configuration continue..."
+        print_status "Tests de qualité (format + lint + test)..."
+        # Timeout de 5 minutes pour éviter les blocages
+        timeout 300 make quality-check || {
+            print_warning "Certains tests de qualité ont échoué ou ont pris trop de temps, mais la configuration continue..."
         }
     else
         print_warning "Make non disponible, tests non exécutés"

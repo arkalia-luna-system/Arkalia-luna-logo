@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xlink="http://www.w3.org/1999/xlink" baseProfile="full" height="200" version="1.1" viewBox="0 0 200 200" width="200">
+  <title>Logo Arkalia-LUNA - Style ultra-réaliste avec effets organiques</title>
+  <defs>
+    <radialGradient cx="50%" cy="50%" id="realisticGradient-power" r="50%">
+      <stop offset="0%" stop-color="#1e40af"/>
+      <stop offset="20%" stop-color="#7c3aed"/>
+      <stop offset="40%" stop-color="#ec4899"/>
+      <stop offset="60%" stop-color="#a855f7"/>
+      <stop offset="80%" stop-color="#7c3aed"/>
+      <stop offset="100%" stop-color="#1e40af"/>
+    </radialGradient>
+    <radialGradient cx="50%" cy="50%" id="realisticBorderGradient-power" r="50%">
+      <stop offset="0%" stop-color="#a855f7"/>
+      <stop offset="100%" stop-color="#ec4899"/>
+    </radialGradient>
+    <filter id="realisticGlowFilter-power">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="3"/>
+    </filter>
+    <filter id="organicTurbulenceFilter-power">
+      <feTurbulence baseFrequency="0.01" numOctaves="3" seed="42" type="fractalNoise"/>
+    </filter>
+    <mask id="depthMask-power">
+      <rect fill="url(#realisticGradient-power)" height="1" width="1" x="0" y="0"/>
+    </mask>
+  </defs>
+  <circle cx="0" cy="0" fill="url(#realisticGradient-power)" filter="url(#realisticGlowFilter-power)" r="66"/>
+  <circle cx="0" cy="0" fill="#a855f7" opacity="0.38928429525952907" r="1.5500586367382385"/>
+  <circle cx="0" cy="0" fill="#a855f7" opacity="0.33477553305176644" r="2.784359135409691"/>
+  <circle cx="0" cy="0" fill="#a855f7" opacity="0.5021421152413449" r="1.4372759496072067"/>
+  <circle cx="0" cy="0" fill="#a855f7" opacity="0.5179765922412867" r="2.2997688755590464"/>
+</svg>

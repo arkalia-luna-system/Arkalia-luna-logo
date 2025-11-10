@@ -1,9 +1,22 @@
-# 📋 Changelog - Arkalia-LUNA Logo Generator
+# 📋 Changelog
+
+<div align="center">
+
+**🌙 Arkalia-LUNA Logo Generator**
+
+*Historique des versions et modifications*
+
+</div>
+
+---
+
+<div align="center">
 
 Toutes les modifications notables de ce projet seront documentées dans ce fichier.
 
-Le format est basé sur [Keep a Changelog](https://keepachangelog.com/fr/1.0.0/),
-et ce projet adhère au [Semantic Versioning](https://semver.org/lang/fr/).
+Le format est basé sur [Keep a Changelog](https://keepachangelog.com/fr/1.0.0/), et ce projet adhère au [Semantic Versioning](https://semver.org/lang/fr/).
+
+</div>
 
 ## [2.0.0] - 2024-12-19
 
@@ -11,9 +24,9 @@ et ce projet adhère au [Semantic Versioning](https://semver.org/lang/fr/).
 - **Générateur ULTIME** : Nouveau style cosmique ultra-réaliste avec 100+ stops de gradients
 - **Factory Pattern** : Système de création de générateurs via `LogoGeneratorFactory`
 - **CLI avancé** : Interface en ligne de commande complète avec Rich
-- **Système de variantes** : 5 variantes émotionnelles (Sérénité, Puissance, Mystère, Éveil, Énergie Créative)
+- **Système de variantes** : 10 variantes émotionnelles (5 de base + 5 dynamiques) ✅ **MIS À JOUR**
 - **Builders SVG spécialisés** : Constructeurs dédiés pour chaque style de logo
-- **Tests complets** : Couverture de code 78% (+13 points) avec pytest
+- **Tests complets** : Couverture de code 75% (objectif 90%) avec pytest ✅ **MIS À JOUR**
 - **Documentation API** : Documentation complète de l'API Python
 - **Configuration pyproject.toml** : Configuration moderne avec setuptools
 
@@ -85,11 +98,11 @@ et ce projet adhère au [Semantic Versioning](https://semver.org/lang/fr/).
 
 ## 📊 **Métriques de Qualité**
 
-### **Version 2.0.0**
-- **Couverture de code** : 78% (+13 points)
-- **Tests** : 181 tests unitaires (+80 nouveaux)
-- **Styles de logos** : 8 styles différents
-- **Variantes émotionnelles** : 5 variantes
+### **Version 2.0.0** ✅ **MIS À JOUR**
+- **Couverture de code** : 75% (objectif 90%) ✅ **MIS À JOUR**
+- **Tests** : 297 tests unitaires ✅ **MIS À JOUR** (était 181)
+- **Styles de logos** : 11 styles différents ✅ **MIS À JOUR** (était 8)
+- **Variantes émotionnelles** : 10 variantes ✅ **MIS À JOUR** (était 5)
 - **Formats d'export** : SVG, PNG
 - **Compatibilité Python** : 3.8+
 - **Benchmarks** : 7 tests de performance

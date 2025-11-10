@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
-"""
-🌙 Test du système Dashboard Arkalia-LUNA Logo
+"""🌙 Test du système Dashboard Arkalia-LUNA Logo
 Teste la génération de logos style dashboard/networking synthétique
 """
 

@@ -1,6 +1,4 @@
-"""
-Configuration pytest pour les tests Arkalia-LUNA Logo
-"""
+"""Configuration pytest pour les tests Arkalia-LUNA Logo"""
 
 import sys
 from pathlib import Path

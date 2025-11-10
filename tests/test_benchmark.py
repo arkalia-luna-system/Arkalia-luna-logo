@@ -1,6 +1,4 @@
-"""
-Tests de benchmark pour mesurer les performances du générateur de logos.
-"""
+"""Tests de benchmark pour mesurer les performances du générateur de logos."""
 
 import pytest
 
@@ -92,7 +90,10 @@ class TestSVGBuilderBenchmark:
 
         def process_variant():
             colors = ColorScheme(
-                primary="#1e3a8a", secondary="#3b82f6", accent="#06b6d4", glow="#60a5fa"
+                primary="#1e3a8a",
+                secondary="#3b82f6",
+                accent="#06b6d4",
+                glow="#60a5fa",
             )
 
             _ = LogoVariant(

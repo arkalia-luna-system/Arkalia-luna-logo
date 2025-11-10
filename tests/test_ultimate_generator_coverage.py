@@ -1,5 +1,4 @@
-"""
-Tests de couverture pour améliorer la couverture de ultimate_generator.py.
+"""Tests de couverture pour améliorer la couverture de ultimate_generator.py.
 Objectif : 22% → 70%+
 Tests basés sur l'analyse du vrai code pour performance et précision.
 """
@@ -72,16 +71,21 @@ class TestUltimateGeneratorCoverage:
         """Test de la génération d'un logo ultimate."""
         # Mock de la validation et du builder
         with patch.object(
-            ultimate_generator.variants_manager, "validate_variant", return_value=True
+            ultimate_generator.variants_manager,
+            "validate_variant",
+            return_value=True,
         ):
             with patch.object(
-                ultimate_generator.svg_builder, "save_ultimate_logo"
+                ultimate_generator.svg_builder,
+                "save_ultimate_logo",
             ) as mock_save:
                 mock_save.return_value = Path("test-logo.svg")
 
                 # Test de la génération
                 result = ultimate_generator.generate_ultimate_logo(
-                    "serenity", 200, 0.95
+                    "serenity",
+                    200,
+                    0.95,
                 )
 
                 # Vérifier que le résultat est un Path et contient le bon nom de fichier
@@ -90,12 +94,15 @@ class TestUltimateGeneratorCoverage:
                 mock_save.assert_called_once()
 
     def test_ultimate_generator_generate_ultimate_logo_invalid_variant(
-        self, ultimate_generator
+        self,
+        ultimate_generator,
     ):
         """Test de la gestion d'erreur pour variante invalide."""
         # Mock de la validation qui échoue
         with patch.object(
-            ultimate_generator.variants_manager, "validate_variant", return_value=False
+            ultimate_generator.variants_manager,
+            "validate_variant",
+            return_value=False,
         ):
             with pytest.raises(ValueError) as exc_info:
                 ultimate_generator.generate_ultimate_logo("invalid_variant", 200)
@@ -103,15 +110,19 @@ class TestUltimateGeneratorCoverage:
             assert "Variante 'invalid_variant' non reconnue" in str(exc_info.value)
 
     def test_ultimate_generator_generate_ultimate_logo_cosmic_level_validation(
-        self, ultimate_generator
+        self,
+        ultimate_generator,
     ):
         """Test de la validation du niveau cosmique."""
         # Mock de la validation
         with patch.object(
-            ultimate_generator.variants_manager, "validate_variant", return_value=True
+            ultimate_generator.variants_manager,
+            "validate_variant",
+            return_value=True,
         ):
             with patch.object(
-                ultimate_generator.svg_builder, "save_ultimate_logo"
+                ultimate_generator.svg_builder,
+                "save_ultimate_logo",
             ) as mock_save:
                 mock_save.return_value = Path("test-logo.svg")
 
@@ -125,21 +136,27 @@ class TestUltimateGeneratorCoverage:
                 assert "arkalia-luna-ultimate-serenity-200.svg" in str(result)
 
     def test_ultimate_generator_generate_ultimate_logo_cosmic_level_minimum(
-        self, ultimate_generator
+        self,
+        ultimate_generator,
     ):
         """Test avec niveau cosmique minimum."""
         # Mock de la validation
         with patch.object(
-            ultimate_generator.variants_manager, "validate_variant", return_value=True
+            ultimate_generator.variants_manager,
+            "validate_variant",
+            return_value=True,
         ):
             with patch.object(
-                ultimate_generator.svg_builder, "save_ultimate_logo"
+                ultimate_generator.svg_builder,
+                "save_ultimate_logo",
             ) as mock_save:
                 mock_save.return_value = Path("test-logo.svg")
 
                 # Test avec niveau cosmique très bas
                 result = ultimate_generator.generate_ultimate_logo(
-                    "serenity", 200, -0.5
+                    "serenity",
+                    200,
+                    -0.5,
                 )
 
                 # Le niveau devrait être limité à 0.1
@@ -149,7 +166,8 @@ class TestUltimateGeneratorCoverage:
                 assert "arkalia-luna-ultimate-serenity-200.svg" in str(result)
 
     def test_ultimate_generator_generate_all_ultimate_variants(
-        self, ultimate_generator
+        self,
+        ultimate_generator,
     ):
         """Test de la génération de toutes les variantes ultimate."""
         # Mock de la liste des variantes et de la génération
@@ -159,7 +177,8 @@ class TestUltimateGeneratorCoverage:
             return_value=["serenity", "power"],
         ):
             with patch.object(
-                ultimate_generator, "generate_ultimate_logo"
+                ultimate_generator,
+                "generate_ultimate_logo",
             ) as mock_generate:
                 mock_generate.return_value = Path("test-logo.svg")
 
@@ -171,7 +190,8 @@ class TestUltimateGeneratorCoverage:
                 assert mock_generate.call_count == 2
 
     def test_ultimate_generator_generate_all_ultimate_variants_with_errors(
-        self, ultimate_generator
+        self,
+        ultimate_generator,
     ):
         """Test de la gestion d'erreur lors de la génération de toutes les variantes."""
         # Mock de la liste des variantes et de la génération avec erreur
@@ -181,7 +201,8 @@ class TestUltimateGeneratorCoverage:
             return_value=["serenity", "power"],
         ):
             with patch.object(
-                ultimate_generator, "generate_ultimate_logo"
+                ultimate_generator,
+                "generate_ultimate_logo",
             ) as mock_generate:
                 mock_generate.side_effect = [
                     Path("test1.svg"),
@@ -204,16 +225,19 @@ class TestUltimateGeneratorCoverage:
         assert ultimate_generator.ultimate_stats["cosmic_complexity"] == 0.75
 
     def test_ultimate_generator_set_cosmic_complexity_invalid_high(
-        self, ultimate_generator
+        self,
+        ultimate_generator,
     ):
-        """Test de la configuration de la complexité cosmique avec valeur trop élevée."""
+        """Test de la configuration de la complexité cosmique
+        avec valeur trop élevée."""
         with pytest.raises(ValueError) as exc_info:
             ultimate_generator.set_cosmic_complexity(1.5)
 
         assert "Complexité cosmique doit être entre 0.1 et 1.0" in str(exc_info.value)
 
     def test_ultimate_generator_set_cosmic_complexity_invalid_low(
-        self, ultimate_generator
+        self,
+        ultimate_generator,
     ):
         """Test de la configuration de la complexité cosmique avec valeur trop basse."""
         with pytest.raises(ValueError) as exc_info:
@@ -264,7 +288,9 @@ class TestUltimateGeneratorCoverage:
         assert "Auras d'énergie cosmiques" in stats["optimizations"]
 
     def test_ultimate_generator_compare_with_other_versions(
-        self, ultimate_generator, tmp_path
+        self,
+        ultimate_generator,
+        tmp_path,
     ):
         """Test de la comparaison avec d'autres versions."""
         # Créer des répertoires temporaires pour la comparaison
@@ -274,7 +300,9 @@ class TestUltimateGeneratorCoverage:
 
         # Mock de la comparaison
         with patch.object(
-            ultimate_generator, "output_dir", tmp_path / "exports-ultimate"
+            ultimate_generator,
+            "output_dir",
+            tmp_path / "exports-ultimate",
         ):
             (ultimate_generator.output_dir).mkdir(exist_ok=True)
             (
@@ -290,7 +318,8 @@ class TestUltimateGeneratorCoverage:
             assert comparison["ultimate_svg_count"] >= 0
 
     def test_ultimate_generator_compare_with_other_versions_nonexistent_dirs(
-        self, ultimate_generator
+        self,
+        ultimate_generator,
     ):
         """Test de la comparaison avec des répertoires inexistants."""
         comparison = ultimate_generator.compare_with_other_versions()
@@ -305,7 +334,9 @@ class TestUltimateGeneratorCoverage:
             assert key in comparison
 
     def test_ultimate_generator_cleanup_ultimate_files(
-        self, ultimate_generator, tmp_path
+        self,
+        ultimate_generator,
+        tmp_path,
     ):
         """Test du nettoyage des fichiers ultimate."""
         # Créer des fichiers temporaires
