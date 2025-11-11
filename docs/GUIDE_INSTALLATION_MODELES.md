@@ -222,6 +222,6 @@ bash scripts/install_comfyui.sh
 
 ---
 
-**Créé** : 2025-11-09  
-**Dernière mise à jour** : 2025-11-09
+**Créé** : Novembre 2025  
+**Dernière mise à jour** : Novembre 2025
 

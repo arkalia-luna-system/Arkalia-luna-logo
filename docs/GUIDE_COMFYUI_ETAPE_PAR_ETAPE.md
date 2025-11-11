@@ -271,6 +271,6 @@ python -m src.cli generate --variant serenity --generator hyper_ai --size 512
 
 ---
 
-**Créé** : 2025-11-09  
-**Dernière mise à jour** : 2025-11-09
+**Créé** : Novembre 2025  
+**Dernière mise à jour** : Novembre 2025
 

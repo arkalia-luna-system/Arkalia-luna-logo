@@ -18,7 +18,7 @@ Le format est basé sur [Keep a Changelog](https://keepachangelog.com/fr/1.0.0/)
 
 </div>
 
-## [2.0.0] - 2024-12-19
+## [2.0.0] - 2025-11-11
 
 ### 🚀 **Ajouté**
 - **Générateur ULTIME** : Nouveau style cosmique ultra-réaliste avec 100+ stops de gradients
@@ -54,7 +54,7 @@ Le format est basé sur [Keep a Changelog](https://keepachangelog.com/fr/1.0.0/)
 - **CONTRIBUTING.md** : Guide de contribution pour les développeurs
 - **README.md** : Mise à jour complète avec la nouvelle architecture
 
-## [1.0.0] - 2024-12-01
+## [1.0.0] - 2025-11-01
 
 ### 🚀 **Ajouté**
 - **Générateur de base** : Première version du générateur de logos
@@ -68,7 +68,7 @@ Le format est basé sur [Keep a Changelog](https://keepachangelog.com/fr/1.0.0/)
 ### 📚 **Documentation**
 - **README.md** : Documentation initiale du projet
 
-## [0.1.0] - 2024-11-15
+## [0.1.0] - 2025-11-15
 
 ### 🚀 **Ajouté**
 - **Concept initial** : Idée et conception du projet
@@ -146,4 +146,4 @@ La version 2.0.0 introduit des changements majeurs dans l'architecture :
 
 ---
 
-**📋 Changelog maintenu automatiquement - Dernière mise à jour : 2024-12-19**
+**📋 Changelog maintenu automatiquement - Dernière mise à jour : Novembre 2025**

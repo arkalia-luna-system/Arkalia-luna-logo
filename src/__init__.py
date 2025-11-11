@@ -13,7 +13,9 @@ __email__ = "team@arkalia-luna.dev"
 # Import des classes principales
 from .advanced_logo_generator import AdvancedArkaliaLunaLogo
 from .ai_moon_generator import AIMoonLogoGenerator
-from .cli import cli
+
+# Import paresseux pour éviter RuntimeWarning lors de l'exécution via python -m src.cli
+# from .cli import cli
 from .dashboard_generator import DashboardLogoGenerator
 from .generator_factory import (
     LogoGeneratorFactory,
@@ -71,7 +73,17 @@ __all__ = sorted(
         "benchmark_all_generators",
         "create_generator",
         "create_logo_generator",
-        # CLI
+        # CLI (import paresseux)
         "cli",
     ]
 )
+
+
+# Import paresseux pour éviter RuntimeWarning
+def __getattr__(name: str) -> Any:
+    """Import paresseux pour le module CLI"""
+    if name == "cli":
+        from .cli import cli as cli_module
+
+        return cli_module
+    raise AttributeError(f"module '{__name__}' has no attribute '{name}'")

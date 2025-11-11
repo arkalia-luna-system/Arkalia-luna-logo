@@ -30,7 +30,7 @@ Le générateur **Hyper-AI** utilise ComfyUI, SDXL et ControlNet pour créer des
 
 *Prompt : "cosmic sphere, neural network, glowing orb, calm blue and cyan colors, serene atmosphere, professional logo design, minimalist, high quality"*
 
-*Modèle : SD 1.5 FP16 | Taille : 512x512 | Date : 2025-11-09*
+*Modèle : SD 1.5 FP16 | Taille : 512x512 | Date : Novembre 2025*
 
 </div>
 
