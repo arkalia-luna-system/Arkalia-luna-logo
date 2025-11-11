@@ -156,4 +156,4 @@ python -c "import yaml; yaml.safe_load(open('config/.pre-commit-config.yaml', 'r
 
 **⚙️ Configuration organisée et maintenue - Version 2.0.0**
 
-*Dernière mise à jour : 2024-12-19*
+*Dernière mise à jour : Novembre 2025*

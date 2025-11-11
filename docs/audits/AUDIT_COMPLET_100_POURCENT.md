@@ -245,7 +245,7 @@ Calculer le pourcentage réel d'utilisation et planifier l'atteinte de 100%
 - ✅ **SDXL Models** : Installés (sd_xl_base_1.0.safetensors, sd_xl_refiner_1.0.safetensors) ✅
 - ✅ **SD 1.5** : Installé (v1-5-pruned-emaonly-fp16.safetensors) ✅
 - ✅ **ControlNet** : Installés (sd_xl_canny.safetensors, sd_xl_depth.safetensors) ✅
-- ✅ **Génération testée** : Logo généré avec succès (ComfyUI_00003_.png) - 2025-11-09 ✅
+- ✅ **Génération testée** : Logo généré avec succès (ComfyUI_00003_.png) - Novembre 2025 ✅
 
 ---
 
