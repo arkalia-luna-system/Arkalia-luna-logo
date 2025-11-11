@@ -132,7 +132,7 @@ graph TD
 |:-------:|:-------:|:----:|
 | **Styles disponibles** | 11 styles uniques | [📘 Voir API.md](API.md#styles-disponibles) |
 | **Variantes émotionnelles** | 10 variantes | [📘 Voir API.md](API.md#variantes-émotionnelles) |
-| **Formats d'export** | SVG haute qualité, PNG favicons | [📘 Voir QUICKSTART.md](QUICKSTART.md#export) |
+| **Formats d'export** | SVG, PNG favicons | [📘 Voir QUICKSTART.md](QUICKSTART.md#export) |
 
 </div>
 
@@ -148,7 +148,7 @@ graph TD
 
 | Style | Logo | Description |
 |:-----:|:----:|:-----------:|
-| **Dashboard** | ![Dashboard Serenity](../exports/arkalia-luna-dashboard-serenity-200.svg) | Style professionnel épuré |
+| **Dashboard** | ![Dashboard Serenity](../exports/arkalia-luna-dashboard-serenity-200.svg) | Style épuré |
 | **Ultra-Max** | ![Ultra-Max Serenity](../exports/arkalia-luna-ultra-max-serenity-200.svg) | Effets avancés et dynamiques |
 | **Simple-Advanced** | ![Simple-Advanced Serenity](../exports/arkalia-luna-simple-advanced-serenity-200.svg) | Équilibre simplicité/sophistication |
 
@@ -156,7 +156,7 @@ graph TD
 
 | Style | Logo | Description |
 |:-----:|:----:|:-----------:|
-| **Dashboard** | ![Dashboard Power](../exports/arkalia-luna-dashboard-power-200.svg) | Énergie professionnelle |
+| **Dashboard** | ![Dashboard Power](../exports/arkalia-luna-dashboard-power-200.svg) | Énergique |
 | **Ultra-Max** | ![Ultra-Max Power](../exports/arkalia-luna-ultra-max-power-200.svg) | Puissance dynamique |
 
 #### Variante Mystère (Exemples)

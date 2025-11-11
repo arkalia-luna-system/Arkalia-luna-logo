@@ -14,7 +14,7 @@
 
 <div align="center">
 
-Arkalia-LUNA Logo Generator suit une architecture modulaire et extensible basée sur des patterns de design éprouvés, permettant une génération de logos haute qualité avec une maintenance simplifiée.
+Arkalia-LUNA Logo Generator suit une architecture modulaire et extensible basée sur des patterns de design éprouvés, permettant une génération de logos avec une maintenance simplifiée.
 
 </div>
 
