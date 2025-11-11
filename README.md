@@ -232,24 +232,28 @@ Le projet intègre 3 générateurs IA pour créer des logos avec intelligence ar
 
 #### 🤖 Stable Diffusion - Génération IA Locale
 
+**Génération de logos abstraits et géométriques avec prompts optimisés**  
+Affichage des derniers logos générés localement (fallback SVG si IA indisponible) :
+
 <table>
 <tr>
 <td align="center" style="padding: 20px; background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%); border-radius: 16px; margin: 10px;">
-<img src="exports-ai/test-ai-serenity-safe.png" width="240" alt="Stable Diffusion Serenity" style="border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.4);">
+<img src="exports/arkalia-luna-serenity-512.svg" width="240" alt="Stable Diffusion Serenity" style="border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.4); background: white; padding: 8px;">
 <br/><strong style="color: white; margin-top: 15px; display: block; font-size: 1.1em;">Sérénité</strong>
-<p style="color: rgba(255,255,255,0.9); font-size: 0.9em; margin: 8px 0 0 0;">Stable Diffusion v1.5</p>
-</td>
+<p style="color: rgba(255,255,255,0.9); font-size: 0.9em; margin: 8px 0 0 0;">Stable Diffusion (fallback SVG si nécessaire)</p>
+ </td>
 <td align="center" style="padding: 20px; background: linear-gradient(135deg, #7f1d1d 0%, #991b1b 50%, #dc2626 100%); border-radius: 16px; margin: 10px;">
-<img src="exports-ai/test-ai-power-improved.png" width="240" alt="Stable Diffusion Power" style="border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.4);">
+<img src="exports/arkalia-luna-power-200.svg" width="240" alt="Stable Diffusion Power" style="border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.4); background: white; padding: 8px;">
 <br/><strong style="color: white; margin-top: 15px; display: block; font-size: 1.1em;">Puissance</strong>
-<p style="color: rgba(255,255,255,0.9); font-size: 0.9em; margin: 8px 0 0 0;">Post-traitement avancé</p>
+<p style="color: rgba(255,255,255,0.9); font-size: 0.9em; margin: 8px 0 0 0;">Stable Diffusion (fallback SVG si nécessaire)</p>
 </td>
 </tr>
 </table>
 
 **Modèle** : runwayml/stable-diffusion-v1-5  
-**Format** : PNG haute qualité  
-**Performance** : 5-10 secondes par génération
+**Format** : SVG/PNG  
+**Performance** : 5-10 secondes (IA) • ~5ms (fallback SVG)  
+**Améliorations** : Prompts pondérés, negative prompt renforcé, post-traitement PIL
 
 </div>
 
