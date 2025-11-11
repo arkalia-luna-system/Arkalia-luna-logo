@@ -1,129 +1,59 @@
 <div align="center">
 
-# 🌙⚡️🤖 Arkalia-LUNA Logo Generator
+# Arkalia-LUNA Logo Generator
 
-**Générateur de Logos Vectoriels avec IA**
+**Générateur de Logos Vectoriels avec Intelligence Artificielle**
 
-*11 Styles Uniques • 10 Variantes Émotionnelles • API FastAPI • Monitoring Intégré*
+*11 Styles • 10 Variantes Émotionnelles • API REST • Production Ready*
 
-[![Python](https://img.shields.io/badge/Python-3.8+-3776ab?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
-[![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
-[![Version](https://img.shields.io/badge/Version-2.0.0-orange?style=for-the-badge)](CHANGELOG.md)
-[![Tests](https://img.shields.io/badge/Tests-297%20passed-brightgreen?style=for-the-badge)](tests/)
-[![Coverage](https://img.shields.io/badge/Coverage-75%25-yellow?style=for-the-badge)](htmlcov/)
-[![Docker](https://img.shields.io/badge/Docker-5%20Services-blue?style=for-the-badge)](Dockerfile.prod)
+[![Python](https://img.shields.io/badge/Python-3.8+-3776ab?style=flat-square&logo=python&logoColor=white)](https://python.org)
+[![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)](LICENSE)
+[![Version](https://img.shields.io/badge/Version-2.0.0-orange?style=flat-square)](CHANGELOG.md)
+[![Tests](https://img.shields.io/badge/Tests-297%20passed-brightgreen?style=flat-square)](tests/)
 
-<img src="exports/screenshots/ultimate-serenity-200.svg" width="200" alt="Logo Arkalia-LUNA Ultimate Serenity">
+<div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 30px; border-radius: 20px; display: inline-block; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+<img src="exports/screenshots/ultimate-serenity-200.svg" width="220" alt="Logo Arkalia-LUNA" style="filter: drop-shadow(0 8px 16px rgba(0,0,0,0.3));">
+</div>
 
-**⚡ Génération Rapide • 🎨 IA Intégrée • 🚀 Production-Ready**
-
-[🚀 Quick Start](#-quick-start-30-secondes) • [🎨 Galerie Complète](#-galerie-interactive-complète) • [🤖 Génération IA](#-génération-ia-avancée---showcase-visuel) • [💻 Utilisation](#-utilisation) • [🤝 Contribution](#-contribution)
+[Quick Start](#quick-start) • [Galerie](#galerie) • [Documentation](#documentation) • [API](#api-rest)
 
 </div>
 
-## 🎨 **Showcase IA - Logos Générés par Intelligence Artificielle**
+---
 
-<div align="center">
+## Vue d'ensemble
 
-**Logos générés avec Stable Diffusion, ComfyUI + SDXL, et Sphères Cosmiques**
+Arkalia-LUNA Logo Generator est un générateur de logos vectoriels avec intégration d'intelligence artificielle. Il propose 11 styles uniques (8 vectoriels SVG + 3 générateurs IA) et 10 variantes émotionnelles pour créer plus de 110 combinaisons de logos.
 
-</div>
+**Caractéristiques principales :**
+- Génération vectorielle SVG rapide (< 10ms)
+- Génération IA avec Stable Diffusion et ComfyUI
+- API REST FastAPI avec documentation Swagger
+- Infrastructure Docker complète avec monitoring
+- Interface CLI et support batch
 
-### **🧠 Hyper-AI (ComfyUI + SDXL + ControlNet)**
+## Quick Start
 
-<div align="center">
-
-<table>
-<tr>
-<td align="center"><strong>Génération ComfyUI 1</strong><br/><img src="exports-hyper-ai/ComfyUI_00001_.png" width="250" alt="Hyper-AI Logo 1"><br/>SDXL + ControlNet</td>
-<td align="center"><strong>Génération ComfyUI 2</strong><br/><img src="exports-hyper-ai/ComfyUI_00002_.png" width="250" alt="Hyper-AI Logo 2"><br/>Résolution 1024x1024</td>
-</tr>
-<tr>
-<td colspan="2" align="center"><strong>Génération ComfyUI 3</strong><br/><img src="exports-hyper-ai/ComfyUI_00003_.png" width="250" alt="Hyper-AI Logo 3"><br/>SDXL + ControlNet</td>
-</tr>
-</table>
-
-**✨ Génération IA locale - 100% Local et Gratuit**
-
-</div>
-
-### **🤖 Stable Diffusion - Génération IA Locale**
-
-<div align="center">
-
-<table>
-<tr>
-<td align="center"><strong>🌙 Sérénité</strong><br/><img src="exports-ai/test-ai-serenity-safe.png" width="220" alt="AI Serenity"><br/>Stable Diffusion v1.5</td>
-<td align="center"><strong>⚡ Puissance</strong><br/><img src="exports-ai/test-ai-power.png" width="220" alt="AI Power"><br/>Génération IA locale</td>
-</tr>
-<tr>
-<td align="center"><strong>✨ Sérénité Améliorée</strong><br/><img src="exports-ai/test-ai-serenity-improved.png" width="220" alt="AI Serenity Improved"><br/>Post-traitement avancé</td>
-<td align="center"><strong>⚡ Puissance Améliorée</strong><br/><img src="exports-ai/test-ai-power-improved.png" width="220" alt="AI Power Improved"><br/>Optimisation qualité</td>
-</tr>
-</table>
-
-**🎨 Logos générés avec Stable Diffusion**
-
-</div>
-
-### **🌌 Cosmic - Sphères Cosmiques avec Réseaux Neuronaux**
-
-<div align="center">
-
-<table>
-<tr>
-<td align="center"><strong>🌙 Sérénité</strong><br/><img src="exports-cosmic/test-cosmic-serenity.svg" width="180" alt="Cosmic Serenity"><br/>Sphère cosmique</td>
-<td align="center"><strong>⚡ Puissance</strong><br/><img src="exports-cosmic/test-cosmic-power.svg" width="180" alt="Cosmic Power"><br/>Réseaux neuronaux</td>
-<td align="center"><strong>🔮 Mystère</strong><br/><img src="exports-cosmic/test-cosmic-mystery.svg" width="180" alt="Cosmic Mystery"><br/>Cristaux centraux</td>
-</tr>
-<tr>
-<td align="center"><strong>✨ Éveil</strong><br/><img src="exports-cosmic/test-cosmic-awakening.svg" width="180" alt="Cosmic Awakening"><br/>Dégradés fluides</td>
-<td align="center"><strong>🎇 Créative</strong><br/><img src="exports-cosmic/test-cosmic-creative.svg" width="180" alt="Cosmic Creative"><br/>Particules cosmiques</td>
-</tr>
-</table>
-
-**⚡ Sphères cosmiques vectorielles - Génération rapide (0.005s)**
-
-</div>
-
-## 🚀 **Quick Start (30 secondes)**
-
-<div align="center">
-
-### **Générez votre premier logo en 3 étapes simples**
-
-</div>
-
-#### **Étape 1 : Installation** ⚙️
+### Installation
 
 ```bash
 git clone https://github.com/arkalia-luna-system/Arkalia-luna-logo.git
 cd arkalia-luna-logo
 python3 -m venv arkalia-luna-env
-source arkalia-luna-env/bin/activate  # Linux/Mac
+source arkalia-luna-env/bin/activate
 pip install -e ".[dev]"
 ```
 
-#### **Étape 2 : Génération** 🎨
+### Génération d'un logo
 
 ```bash
 # Générer un logo Ultimate en variante Sérénité
 python -m src.cli generate -v serenity -s 200 -g ultimate
 ```
 
-**Résultat :**
+Le logo sera généré dans le dossier `exports/`.
 
-<div align="center">
-
-| Commande | Logo Généré |
-|:--------:|:-----------:|
-| `generate -v serenity -g ultimate` | <img src="exports/screenshots/ultimate-serenity-200.svg" width="120" alt="Ultimate Serenity"> |
-| `generate -v power -g ultimate` | <img src="exports/screenshots/ultimate-power-200.svg" width="120" alt="Ultimate Power"> |
-| `generate -v mystery -g ai_moon` | <img src="exports/screenshots/ai_moon-mystery-200.svg" width="120" alt="AI-Moon Mystery"> |
-
-</div>
-
-#### **Étape 3 : Utilisation** 💻
+### Commandes utiles
 
 ```bash
 # Voir toutes les variantes disponibles
@@ -131,519 +61,113 @@ python -m src.cli info
 
 # Générer tous les logos
 python -m src.cli generate-all -s 200
+
+# Voir les générateurs disponibles
+python -m src.cli generators
 ```
 
-<div align="center">
+## Galerie
 
-**✅ C'est tout ! Votre logo est dans `exports/`**
-
-</div>
-
-## 🎯 **Vue d'Ensemble - Toutes les Capacités**
-
-<div align="center">
-
-### **Système de Génération de Logos avec IA Intégrée**
-
-Arkalia-LUNA Logo Generator est un générateur de logos avec **11 styles uniques** (8 vectoriels + 3 IA), **10 variantes émotionnelles**, API FastAPI, monitoring Prometheus/Grafana, et infrastructure Docker complète.
-
-**🌍 English**: SVG/PNG logo generator with 11 unique styles (8 vectorial + 3 AI), 10 emotional variants, FastAPI integration, AI generation (Stable Diffusion, ComfyUI, SDXL), monitoring & CI/CD.
-
-**🇫🇷 Français**: Générateur de logos SVG/PNG multi-styles avec 11 styles uniques (8 vectoriels + 3 IA), 10 variantes émotionnelles, API FastAPI, génération IA (Stable Diffusion, ComfyUI, SDXL), monitoring & CI/CD inclus.
-
-</div>
-
-### **✨ Capacités Complètes du Projet**
-
-<div align="center">
-
-| Capacité | Détails | Quantité |
-|:--------:|:-------:|:--------:|
-| **🎨 Styles Vectoriels** | 8 générateurs SVG | 8 styles |
-| **🤖 Styles IA** | 3 générateurs avec intelligence artificielle | 3 styles |
-| **🌙 Variantes Émotionnelles** | 5 de base + 5 dynamiques | 10 variantes |
-| **🔄 Combinaisons Possibles** | Styles × Variantes | **110+ logos** |
-| **⚡ Performance Vectorielle** | Génération en 0.002s - 0.008s | Rapide |
-| **🤖 Performance IA** | Génération avec Stable Diffusion/ComfyUI | IA locale |
-| **📱 Formats Export** | SVG vectoriel + PNG favicon | 2 formats |
-| **🚀 API REST** | FastAPI avec Swagger UI | 9 endpoints |
-| **🐳 Docker** | 5 services orchestrés | Infrastructure complète |
-| **📊 Monitoring** | Prometheus + Grafana | Métriques en temps réel |
-| **🧪 Tests** | 297 tests automatisés | 75% couverture |
-| **🔧 CLI** | Interface en ligne de commande | Disponible |
-
-</div>
-
-## 🎨 **Galerie Interactive Complète**
-
-<div align="center">
-
-### **🌟 Tous les Styles × Toutes les Variantes = 110+ Logos Uniques**
-
-**Explorez toutes les combinaisons possibles !**
-
-</div>
-
-### **📊 Style Dashboard**
+### Styles vectoriels
 
 <div align="center">
 
 <table>
 <tr>
-<td align="center"><strong>🌙 Sérénité</strong><br/><img src="exports/screenshots/dashboard-serenity-200.svg" width="100" alt="Dashboard Serenity"></td>
-<td align="center"><strong>⚡ Puissance</strong><br/><img src="exports/screenshots/dashboard-power-200.svg" width="100" alt="Dashboard Power"></td>
-<td align="center"><strong>🔮 Mystère</strong><br/><img src="exports/screenshots/dashboard-mystery-200.svg" width="100" alt="Dashboard Mystery"></td>
-<td align="center"><strong>✨ Éveil</strong><br/><img src="exports/screenshots/dashboard-awakening-200.svg" width="100" alt="Dashboard Awakening"></td>
-<td align="center"><strong>🎇 Créative</strong><br/><img src="exports/screenshots/dashboard-creative-200.svg" width="100" alt="Dashboard Creative"></td>
+<td align="center" style="padding: 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 12px; margin: 10px;">
+<img src="exports/screenshots/ultimate-serenity-200.svg" width="140" alt="Ultimate" style="filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));">
+<br/><strong style="color: white; margin-top: 10px; display: block;">Ultimate</strong>
+<p style="color: rgba(255,255,255,0.9); font-size: 0.9em; margin: 5px 0 0 0;">Style cosmique</p>
+</td>
+<td align="center" style="padding: 20px; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); border-radius: 12px; margin: 10px;">
+<img src="exports/screenshots/ai_moon-serenity-200.svg" width="140" alt="AI-Moon" style="filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));">
+<br/><strong style="color: white; margin-top: 10px; display: block;">AI-Moon</strong>
+<p style="color: rgba(255,255,255,0.9); font-size: 0.9em; margin: 5px 0 0 0;">Style réaliste IA</p>
+</td>
+<td align="center" style="padding: 20px; background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); border-radius: 12px; margin: 10px;">
+<img src="exports/screenshots/dashboard-serenity-200.svg" width="140" alt="Dashboard" style="filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));">
+<br/><strong style="color: white; margin-top: 10px; display: block;">Dashboard</strong>
+<p style="color: rgba(255,255,255,0.9); font-size: 0.9em; margin: 5px 0 0 0;">Interface optimisée</p>
+</td>
+<td align="center" style="padding: 20px; background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); border-radius: 12px; margin: 10px;">
+<img src="exports/screenshots/advanced-serenity-200.svg" width="140" alt="Advanced" style="filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));">
+<br/><strong style="color: white; margin-top: 10px; display: block;">Advanced</strong>
+<p style="color: rgba(255,255,255,0.9); font-size: 0.9em; margin: 5px 0 0 0;">Techno-mystique</p>
+</td>
 </tr>
 <tr>
-<td align="center"><strong>🌧️ Pluie</strong><br/><img src="exports/emotional/dashboard-rainy-200.svg" width="100" alt="Dashboard Rainy"></td>
-<td align="center"><strong>⚡ Orage</strong><br/><img src="exports/emotional/dashboard-stormy-200.svg" width="100" alt="Dashboard Stormy"></td>
-<td align="center"><strong>💥 Explosive</strong><br/><img src="exports/emotional/dashboard-explosive-200.svg" width="100" alt="Dashboard Explosive"></td>
-<td align="center"><strong>☀️ Ensoleillé</strong><br/><img src="exports/emotional/dashboard-sunny-200.svg" width="100" alt="Dashboard Sunny"></td>
-<td align="center"><strong>❄️ Neige</strong><br/><img src="exports/emotional/dashboard-snowy-200.svg" width="100" alt="Dashboard Snowy"></td>
+<td align="center" style="padding: 20px; background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); border-radius: 12px; margin: 10px;">
+<img src="exports/screenshots/ultra_max-serenity-200.svg" width="140" alt="Ultra-Max" style="filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));">
+<br/><strong style="color: white; margin-top: 10px; display: block;">Ultra-Max</strong>
+<p style="color: rgba(255,255,255,0.9); font-size: 0.9em; margin: 5px 0 0 0;">Effets avancés</p>
+</td>
+<td align="center" style="padding: 20px; background: linear-gradient(135deg, #30cfd0 0%, #330867 100%); border-radius: 12px; margin: 10px;">
+<img src="exports/screenshots/realism_max-serenity-200.svg" width="140" alt="Realism Max" style="filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));">
+<br/><strong style="color: white; margin-top: 10px; display: block;">Realism Max</strong>
+<p style="color: rgba(255,255,255,0.9); font-size: 0.9em; margin: 5px 0 0 0;">Style réaliste</p>
+</td>
+<td align="center" style="padding: 20px; background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); border-radius: 12px; margin: 10px;">
+<img src="exports/screenshots/simple_advanced-serenity-200.svg" width="140" alt="Simple-Advanced" style="filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));">
+<br/><strong style="color: #333; margin-top: 10px; display: block;">Simple-Advanced</strong>
+<p style="color: #666; font-size: 0.9em; margin: 5px 0 0 0;">Style équilibré</p>
+</td>
+<td align="center" style="padding: 20px; background: linear-gradient(135deg, #d299c2 0%, #fef9d7 100%); border-radius: 12px; margin: 10px;">
+<img src="exports/screenshots/simple-serenity-200.svg" width="140" alt="Base" style="filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));">
+<br/><strong style="color: #333; margin-top: 10px; display: block;">Base</strong>
+<p style="color: #666; font-size: 0.9em; margin: 5px 0 0 0;">Style minimaliste</p>
+</td>
 </tr>
 </table>
 
 </div>
 
-### **🌙 Style AI-Moon**
+### Variantes émotionnelles
+
+Chaque style supporte 10 variantes émotionnelles. Voici un exemple avec le style **Ultimate** :
 
 <div align="center">
 
 <table>
 <tr>
-<td align="center"><strong>🌙 Sérénité</strong><br/><img src="exports/screenshots/ai_moon-serenity-200.svg" width="100" alt="AI-Moon Serenity"></td>
-<td align="center"><strong>⚡ Puissance</strong><br/><img src="exports/screenshots/ai_moon-power-200.svg" width="100" alt="AI-Moon Power"></td>
-<td align="center"><strong>🔮 Mystère</strong><br/><img src="exports/screenshots/ai_moon-mystery-200.svg" width="100" alt="AI-Moon Mystery"></td>
-<td align="center"><strong>✨ Éveil</strong><br/><img src="exports/screenshots/ai_moon-awakening-200.svg" width="100" alt="AI-Moon Awakening"></td>
-<td align="center"><strong>🎇 Créative</strong><br/><img src="exports/screenshots/ai_moon-creative-200.svg" width="100" alt="AI-Moon Creative"></td>
-</tr>
-<tr>
-<td align="center"><strong>🌧️ Pluie</strong><br/><img src="exports/emotional/ai_moon-rainy-200.svg" width="100" alt="AI-Moon Rainy"></td>
-<td align="center"><strong>⚡ Orage</strong><br/><img src="exports/emotional/ai_moon-stormy-200.svg" width="100" alt="AI-Moon Stormy"></td>
-<td align="center"><strong>💥 Explosive</strong><br/><img src="exports/emotional/ai_moon-explosive-200.svg" width="100" alt="AI-Moon Explosive"></td>
-<td align="center"><strong>☀️ Ensoleillé</strong><br/><img src="exports/emotional/ai_moon-sunny-200.svg" width="100" alt="AI-Moon Sunny"></td>
-<td align="center"><strong>❄️ Neige</strong><br/><img src="exports/emotional/ai_moon-snowy-200.svg" width="100" alt="AI-Moon Snowy"></td>
-</tr>
-</table>
-
-</div>
-
-### **🌟 Style Ultimate**
-
-<div align="center">
-
-<table>
-<tr>
-<td align="center"><strong>🌙 Sérénité</strong><br/><img src="exports/screenshots/ultimate-serenity-200.svg" width="100" alt="Ultimate Serenity"></td>
-<td align="center"><strong>⚡ Puissance</strong><br/><img src="exports/screenshots/ultimate-power-200.svg" width="100" alt="Ultimate Power"></td>
-<td align="center"><strong>🔮 Mystère</strong><br/><img src="exports/screenshots/ultimate-mystery-200.svg" width="100" alt="Ultimate Mystery"></td>
-<td align="center"><strong>✨ Éveil</strong><br/><img src="exports/screenshots/ultimate-awakening-200.svg" width="100" alt="Ultimate Awakening"></td>
-<td align="center"><strong>🎇 Créative</strong><br/><img src="exports/screenshots/ultimate-creative-200.svg" width="100" alt="Ultimate Creative"></td>
-</tr>
-<tr>
-<td align="center"><strong>🌧️ Pluie</strong><br/><img src="exports/emotional/ultimate-rainy-200.svg" width="100" alt="Ultimate Rainy"></td>
-<td align="center"><strong>⚡ Orage</strong><br/><img src="exports/emotional/ultimate-stormy-200.svg" width="100" alt="Ultimate Stormy"></td>
-<td align="center"><strong>💥 Explosive</strong><br/><img src="exports/emotional/ultimate-explosive-200.svg" width="100" alt="Ultimate Explosive"></td>
-<td align="center"><strong>☀️ Ensoleillé</strong><br/><img src="exports/emotional/ultimate-sunny-200.svg" width="100" alt="Ultimate Sunny"></td>
-<td align="center"><strong>❄️ Neige</strong><br/><img src="exports/emotional/ultimate-snowy-200.svg" width="100" alt="Ultimate Snowy"></td>
+<td align="center" style="padding: 15px;">
+<img src="exports/screenshots/ultimate-serenity-200.svg" width="120" alt="Sérénité" style="border-radius: 8px; background: #f0f9ff; padding: 10px;">
+<br/><strong>Sérénité</strong>
+</td>
+<td align="center" style="padding: 15px;">
+<img src="exports/screenshots/ultimate-power-200.svg" width="120" alt="Puissance" style="border-radius: 8px; background: #fef2f2; padding: 10px;">
+<br/><strong>Puissance</strong>
+</td>
+<td align="center" style="padding: 15px;">
+<img src="exports/screenshots/ultimate-mystery-200.svg" width="120" alt="Mystère" style="border-radius: 8px; background: #faf5ff; padding: 10px;">
+<br/><strong>Mystère</strong>
+</td>
+<td align="center" style="padding: 15px;">
+<img src="exports/screenshots/ultimate-awakening-200.svg" width="120" alt="Éveil" style="border-radius: 8px; background: #f0fdf4; padding: 10px;">
+<br/><strong>Éveil</strong>
+</td>
+<td align="center" style="padding: 15px;">
+<img src="exports/screenshots/ultimate-creative-200.svg" width="120" alt="Créative" style="border-radius: 8px; background: #fffbeb; padding: 10px;">
+<br/><strong>Créative</strong>
+</td>
 </tr>
 </table>
 
-</div>
-
-### **🚀 Style Ultra-Max**
-
-<div align="center">
-
-<table>
-<tr>
-<td align="center"><strong>🌙 Sérénité</strong><br/><img src="exports/screenshots/ultra_max-serenity-200.svg" width="100" alt="Ultra-Max Serenity"></td>
-<td align="center"><strong>⚡ Puissance</strong><br/><img src="exports/screenshots/ultra_max-power-200.svg" width="100" alt="Ultra-Max Power"></td>
-<td align="center"><strong>🔮 Mystère</strong><br/><img src="exports/screenshots/ultra_max-mystery-200.svg" width="100" alt="Ultra-Max Mystery"></td>
-<td align="center"><strong>✨ Éveil</strong><br/><img src="exports/screenshots/ultra_max-awakening-200.svg" width="100" alt="Ultra-Max Awakening"></td>
-<td align="center"><strong>🎇 Créative</strong><br/><img src="exports/screenshots/ultra_max-creative-200.svg" width="100" alt="Ultra-Max Creative"></td>
-</tr>
-<tr>
-<td align="center"><strong>🌧️ Pluie</strong><br/><img src="exports/emotional/ultra_max-rainy-200.svg" width="100" alt="Ultra-Max Rainy"></td>
-<td align="center"><strong>⚡ Orage</strong><br/><img src="exports/emotional/ultra_max-stormy-200.svg" width="100" alt="Ultra-Max Stormy"></td>
-<td align="center"><strong>💥 Explosive</strong><br/><img src="exports/emotional/ultra_max-explosive-200.svg" width="100" alt="Ultra-Max Explosive"></td>
-<td align="center"><strong>☀️ Ensoleillé</strong><br/><img src="exports/emotional/ultra_max-sunny-200.svg" width="100" alt="Ultra-Max Sunny"></td>
-<td align="center"><strong>❄️ Neige</strong><br/><img src="exports/emotional/ultra_max-snowy-200.svg" width="100" alt="Ultra-Max Snowy"></td>
-</tr>
-</table>
+**Variantes de base** : Sérénité, Puissance, Mystère, Éveil, Créative  
+**Variantes dynamiques** : Pluie, Orage, Explosive, Ensoleillé, Neige
 
 </div>
 
-### **🌍 Style Realism Max**
+### Génération IA
 
-<div align="center">
+Le projet intègre 3 générateurs IA :
 
-<table>
-<tr>
-<td align="center"><strong>🌙 Sérénité</strong><br/><img src="exports/screenshots/realism_max-serenity-200.svg" width="100" alt="Realism Max Serenity"></td>
-<td align="center"><strong>⚡ Puissance</strong><br/><img src="exports/screenshots/realism_max-power-200.svg" width="100" alt="Realism Max Power"></td>
-<td align="center"><strong>🔮 Mystère</strong><br/><img src="exports/screenshots/realism_max-mystery-200.svg" width="100" alt="Realism Max Mystery"></td>
-<td align="center"><strong>✨ Éveil</strong><br/><img src="exports/screenshots/realism_max-awakening-200.svg" width="100" alt="Realism Max Awakening"></td>
-<td align="center"><strong>🎇 Créative</strong><br/><img src="exports/screenshots/realism_max-creative-200.svg" width="100" alt="Realism Max Creative"></td>
-</tr>
-<tr>
-<td align="center"><strong>🌧️ Pluie</strong><br/><img src="exports/emotional/realism-rainy-200.svg" width="100" alt="Realism Rainy"></td>
-<td align="center"><strong>⚡ Orage</strong><br/><img src="exports/emotional/realism-stormy-200.svg" width="100" alt="Realism Stormy"></td>
-<td align="center"><strong>💥 Explosive</strong><br/><img src="exports/emotional/realism-explosive-200.svg" width="100" alt="Realism Explosive"></td>
-<td align="center"><strong>☀️ Ensoleillé</strong><br/><img src="exports/emotional/realism-sunny-200.svg" width="100" alt="Realism Sunny"></td>
-<td align="center"><strong>❄️ Neige</strong><br/><img src="exports/emotional/realism-snowy-200.svg" width="100" alt="Realism Snowy"></td>
-</tr>
-</table>
+1. **Stable Diffusion** - Génération locale avec modèle v1.5
+2. **ComfyUI + SDXL** - Génération haute qualité jusqu'à 1024x1024
+3. **Cosmic** - Sphères cosmiques vectorielles avec réseaux neuronaux
 
-</div>
+## Installation
 
-### **🎨 Style Advanced**
-
-<div align="center">
-
-<table>
-<tr>
-<td align="center"><strong>🌙 Sérénité</strong><br/><img src="exports/screenshots/advanced-serenity-200.svg" width="100" alt="Advanced Serenity"></td>
-<td align="center"><strong>⚡ Puissance</strong><br/><img src="exports/screenshots/advanced-power-200.svg" width="100" alt="Advanced Power"></td>
-<td align="center"><strong>🔮 Mystère</strong><br/><img src="exports/screenshots/advanced-mystery-200.svg" width="100" alt="Advanced Mystery"></td>
-<td align="center"><strong>✨ Éveil</strong><br/><img src="exports/screenshots/advanced-awakening-200.svg" width="100" alt="Advanced Awakening"></td>
-<td align="center"><strong>🎇 Créative</strong><br/><img src="exports/screenshots/advanced-creative-200.svg" width="100" alt="Advanced Creative"></td>
-</tr>
-<tr>
-<td align="center"><strong>🌧️ Pluie</strong><br/><img src="exports/emotional/advanced-rainy-200.svg" width="100" alt="Advanced Rainy"></td>
-<td align="center"><strong>⚡ Orage</strong><br/><img src="exports/emotional/advanced-stormy-200.svg" width="100" alt="Advanced Stormy"></td>
-<td align="center"><strong>💥 Explosive</strong><br/><img src="exports/emotional/advanced-explosive-200.svg" width="100" alt="Advanced Explosive"></td>
-<td align="center"><strong>☀️ Ensoleillé</strong><br/><img src="exports/emotional/advanced-sunny-200.svg" width="100" alt="Advanced Sunny"></td>
-<td align="center"><strong>❄️ Neige</strong><br/><img src="exports/emotional/advanced-snowy-200.svg" width="100" alt="Advanced Snowy"></td>
-</tr>
-</table>
-
-</div>
-
-### **⚡ Style Simple-Advanced**
-
-<div align="center">
-
-<table>
-<tr>
-<td align="center"><strong>🌙 Sérénité</strong><br/><img src="exports/screenshots/simple_advanced-serenity-200.svg" width="100" alt="Simple-Advanced Serenity"></td>
-<td align="center"><strong>⚡ Puissance</strong><br/><img src="exports/screenshots/simple_advanced-power-200.svg" width="100" alt="Simple-Advanced Power"></td>
-<td align="center"><strong>🔮 Mystère</strong><br/><img src="exports/screenshots/simple_advanced-mystery-200.svg" width="100" alt="Simple-Advanced Mystery"></td>
-<td align="center"><strong>✨ Éveil</strong><br/><img src="exports/screenshots/simple_advanced-awakening-200.svg" width="100" alt="Simple-Advanced Awakening"></td>
-<td align="center"><strong>🎇 Créative</strong><br/><img src="exports/screenshots/simple_advanced-creative-200.svg" width="100" alt="Simple-Advanced Creative"></td>
-</tr>
-<tr>
-<td align="center"><strong>🌧️ Pluie</strong><br/><img src="exports/emotional/simple_advanced-rainy-200.svg" width="100" alt="Simple-Advanced Rainy"></td>
-<td align="center"><strong>⚡ Orage</strong><br/><img src="exports/emotional/simple_advanced-stormy-200.svg" width="100" alt="Simple-Advanced Stormy"></td>
-<td align="center"><strong>💥 Explosive</strong><br/><img src="exports/emotional/simple_advanced-explosive-200.svg" width="100" alt="Simple-Advanced Explosive"></td>
-<td align="center"><strong>☀️ Ensoleillé</strong><br/><img src="exports/emotional/simple_advanced-sunny-200.svg" width="100" alt="Simple-Advanced Sunny"></td>
-<td align="center"><strong>❄️ Neige</strong><br/><img src="exports/emotional/simple_advanced-snowy-200.svg" width="100" alt="Simple-Advanced Snowy"></td>
-</tr>
-</table>
-
-</div>
-
-### **🌙 Style Base (Simple)**
-
-<div align="center">
-
-<table>
-<tr>
-<td align="center"><strong>🌙 Sérénité</strong><br/><img src="exports/screenshots/simple-serenity-200.svg" width="100" alt="Simple Serenity"></td>
-<td align="center"><strong>⚡ Puissance</strong><br/><img src="exports/screenshots/simple-power-200.svg" width="100" alt="Simple Power"></td>
-<td align="center"><strong>🔮 Mystère</strong><br/><img src="exports/screenshots/simple-mystery-200.svg" width="100" alt="Simple Mystery"></td>
-<td align="center"><strong>✨ Éveil</strong><br/><img src="exports/screenshots/simple-awakening-200.svg" width="100" alt="Simple Awakening"></td>
-<td align="center"><strong>🎇 Créative</strong><br/><img src="exports/screenshots/simple-creative-200.svg" width="100" alt="Simple Creative"></td>
-</tr>
-<tr>
-<td align="center"><strong>🌧️ Pluie</strong><br/><img src="exports/emotional/default-rainy-200.svg" width="100" alt="Default Rainy"></td>
-<td align="center"><strong>⚡ Orage</strong><br/><img src="exports/emotional/default-stormy-200.svg" width="100" alt="Default Stormy"></td>
-<td align="center"><strong>💥 Explosive</strong><br/><img src="exports/emotional/default-explosive-200.svg" width="100" alt="Default Explosive"></td>
-<td align="center"><strong>☀️ Ensoleillé</strong><br/><img src="exports/emotional/default-sunny-200.svg" width="100" alt="Default Sunny"></td>
-<td align="center"><strong>❄️ Neige</strong><br/><img src="exports/emotional/default-snowy-200.svg" width="100" alt="Default Snowy"></td>
-</tr>
-</table>
-
-</div>
-
-## 🤖 **Génération IA Avancée - Détails Techniques**
-
-<div align="center">
-
-### **3 Générateurs IA - Intelligence Artificielle Intégrée**
-
-Le projet intègre **3 générateurs IA** pour créer des logos avec intelligence artificielle, en plus des 8 générateurs vectoriels SVG.
-
-</div>
-
-### **🧠 Hyper-AI Generator (ComfyUI + SDXL + ControlNet)**
-
-<div align="center">
-
-**Générateur avec ComfyUI**
-
-| Caractéristique | Détails |
-|:---------------:|:--------|
-| **Technologie** | ComfyUI + SDXL + ControlNet |
-| **Résolution** | Jusqu'à 1024x1024 |
-| **Modèles** | SDXL Base, ControlNet Canny, RealESRGAN |
-| **Workflows** | 3 templates pré-configurés (cosmic_sphere, neural_network, crystal_core) |
-| **Statut** | ✅ Fonctionnel - ComfyUI opérationnel, modèles installés |
-
-</div>
-
-**Utilisation :**
-
-```python
-from src.hyper_ai_generator import HyperAIGenerator
-
-generator = HyperAIGenerator()
-
-# Génération automatique avec IA
-logo_path = generator.generate_svg_logo("serenity", size=512)
-```
-
-**Documentation complète** : [COMFYUI.md](docs/COMFYUI.md)
-
-### **🤖 AI Generator (Stable Diffusion Local)**
-
-<div align="center">
-
-**Génération IA avec Stable Diffusion**
-
-| Caractéristique | Détails |
-|:---------------:|:--------|
-| **Technologie** | Stable Diffusion v1.5 (local) |
-| **Format** | PNG |
-| **Device** | CUDA (GPU) ou CPU |
-| **Modèle** | runwayml/stable-diffusion-v1-5 |
-| **Performance** | Génération IA en quelques secondes |
-
-</div>
-
-**Utilisation :**
-
-```python
-from src.ai_logo_generator import AILogoGenerator
-
-generator = AILogoGenerator()
-
-# Génération IA avec Stable Diffusion
-logo_path = generator.generate_svg_logo("serenity", size=512)
-```
-
-### **🌌 Cosmic Generator (Sphères Cosmiques)**
-
-<div align="center">
-
-**Générateur de Sphères Cosmiques avec Réseaux Neuronaux**
-
-| Caractéristique | Détails |
-|:---------------:|:--------|
-| **Style** | Sphères cosmiques lumineuses |
-| **Effets** | Réseaux neuronaux internes, cristaux centraux |
-| **Dégradés** | Bleu/violet/cyan fluides |
-| **Particules** | Cosmiques flottantes |
-| **Format** | SVG vectoriel |
-
-</div>
-
-**Utilisation :**
-
-```python
-from src.cosmic_logo_generator import CosmicLogoGenerator
-
-generator = CosmicLogoGenerator()
-
-# Génération cosmique
-logo_path = generator.generate_svg_logo("serenity", size=200)
-```
-
-### **📊 Comparaison : Générateurs Vectoriels vs IA**
-
-<div align="center">
-
-| Type | Générateurs | Format | Performance | Usage |
-|:----:|:-----------:|:------:|:-----------:|:-----:|
-| **Vectoriels SVG** | 8 styles (default, dashboard, ai_moon, advanced, simple_advanced, ultra_max, realism_max, ultimate) | SVG | ⚡ 0.002s - 0.008s | Génération rapide, vectoriel |
-| **IA Stable Diffusion** | 1 style (ai) | PNG | 🤖 ~5-10s | Génération IA locale |
-| **IA ComfyUI** | 1 style (hyper_ai) | PNG | 🤖 ~10-30s | Génération IA avancée (SDXL) |
-| **Cosmic** | 1 style (cosmic) | SVG | ⚡ ~0.005s | Sphères cosmiques vectorielles |
-
-</div>
-
-## 🎬 **Démonstration - Tous les Styles en Action**
-
-<div align="center">
-
-### **⚡ Comparaison Rapide : 8 Styles Vectoriels × Variante Sérénité**
-
-<table>
-<tr>
-<td align="center"><strong>🌙 Base</strong><br/><img src="exports/screenshots/simple-serenity-200.svg" width="80" alt="Simple"></td>
-<td align="center"><strong>📊 Dashboard</strong><br/><img src="exports/screenshots/dashboard-serenity-200.svg" width="80" alt="Dashboard"></td>
-<td align="center"><strong>🌙 AI-Moon</strong><br/><img src="exports/screenshots/ai_moon-serenity-200.svg" width="80" alt="AI-Moon"></td>
-<td align="center"><strong>🎨 Advanced</strong><br/><img src="exports/screenshots/advanced-serenity-200.svg" width="80" alt="Advanced"></td>
-</tr>
-<tr>
-<td align="center"><strong>⚡ Simple-Advanced</strong><br/><img src="exports/screenshots/simple_advanced-serenity-200.svg" width="80" alt="Simple-Advanced"></td>
-<td align="center"><strong>🚀 Ultra-Max</strong><br/><img src="exports/screenshots/ultra_max-serenity-200.svg" width="80" alt="Ultra-Max"></td>
-<td align="center"><strong>🌍 Realism Max</strong><br/><img src="exports/screenshots/realism_max-serenity-200.svg" width="80" alt="Realism Max"></td>
-<td align="center"><strong>🌟 Ultimate</strong><br/><img src="exports/screenshots/ultimate-serenity-200.svg" width="80" alt="Ultimate"></td>
-</tr>
-</table>
-
-**⚡ Génération en 0.002s à 0.008s selon le style**
-
-</div>
-
-### **🎨 Comparaison Vectoriel vs IA - Même Variante Sérénité**
-
-<div align="center">
-
-**Comparaison entre génération vectorielle et génération IA**
-
-<table>
-<tr>
-<td align="center"><strong>Vectoriel Ultimate</strong><br/><img src="exports/screenshots/ultimate-serenity-200.svg" width="150" alt="Ultimate Vectoriel"><br/>⚡ 0.007s<br/>SVG vectoriel</td>
-<td align="center"><strong>IA Stable Diffusion</strong><br/><img src="exports-ai/test-ai-serenity-safe.png" width="150" alt="AI Serenity"><br/>🤖 ~5-10s<br/>PNG</td>
-<td align="center"><strong>IA ComfyUI SDXL</strong><br/><img src="exports-hyper-ai/ComfyUI_00001_.png" width="150" alt="Hyper-AI"><br/>🤖 ~10-30s<br/>1024x1024</td>
-</tr>
-</table>
-
-**✨ Choisissez selon vos besoins : Rapidité (vectoriel) ou Génération IA**
-
-</div>
-
-## 💻 **Exemples de Code avec Résultats Visuels**
-
-### **Exemple 1 : Génération Vectorielle Simple**
-
-```python
-from src.generator_factory import LogoGeneratorFactory
-
-# Créer un générateur Ultimate
-generator = LogoGeneratorFactory.create_generator("ultimate")
-
-# Générer un logo
-logo_path = generator.generate_svg_logo("serenity", size=200)
-print(f"✅ Logo généré : {logo_path}")
-```
-
-<div align="center">
-
-**Résultat :**
-
-<img src="exports/screenshots/ultimate-serenity-200.svg" width="150" alt="Ultimate Serenity Logo">
-
-</div>
-
-### **Exemple 2 : Génération IA avec Stable Diffusion**
-
-```python
-from src.ai_logo_generator import AILogoGenerator
-
-generator = AILogoGenerator()
-
-# Génération IA avec Stable Diffusion
-logo_path = generator.generate_svg_logo("serenity", size=512)
-print(f"✅ Logo IA généré : {logo_path}")
-```
-
-<div align="center">
-
-**Résultat : Logo PNG généré avec IA (Stable Diffusion)**
-
-</div>
-
-### **Exemple 3 : Génération IA Avancée avec ComfyUI**
-
-```python
-from src.hyper_ai_generator import HyperAIGenerator
-
-generator = HyperAIGenerator()
-
-# Génération IA avec ComfyUI + SDXL
-logo_path = generator.generate_svg_logo("serenity", size=512)
-print(f"✅ Logo Hyper-IA généré : {logo_path}")
-```
-
-<div align="center">
-
-**Résultat : Logo PNG généré avec ComfyUI + SDXL**
-
-</div>
-
-### **Exemple 4 : Génération Multiple**
-
-```python
-from src.generator_factory import LogoGeneratorFactory
-
-generator = LogoGeneratorFactory.create_generator("ai_moon")
-
-# Générer toutes les variantes
-variants = ["serenity", "power", "mystery", "awakening", "creative"]
-for variant in variants:
-    logo_path = generator.generate_svg_logo(variant, size=200)
-    print(f"✅ {variant}: {logo_path}")
-```
-
-<div align="center">
-
-**Résultats :**
-
-<table>
-<tr>
-<td align="center"><img src="exports/screenshots/ai_moon-serenity-200.svg" width="100" alt="AI-Moon Serenity"></td>
-<td align="center"><img src="exports/screenshots/ai_moon-power-200.svg" width="100" alt="AI-Moon Power"></td>
-<td align="center"><img src="exports/screenshots/ai_moon-mystery-200.svg" width="100" alt="AI-Moon Mystery"></td>
-<td align="center"><img src="exports/screenshots/ai_moon-awakening-200.svg" width="100" alt="AI-Moon Awakening"></td>
-<td align="center"><img src="exports/screenshots/ai_moon-creative-200.svg" width="100" alt="AI-Moon Creative"></td>
-</tr>
-</table>
-
-</div>
-
-### **Exemple 5 : API REST**
-
-```bash
-# Démarrer l'API
-python main.py
-
-# Générer via API
-curl -X POST "http://localhost:8000/generate" \
-  -H "Content-Type: application/json" \
-  -d '{"variant": "serenity", "size": 200, "generator": "ultimate"}'
-```
-
-<div align="center">
-
-**Réponse JSON :**
-
-```json
-{
-  "status": "success",
-  "logo_path": "exports/arkalia-luna-ultimate-serenity-200.svg",
-  "variant": "serenity",
-  "generator": "ultimate",
-  "size": 200,
-  "generation_time": 0.007
-}
-```
-
-**Logo généré :**
-
-<img src="exports/screenshots/ultimate-serenity-200.svg" width="150" alt="Ultimate Serenity Logo">
-
-</div>
-
----
-
-## 🚀 **Installation**
-
-### **Option 1 : Configuration Automatique (Recommandée)**
+### Option 1 : Installation standard (recommandée)
 
 ```bash
 git clone https://github.com/arkalia-luna-system/Arkalia-luna-logo.git
@@ -651,386 +175,158 @@ cd arkalia-luna-logo
 make quick-start
 ```
 
-### **Option 2 : Installation Manuelle**
+### Option 2 : Installation manuelle
 
 ```bash
-# Créer l'environnement virtuel
 python3 -m venv arkalia-luna-env
-
-# L'activer
 source arkalia-luna-env/bin/activate  # Linux/Mac
-# ou
-arkalia-luna-env\Scripts\activate     # Windows
-
-# Installer les dépendances
 pip install -e ".[dev]"
 ```
 
-### **Option 3 : Docker**
+### Option 3 : Docker
 
 ```bash
-# Démarrer toute l'infrastructure
 docker-compose -f docker-compose.prod.yml up -d
-
-# Services disponibles :
-# 🌐 API : http://localhost:8000
-# 📊 Prometheus : http://localhost:9090
-# 📈 Grafana : http://localhost:3000
-# 🔄 Nginx : http://localhost:80
 ```
 
-### **Option 4 : Installation avec IA (Stable Diffusion)**
+Services disponibles :
+- API : http://localhost:8000
+- Prometheus : http://localhost:9090
+- Grafana : http://localhost:3000
+
+### Option 4 : Avec génération IA
+
+Pour utiliser les générateurs IA, installez les dépendances supplémentaires :
 
 ```bash
-# Installation standard
-pip install -e ".[dev]"
-
-# Installation des dépendances IA (optionnel)
+# Stable Diffusion
 pip install torch diffusers transformers accelerate
-```
 
-### **Option 5 : Installation avec ComfyUI (Hyper-AI)**
-
-```bash
-# Installation standard
-pip install -e ".[dev]"
-
-# Installation ComfyUI
+# ComfyUI
 bash scripts/install_comfyui.sh
-
-# Démarrage ComfyUI
 bash scripts/start_comfyui.sh
 ```
 
-## 💻 **Utilisation**
+## Utilisation
 
-### **Interface CLI Principale**
+### Interface CLI
 
 ```bash
-# Activer l'environnement virtuel
-source arkalia-luna-env/bin/activate
-
-# Voir toutes les variantes
-python -m src.cli info
-
-# Voir tous les générateurs disponibles
-python -m src.cli generators
-
-# Générer un logo spécifique (vectoriel)
+# Générer un logo spécifique
 python -m src.cli generate -v serenity -s 200 -g ultimate
 
-# Générer un logo avec IA (Stable Diffusion)
+# Générer avec IA
 python -m src.cli generate -v serenity -s 512 -g ai
-
-# Générer un logo avec Hyper-IA (ComfyUI)
-python -m src.cli generate -v serenity -s 512 -g hyper_ai
-
-# Générer un logo cosmique
-python -m src.cli generate -v serenity -s 200 -g cosmic
 
 # Générer toutes les variantes
 python -m src.cli generate-all -s 200
 
 # Créer des favicons
 python -m src.cli favicon-all -s 32
-
-# Voir les statistiques
-python -m src.cli stats
 ```
 
-### **🚀 API FastAPI (Utilisation Complète)**
+### Utilisation en Python
+
+```python
+from src.generator_factory import LogoGeneratorFactory
+
+# Créer un générateur
+generator = LogoGeneratorFactory.create_generator("ultimate")
+
+# Générer un logo
+logo_path = generator.generate_svg_logo("serenity", size=200)
+print(f"Logo généré : {logo_path}")
+```
+
+## API REST
+
+### Démarrage
 
 ```bash
-# Démarrer l'API
 python main.py
+```
 
-# Accéder à Swagger UI
-# http://localhost:8000/docs
+L'API est accessible sur http://localhost:8000 avec la documentation Swagger sur `/docs`.
 
-# Générer un logo via API
+### Endpoints principaux
+
+- `POST /generate` - Générer un logo
+- `GET /variants` - Lister les variantes disponibles
+- `GET /generators` - Lister les générateurs disponibles
+- `GET /stats` - Statistiques de génération
+- `GET /metrics` - Métriques Prometheus
+
+### Exemple d'utilisation
+
+```bash
 curl -X POST "http://localhost:8000/generate" \
   -H "Content-Type: application/json" \
   -d '{"variant": "serenity", "size": 200, "generator": "ultimate"}'
 ```
 
-### **🎨 Utilisation Complète du Potentiel**
-
-```bash
-# Explorer toutes les fonctionnalités
-./scripts/quick_explore.sh
-
-# Générer avec tous les générateurs vectoriels
-python -m src.cli generate -v serenity -g ultimate    # Cosmique extrême
-python -m src.cli generate -v power -g cosmic          # Sphères lumineuses
-python -m src.cli generate -v mystery -g ai_moon       # IA réaliste
-python -m src.cli generate -v awakening -g dashboard   # Interface optimisée
-
-# Générer avec les générateurs IA
-python -m src.cli generate -v serenity -g ai           # Stable Diffusion
-python -m src.cli generate -v power -g hyper_ai        # ComfyUI + SDXL
-
-# Tester toutes les variantes dynamiques
-for variant in rainy stormy explosive sunny snowy; do
-  python -m src.cli generate -v $variant -g ultimate
-done
-```
-
-## 🎯 **Cas d'Usage - Dans Quel Projet Utiliser Ce Générateur ?**
-
-<div align="center">
-
-| Type de Projet | Usage Recommandé | Bénéfice | Intégration |
-|----------------|------------------|----------|-------------|
-| **🌐 Applications Web** | Logos dynamiques selon le thème | Cohérence visuelle | API REST + Frontend |
-| **📱 Apps Mobiles** | Favicons et icônes adaptatives | Multi-résolution automatique | CLI dans CI/CD |
-| **📊 Dashboards Business** | Branding personnalisé | Identité visuelle | Docker + monitoring |
-| **🎮 Plateformes Gaming** | Logos émotionnels immersifs | Engagement utilisateur | API temps réel |
-| **🤖 Projets IA/ML** | Visualisation d'émotions | Interface intuitive | Python natif + IA |
-| **🏢 Solutions Entreprise** | Multi-tenant branding | Personnalisation client | API scalable |
-| **📚 Projets Open Source** | Branding cohérent | Identité communautaire | GitHub Actions |
-| **🎨 Outils Créatifs** | Assets vectoriels | Export SVG/PNG | CLI + batch processing |
-| **🧠 Projets IA Avancés** | Génération IA de logos | Génération IA locale | ComfyUI + SDXL |
-
-</div>
-
-## 📊 **Performance**
-
-<div align="center">
-
-### ⚡ **Benchmark des Générateurs Vectoriels**
-
-| Générateur | Temps | Performance | Logo Exemple |
-|:----------:|:-----:|:-----------:|:------------:|
-| **Realism Max** | ~0.002s | 🏆 Le plus rapide | <img src="exports/screenshots/realism_max-serenity-200.svg" width="80" alt="Realism Max"> |
-| **Dashboard** | ~0.004s | ⚡ Rapide | <img src="exports/screenshots/dashboard-serenity-200.svg" width="80" alt="Dashboard"> |
-| **AI-Moon** | ~0.007s | ✅ Bon | <img src="exports/screenshots/ai_moon-serenity-200.svg" width="80" alt="AI-Moon"> |
-| **Ultra-Max** | ~0.008s | ✅ Bon | <img src="exports/screenshots/ultra_max-serenity-200.svg" width="80" alt="Ultra-Max"> |
-| **Ultimate** | ~0.007s | ✅ Bon | <img src="exports/screenshots/ultimate-serenity-200.svg" width="80" alt="Ultimate"> |
-| **Simple-Advanced** | ~0.008s | ✅ Bon | <img src="exports/screenshots/simple_advanced-serenity-200.svg" width="80" alt="Simple-Advanced"> |
-| **Advanced** | ~0.008s | ✅ Bon | <img src="exports/screenshots/advanced-serenity-200.svg" width="80" alt="Advanced"> |
-| **Base** | ~0.013s | ⚠️ Plus lent | <img src="exports/screenshots/simple-serenity-200.svg" width="80" alt="Base"> |
-
-### 🤖 **Performance des Générateurs IA**
-
-| Générateur | Temps | Performance | Technologie |
-|:----------:|:-----:|:-----------:|:-----------:|
-| **Cosmic** | ~0.005s | ⚡ Rapide | SVG vectoriel |
-| **AI (Stable Diffusion)** | ~5-10s | ✅ Bon | Stable Diffusion v1.5 |
-| **Hyper-AI (ComfyUI)** | ~10-30s | ✅ Excellent | SDXL + ControlNet |
-
-> **Note** : Les temps varient selon la taille, la complexité et le device (GPU/CPU)
-
-</div>
-
-## 🏗️ **Architecture du Projet**
+## Architecture
 
 ```
 arkalia-luna-logo/
-├── src/                          # Code source principal
-│   ├── __init__.py              # Configuration du package
-│   ├── variants.py              # Gestion des variantes émotionnelles
-│   ├── svg_builder.py           # Classe abstraite pour les builders SVG
-│   ├── logo_generator.py        # Générateur de base
-│   ├── generator_factory.py     # Factory Pattern pour les générateurs
-│   ├── cli.py                   # Interface CLI
-│   │
-│   ├── **8 Générateurs Vectoriels SVG** :
-│   │   ├── logo_generator.py              # Base (default)
-│   │   ├── dashboard_generator.py         # Interface optimisée
-│   │   ├── ai_moon_generator.py           # IA réaliste (vectoriel)
-│   │   ├── advanced_logo_generator.py      # Techno-mystique
-│   │   ├── simple_advanced_generator.py  # Équilibré
-│   │   ├── ultra_max_generator.py         # Effets avancés
-│   │   ├── realism_max_generator.py       # Style réaliste
-│   │   └── ultimate_generator.py          # Cosmique extrême
-│   │
-│   ├── **3 Générateurs IA** :
-│   │   ├── ai_logo_generator.py           # 🤖 Stable Diffusion local
-│   │   ├── cosmic_logo_generator.py       # 🌌 Sphères cosmiques (vectoriel)
-│   │   └── hyper_ai_generator.py          # 🧠 ComfyUI + SDXL + ControlNet
-│   │
-│   └── **Builders SVG Spécialisés** :
-│       ├── svg_builder.py                 # Base abstraite
-│       ├── svg_builder_dashboard.py       # Dashboard
-│       ├── svg_builder_ai_moon.py         # AI-Moon
-│       ├── svg_builder_advanced.py        # Advanced
-│       ├── svg_builder_simple_advanced.py # Simple-Advanced
-│       ├── svg_builder_ultra_max.py       # Ultra-Max
-│       ├── svg_builder_realism_max.py     # Realism Max
-│       ├── svg_builder_ultimate.py        # Ultimate
-│       └── cosmic_sphere_builder.py        # Cosmic
-│
-├── tests/                       # Tests automatisés (297 tests)
-├── docs/                        # Documentation complète
-│   ├── COMFYUI.md              # 🧠 Guide ComfyUI + Hyper-AI
-│   ├── QUICKSTART.md           # Guide de démarrage rapide
-│   ├── API.md                  # Documentation API complète
-│   ├── ARCHITECTURE.md         # Architecture technique
-│   └── INDEX.md                # Index de documentation
-├── exports/                     # Exports générés
-│   ├── *.svg                   # Logos SVG (tous styles et variantes)
-│   ├── *.png                   # Favicons PNG + logos IA
-│   ├── exports-ai/             # Logos générés avec Stable Diffusion
-│   ├── exports-hyper-ai/       # Logos générés avec ComfyUI
-│   ├── exports-cosmic/         # Logos cosmiques
-│   ├── demo-gif/               # Démonstrations animées
-│   └── screenshots/            # Captures d'écran
-└── .github/                     # CI/CD GitHub Actions
+├── src/                    # Code source
+│   ├── *_generator.py      # Générateurs de logos
+│   ├── svg_builder*.py     # Builders SVG spécialisés
+│   └── cli.py              # Interface CLI
+├── tests/                  # Tests automatisés
+├── docs/                   # Documentation
+├── exports/                # Logos générés
+└── .github/                # CI/CD
 ```
 
-## 🌐 **API Web & Déploiement**
+Le projet utilise un pattern Factory pour gérer les différents générateurs et un système de builders pour la construction SVG.
 
-### **🚀 API FastAPI**
+## Performance
 
-- **API REST** complète avec FastAPI
-- **9 Endpoints** : `/`, `/health`, `/generate`, `/download`, `/stats`, `/metrics`, `/variants`, `/generators`, `/cleanup`
-- **Performance** : Génération de logo en 0.03 secondes (vectoriel)
-- **Documentation** : Swagger UI automatique (`/docs`)
-- **Sécurité** : CORS, validation, gestion d'erreurs, rate limiting
-- **Monitoring** : Métriques Prometheus enrichies (compteurs par route/labels, histogramme de durées)
+- **Génération vectorielle** : < 10ms par logo
+- **Génération IA Stable Diffusion** : 5-10 secondes
+- **Génération IA ComfyUI** : 10-30 secondes (selon résolution)
 
-### **🐳 Docker & Orchestration**
+## Documentation
 
-- **Dockerfile.prod** optimisé pour la production
-- **Docker Compose** avec 5 services (app, redis, nginx, prometheus, grafana)
-- **Monitoring** : Prometheus + Grafana intégrés (panels p95/p99, erreurs/min, statut par route)
-- **Sécurité** : Utilisateur non-root, health checks
-- **Scalabilité** : Prêt pour déploiement en production
+- [Guide de démarrage rapide](docs/QUICKSTART.md)
+- [Documentation API](docs/API.md)
+- [Architecture technique](docs/ARCHITECTURE.md)
+- [Guide ComfyUI](docs/COMFYUI.md)
+- [Index complet](docs/INDEX.md)
 
-### **🏗️ Architecture Infrastructure**
+## Contribution
 
-```mermaid
-graph TB
-    A[👤 Utilisateur] --> B[🌐 Nginx Reverse Proxy]
-    B --> C[🚀 FastAPI App]
-    C --> D[💾 Redis Cache]
-    C --> E[📊 Prometheus]
-    E --> F[📈 Grafana]
-    
-    C --> G[🎨 Logo Generator]
-    G --> H[📁 Exports]
-    G --> I[🤖 AI Generators]
-    I --> J[🧠 ComfyUI]
-    I --> K[🤖 Stable Diffusion]
-    
-    style A fill:#e1f5fe,stroke:#01579b,stroke-width:2px
-    style B fill:#fff3e0,stroke:#e65100,stroke-width:2px
-    style C fill:#e8f5e9,stroke:#1b5e20,stroke-width:3px
-    style D fill:#fce4ec,stroke:#880e4f,stroke-width:2px
-    style E fill:#f3e5f5,stroke:#4a148c,stroke-width:2px
-    style F fill:#e0f2f1,stroke:#004d40,stroke-width:2px
-    style G fill:#fff9c4,stroke:#f57f17,stroke-width:2px
-    style I fill:#e3f2fd,stroke:#0277bd,stroke-width:2px
-    style J fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
-    style K fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px
-```
+Les contributions sont les bienvenues ! Veuillez suivre les conventions de commit :
 
-## 🧪 **Tests et Qualité**
+- Format : `type(scope): description`
+- Types : `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`
 
-### **Tests Automatisés**
+Exemples :
+- `feat(logo): ajouter nouveau style`
+- `fix(tests): corriger erreur de validation`
+- `docs: mise à jour README`
 
-```bash
-# Tests complets
-pytest tests/ -v
+## Statut du projet
 
-# Tests avec couverture
-pytest tests/ --cov=src --cov-report=html
+| Métrique | Valeur |
+|:--------:|:------:|
+| Version | 2.0.0 |
+| Python | 3.8+ |
+| Tests | 297 tests passent |
+| Couverture | 75% |
+| Générateurs | 11 styles |
+| Variantes | 10 émotionnelles |
 
-# Tests rapides
-pytest tests/ -x
-```
-
-### **Qualité du Code**
-
-```bash
-# Formatage
-black src/ --line-length=88
-
-# Linting
-ruff check src/
-
-# Vérification des types
-mypy src/ --strict
-```
-
-## 📝 **Conventions de Commit et PR**
-
-### **Format des Titres de PR**
-
-Tous les titres de PR doivent suivre le format : `type(scope): description`
-
-**Types acceptés :**
-- `feat` : Nouvelle fonctionnalité
-- `fix` : Correction de bug
-- `docs` : Documentation
-- `style` : Formatage du code
-- `refactor` : Refactoring
-- `test` : Tests
-- `chore` : Maintenance
-- `perf` : Performance
-- `ci` : CI/CD
-- `build` : Build
-- `revert` : Annulation
-
-**Exemples valides :**
-- ✅ `feat(logo): ajouter nouveau style mystique`
-- ✅ `fix(tests): corriger erreur de validation`
-- ✅ `docs: mise à jour README avec exemples`
-- ✅ `style: reformater le code avec ruff`
-- ✅ `ci: corriger workflow GitHub Actions`
-
-## 🤝 **Contribution**
-
-1. Fork le projet
-2. Créer une branche feature (`git checkout -b feature/AmazingFeature`)
-3. Commit les changements (`git commit -m 'feat(scope): Add AmazingFeature'`)
-4. Push vers la branche (`git push origin feature/AmazingFeature`)
-5. Ouvrir une Pull Request
-
-## 📚 **Documentation**
-
-<div align="center">
-
-| Document | Description | Lien |
-|:--------:|:-----------:|:----:|
-| **📘 Index** | Navigation complète | [Voir](docs/INDEX.md) |
-| **🚀 Quickstart** | Démarrage rapide | [Voir](docs/QUICKSTART.md) |
-| **🧠 ComfyUI** | Génération IA avancée | [Voir](docs/COMFYUI.md) |
-| **📋 API** | Documentation API | [Voir](docs/API.md) |
-| **🏗️ Architecture** | Architecture technique | [Voir](docs/ARCHITECTURE.md) |
-| **🤝 Contributing** | Guide de contribution | [Voir](docs/CONTRIBUTING.md) |
-
-</div>
-
-## 🌟 **Statut du Projet**
-
-<div align="center">
-
-| Métrique | Valeur | Statut | Objectif |
-|:--------:|:------:|:------:|:--------:|
-| **Version** | 2.0.0 | ✅ | - |
-| **Statut** | Production/Stable | ✅ | - |
-| **Python** | 3.8+ | ✅ | - |
-| **Tests** | 297 tests passent | ✅ | - |
-| **Couverture** | 75% | ✅ | 90%+ |
-| **CI/CD** | GitHub Actions | ✅ | Automatisé |
-| **Qualité** | Black + Ruff + MyPy | ✅ | - |
-| **Benchmarks** | 7/7 tests | ✅ | - |
-| **Générateurs** | 11 styles (8 vectoriels + 3 IA) | ✅ | - |
-| **Variantes** | 10 émotionnelles | ✅ | - |
-
-</div>
-
-## 📄 **Licence**
+## Licence
 
 Ce projet est sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.
 
+---
+
 <div align="center">
 
-**🌙 Arkalia-LUNA Logo Generator** - Créé avec ❤️ par l'équipe Arkalia-LUNA
+**Arkalia-LUNA Logo Generator** - Créé avec ❤️ par l'équipe Arkalia-LUNA
 
 *Dernière mise à jour : Novembre 2025*
-
-[⬆ Retour en haut](#-arkalia-luna-logo-generator)
 
 </div>
