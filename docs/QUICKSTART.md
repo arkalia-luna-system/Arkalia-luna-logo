@@ -173,9 +173,9 @@ python -m src.cli generate --variant serenity --generator ultimate --size 200
 
 | Avantage | Description | Statut |
 |:-------:|:-----------:|:------:|
-| **Effets cosmiques** | Ultra-réalistes | ✅ |
+| **Effets cosmiques** | Style réaliste | ✅ |
 | **Gradients** | 100+ stops holographiques | ✅ |
-| **Qualité** | Professionnelle garantie | ✅ |
+| **Format** | SVG vectoriel | ✅ |
 | **Compatibilité** | Tous les usages | ✅ |
 
 </div>
@@ -187,10 +187,10 @@ source arkalia-luna-env/bin/activate
 python -m src.cli generate --variant serenity --generator hyper_ai --size 200
 ```
 
-**Génération ultra-intelligente avec ComfyUI + SDXL + ControlNet :**
-- ✅ Génération IA professionnelle
-- ✅ Reproduction exacte de l'inspiration
-- ✅ Qualité maximale avec modèles SDXL
+**Génération avec ComfyUI + SDXL + ControlNet :**
+- ✅ Génération IA locale
+- ✅ Reproduction de l'inspiration
+- ✅ Modèles SDXL
 - ✅ **ComfyUI installé et fonctionnel**
 - ✅ **Modèles SDXL et ControlNet installés**
 - ✅ **Génération testée avec succès**
@@ -232,7 +232,7 @@ python -m src.cli generate --variant power --generator ai_moon --size 200
 
 </div>
 
-### 4. Dashboard (Style professionnel)
+### 4. Dashboard
 
 <div align="center">
 
@@ -443,7 +443,7 @@ arkalia-luna-logo generate serenity --style ultimate
 
 | Question | Réponse | Lien |
 |:--------:|:-------:|:----:|
-| **Quel style choisir ?** | Ultimate pour qualité maximale | [📘 Voir](#1-ultime-recommandé-pour-commencer) |
+| **Quel style choisir ?** | Ultimate pour effets avancés | [📘 Voir](#1-ultime-recommandé-pour-commencer) |
 | **Comment générer tous les logos ?** | `generate-all` avec style | [📘 Voir](#génération-de-toutes-les-variantes) |
 | **Où sont les logos générés ?** | `exports/unified/logos/` | [📘 Voir](#structure-des-exports) |
 | **Comment créer des favicons ?** | `favicon-all` avec taille | [📘 Voir](#créer-des-favicons) |

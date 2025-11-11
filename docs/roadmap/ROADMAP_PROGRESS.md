@@ -4,7 +4,7 @@
 
 **🎯 Roadmap Stratégique**
 
-*Transformation en projet "Showcase GitHub" exceptionnel*
+*Transformation en projet GitHub*
 
 </div>
 

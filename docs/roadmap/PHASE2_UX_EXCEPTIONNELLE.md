@@ -14,7 +14,7 @@
 
 <div align="center">
 
-La **Phase 2** se concentre sur l'expérience utilisateur exceptionnelle, transformant Arkalia-LUNA Logo d'un générateur CLI en une plateforme web moderne et intuitive.
+La **Phase 2** se concentre sur l'expérience utilisateur, transformant Arkalia-LUNA Logo d'un générateur CLI en une plateforme web moderne et intuitive.
 
 </div>
 
@@ -350,12 +350,12 @@ graph TB
 
 ## 🌟 **Conclusion**
 
-La **Phase 2 - UX Exceptionnelle** représente un saut qualitatif majeur pour Arkalia-LUNA Logo, transformant un outil technique en une plateforme accessible et attrayante pour tous les utilisateurs.
+La **Phase 2** représente une amélioration importante pour Arkalia-LUNA Logo, transformant un outil technique en une plateforme accessible et attrayante pour tous les utilisateurs.
 
-**Objectif final** : Créer une expérience utilisateur si exceptionnelle qu'elle devient la référence dans le domaine de la génération de logos techno-mystiques.
+**Objectif final** : Créer une expérience utilisateur accessible et intuitive pour la génération de logos.
 
 ---
 
 *Document créé le : 2025-11-15*  
 *Phase 2 - Démarrage : Semaine 1*  
-*Objectif : UX Exceptionnelle* 🚀
+*Objectif : Amélioration de l'expérience utilisateur* 🚀
