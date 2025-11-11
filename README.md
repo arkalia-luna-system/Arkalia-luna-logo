@@ -23,14 +23,47 @@
 
 ## Vue d'ensemble
 
-Arkalia-LUNA Logo Generator est un générateur de logos vectoriels avec intégration d'intelligence artificielle. Il propose 11 styles uniques (8 vectoriels SVG + 3 générateurs IA) et 10 variantes émotionnelles pour créer plus de 110 combinaisons de logos.
+<div align="center">
 
-**Caractéristiques principales :**
-- Génération vectorielle SVG rapide (< 10ms)
-- Génération IA avec Stable Diffusion et ComfyUI
-- API REST FastAPI avec documentation Swagger
-- Infrastructure Docker complète avec monitoring
-- Interface CLI et support batch
+**Générateur de logos professionnel avec intelligence artificielle intégrée**
+
+Arkalia-LUNA Logo Generator combine **génération vectorielle ultra-rapide** et **intelligence artificielle avancée** pour créer des logos de qualité professionnelle.
+
+</div>
+
+### Ce qui rend ce projet unique
+
+<div align="center">
+
+<table>
+<tr>
+<td align="center" style="padding: 20px; background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%); border-radius: 12px; border: 2px solid #667eea40;">
+<strong style="font-size: 1.2em; color: #667eea;">🎨 11 Styles Uniques</strong>
+<br/><p style="margin: 10px 0 0 0; color: #666;">8 vectoriels SVG + 3 générateurs IA</p>
+</td>
+<td align="center" style="padding: 20px; background: linear-gradient(135deg, #f093fb15 0%, #f5576c15 100%); border-radius: 12px; border: 2px solid #f093fb40;">
+<strong style="font-size: 1.2em; color: #f5576c;">🌙 10 Variantes</strong>
+<br/><p style="margin: 10px 0 0 0; color: #666;">Émotionnelles dynamiques</p>
+</td>
+<td align="center" style="padding: 20px; background: linear-gradient(135deg, #4facfe15 0%, #00f2fe15 100%); border-radius: 12px; border: 2px solid #4facfe40;">
+<strong style="font-size: 1.2em; color: #00f2fe;">⚡ Ultra Rapide</strong>
+<br/><p style="margin: 10px 0 0 0; color: #666;">< 10ms par logo vectoriel</p>
+</td>
+<td align="center" style="padding: 20px; background: linear-gradient(135deg, #43e97b15 0%, #38f9d715 100%); border-radius: 12px; border: 2px solid #43e97b40;">
+<strong style="font-size: 1.2em; color: #38f9d7;">🤖 IA Intégrée</strong>
+<br/><p style="margin: 10px 0 0 0; color: #666;">ComfyUI + SDXL + Stable Diffusion</p>
+</td>
+</tr>
+</table>
+
+</div>
+
+**Caractéristiques techniques :**
+- 🚀 **Génération vectorielle** : < 10ms par logo (SVG haute qualité)
+- 🧠 **Génération IA** : ComfyUI + SDXL jusqu'à 1024×1024, Stable Diffusion v1.5
+- 🌐 **API REST** : FastAPI avec documentation Swagger complète
+- 🐳 **Production Ready** : Infrastructure Docker avec monitoring Prometheus/Grafana
+- 💻 **CLI & Batch** : Interface en ligne de commande et traitement par lots
 
 ## Quick Start
 
@@ -68,7 +101,11 @@ python -m src.cli generators
 
 ## Galerie
 
+Découvrez tous les styles disponibles et leurs variantes émotionnelles.
+
 ### Styles vectoriels
+
+8 générateurs SVG pour une génération ultra-rapide de logos vectoriels haute qualité.
 
 <div align="center">
 
@@ -159,11 +196,102 @@ Chaque style supporte 10 variantes émotionnelles. Voici un exemple avec le styl
 
 ### Génération IA
 
-Le projet intègre 3 générateurs IA :
+Le projet intègre 3 générateurs IA pour créer des logos avec intelligence artificielle :
 
-1. **Stable Diffusion** - Génération locale avec modèle v1.5
-2. **ComfyUI + SDXL** - Génération haute qualité jusqu'à 1024x1024
-3. **Cosmic** - Sphères cosmiques vectorielles avec réseaux neuronaux
+<div align="center">
+
+#### 🧠 ComfyUI + SDXL - Génération Ultra Haute Qualité
+
+<table>
+<tr>
+<td align="center" style="padding: 25px; background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #06b6d4 100%); border-radius: 16px; margin: 10px;">
+<img src="exports-hyper-ai/ComfyUI_00001_.png" width="280" alt="ComfyUI Logo 1" style="border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.4);">
+<br/><strong style="color: white; margin-top: 15px; display: block; font-size: 1.1em;">Génération SDXL</strong>
+<p style="color: rgba(255,255,255,0.95); font-size: 0.95em; margin: 8px 0 0 0;">Résolution 1024×1024</p>
+</td>
+<td align="center" style="padding: 25px; background: linear-gradient(135deg, #7c3aed 0%, #a855f7 50%, #ec4899 100%); border-radius: 16px; margin: 10px;">
+<img src="exports-hyper-ai/ComfyUI_00002_.png" width="280" alt="ComfyUI Logo 2" style="border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.4);">
+<br/><strong style="color: white; margin-top: 15px; display: block; font-size: 1.1em;">ControlNet</strong>
+<p style="color: rgba(255,255,255,0.95); font-size: 0.95em; margin: 8px 0 0 0;">Qualité professionnelle</p>
+</td>
+<td align="center" style="padding: 25px; background: linear-gradient(135deg, #312e81 0%, #581c87 50%, #7c2d12 100%); border-radius: 16px; margin: 10px;">
+<img src="exports-hyper-ai/ComfyUI_00003_.png" width="280" alt="ComfyUI Logo 3" style="border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.4);">
+<br/><strong style="color: white; margin-top: 15px; display: block; font-size: 1.1em;">SDXL + ControlNet</strong>
+<p style="color: rgba(255,255,255,0.95); font-size: 0.95em; margin: 8px 0 0 0;">Génération IA locale</p>
+</td>
+</tr>
+</table>
+
+**Technologie** : ComfyUI + SDXL Base + ControlNet Canny + RealESRGAN  
+**Résolution** : Jusqu'à 1024×1024 pixels  
+**Performance** : 10-30 secondes par génération
+
+</div>
+
+<div align="center">
+
+#### 🤖 Stable Diffusion - Génération IA Locale
+
+<table>
+<tr>
+<td align="center" style="padding: 20px; background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%); border-radius: 16px; margin: 10px;">
+<img src="exports-ai/test-ai-serenity-safe.png" width="240" alt="Stable Diffusion Serenity" style="border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.4);">
+<br/><strong style="color: white; margin-top: 15px; display: block; font-size: 1.1em;">Sérénité</strong>
+<p style="color: rgba(255,255,255,0.9); font-size: 0.9em; margin: 8px 0 0 0;">Stable Diffusion v1.5</p>
+</td>
+<td align="center" style="padding: 20px; background: linear-gradient(135deg, #7f1d1d 0%, #991b1b 50%, #dc2626 100%); border-radius: 16px; margin: 10px;">
+<img src="exports-ai/test-ai-power-improved.png" width="240" alt="Stable Diffusion Power" style="border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.4);">
+<br/><strong style="color: white; margin-top: 15px; display: block; font-size: 1.1em;">Puissance</strong>
+<p style="color: rgba(255,255,255,0.9); font-size: 0.9em; margin: 8px 0 0 0;">Post-traitement avancé</p>
+</td>
+</tr>
+</table>
+
+**Modèle** : runwayml/stable-diffusion-v1-5  
+**Format** : PNG haute qualité  
+**Performance** : 5-10 secondes par génération
+
+</div>
+
+<div align="center">
+
+#### 🌌 Cosmic - Sphères Cosmiques Vectorielles
+
+<table>
+<tr>
+<td align="center" style="padding: 20px; background: linear-gradient(135deg, #0c4a6e 0%, #075985 50%, #0284c7 100%); border-radius: 16px; margin: 10px;">
+<img src="exports-cosmic/test-cosmic-serenity.svg" width="180" alt="Cosmic Serenity" style="filter: drop-shadow(0 8px 16px rgba(0,0,0,0.3));">
+<br/><strong style="color: white; margin-top: 15px; display: block; font-size: 1.1em;">Sérénité</strong>
+<p style="color: rgba(255,255,255,0.9); font-size: 0.9em; margin: 8px 0 0 0;">Sphère cosmique</p>
+</td>
+<td align="center" style="padding: 20px; background: linear-gradient(135deg, #581c87 0%, #7c3aed 50%, #a855f7 100%); border-radius: 16px; margin: 10px;">
+<img src="exports-cosmic/test-cosmic-power.svg" width="180" alt="Cosmic Power" style="filter: drop-shadow(0 8px 16px rgba(0,0,0,0.3));">
+<br/><strong style="color: white; margin-top: 15px; display: block; font-size: 1.1em;">Puissance</strong>
+<p style="color: rgba(255,255,255,0.9); font-size: 0.9em; margin: 8px 0 0 0;">Réseaux neuronaux</p>
+</td>
+<td align="center" style="padding: 20px; background: linear-gradient(135deg, #4c1d95 0%, #6d28d9 50%, #8b5cf6 100%); border-radius: 16px; margin: 10px;">
+<img src="exports-cosmic/test-cosmic-mystery.svg" width="180" alt="Cosmic Mystery" style="filter: drop-shadow(0 8px 16px rgba(0,0,0,0.3));">
+<br/><strong style="color: white; margin-top: 15px; display: block; font-size: 1.1em;">Mystère</strong>
+<p style="color: rgba(255,255,255,0.9); font-size: 0.9em; margin: 8px 0 0 0;">Cristaux centraux</p>
+</td>
+<td align="center" style="padding: 20px; background: linear-gradient(135deg, #065f46 0%, #059669 50%, #10b981 100%); border-radius: 16px; margin: 10px;">
+<img src="exports-cosmic/test-cosmic-awakening.svg" width="180" alt="Cosmic Awakening" style="filter: drop-shadow(0 8px 16px rgba(0,0,0,0.3));">
+<br/><strong style="color: white; margin-top: 15px; display: block; font-size: 1.1em;">Éveil</strong>
+<p style="color: rgba(255,255,255,0.9); font-size: 0.9em; margin: 8px 0 0 0;">Dégradés fluides</p>
+</td>
+<td align="center" style="padding: 20px; background: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #60a5fa 100%); border-radius: 16px; margin: 10px;">
+<img src="exports-cosmic/test-cosmic-creative.svg" width="180" alt="Cosmic Creative" style="filter: drop-shadow(0 8px 16px rgba(0,0,0,0.3));">
+<br/><strong style="color: white; margin-top: 15px; display: block; font-size: 1.1em;">Créative</strong>
+<p style="color: rgba(255,255,255,0.9); font-size: 0.9em; margin: 8px 0 0 0;">Particules cosmiques</p>
+</td>
+</tr>
+</table>
+
+**Format** : SVG vectoriel haute qualité  
+**Performance** : ~5ms par génération  
+**Style** : Sphères cosmiques avec réseaux neuronaux intégrés
+
+</div>
 
 ## Installation
 
