@@ -57,9 +57,15 @@ jobs:
           echo "   ❌ Format avec scope non reconnu"
         fi
         
-        # Accepter les titres de merge et de maintenance
-        if [[ "$PR_TITLE" =~ ^(Merge|merge|Update|update|Sync|sync|Release|release) ]]; then
+        # Accepter les titres de merge, maintenance et synchronisation
+        if [[ "$PR_TITLE" =~ ^(Merge|merge|Update|update|Sync|sync|Release|release|Develop|develop|Main|main|Chore|chore) ]]; then
           echo "✅ Titre de PR de maintenance accepté: $PR_TITLE"
+          exit 0
+        fi
+        
+        # Accepter les titres courts pour synchronisation de branches
+        if [[ "$PR_TITLE" =~ ^(develop|main|master|staging|production)$ ]]; then
+          echo "✅ Titre de PR de synchronisation accepté: $PR_TITLE"
           exit 0
         fi
         
