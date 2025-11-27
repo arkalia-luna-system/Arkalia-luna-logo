@@ -15,22 +15,22 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v5
 
-    - name: Validate PR Title
-      run: |
-        # Vérifier que le titre du PR suit les conventions
-        PR_TITLE="${{ github.event.pull_request.title }}"
-        BRANCH_NAME="${{ github.head_ref }}"
-        
-        echo "🔍 Validation du titre de PR: '$PR_TITLE'"
-        echo "📏 Longueur du titre: ${#PR_TITLE}"
-        
-        # Accepter automatiquement les PRs Dependabot (pas de validation du titre)
-        if [[ "$BRANCH_NAME" =~ ^dependabot/ ]]; then
-          echo "✅ PR Dependabot détectée - Titre accepté automatiquement: $PR_TITLE"
-          exit 0
-        fi
-        
-        # Validation stricte des titres de PR
+      - name: Validate PR Title
+        run: |
+          # Vérifier que le titre du PR suit les conventions
+          PR_TITLE="${{ github.event.pull_request.title }}"
+          BRANCH_NAME="${{ github.head_ref }}"
+
+          echo "🔍 Validation du titre de PR: '$PR_TITLE'"
+          echo "📏 Longueur du titre: ${#PR_TITLE}"
+
+          # Accepter automatiquement les PRs Dependabot
+          if [[ "$BRANCH_NAME" =~ ^dependabot/ ]]; then
+            echo "✅ PR Dependabot détectée - Titre accepté: $PR_TITLE"
+            exit 0
+          fi
+
+          # Validation stricte des titres de PR
           # Format 1: type: description (sans scope)
           # Format 2: type(scope): description (avec scope)
 
@@ -50,10 +50,11 @@ jobs:
           fi
 
           # Vérifier si c'est un format avec scope
-          if [[ "$PR_TITLE" =~ ^(feat|fix|docs|style|refactor|test|chore|perf|ci|build|revert)\([a-z_-]+\): ]]; then
+          TYPES="feat|fix|docs|style|refactor|test|chore|perf|ci|build|revert"
+          if [[ "$PR_TITLE" =~ ^($TYPES)\([a-z_-]+\): ]]; then
             echo "   ✅ Format avec scope détecté"
             # Vérifier qu'il y a une description après les deux-points
-            if [[ "$PR_TITLE" =~ ^(feat|fix|docs|style|refactor|test|chore|perf|ci|build|revert)\([a-z_-]+\):[[:space:]] ]]; then
+            if [[ "$PR_TITLE" =~ ^($TYPES)\([a-z_-]+\):[[:space:]] ]]; then
               echo "   ✅ Espace après deux-points détecté"
               echo "✅ Titre de PR valide (avec scope): $PR_TITLE"
               exit 0
@@ -65,7 +66,9 @@ jobs:
           fi
 
           # Accepter les titres de merge, maintenance et synchronisation
-          if [[ "$PR_TITLE" =~ ^(Merge|merge|Update|update|Sync|sync|Release|release|Develop|develop|Main|main|Chore|chore) ]]; then
+          MAINT_TITLES="Merge|merge|Update|update|Sync|sync|Release|release"
+          MAINT_TITLES="$MAINT_TITLES|Develop|develop|Main|main|Chore|chore"
+          if [[ "$PR_TITLE" =~ ^($MAINT_TITLES) ]]; then
             echo "✅ Titre de PR de maintenance accepté: $PR_TITLE"
             exit 0
           fi
@@ -120,8 +123,11 @@ jobs:
       - name: Validate Commit Messages
         run: |
           # Vérifier que les commits suivent les conventions
-          git log --oneline ${{ github.event.pull_request.base.sha }}..${{ github.event.pull_request.head.sha }} | while read commit; do
-            if [[ ! "$commit" =~ ^[a-f0-9]{7}\ (feat|fix|docs|style|refactor|test|chore|perf|ci|build|revert)(\(.+\))?: ]]; then
+          BASE_SHA="${{ github.event.pull_request.base.sha }}"
+          HEAD_SHA="${{ github.event.pull_request.head.sha }}"
+          COMMIT_TYPES="feat|fix|docs|style|refactor|test|chore|perf|ci|build|revert"
+          git log --oneline "$BASE_SHA".."$HEAD_SHA" | while read commit; do
+            if [[ ! "$commit" =~ ^[a-f0-9]{7}\ ($COMMIT_TYPES)(\(.+\))?: ]]; then
               echo "❌ Commit invalide: $commit"
               echo "Format attendu: type(scope): description"
               exit 1
@@ -144,7 +150,7 @@ jobs:
           BRANCH_NAME="${{ github.ref_name }}"
           echo "🔍 Validation de la branche: $BRANCH_NAME"
 
-          # Accepter les branches Dependabot (mises à jour automatiques de dépendances)
+          # Accepter les branches Dependabot
           if [[ "$BRANCH_NAME" =~ ^dependabot/ ]]; then
             echo "✅ Branche Dependabot acceptée: $BRANCH_NAME"
             exit 0
@@ -157,7 +163,8 @@ jobs:
           fi
 
           # Validation des autres branches selon les conventions
-          if [[ ! "$BRANCH_NAME" =~ ^(feature|bugfix|hotfix|release|docs|refactor)/[a-z0-9-]+$ ]]; then
+          BRANCH_PATTERN="^(feature|bugfix|hotfix|release|docs|refactor)/[a-z0-9-]+$"
+          if [[ ! "$BRANCH_NAME" =~ $BRANCH_PATTERN ]]; then
             echo "❌ Nom de branche invalide: $BRANCH_NAME"
             echo "Format attendu: type/description (ex: feature/new-logo-style)"
             echo "Ou branche Dependabot pour mises à jour automatiques"
