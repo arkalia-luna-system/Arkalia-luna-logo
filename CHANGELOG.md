@@ -18,7 +18,22 @@ Le format est basé sur [Keep a Changelog](https://keepachangelog.com/fr/1.0.0/)
 
 </div>
 
-## [2.0.0] - 2025-11-11
+## [2.0.0] - 2025-11-27
+
+### 🎯 **Utilisation pour Arkalia CIA**
+
+Ce générateur a été utilisé pour créer tous les assets Play Store de **Arkalia CIA**, une application mobile de santé qui sera publiée sur Google Play Console pour tests utilisateurs.
+
+**Assets générés :**
+- ✅ Feature Graphic (1024x500) avec logo Ultimate Serenity rouge et fond dégradé rouge/rose
+- ✅ Icône application (512x512) : Logo Ultimate Serenity rouge converti en PNG
+- ✅ 8 screenshots optimisés automatiquement (885x1920 pixels, JPEG)
+- ✅ Tous les fichiers conformes aux spécifications Play Store
+
+**Fichiers créés :**
+- `playstore-assets/feature-graphic.png` - Bannière principale
+- `playstore-assets/icon-512-red.png` - Icône application
+- `playstore-assets/playstore-*.jpeg` - Screenshots optimisés
 
 ### 🚀 **Ajouté**
 - **Générateur ULTIME** : Nouveau style cosmique ultra-réaliste avec 100+ stops de gradients

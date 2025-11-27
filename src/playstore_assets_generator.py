@@ -178,19 +178,42 @@ class PlayStoreAssetsGenerator:
         """
         self.logger.info("🎨 Génération de la Feature Graphic (1024x500)...")
 
-        # Créer l'image de base
-        bg_color = background_color or self.ARKALIA_WHITE
-        img = Image.new("RGB", self.FEATURE_GRAPHIC_SIZE, bg_color)
+        # Créer l'image avec un fond dégradé moderne rouge/rose
+        img = Image.new("RGB", self.FEATURE_GRAPHIC_SIZE, (255, 255, 255))
         draw = ImageDraw.Draw(img)
+
+        # Fond dégradé rouge/rose élégant pour app santé (dégradé plus prononcé)
+        if background_color and background_color.upper() not in (
+            "#FFFFFF",
+            "#FFF",
+            "WHITE",
+        ):
+            # Convertir hex en RGB
+            hex_color = background_color.lstrip("#")
+            bg_color = tuple(int(hex_color[i : i + 2], 16) for i in (0, 2, 4))
+            img = Image.new("RGB", self.FEATURE_GRAPHIC_SIZE, bg_color)
+            draw = ImageDraw.Draw(img)
+        else:
+            # Dégradé plus prononcé : du rouge très foncé (#991B1B) au rose très clair (#FEE2E2)
+            for y in range(self.FEATURE_GRAPHIC_SIZE[1]):
+                ratio = y / self.FEATURE_GRAPHIC_SIZE[1]
+                # Dégradé plus marqué avec courbe exponentielle pour effet plus doux
+                eased_ratio = (
+                    ratio * ratio
+                )  # Courbe quadratique pour dégradé plus naturel
+                r = int(153 + (254 - 153) * eased_ratio)  # 153 (#99) -> 254 (#FE)
+                g = int(27 + (226 - 27) * eased_ratio)  # 27 (#1B) -> 226 (#E2)
+                b = int(27 + (226 - 27) * eased_ratio)  # 27 (#1B) -> 226 (#E2)
+                draw.line([(0, y), (self.FEATURE_GRAPHIC_SIZE[0], y)], fill=(r, g, b))
 
         # Charger le logo (taille adaptée pour la bannière)
         logo_size = (400, 400)  # Logo centré, taille raisonnable
         logo_img = self._load_logo(logo_size)
 
         if logo_img:
-            # Centrer le logo horizontalement et verticalement
+            # Centrer le logo horizontalement et verticalement (remonté)
             logo_x = (self.FEATURE_GRAPHIC_SIZE[0] - logo_img.width) // 2
-            logo_y = (self.FEATURE_GRAPHIC_SIZE[1] - logo_img.height) // 2 - 30
+            logo_y = (self.FEATURE_GRAPHIC_SIZE[1] - logo_img.height) // 2 - 60
 
             # Coller le logo
             if logo_img.mode == "RGBA":
@@ -198,9 +221,9 @@ class PlayStoreAssetsGenerator:
             else:
                 img.paste(logo_img, (logo_x, logo_y))
 
-        # Ajouter le texte "Assistant Santé Personnel"
+        # Ajouter le texte "Assistant Santé Personnel" avec style amélioré
         try:
-            font_size = 48
+            font_size = 56  # Texte plus grand
             try:
                 font = ImageFont.truetype(
                     "/System/Library/Fonts/Helvetica.ttc", font_size
@@ -221,18 +244,29 @@ class PlayStoreAssetsGenerator:
         text_width = bbox[2] - bbox[0]
         text_height = bbox[3] - bbox[1]
 
-        # Positionner le texte sous le logo
+        # Positionner le texte sous le logo (remonté pour éviter d'être coupé)
         text_x = (self.FEATURE_GRAPHIC_SIZE[0] - text_width) // 2
-        text_y = (
-            (self.FEATURE_GRAPHIC_SIZE[1] - text_height) // 2 + logo_size[1] // 2 + 20
-            if logo_img
-            else (self.FEATURE_GRAPHIC_SIZE[1] - text_height) // 2
+        if logo_img:
+            # Positionner le texte plus haut, en laissant de la marge en bas
+            text_y = logo_y + logo_img.height + 20  # 20px d'espacement après le logo
+            # S'assurer que le texte n'est pas coupé en bas (marge de sécurité)
+            max_y = self.FEATURE_GRAPHIC_SIZE[1] - text_height - 20
+            text_y = int(min(text_y, max_y))
+        else:
+            text_y = int((self.FEATURE_GRAPHIC_SIZE[1] - text_height) // 2)
+
+        # Ombre portée pour le texte (effet moderne et lisible)
+        shadow_offset = 3
+        # Dessiner l'ombre en gris foncé
+        draw.text(
+            (text_x + shadow_offset, text_y + shadow_offset),
+            text,
+            fill=(50, 50, 50),  # Gris foncé pour ombre
+            font=font,
         )
 
-        # Couleur du texte selon le fond
-        text_color = (
-            self.ARKALIA_BLUE if bg_color == self.ARKALIA_WHITE else self.ARKALIA_WHITE
-        )
+        # Texte principal en blanc pour contraste avec fond rouge
+        text_color = (255, 255, 255)  # Blanc pour contraste maximal
         draw.text((text_x, text_y), text, fill=text_color, font=font)
 
         # Sauvegarder

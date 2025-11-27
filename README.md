@@ -29,6 +29,8 @@
 
 Arkalia-LUNA Logo Generator combine **génération vectorielle ultra-rapide** et **intelligence artificielle avancée** pour créer des logos de qualité professionnelle.
 
+**🎯 Utilisation principale :** Ce projet génère automatiquement les logos et assets Play Store pour **Arkalia CIA**, une application mobile de santé qui sera publiée sur Google Play Console pour tests utilisateurs.
+
 </div>
 
 ### Ce qui rend ce projet unique

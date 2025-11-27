@@ -2,6 +2,15 @@
 
 Ce guide explique comment utiliser le générateur d'assets Play Store pour créer automatiquement tous les fichiers nécessaires à la publication sur Google Play Store.
 
+## 🎯 Utilisation pour Arkalia CIA
+
+Ce générateur a été développé et utilisé pour créer tous les assets Play Store de **Arkalia CIA**, une application mobile de santé qui sera publiée sur Google Play Console pour tests utilisateurs.
+
+**Résultat :** Tous les assets nécessaires ont été générés avec succès :
+- Feature Graphic (1024x500) avec logo Ultimate Serenity rouge
+- Icône application (512x512) en version rouge
+- 8 screenshots optimisés automatiquement
+
 ## 🎯 Assets Générés
 
 Le générateur crée automatiquement :
