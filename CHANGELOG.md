@@ -29,6 +29,8 @@ Le format est basé sur [Keep a Changelog](https://keepachangelog.com/fr/1.0.0/)
 - **Tests complets** : Couverture de code 75% (objectif 90%) avec pytest ✅ **MIS À JOUR**
 - **Documentation API** : Documentation complète de l'API Python
 - **Configuration pyproject.toml** : Configuration moderne avec setuptools
+- **Générateur d'assets Play Store** : Module automatique pour générer Feature Graphic (1024x500) et optimiser les screenshots pour Google Play Store
+- **Commande CLI playstore** : Nouvelle commande `playstore` pour générer tous les assets nécessaires à la publication
 
 ### 🔧 **Modifié**
 - **Architecture** : Refactoring complet vers une architecture modulaire

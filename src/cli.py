@@ -339,6 +339,100 @@ def stats(ctx: Context) -> None:
 
 
 @cli.command()
+@click.option(
+    "--logo",
+    type=click.Path(exists=True, path_type=Path),
+    help="Chemin vers le logo SVG/PNG Arkalia CIA",
+)
+@click.option(
+    "--screenshots-dir",
+    type=click.Path(exists=True, path_type=Path),
+    default=Path("docs/screenshots/android"),
+    help="Répertoire contenant les screenshots source",
+)
+@click.option(
+    "--output-dir",
+    type=click.Path(path_type=Path),
+    default=Path("playstore-assets"),
+    help="Répertoire de sortie pour les assets",
+)
+@click.option(
+    "--feature-only",
+    is_flag=True,
+    help="Générer uniquement la feature graphic",
+)
+@click.option(
+    "--screenshots-only",
+    is_flag=True,
+    help="Optimiser uniquement les screenshots",
+)
+@click.option(
+    "--bg-color",
+    default="#FFFFFF",
+    help="Couleur de fond pour la feature graphic (hex)",
+)
+def playstore(
+    logo: Optional[Path],
+    screenshots_dir: Path,
+    output_dir: Path,
+    feature_only: bool,
+    screenshots_only: bool,
+    bg_color: str,
+) -> None:
+    """Génère les assets nécessaires pour Google Play Store"""
+    try:
+        from .playstore_assets_generator import PlayStoreAssetsGenerator
+
+        console.print("[bold blue]📱 Génération des assets Play Store...[/bold blue]")
+
+        generator = PlayStoreAssetsGenerator(
+            output_dir=output_dir,
+            logo_path=logo,
+            screenshots_dir=screenshots_dir,
+        )
+
+        # Générer selon les options
+        generate_feature = not screenshots_only
+        generate_screenshots = not feature_only
+
+        assets = generator.generate_all_assets(
+            feature_graphic=generate_feature,
+            screenshots=generate_screenshots,
+            background_color=bg_color,
+        )
+
+        # Afficher le résumé
+        table = Table(
+            title="Assets générés", show_header=True, header_style="bold blue"
+        )
+        table.add_column("Type", style="cyan")
+        table.add_column("Fichier", style="green")
+
+        if assets["feature_graphic"]:
+            table.add_row("Feature Graphic", assets["feature_graphic"])
+
+        for screenshot in assets["screenshots"]:
+            table.add_row("Screenshot", screenshot)
+
+        console.print(table)
+
+        if assets["feature_graphic"] or assets["screenshots"]:
+            print_success(f"Assets générés dans : {assets['output_dir']}")
+        else:
+            print_error("Aucun asset généré. Vérifiez les chemins et options.")
+
+    except ImportError as e:
+        print_error(f"Module requis manquant : {e}")
+        console.print(
+            "[yellow]Installez les dépendances avec : pip install pillow cairosvg[/yellow]"
+        )
+        sys.exit(1)
+    except Exception as e:
+        print_error(f"Impossible de générer les assets : {e}")
+        sys.exit(1)
+
+
+@cli.command()
 @click.option("--confirm", is_flag=True, help="Confirmation automatique")
 @click.pass_context
 def clean(ctx: Context, confirm: bool) -> None:
