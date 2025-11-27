@@ -104,8 +104,8 @@ jobs:
             exit 0
           fi
 
-          # Accepter les branches principales (main, develop)
-          if [[ "$BRANCH_NAME" =~ ^(main|develop)$ ]]; then
+          # Accepter les branches principales (main, develop, backup)
+          if [[ "$BRANCH_NAME" =~ ^(main|develop|backup)$ ]]; then
             echo "✅ Branche principale acceptée: $BRANCH_NAME"
             exit 0
           fi
@@ -115,7 +115,7 @@ jobs:
             echo "❌ Nom de branche invalide: $BRANCH_NAME"
             echo "Format attendu: type/description (ex: feature/new-logo-style)"
             echo "Ou branche Dependabot pour mises à jour automatiques"
-            echo "Ou branche principale (main, develop)"
+            echo "Ou branche principale (main, develop, backup)"
             exit 1
           fi
           echo "✅ Nom de branche valide: $BRANCH_NAME"
@@ -156,8 +156,8 @@ jobs:
             exit 0
           fi
 
-          # Accepter les branches principales (main, develop)
-          if [[ "$BRANCH_NAME" =~ ^(main|develop)$ ]]; then
+          # Accepter les branches principales (main, develop, backup)
+          if [[ "$BRANCH_NAME" =~ ^(main|develop|backup)$ ]]; then
             echo "✅ Branche principale acceptée: $BRANCH_NAME"
             exit 0
           fi
@@ -168,7 +168,7 @@ jobs:
             echo "❌ Nom de branche invalide: $BRANCH_NAME"
             echo "Format attendu: type/description (ex: feature/new-logo-style)"
             echo "Ou branche Dependabot pour mises à jour automatiques"
-            echo "Ou branche principale (main, develop)"
+            echo "Ou branche principale (main, develop, backup)"
             exit 1
           fi
           echo "✅ Nom de branche valide: $BRANCH_NAME"
