@@ -242,10 +242,13 @@ class BBIABrandingGenerator(ArkaliaLunaLogo):
                 animate_transform = ET.SubElement(head_group, "animateTransform")
                 animate_transform.set("attributeName", "transform")
                 animate_transform.set("type", "rotate")
-                animate_transform.set(
-                    "values",
-                    f"{base_rotation} 250 250;{base_rotation + 10} 250 250;{base_rotation - 10} 250 250;{base_rotation} 250 250",
+                values_str = (
+                    f"{base_rotation} 250 250;"
+                    f"{base_rotation + 10} 250 250;"
+                    f"{base_rotation - 10} 250 250;"
+                    f"{base_rotation} 250 250"
                 )
+                animate_transform.set("values", values_str)
                 animate_transform.set("dur", f"{3 / emotion_variant.animation_speed}s")
                 animate_transform.set("repeatCount", "indefinite")
 
