@@ -207,7 +207,7 @@ class AILogoGenerator(ArkaliaLunaLogo):
             "",
             "3. Réinstaller dans un environnement propre:",
             "   python -m venv new_env",
-            "   source new_env/bin/activate  # ou new_env\\Scripts\\activate sur Windows",
+            "   source new_env/bin/activate  # Windows: new_env\\Scripts\\activate",
             "   pip install diffusers torch transformers",
         ]
 
