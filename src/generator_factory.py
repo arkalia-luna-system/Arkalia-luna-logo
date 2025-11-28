@@ -8,6 +8,7 @@ from typing import Any, ClassVar, Dict, Optional
 from .advanced_logo_generator import AdvancedArkaliaLunaLogo
 from .ai_logo_generator import AILogoGenerator
 from .ai_moon_generator import AIMoonLogoGenerator
+from .bbia_branding_generator import BBIABrandingGenerator
 from .cosmic_logo_generator import CosmicLogoGenerator
 from .dashboard_generator import DashboardLogoGenerator
 from .hyper_ai_generator import HyperAIGenerator
@@ -16,11 +17,6 @@ from .realism_max_generator import RealismMaxLogoGenerator
 from .simple_advanced_generator import SimpleAdvancedLogoGenerator
 from .ultimate_generator import UltimateLogoGenerator
 from .ultra_max_generator import UltraMaxLogoGenerator
-
-# PRÉPARATION INTÉGRATION FUTURE BBIA
-# Décommenter quand /Users/athalia/Desktop/logo bbia/bbia_branding/
-# sera déplacé dans /Volumes/T7/bbia-branding/
-# from .bbia_branding_generator import BBIABrandingGenerator
 
 
 class LogoGeneratorFactory:
@@ -43,9 +39,8 @@ class LogoGeneratorFactory:
         "cosmic": CosmicLogoGenerator,  # 🌌 NOUVEAU : Générateur COSMIQUE
         # 🧠 NOUVEAU : Générateur HYPER-IA avec ComfyUI + SDXL + ControlNet
         "hyper_ai": HyperAIGenerator,
-        # PRÉPARATION INTÉGRATION FUTURE BBIA
-        # 🤖 PRÉPARÉ : Générateur BBIA (à activer quand déplacé dans T7)
-        # "bbia": BBIABrandingGenerator,
+        # 🤖 Générateur BBIA pour Reachy Mini
+        "bbia": BBIABrandingGenerator,
     }
 
     @classmethod
@@ -144,14 +139,13 @@ class LogoGeneratorFactory:
                     "- INTELLIGENCE EXTRÊME"
                 ),
             },
-            # PRÉPARATION INTÉGRATION FUTURE BBIA
-            # "bbia": {
-            #     "name": "BBIA Branding",
-            #     "description": (
-            #         "🤖 Générateur BBIA - Automatisation branding "
-            #         "(à activer quand déplacé dans T7)"
-            #     ),
-            # },
+            "bbia": {
+                "name": "BBIA Branding",
+                "description": (
+                    "🤖 Générateur BBIA - Logos Reachy Mini "
+                    "(mark_only, vertical, horizontal)"
+                ),
+            },
         }
 
     @classmethod

@@ -433,6 +433,139 @@ def playstore(
 
 
 @cli.command()
+@click.option(
+    "--variant",
+    "-v",
+    type=click.Choice(["mark_only", "vertical", "horizontal"]),
+    default="mark_only",
+    help="Type de logo BBIA",
+)
+@click.option("--size", "-s", default=512, help="Taille du logo en pixels")
+@click.option(
+    "--format",
+    "-f",
+    type=click.Choice(["svg", "png", "both"]),
+    default="svg",
+    help="Format de sortie",
+)
+@click.option(
+    "--generator",
+    "-g",
+    default="bbia",
+    help="Type de générateur (utilise 'bbia' pour BBIA)",
+)
+def bbia(variant: str, size: int, format: str, generator: str) -> None:
+    """Génère un logo BBIA pour Reachy Mini"""
+    try:
+        from .generator_factory import LogoGeneratorFactory
+
+        console.print("[bold blue]🤖 Génération logo BBIA...[/bold blue]")
+
+        # Créer le générateur BBIA
+        bbia_generator = LogoGeneratorFactory.create_generator(
+            generator_type="bbia",
+            output_dir=Path("exports") / "bbia",
+        )
+
+        # Générer selon le format
+        generated_files = []
+
+        if format in ("svg", "both"):
+            svg_path = bbia_generator.generate_svg_logo(variant, size)
+            generated_files.append(svg_path)
+            console.print(f"[green]✅[/green] SVG : {svg_path}")
+
+        if format in ("png", "both"):
+            png_path = bbia_generator.generate_png_logo(variant, size)
+            if png_path:
+                generated_files.append(png_path)
+                console.print(f"[green]✅[/green] PNG : {png_path}")
+            else:
+                console.print("[yellow]⚠️[/yellow] PNG non généré (cairosvg requis)")
+
+        # Afficher le résumé
+        if generated_files:
+            console.print("\n[bold green]🎉 Logo BBIA généré ![/bold green]")
+            console.print(f"📁 {len(generated_files)} fichier(s) généré(s)")
+            console.print(f"🎨 Variante : {variant}")
+            console.print(f"📏 Taille : {size}x{size} pixels")
+
+            # Afficher les stats BBIA
+            stats = bbia_generator.get_bbia_stats()
+            console.print(f"\n📊 Statut BBIA : {stats['status']}")
+            console.print(f"📂 Assets : {stats['assets_path']}")
+            console.print(
+                f"✅ Variantes disponibles : {', '.join(stats['available_variants'])}"
+            )
+        else:
+            print_error("Aucun fichier généré")
+
+    except ImportError as e:
+        print_error(f"Module requis manquant : {e}")
+        console.print(
+            "[yellow]Installez les dépendances avec : pip install cairosvg[/yellow]"
+        )
+        sys.exit(1)
+    except Exception as e:
+        print_error(f"Impossible de générer le logo BBIA : {e}")
+        sys.exit(1)
+
+
+@cli.command()
+@click.option(
+    "--sizes", "-s", multiple=True, default=[32, 512, 1024], help="Tailles à générer"
+)
+@click.option(
+    "--formats",
+    "-f",
+    type=click.Choice(["svg", "png", "both"]),
+    default="svg",
+    help="Formats de sortie",
+)
+def bbia_all(sizes: tuple, formats: str) -> None:
+    """Génère toutes les déclinaisons BBIA"""
+    try:
+        from .generator_factory import LogoGeneratorFactory
+
+        console.print(
+            "[bold blue]🤖 Génération de toutes les déclinaisons BBIA...[/bold blue]"
+        )
+
+        # Créer le générateur BBIA
+        bbia_generator = LogoGeneratorFactory.create_generator(
+            generator_type="bbia",
+            output_dir=Path("exports") / "bbia",
+        )
+
+        # Convertir formats
+        format_list = ["svg"]
+        if formats == "png":
+            format_list = ["png"]
+        elif formats == "both":
+            format_list = ["svg", "png"]
+
+        # Générer toutes les déclinaisons
+        generated_files = bbia_generator.generate_all_declinations(
+            sizes=list(sizes), formats=format_list
+        )
+
+        # Afficher le résumé
+        console.print("\n[bold green]🎉 Génération terminée ![/bold green]")
+        console.print(f"📁 {len(generated_files)} fichier(s) généré(s)")
+
+        if generated_files:
+            console.print("\n📋 Fichiers générés :")
+            for file_path in generated_files[:10]:  # Limiter à 10 pour l'affichage
+                console.print(f"  • {file_path.name}")
+            if len(generated_files) > 10:
+                console.print(f"  ... et {len(generated_files) - 10} autres")
+
+    except Exception as e:
+        print_error(f"Impossible de générer les déclinaisons BBIA : {e}")
+        sys.exit(1)
+
+
+@cli.command()
 @click.option("--confirm", is_flag=True, help="Confirmation automatique")
 @click.pass_context
 def clean(ctx: Context, confirm: bool) -> None:

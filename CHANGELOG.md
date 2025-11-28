@@ -18,6 +18,47 @@ Le format est basé sur [Keep a Changelog](https://keepachangelog.com/fr/1.0.0/)
 
 </div>
 
+## [2.1.0] - 2025-11-28
+
+### 🤖 **Intégration BBIA**
+
+**Générateur BBIA pour Reachy Mini** : Intégration complète du générateur de logos BBIA dans le projet.
+
+**Fonctionnalités :**
+- ✅ Génération automatique des logos BBIA (mark_only, vertical, horizontal)
+- ✅ Export multi-formats (SVG, PNG)
+- ✅ Transformation et redimensionnement des SVG sources
+- ✅ Commande CLI dédiée : `python -m src.cli bbia`
+- ✅ Intégration dans la Factory pattern
+- ✅ Tests complets (12 tests, 100% passent)
+- ✅ Respect du style guide BBIA
+
+**Fichiers ajoutés :**
+- `src/bbia_branding_generator.py` - Générateur BBIA complet
+- `assets/bbia/*_SOURCE.svg` - 3 fichiers SVG sources BBIA
+- `tests/test_bbia_generator.py` - Suite de tests complète
+- `docs/AUDIT_BBIA_INTEGRATION.md` - Audit d'intégration
+
+**Commandes CLI :**
+```bash
+# Générer un logo BBIA
+python -m src.cli bbia --variant mark_only --size 512
+
+# Générer toutes les déclinaisons
+python -m src.cli bbia-all --sizes 32 512 1024
+```
+
+### 🚀 **Ajouté**
+- Générateur BBIA intégré dans la Factory
+- Commande CLI `bbia` et `bbia-all`
+- Support multi-formats (SVG, PNG) pour BBIA
+- Tests unitaires complets pour BBIA
+
+### 🔧 **Modifié**
+- `generator_factory.py` : Activation du générateur BBIA
+- `cli.py` : Ajout des commandes BBIA
+- `README.md` : Documentation BBIA ajoutée
+
 ## [2.0.0] - 2025-11-27
 
 ### 🎯 **Utilisation pour Arkalia CIA**

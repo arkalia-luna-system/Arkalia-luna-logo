@@ -29,7 +29,7 @@
 
 Arkalia-LUNA Logo Generator combine **génération vectorielle ultra-rapide** et **intelligence artificielle avancée** pour créer des logos de qualité professionnelle.
 
-**🎯 Utilisation principale :** Ce projet génère automatiquement les logos et assets Play Store pour **Arkalia CIA**, une application mobile de santé qui sera publiée sur Google Play Console pour tests utilisateurs.
+**🎯 Utilisation principale :** Ce projet génère automatiquement les logos et assets Play Store pour **Arkalia CIA**, une application mobile de santé qui sera publiée sur Google Play Console pour tests utilisateurs. Il génère également les logos **BBIA** pour le robot Reachy Mini.
 
 </div>
 
@@ -40,8 +40,8 @@ Arkalia-LUNA Logo Generator combine **génération vectorielle ultra-rapide** et
 <table>
 <tr>
 <td align="center" style="padding: 20px; background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%); border-radius: 12px; border: 2px solid #667eea40;">
-<strong style="font-size: 1.2em; color: #667eea;">🎨 11 Styles Uniques</strong>
-<br/><p style="margin: 10px 0 0 0; color: #666;">8 vectoriels SVG + 3 générateurs IA</p>
+<strong style="font-size: 1.2em; color: #667eea;">🎨 12 Styles Uniques</strong>
+<br/><p style="margin: 10px 0 0 0; color: #666;">8 vectoriels SVG + 3 générateurs IA + 1 BBIA</p>
 </td>
 <td align="center" style="padding: 20px; background: linear-gradient(135deg, #f093fb15 0%, #f5576c15 100%); border-radius: 12px; border: 2px solid #f093fb40;">
 <strong style="font-size: 1.2em; color: #f5576c;">🌙 10 Variantes</strong>
@@ -84,6 +84,9 @@ pip install -e ".[dev]"
 ```bash
 # Générer un logo Ultimate en variante Sérénité
 python -m src.cli generate -v serenity -s 200 -g ultimate
+
+# Générer un logo BBIA (mark_only, vertical, horizontal)
+python -m src.cli bbia --variant mark_only --size 512
 ```
 
 Le logo sera généré dans le dossier `exports/`.
