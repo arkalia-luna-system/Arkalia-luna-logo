@@ -79,17 +79,17 @@ class BBIAVariants:
         self._variants = self._initialize_variants()
 
     def _initialize_variants(self) -> Dict[str, BBIAVariant]:
-        """Initialise toutes les variantes BBIA disponibles"""
+        """Initialise toutes les variantes BBIA disponibles avec palette officielle"""
         return {
             BBIAVariantType.SERENITY.value: BBIAVariant(
                 variant_type=BBIAVariantType.SERENITY,
                 name="🤖 BBIA Sérénité",
-                description="Robot calme, yeux doux, halo bleu apaisant",
+                description="Robot calme, fond bleu apaisant, ondes douces",
                 colors=BBIAColorScheme(
                     primary=BBIA_PALETTE.LOGO_BACKGROUND,  # #008181
                     secondary=BBIA_PALETTE.LOGO_BODY_WHITE,  # #FFFFFF
-                    accent="#60a5fa",  # Blue light
-                    glow="#a5f3fc",  # Cyan soft
+                    accent=BBIA_PALETTE.BRANDING_PRIMARY_BLUE,  # #0066FF - Bleu BBIA officiel
+                    glow=BBIA_PALETTE.BRANDING_BLUE_LIGHT,  # #3399FF - Bleu clair BBIA
                 ),
                 animation_speed=1.0,
                 glow_intensity=0.7,
@@ -99,12 +99,12 @@ class BBIAVariants:
             BBIAVariantType.POWER.value: BBIAVariant(
                 variant_type=BBIAVariantType.POWER,
                 name="⚡ BBIA Puissance",
-                description="Robot énergique, yeux brillants, halo électrique",
+                description="Robot énergique, fond bleu électrique, ondes rapides",
                 colors=BBIAColorScheme(
                     primary=BBIA_PALETTE.LOGO_BACKGROUND,  # #008181
                     secondary=BBIA_PALETTE.LOGO_BODY_WHITE,  # #FFFFFF
-                    accent="#7c3aed",  # Violet
-                    glow="#a855f7",  # Violet clair
+                    accent=BBIA_PALETTE.BRANDING_BLUE_DARK,  # #0052CC - Bleu foncé BBIA
+                    glow=BBIA_PALETTE.BRANDING_PRIMARY_BLUE,  # #0066FF - Bleu BBIA
                 ),
                 animation_speed=1.5,
                 glow_intensity=0.9,
@@ -114,12 +114,12 @@ class BBIAVariants:
             BBIAVariantType.MYSTERY.value: BBIAVariant(
                 variant_type=BBIAVariantType.MYSTERY,
                 name="🔮 BBIA Mystère",
-                description="Robot mystérieux, yeux sombres, halo violet",
+                description="Robot mystérieux, fond gris sombre, ondes irrégulières",
                 colors=BBIAColorScheme(
                     primary=BBIA_PALETTE.LOGO_BACKGROUND,  # #008181
                     secondary=BBIA_PALETTE.LOGO_BODY_WHITE,  # #FFFFFF
-                    accent="#4c1d95",  # Violet sombre
-                    glow="#581c87",  # Violet mystique
+                    accent=BBIA_PALETTE.BRANDING_TERTIARY_GRAY,  # #2C2C2C - Gris BBIA
+                    glow=BBIA_PALETTE.BRANDING_GRAY_DARK,  # #1A1A1A - Gris foncé BBIA
                 ),
                 animation_speed=0.8,
                 glow_intensity=0.6,
@@ -129,12 +129,12 @@ class BBIAVariants:
             BBIAVariantType.AWAKENING.value: BBIAVariant(
                 variant_type=BBIAVariantType.AWAKENING,
                 name="✨ BBIA Éveil",
-                description="Robot éveillé, yeux lumineux, halo doré",
+                description="Robot éveillé, fond bleu lumineux, ondes rayonnantes",
                 colors=BBIAColorScheme(
                     primary=BBIA_PALETTE.LOGO_BACKGROUND,  # #008181
                     secondary=BBIA_PALETTE.LOGO_BODY_WHITE,  # #FFFFFF
-                    accent="#059669",  # Vert émeraude
-                    glow="#10b981",  # Vert clair
+                    accent=BBIA_PALETTE.BRANDING_BLUE_LIGHT,  # #3399FF - Bleu clair BBIA
+                    glow=BBIA_PALETTE.BRANDING_PRIMARY_BLUE,  # #0066FF - Bleu BBIA
                 ),
                 animation_speed=1.2,
                 glow_intensity=0.8,
@@ -144,12 +144,12 @@ class BBIAVariants:
             BBIAVariantType.CREATIVE.value: BBIAVariant(
                 variant_type=BBIAVariantType.CREATIVE,
                 name="🎇 BBIA Créatif",
-                description="Robot créatif, yeux multicolores, halo arc-en-ciel",
+                description="Robot créatif, fond bleu vif, ondes multicolores",
                 colors=BBIAColorScheme(
                     primary=BBIA_PALETTE.LOGO_BACKGROUND,  # #008181
                     secondary=BBIA_PALETTE.LOGO_BODY_WHITE,  # #FFFFFF
-                    accent="#06b6d4",  # Cyan vif
-                    glow="#f59e0b",  # Jaune doré
+                    accent=BBIA_PALETTE.BRANDING_PRIMARY_BLUE,  # #0066FF - Bleu BBIA
+                    glow=BBIA_PALETTE.BRANDING_BLUE_LIGHT,  # #3399FF - Bleu clair BBIA
                 ),
                 animation_speed=2.0,
                 glow_intensity=1.0,
@@ -159,12 +159,12 @@ class BBIAVariants:
             BBIAVariantType.RAINY.value: BBIAVariant(
                 variant_type=BBIAVariantType.RAINY,
                 name="🌧️ BBIA Pluie",
-                description="Robot mélancolique, gouttes sur le visage, halo gris",
+                description="Robot mélancolique, fond gris, ondes lentes",
                 colors=BBIAColorScheme(
                     primary=BBIA_PALETTE.LOGO_BACKGROUND,  # #008181
                     secondary=BBIA_PALETTE.LOGO_BODY_WHITE,  # #FFFFFF
-                    accent="#6b7280",  # Gris moyen
-                    glow="#d1d5db",  # Gris très clair
+                    accent=BBIA_PALETTE.BRANDING_GRAY_LIGHT,  # #E5E5E5 - Gris clair BBIA
+                    glow=BBIA_PALETTE.BRANDING_TERTIARY_GRAY,  # #2C2C2C - Gris BBIA
                 ),
                 animation_speed=0.6,
                 glow_intensity=0.4,
@@ -174,12 +174,12 @@ class BBIAVariants:
             BBIAVariantType.STORMY.value: BBIAVariant(
                 variant_type=BBIAVariantType.STORMY,
                 name="⚡ BBIA Orage",
-                description="Robot colérique, éclairs dans les yeux, halo sombre",
+                description="Robot colérique, fond bleu foncé, ondes électriques",
                 colors=BBIAColorScheme(
                     primary=BBIA_PALETTE.LOGO_BACKGROUND,  # #008181
                     secondary=BBIA_PALETTE.LOGO_BODY_WHITE,  # #FFFFFF
-                    accent="#4c1d95",  # Violet sombre
-                    glow="#7c3aed",  # Violet éclair
+                    accent=BBIA_PALETTE.BRANDING_BLUE_DARK,  # #0052CC - Bleu foncé BBIA
+                    glow=BBIA_PALETTE.BRANDING_PRIMARY_BLUE,  # #0066FF - Bleu BBIA
                 ),
                 animation_speed=3.0,
                 glow_intensity=1.2,
@@ -189,12 +189,12 @@ class BBIAVariants:
             BBIAVariantType.EXPLOSIVE.value: BBIAVariant(
                 variant_type=BBIAVariantType.EXPLOSIVE,
                 name="💥 BBIA Explosif",
-                description="Robot explosif, particules autour, halo rouge",
+                description="Robot explosif, fond bleu intense, ondes radiales",
                 colors=BBIAColorScheme(
                     primary=BBIA_PALETTE.LOGO_BACKGROUND,  # #008181
                     secondary=BBIA_PALETTE.LOGO_BODY_WHITE,  # #FFFFFF
-                    accent="#ea580c",  # Orange vif
-                    glow="#f97316",  # Orange éclatant
+                    accent=BBIA_PALETTE.BRANDING_PRIMARY_BLUE,  # #0066FF - Bleu BBIA
+                    glow=BBIA_PALETTE.BRANDING_BLUE_LIGHT,  # #3399FF - Bleu clair BBIA
                 ),
                 animation_speed=2.5,
                 glow_intensity=1.5,
@@ -204,12 +204,12 @@ class BBIAVariants:
             BBIAVariantType.SUNNY.value: BBIAVariant(
                 variant_type=BBIAVariantType.SUNNY,
                 name="☀️ BBIA Ensoleillé",
-                description="Robot joyeux, rayons de soleil, halo jaune",
+                description="Robot joyeux, fond bleu clair, ondes lumineuses",
                 colors=BBIAColorScheme(
                     primary=BBIA_PALETTE.LOGO_BACKGROUND,  # #008181
                     secondary=BBIA_PALETTE.LOGO_BODY_WHITE,  # #FFFFFF
-                    accent="#f97316",  # Orange chaud
-                    glow="#fef3c7",  # Jaune très clair
+                    accent=BBIA_PALETTE.BRANDING_BLUE_LIGHT,  # #3399FF - Bleu clair BBIA
+                    glow=BBIA_PALETTE.BRANDING_PRIMARY_BLUE,  # #0066FF - Bleu BBIA
                 ),
                 animation_speed=1.8,
                 glow_intensity=1.1,
@@ -219,12 +219,12 @@ class BBIAVariants:
             BBIAVariantType.SNOWY.value: BBIAVariant(
                 variant_type=BBIAVariantType.SNOWY,
                 name="❄️ BBIA Neige",
-                description="Robot serein, flocons autour, halo blanc",
+                description="Robot serein, fond blanc cassé, ondes douces",
                 colors=BBIAColorScheme(
                     primary=BBIA_PALETTE.LOGO_BACKGROUND,  # #008181
                     secondary=BBIA_PALETTE.LOGO_BODY_WHITE,  # #FFFFFF
-                    accent="#e2e8f0",  # Gris très clair
-                    glow="#f1f5f9",  # Blanc cassé
+                    accent=BBIA_PALETTE.BRANDING_WHITE_OFF,  # #FAFAFA - Blanc cassé BBIA
+                    glow=BBIA_PALETTE.BRANDING_GRAY_LIGHT,  # #E5E5E5 - Gris clair BBIA
                 ),
                 animation_speed=0.4,
                 glow_intensity=0.5,

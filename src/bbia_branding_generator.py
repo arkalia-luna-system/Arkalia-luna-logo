@@ -188,10 +188,9 @@ class BBIABrandingGenerator(ArkaliaLunaLogo):
             # 1. Remplacer toutes les occurrences de #008181 par la couleur accent de la variante
             modified_svg = re.sub(r"#008181", bg_color, svg_content)
 
-            # 2. Remplacer les yeux #cccccc par la couleur glow
-            modified_svg = re.sub(
-                r"#cccccc", eye_color, modified_svg, flags=re.IGNORECASE
-            )
+            # 2. NE PAS modifier les yeux transparents (#cccccc) - ils restent gris transparents
+            # Les yeux sont identifiés par leur label "cou" et leur couleur #cccccc
+            # On les préserve pour garder l'identité visuelle du robot
 
             # 3. Maintenant parser pour ajouter les filtres et animations
             root = ET.fromstring(modified_svg)
@@ -226,30 +225,66 @@ class BBIABrandingGenerator(ArkaliaLunaLogo):
 
             defs.append(filter_elem)
 
-            # 4. Appliquer le filtre aux yeux et ajouter animations
-            for elem in root.iter():
-                style = elem.get("style", "")
-                fill_attr = elem.get("fill", "")
+            # 4. Ajouter effets uniques : ondes de parole (comme ChatGPT)
+            # Créer des ondes sonores animées autour du robot
+            center = 512  # Taille par défaut, sera ajustée selon le viewBox
+            viewbox = root.get("viewBox", "0 0 1024 1024")
+            if viewbox:
+                try:
+                    parts = viewbox.split()
+                    if len(parts) == 4:
+                        center = int((float(parts[2]) + float(parts[3])) / 4)
+                except (ValueError, IndexError):
+                    pass
 
-                # Si c'est un œil (contient la couleur glow maintenant)
-                if eye_color in style or eye_color in fill_attr:
-                    # Ajouter le filtre si pas déjà présent
-                    if style and "filter:" not in style:
-                        elem.set("style", f"{style};filter:url(#{filter_id})")
-                    elif not style and fill_attr:
-                        elem.set("filter", f"url(#{filter_id})")
+            # Groupe pour les ondes de parole
+            speech_waves_group = ET.Element("g")
+            speech_waves_group.set(
+                "id", f"speech-waves-{emotion_variant.variant_type.value}"
+            )
 
-                    # Animation de pulsation pour les yeux
-                    has_animate = any(child.tag.endswith("animate") for child in elem)
-                    if not has_animate:
-                        animate = ET.SubElement(elem, "animate")
-                        animate.set("attributeName", "opacity")
-                        animate.set(
-                            "values",
-                            f"{0.7 * emotion_variant.glow_intensity};{1.0 * emotion_variant.glow_intensity};{0.7 * emotion_variant.glow_intensity}",
-                        )
-                        animate.set("dur", f"{2 / emotion_variant.animation_speed}s")
-                        animate.set("repeatCount", "indefinite")
+            # Créer 3-5 ondes concentriques animées (effet "parole")
+            num_waves = 5
+            base_radius = center * 0.4
+            for i in range(num_waves):
+                wave = ET.Element("circle")
+                wave.set("cx", str(center))
+                wave.set("cy", str(center))
+                wave.set("r", str(base_radius + i * 15))
+                wave.set("fill", "none")
+                wave.set("stroke", emotion_variant.colors.accent)
+                wave.set("stroke-width", "2")
+                wave.set("opacity", str(0.3 - i * 0.05))
+
+                # Animation de pulsation (onde qui s'étend)
+                animate_radius = ET.SubElement(wave, "animate")
+                animate_radius.set("attributeName", "r")
+                animate_radius.set(
+                    "values",
+                    f"{base_radius + i * 15};{base_radius + i * 15 + 20};{base_radius + i * 15}",
+                )
+                animate_radius.set("dur", f"{1.5 / emotion_variant.animation_speed}s")
+                animate_radius.set("begin", f"{i * 0.2}s")
+                animate_radius.set("repeatCount", "indefinite")
+
+                # Animation d'opacité
+                animate_opacity = ET.SubElement(wave, "animate")
+                animate_opacity.set("attributeName", "opacity")
+                animate_opacity.set(
+                    "values",
+                    f"{0.3 - i * 0.05};{0.6 - i * 0.05};{0.3 - i * 0.05}",
+                )
+                animate_opacity.set("dur", f"{1.5 / emotion_variant.animation_speed}s")
+                animate_opacity.set("begin", f"{i * 0.2}s")
+                animate_opacity.set("repeatCount", "indefinite")
+
+                speech_waves_group.append(wave)
+
+            # Insérer les ondes de parole au début (derrière le logo)
+            if len(root) > 0:
+                root.insert(0, speech_waves_group)
+            else:
+                root.append(speech_waves_group)
 
             return ET.tostring(root, encoding="unicode")
         except Exception as e:
