@@ -967,6 +967,106 @@ def quest_banners(
 
 
 @cli.command()
+@click.option(
+    "--type",
+    "-t",
+    type=click.Choice(["mission", "achievement", "level", "emotion", "all"]),
+    default="all",
+    help="Type de badge à générer",
+)
+@click.option(
+    "--size",
+    "-s",
+    type=int,
+    default=None,
+    help="Taille du badge (défaut: toutes les tailles)",
+)
+@click.option(
+    "--variant",
+    "-v",
+    type=str,
+    default="serenity",
+    help="Variante émotionnelle (serenity, power, mystery, etc.)",
+)
+@click.option(
+    "--text",
+    type=str,
+    default=None,
+    help="Texte personnalisé pour le badge",
+)
+@click.option(
+    "--level",
+    type=int,
+    default=None,
+    help="Niveau (pour badge niveau)",
+)
+@click.option(
+    "--stars",
+    type=int,
+    default=0,
+    help="Nombre d'étoiles (pour badge achievement)",
+)
+def quest_badges(
+    type: str,
+    size: Optional[int],
+    variant: str,
+    text: Optional[str],
+    level: Optional[int],
+    stars: int,
+) -> None:
+    """Génère les badges de gamification Quest"""
+    try:
+        from .quest_badge_generator import QuestBadgeGenerator
+
+        console.print(
+            f"[bold blue]🏆 Génération badges Quest "
+            f"(type: {type}, variant: {variant})...[/bold blue]"
+        )
+
+        badge_generator = QuestBadgeGenerator(
+            output_dir=Path("exports") / "quest" / "badges"
+        )
+
+        if type == "all":
+            generated_badges = badge_generator.generate_all_badges(variant=variant)
+        else:
+            if size is None:
+                # Générer toutes les tailles pour ce type
+                generated_badges = badge_generator.generate_all_badges(
+                    variant=variant, badge_type=type
+                )
+            else:
+                badge_path = badge_generator.generate_badge(
+                    badge_type=type,
+                    size=size,
+                    variant=variant,
+                    text=text,
+                    level=level,
+                    stars=stars,
+                )
+                generated_badges = [badge_path]
+
+        if generated_badges:
+            print_success(f"{len(generated_badges)} badge(s) généré(s)")
+            for badge_path in generated_badges[:10]:  # Limiter affichage
+                console.print(f"  ✅ {badge_path.name}")
+            if len(generated_badges) > 10:
+                console.print(f"  ... et {len(generated_badges) - 10} autres")
+        else:
+            print_error("Aucun badge généré")
+
+    except ImportError as e:
+        print_error(f"Module requis manquant : {e}")
+        console.print(
+            "[yellow]Installez les dépendances avec : pip install svgwrite[/yellow]"
+        )
+        sys.exit(1)
+    except Exception as e:
+        print_error(f"Impossible de générer les badges : {e}")
+        sys.exit(1)
+
+
+@cli.command()
 @click.option("--confirm", is_flag=True, help="Confirmation automatique")
 @click.pass_context
 def clean(ctx: Context, confirm: bool) -> None:

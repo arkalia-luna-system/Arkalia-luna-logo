@@ -15,10 +15,19 @@
 - ✅ Variantes émotionnelles de base
 - ✅ Builder SVG Quest spécialisé
 
-### Phase 2 en cours
+### Phase 2 terminée
 
-- 📋 Bannières (12 bannières)
-- 📋 Badges de gamification (120 badges)
+- ✅ Bannières (6 types de bannières)
+- ✅ CLI quest-banners fonctionnel
+
+### Phase 3 terminée
+
+- ✅ Badges de gamification (4 types : mission, achievement, level, emotion)
+- ✅ CLI quest-badges fonctionnel
+- ✅ Support toutes tailles et variantes
+
+### Phase 4 en cours
+
 - 📋 Éléments UI (80 éléments)
 
 ---
