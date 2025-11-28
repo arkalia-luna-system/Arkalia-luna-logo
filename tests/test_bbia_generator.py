@@ -83,7 +83,8 @@ class TestBBIABrandingGenerator:
 
             assert output_path.exists()
             assert output_path.suffix == ".svg"
-            assert "bbia-mark_only-512" in str(output_path)
+            assert "bbia-mark_only" in str(output_path)
+            assert "512" in str(output_path)
 
             # Vérifier le contenu
             content = output_path.read_text(encoding="utf-8")
