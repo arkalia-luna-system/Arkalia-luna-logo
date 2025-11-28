@@ -88,7 +88,8 @@ class BBIAVariants:
                 colors=BBIAColorScheme(
                     primary=BBIA_PALETTE.LOGO_BACKGROUND,  # #008181
                     secondary=BBIA_PALETTE.LOGO_BODY_WHITE,  # #FFFFFF
-                    accent=BBIA_PALETTE.BRANDING_PRIMARY_BLUE,  # #0066FF - Bleu BBIA officiel
+                    # #0066FF - Bleu BBIA officiel
+                    accent=BBIA_PALETTE.BRANDING_PRIMARY_BLUE,
                     glow=BBIA_PALETTE.BRANDING_BLUE_LIGHT,  # #3399FF - Bleu clair BBIA
                 ),
                 animation_speed=1.0,

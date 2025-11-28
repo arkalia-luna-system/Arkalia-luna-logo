@@ -224,7 +224,7 @@
 | **Phase 2** | Bannières Quest | 2-3h | 🔴 **HAUTE** | ✅ **TERMINÉ** |
 | **Phase 3** | Badges de gamification | 3-4h | 🟡 Moyenne | ✅ **TERMINÉ** |
 | **Phase 4** | Éléments UI Quest | 2-3h | 🟢 Basse | ✅ **TERMINÉ** |
-| **Phase 5** | Documentation | 1-2h | 🟡 Moyenne | ⏳ À faire |
+| **Phase 5** | Documentation | 1-2h | 🟡 Moyenne | ✅ **TERMINÉ** |
 
 **Total estimé** : 11-16 heures
 
