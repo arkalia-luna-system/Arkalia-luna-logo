@@ -238,13 +238,15 @@ class AILogoGenerator(ArkaliaLunaLogo):
                 self._StableDiffusionPipeline = StableDiffusionPipeline
             except ImportError as e:
                 raise ImportError(
-                    "Diffusers n'est pas installé. Installez avec: pip install diffusers"
+                    "Diffusers n'est pas installé. "
+                    "Installez avec: pip install diffusers"
                 ) from e
             except (UnicodeDecodeError, RuntimeError, Exception) as e:
                 # Détection intelligente de l'erreur UTF-8 même si encapsulée
                 if self._detect_utf8_error(e):
-                    # Message discret en mode DEBUG seulement (fallback sera utilisé)
-                    # L'utilisateur verra juste le message de fallback, pas l'erreur technique
+                    # Message discret en mode DEBUG seulement
+                    # (fallback sera utilisé)
+                    # L'utilisateur verra juste le message de fallback
                     error_msg = (
                         "Erreur d'encodage UTF-8 dans diffusers/transformers détectée. "
                         "Fallback SVG activé automatiquement."
@@ -354,7 +356,8 @@ class AILogoGenerator(ArkaliaLunaLogo):
             self.logger.info("✅ Pipeline IA chargé avec succès (optimisé mémoire)")
 
         except (ImportError, RuntimeError) as e:
-            # Les erreurs sont déjà loggées avec détails dans _lazy_import_ai_dependencies
+            # Les erreurs sont déjà loggées avec détails
+            # dans _lazy_import_ai_dependencies
             # Ne logger qu'un message concis ici pour éviter duplication
             if not self._detect_utf8_error(e):
                 # Seulement logger si ce n'est pas une erreur UTF-8 (déjà loggée)
@@ -474,8 +477,10 @@ class AILogoGenerator(ArkaliaLunaLogo):
 
         final_prompt = (
             f"{base_prompt}, {variant_desc}, {style_desc}, "
-            "(centered abstract logo:1.2), (transparent or solid color background:1.1), "
-            "(high quality:1.2), (professional branding:1.2), (corporate identity:1.1), "
+            "(centered abstract logo:1.2), "
+            "(transparent or solid color background:1.1), "
+            "(high quality:1.2), (professional branding:1.2), "
+            "(corporate identity:1.1), "
             "(clean geometric design:1.3), (abstract symbol:1.3), (icon mark:1.2), "
             "(simple design:1.1), (bold shapes:1.1), (clear lines:1.1), "
             "(no text:1.5), (no letters:1.5), (no words:1.5), "
@@ -526,7 +531,10 @@ class AILogoGenerator(ArkaliaLunaLogo):
             return image  # Retourner l'image originale en cas d'erreur
 
     def _validate_generated_logo(self, image: Any) -> bool:
-        """Valide que le logo généré est de bonne qualité (pas trop flou, pas de texte visible)"""
+        """
+        Valide que le logo généré est de bonne qualité
+        (pas trop flou, pas de texte visible)
+        """
         try:
             if not self._Image:
                 return True  # Si PIL n'est pas disponible, on accepte
@@ -582,9 +590,10 @@ class AILogoGenerator(ArkaliaLunaLogo):
             prompt = self._create_prompt(variant_name, generator_style)
             self.logger.info(f"📝 Prompt: {prompt}")
 
-            # Génération de l'image avec paramètres optimisés pour qualité et mémoire
+            # Génération de l'image avec paramètres optimisés
             with self._torch.no_grad():
-                # Paramètres adaptatifs selon la taille pour équilibrer qualité et mémoire
+                # Paramètres adaptatifs selon la taille
+                # pour équilibrer qualité et mémoire
                 # Plus de steps pour meilleure qualité, mais adapté à la RAM disponible
                 if size <= 200:
                     steps = 25  # Augmenté pour meilleure qualité
@@ -596,8 +605,10 @@ class AILogoGenerator(ArkaliaLunaLogo):
                     steps = 45  # Augmenté pour meilleure qualité
                     guidance = 10.0
 
-                # Seed varié par variante pour plus de diversité tout en restant reproductible
-                # Utilisation d'un hash plus sophistiqué pour meilleure distribution
+                # Seed varié par variante pour plus de diversité
+                # tout en restant reproductible
+                # Utilisation d'un hash plus sophistiqué
+                # pour meilleure distribution
                 seed_base = abs(hash(f"{variant_name}_{generator_style}")) % 10000
                 seed = 42 + seed_base
 
