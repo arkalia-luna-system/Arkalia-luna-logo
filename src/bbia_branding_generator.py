@@ -209,7 +209,9 @@ class BBIABrandingGenerator(ArkaliaLunaLogo):
                     animate.set("attributeName", "opacity")
                     animate.set(
                         "values",
-                        f"{0.7 * emotion_variant.glow_intensity};{1.0 * emotion_variant.glow_intensity};{0.7 * emotion_variant.glow_intensity}",
+                        f"{0.7 * emotion_variant.glow_intensity};"
+                        f"{1.0 * emotion_variant.glow_intensity};"
+                        f"{0.7 * emotion_variant.glow_intensity}",
                     )
                     animate.set("dur", f"{2 / emotion_variant.animation_speed}s")
                     animate.set("repeatCount", "indefinite")
@@ -223,7 +225,9 @@ class BBIABrandingGenerator(ArkaliaLunaLogo):
                     animate.set("attributeName", "opacity")
                     animate.set(
                         "values",
-                        f"{0.7 * emotion_variant.glow_intensity};{1.0 * emotion_variant.glow_intensity};{0.7 * emotion_variant.glow_intensity}",
+                        f"{0.7 * emotion_variant.glow_intensity};"
+                        f"{1.0 * emotion_variant.glow_intensity};"
+                        f"{0.7 * emotion_variant.glow_intensity}",
                     )
                     animate.set("dur", f"{2 / emotion_variant.animation_speed}s")
                     animate.set("repeatCount", "indefinite")
@@ -302,7 +306,8 @@ class BBIABrandingGenerator(ArkaliaLunaLogo):
                 f"(variante: {emotion_variant.variant_type.value})"
             )
 
-            # Remplacer TOUTES les occurrences de #008181 (dans style, fill, stop-color, etc.)
+            # Remplacer TOUTES les occurrences de #008181
+            # (dans style, fill, stop-color, etc.)
             # Utiliser un remplacement global et insensible à la casse
             modified_svg = re.sub(
                 r"#008181", bg_color, svg_content, flags=re.IGNORECASE
