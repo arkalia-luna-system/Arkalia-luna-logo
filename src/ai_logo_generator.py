@@ -53,9 +53,8 @@ class AILogoGenerator(ArkaliaLunaLogo):
             health["torch_available"] = True
             health["cuda_available"] = torch.cuda.is_available()
             if health["cuda_available"]:
-                health["memory_status"] = (
-                    f"{torch.cuda.get_device_properties(0).total_memory / 1e9:.1f} GB VRAM"
-                )
+                vram_gb = torch.cuda.get_device_properties(0).total_memory / 1e9
+                health["memory_status"] = f"{vram_gb:.1f} GB VRAM"
         except Exception:
             pass
 
@@ -106,7 +105,8 @@ class AILogoGenerator(ArkaliaLunaLogo):
                     if is_utf8_error:
                         # Message discret et positif pour l'utilisateur
                         self.logger.info(
-                            "✨ Génération en mode SVG classique (IA temporairement indisponible)"
+                            "✨ Génération en mode SVG classique "
+                            "(IA temporairement indisponible)"
                         )
                         # Fallback vers génération SVG classique du parent
                         return super().generate_svg_logo(variant_name, size)

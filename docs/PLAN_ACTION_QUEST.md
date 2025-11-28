@@ -221,7 +221,7 @@
 | Phase | Tâches | Temps | Priorité | Statut |
 |-------|--------|-------|----------|--------|
 | **Phase 1** | Générateur Quest de base | 3-4h | 🔴 **HAUTE** | ✅ **TERMINÉ** |
-| **Phase 2** | Bannières Quest | 2-3h | 🔴 **HAUTE** | ⏳ À faire |
+| **Phase 2** | Bannières Quest | 2-3h | 🔴 **HAUTE** | ✅ **TERMINÉ** |
 | **Phase 3** | Badges de gamification | 3-4h | 🟡 Moyenne | ⏳ À faire |
 | **Phase 4** | Éléments UI Quest | 2-3h | 🟢 Basse | ⏳ À faire |
 | **Phase 5** | Documentation | 1-2h | 🟡 Moyenne | ⏳ À faire |
