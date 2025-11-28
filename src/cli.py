@@ -1161,6 +1161,96 @@ def quest_ui(
 
 
 @cli.command()
+@click.option(
+    "--type",
+    "-t",
+    type=click.Choice(["hud", "app_icon", "speaking", "github_banner", "all"]),
+    default="all",
+    help="Type d'asset d'identité à générer",
+)
+@click.option(
+    "--size", "-s", type=int, default=None, help="Taille de l'asset (optionnel)"
+)
+@click.option(
+    "--format",
+    "-f",
+    type=click.Choice(["svg", "png", "both"]),
+    default="svg",
+    help="Format de sortie",
+)
+def bbia_identity(type: str, size: Optional[int], format: str) -> None:
+    """Génère les assets d'identité BBIA (HUD, App Icon, Speaking, Banners)"""
+    try:
+        from .bbia_identity_generator import BBIAIdentityGenerator
+
+        console.print(
+            f"[bold blue]🎨 Génération assets d'identité BBIA "
+            f"(type: {type})...[/bold blue]"
+        )
+
+        identity_generator = BBIAIdentityGenerator(
+            output_dir=Path("exports") / "bbia" / "identity"
+        )
+
+        if type == "all":
+            # Générer tous les assets
+            sizes_list = [size] if size else [512, 1024]
+            format_list = ["svg"]
+            if format == "png":
+                format_list = ["png"]
+            elif format == "both":
+                format_list = ["svg", "png"]
+
+            generated_files = identity_generator.generate_all_identity_assets(
+                sizes=sizes_list, formats=format_list
+            )
+        else:
+            # Générer un asset spécifique
+            format_list = [format]
+            if format == "both":
+                format_list = ["svg", "png"]
+
+            generated_files = []
+            for fmt in format_list:
+                try:
+                    output_path = identity_generator.generate_identity_asset(
+                        type, size=size, output_format=fmt
+                    )
+                    generated_files.append(output_path)
+                except Exception as e:
+                    console.print(
+                        f"[red]❌[/red] Erreur génération {type} format {fmt}: {e}"
+                    )
+
+        if generated_files:
+            print_success(f"{len(generated_files)} asset(s) d'identité généré(s)")
+            for file_path in generated_files[:10]:  # Limiter affichage
+                console.print(f"  ✅ {file_path.name}")
+            if len(generated_files) > 10:
+                console.print(f"  ... et {len(generated_files) - 10} autres")
+
+            # Afficher les stats
+            stats = identity_generator.get_identity_stats()
+            console.print(f"\n📊 Statut Identity : {stats['status']}")
+            console.print(f"📂 Assets : {stats['assets_path']}")
+            console.print(
+                f"✅ Assets disponibles : {', '.join(stats['available_assets'])}"
+            )
+        else:
+            print_error("Aucun asset d'identité généré")
+
+    except ImportError as e:
+        print_error(f"Module requis manquant : {e}")
+        console.print(
+            "[yellow]Installez les dépendances avec : pip install cairosvg[/yellow]"
+        )
+        sys.exit(1)
+    except Exception as e:
+        print_error(f"Impossible de générer les assets d'identité : {e}")
+        sys.exit(1)
+
+
+@cli.command()
 @click.option("--confirm", is_flag=True, help="Confirmation automatique")
 @click.pass_context
 def clean(ctx: Context, confirm: bool) -> None:

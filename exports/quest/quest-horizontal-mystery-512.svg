@@ -21,51 +21,51 @@
       <ns0:feGaussianBlur in="SourceGraphic" stdDeviation="1.7999999999999998" />
     </ns0:filter>
   <filter id="quest-text-glow-mystery" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="2" result="coloredBlur" /><feFlood flood-color="#581c87" flood-opacity="0.6" result="flood" /><feComposite in="flood" in2="coloredBlur" operator="in" /></filter><linearGradient id="quest-text-gradient-mystery" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#312e81" stop-opacity="1.0" /><stop offset="100%" stop-color="#7c2d12" stop-opacity="0.9" /></linearGradient></ns0:defs>
-  <ns0:circle cx="0" cy="0" fill="url(#questMainGradient-mystery)" opacity="0.95" r="251" />
-  <ns0:circle cx="0" cy="0" fill="none" filter="url(#questGlow-mystery)" opacity="0.8" r="251" stroke="#581c87" stroke-width="3" />
-  <ns0:path d="M 256 112.64000000000001 L 133.12 194.56 L 133.12 337.92 Q 133.12 399.36 256 399.36 Q 378.88 399.36 378.88 337.92 L 378.88 194.56 Z" fill="url(#questBadgeGradient-mystery)" filter="url(#questGlow-mystery)" stroke="#312e81" stroke-width="2" />
-  <ns0:text dominant-baseline="middle" fill="#312e81" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="122.88" font-weight="bold" text-anchor="middle" x="256" y="286.72">Q</ns0:text>
-  <ns0:line opacity="0.7" stroke="#581c87" stroke-width="2" x1="174.07999999999998" x2="337.92" y1="256" y2="256" />
+  <ns0:circle cx="256" cy="256" fill="url(#questMainGradient-mystery)" opacity="0.95" r="251" />
+  <ns0:circle cx="256" cy="256" fill="none" filter="url(#questGlow-mystery)" opacity="0.8" r="251" stroke="#581c87" stroke-width="3" />
+  <ns0:path d="M 256 130.56 L 148.48000000000002 202.24 L 148.48000000000002 327.68 Q 148.48000000000002 381.44 256 381.44 Q 363.52 381.44 363.52 327.68 L 363.52 202.24 Z" fill="url(#questBadgeGradient-mystery)" filter="url(#questGlow-mystery)" stroke="#312e81" stroke-width="2" />
+  <ns0:text dominant-baseline="middle" fill="#312e81" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="107" font-weight="bold" text-anchor="middle" x="256" y="282.88">Q</ns0:text>
+  <ns0:line opacity="0.7" stroke="#581c87" stroke-width="2" x1="184.32" x2="327.68" y1="256" y2="256" />
   <ns0:g>
-    <ns0:path d="M 537.6 232.96 L 543.0170288851275 248.54409937984047 L 559.5123421354403 248.88024844960123 L 546.3649368541761 258.8479006201595 L 551.1425722128185 274.6397515503988 L 537.6 265.216 L 524.0574277871815 274.6397515503988 L 528.8350631458239 258.8479006201595 L 515.6876578645597 248.88024844960123 L 532.1829711148725 248.54409937984047 Z" fill="url(#questStarGradient-mystery)" filter="url(#questGlow-mystery)" stroke="#581c87" stroke-width="1">
+    <ns0:path d="M 256.0 20.479999999999997 L 265.63027357355986 48.18506556416086 L 294.9552749074495 48.78266391040215 L 271.5821099629798 66.50293443583914 L 280.0756839338997 94.57733608959785 L 256.0 77.824 L 231.9243160661003 94.57733608959785 L 240.41789003702021 66.50293443583914 L 217.0447250925505 48.78266391040216 L 246.3697264264401 48.18506556416086 Z" fill="url(#questStarGradient-mystery)" filter="url(#questGlow-mystery)" stroke="#581c87" stroke-width="1">
       <ns0:animate attributeName="opacity" begin="0.0s" dur="3.125s" repeatCount="indefinite" values="0.7;1.0;0.7" />
     </ns0:path>
   </ns0:g>
   <ns0:g>
-    <ns0:path d="M 343.0191856159852 500.77751498871515 L 348.4362145011126 516.3616143685557 L 364.9315277514255 516.6977634383164 L 351.7841224701613 526.6654156088747 L 356.56175782880376 542.457266539114 L 343.0191856159852 533.0335149887152 L 329.4766134031666 542.457266539114 L 334.25424876180904 526.6654156088747 L 321.10684348054485 516.6977634383164 L 337.60215673085776 516.3616143685557 Z" fill="url(#questStarGradient-mystery)" filter="url(#questGlow-mystery)" stroke="#581c87" stroke-width="1">
+    <ns0:path d="M 441.0375558103851 154.91765357441022 L 450.66782938394493 182.62271913857109 L 479.9928307178346 183.2203174848124 L 456.6196657733649 200.94058801024937 L 465.1132397442848 229.01498966400808 L 441.0375558103851 212.26165357441022 L 416.96187187648536 229.01498966400808 L 425.45544584740526 200.94058801024937 L 402.08228090293557 183.2203174848124 L 431.4072822368252 182.62271913857109 Z" fill="url(#questStarGradient-mystery)" filter="url(#questGlow-mystery)" stroke="#581c87" stroke-width="1">
       <ns0:animate attributeName="opacity" begin="0.3s" dur="3.125s" repeatCount="indefinite" values="0.7;1.0;0.7" />
     </ns0:path>
   </ns0:g>
   <ns0:g>
-    <ns0:path d="M 28.18081438401481 398.4803270455605 L 33.59784326914224 414.064426425401 L 50.09315651945515 414.4005754951617 L 36.945751238190944 424.36822766572004 L 41.72338659683339 440.1600785959593 L 28.18081438401481 430.73632704556053 L 14.63824217119623 440.1600785959593 L 19.415877529838674 424.36822766572004 L 6.268472248574469 414.4005754951617 L 22.763785498887376 414.064426425401 Z" fill="url(#questStarGradient-mystery)" filter="url(#questGlow-mystery)" stroke="#581c87" stroke-width="1">
+    <ns0:path d="M 370.3594986860236 372.4423464255898 L 379.98977225958345 400.14741198975065 L 409.3147735934731 400.74501033599194 L 385.9416086490034 418.4652808614289 L 394.4351826199233 446.5396825151876 L 370.3594986860236 429.7863464255898 L 346.2838147521239 446.5396825151876 L 354.77738872304377 418.46528086142894 L 331.4042237785741 400.74501033599194 L 360.7292251124637 400.14741198975065 Z" fill="url(#questStarGradient-mystery)" filter="url(#questGlow-mystery)" stroke="#581c87" stroke-width="1">
       <ns0:animate attributeName="opacity" begin="0.6s" dur="3.125s" repeatCount="indefinite" values="0.7;1.0;0.7" />
     </ns0:path>
   </ns0:g>
   <ns0:g>
-    <ns0:path d="M 28.18081438401478 67.4396729544396 L 33.59784326914221 83.02377233428008 L 50.09315651945512 83.3599214040408 L 36.945751238190915 93.32757357459911 L 41.723386596833365 109.11942450483838 L 28.18081438401478 99.69567295443959 L 14.638242171196202 109.11942450483838 L 19.415877529838646 93.32757357459911 L 6.26847224857444 83.3599214040408 L 22.763785498887348 83.02377233428008 Z" fill="url(#questStarGradient-mystery)" filter="url(#questGlow-mystery)" stroke="#581c87" stroke-width="1">
+    <ns0:path d="M 141.64050131397644 372.4423464255898 L 151.27077488753633 400.14741198975065 L 180.59577622142592 400.74501033599194 L 157.22261127695623 418.4652808614289 L 165.71618524787615 446.5396825151876 L 141.64050131397644 429.7863464255898 L 117.56481738007675 446.5396825151876 L 126.05839135099664 418.46528086142894 L 102.68522640652695 400.74501033599194 L 132.01022774041655 400.14741198975065 Z" fill="url(#questStarGradient-mystery)" filter="url(#questGlow-mystery)" stroke="#581c87" stroke-width="1">
       <ns0:animate attributeName="opacity" begin="0.8999999999999999s" dur="3.125s" repeatCount="indefinite" values="0.7;1.0;0.7" />
     </ns0:path>
   </ns0:g>
   <ns0:g>
-    <ns0:path d="M 343.0191856159852 -34.85751498871529 L 348.4362145011126 -19.273415608874803 L 364.9315277514255 -18.937266539114077 L 351.7841224701613 -8.969614368555774 L 356.56175782880376 6.8222365616835 L 343.0191856159852 -2.601514988715289 L 329.4766134031666 6.8222365616835 L 334.25424876180904 -8.969614368555773 L 321.10684348054485 -18.937266539114074 L 337.60215673085776 -19.273415608874803 Z" fill="url(#questStarGradient-mystery)" filter="url(#questGlow-mystery)" stroke="#581c87" stroke-width="1">
+    <ns0:path d="M 70.9624441896149 154.91765357441025 L 80.59271776317478 182.6227191385711 L 109.91771909706439 183.22031748481243 L 86.5445541525947 200.9405880102494 L 95.0381281235146 229.0149896640081 L 70.9624441896149 212.26165357441027 L 46.8867602557152 229.0149896640081 L 55.3803342266351 200.9405880102494 L 32.00716928216541 183.22031748481243 L 61.332170616055016 182.6227191385711 Z" fill="url(#questStarGradient-mystery)" filter="url(#questGlow-mystery)" stroke="#581c87" stroke-width="1">
       <ns0:animate attributeName="opacity" begin="1.2s" dur="3.125s" repeatCount="indefinite" values="0.7;1.0;0.7" />
     </ns0:path>
   </ns0:g>
   <ns0:g>
-    <ns0:rect fill="#7c2d12" height="61.44" opacity="0.6" rx="2" width="40.96" x="307.2" y="101.1265981134629" />
-    <ns0:line opacity="0.5" stroke="#312e81" stroke-width="1" x1="312.32" x2="343.04" y1="111.3665981134629" y2="111.3665981134629" />
-    <ns0:line opacity="0.5" stroke="#312e81" stroke-width="1" x1="312.32" x2="343.04" y1="121.6065981134629" y2="121.6065981134629" />
-    <ns0:line opacity="0.5" stroke="#312e81" stroke-width="1" x1="312.32" x2="343.04" y1="131.8465981134629" y2="131.8465981134629" />
-    <ns0:rect fill="#7c2d12" height="61.44" opacity="0.6" rx="2" width="40.96" x="307.2" y="349.4334018865371" />
-    <ns0:line opacity="0.5" stroke="#312e81" stroke-width="1" x1="312.32" x2="343.04" y1="359.6734018865371" y2="359.6734018865371" />
-    <ns0:line opacity="0.5" stroke="#312e81" stroke-width="1" x1="312.32" x2="343.04" y1="369.9134018865371" y2="369.9134018865371" />
-    <ns0:line opacity="0.5" stroke="#312e81" stroke-width="1" x1="312.32" x2="343.04" y1="380.1534018865371" y2="380.1534018865371" />
-    <ns0:rect fill="#7c2d12" height="61.44" opacity="0.6" rx="2" width="40.96" x="92.16000000000001" y="225.28" />
-    <ns0:line opacity="0.5" stroke="#312e81" stroke-width="1" x1="97.28000000000002" x2="128.0" y1="235.52" y2="235.52" />
-    <ns0:line opacity="0.5" stroke="#312e81" stroke-width="1" x1="97.28000000000002" x2="128.0" y1="245.76000000000002" y2="245.76000000000002" />
-    <ns0:line opacity="0.5" stroke="#312e81" stroke-width="1" x1="97.28000000000002" x2="128.0" y1="256.0" y2="256.0" />
+    <ns0:rect fill="#7c2d12" height="51.2" opacity="0.6" rx="2" width="30.72" x="294.4" y="137.28494858509717" />
+    <ns0:line opacity="0.5" stroke="#312e81" stroke-width="1" x1="296.96" x2="322.56" y1="147.52494858509715" y2="147.52494858509715" />
+    <ns0:line opacity="0.5" stroke="#312e81" stroke-width="1" x1="296.96" x2="322.56" y1="155.20494858509716" y2="155.20494858509716" />
+    <ns0:line opacity="0.5" stroke="#312e81" stroke-width="1" x1="296.96" x2="322.56" y1="162.88494858509716" y2="162.88494858509716" />
+    <ns0:rect fill="#7c2d12" height="51.2" opacity="0.6" rx="2" width="30.72" x="294.4" y="323.5150514149028" />
+    <ns0:line opacity="0.5" stroke="#312e81" stroke-width="1" x1="296.96" x2="322.56" y1="333.7550514149028" y2="333.7550514149028" />
+    <ns0:line opacity="0.5" stroke="#312e81" stroke-width="1" x1="296.96" x2="322.56" y1="341.43505141490283" y2="341.43505141490283" />
+    <ns0:line opacity="0.5" stroke="#312e81" stroke-width="1" x1="296.96" x2="322.56" y1="349.11505141490284" y2="349.11505141490284" />
+    <ns0:rect fill="#7c2d12" height="51.2" opacity="0.6" rx="2" width="30.72" x="133.12" y="230.4" />
+    <ns0:line opacity="0.5" stroke="#312e81" stroke-width="1" x1="135.68" x2="161.28000000000003" y1="240.64" y2="240.64" />
+    <ns0:line opacity="0.5" stroke="#312e81" stroke-width="1" x1="135.68" x2="161.28000000000003" y1="248.32" y2="248.32" />
+    <ns0:line opacity="0.5" stroke="#312e81" stroke-width="1" x1="135.68" x2="161.28000000000003" y1="256.0" y2="256.0" />
   </ns0:g>
-  <ns0:circle cx="0" cy="0" fill="none" filter="url(#questGlow-mystery)" opacity="0.36" r="230.4" stroke="#581c87" stroke-width="2">
+  <ns0:circle cx="256" cy="256" fill="none" filter="url(#questGlow-mystery)" opacity="0.36" r="215.04" stroke="#581c87" stroke-width="2">
     <ns0:animate attributeName="opacity" dur="3.75s" repeatCount="indefinite" values="0.36;0.18;0.36" />
   </ns0:circle>
 <g id="quest-text" filter="url(#quest-text-glow-mystery)"><text x="309.20000000000005" y="258.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="66.56" font-weight="700" fill="rgba(0,0,0,0.3)" text-anchor="start" dominant-baseline="middle">Arkalia Quest</text><text x="307.20000000000005" y="256.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="66.56" font-weight="700" fill="url(#quest-text-gradient-mystery)" text-anchor="start" dominant-baseline="middle">Arkalia Quest</text></g></ns0:svg>

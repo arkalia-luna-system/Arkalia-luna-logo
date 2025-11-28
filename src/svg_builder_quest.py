@@ -178,9 +178,8 @@ class QuestSVGBuilder(SVGBuilder):
 
         # Fond principal avec gradient
         background = svgwrite.shapes.Circle(
-            cx=str(center),
-            cy=str(center),
-            r=str(size // 2 - 5),
+            center=(center, center),
+            r=size // 2 - 5,
             fill=f"url(#questMainGradient-{variant.variant_type.value})",
             opacity=0.95,
         )
@@ -188,9 +187,8 @@ class QuestSVGBuilder(SVGBuilder):
 
         # Bordure badge
         border = svgwrite.shapes.Circle(
-            cx=str(center),
-            cy=str(center),
-            r=str(size // 2 - 5),
+            center=(center, center),
+            r=size // 2 - 5,
             fill="none",
             stroke=variant.colors.glow,
             stroke_width=3,
@@ -232,8 +230,8 @@ class QuestSVGBuilder(SVGBuilder):
         # Symbole "Q" stylisé dans le badge
         q_symbol = svgwrite.text.Text(
             "Q",
-            x=[str(center_x)],
-            y=[str(center_y + badge_size * 0.15)],
+            x=[center_x],
+            y=[center_y + badge_size * 0.15],
             font_family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif",
             font_size=int(badge_size * 0.6),
             font_weight="bold",
@@ -245,8 +243,8 @@ class QuestSVGBuilder(SVGBuilder):
 
         # Ligne décorative dans le badge
         line = svgwrite.shapes.Line(
-            start=(str(center_x - badge_size * 0.4), str(center_y)),
-            end=(str(center_x + badge_size * 0.4), str(center_y)),
+            start=(center_x - badge_size * 0.4, center_y),
+            end=(center_x + badge_size * 0.4, center_y),
             stroke=variant.colors.glow,
             stroke_width=2,
             opacity=0.7,
@@ -261,20 +259,23 @@ class QuestSVGBuilder(SVGBuilder):
     ) -> None:
         """Ajoute des étoiles (achievements) autour du badge"""
         center = size // 2
-        badge_radius = size * 0.35  # Ajusté pour correspondre au badge
-        star_radius = size * 0.12  # Réduit pour rester dans les limites
+        star_size = size * 0.08  # Taille des étoiles
+        star_distance = size * 0.38  # Distance du centre pour les étoiles
 
         # 5 étoiles autour du badge (achievements)
         num_stars = 5
         for i in range(num_stars):
-            angle = (i * 360 / num_stars) * (math.pi / 180)
-            # Positionner les étoiles juste à l'extérieur du badge
-            star_x = center + (badge_radius * 1.3) * math.cos(angle)
-            star_y = center + (badge_radius * 1.3) * math.sin(angle)
+            angle = (i * 360 / num_stars - 90) * (
+                math.pi / 180
+            )  # -90 pour commencer en haut
+            # Positionner les étoiles autour du badge, en restant dans les limites
+            star_x = center + star_distance * math.cos(angle)
+            star_y = center + star_distance * math.sin(angle)
 
-            # Vérifier que les étoiles restent dans les limites
-            if 0 < star_x < size and 0 < star_y < size:
-                star = self._create_star(star_x, star_y, star_radius * 0.4, variant, i)
+            # Vérifier que les étoiles restent dans les limites (avec marge)
+            margin = star_size
+            if margin < star_x < size - margin and margin < star_y < size - margin:
+                star = self._create_star(star_x, star_y, star_size, variant, i)
                 drawing.add(star)
 
     def _create_star(
@@ -344,8 +345,8 @@ class QuestSVGBuilder(SVGBuilder):
             if 0 < book_x < size and 0 < book_y < size:
                 # Livre stylisé (rectangle avec lignes)
                 book = svgwrite.shapes.Rect(
-                    insert=(str(book_x - size * 0.03), str(book_y - size * 0.05)),
-                    size=(str(size * 0.06), str(size * 0.1)),
+                    insert=(book_x - size * 0.03, book_y - size * 0.05),
+                    size=(size * 0.06, size * 0.1),
                     fill=variant.colors.accent,
                     opacity=0.6,
                     rx=2,
@@ -356,12 +357,12 @@ class QuestSVGBuilder(SVGBuilder):
                 for j in range(3):
                     line = svgwrite.shapes.Line(
                         start=(
-                            str(book_x - size * 0.025),
-                            str(book_y - size * 0.03 + j * size * 0.015),
+                            book_x - size * 0.025,
+                            book_y - size * 0.03 + j * size * 0.015,
                         ),
                         end=(
-                            str(book_x + size * 0.025),
-                            str(book_y - size * 0.03 + j * size * 0.015),
+                            book_x + size * 0.025,
+                            book_y - size * 0.03 + j * size * 0.015,
                         ),
                         stroke=variant.colors.primary,
                         stroke_width=1,
@@ -382,9 +383,8 @@ class QuestSVGBuilder(SVGBuilder):
 
         # Halo pulsant autour du badge
         halo = svgwrite.shapes.Circle(
-            cx=center,
-            cy=center,
-            r=size * 0.45,
+            center=(center, center),
+            r=size * 0.42,
             fill="none",
             stroke=variant.colors.glow,
             stroke_width=2,
