@@ -4,6 +4,7 @@ Générateur de logos BBIA pour Reachy Mini
 Intégration complète avec assets SVG sources et variantes émotionnelles
 """
 
+import re
 import xml.etree.ElementTree as ET
 from pathlib import Path
 from typing import List, Optional
@@ -181,9 +182,10 @@ class BBIABrandingGenerator(ArkaliaLunaLogo):
             # STRATÉGIE : Modifier directement dans le contenu texte avec regex
             # Plus fiable que de modifier le XML avec namespaces
             eye_color = emotion_variant.colors.glow
-            bg_color = emotion_variant.colors.primary
+            # Utiliser accent pour le fond (plus visible que primary qui est #008181)
+            bg_color = emotion_variant.colors.accent
 
-            # 1. Remplacer toutes les occurrences de #008181 par la couleur de la variante
+            # 1. Remplacer toutes les occurrences de #008181 par la couleur accent de la variante
             modified_svg = re.sub(r"#008181", bg_color, svg_content)
 
             # 2. Remplacer les yeux #cccccc par la couleur glow

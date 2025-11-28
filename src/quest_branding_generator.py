@@ -66,7 +66,7 @@ class QuestBrandingGenerator(ArkaliaLunaLogo):
         self, svg_content: str, format_type: str, size: int, variant: str
     ) -> str:
         """
-        Ajoute le texte "Arkalia Quest" au logo SVG
+        Ajoute le texte "Arkalia Quest" au logo SVG avec style professionnel
 
         Args:
             svg_content: Contenu SVG original
@@ -80,73 +80,181 @@ class QuestBrandingGenerator(ArkaliaLunaLogo):
         try:
             root = ET.fromstring(svg_content)
 
+            # Trouver ou créer l'élément <defs> pour les filtres et gradients
+            defs = root.find(".//{http://www.w3.org/2000/svg}defs")
+            if defs is None:
+                defs = ET.Element("defs")
+                # Insérer defs au début
+                if len(root) > 0:
+                    root.insert(0, defs)
+                else:
+                    root.append(defs)
+
             # Récupérer les couleurs de la variante
             try:
                 variant_obj = self.variants_manager.get_variant(variant)
                 text_color = variant_obj.colors.primary
+                text_glow = variant_obj.colors.glow
+                text_accent = variant_obj.colors.accent
             except Exception:
-                # Fallback sur la couleur primaire de la palette Quest
+                # Fallback sur la palette Quest
                 text_color = self.palette.PRIMARY
+                text_glow = self.palette.SECONDARY
+                text_accent = self.palette.INFO
 
-            # Créer un groupe pour le texte
+            # Créer un filtre de lueur pour le texte
+            filter_id = f"quest-text-glow-{variant}"
+            text_filter = ET.Element("filter")
+            text_filter.set("id", filter_id)
+            text_filter.set("x", "-50%")
+            text_filter.set("y", "-50%")
+            text_filter.set("width", "200%")
+            text_filter.set("height", "200%")
+
+            # feGaussianBlur pour l'effet de lueur
+            fe_gaussian = ET.SubElement(text_filter, "feGaussianBlur")
+            fe_gaussian.set("stdDeviation", "2")
+            fe_gaussian.set("result", "coloredBlur")
+
+            # feFlood pour la couleur de lueur
+            fe_flood = ET.SubElement(text_filter, "feFlood")
+            fe_flood.set("flood-color", text_glow)
+            fe_flood.set("flood-opacity", "0.6")
+            fe_flood.set("result", "flood")
+
+            # feComposite pour combiner
+            fe_composite = ET.SubElement(text_filter, "feComposite")
+            fe_composite.set("in", "flood")
+            fe_composite.set("in2", "coloredBlur")
+            fe_composite.set("operator", "in")
+
+            defs.append(text_filter)
+
+            # Créer un gradient pour le texte
+            gradient_id = f"quest-text-gradient-{variant}"
+            text_gradient = ET.Element("linearGradient")
+            text_gradient.set("id", gradient_id)
+            text_gradient.set("x1", "0%")
+            text_gradient.set("y1", "0%")
+            text_gradient.set("x2", "0%")
+            text_gradient.set("y2", "100%")
+
+            stop1 = ET.SubElement(text_gradient, "stop")
+            stop1.set("offset", "0%")
+            stop1.set("stop-color", text_color)
+            stop1.set("stop-opacity", "1.0")
+
+            stop2 = ET.SubElement(text_gradient, "stop")
+            stop2.set("offset", "100%")
+            stop2.set("stop-color", text_accent)
+            stop2.set("stop-opacity", "0.9")
+
+            defs.append(text_gradient)
+
+            # Créer un groupe pour le texte avec effets
             text_group = ET.Element("g")
             text_group.set("id", "quest-text")
+            text_group.set("filter", f"url(#{filter_id})")
 
             if format_type == "mark_only":
                 # Pour mark_only, pas de texte (juste le logo)
                 return svg_content
 
             elif format_type == "vertical":
-                # Texte en dessous du logo
-                text_y = size * 0.85
-                text_size = size * 0.12
+                # Texte en dessous du logo avec meilleur espacement
+                logo_bottom = size * 0.75  # Position du bas du logo
+                text_start_y = logo_bottom + size * 0.08  # Espacement après le logo
+                text_size = size * 0.11
 
-                # Texte "Arkalia"
+                # Texte "Arkalia" avec ombre
+                # Ombre portée
+                shadow_arkalia = ET.Element("text")
+                shadow_arkalia.set("x", str(size // 2))
+                shadow_arkalia.set("y", str(text_start_y + 2))
+                shadow_arkalia.set("font-family", "'Segoe UI', 'Helvetica Neue', Arial, sans-serif")
+                shadow_arkalia.set("font-size", str(text_size))
+                shadow_arkalia.set("font-weight", "700")
+                shadow_arkalia.set("fill", "rgba(0,0,0,0.3)")
+                shadow_arkalia.set("text-anchor", "middle")
+                shadow_arkalia.set("dominant-baseline", "alphabetic")
+                shadow_arkalia.text = "Arkalia"
+
+                # Texte principal "Arkalia"
                 text_arkalia = ET.Element("text")
                 text_arkalia.set("x", str(size // 2))
-                text_arkalia.set("y", str(text_y))
-                text_arkalia.set("font-family", "Arial, sans-serif")
+                text_arkalia.set("y", str(text_start_y))
+                text_arkalia.set("font-family", "'Segoe UI', 'Helvetica Neue', Arial, sans-serif")
                 text_arkalia.set("font-size", str(text_size))
-                text_arkalia.set("font-weight", "bold")
-                text_arkalia.set("fill", text_color)
+                text_arkalia.set("font-weight", "700")
+                text_arkalia.set("fill", f"url(#{gradient_id})")
                 text_arkalia.set("text-anchor", "middle")
+                text_arkalia.set("dominant-baseline", "alphabetic")
                 text_arkalia.text = "Arkalia"
 
-                # Texte "Quest"
+                # Ombre portée pour "Quest"
+                shadow_quest = ET.Element("text")
+                shadow_quest.set("x", str(size // 2))
+                shadow_quest.set("y", str(text_start_y + text_size * 1.15 + 2))
+                shadow_quest.set("font-family", "'Segoe UI', 'Helvetica Neue', Arial, sans-serif")
+                shadow_quest.set("font-size", str(text_size * 0.85))
+                shadow_quest.set("font-weight", "600")
+                shadow_quest.set("fill", "rgba(0,0,0,0.3)")
+                shadow_quest.set("text-anchor", "middle")
+                shadow_quest.set("dominant-baseline", "alphabetic")
+                shadow_quest.text = "Quest"
+
+                # Texte principal "Quest"
                 text_quest = ET.Element("text")
                 text_quest.set("x", str(size // 2))
-                text_quest.set("y", str(text_y + text_size * 1.2))
-                text_quest.set("font-family", "Arial, sans-serif")
-                text_quest.set("font-size", str(text_size * 0.9))
-                text_quest.set("font-weight", "normal")
-                text_quest.set("fill", text_color)
+                text_quest.set("y", str(text_start_y + text_size * 1.15))
+                text_quest.set("font-family", "'Segoe UI', 'Helvetica Neue', Arial, sans-serif")
+                text_quest.set("font-size", str(text_size * 0.85))
+                text_quest.set("font-weight", "600")
+                text_quest.set("fill", f"url(#{gradient_id})")
                 text_quest.set("text-anchor", "middle")
+                text_quest.set("dominant-baseline", "alphabetic")
                 text_quest.text = "Quest"
 
+                text_group.append(shadow_arkalia)
                 text_group.append(text_arkalia)
+                text_group.append(shadow_quest)
                 text_group.append(text_quest)
 
             elif format_type == "horizontal":
-                # Texte à droite du logo
-                text_x = size * 0.6
+                # Texte à droite du logo avec meilleur positionnement
+                logo_right = size * 0.55  # Position du logo
+                text_x = logo_right + size * 0.05  # Espacement après le logo
                 text_y = size * 0.5
-                text_size = size * 0.15
+                text_size = size * 0.13
 
-                # Texte "Arkalia Quest"
+                # Ombre portée
+                shadow = ET.Element("text")
+                shadow.set("x", str(text_x + 2))
+                shadow.set("y", str(text_y + 2))
+                shadow.set("font-family", "'Segoe UI', 'Helvetica Neue', Arial, sans-serif")
+                shadow.set("font-size", str(text_size))
+                shadow.set("font-weight", "700")
+                shadow.set("fill", "rgba(0,0,0,0.3)")
+                shadow.set("text-anchor", "start")
+                shadow.set("dominant-baseline", "middle")
+                shadow.text = "Arkalia Quest"
+
+                # Texte principal
                 text = ET.Element("text")
                 text.set("x", str(text_x))
                 text.set("y", str(text_y))
-                text.set("font-family", "Arial, sans-serif")
+                text.set("font-family", "'Segoe UI', 'Helvetica Neue', Arial, sans-serif")
                 text.set("font-size", str(text_size))
-                text.set("font-weight", "bold")
-                text.set("fill", text_color)
+                text.set("font-weight", "700")
+                text.set("fill", f"url(#{gradient_id})")
                 text.set("text-anchor", "start")
                 text.set("dominant-baseline", "middle")
                 text.text = "Arkalia Quest"
 
+                text_group.append(shadow)
                 text_group.append(text)
 
-            # Ajouter le groupe texte au SVG
+            # Ajouter le groupe texte au SVG (après le logo)
             root.append(text_group)
 
             return ET.tostring(root, encoding="unicode")
