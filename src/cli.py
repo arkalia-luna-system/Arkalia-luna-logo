@@ -257,8 +257,9 @@ def generate_all(ctx: Context, size: int, parallel: bool) -> None:
             for variant in track(variants, description="Génération des logos"):
                 try:
                     output_path = generator.generate_svg_logo(variant, size)
-                    generated_files.append(output_path)
-                    console.print(f"[green]✅[/green] {variant} : {output_path.name}")
+                    if output_path:
+                        generated_files.append(output_path)
+                        console.print(f"[green]✅[/green] {variant} : {output_path.name}")
                 except Exception as e:
                     console.print(f"[red]❌[/red] {variant} : {e}")
 
@@ -556,8 +557,6 @@ def bbia(
             if emotion:
                 console.print(f"💫 Émotion : {emotion}")
             console.print(f"📏 Taille : {size}x{size} pixels")
-            if use_master:
-                console.print(f"🎯 SVG Master : {master_type}")
 
             # Afficher les stats BBIA
             stats = bbia_generator.get_bbia_stats()

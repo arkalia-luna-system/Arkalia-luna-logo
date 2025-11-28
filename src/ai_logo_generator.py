@@ -3,6 +3,7 @@ Générateur de logos utilisant Stable Diffusion local
 Optimisé pour performance et faible consommation mémoire
 """
 
+import os
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
@@ -35,6 +36,16 @@ class AILogoGenerator(ArkaliaLunaLogo):
         # Cache pour éviter de recharger le modèle
         self._pipeline_loaded = False
         self._last_cleanup_time = None
+
+        # Cache IA dans Redis
+        from .cache_manager import CacheManager
+
+        self.ai_cache = CacheManager(
+            host=os.getenv("REDIS_HOST", "localhost"),
+            port=int(os.getenv("REDIS_PORT", "6379")),
+            db=int(os.getenv("REDIS_DB", "0")),
+            ttl=int(os.getenv("AI_CACHE_TTL", "604800")),  # 7 jours
+        )
 
         # Pas d'initialisation immédiate - chargement paresseux uniquement
 
@@ -71,6 +82,15 @@ class AILogoGenerator(ArkaliaLunaLogo):
     def generate_svg_logo(self, variant_name: str, size: int = 200) -> Path:
         """Génère un logo IA pour une variante donnée avec fallback automatique"""
         try:
+            # Vérifier le cache IA
+            cache_key = f"ai_logo:{variant_name}:{size}"
+            cached_path = self.ai_cache.get(cache_key)
+            if cached_path and Path(cached_path).exists():
+                self.logger.info(
+                    f"✅ Cache hit pour logo IA '{variant_name}' en taille {size}x{size}"
+                )
+                return Path(cached_path)
+
             self.logger.info(
                 f"🤖 Génération IA du logo '{variant_name}' en taille {size}x{size}",
             )

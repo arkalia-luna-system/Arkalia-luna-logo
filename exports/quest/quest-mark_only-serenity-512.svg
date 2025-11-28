@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xlink="http://www.w3.org/1999/xlink" baseProfile="full" height="512" version="1.1" viewBox="0 0 512 512" width="512">
+  <title>Logo Arkalia Quest - Jeu éducatif avec gamification</title>
+  <defs>
+    <radialGradient cx="50%" cy="50%" id="questMainGradient-serenity" r="70%">
+      <stop offset="0%" stop-color="#1e3a8a" stop-opacity="1.0"/>
+      <stop offset="40%" stop-color="#3b82f6" stop-opacity="0.9"/>
+      <stop offset="70%" stop-color="#06b6d4" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#1e3a8a" stop-opacity="0.3"/>
+    </radialGradient>
+    <linearGradient id="questBadgeGradient-serenity" x1="0%" x2="0%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#60a5fa" stop-opacity="1.0"/>
+      <stop offset="50%" stop-color="#3b82f6" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#1e3a8a" stop-opacity="0.8"/>
+    </linearGradient>
+    <radialGradient cx="50%" cy="50%" id="questStarGradient-serenity" r="50%">
+      <stop offset="0%" stop-color="#FFD700" stop-opacity="1.0"/>
+      <stop offset="50%" stop-color="#06b6d4" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#60a5fa" stop-opacity="0.7"/>
+    </radialGradient>
+    <filter height="200%" id="questGlow-serenity" width="200%" x="-50%" y="-50%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="2.0999999999999996"/>
+    </filter>
+  </defs>
+  <circle cx="0" cy="0" fill="url(#questMainGradient-serenity)" opacity="0.95" r="251"/>
+  <circle cx="0" cy="0" fill="none" filter="url(#questGlow-serenity)" opacity="0.8" r="251" stroke="#60a5fa" stroke-width="3"/>
+  <path d="M 256 112.64000000000001 L 133.12 194.56 L 133.12 337.92 Q 133.12 399.36 256 399.36 Q 378.88 399.36 378.88 337.92 L 378.88 194.56 Z" fill="url(#questBadgeGradient-serenity)" filter="url(#questGlow-serenity)" stroke="#1e3a8a" stroke-width="2"/>
+  <text dominant-baseline="middle" fill="#1e3a8a" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="122.88" font-weight="bold" text-anchor="middle" x="256" y="286.72">Q</text>
+  <line opacity="0.7" stroke="#60a5fa" stroke-width="2" x1="174.07999999999998" x2="337.92" y1="256" y2="256"/>
+  <g>
+    <path d="M 537.6 232.96 L 543.0170288851275 248.54409937984047 L 559.5123421354403 248.88024844960123 L 546.3649368541761 258.8479006201595 L 551.1425722128185 274.6397515503988 L 537.6 265.216 L 524.0574277871815 274.6397515503988 L 528.8350631458239 258.8479006201595 L 515.6876578645597 248.88024844960123 L 532.1829711148725 248.54409937984047 Z" fill="url(#questStarGradient-serenity)" filter="url(#questGlow-serenity)" stroke="#60a5fa" stroke-width="1">
+      <animate attributeName="opacity" begin="0.0s" dur="2.5s" repeatCount="indefinite" values="0.7;1.0;0.7"/>
+    </path>
+  </g>
+  <g>
+    <path d="M 343.0191856159852 500.77751498871515 L 348.4362145011126 516.3616143685557 L 364.9315277514255 516.6977634383164 L 351.7841224701613 526.6654156088747 L 356.56175782880376 542.457266539114 L 343.0191856159852 533.0335149887152 L 329.4766134031666 542.457266539114 L 334.25424876180904 526.6654156088747 L 321.10684348054485 516.6977634383164 L 337.60215673085776 516.3616143685557 Z" fill="url(#questStarGradient-serenity)" filter="url(#questGlow-serenity)" stroke="#60a5fa" stroke-width="1">
+      <animate attributeName="opacity" begin="0.3s" dur="2.5s" repeatCount="indefinite" values="0.7;1.0;0.7"/>
+    </path>
+  </g>
+  <g>
+    <path d="M 28.18081438401481 398.4803270455605 L 33.59784326914224 414.064426425401 L 50.09315651945515 414.4005754951617 L 36.945751238190944 424.36822766572004 L 41.72338659683339 440.1600785959593 L 28.18081438401481 430.73632704556053 L 14.63824217119623 440.1600785959593 L 19.415877529838674 424.36822766572004 L 6.268472248574469 414.4005754951617 L 22.763785498887376 414.064426425401 Z" fill="url(#questStarGradient-serenity)" filter="url(#questGlow-serenity)" stroke="#60a5fa" stroke-width="1">
+      <animate attributeName="opacity" begin="0.6s" dur="2.5s" repeatCount="indefinite" values="0.7;1.0;0.7"/>
+    </path>
+  </g>
+  <g>
+    <path d="M 28.18081438401478 67.4396729544396 L 33.59784326914221 83.02377233428008 L 50.09315651945512 83.3599214040408 L 36.945751238190915 93.32757357459911 L 41.723386596833365 109.11942450483838 L 28.18081438401478 99.69567295443959 L 14.638242171196202 109.11942450483838 L 19.415877529838646 93.32757357459911 L 6.26847224857444 83.3599214040408 L 22.763785498887348 83.02377233428008 Z" fill="url(#questStarGradient-serenity)" filter="url(#questGlow-serenity)" stroke="#60a5fa" stroke-width="1">
+      <animate attributeName="opacity" begin="0.8999999999999999s" dur="2.5s" repeatCount="indefinite" values="0.7;1.0;0.7"/>
+    </path>
+  </g>
+  <g>
+    <path d="M 343.0191856159852 -34.85751498871529 L 348.4362145011126 -19.273415608874803 L 364.9315277514255 -18.937266539114077 L 351.7841224701613 -8.969614368555774 L 356.56175782880376 6.8222365616835 L 343.0191856159852 -2.601514988715289 L 329.4766134031666 6.8222365616835 L 334.25424876180904 -8.969614368555773 L 321.10684348054485 -18.937266539114074 L 337.60215673085776 -19.273415608874803 Z" fill="url(#questStarGradient-serenity)" filter="url(#questGlow-serenity)" stroke="#60a5fa" stroke-width="1">
+      <animate attributeName="opacity" begin="1.2s" dur="2.5s" repeatCount="indefinite" values="0.7;1.0;0.7"/>
+    </path>
+  </g>
+  <g>
+    <rect fill="#06b6d4" height="61.44" opacity="0.6" rx="2" width="40.96" x="307.2" y="101.1265981134629"/>
+    <line opacity="0.5" stroke="#1e3a8a" stroke-width="1" x1="312.32" x2="343.04" y1="111.3665981134629" y2="111.3665981134629"/>
+    <line opacity="0.5" stroke="#1e3a8a" stroke-width="1" x1="312.32" x2="343.04" y1="121.6065981134629" y2="121.6065981134629"/>
+    <line opacity="0.5" stroke="#1e3a8a" stroke-width="1" x1="312.32" x2="343.04" y1="131.8465981134629" y2="131.8465981134629"/>
+    <rect fill="#06b6d4" height="61.44" opacity="0.6" rx="2" width="40.96" x="307.2" y="349.4334018865371"/>
+    <line opacity="0.5" stroke="#1e3a8a" stroke-width="1" x1="312.32" x2="343.04" y1="359.6734018865371" y2="359.6734018865371"/>
+    <line opacity="0.5" stroke="#1e3a8a" stroke-width="1" x1="312.32" x2="343.04" y1="369.9134018865371" y2="369.9134018865371"/>
+    <line opacity="0.5" stroke="#1e3a8a" stroke-width="1" x1="312.32" x2="343.04" y1="380.1534018865371" y2="380.1534018865371"/>
+    <rect fill="#06b6d4" height="61.44" opacity="0.6" rx="2" width="40.96" x="92.16000000000001" y="225.28"/>
+    <line opacity="0.5" stroke="#1e3a8a" stroke-width="1" x1="97.28000000000002" x2="128.0" y1="235.52" y2="235.52"/>
+    <line opacity="0.5" stroke="#1e3a8a" stroke-width="1" x1="97.28000000000002" x2="128.0" y1="245.76000000000002" y2="245.76000000000002"/>
+    <line opacity="0.5" stroke="#1e3a8a" stroke-width="1" x1="97.28000000000002" x2="128.0" y1="256.0" y2="256.0"/>
+  </g>
+  <circle cx="0" cy="0" fill="none" filter="url(#questGlow-serenity)" opacity="0.42" r="230.4" stroke="#60a5fa" stroke-width="2">
+    <animate attributeName="opacity" dur="3.0s" repeatCount="indefinite" values="0.42;0.21;0.42"/>
+  </circle>
+</svg>

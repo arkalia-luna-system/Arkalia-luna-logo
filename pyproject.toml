@@ -44,6 +44,8 @@ dependencies = [
     "slowapi>=0.1.9",
     # Cache Redis
     "redis>=5.0.0",
+    # Streamlit pour démo
+    "streamlit>=1.28.0",
     # IA Dependencies
     "diffusers>=0.21.0",
     "torch>=2.0.0",
