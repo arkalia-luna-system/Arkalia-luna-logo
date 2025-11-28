@@ -18,7 +18,6 @@ try:
 except ImportError:
     Image = None  # type: ignore[assignment]
 
-from .generator_factory import LogoGeneratorFactory
 from .logo_generator import ArkaliaLunaLogo
 from .quest_palette import QUEST_PALETTE  # type: ignore[import-untyped]
 from .variants import LogoVariants  # type: ignore[import-untyped]
@@ -188,7 +187,10 @@ class QuestBrandingGenerator(ArkaliaLunaLogo):
         )
 
         # Générer le logo de base avec le générateur approprié
+        # Importation locale pour éviter import circulaire
         try:
+            from .generator_factory import LogoGeneratorFactory
+
             base_generator = LogoGeneratorFactory.create_generator(
                 style, self.output_dir
             )
@@ -196,6 +198,8 @@ class QuestBrandingGenerator(ArkaliaLunaLogo):
         except Exception as e:
             self.logger.error(f"Erreur génération logo de base : {e}")
             # Fallback sur le générateur par défaut
+            from .generator_factory import LogoGeneratorFactory
+
             base_generator = LogoGeneratorFactory.create_generator(
                 "default", self.output_dir
             )
@@ -400,4 +404,3 @@ class QuestBrandingGenerator(ArkaliaLunaLogo):
             "status": "ready",
             "cairosvg_available": cairosvg is not None,
         }
-

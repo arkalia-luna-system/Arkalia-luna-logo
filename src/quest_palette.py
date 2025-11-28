@@ -87,4 +87,3 @@ QUEST_PALETTE = QuestColorPalette()
 def get_quest_palette() -> QuestColorPalette:
     """Retourne l'instance globale de la palette Quest"""
     return QUEST_PALETTE
-

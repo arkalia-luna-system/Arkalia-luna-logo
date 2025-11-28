@@ -4,7 +4,6 @@ Générateur de logos BBIA pour Reachy Mini
 Intégration complète avec assets SVG sources et variantes émotionnelles
 """
 
-import math
 import xml.etree.ElementTree as ET
 from pathlib import Path
 from typing import List, Optional
@@ -165,137 +164,111 @@ class BBIABrandingGenerator(ArkaliaLunaLogo):
             self.logger.error(f"Erreur transformation SVG : {e}")
             return svg_content
 
-    def _add_svg_effects(
-        self, svg_content: str, emotion_variant: BBIAVariant, size: int
+    def _modify_logo_colors(
+        self, svg_content: str, emotion_variant: BBIAVariant
     ) -> str:
         """
-        Ajoute les effets SVG (halos, particules) au logo BBIA
+        Modifie directement les couleurs du logo BBIA selon la variante émotionnelle
 
         Args:
             svg_content: Contenu SVG original
             emotion_variant: Variante émotionnelle BBIA
-            size: Taille du logo
 
         Returns:
-            Contenu SVG avec effets ajoutés
+            Contenu SVG avec couleurs modifiées
         """
         try:
             root = ET.fromstring(svg_content)
-            center = size // 2
+            eye_color = emotion_variant.colors.glow
+            bg_color = emotion_variant.colors.primary
 
-            # Trouver ou créer l'élément <defs> pour les filtres
+            # Trouver ou créer defs
             defs = root.find(".//{http://www.w3.org/2000/svg}defs")
             if defs is None:
                 defs = ET.Element("defs")
-                # Insérer defs après le premier élément (généralement après xmlns)
                 root.insert(0, defs)
 
-            # Ajouter filtre de lueur
-            filter_id = f"glow-{emotion_variant.variant_type.value}"
+            # Ajouter filtre de lueur pour les yeux
+            filter_id = f"eye-glow-{emotion_variant.variant_type.value}"
             filter_elem = ET.Element("filter", id=filter_id)
             filter_elem.set("x", "-50%")
             filter_elem.set("y", "-50%")
             filter_elem.set("width", "200%")
             filter_elem.set("height", "200%")
 
-            # feGaussianBlur pour l'effet de lueur
             fe_gaussian = ET.SubElement(filter_elem, "feGaussianBlur")
-            fe_gaussian.set("stdDeviation", str(3 * emotion_variant.glow_intensity))
+            fe_gaussian.set("stdDeviation", "3")
             fe_gaussian.set("result", "coloredBlur")
 
-            # feOffset
-            fe_offset = ET.SubElement(filter_elem, "feOffset")
-            fe_offset.set("in", "coloredBlur")
-            fe_offset.set("dx", "0")
-            fe_offset.set("dy", "0")
-            fe_offset.set("result", "offsetBlur")
-
-            # feFlood pour la couleur
             fe_flood = ET.SubElement(filter_elem, "feFlood")
-            fe_flood.set("flood-color", emotion_variant.colors.glow)
+            fe_flood.set("flood-color", eye_color)
             fe_flood.set("flood-opacity", str(emotion_variant.glow_intensity))
             fe_flood.set("result", "flood")
 
-            # feComposite
             fe_composite = ET.SubElement(filter_elem, "feComposite")
             fe_composite.set("in", "flood")
-            fe_composite.set("in2", "offsetBlur")
+            fe_composite.set("in2", "coloredBlur")
             fe_composite.set("operator", "in")
 
             defs.append(filter_elem)
 
-            # Créer un groupe pour les effets (derrière le logo)
-            effects_group = ET.Element("g")
-            effects_group.set("id", "bbia-effects")
+            # Parcourir tous les éléments pour modifier les couleurs
+            for elem in root.iter():
+                # 1. Modifier le fond carré (rect avec fill:#008181)
+                style = elem.get("style", "")
+                fill_attr = elem.get("fill", "")
 
-            # Ajouter halo si activé
-            if emotion_variant.halo_enabled:
-                halo = ET.Element("circle")
-                halo.set("cx", str(center))
-                halo.set("cy", str(center))
-                # Halo plus grand pour être visible autour du logo
-                halo.set("r", str(size // 2 - 5))
-                halo.set("fill", "none")
-                halo.set("stroke", emotion_variant.colors.glow)
-                halo.set("stroke-width", "4")
-                halo.set("opacity", str(0.8 * emotion_variant.glow_intensity))
-                halo.set("filter", f"url(#{filter_id})")
+                # Modifier le fond carré
+                if "#008181" in style or fill_attr == "#008181":
+                    if style:
+                        new_style = style.replace("#008181", bg_color)
+                        elem.set("style", new_style)
+                    if fill_attr == "#008181":
+                        elem.set("fill", bg_color)
 
-                # Animation de respiration
-                animate = ET.SubElement(halo, "animate")
-                animate.set("attributeName", "opacity")
-                animate.set(
-                    "values",
-                    f"{0.7 * emotion_variant.glow_intensity};{0.3 * emotion_variant.glow_intensity};{0.7 * emotion_variant.glow_intensity}",
-                )
-                animate.set("dur", f"{3 / emotion_variant.animation_speed}s")
-                animate.set("repeatCount", "indefinite")
+                # 2. Modifier les gradients (stops avec stop-color:#008181)
+                if elem.tag.endswith("stop"):
+                    stop_style = elem.get("style", "")
+                    if "#008181" in stop_style:
+                        new_stop_style = stop_style.replace("#008181", bg_color)
+                        elem.set("style", new_stop_style)
 
-                effects_group.append(halo)
+                # 3. Modifier les yeux (#cccccc -> couleur glow)
+                if (
+                    "#cccccc" in style.lower()
+                    or "#CCCCCC" in style
+                    or fill_attr in ("#cccccc", "#CCCCCC")
+                ):
+                    # Changer la couleur des yeux
+                    if style:
+                        new_style = style.replace("#cccccc", eye_color).replace(
+                            "#CCCCCC", eye_color
+                        )
+                        if "filter:" not in new_style:
+                            new_style = f"{new_style};filter:url(#{filter_id})"
+                        elem.set("style", new_style)
+                    elif fill_attr in ("#cccccc", "#CCCCCC"):
+                        elem.set("fill", eye_color)
+                        elem.set("filter", f"url(#{filter_id})")
 
-            # Ajouter particules si activé
-            if emotion_variant.particles_enabled:
-                num_particles = 12
-                for i in range(num_particles):
-                    angle = (i * 360 / num_particles) * (math.pi / 180)
-                    # Particules plus proches du bord pour être visibles
-                    radius = size // 2 - 15
-                    x = center + radius * math.cos(angle)
-                    y = center + radius * math.sin(angle)
-
-                    particle = ET.Element("circle")
-                    particle.set("cx", str(x))
-                    particle.set("cy", str(y))
-                    # Particules plus grandes pour être visibles
-                    particle.set("r", "4")
-                    particle.set("fill", emotion_variant.colors.glow)
-                    particle.set("opacity", "0.9")
-                    particle.set("filter", f"url(#{filter_id})")
-
-                    # Animation de scintillement
-                    animate_opacity = ET.SubElement(particle, "animate")
-                    animate_opacity.set("attributeName", "opacity")
-                    animate_opacity.set("values", "0.7;1.0;0.7")
-                    animate_opacity.set(
-                        "dur", f"{2.5 / emotion_variant.animation_speed}s"
-                    )
-                    animate_opacity.set("begin", f"{i * 0.2}s")
-                    animate_opacity.set("repeatCount", "indefinite")
-
-                    effects_group.append(particle)
-
-            # Insérer les effets APRÈS le contenu existant (au-dessus du logo)
-            # pour qu'ils soient visibles même avec un fond opaque
-            # On cherche le dernier élément pour insérer après
-            if len(root) > 0:
-                # Insérer après le dernier élément (au-dessus)
-                root.append(effects_group)
-            else:
-                root.append(effects_group)
+                    # Animation de pulsation pour les yeux
+                    if not any(
+                        child.tag.endswith("animate")
+                        for child in elem
+                        if hasattr(child, "tag")
+                    ):
+                        animate = ET.SubElement(elem, "animate")
+                        animate.set("attributeName", "opacity")
+                        animate.set(
+                            "values",
+                            f"{0.7 * emotion_variant.glow_intensity};{1.0 * emotion_variant.glow_intensity};{0.7 * emotion_variant.glow_intensity}",
+                        )
+                        animate.set("dur", f"{2 / emotion_variant.animation_speed}s")
+                        animate.set("repeatCount", "indefinite")
 
             return ET.tostring(root, encoding="unicode")
         except Exception as e:
-            self.logger.error(f"Erreur ajout effets SVG : {e}")
+            self.logger.error(f"Erreur modification couleurs SVG : {e}")
             return svg_content
 
     def generate_svg_logo(
@@ -332,16 +305,16 @@ class BBIABrandingGenerator(ArkaliaLunaLogo):
         # Transformer la taille
         transformed_svg = self._transform_svg_size(svg_content, size)
 
-        # Ajouter effets si variante émotionnelle spécifiée
+        # Modifier couleurs si variante émotionnelle spécifiée
         if emotion_variant:
             try:
                 bbia_variant = BBIA_VARIANTS.get_variant(emotion_variant)
-                transformed_svg = self._add_svg_effects(
-                    transformed_svg, bbia_variant, size
+                transformed_svg = self._modify_logo_colors(
+                    transformed_svg, bbia_variant
                 )
             except ValueError as e:
                 self.logger.warning(f"Variante émotionnelle invalide : {e}")
-                self.logger.warning("Génération sans effets")
+                self.logger.warning("Génération sans modification")
 
         # Créer le chemin de sortie
         if emotion_variant:

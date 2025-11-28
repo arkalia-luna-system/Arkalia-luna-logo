@@ -13,6 +13,7 @@ from .cosmic_logo_generator import CosmicLogoGenerator
 from .dashboard_generator import DashboardLogoGenerator
 from .hyper_ai_generator import HyperAIGenerator
 from .logo_generator import ArkaliaLunaLogo
+from .quest_branding_generator import QuestBrandingGenerator
 from .realism_max_generator import RealismMaxLogoGenerator
 from .simple_advanced_generator import SimpleAdvancedLogoGenerator
 from .ultimate_generator import UltimateLogoGenerator
@@ -41,6 +42,8 @@ class LogoGeneratorFactory:
         "hyper_ai": HyperAIGenerator,
         # 🤖 Générateur BBIA pour Reachy Mini
         "bbia": BBIABrandingGenerator,
+        # 🎮 Générateur Quest pour Arkalia Quest
+        "quest": QuestBrandingGenerator,
     }
 
     @classmethod
@@ -144,6 +147,13 @@ class LogoGeneratorFactory:
                 "description": (
                     "🤖 Générateur BBIA - Logos Reachy Mini "
                     "(mark_only, vertical, horizontal)"
+                ),
+            },
+            "quest": {
+                "name": "Quest Branding",
+                "description": (
+                    "🎮 Générateur Quest - Logos Arkalia Quest "
+                    "(mark_only, vertical, horizontal) avec variantes émotionnelles"
                 ),
             },
         }
