@@ -462,7 +462,8 @@ def playstore(
     except ImportError as e:
         print_error(f"Module requis manquant : {e}")
         console.print(
-            "[yellow]Installez les dépendances avec : pip install pillow cairosvg[/yellow]"
+            "[yellow]Installez les dépendances avec : "
+            "pip install pillow cairosvg[/yellow]"
         )
         sys.exit(1)
     except Exception as e:
