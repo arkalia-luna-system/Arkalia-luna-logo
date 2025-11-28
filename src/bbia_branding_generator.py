@@ -178,9 +178,21 @@ class BBIABrandingGenerator(ArkaliaLunaLogo):
             Contenu SVG avec couleurs modifiées
         """
         try:
-            root = ET.fromstring(svg_content)
+            # STRATÉGIE : Modifier directement dans le contenu texte avec regex
+            # Plus fiable que de modifier le XML avec namespaces
             eye_color = emotion_variant.colors.glow
             bg_color = emotion_variant.colors.primary
+
+            # 1. Remplacer toutes les occurrences de #008181 par la couleur de la variante
+            modified_svg = re.sub(r"#008181", bg_color, svg_content)
+
+            # 2. Remplacer les yeux #cccccc par la couleur glow
+            modified_svg = re.sub(
+                r"#cccccc", eye_color, modified_svg, flags=re.IGNORECASE
+            )
+
+            # 3. Maintenant parser pour ajouter les filtres et animations
+            root = ET.fromstring(modified_svg)
 
             # Trouver ou créer defs
             defs = root.find(".//{http://www.w3.org/2000/svg}defs")
@@ -212,51 +224,22 @@ class BBIABrandingGenerator(ArkaliaLunaLogo):
 
             defs.append(filter_elem)
 
-            # Parcourir tous les éléments pour modifier les couleurs
+            # 4. Appliquer le filtre aux yeux et ajouter animations
             for elem in root.iter():
-                # 1. Modifier le fond carré (rect avec fill:#008181)
                 style = elem.get("style", "")
                 fill_attr = elem.get("fill", "")
 
-                # Modifier le fond carré
-                if "#008181" in style or fill_attr == "#008181":
-                    if style:
-                        new_style = style.replace("#008181", bg_color)
-                        elem.set("style", new_style)
-                    if fill_attr == "#008181":
-                        elem.set("fill", bg_color)
-
-                # 2. Modifier les gradients (stops avec stop-color:#008181)
-                if elem.tag.endswith("stop"):
-                    stop_style = elem.get("style", "")
-                    if "#008181" in stop_style:
-                        new_stop_style = stop_style.replace("#008181", bg_color)
-                        elem.set("style", new_stop_style)
-
-                # 3. Modifier les yeux (#cccccc -> couleur glow)
-                if (
-                    "#cccccc" in style.lower()
-                    or "#CCCCCC" in style
-                    or fill_attr in ("#cccccc", "#CCCCCC")
-                ):
-                    # Changer la couleur des yeux
-                    if style:
-                        new_style = style.replace("#cccccc", eye_color).replace(
-                            "#CCCCCC", eye_color
-                        )
-                        if "filter:" not in new_style:
-                            new_style = f"{new_style};filter:url(#{filter_id})"
-                        elem.set("style", new_style)
-                    elif fill_attr in ("#cccccc", "#CCCCCC"):
-                        elem.set("fill", eye_color)
+                # Si c'est un œil (contient la couleur glow maintenant)
+                if eye_color in style or eye_color in fill_attr:
+                    # Ajouter le filtre si pas déjà présent
+                    if style and "filter:" not in style:
+                        elem.set("style", f"{style};filter:url(#{filter_id})")
+                    elif not style and fill_attr:
                         elem.set("filter", f"url(#{filter_id})")
 
                     # Animation de pulsation pour les yeux
-                    if not any(
-                        child.tag.endswith("animate")
-                        for child in elem
-                        if hasattr(child, "tag")
-                    ):
+                    has_animate = any(child.tag.endswith("animate") for child in elem)
+                    if not has_animate:
                         animate = ET.SubElement(elem, "animate")
                         animate.set("attributeName", "opacity")
                         animate.set(
