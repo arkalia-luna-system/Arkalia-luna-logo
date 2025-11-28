@@ -103,7 +103,7 @@ class BBIABrandingGenerator(ArkaliaLunaLogo):
 
     def _transform_svg_size(self, svg_content: str, target_size: int) -> str:
         """
-        Transforme un SVG pour une taille cible
+        Transforme un SVG pour une taille cible en conservant le cadrage
 
         Args:
             svg_content: Contenu SVG original
@@ -115,35 +115,56 @@ class BBIABrandingGenerator(ArkaliaLunaLogo):
         try:
             root = ET.fromstring(svg_content)
 
-            # Mettre à jour les attributs width et height
-            root.set("width", str(target_size))
-            root.set("height", str(target_size))
-
-            # Mettre à jour le viewBox si présent
+            # Récupérer le viewBox original
             viewbox = root.get("viewBox")
+            original_width = None
+            original_height = None
+
             if viewbox:
-                # Conserver les proportions du viewBox original
                 parts = viewbox.split()
                 if len(parts) == 4:
-                    # viewBox="0 0 width height" -> garder les proportions
                     original_width = float(parts[2])
                     original_height = float(parts[3])
 
-                    # Calculer le viewBox pour garder les proportions
-                    if original_width > original_height:
-                        scale = target_size / original_width
-                        new_height = original_height * scale
-                        root.set("viewBox", f"0 0 {target_size} {new_height}")
-                    else:
-                        scale = target_size / original_height
-                        new_width = original_width * scale
-                        root.set("viewBox", f"0 0 {new_width} {target_size}")
+            # Si pas de viewBox, essayer de récupérer depuis width/height
+            if original_width is None:
+                width_attr = root.get("width")
+                height_attr = root.get("height")
+                if width_attr and height_attr:
+                    # Nettoyer les unités (px, etc.)
+                    original_width = float(
+                        width_attr.replace("px", "").replace("pt", "")
+                    )
+                    original_height = float(
+                        height_attr.replace("px", "").replace("pt", "")
+                    )
+
+            # Si toujours pas de dimensions, utiliser 1024 par défaut (taille standard)
+            if original_width is None:
+                original_width = 1024.0
+                original_height = 1024.0
+                # Créer un viewBox si absent
+                if not viewbox:
+                    root.set(
+                        "viewBox", f"0 0 {int(original_width)} {int(original_height)}"
+                    )
+
+            # IMPORTANT : Conserver le viewBox original pour garder le cadrage
+            # On change seulement width/height, le SVG se redimensionne automatiquement
+            root.set("width", str(target_size))
+            root.set("height", str(target_size))
+
+            # Le viewBox reste identique pour conserver le cadrage exact
+            # Le navigateur/visualiseur SVG redimensionnera automatiquement
 
             # Convertir en string
             return ET.tostring(root, encoding="unicode")
         except ET.ParseError as e:
             self.logger.error(f"Erreur parsing SVG : {e}")
             # Retourner le contenu original si erreur
+            return svg_content
+        except Exception as e:
+            self.logger.error(f"Erreur transformation SVG : {e}")
             return svg_content
 
     def generate_svg_logo(self, variant_name: str, size: int = 200) -> Path:
