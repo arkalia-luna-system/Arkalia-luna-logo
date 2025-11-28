@@ -226,9 +226,9 @@ class BBIABrandingGenerator(ArkaliaLunaLogo):
             defs.append(filter_elem)
 
             # 4. Ajouter effets uniques : ondes de parole (comme ChatGPT)
-            # Créer des ondes sonores animées autour du robot
-            center = 512  # Taille par défaut, sera ajustée selon le viewBox
+            # Créer des ondes sonores animées AUTOUR du robot (en dehors du fond carré)
             viewbox = root.get("viewBox", "0 0 1024 1024")
+            center = 512  # Taille par défaut
             if viewbox:
                 try:
                     parts = viewbox.split()
@@ -237,54 +237,56 @@ class BBIABrandingGenerator(ArkaliaLunaLogo):
                 except (ValueError, IndexError):
                     pass
 
-            # Groupe pour les ondes de parole
+            # Groupe pour les ondes de parole (AU-DESSUS de tout)
             speech_waves_group = ET.Element("g")
             speech_waves_group.set(
                 "id", f"speech-waves-{emotion_variant.variant_type.value}"
             )
+            # Style pour s'assurer que les ondes sont visibles
+            speech_waves_group.set("style", "pointer-events: none;")
 
-            # Créer 3-5 ondes concentriques animées (effet "parole")
-            num_waves = 5
-            base_radius = center * 0.4
+            # Créer 5-7 ondes concentriques animées (effet "parole")
+            # Les ondes partent de l'extérieur du fond carré
+            num_waves = 7
+            # Le fond carré fait environ 456x456, donc rayon ~228, on commence après
+            base_radius = center * 0.5  # Commencer après le fond carré
             for i in range(num_waves):
                 wave = ET.Element("circle")
                 wave.set("cx", str(center))
                 wave.set("cy", str(center))
-                wave.set("r", str(base_radius + i * 15))
+                wave.set("r", str(base_radius + i * 25))
                 wave.set("fill", "none")
                 wave.set("stroke", emotion_variant.colors.accent)
-                wave.set("stroke-width", "2")
-                wave.set("opacity", str(0.3 - i * 0.05))
+                wave.set("stroke-width", "3")
+                wave.set("opacity", str(0.4 - i * 0.04))
 
-                # Animation de pulsation (onde qui s'étend)
+                # Animation de pulsation (onde qui s'étend vers l'extérieur)
                 animate_radius = ET.SubElement(wave, "animate")
                 animate_radius.set("attributeName", "r")
                 animate_radius.set(
                     "values",
-                    f"{base_radius + i * 15};{base_radius + i * 15 + 20};{base_radius + i * 15}",
+                    f"{base_radius + i * 25};{base_radius + i * 25 + 30};{base_radius + i * 25}",
                 )
-                animate_radius.set("dur", f"{1.5 / emotion_variant.animation_speed}s")
-                animate_radius.set("begin", f"{i * 0.2}s")
+                animate_radius.set("dur", f"{2.0 / emotion_variant.animation_speed}s")
+                animate_radius.set("begin", f"{i * 0.15}s")
                 animate_radius.set("repeatCount", "indefinite")
 
-                # Animation d'opacité
+                # Animation d'opacité (fade in/out)
                 animate_opacity = ET.SubElement(wave, "animate")
                 animate_opacity.set("attributeName", "opacity")
                 animate_opacity.set(
                     "values",
-                    f"{0.3 - i * 0.05};{0.6 - i * 0.05};{0.3 - i * 0.05}",
+                    f"{0.1 + i * 0.02};{0.5 - i * 0.03};{0.1 + i * 0.02}",
                 )
-                animate_opacity.set("dur", f"{1.5 / emotion_variant.animation_speed}s")
-                animate_opacity.set("begin", f"{i * 0.2}s")
+                animate_opacity.set("dur", f"{2.0 / emotion_variant.animation_speed}s")
+                animate_opacity.set("begin", f"{i * 0.15}s")
                 animate_opacity.set("repeatCount", "indefinite")
 
                 speech_waves_group.append(wave)
 
-            # Insérer les ondes de parole au début (derrière le logo)
-            if len(root) > 0:
-                root.insert(0, speech_waves_group)
-            else:
-                root.append(speech_waves_group)
+            # Insérer les ondes de parole À LA FIN (au-dessus de tout le contenu)
+            # pour qu'elles soient visibles même avec le fond opaque
+            root.append(speech_waves_group)
 
             return ET.tostring(root, encoding="unicode")
         except Exception as e:
