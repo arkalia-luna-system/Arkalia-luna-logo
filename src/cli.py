@@ -567,9 +567,8 @@ def bbia(
                 f"✅ Variantes disponibles : {', '.join(stats['available_variants'])}"
             )
             if stats.get("emotion_variants"):
-                console.print(
-                    f"💫 Variantes émotionnelles : {', '.join(stats['emotion_variants'][:5])}..."
-                )
+                variants_str = ", ".join(stats["emotion_variants"][:5])
+                console.print(f"💫 Variantes émotionnelles : {variants_str}...")
         else:
             print_error("Aucun fichier généré")
 
@@ -722,9 +721,8 @@ def quest(variant: str, size: int, format: str, emotion: str, style: str) -> Non
             # Afficher les stats Quest
             stats = quest_generator.get_quest_stats()
             console.print(f"\n📊 Statut Quest : {stats['status']}")
-            console.print(
-                f"✅ Variantes disponibles : {', '.join(stats['available_variants'][:5])}..."
-            )
+            variants_str = ", ".join(stats["available_variants"][:5])
+            console.print(f"✅ Variantes disponibles : {variants_str}...")
             console.print(
                 f"🎨 Styles recommandés : {', '.join(stats['recommended_styles'])}"
             )
@@ -961,7 +959,8 @@ def quest_banners(
     except ImportError as e:
         print_error(f"Module requis manquant : {e}")
         console.print(
-            "[yellow]Installez les dépendances avec : pip install Pillow cairosvg[/yellow]"
+            "[yellow]Installez les dépendances avec : "
+            "pip install Pillow cairosvg[/yellow]"
         )
         sys.exit(1)
     except Exception as e:
