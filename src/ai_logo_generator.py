@@ -114,7 +114,8 @@ class AILogoGenerator(ArkaliaLunaLogo):
                         # Autre erreur - message concis
                         error_msg = (
                             f"{str(e)[:200]}... "
-                            "(Solution: pip install --upgrade diffusers torch transformers)"
+                            "(Solution: pip install --upgrade "
+                            "diffusers torch transformers)"
                         )
                         raise RuntimeError(error_msg) from e
 
