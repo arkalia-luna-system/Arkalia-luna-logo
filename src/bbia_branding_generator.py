@@ -231,9 +231,8 @@ class BBIABrandingGenerator(ArkaliaLunaLogo):
             # 3. Animation de rotation de la tête (curiosité)
             head_group = root.find(".//*[@id='head-group']")
             if head_group is not None:
-                # Récupérer la rotation actuelle
-                current_transform = head_group.get("transform", "")
-                base_rotation = -15  # Rotation de base
+                # Rotation de base
+                base_rotation = -15
 
                 # Ajouter animation de rotation
                 animate_transform = ET.SubElement(head_group, "animateTransform")
