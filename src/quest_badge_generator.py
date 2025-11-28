@@ -128,26 +128,23 @@ class QuestBadgeGenerator:
 
         # Sauvegarder
         output_path = (
-            self.output_dir
-            / f"quest-badge-{badge_type}-{variant}-{size}x{size}.svg"
+            self.output_dir / f"quest-badge-{badge_type}-{variant}-{size}x{size}.svg"
         )
         drawing.saveas(str(output_path))
 
         self.logger.info(f"✅ Badge généré : {output_path}")
         return output_path
 
-    def _add_badge_gradient(
-        self, defs: Any, variant: Any, size: int
-    ) -> None:
+    def _add_badge_gradient(self, defs: Any, variant: Any, size: int) -> None:
         """Ajoute le gradient pour le badge"""
-        gradient = defs.add(
-            defs.linearGradient(
-                id=f"badgeGradient-{variant.variant_type.value}",
-                x1="0%",
-                y1="0%",
-                x2="0%",
-                y2="100%",
-            )
+        gradient_id = f"badgeGradient-{variant.variant_type.value}"
+
+        gradient = svgwrite.gradients.LinearGradient(
+            id=gradient_id,
+            x1="0%",
+            y1="0%",
+            x2="0%",
+            y2="100%",
         )
 
         gradient.add_stop_color(offset="0%", color=variant.colors.primary, opacity=1.0)
@@ -156,12 +153,13 @@ class QuestBadgeGenerator:
         )
         gradient.add_stop_color(offset="100%", color=variant.colors.accent, opacity=0.8)
 
+        defs.add(gradient)
+
     def _draw_mission_badge(
         self, drawing: Any, variant: Any, size: int, text: str
     ) -> None:
         """Dessine un badge mission (forme écusson)"""
         center = size // 2
-        radius = size // 3
 
         # Fond en forme d'écusson
         points = [
@@ -218,8 +216,12 @@ class QuestBadgeGenerator:
         star_size = size // 10
         for i in range(stars):
             angle = (i * 360 / stars) - 90
-            x = center + int(radius * 0.7 * __import__("math").cos(__import__("math").radians(angle)))
-            y = center + int(radius * 0.7 * __import__("math").sin(__import__("math").radians(angle)))
+            x = center + int(
+                radius * 0.7 * __import__("math").cos(__import__("math").radians(angle))
+            )
+            y = center + int(
+                radius * 0.7 * __import__("math").sin(__import__("math").radians(angle))
+            )
             self._draw_star(drawing, x, y, star_size, variant.colors.glow)
 
         # Texte
@@ -235,7 +237,9 @@ class QuestBadgeGenerator:
             )
         )
 
-    def _draw_level_badge(self, drawing: Any, variant: Any, size: int, level: int) -> None:
+    def _draw_level_badge(
+        self, drawing: Any, variant: Any, size: int, level: int
+    ) -> None:
         """Dessine un badge niveau (carré avec nombre)"""
         center = size // 2
         radius = size // 3
@@ -356,8 +360,5 @@ class QuestBadgeGenerator:
                 except Exception as e:
                     self.logger.error(f"Erreur génération badge '{btype}' {size}: {e}")
 
-        self.logger.info(
-            f"✅ {len(generated_badges)} badges générés"
-        )
+        self.logger.info(f"✅ {len(generated_badges)} badges générés")
         return generated_badges
-

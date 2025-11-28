@@ -121,7 +121,8 @@ class AILogoGenerator(ArkaliaLunaLogo):
 
                 if not self.ai_pipeline:
                     self.logger.info(
-                        "ℹ️ Pipeline IA non disponible, utilisation du générateur SVG classique."
+                        "ℹ️ Pipeline IA non disponible, "
+                        "utilisation du générateur SVG classique."
                     )
                     return super().generate_svg_logo(variant_name, size)
 
