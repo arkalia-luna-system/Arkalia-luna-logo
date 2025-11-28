@@ -245,20 +245,20 @@ class BBIABrandingGenerator(ArkaliaLunaLogo):
             # Style pour s'assurer que les ondes sont visibles
             speech_waves_group.set("style", "pointer-events: none;")
 
-            # Créer 5-7 ondes concentriques animées (effet "parole")
-            # Les ondes partent de l'extérieur du fond carré
-            num_waves = 7
+            # Créer 8-10 ondes concentriques animées (effet "parole")
+            # Les ondes partent de l'extérieur du fond carré et sont TRÈS visibles
+            num_waves = 10
             # Le fond carré fait environ 456x456, donc rayon ~228, on commence après
-            base_radius = center * 0.5  # Commencer après le fond carré
+            base_radius = center * 0.48  # Commencer juste après le fond carré
             for i in range(num_waves):
                 wave = ET.Element("circle")
                 wave.set("cx", str(center))
                 wave.set("cy", str(center))
-                wave.set("r", str(base_radius + i * 25))
+                wave.set("r", str(base_radius + i * 20))
                 wave.set("fill", "none")
                 wave.set("stroke", emotion_variant.colors.accent)
-                wave.set("stroke-width", "3")
-                wave.set("opacity", str(0.4 - i * 0.04))
+                wave.set("stroke-width", "4")  # Plus épais pour être visible
+                wave.set("opacity", str(0.6 - i * 0.05))  # Plus opaque
 
                 # Animation de pulsation (onde qui s'étend vers l'extérieur)
                 animate_radius = ET.SubElement(wave, "animate")

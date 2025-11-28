@@ -474,7 +474,7 @@ Score par catégorie avec pondération :
 | Documentation | 3% | 80% | 2.4% |
 | Automatisation | 2% | 40% | 0.8% |
 
-**Score Global Pondéré : 68.0%**
+**Score Global Pondéré : 78.0%** (après Phase 1 - 28 Nov 2025)
 
 ---
 
