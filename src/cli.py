@@ -1067,6 +1067,97 @@ def quest_badges(
 
 
 @cli.command()
+@click.option(
+    "--type",
+    "-t",
+    type=click.Choice(["button", "card", "icon", "indicator", "all"]),
+    default="all",
+    help="Type d'élément UI à générer",
+)
+@click.option(
+    "--variant",
+    "-v",
+    type=str,
+    default="serenity",
+    help="Variante émotionnelle (serenity, power, mystery, etc.)",
+)
+@click.option(
+    "--text",
+    type=str,
+    default=None,
+    help="Texte personnalisé pour l'élément",
+)
+@click.option(
+    "--icon-size",
+    type=int,
+    default=None,
+    help="Taille de l'icône (64 ou 128, pour type icon)",
+)
+@click.option(
+    "--score",
+    type=int,
+    default=None,
+    help="Score (pour type indicator)",
+)
+@click.option(
+    "--level",
+    type=int,
+    default=None,
+    help="Niveau (pour type icon)",
+)
+def quest_ui(
+    type: str,
+    variant: str,
+    text: Optional[str],
+    icon_size: Optional[int],
+    score: Optional[int],
+    level: Optional[int],
+) -> None:
+    """Génère les éléments UI Quest (boutons, cartes, icônes, indicateurs)"""
+    try:
+        from .quest_ui_generator import QuestUIGenerator
+
+        console.print(
+            f"[bold blue]🎮 Génération éléments UI Quest "
+            f"(type: {type}, variant: {variant})...[/bold blue]"
+        )
+
+        ui_generator = QuestUIGenerator(output_dir=Path("exports") / "quest" / "ui")
+
+        if type == "all":
+            generated_elements = ui_generator.generate_all_ui_elements(variant=variant)
+        else:
+            element_path = ui_generator.generate_ui_element(
+                element_type=type,
+                variant=variant,
+                text=text,
+                icon_size=icon_size,
+                score=score,
+                level=level,
+            )
+            generated_elements = [element_path]
+
+        if generated_elements:
+            print_success(f"{len(generated_elements)} élément(s) UI généré(s)")
+            for element_path in generated_elements[:10]:  # Limiter affichage
+                console.print(f"  ✅ {element_path.name}")
+            if len(generated_elements) > 10:
+                console.print(f"  ... et {len(generated_elements) - 10} autres")
+        else:
+            print_error("Aucun élément UI généré")
+
+    except ImportError as e:
+        print_error(f"Module requis manquant : {e}")
+        console.print(
+            "[yellow]Installez les dépendances avec : pip install svgwrite[/yellow]"
+        )
+        sys.exit(1)
+    except Exception as e:
+        print_error(f"Impossible de générer les éléments UI : {e}")
+        sys.exit(1)
+
+
+@cli.command()
 @click.option("--confirm", is_flag=True, help="Confirmation automatique")
 @click.pass_context
 def clean(ctx: Context, confirm: bool) -> None:

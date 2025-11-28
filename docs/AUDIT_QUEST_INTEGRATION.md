@@ -26,9 +26,11 @@
 - ✅ CLI quest-badges fonctionnel
 - ✅ Support toutes tailles et variantes
 
-### Phase 4 en cours
+### Phase 4 terminée
 
-- 📋 Éléments UI (80 éléments)
+- ✅ Éléments UI (4 types : button, card, icon, indicator)
+- ✅ CLI quest-ui fonctionnel
+- ✅ Support toutes variantes et tailles
 
 ---
 
