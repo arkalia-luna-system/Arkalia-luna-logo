@@ -610,6 +610,178 @@ def bbia_all(sizes: tuple, formats: str) -> None:
     "-v",
     type=click.Choice(["mark_only", "vertical", "horizontal"]),
     default="mark_only",
+    help="Type de logo Quest",
+)
+@click.option("--size", "-s", default=512, help="Taille du logo en pixels")
+@click.option(
+    "--format",
+    "-f",
+    type=click.Choice(["svg", "png", "both"]),
+    default="svg",
+    help="Format de sortie",
+)
+@click.option(
+    "--emotion",
+    "-e",
+    type=str,
+    default="serenity",
+    help="Variante émotionnelle (serenity, power, mystery, etc.)",
+)
+@click.option(
+    "--style",
+    "-g",
+    type=str,
+    default="ultimate",
+    help="Style de générateur (ultimate, dashboard, ai_moon, etc.)",
+)
+def quest(variant: str, size: int, format: str, emotion: str, style: str) -> None:
+    """Génère un logo Quest pour Arkalia Quest avec variante émotionnelle"""
+    try:
+        from .generator_factory import LogoGeneratorFactory
+
+        console.print(
+            f"[bold blue]🎮 Génération logo Quest '{variant}' "
+            f"variante '{emotion}' style '{style}'...[/bold blue]"
+        )
+
+        # Créer le générateur Quest
+        generator = LogoGeneratorFactory.create_generator(
+            generator_type="quest",
+            output_dir=Path("exports") / "quest",
+        )
+
+        # Type narrowing pour MyPy
+        from .quest_branding_generator import QuestBrandingGenerator
+
+        if not isinstance(generator, QuestBrandingGenerator):
+            raise TypeError("Générateur Quest attendu")
+        quest_generator: QuestBrandingGenerator = generator
+
+        # Générer selon le format
+        generated_files = []
+
+        if format in ("svg", "both"):
+            svg_path = quest_generator.generate_svg_logo(
+                variant, size, emotion_variant=emotion, style=style
+            )
+            generated_files.append(svg_path)
+
+        if format in ("png", "both"):
+            png_path = quest_generator.generate_png_logo(
+                variant, size, emotion_variant=emotion, style=style
+            )
+            if png_path:
+                generated_files.append(png_path)
+
+        if generated_files:
+            print_success(f"{len(generated_files)} fichier(s) généré(s)")
+            for file_path in generated_files:
+                console.print(f"  ✅ {file_path}")
+
+            # Afficher les stats Quest
+            stats = quest_generator.get_quest_stats()
+            console.print(f"\n📊 Statut Quest : {stats['status']}")
+            console.print(
+                f"✅ Variantes disponibles : {', '.join(stats['available_variants'][:5])}..."
+            )
+            console.print(
+                f"🎨 Styles recommandés : {', '.join(stats['recommended_styles'])}"
+            )
+        else:
+            print_error("Aucun fichier généré")
+
+    except ImportError as e:
+        print_error(f"Module requis manquant : {e}")
+        console.print(
+            "[yellow]Installez les dépendances avec : pip install cairosvg[/yellow]"
+        )
+        sys.exit(1)
+    except Exception as e:
+        print_error(f"Impossible de générer le logo Quest : {e}")
+        sys.exit(1)
+
+
+@cli.command()
+@click.option(
+    "--sizes", "-s", multiple=True, default=[200, 512, 1024], help="Tailles à générer"
+)
+@click.option(
+    "--formats",
+    "-f",
+    type=click.Choice(["svg", "png", "both"]),
+    default="svg",
+    help="Formats de sortie",
+)
+@click.option(
+    "--emotion",
+    "-e",
+    type=str,
+    default="serenity",
+    help="Variante émotionnelle (serenity, power, mystery, etc.)",
+)
+@click.option(
+    "--style",
+    "-g",
+    type=str,
+    default="ultimate",
+    help="Style de générateur (ultimate, dashboard, ai_moon, etc.)",
+)
+def quest_all(sizes: tuple, formats: str, emotion: str, style: str) -> None:
+    """Génère toutes les déclinaisons Quest (3 formats × tailles)"""
+    try:
+        from .generator_factory import LogoGeneratorFactory
+
+        console.print(
+            "[bold blue]🎮 Génération de toutes les déclinaisons Quest...[/bold blue]"
+        )
+
+        # Créer le générateur Quest
+        generator = LogoGeneratorFactory.create_generator(
+            generator_type="quest",
+            output_dir=Path("exports") / "quest",
+        )
+
+        # Type narrowing pour MyPy
+        from .quest_branding_generator import QuestBrandingGenerator
+
+        if not isinstance(generator, QuestBrandingGenerator):
+            raise TypeError("Générateur Quest attendu")
+        quest_generator: QuestBrandingGenerator = generator
+
+        # Convertir formats
+        format_list = ["svg"]
+        if formats == "png":
+            format_list = ["png"]
+        elif formats == "both":
+            format_list = ["svg", "png"]
+
+        # Générer toutes les déclinaisons
+        generated_files = quest_generator.generate_all_declinations(
+            sizes=list(sizes), formats=format_list, emotion_variant=emotion, style=style
+        )
+
+        # Afficher le résumé
+        console.print("\n[bold green]🎉 Génération terminée ![/bold green]")
+        console.print(f"📁 {len(generated_files)} fichier(s) généré(s)")
+
+        if generated_files:
+            console.print("\n📋 Fichiers générés :")
+            for file_path in generated_files[:10]:  # Limiter à 10 pour l'affichage
+                console.print(f"  • {file_path.name}")
+            if len(generated_files) > 10:
+                console.print(f"  ... et {len(generated_files) - 10} autres")
+
+    except Exception as e:
+        print_error(f"Impossible de générer les déclinaisons Quest : {e}")
+        sys.exit(1)
+
+
+@cli.command()
+@click.option(
+    "--variant",
+    "-v",
+    type=click.Choice(["mark_only", "vertical", "horizontal"]),
+    default="mark_only",
     help="Type de logo BBIA",
 )
 @click.option("--size", "-s", default=512, help="Taille du logo en pixels")
