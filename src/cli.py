@@ -551,10 +551,12 @@ def bbia(
         if generated_files:
             console.print("\n[bold green]🎉 Logo BBIA généré ![/bold green]")
             console.print(f"📁 {len(generated_files)} fichier(s) généré(s)")
-            console.print(f"🎨 Variante : {variant}")
-            if emotion:
-                console.print(f"💫 Émotion : {emotion}")
-            console.print(f"📏 Taille : {size}x{size} pixels")
+                    console.print(f"🎨 Variante : {variant}")
+                    if emotion:
+                        console.print(f"💫 Émotion : {emotion}")
+                    console.print(f"📏 Taille : {size}x{size} pixels")
+                    if use_master:
+                        console.print(f"🎯 SVG Master : {master_type}")
 
             # Afficher les stats BBIA
             stats = bbia_generator.get_bbia_stats()
@@ -1125,7 +1127,9 @@ def quest_ui(
         ui_generator = QuestUIGenerator(output_dir=Path("exports") / "quest" / "ui")
 
         if type == "all":
-            generated_elements = ui_generator.generate_all_ui_elements(variant=variant)
+            generated_elements = ui_generator.generate_all_ui_elements(
+                variant=variant
+            )
         else:
             element_path = ui_generator.generate_ui_element(
                 element_type=type,

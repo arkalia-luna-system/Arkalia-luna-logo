@@ -42,6 +42,12 @@ class BBIABrandingGenerator(ArkaliaLunaLogo):
         "horizontal": "bbia_logo_horizontal_SOURCE.svg",
     }
 
+    # SVG Master modulaires (nouvelle approche)
+    MASTER_SVG_SOURCES: dict[str, str] = {
+        "clean": "bbia_master_clean.svg",
+        "wireframe": "bbia_master_wireframe.svg",
+    }
+
     def __init__(self, output_dir: Optional[Path] = None) -> None:
         # Appel du constructeur parent
         super().__init__(output_dir or Path("exports") / "bbia")
@@ -165,12 +171,121 @@ class BBIABrandingGenerator(ArkaliaLunaLogo):
             self.logger.error(f"Erreur transformation SVG : {e}")
             return svg_content
 
+    def _modify_master_svg(self, svg_content: str, emotion_variant: BBIAVariant) -> str:
+        """
+        Modifie le SVG Master via les IDs sémantiques (approche propre et modulaire)
+
+        Modifications appliquées :
+        - Couleur des pupilles (#pupil-left, #pupil-right) selon l'émotion
+        - Rotation de la tête (#head-group) pour animation
+        - Opacité de l'interface faciale pour état de veille
+        - Couleur des antennes pour signal
+
+        Args:
+            svg_content: Contenu SVG Master (clean ou wireframe)
+            emotion_variant: Variante émotionnelle BBIA
+
+        Returns:
+            Contenu SVG modifié
+        """
+        try:
+            root = ET.fromstring(svg_content)
+
+            # 1. Modifier les pupilles (couleur selon l'émotion)
+            pupil_left = root.find(".//*[@id='pupil-left']")
+            pupil_right = root.find(".//*[@id='pupil-right']")
+
+            if pupil_left is not None:
+                pupil_left.set("fill", emotion_variant.colors.glow)
+            if pupil_right is not None:
+                pupil_right.set("fill", emotion_variant.colors.glow)
+
+            # 2. Ajouter animation de pulsation pour les yeux
+            if pupil_left is not None:
+                # Vérifier si animation existe déjà
+                has_animate = any(child.tag.endswith("animate") for child in pupil_left)
+                if not has_animate:
+                    animate = ET.SubElement(pupil_left, "animate")
+                    animate.set("attributeName", "opacity")
+                    animate.set(
+                        "values",
+                        f"{0.7 * emotion_variant.glow_intensity};{1.0 * emotion_variant.glow_intensity};{0.7 * emotion_variant.glow_intensity}",
+                    )
+                    animate.set("dur", f"{2 / emotion_variant.animation_speed}s")
+                    animate.set("repeatCount", "indefinite")
+
+            if pupil_right is not None:
+                has_animate = any(
+                    child.tag.endswith("animate") for child in pupil_right
+                )
+                if not has_animate:
+                    animate = ET.SubElement(pupil_right, "animate")
+                    animate.set("attributeName", "opacity")
+                    animate.set(
+                        "values",
+                        f"{0.7 * emotion_variant.glow_intensity};{1.0 * emotion_variant.glow_intensity};{0.7 * emotion_variant.glow_intensity}",
+                    )
+                    animate.set("dur", f"{2 / emotion_variant.animation_speed}s")
+                    animate.set("repeatCount", "indefinite")
+
+            # 3. Animation de rotation de la tête (curiosité)
+            head_group = root.find(".//*[@id='head-group']")
+            if head_group is not None:
+                # Récupérer la rotation actuelle
+                current_transform = head_group.get("transform", "")
+                base_rotation = -15  # Rotation de base
+
+                # Ajouter animation de rotation
+                animate_transform = ET.SubElement(head_group, "animateTransform")
+                animate_transform.set("attributeName", "transform")
+                animate_transform.set("type", "rotate")
+                animate_transform.set(
+                    "values",
+                    f"{base_rotation} 250 250;{base_rotation + 10} 250 250;{base_rotation - 10} 250 250;{base_rotation} 250 250",
+                )
+                animate_transform.set("dur", f"{3 / emotion_variant.animation_speed}s")
+                animate_transform.set("repeatCount", "indefinite")
+
+            # 4. Modifier les antennes (signal actif)
+            antenna_left_signal = root.find(".//*[@id='antenna-left-signal']")
+            antenna_right_signal = root.find(".//*[@id='antenna-right-signal']")
+
+            if antenna_left_signal is not None:
+                antenna_left_signal.set("fill", emotion_variant.colors.accent)
+            if antenna_right_signal is not None:
+                antenna_right_signal.set("fill", emotion_variant.colors.accent)
+
+            # 5. Ajouter animation aux antennes (pulsation)
+            if antenna_left_signal is not None:
+                animate_antenna = ET.SubElement(antenna_left_signal, "animate")
+                animate_antenna.set("attributeName", "r")
+                animate_antenna.set("values", "4;6;4")
+                animate_antenna.set("dur", f"{1.5 / emotion_variant.animation_speed}s")
+                animate_antenna.set("repeatCount", "indefinite")
+
+            if antenna_right_signal is not None:
+                animate_antenna = ET.SubElement(antenna_right_signal, "animate")
+                animate_antenna.set("attributeName", "r")
+                animate_antenna.set("values", "4;6;4")
+                animate_antenna.set("dur", f"{1.5 / emotion_variant.animation_speed}s")
+                animate_antenna.set("begin", "0.3s")  # Décalage pour effet alterné
+                animate_antenna.set("repeatCount", "indefinite")
+
+            return ET.tostring(root, encoding="unicode")
+
+        except Exception as e:
+            self.logger.error(f"Erreur modification SVG Master : {e}")
+            import traceback
+
+            self.logger.error(traceback.format_exc())
+            return svg_content
+
     def _modify_logo_colors(
         self, svg_content: str, emotion_variant: BBIAVariant
     ) -> str:
         """
-        Modifie UNIQUEMENT le fond carré avec la couleur BBIA officielle
-        SIMPLIFIÉ : Pas d'effets compliqués, juste le fond qui change
+        Modifie le fond carré avec la couleur BBIA officielle
+        Remplaçe TOUTES les occurrences de #008181 (fond turquoise original)
 
         Args:
             svg_content: Contenu SVG original
@@ -180,22 +295,72 @@ class BBIABrandingGenerator(ArkaliaLunaLogo):
             Contenu SVG avec fond modifié
         """
         try:
-            # SIMPLIFIÉ : Juste changer le fond carré avec la couleur accent BBIA
+            # Utiliser la couleur accent de la variante pour le fond
             bg_color = emotion_variant.colors.accent
 
-            # Remplacer #008181 par la couleur accent BBIA
-            modified_svg = re.sub(r"#008181", bg_color, svg_content)
+            self.logger.debug(
+                f"Modification fond: #008181 → {bg_color} "
+                f"(variante: {emotion_variant.variant_type.value})"
+            )
+
+            # Remplacer TOUTES les occurrences de #008181 (dans style, fill, stop-color, etc.)
+            # Utiliser un remplacement global et insensible à la casse
+            modified_svg = re.sub(
+                r"#008181", bg_color, svg_content, flags=re.IGNORECASE
+            )
+
+            # Vérifier que le remplacement a fonctionné
+            if "#008181" in modified_svg:
+                self.logger.warning(
+                    "Certaines occurrences de #008181 n'ont pas été remplacées"
+                )
+            else:
+                self.logger.debug(
+                    f"✅ Toutes les occurrences de #008181 remplacées par {bg_color}"
+                )
 
             return modified_svg
         except Exception as e:
             self.logger.error(f"Erreur modification couleurs SVG : {e}")
+            import traceback
+
+            self.logger.error(traceback.format_exc())
             return svg_content
+
+    def _get_master_svg_path(self, master_type: str = "clean") -> Path:
+        """
+        Retourne le chemin vers un SVG Master
+
+        Args:
+            master_type: Type de master ('clean' ou 'wireframe')
+
+        Returns:
+            Chemin vers le fichier SVG Master
+        """
+        if master_type not in self.MASTER_SVG_SOURCES:
+            raise ValueError(
+                f"Type de master '{master_type}' non reconnu. "
+                f"Types disponibles: {list(self.MASTER_SVG_SOURCES.keys())}"
+            )
+
+        source_filename = self.MASTER_SVG_SOURCES[master_type]
+        source_path = self.bbia_assets_path / source_filename
+
+        if not source_path.exists():
+            raise FileNotFoundError(
+                f"SVG Master introuvable : {source_path}\n"
+                f"Vérifiez que les assets sont dans : {self.bbia_assets_path}"
+            )
+
+        return source_path
 
     def generate_svg_logo(
         self,
         variant_name: str,
         size: int = 200,
         emotion_variant: Optional[str] = None,
+        use_master: bool = True,  # Nouveau paramètre pour utiliser les SVG Master
+        master_type: str = "clean",  # 'clean' ou 'wireframe'
     ) -> Path:
         """
         Génère un logo SVG BBIA avec variante émotionnelle optionnelle
@@ -218,31 +383,67 @@ class BBIABrandingGenerator(ArkaliaLunaLogo):
                 f"🤖 Génération logo BBIA '{variant_name}' en taille {size}x{size}"
             )
 
-        # Charger le SVG source
-        source_path = self._get_source_svg_path(variant_name)
-        svg_content = self._load_svg_content(source_path)
-
-        # Transformer la taille
-        transformed_svg = self._transform_svg_size(svg_content, size)
-
-        # Modifier couleurs si variante émotionnelle spécifiée
-        if emotion_variant:
+        # Utiliser les SVG Master si demandé
+        if use_master:
             try:
-                bbia_variant = BBIA_VARIANTS.get_variant(emotion_variant)
-                transformed_svg = self._modify_logo_colors(
-                    transformed_svg, bbia_variant
+                source_path = self._get_master_svg_path(master_type)
+                svg_content = self._load_svg_content(source_path)
+
+                # Transformer la taille
+                transformed_svg = self._transform_svg_size(svg_content, size)
+
+                # Modifier via IDs sémantiques si variante émotionnelle
+                if emotion_variant:
+                    try:
+                        bbia_variant = BBIA_VARIANTS.get_variant(emotion_variant)
+                        transformed_svg = self._modify_master_svg(
+                            transformed_svg, bbia_variant
+                        )
+                    except ValueError as e:
+                        self.logger.warning(f"Variante émotionnelle invalide : {e}")
+                        self.logger.warning("Génération sans modification")
+            except FileNotFoundError:
+                # Fallback sur les anciens SVG sources
+                self.logger.warning(
+                    f"SVG Master '{master_type}' non trouvé, "
+                    f"utilisation de l'ancien système"
                 )
-            except ValueError as e:
-                self.logger.warning(f"Variante émotionnelle invalide : {e}")
-                self.logger.warning("Génération sans modification")
+                use_master = False
+
+        # Ancien système (fallback)
+        if not use_master:
+            source_path = self._get_source_svg_path(variant_name)
+            svg_content = self._load_svg_content(source_path)
+
+            # Transformer la taille
+            transformed_svg = self._transform_svg_size(svg_content, size)
+
+            # Modifier couleurs si variante émotionnelle spécifiée
+            if emotion_variant:
+                try:
+                    bbia_variant = BBIA_VARIANTS.get_variant(emotion_variant)
+                    transformed_svg = self._modify_logo_colors(
+                        transformed_svg, bbia_variant
+                    )
+                except ValueError as e:
+                    self.logger.warning(f"Variante émotionnelle invalide : {e}")
+                    self.logger.warning("Génération sans modification")
 
         # Créer le chemin de sortie
+        if use_master:
+            master_suffix = f"-{master_type}"
+        else:
+            master_suffix = ""
+
         if emotion_variant:
             output_path = (
-                self.output_dir / f"bbia-{variant_name}-{emotion_variant}-{size}.svg"
+                self.output_dir
+                / f"bbia-{variant_name}{master_suffix}-{emotion_variant}-{size}.svg"
             )
         else:
-            output_path = self.output_dir / f"bbia-{variant_name}-{size}.svg"
+            output_path = (
+                self.output_dir / f"bbia-{variant_name}{master_suffix}-{size}.svg"
+            )
         output_path.parent.mkdir(parents=True, exist_ok=True)
 
         # Sauvegarder
