@@ -23,9 +23,9 @@
   <filter id="quest-text-glow-serenity" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="2" result="coloredBlur" /><feFlood flood-color="#60a5fa" flood-opacity="0.6" result="flood" /><feComposite in="flood" in2="coloredBlur" operator="in" /></filter><linearGradient id="quest-text-gradient-serenity" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#1e3a8a" stop-opacity="1.0" /><stop offset="100%" stop-color="#06b6d4" stop-opacity="0.9" /></linearGradient></ns0:defs>
   <ns0:circle cx="0" cy="0" fill="url(#questMainGradient-serenity)" opacity="0.95" r="251" />
   <ns0:circle cx="0" cy="0" fill="none" filter="url(#questGlow-serenity)" opacity="0.8" r="251" stroke="#60a5fa" stroke-width="3" />
-  <ns0:path d="M 256 112.64000000000001 L 133.12 194.56 L 133.12 337.92 Q 133.12 399.36 256 399.36 Q 378.88 399.36 378.88 337.92 L 378.88 194.56 Z" fill="url(#questBadgeGradient-serenity)" filter="url(#questGlow-serenity)" stroke="#1e3a8a" stroke-width="2" />
-  <ns0:text dominant-baseline="middle" fill="#1e3a8a" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="122.88" font-weight="bold" text-anchor="middle" x="256" y="286.72">Q</ns0:text>
-  <ns0:line opacity="0.7" stroke="#60a5fa" stroke-width="2" x1="174.07999999999998" x2="337.92" y1="256" y2="256" />
+  <ns0:path d="M 256 130.56 L 148.48000000000002 202.24 L 148.48000000000002 327.68 Q 148.48000000000002 381.44 256 381.44 Q 363.52 381.44 363.52 327.68 L 363.52 202.24 Z" fill="url(#questBadgeGradient-serenity)" filter="url(#questGlow-serenity)" stroke="#1e3a8a" stroke-width="2" />
+  <ns0:text dominant-baseline="middle" fill="#1e3a8a" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="107" font-weight="bold" text-anchor="middle" x="256" y="282.88">Q</ns0:text>
+  <ns0:line opacity="0.7" stroke="#60a5fa" stroke-width="2" x1="184.32" x2="327.68" y1="256" y2="256" />
   <ns0:g>
     <ns0:path d="M 537.6 232.96 L 543.0170288851275 248.54409937984047 L 559.5123421354403 248.88024844960123 L 546.3649368541761 258.8479006201595 L 551.1425722128185 274.6397515503988 L 537.6 265.216 L 524.0574277871815 274.6397515503988 L 528.8350631458239 258.8479006201595 L 515.6876578645597 248.88024844960123 L 532.1829711148725 248.54409937984047 Z" fill="url(#questStarGradient-serenity)" filter="url(#questGlow-serenity)" stroke="#60a5fa" stroke-width="1">
       <ns0:animate attributeName="opacity" begin="0.0s" dur="2.5s" repeatCount="indefinite" values="0.7;1.0;0.7" />

@@ -259,7 +259,9 @@ def generate_all(ctx: Context, size: int, parallel: bool) -> None:
                     output_path = generator.generate_svg_logo(variant, size)
                     if output_path:
                         generated_files.append(output_path)
-                        console.print(f"[green]✅[/green] {variant} : {output_path.name}")
+                        console.print(
+                            f"[green]✅[/green] {variant} : {output_path.name}"
+                        )
                 except Exception as e:
                     console.print(f"[red]❌[/red] {variant} : {e}")
 

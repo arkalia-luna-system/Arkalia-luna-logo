@@ -208,7 +208,7 @@ class QuestSVGBuilder(SVGBuilder):
         """Ajoute le badge central Quest (forme écusson/bouclier)"""
         center_x = size // 2
         center_y = size // 2
-        badge_size = size * 0.4
+        badge_size = size * 0.35  # Réduit pour mieux s'adapter
 
         # Forme de badge (écusson/bouclier)
         badge_path = svgwrite.path.Path(
@@ -232,10 +232,10 @@ class QuestSVGBuilder(SVGBuilder):
         # Symbole "Q" stylisé dans le badge
         q_symbol = svgwrite.text.Text(
             "Q",
-            x=[center_x],
-            y=[center_y + badge_size * 0.15],
+            x=[str(center_x)],
+            y=[str(center_y + badge_size * 0.15)],
             font_family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif",
-            font_size=badge_size * 0.6,
+            font_size=int(badge_size * 0.6),
             font_weight="bold",
             fill=variant.colors.primary,
             text_anchor="middle",
@@ -245,8 +245,8 @@ class QuestSVGBuilder(SVGBuilder):
 
         # Ligne décorative dans le badge
         line = svgwrite.shapes.Line(
-            start=(center_x - badge_size * 0.4, center_y),
-            end=(center_x + badge_size * 0.4, center_y),
+            start=(str(center_x - badge_size * 0.4), str(center_y)),
+            end=(str(center_x + badge_size * 0.4), str(center_y)),
             stroke=variant.colors.glow,
             stroke_width=2,
             opacity=0.7,
@@ -261,18 +261,21 @@ class QuestSVGBuilder(SVGBuilder):
     ) -> None:
         """Ajoute des étoiles (achievements) autour du badge"""
         center = size // 2
-        badge_radius = size * 0.4
-        star_radius = size * 0.15
+        badge_radius = size * 0.35  # Ajusté pour correspondre au badge
+        star_radius = size * 0.12  # Réduit pour rester dans les limites
 
         # 5 étoiles autour du badge (achievements)
         num_stars = 5
         for i in range(num_stars):
             angle = (i * 360 / num_stars) * (math.pi / 180)
-            star_x = center + (badge_radius + star_radius) * math.cos(angle)
-            star_y = center + (badge_radius + star_radius) * math.sin(angle)
+            # Positionner les étoiles juste à l'extérieur du badge
+            star_x = center + (badge_radius * 1.3) * math.cos(angle)
+            star_y = center + (badge_radius * 1.3) * math.sin(angle)
 
-            star = self._create_star(star_x, star_y, star_radius * 0.3, variant, i)
-            drawing.add(star)
+            # Vérifier que les étoiles restent dans les limites
+            if 0 < star_x < size and 0 < star_y < size:
+                star = self._create_star(star_x, star_y, star_radius * 0.4, variant, i)
+                drawing.add(star)
 
     def _create_star(
         self,

@@ -2,7 +2,6 @@
 Tests E2E (End-to-End) pour le projet
 """
 
-
 import pytest
 
 from src.generator_factory import LogoGeneratorFactory
@@ -71,4 +70,3 @@ class TestE2E:
         for gen_type in ["default", "realism", "ultra_max"][:2]:
             generator = LogoGeneratorFactory.create_generator(gen_type)
             assert generator is not None
-
