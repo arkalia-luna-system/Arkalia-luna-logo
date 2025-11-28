@@ -2,16 +2,19 @@
 Générateur principal des logos Arkalia-LUNA
 """
 
+import os
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
 from PIL import Image, ImageDraw
 
 try:
+    from .cache_manager import CacheManager
     from .svg_builder_advanced import AdvancedSVGBuilder
     from .variants import LogoVariants
 except ImportError:
     # Fallback pour exécution directe
+    from cache_manager import CacheManager
     from svg_builder_advanced import AdvancedSVGBuilder
     from variants import LogoVariants
 
@@ -19,7 +22,11 @@ except ImportError:
 class ArkaliaLunaLogo:
     """Générateur principal des logos Arkalia-LUNA"""
 
-    def __init__(self, output_dir: Optional[Path] = None) -> None:
+    def __init__(
+        self,
+        output_dir: Optional[Path] = None,
+        enable_cache: Optional[bool] = None,
+    ) -> None:
         self.variants_manager = LogoVariants()
         self.svg_builder = AdvancedSVGBuilder(self.variants_manager)
         self.output_dir = output_dir or Path("exports")
@@ -27,6 +34,19 @@ class ArkaliaLunaLogo:
 
         # Configuration du logging
         self._setup_logging()
+
+        # Initialisation du cache Redis
+        cache_enabled = (
+            enable_cache
+            if enable_cache is not None
+            else os.getenv("REDIS_ENABLED", "false").lower() == "true"
+        )
+        self.cache_manager = CacheManager(
+            redis_host=os.getenv("REDIS_HOST", "localhost"),
+            redis_port=int(os.getenv("REDIS_PORT", "6379")),
+            redis_db=int(os.getenv("REDIS_DB", "0")),
+            enabled=cache_enabled,
+        )
 
     def _setup_logging(self) -> None:
         """Configure le système de logging"""
@@ -42,8 +62,23 @@ class ArkaliaLunaLogo:
         )
         self.logger = logging.getLogger(__name__)
 
-    def generate_svg_logo(self, variant_name: str, size: int = 200) -> Path:
-        """Génère un logo SVG pour une variante donnée"""
+    def generate_svg_logo(
+        self,
+        variant_name: str,
+        size: int = 200,
+        generator_type: str = "default",
+    ) -> Path:
+        """
+        Génère un logo SVG pour une variante donnée avec cache Redis
+
+        Args:
+            variant_name: Nom de la variante
+            size: Taille du logo
+            generator_type: Type de générateur (pour le cache)
+
+        Returns:
+            Chemin du logo généré
+        """
         try:
             self.logger.info(
                 f"Génération du logo SVG '{variant_name}' en taille {size}x{size}",
@@ -53,11 +88,30 @@ class ArkaliaLunaLogo:
             if not self.variants_manager.validate_variant(variant_name):
                 raise ValueError(f"Variante '{variant_name}' non reconnue")
 
+            # Vérifier le cache Redis
+            cached_path = self.cache_manager.get_cached_logo_path(
+                generator_type=generator_type,
+                variant=variant_name,
+                size=size,
+            )
+
+            if cached_path:
+                self.logger.info(f"✅ Logo récupéré du cache : {cached_path}")
+                return cached_path
+
             # Construction du chemin de sortie
             output_path = self.output_dir / f"arkalia-luna-{variant_name}-{size}.svg"
 
             # Génération et sauvegarde
             self.svg_builder.save_logo(variant_name, size, output_path)
+
+            # Mettre en cache
+            self.cache_manager.cache_logo_path(
+                logo_path=output_path,
+                generator_type=generator_type,
+                variant=variant_name,
+                size=size,
+            )
 
             self.logger.info(f"Logo SVG généré avec succès : {output_path}")
             return output_path

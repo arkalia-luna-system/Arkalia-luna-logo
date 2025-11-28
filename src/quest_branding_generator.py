@@ -20,6 +20,7 @@ except ImportError:
 
 from .logo_generator import ArkaliaLunaLogo
 from .quest_palette import QUEST_PALETTE  # type: ignore[import-untyped]
+from .svg_builder_quest import QuestSVGBuilder  # type: ignore[import-untyped]
 from .variants import LogoVariants  # type: ignore[import-untyped]
 
 
@@ -59,8 +60,11 @@ class QuestBrandingGenerator(ArkaliaLunaLogo):
         # Variants manager pour les variantes émotionnelles
         self.variants_manager = LogoVariants()
 
+        # Builder SVG Quest dédié (remplace le builder par défaut)
+        self.svg_builder = QuestSVGBuilder(self.variants_manager)
+
         # Configuration du logging
-        self.logger.info("🎮 Quest Branding Generator initialisé")
+        self.logger.info("🎮 Quest Branding Generator initialisé avec builder dédié")
 
     def _add_quest_text(
         self, svg_content: str, format_type: str, size: int, variant: str
@@ -171,7 +175,9 @@ class QuestBrandingGenerator(ArkaliaLunaLogo):
                 shadow_arkalia = ET.Element("text")
                 shadow_arkalia.set("x", str(size // 2))
                 shadow_arkalia.set("y", str(text_start_y + 2))
-                shadow_arkalia.set("font-family", "'Segoe UI', 'Helvetica Neue', Arial, sans-serif")
+                shadow_arkalia.set(
+                    "font-family", "'Segoe UI', 'Helvetica Neue', Arial, sans-serif"
+                )
                 shadow_arkalia.set("font-size", str(text_size))
                 shadow_arkalia.set("font-weight", "700")
                 shadow_arkalia.set("fill", "rgba(0,0,0,0.3)")
@@ -183,7 +189,9 @@ class QuestBrandingGenerator(ArkaliaLunaLogo):
                 text_arkalia = ET.Element("text")
                 text_arkalia.set("x", str(size // 2))
                 text_arkalia.set("y", str(text_start_y))
-                text_arkalia.set("font-family", "'Segoe UI', 'Helvetica Neue', Arial, sans-serif")
+                text_arkalia.set(
+                    "font-family", "'Segoe UI', 'Helvetica Neue', Arial, sans-serif"
+                )
                 text_arkalia.set("font-size", str(text_size))
                 text_arkalia.set("font-weight", "700")
                 text_arkalia.set("fill", f"url(#{gradient_id})")
@@ -195,7 +203,9 @@ class QuestBrandingGenerator(ArkaliaLunaLogo):
                 shadow_quest = ET.Element("text")
                 shadow_quest.set("x", str(size // 2))
                 shadow_quest.set("y", str(text_start_y + text_size * 1.15 + 2))
-                shadow_quest.set("font-family", "'Segoe UI', 'Helvetica Neue', Arial, sans-serif")
+                shadow_quest.set(
+                    "font-family", "'Segoe UI', 'Helvetica Neue', Arial, sans-serif"
+                )
                 shadow_quest.set("font-size", str(text_size * 0.85))
                 shadow_quest.set("font-weight", "600")
                 shadow_quest.set("fill", "rgba(0,0,0,0.3)")
@@ -207,7 +217,9 @@ class QuestBrandingGenerator(ArkaliaLunaLogo):
                 text_quest = ET.Element("text")
                 text_quest.set("x", str(size // 2))
                 text_quest.set("y", str(text_start_y + text_size * 1.15))
-                text_quest.set("font-family", "'Segoe UI', 'Helvetica Neue', Arial, sans-serif")
+                text_quest.set(
+                    "font-family", "'Segoe UI', 'Helvetica Neue', Arial, sans-serif"
+                )
                 text_quest.set("font-size", str(text_size * 0.85))
                 text_quest.set("font-weight", "600")
                 text_quest.set("fill", f"url(#{gradient_id})")
@@ -231,7 +243,9 @@ class QuestBrandingGenerator(ArkaliaLunaLogo):
                 shadow = ET.Element("text")
                 shadow.set("x", str(text_x + 2))
                 shadow.set("y", str(text_y + 2))
-                shadow.set("font-family", "'Segoe UI', 'Helvetica Neue', Arial, sans-serif")
+                shadow.set(
+                    "font-family", "'Segoe UI', 'Helvetica Neue', Arial, sans-serif"
+                )
                 shadow.set("font-size", str(text_size))
                 shadow.set("font-weight", "700")
                 shadow.set("fill", "rgba(0,0,0,0.3)")
@@ -243,7 +257,9 @@ class QuestBrandingGenerator(ArkaliaLunaLogo):
                 text = ET.Element("text")
                 text.set("x", str(text_x))
                 text.set("y", str(text_y))
-                text.set("font-family", "'Segoe UI', 'Helvetica Neue', Arial, sans-serif")
+                text.set(
+                    "font-family", "'Segoe UI', 'Helvetica Neue', Arial, sans-serif"
+                )
                 text.set("font-size", str(text_size))
                 text.set("font-weight", "700")
                 text.set("fill", f"url(#{gradient_id})")
@@ -267,7 +283,7 @@ class QuestBrandingGenerator(ArkaliaLunaLogo):
         variant_name: str,
         size: int = 200,
         emotion_variant: Optional[str] = None,
-        style: Optional[str] = None,
+        style: Optional[str] = None,  # Ignoré, on utilise toujours le builder Quest
     ) -> Path:
         """
         Génère un logo SVG Quest
@@ -291,46 +307,45 @@ class QuestBrandingGenerator(ArkaliaLunaLogo):
 
         self.logger.info(
             f"🎮 Génération logo Quest '{variant_name}' "
-            f"variante '{emotion_variant}' style '{style}' en taille {size}x{size}"
+            f"variante '{emotion_variant}' en taille {size}x{size}"
         )
 
-        # Générer le logo de base avec le générateur approprié
-        # Importation locale pour éviter import circulaire
+        # Générer le logo Quest avec le builder dédié
         try:
-            from .generator_factory import LogoGeneratorFactory
-
-            base_generator = LogoGeneratorFactory.create_generator(
-                style, self.output_dir
+            # Utiliser le builder Quest pour créer le logo de base
+            quest_logo_path = (
+                self.output_dir / f"quest-base-{emotion_variant}-{size}.svg"
             )
-            base_logo_path = base_generator.generate_svg_logo(emotion_variant, size)
+            quest_logo_path.parent.mkdir(parents=True, exist_ok=True)
+
+            # Générer le logo Quest avec le builder dédié
+            self.svg_builder.save_logo(emotion_variant, size, quest_logo_path)
+
+            # Charger le contenu SVG
+            svg_content = quest_logo_path.read_text(encoding="utf-8")
+
+            # Ajouter le texte Quest si nécessaire
+            if variant_name != "mark_only":
+                svg_content = self._add_quest_text(
+                    svg_content, variant_name, size, emotion_variant
+                )
+
+            # Créer le chemin de sortie final
+            output_path = (
+                self.output_dir / f"quest-{variant_name}-{emotion_variant}-{size}.svg"
+            )
+            output_path.parent.mkdir(parents=True, exist_ok=True)
+
+            # Sauvegarder
+            output_path.write_text(svg_content, encoding="utf-8")
+
+            # Supprimer le fichier temporaire
+            if quest_logo_path.exists():
+                quest_logo_path.unlink()
+
         except Exception as e:
-            self.logger.error(f"Erreur génération logo de base : {e}")
-            # Fallback sur le générateur par défaut
-            from .generator_factory import LogoGeneratorFactory
-
-            base_generator = LogoGeneratorFactory.create_generator(
-                "default", self.output_dir
-            )
-            base_logo_path = base_generator.generate_svg_logo(emotion_variant, size)
-
-        # Charger le contenu SVG
-        svg_content = base_logo_path.read_text(encoding="utf-8")
-
-        # Ajouter le texte Quest si nécessaire
-        if variant_name != "mark_only":
-            svg_content = self._add_quest_text(
-                svg_content, variant_name, size, emotion_variant
-            )
-
-        # Créer le chemin de sortie
-        output_path = (
-            self.output_dir
-            / f"quest-{variant_name}-{emotion_variant}-{style}-{size}.svg"
-        )
-        output_path.parent.mkdir(parents=True, exist_ok=True)
-
-        # Sauvegarder
-        output_path.write_text(svg_content, encoding="utf-8")
+            self.logger.error(f"Erreur génération logo Quest : {e}")
+            raise
 
         self.logger.info(f"✅ Logo Quest généré : {output_path}")
         return output_path
@@ -340,7 +355,7 @@ class QuestBrandingGenerator(ArkaliaLunaLogo):
         variant_name: str,
         size: int = 512,
         emotion_variant: Optional[str] = None,
-        style: Optional[str] = None,
+        style: Optional[str] = None,  # Ignoré, on utilise toujours le builder Quest
     ) -> Optional[Path]:
         """
         Génère un logo PNG Quest depuis le SVG
@@ -369,10 +384,9 @@ class QuestBrandingGenerator(ArkaliaLunaLogo):
         svg_path = self.generate_svg_logo(variant_name, size, emotion_variant, style)
 
         # Créer le chemin PNG
-        if emotion_variant and style:
+        if emotion_variant:
             png_path = (
-                self.output_dir
-                / f"quest-{variant_name}-{emotion_variant}-{style}-{size}.png"
+                self.output_dir / f"quest-{variant_name}-{emotion_variant}-{size}.png"
             )
         else:
             png_path = self.output_dir / f"quest-{variant_name}-{size}.png"
