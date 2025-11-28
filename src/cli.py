@@ -216,13 +216,51 @@ def generate_all(ctx: Context, size: int, parallel: bool) -> None:
 
         # Génération avec barre de progression
         generated_files = []
-        for variant in track(variants, description="Génération des logos"):
-            try:
-                output_path = generator.generate_svg_logo(variant, size)
-                generated_files.append(output_path)
-                console.print(f"[green]✅[/green] {variant} : {output_path.name}")
-            except Exception as e:
-                console.print(f"[red]❌[/red] {variant} : {e}")
+
+        if parallel:
+            # Génération parallèle avec ThreadPoolExecutor
+            from concurrent.futures import ThreadPoolExecutor, as_completed
+
+            console.print("[yellow]⚡ Mode parallèle activé[/yellow]")
+
+            def generate_single(
+                variant: str,
+            ) -> tuple[str, Optional[Path], Optional[str]]:
+                """Génère un logo et retourne (variant, path, error)"""
+                try:
+                    output_path = generator.generate_svg_logo(variant, size)
+                    return (variant, output_path, None)
+                except Exception as e:
+                    return (variant, None, str(e))
+
+            with ThreadPoolExecutor(max_workers=4) as executor:
+                futures = {
+                    executor.submit(generate_single, variant): variant
+                    for variant in variants
+                }
+
+                for future in track(
+                    as_completed(futures),
+                    total=len(variants),
+                    description="Génération parallèle",
+                ):
+                    variant, output_path, error = future.result()
+                    if output_path:
+                        generated_files.append(output_path)
+                        console.print(
+                            f"[green]✅[/green] {variant} : {output_path.name}"
+                        )
+                    else:
+                        console.print(f"[red]❌[/red] {variant} : {error}")
+        else:
+            # Génération séquentielle
+            for variant in track(variants, description="Génération des logos"):
+                try:
+                    output_path = generator.generate_svg_logo(variant, size)
+                    generated_files.append(output_path)
+                    console.print(f"[green]✅[/green] {variant} : {output_path.name}")
+                except Exception as e:
+                    console.print(f"[red]❌[/red] {variant} : {e}")
 
         # Résumé
         console.print("\n[bold green]🎉 Génération terminée ![/bold green]")
@@ -841,6 +879,90 @@ def bbia_all_variants(variant: str, size: int, formats: str) -> None:
 
     except Exception as e:
         print_error(f"Impossible de générer les variantes émotionnelles BBIA : {e}")
+        sys.exit(1)
+
+
+@cli.command()
+@click.option(
+    "--type",
+    "-t",
+    type=click.Choice(
+        ["github", "social", "twitter", "facebook", "linkedin", "readme", "all"]
+    ),
+    default="all",
+    help="Type de bannière à générer",
+)
+@click.option(
+    "--variant",
+    "-v",
+    type=str,
+    default="serenity",
+    help="Variante émotionnelle (serenity, power, mystery, etc.)",
+)
+@click.option(
+    "--style",
+    "-g",
+    type=str,
+    default="ultimate",
+    help="Style de générateur (ultimate, dashboard, ai_moon, etc.)",
+)
+@click.option(
+    "--title",
+    type=str,
+    default=None,
+    help="Titre personnalisé pour la bannière",
+)
+@click.option(
+    "--subtitle",
+    type=str,
+    default=None,
+    help="Sous-titre personnalisé pour la bannière",
+)
+def quest_banners(
+    type: str, variant: str, style: str, title: Optional[str], subtitle: Optional[str]
+) -> None:
+    """Génère les bannières Quest (GitHub, social media, etc.)"""
+    try:
+        from .quest_banner_generator import QuestBannerGenerator
+
+        console.print(
+            f"[bold blue]🎮 Génération bannières Quest "
+            f"(type: {type}, variant: {variant}, style: {style})...[/bold blue]"
+        )
+
+        banner_generator = QuestBannerGenerator(
+            output_dir=Path("exports") / "quest" / "banners"
+        )
+
+        if type == "all":
+            generated_banners = banner_generator.generate_all_banners(
+                variant=variant, style=style
+            )
+        else:
+            banner_path = banner_generator.generate_banner(
+                banner_type=type,
+                variant=variant,
+                style=style,
+                title=title,
+                subtitle=subtitle,
+            )
+            generated_banners = [banner_path]
+
+        if generated_banners:
+            print_success(f"{len(generated_banners)} bannière(s) générée(s)")
+            for banner_path in generated_banners:
+                console.print(f"  ✅ {banner_path}")
+        else:
+            print_error("Aucune bannière générée")
+
+    except ImportError as e:
+        print_error(f"Module requis manquant : {e}")
+        console.print(
+            "[yellow]Installez les dépendances avec : pip install Pillow cairosvg[/yellow]"
+        )
+        sys.exit(1)
+    except Exception as e:
+        print_error(f"Impossible de générer les bannières : {e}")
         sys.exit(1)
 
 

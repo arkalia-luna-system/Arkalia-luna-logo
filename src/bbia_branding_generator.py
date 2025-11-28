@@ -169,126 +169,24 @@ class BBIABrandingGenerator(ArkaliaLunaLogo):
         self, svg_content: str, emotion_variant: BBIAVariant
     ) -> str:
         """
-        Modifie directement les couleurs du logo BBIA selon la variante émotionnelle
+        Modifie UNIQUEMENT le fond carré avec la couleur BBIA officielle
+        SIMPLIFIÉ : Pas d'effets compliqués, juste le fond qui change
 
         Args:
             svg_content: Contenu SVG original
             emotion_variant: Variante émotionnelle BBIA
 
         Returns:
-            Contenu SVG avec couleurs modifiées
+            Contenu SVG avec fond modifié
         """
         try:
-            # STRATÉGIE : Modifier directement dans le contenu texte avec regex
-            # Plus fiable que de modifier le XML avec namespaces
-            eye_color = emotion_variant.colors.glow
-            # Utiliser accent pour le fond (plus visible que primary qui est #008181)
+            # SIMPLIFIÉ : Juste changer le fond carré avec la couleur accent BBIA
             bg_color = emotion_variant.colors.accent
 
-            # 1. Remplacer toutes les occurrences de #008181 par la couleur accent de la variante
+            # Remplacer #008181 par la couleur accent BBIA
             modified_svg = re.sub(r"#008181", bg_color, svg_content)
 
-            # 2. NE PAS modifier les yeux transparents (#cccccc) - ils restent gris transparents
-            # Les yeux sont identifiés par leur label "cou" et leur couleur #cccccc
-            # On les préserve pour garder l'identité visuelle du robot
-
-            # 3. Maintenant parser pour ajouter les filtres et animations
-            root = ET.fromstring(modified_svg)
-
-            # Trouver ou créer defs
-            defs = root.find(".//{http://www.w3.org/2000/svg}defs")
-            if defs is None:
-                defs = ET.Element("defs")
-                root.insert(0, defs)
-
-            # Ajouter filtre de lueur pour les yeux
-            filter_id = f"eye-glow-{emotion_variant.variant_type.value}"
-            filter_elem = ET.Element("filter", id=filter_id)
-            filter_elem.set("x", "-50%")
-            filter_elem.set("y", "-50%")
-            filter_elem.set("width", "200%")
-            filter_elem.set("height", "200%")
-
-            fe_gaussian = ET.SubElement(filter_elem, "feGaussianBlur")
-            fe_gaussian.set("stdDeviation", "3")
-            fe_gaussian.set("result", "coloredBlur")
-
-            fe_flood = ET.SubElement(filter_elem, "feFlood")
-            fe_flood.set("flood-color", eye_color)
-            fe_flood.set("flood-opacity", str(emotion_variant.glow_intensity))
-            fe_flood.set("result", "flood")
-
-            fe_composite = ET.SubElement(filter_elem, "feComposite")
-            fe_composite.set("in", "flood")
-            fe_composite.set("in2", "coloredBlur")
-            fe_composite.set("operator", "in")
-
-            defs.append(filter_elem)
-
-            # 4. Ajouter effets uniques : ondes de parole (comme ChatGPT)
-            # Créer des ondes sonores animées AUTOUR du robot (en dehors du fond carré)
-            viewbox = root.get("viewBox", "0 0 1024 1024")
-            center = 512  # Taille par défaut
-            if viewbox:
-                try:
-                    parts = viewbox.split()
-                    if len(parts) == 4:
-                        center = int((float(parts[2]) + float(parts[3])) / 4)
-                except (ValueError, IndexError):
-                    pass
-
-            # Groupe pour les ondes de parole (AU-DESSUS de tout)
-            speech_waves_group = ET.Element("g")
-            speech_waves_group.set(
-                "id", f"speech-waves-{emotion_variant.variant_type.value}"
-            )
-            # Style pour s'assurer que les ondes sont visibles
-            speech_waves_group.set("style", "pointer-events: none;")
-
-            # Créer 8-10 ondes concentriques animées (effet "parole")
-            # Les ondes partent de l'extérieur du fond carré et sont TRÈS visibles
-            num_waves = 10
-            # Le fond carré fait environ 456x456, donc rayon ~228, on commence après
-            base_radius = center * 0.48  # Commencer juste après le fond carré
-            for i in range(num_waves):
-                wave = ET.Element("circle")
-                wave.set("cx", str(center))
-                wave.set("cy", str(center))
-                wave.set("r", str(base_radius + i * 20))
-                wave.set("fill", "none")
-                wave.set("stroke", emotion_variant.colors.accent)
-                wave.set("stroke-width", "4")  # Plus épais pour être visible
-                wave.set("opacity", str(0.6 - i * 0.05))  # Plus opaque
-
-                # Animation de pulsation (onde qui s'étend vers l'extérieur)
-                animate_radius = ET.SubElement(wave, "animate")
-                animate_radius.set("attributeName", "r")
-                animate_radius.set(
-                    "values",
-                    f"{base_radius + i * 25};{base_radius + i * 25 + 30};{base_radius + i * 25}",
-                )
-                animate_radius.set("dur", f"{2.0 / emotion_variant.animation_speed}s")
-                animate_radius.set("begin", f"{i * 0.15}s")
-                animate_radius.set("repeatCount", "indefinite")
-
-                # Animation d'opacité (fade in/out)
-                animate_opacity = ET.SubElement(wave, "animate")
-                animate_opacity.set("attributeName", "opacity")
-                animate_opacity.set(
-                    "values",
-                    f"{0.1 + i * 0.02};{0.5 - i * 0.03};{0.1 + i * 0.02}",
-                )
-                animate_opacity.set("dur", f"{2.0 / emotion_variant.animation_speed}s")
-                animate_opacity.set("begin", f"{i * 0.15}s")
-                animate_opacity.set("repeatCount", "indefinite")
-
-                speech_waves_group.append(wave)
-
-            # Insérer les ondes de parole À LA FIN (au-dessus de tout le contenu)
-            # pour qu'elles soient visibles même avec le fond opaque
-            root.append(speech_waves_group)
-
-            return ET.tostring(root, encoding="unicode")
+            return modified_svg
         except Exception as e:
             self.logger.error(f"Erreur modification couleurs SVG : {e}")
             return svg_content
