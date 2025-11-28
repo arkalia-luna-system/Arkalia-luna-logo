@@ -9,21 +9,21 @@ from pathlib import Path
 from typing import List, Optional
 
 try:
-    import cairosvg
+    import cairosvg  # type: ignore[import-untyped,import-not-found]
 except ImportError:
-    cairosvg = None
+    cairosvg = None  # type: ignore[assignment]
 
 try:
-    from PIL import Image
+    from PIL import Image  # type: ignore[import-untyped]
 except ImportError:
-    Image = None
+    Image = None  # type: ignore[assignment]
 
 try:
     from .bbia_palette import BBIA_PALETTE
     from .logo_generator import ArkaliaLunaLogo
 except ImportError:
-    from bbia_palette import BBIA_PALETTE
-    from logo_generator import ArkaliaLunaLogo
+    from bbia_palette import BBIA_PALETTE  # type: ignore[import-untyped]
+    from logo_generator import ArkaliaLunaLogo  # type: ignore[import-untyped]
 
 
 class BBIABrandingGenerator(ArkaliaLunaLogo):
