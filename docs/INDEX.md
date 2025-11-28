@@ -119,6 +119,22 @@ graph TD
 | **GITHUB_READY.md** | État du projet pour GitHub | [📘 Voir](github/GITHUB_READY.md) |
 | **GITHUB_SETUP.md** | Configuration GitHub | [📘 Voir](github/GITHUB_SETUP.md) |
 | **ANALYSE_FICHIERS_MD.md** | Analyse et nettoyage des fichiers markdown | [📘 Voir](misc/ANALYSE_FICHIERS_MD.md) |
+| **PROJETS_SUPPORTES.md** | 🌟 Projets supportés - Vue d'ensemble | [📘 Voir](PROJETS_SUPPORTES.md) |
+
+</div>
+
+### 🎯 Projets Supportés - Intégrations
+
+<div align="center">
+
+| Document | Description | Lien Direct |
+|:--------:|:-----------:|:-----------:|
+| **PROJETS_SUPPORTES.md** | 🌟 Vue d'ensemble des projets supportés | [📘 Voir](PROJETS_SUPPORTES.md) |
+| **AUDIT_POTENTIEL_BBIA.md** | 🤖 Audit complet BBIA - Potentiel | [📘 Voir](AUDIT_POTENTIEL_BBIA.md) |
+| **AUDIT_BBIA_INTEGRATION.md** | 🤖 Audit BBIA - Intégration | [📘 Voir](AUDIT_BBIA_INTEGRATION.md) |
+| **AUDIT_QUEST_INTEGRATION.md** | 🎮 Audit Quest - Intégration complète | [📘 Voir](AUDIT_QUEST_INTEGRATION.md) |
+| **PLAN_ACTION_BBIA.md** | 🤖 Plan d'action BBIA | [📘 Voir](PLAN_ACTION_BBIA.md) |
+| **PLAN_ACTION_QUEST.md** | 🎮 Plan d'action Quest | [📘 Voir](PLAN_ACTION_QUEST.md) |
 
 </div>
 
@@ -217,6 +233,12 @@ docs/
 │   └── GITHUB_SETUP.md           # Configuration GitHub
 ├── audits/                    # 🔍 Audits et intégrations
 │   └── AUDIT_COMPLET_100_POURCENT.md  # Audit complet du potentiel du projet
+├── AUDIT_POTENTIEL_BBIA.md    # 🤖 Audit complet BBIA - Potentiel d'amélioration
+├── AUDIT_BBIA_INTEGRATION.md  # 🤖 Audit BBIA - Intégration
+├── AUDIT_QUEST_INTEGRATION.md  # 🎮 Audit Quest - Intégration complète
+├── PLAN_ACTION_BBIA.md       # 🤖 Plan d'action BBIA - Améliorations
+├── PLAN_ACTION_QUEST.md       # 🎮 Plan d'action Quest - Implémentation
+├── PROJETS_SUPPORTES.md       # 🌟 Projets supportés - Vue d'ensemble
 ├── misc/                      # 📋 Divers
 │   ├── ANALYSE_FICHIERS_MD.md     # Analyse et nettoyage des fichiers markdown
 │   ├── checklist-midjourney.md    # Checklist de qualité

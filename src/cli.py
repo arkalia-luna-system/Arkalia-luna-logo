@@ -449,17 +449,32 @@ def playstore(
     help="Format de sortie",
 )
 @click.option(
+    "--emotion",
+    "-e",
+    type=str,
+    default=None,
+    help="Variante émotionnelle (serenity, power, mystery, etc.)",
+)
+@click.option(
     "--generator",
     "-g",
     default="bbia",
     help="Type de générateur (utilise 'bbia' pour BBIA)",
 )
-def bbia(variant: str, size: int, format: str, generator: str) -> None:
-    """Génère un logo BBIA pour Reachy Mini"""
+def bbia(
+    variant: str, size: int, format: str, emotion: Optional[str], generator: str
+) -> None:
+    """Génère un logo BBIA pour Reachy Mini avec variante émotionnelle optionnelle"""
     try:
         from .generator_factory import LogoGeneratorFactory
 
-        console.print("[bold blue]🤖 Génération logo BBIA...[/bold blue]")
+        if emotion:
+            console.print(
+                f"[bold blue]🤖 Génération logo BBIA '{variant}' "
+                f"variante '{emotion}'...[/bold blue]"
+            )
+        else:
+            console.print("[bold blue]🤖 Génération logo BBIA...[/bold blue]")
 
         # Créer le générateur BBIA
         bbia_generator = LogoGeneratorFactory.create_generator(
@@ -471,12 +486,16 @@ def bbia(variant: str, size: int, format: str, generator: str) -> None:
         generated_files = []
 
         if format in ("svg", "both"):
-            svg_path = bbia_generator.generate_svg_logo(variant, size)
+            svg_path = bbia_generator.generate_svg_logo(
+                variant, size, emotion_variant=emotion
+            )
             generated_files.append(svg_path)
             console.print(f"[green]✅[/green] SVG : {svg_path}")
 
         if format in ("png", "both"):
-            png_path = bbia_generator.generate_png_logo(variant, size)
+            png_path = bbia_generator.generate_png_logo(
+                variant, size, emotion_variant=emotion
+            )
             if png_path:
                 generated_files.append(png_path)
                 console.print(f"[green]✅[/green] PNG : {png_path}")
@@ -488,6 +507,8 @@ def bbia(variant: str, size: int, format: str, generator: str) -> None:
             console.print("\n[bold green]🎉 Logo BBIA généré ![/bold green]")
             console.print(f"📁 {len(generated_files)} fichier(s) généré(s)")
             console.print(f"🎨 Variante : {variant}")
+            if emotion:
+                console.print(f"💫 Émotion : {emotion}")
             console.print(f"📏 Taille : {size}x{size} pixels")
 
             # Afficher les stats BBIA
@@ -497,6 +518,10 @@ def bbia(variant: str, size: int, format: str, generator: str) -> None:
             console.print(
                 f"✅ Variantes disponibles : {', '.join(stats['available_variants'])}"
             )
+            if stats.get("emotion_variants"):
+                console.print(
+                    f"💫 Variantes émotionnelles : {', '.join(stats['emotion_variants'][:5])}..."
+                )
         else:
             print_error("Aucun fichier généré")
 
@@ -523,7 +548,7 @@ def bbia(variant: str, size: int, format: str, generator: str) -> None:
     help="Formats de sortie",
 )
 def bbia_all(sizes: tuple, formats: str) -> None:
-    """Génère toutes les déclinaisons BBIA"""
+    """Génère toutes les déclinaisons BBIA (3 formats × tailles)"""
     try:
         from .generator_factory import LogoGeneratorFactory
 
@@ -562,6 +587,67 @@ def bbia_all(sizes: tuple, formats: str) -> None:
 
     except Exception as e:
         print_error(f"Impossible de générer les déclinaisons BBIA : {e}")
+        sys.exit(1)
+
+
+@cli.command()
+@click.option(
+    "--variant",
+    "-v",
+    type=click.Choice(["mark_only", "vertical", "horizontal"]),
+    default="mark_only",
+    help="Type de logo BBIA",
+)
+@click.option("--size", "-s", default=512, help="Taille du logo en pixels")
+@click.option(
+    "--formats",
+    "-f",
+    type=click.Choice(["svg", "png", "both"]),
+    default="svg",
+    help="Formats de sortie",
+)
+def bbia_all_variants(variant: str, size: int, formats: str) -> None:
+    """Génère toutes les variantes émotionnelles BBIA (10 variantes)"""
+    try:
+        from .generator_factory import LogoGeneratorFactory
+
+        console.print(
+            f"[bold blue]🤖 Génération de toutes les variantes émotionnelles "
+            f"BBIA pour '{variant}'...[/bold blue]"
+        )
+
+        # Créer le générateur BBIA
+        bbia_generator = LogoGeneratorFactory.create_generator(
+            generator_type="bbia",
+            output_dir=Path("exports") / "bbia",
+        )
+
+        # Convertir formats
+        format_list = ["svg"]
+        if formats == "png":
+            format_list = ["png"]
+        elif formats == "both":
+            format_list = ["svg", "png"]
+
+        # Générer toutes les variantes émotionnelles
+        generated_files = bbia_generator.generate_all_emotion_variants(
+            variant_name=variant, size=size, formats=format_list
+        )
+
+        # Afficher le résumé
+        console.print("\n[bold green]🎉 Génération terminée ![/bold green]")
+        console.print(f"📁 {len(generated_files)} fichier(s) généré(s)")
+        console.print(f"💫 10 variantes émotionnelles × {len(format_list)} format(s)")
+
+        if generated_files:
+            console.print("\n📋 Fichiers générés :")
+            for file_path in generated_files[:15]:  # Limiter à 15 pour l'affichage
+                console.print(f"  • {file_path.name}")
+            if len(generated_files) > 15:
+                console.print(f"  ... et {len(generated_files) - 15} autres")
+
+    except Exception as e:
+        print_error(f"Impossible de générer les variantes émotionnelles BBIA : {e}")
         sys.exit(1)
 
 

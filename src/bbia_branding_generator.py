@@ -1,9 +1,10 @@
 """
 🤖 BBIA Branding Generator Module
 Générateur de logos BBIA pour Reachy Mini
-Intégration complète avec assets SVG sources
+Intégration complète avec assets SVG sources et variantes émotionnelles
 """
 
+import math
 import xml.etree.ElementTree as ET
 from pathlib import Path
 from typing import List, Optional
@@ -19,6 +20,7 @@ except ImportError:
     Image = None  # type: ignore[assignment]
 
 from .bbia_palette import BBIA_PALETTE  # type: ignore[import-untyped]
+from .bbia_variants import BBIA_VARIANTS, BBIAVariant  # type: ignore[import-untyped]
 from .logo_generator import ArkaliaLunaLogo  # type: ignore[import-untyped]
 
 
@@ -163,20 +165,159 @@ class BBIABrandingGenerator(ArkaliaLunaLogo):
             self.logger.error(f"Erreur transformation SVG : {e}")
             return svg_content
 
-    def generate_svg_logo(self, variant_name: str, size: int = 200) -> Path:
+    def _add_svg_effects(
+        self, svg_content: str, emotion_variant: BBIAVariant, size: int
+    ) -> str:
         """
-        Génère un logo SVG BBIA
+        Ajoute les effets SVG (halos, particules) au logo BBIA
+
+        Args:
+            svg_content: Contenu SVG original
+            emotion_variant: Variante émotionnelle BBIA
+            size: Taille du logo
+
+        Returns:
+            Contenu SVG avec effets ajoutés
+        """
+        try:
+            root = ET.fromstring(svg_content)
+            center = size // 2
+
+            # Trouver ou créer l'élément <defs> pour les filtres
+            defs = root.find(".//{http://www.w3.org/2000/svg}defs")
+            if defs is None:
+                defs = ET.Element("defs")
+                # Insérer defs après le premier élément (généralement après xmlns)
+                root.insert(0, defs)
+
+            # Ajouter filtre de lueur
+            filter_id = f"glow-{emotion_variant.variant_type.value}"
+            filter_elem = ET.Element("filter", id=filter_id)
+            filter_elem.set("x", "-50%")
+            filter_elem.set("y", "-50%")
+            filter_elem.set("width", "200%")
+            filter_elem.set("height", "200%")
+
+            # feGaussianBlur pour l'effet de lueur
+            fe_gaussian = ET.SubElement(filter_elem, "feGaussianBlur")
+            fe_gaussian.set("stdDeviation", str(3 * emotion_variant.glow_intensity))
+            fe_gaussian.set("result", "coloredBlur")
+
+            # feOffset
+            fe_offset = ET.SubElement(filter_elem, "feOffset")
+            fe_offset.set("in", "coloredBlur")
+            fe_offset.set("dx", "0")
+            fe_offset.set("dy", "0")
+            fe_offset.set("result", "offsetBlur")
+
+            # feFlood pour la couleur
+            fe_flood = ET.SubElement(filter_elem, "feFlood")
+            fe_flood.set("flood-color", emotion_variant.colors.glow)
+            fe_flood.set("flood-opacity", str(emotion_variant.glow_intensity))
+            fe_flood.set("result", "flood")
+
+            # feComposite
+            fe_composite = ET.SubElement(filter_elem, "feComposite")
+            fe_composite.set("in", "flood")
+            fe_composite.set("in2", "offsetBlur")
+            fe_composite.set("operator", "in")
+
+            defs.append(filter_elem)
+
+            # Créer un groupe pour les effets (derrière le logo)
+            effects_group = ET.Element("g")
+            effects_group.set("id", "bbia-effects")
+
+            # Ajouter halo si activé
+            if emotion_variant.halo_enabled:
+                halo = ET.Element("circle")
+                halo.set("cx", str(center))
+                halo.set("cy", str(center))
+                halo.set("r", str(size // 2 - 10))
+                halo.set("fill", "none")
+                halo.set("stroke", emotion_variant.colors.glow)
+                halo.set("stroke-width", "2")
+                halo.set("opacity", str(0.7 * emotion_variant.glow_intensity))
+                halo.set("filter", f"url(#{filter_id})")
+
+                # Animation de respiration
+                animate = ET.SubElement(halo, "animate")
+                animate.set("attributeName", "opacity")
+                animate.set(
+                    "values",
+                    f"{0.7 * emotion_variant.glow_intensity};{0.3 * emotion_variant.glow_intensity};{0.7 * emotion_variant.glow_intensity}",
+                )
+                animate.set("dur", f"{3 / emotion_variant.animation_speed}s")
+                animate.set("repeatCount", "indefinite")
+
+                effects_group.append(halo)
+
+            # Ajouter particules si activé
+            if emotion_variant.particles_enabled:
+                num_particles = 12
+                for i in range(num_particles):
+                    angle = (i * 360 / num_particles) * (math.pi / 180)
+                    radius = size // 2 - 25
+                    x = center + radius * math.cos(angle)
+                    y = center + radius * math.sin(angle)
+
+                    particle = ET.Element("circle")
+                    particle.set("cx", str(x))
+                    particle.set("cy", str(y))
+                    particle.set("r", "2.5")
+                    particle.set("fill", emotion_variant.colors.glow)
+                    particle.set("opacity", "0.7")
+                    particle.set("filter", f"url(#{filter_id})")
+
+                    # Animation de scintillement
+                    animate_opacity = ET.SubElement(particle, "animate")
+                    animate_opacity.set("attributeName", "opacity")
+                    animate_opacity.set("values", "0.7;1.0;0.7")
+                    animate_opacity.set(
+                        "dur", f"{2.5 / emotion_variant.animation_speed}s"
+                    )
+                    animate_opacity.set("begin", f"{i * 0.2}s")
+                    animate_opacity.set("repeatCount", "indefinite")
+
+                    effects_group.append(particle)
+
+            # Insérer les effets au début du SVG (derrière le logo)
+            if len(root) > 0:
+                root.insert(0, effects_group)
+            else:
+                root.append(effects_group)
+
+            return ET.tostring(root, encoding="unicode")
+        except Exception as e:
+            self.logger.error(f"Erreur ajout effets SVG : {e}")
+            return svg_content
+
+    def generate_svg_logo(
+        self,
+        variant_name: str,
+        size: int = 200,
+        emotion_variant: Optional[str] = None,
+    ) -> Path:
+        """
+        Génère un logo SVG BBIA avec variante émotionnelle optionnelle
 
         Args:
             variant_name: Type de logo (mark_only, vertical, horizontal)
             size: Taille du logo
+            emotion_variant: Variante émotionnelle (serenity, power, etc.) ou None
 
         Returns:
             Chemin du fichier généré
         """
-        self.logger.info(
-            f"🤖 Génération logo BBIA '{variant_name}' en taille {size}x{size}"
-        )
+        if emotion_variant:
+            self.logger.info(
+                f"🤖 Génération logo BBIA '{variant_name}' "
+                f"variante '{emotion_variant}' en taille {size}x{size}"
+            )
+        else:
+            self.logger.info(
+                f"🤖 Génération logo BBIA '{variant_name}' en taille {size}x{size}"
+            )
 
         # Charger le SVG source
         source_path = self._get_source_svg_path(variant_name)
@@ -185,8 +326,24 @@ class BBIABrandingGenerator(ArkaliaLunaLogo):
         # Transformer la taille
         transformed_svg = self._transform_svg_size(svg_content, size)
 
+        # Ajouter effets si variante émotionnelle spécifiée
+        if emotion_variant:
+            try:
+                bbia_variant = BBIA_VARIANTS.get_variant(emotion_variant)
+                transformed_svg = self._add_svg_effects(
+                    transformed_svg, bbia_variant, size
+                )
+            except ValueError as e:
+                self.logger.warning(f"Variante émotionnelle invalide : {e}")
+                self.logger.warning("Génération sans effets")
+
         # Créer le chemin de sortie
-        output_path = self.output_dir / f"bbia-{variant_name}-{size}.svg"
+        if emotion_variant:
+            output_path = (
+                self.output_dir / f"bbia-{variant_name}-{emotion_variant}-{size}.svg"
+            )
+        else:
+            output_path = self.output_dir / f"bbia-{variant_name}-{size}.svg"
         output_path.parent.mkdir(parents=True, exist_ok=True)
 
         # Sauvegarder
@@ -195,13 +352,19 @@ class BBIABrandingGenerator(ArkaliaLunaLogo):
         self.logger.info(f"✅ Logo BBIA généré : {output_path}")
         return output_path
 
-    def generate_png_logo(self, variant_name: str, size: int = 512) -> Optional[Path]:
+    def generate_png_logo(
+        self,
+        variant_name: str,
+        size: int = 512,
+        emotion_variant: Optional[str] = None,
+    ) -> Optional[Path]:
         """
         Génère un logo PNG BBIA depuis le SVG
 
         Args:
             variant_name: Type de logo (mark_only, vertical, horizontal)
             size: Taille du logo
+            emotion_variant: Variante émotionnelle (serenity, power, etc.) ou None
 
         Returns:
             Chemin du fichier généré ou None si cairosvg indisponible
@@ -218,10 +381,15 @@ class BBIABrandingGenerator(ArkaliaLunaLogo):
         )
 
         # Générer d'abord le SVG
-        svg_path = self.generate_svg_logo(variant_name, size)
+        svg_path = self.generate_svg_logo(variant_name, size, emotion_variant)
 
         # Créer le chemin PNG
-        png_path = self.output_dir / f"bbia-{variant_name}-{size}.png"
+        if emotion_variant:
+            png_path = (
+                self.output_dir / f"bbia-{variant_name}-{emotion_variant}-{size}.png"
+            )
+        else:
+            png_path = self.output_dir / f"bbia-{variant_name}-{size}.png"
         png_path.parent.mkdir(parents=True, exist_ok=True)
 
         try:
@@ -281,6 +449,52 @@ class BBIABrandingGenerator(ArkaliaLunaLogo):
 
         return generated_files
 
+    def generate_all_emotion_variants(
+        self,
+        variant_name: str,
+        size: int = 512,
+        formats: Optional[List[str]] = None,
+    ) -> List[Path]:
+        """
+        Génère toutes les variantes émotionnelles pour un format de logo
+
+        Args:
+            variant_name: Type de logo (mark_only, vertical, horizontal)
+            size: Taille du logo
+            formats: Liste des formats ('svg', 'png') (défaut: ['svg'])
+
+        Returns:
+            Liste des fichiers générés
+        """
+        if formats is None:
+            formats = ["svg"]
+
+        generated_files = []
+        emotion_variants = BBIA_VARIANTS.list_variant_names()
+
+        for emotion in emotion_variants:
+            try:
+                if "svg" in formats:
+                    output_path = self.generate_svg_logo(
+                        variant_name, size, emotion_variant=emotion
+                    )
+                    generated_files.append(output_path)
+
+                if "png" in formats:
+                    png_path = self.generate_png_logo(
+                        variant_name, size, emotion_variant=emotion
+                    )
+                    if png_path:
+                        generated_files.append(png_path)
+            except Exception as e:
+                self.logger.error(
+                    f"Erreur génération variante émotionnelle '{emotion}' "
+                    f"pour '{variant_name}': {e}"
+                )
+                continue
+
+        return generated_files
+
     def get_bbia_stats(self) -> dict:
         """Retourne les statistiques BBIA"""
         assets_available = self.bbia_assets_path.exists()
@@ -292,10 +506,13 @@ class BBIABrandingGenerator(ArkaliaLunaLogo):
                 if source_path.exists():
                     available_variants.append(variant)
 
+        emotion_variants = BBIA_VARIANTS.list_variant_names()
+
         return {
             "assets_available": assets_available,
             "assets_path": str(self.bbia_assets_path),
             "available_variants": available_variants,
+            "emotion_variants": emotion_variants,
             "palette": self.palette.to_dict(),
             "status": "ready" if assets_available else "assets_missing",
             "cairosvg_available": cairosvg is not None,

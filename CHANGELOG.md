@@ -18,6 +18,46 @@ Le format est basé sur [Keep a Changelog](https://keepachangelog.com/fr/1.0.0/)
 
 </div>
 
+## [2.2.0] - 2025-11-28
+
+### 💫 **Variantes émotionnelles BBIA**
+
+**10 variantes émotionnelles** : Ajout du système complet de variantes émotionnelles pour les logos BBIA.
+
+**Fonctionnalités :**
+- ✅ 10 variantes émotionnelles (Sérénité, Puissance, Mystère, Éveil, Créatif, Pluie, Orage, Explosif, Ensoleillé, Neige)
+- ✅ Effets SVG avancés (halos lumineux, particules animées)
+- ✅ Support variantes dans CLI (`--emotion`)
+- ✅ Commande `bbia-all-variants` pour générer toutes les variantes
+- ✅ Tests complets (23 tests, 100% passent)
+- ✅ Palette BBIA adaptée pour chaque variante
+
+**Résultat :**
+- 10 variantes × 3 formats (mark_only, vertical, horizontal) = **30 logos BBIA**
+- Chaque variante avec effets visuels uniques (halos, particules)
+- Compatible avec le système existant
+
+**Commandes CLI :**
+```bash
+# Générer un logo BBIA avec variante émotionnelle
+python -m src.cli bbia --variant mark_only --emotion serenity --size 512
+
+# Générer toutes les variantes émotionnelles
+python -m src.cli bbia-all-variants --variant mark_only --size 512
+```
+
+### 🚀 **Ajouté**
+- Module `bbia_variants.py` avec 10 variantes émotionnelles
+- Effets SVG (halos, particules) dans `bbia_branding_generator.py`
+- Option `--emotion` dans commande CLI `bbia`
+- Commande CLI `bbia-all-variants`
+- Tests complets pour variantes (`test_bbia_variants.py`)
+
+### 🔧 **Modifié**
+- `bbia_branding_generator.py` : Support variantes émotionnelles
+- `cli.py` : Options variantes émotionnelles
+- `get_bbia_stats()` : Ajout `emotion_variants` dans stats
+
 ## [2.1.0] - 2025-11-28
 
 ### 🤖 **Intégration BBIA**

@@ -29,7 +29,7 @@
 
 Arkalia-LUNA Logo Generator combine **génération vectorielle ultra-rapide** et **intelligence artificielle avancée** pour créer des logos de qualité professionnelle.
 
-**🎯 Utilisation principale :** Ce projet génère automatiquement les logos et assets Play Store pour **Arkalia CIA**, une application mobile de santé qui sera publiée sur Google Play Console pour tests utilisateurs. Il génère également les logos **BBIA** pour le robot Reachy Mini.
+**🎯 Utilisation principale :** Ce projet génère automatiquement les logos et assets Play Store pour **Arkalia CIA**, une application mobile de santé qui sera publiée sur Google Play Console pour tests utilisateurs. Il génère également les logos **BBIA** pour le robot Reachy Mini avec **10 variantes émotionnelles** (Sérénité, Puissance, Mystère, Éveil, Créatif, Pluie, Orage, Explosif, Ensoleillé, Neige).
 
 </div>
 
@@ -87,6 +87,12 @@ python -m src.cli generate -v serenity -s 200 -g ultimate
 
 # Générer un logo BBIA (mark_only, vertical, horizontal)
 python -m src.cli bbia --variant mark_only --size 512
+
+# Générer un logo BBIA avec variante émotionnelle
+python -m src.cli bbia --variant mark_only --emotion serenity --size 512
+
+# Générer toutes les variantes émotionnelles BBIA (10 variantes)
+python -m src.cli bbia-all-variants --variant mark_only --size 512
 ```
 
 Le logo sera généré dans le dossier `exports/`.

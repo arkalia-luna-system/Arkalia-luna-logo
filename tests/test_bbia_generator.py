@@ -124,9 +124,48 @@ class TestBBIABrandingGenerator:
         assert "assets_available" in stats
         assert "assets_path" in stats
         assert "available_variants" in stats
+        assert "emotion_variants" in stats
         assert "palette" in stats
         assert "status" in stats
         assert "cairosvg_available" in stats
+
+    def test_generate_svg_logo_with_emotion(self, bbia_generator):
+        """Test génération logo SVG avec variante émotionnelle"""
+        try:
+            output_path = bbia_generator.generate_svg_logo(
+                "mark_only", 512, emotion_variant="serenity"
+            )
+
+            assert output_path.exists()
+            assert output_path.suffix == ".svg"
+            assert "serenity" in str(output_path)
+
+            # Vérifier le contenu contient des effets
+            content = output_path.read_text(encoding="utf-8")
+            assert "svg" in content.lower()
+            # Vérifier présence de filtres ou effets
+            assert "filter" in content.lower() or "circle" in content.lower()
+        except FileNotFoundError:
+            pytest.skip("Assets BBIA non disponibles")
+
+    def test_generate_all_emotion_variants(self, bbia_generator):
+        """Test génération toutes les variantes émotionnelles"""
+        try:
+            generated = bbia_generator.generate_all_emotion_variants(
+                "mark_only", 512, formats=["svg"]
+            )
+
+            assert isinstance(generated, list)
+            # Devrait générer 10 variantes émotionnelles
+            assert len(generated) == 10
+
+            # Vérifier que tous les fichiers existent
+            for file_path in generated:
+                assert file_path.exists()
+                assert file_path.suffix == ".svg"
+                assert "mark_only" in str(file_path)
+        except FileNotFoundError:
+            pytest.skip("Assets BBIA non disponibles")
 
 
 class TestBBIAGeneratorFactory:
