@@ -233,11 +233,12 @@ class BBIABrandingGenerator(ArkaliaLunaLogo):
                 halo = ET.Element("circle")
                 halo.set("cx", str(center))
                 halo.set("cy", str(center))
-                halo.set("r", str(size // 2 - 10))
+                # Halo plus grand pour être visible autour du logo
+                halo.set("r", str(size // 2 - 5))
                 halo.set("fill", "none")
                 halo.set("stroke", emotion_variant.colors.glow)
-                halo.set("stroke-width", "2")
-                halo.set("opacity", str(0.7 * emotion_variant.glow_intensity))
+                halo.set("stroke-width", "4")
+                halo.set("opacity", str(0.8 * emotion_variant.glow_intensity))
                 halo.set("filter", f"url(#{filter_id})")
 
                 # Animation de respiration
@@ -257,16 +258,18 @@ class BBIABrandingGenerator(ArkaliaLunaLogo):
                 num_particles = 12
                 for i in range(num_particles):
                     angle = (i * 360 / num_particles) * (math.pi / 180)
-                    radius = size // 2 - 25
+                    # Particules plus proches du bord pour être visibles
+                    radius = size // 2 - 15
                     x = center + radius * math.cos(angle)
                     y = center + radius * math.sin(angle)
 
                     particle = ET.Element("circle")
                     particle.set("cx", str(x))
                     particle.set("cy", str(y))
-                    particle.set("r", "2.5")
+                    # Particules plus grandes pour être visibles
+                    particle.set("r", "4")
                     particle.set("fill", emotion_variant.colors.glow)
-                    particle.set("opacity", "0.7")
+                    particle.set("opacity", "0.9")
                     particle.set("filter", f"url(#{filter_id})")
 
                     # Animation de scintillement
@@ -281,9 +284,12 @@ class BBIABrandingGenerator(ArkaliaLunaLogo):
 
                     effects_group.append(particle)
 
-            # Insérer les effets au début du SVG (derrière le logo)
+            # Insérer les effets APRÈS le contenu existant (au-dessus du logo)
+            # pour qu'ils soient visibles même avec un fond opaque
+            # On cherche le dernier élément pour insérer après
             if len(root) > 0:
-                root.insert(0, effects_group)
+                # Insérer après le dernier élément (au-dessus)
+                root.append(effects_group)
             else:
                 root.append(effects_group)
 

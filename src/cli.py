@@ -477,10 +477,17 @@ def bbia(
             console.print("[bold blue]🤖 Génération logo BBIA...[/bold blue]")
 
         # Créer le générateur BBIA
-        bbia_generator = LogoGeneratorFactory.create_generator(
+        generator = LogoGeneratorFactory.create_generator(
             generator_type="bbia",
             output_dir=Path("exports") / "bbia",
         )
+
+        # Type narrowing pour MyPy
+        from .bbia_branding_generator import BBIABrandingGenerator
+
+        if not isinstance(generator, BBIABrandingGenerator):
+            raise TypeError("Générateur BBIA attendu")
+        bbia_generator: BBIABrandingGenerator = generator
 
         # Générer selon le format
         generated_files = []
@@ -557,10 +564,17 @@ def bbia_all(sizes: tuple, formats: str) -> None:
         )
 
         # Créer le générateur BBIA
-        bbia_generator = LogoGeneratorFactory.create_generator(
+        generator = LogoGeneratorFactory.create_generator(
             generator_type="bbia",
             output_dir=Path("exports") / "bbia",
         )
+
+        # Type narrowing pour MyPy
+        from .bbia_branding_generator import BBIABrandingGenerator
+
+        if not isinstance(generator, BBIABrandingGenerator):
+            raise TypeError("Générateur BBIA attendu")
+        bbia_generator: BBIABrandingGenerator = generator
 
         # Convertir formats
         format_list = ["svg"]
@@ -617,10 +631,17 @@ def bbia_all_variants(variant: str, size: int, formats: str) -> None:
         )
 
         # Créer le générateur BBIA
-        bbia_generator = LogoGeneratorFactory.create_generator(
+        generator = LogoGeneratorFactory.create_generator(
             generator_type="bbia",
             output_dir=Path("exports") / "bbia",
         )
+
+        # Type narrowing pour MyPy
+        from .bbia_branding_generator import BBIABrandingGenerator
+
+        if not isinstance(generator, BBIABrandingGenerator):
+            raise TypeError("Générateur BBIA attendu")
+        bbia_generator: BBIABrandingGenerator = generator
 
         # Convertir formats
         format_list = ["svg"]
