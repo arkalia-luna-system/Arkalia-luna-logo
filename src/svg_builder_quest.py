@@ -329,40 +329,45 @@ class QuestSVGBuilder(SVGBuilder):
     ) -> None:
         """Ajoute des éléments éducatifs (livres, savoir)"""
         center = size // 2
-        badge_radius = size * 0.4
+        badge_radius = size * 0.35  # Ajusté pour correspondre au badge
 
-        # Livres stylisés autour du badge
+        # Livres stylisés autour du badge (plus petits et mieux positionnés)
         book_group = svgwrite.container.Group()
 
         # 3 livres stylisés
         for i in range(3):
             angle = (i * 120 - 60) * (math.pi / 180)
-            book_x = center + (badge_radius * 0.7) * math.cos(angle)
-            book_y = center + (badge_radius * 0.7) * math.sin(angle)
+            book_x = center + (badge_radius * 0.6) * math.cos(angle)
+            book_y = center + (badge_radius * 0.6) * math.sin(angle)
 
-            # Livre stylisé (rectangle avec lignes)
-            book = svgwrite.shapes.Rect(
-                insert=(book_x - size * 0.04, book_y - size * 0.06),
-                size=(size * 0.08, size * 0.12),
-                fill=variant.colors.accent,
-                opacity=0.6,
-                rx=2,
-            )
-            book_group.add(book)
-
-            # Lignes de texte sur le livre
-            for j in range(3):
-                line = svgwrite.shapes.Line(
-                    start=(
-                        book_x - size * 0.03,
-                        book_y - size * 0.04 + j * size * 0.02,
-                    ),
-                    end=(book_x + size * 0.03, book_y - size * 0.04 + j * size * 0.02),
-                    stroke=variant.colors.primary,
-                    stroke_width=1,
-                    opacity=0.5,
+            # Vérifier que les livres restent dans les limites
+            if 0 < book_x < size and 0 < book_y < size:
+                # Livre stylisé (rectangle avec lignes)
+                book = svgwrite.shapes.Rect(
+                    insert=(str(book_x - size * 0.03), str(book_y - size * 0.05)),
+                    size=(str(size * 0.06), str(size * 0.1)),
+                    fill=variant.colors.accent,
+                    opacity=0.6,
+                    rx=2,
                 )
-                book_group.add(line)
+                book_group.add(book)
+
+                # Lignes de texte sur le livre
+                for j in range(3):
+                    line = svgwrite.shapes.Line(
+                        start=(
+                            str(book_x - size * 0.025),
+                            str(book_y - size * 0.03 + j * size * 0.015),
+                        ),
+                        end=(
+                            str(book_x + size * 0.025),
+                            str(book_y - size * 0.03 + j * size * 0.015),
+                        ),
+                        stroke=variant.colors.primary,
+                        stroke_width=1,
+                        opacity=0.5,
+                    )
+                    book_group.add(line)
 
         drawing.add(book_group)
 
