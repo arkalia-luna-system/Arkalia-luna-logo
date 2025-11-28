@@ -134,7 +134,8 @@ class BBIAVariants:
                 colors=BBIAColorScheme(
                     primary=BBIA_PALETTE.LOGO_BACKGROUND,  # #008181
                     secondary=BBIA_PALETTE.LOGO_BODY_WHITE,  # #FFFFFF
-                    accent=BBIA_PALETTE.BRANDING_BLUE_LIGHT,  # #3399FF - Bleu clair BBIA
+                    # #3399FF - Bleu clair BBIA
+                    accent=BBIA_PALETTE.BRANDING_BLUE_LIGHT,
                     glow=BBIA_PALETTE.BRANDING_PRIMARY_BLUE,  # #0066FF - Bleu BBIA
                 ),
                 animation_speed=1.2,
@@ -164,7 +165,8 @@ class BBIAVariants:
                 colors=BBIAColorScheme(
                     primary=BBIA_PALETTE.LOGO_BACKGROUND,  # #008181
                     secondary=BBIA_PALETTE.LOGO_BODY_WHITE,  # #FFFFFF
-                    accent=BBIA_PALETTE.BRANDING_GRAY_LIGHT,  # #E5E5E5 - Gris clair BBIA
+                    # #E5E5E5 - Gris clair BBIA
+                    accent=BBIA_PALETTE.BRANDING_GRAY_LIGHT,
                     glow=BBIA_PALETTE.BRANDING_TERTIARY_GRAY,  # #2C2C2C - Gris BBIA
                 ),
                 animation_speed=0.6,
@@ -209,7 +211,8 @@ class BBIAVariants:
                 colors=BBIAColorScheme(
                     primary=BBIA_PALETTE.LOGO_BACKGROUND,  # #008181
                     secondary=BBIA_PALETTE.LOGO_BODY_WHITE,  # #FFFFFF
-                    accent=BBIA_PALETTE.BRANDING_BLUE_LIGHT,  # #3399FF - Bleu clair BBIA
+                    # #3399FF - Bleu clair BBIA
+                    accent=BBIA_PALETTE.BRANDING_BLUE_LIGHT,
                     glow=BBIA_PALETTE.BRANDING_PRIMARY_BLUE,  # #0066FF - Bleu BBIA
                 ),
                 animation_speed=1.8,
@@ -224,7 +227,8 @@ class BBIAVariants:
                 colors=BBIAColorScheme(
                     primary=BBIA_PALETTE.LOGO_BACKGROUND,  # #008181
                     secondary=BBIA_PALETTE.LOGO_BODY_WHITE,  # #FFFFFF
-                    accent=BBIA_PALETTE.BRANDING_WHITE_OFF,  # #FAFAFA - Blanc cassé BBIA
+                    # #FAFAFA - Blanc cassé BBIA
+                    accent=BBIA_PALETTE.BRANDING_WHITE_OFF,
                     glow=BBIA_PALETTE.BRANDING_GRAY_LIGHT,  # #E5E5E5 - Gris clair BBIA
                 ),
                 animation_speed=0.4,
