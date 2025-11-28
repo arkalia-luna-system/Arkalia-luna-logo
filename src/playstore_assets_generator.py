@@ -194,7 +194,8 @@ class PlayStoreAssetsGenerator:
             img = Image.new("RGB", self.FEATURE_GRAPHIC_SIZE, bg_color)
             draw = ImageDraw.Draw(img)
         else:
-            # Dégradé plus prononcé : du rouge très foncé (#991B1B) au rose très clair (#FEE2E2)
+            # Dégradé plus prononcé :
+            # du rouge très foncé (#991B1B) au rose très clair (#FEE2E2)
             for y in range(self.FEATURE_GRAPHIC_SIZE[1]):
                 ratio = y / self.FEATURE_GRAPHIC_SIZE[1]
                 # Dégradé plus marqué avec courbe exponentielle pour effet plus doux
