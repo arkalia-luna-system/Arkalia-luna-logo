@@ -477,17 +477,17 @@ def bbia(
             console.print("[bold blue]🤖 Génération logo BBIA...[/bold blue]")
 
         # Créer le générateur BBIA
-        generator = LogoGeneratorFactory.create_generator(
+        from .bbia_branding_generator import BBIABrandingGenerator
+
+        generator_obj = LogoGeneratorFactory.create_generator(
             generator_type="bbia",
             output_dir=Path("exports") / "bbia",
         )
 
         # Type narrowing pour MyPy
-        from .bbia_branding_generator import BBIABrandingGenerator
-
-        if not isinstance(generator, BBIABrandingGenerator):
+        if not isinstance(generator_obj, BBIABrandingGenerator):
             raise TypeError("Générateur BBIA attendu")
-        bbia_generator: BBIABrandingGenerator = generator
+        bbia_generator = generator_obj
 
         # Générer selon le format
         generated_files = []
@@ -564,17 +564,17 @@ def bbia_all(sizes: tuple, formats: str) -> None:
         )
 
         # Créer le générateur BBIA
-        generator = LogoGeneratorFactory.create_generator(
+        from .bbia_branding_generator import BBIABrandingGenerator
+
+        generator_obj = LogoGeneratorFactory.create_generator(
             generator_type="bbia",
             output_dir=Path("exports") / "bbia",
         )
 
         # Type narrowing pour MyPy
-        from .bbia_branding_generator import BBIABrandingGenerator
-
-        if not isinstance(generator, BBIABrandingGenerator):
+        if not isinstance(generator_obj, BBIABrandingGenerator):
             raise TypeError("Générateur BBIA attendu")
-        bbia_generator: BBIABrandingGenerator = generator
+        bbia_generator = generator_obj
 
         # Convertir formats
         format_list = ["svg"]
@@ -803,17 +803,17 @@ def bbia_all_variants(variant: str, size: int, formats: str) -> None:
         )
 
         # Créer le générateur BBIA
-        generator = LogoGeneratorFactory.create_generator(
+        from .bbia_branding_generator import BBIABrandingGenerator
+
+        generator_obj = LogoGeneratorFactory.create_generator(
             generator_type="bbia",
             output_dir=Path("exports") / "bbia",
         )
 
         # Type narrowing pour MyPy
-        from .bbia_branding_generator import BBIABrandingGenerator
-
-        if not isinstance(generator, BBIABrandingGenerator):
+        if not isinstance(generator_obj, BBIABrandingGenerator):
             raise TypeError("Générateur BBIA attendu")
-        bbia_generator: BBIABrandingGenerator = generator
+        bbia_generator = generator_obj
 
         # Convertir formats
         format_list = ["svg"]
