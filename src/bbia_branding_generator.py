@@ -22,8 +22,14 @@ try:
     from .bbia_palette import BBIA_PALETTE
     from .logo_generator import ArkaliaLunaLogo
 except ImportError:
-    from bbia_palette import BBIA_PALETTE  # type: ignore[import-untyped]
-    from logo_generator import ArkaliaLunaLogo  # type: ignore[import-untyped]
+    # Fallback pour exécution directe
+    import sys
+    from pathlib import Path
+
+    # Ajouter le répertoire parent au path
+    sys.path.insert(0, str(Path(__file__).parent.parent))
+    from bbia_palette import BBIA_PALETTE  # type: ignore[import-untyped,no-redef]
+    from logo_generator import ArkaliaLunaLogo  # type: ignore[import-untyped,no-redef]
 
 
 class BBIABrandingGenerator(ArkaliaLunaLogo):
