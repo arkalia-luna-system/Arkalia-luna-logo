@@ -87,7 +87,8 @@ class AILogoGenerator(ArkaliaLunaLogo):
             cached_path = self.ai_cache.get(cache_key)
             if cached_path and Path(cached_path).exists():
                 self.logger.info(
-                    f"✅ Cache hit pour logo IA '{variant_name}' en taille {size}x{size}"
+                    f"✅ Cache hit pour logo IA '{variant_name}' "
+                    f"en taille {size}x{size}"
                 )
                 return Path(cached_path)
 

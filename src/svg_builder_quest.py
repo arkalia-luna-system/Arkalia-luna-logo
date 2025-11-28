@@ -178,9 +178,9 @@ class QuestSVGBuilder(SVGBuilder):
 
         # Fond principal avec gradient
         background = svgwrite.shapes.Circle(
-            cx=center,
-            cy=center,
-            r=size // 2 - 5,
+            cx=str(center),
+            cy=str(center),
+            r=str(size // 2 - 5),
             fill=f"url(#questMainGradient-{variant.variant_type.value})",
             opacity=0.95,
         )
@@ -188,9 +188,9 @@ class QuestSVGBuilder(SVGBuilder):
 
         # Bordure badge
         border = svgwrite.shapes.Circle(
-            cx=center,
-            cy=center,
-            r=size // 2 - 5,
+            cx=str(center),
+            cy=str(center),
+            r=str(size // 2 - 5),
             fill="none",
             stroke=variant.colors.glow,
             stroke_width=3,

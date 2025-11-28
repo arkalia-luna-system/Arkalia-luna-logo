@@ -38,12 +38,12 @@ class TestPerformance:
 
         # Première génération (sans cache)
         start1 = time.time()
-        path1 = generator.generate_svg_logo("serenity", 200)
+        generator.generate_svg_logo("serenity", 200)
         elapsed1 = time.time() - start1
 
         # Deuxième génération (avec cache)
         start2 = time.time()
-        path2 = generator.generate_svg_logo("serenity", 200)
+        generator.generate_svg_logo("serenity", 200)
         elapsed2 = time.time() - start2
 
         # Cache devrait être plus rapide (ou au moins aussi rapide)
@@ -85,4 +85,3 @@ class TestPerformance:
         # Génération concurrente devrait être plus rapide
         assert len(results) == 3
         assert elapsed < 5.0  # 3 logos en parallèle < 5s
-
