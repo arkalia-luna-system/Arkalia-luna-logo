@@ -97,8 +97,7 @@ class QuestBadgeGenerator:
             )
 
         self.logger.info(
-            f"🏆 Génération badge '{badge_type}' "
-            f"({size}×{size}) variante '{variant}'"
+            f"🏆 Génération badge '{badge_type}' ({size}×{size}) variante '{variant}'"
         )
 
         # Récupérer la variante
