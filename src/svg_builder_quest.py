@@ -7,15 +7,24 @@ import math
 from pathlib import Path
 from typing import Optional, Tuple
 
-import svgwrite
-from svgwrite.container import Defs
+try:
+    import svgwrite  # type: ignore[import-untyped,import-not-found]
+    from svgwrite.container import Defs  # type: ignore[import-untyped,import-not-found]
+except ImportError:
+    svgwrite = None  # type: ignore[assignment]
+    Defs = None  # type: ignore[assignment]
 
 try:
     from .svg_builder import SVGBuilder
     from .variants import LogoVariant, LogoVariants
 except ImportError:
-    from svg_builder import SVGBuilder
-    from variants import LogoVariant, LogoVariants
+    from svg_builder import (
+        SVGBuilder,  # type: ignore[import-untyped,import-not-found,no-redef]
+    )
+    from variants import (  # type: ignore[import-untyped,import-not-found,no-redef]
+        LogoVariant,
+        LogoVariants,
+    )
 
 
 class QuestSVGBuilder(SVGBuilder):
@@ -27,6 +36,10 @@ class QuestSVGBuilder(SVGBuilder):
 
     def _validate_svgwrite(self) -> None:
         """Valide que svgwrite est correctement installé"""
+        if svgwrite is None:
+            raise ImportError(
+                "Module svgwrite requis. Installez-le avec: pip install svgwrite",
+            )
         if not hasattr(svgwrite, "Drawing"):
             raise ImportError(
                 "Module svgwrite requis. Installez-le avec: pip install svgwrite",

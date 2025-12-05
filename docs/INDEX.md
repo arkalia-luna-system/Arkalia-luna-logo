@@ -135,6 +135,7 @@ graph TD
 | **AUDIT_QUEST_INTEGRATION.md** | 🎮 Audit Quest - Intégration complète | [📘 Voir](AUDIT_QUEST_INTEGRATION.md) |
 | **PLAN_ACTION_BBIA.md** | 🤖 Plan d'action BBIA | [📘 Voir](PLAN_ACTION_BBIA.md) |
 | **PLAN_ACTION_QUEST.md** | 🎮 Plan d'action Quest | [📘 Voir](PLAN_ACTION_QUEST.md) |
+| **RECAP_QUEST_COMPLET.md** | 🎮 Récapitulatif complet Quest - Tout ce qui a été fait | [📘 Voir](RECAP_QUEST_COMPLET.md) |
 
 </div>
 
@@ -238,6 +239,7 @@ docs/
 ├── AUDIT_QUEST_INTEGRATION.md  # 🎮 Audit Quest - Intégration complète
 ├── PLAN_ACTION_BBIA.md       # 🤖 Plan d'action BBIA - Améliorations
 ├── PLAN_ACTION_QUEST.md       # 🎮 Plan d'action Quest - Implémentation
+├── RECAP_QUEST_COMPLET.md     # 🎮 Récapitulatif complet Quest - Tout ce qui a été fait
 ├── PROJETS_SUPPORTES.md       # 🌟 Projets supportés - Vue d'ensemble
 ├── misc/                      # 📋 Divers
 │   ├── ANALYSE_FICHIERS_MD.md     # Analyse et nettoyage des fichiers markdown

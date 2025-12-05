@@ -13,7 +13,9 @@ from typing import Any, Dict, List, Optional
 try:
     from .logo_generator import ArkaliaLunaLogo
 except ImportError:
-    from logo_generator import ArkaliaLunaLogo
+    from logo_generator import (
+        ArkaliaLunaLogo,  # type: ignore[import-untyped,import-not-found,no-redef]
+    )
 
 
 class AILogoGenerator(ArkaliaLunaLogo):
@@ -26,11 +28,11 @@ class AILogoGenerator(ArkaliaLunaLogo):
         self.logger.info("🤖 AI Logo Generator initialisé avec succès")
 
         # Configuration IA - chargement paresseux pour économiser la RAM
-        self.ai_pipeline = None
-        self._torch = None
-        self._StableDiffusionPipeline = None
-        self._Image = None
-        self.device = None  # Détecté lors du premier chargement
+        self.ai_pipeline: Optional[Any] = None
+        self._torch: Optional[Any] = None
+        self._StableDiffusionPipeline: Optional[Any] = None
+        self._Image: Optional[Any] = None
+        self.device: Optional[str] = None  # Détecté lors du premier chargement
         self.model_id = "runwayml/stable-diffusion-v1-5"  # Modèle stable et rapide
 
         # Cache pour éviter de recharger le modèle
@@ -40,11 +42,12 @@ class AILogoGenerator(ArkaliaLunaLogo):
         # Cache IA dans Redis
         from .cache_manager import CacheManager
 
+        cache_enabled = os.getenv("REDIS_ENABLED", "false").lower() == "true"
         self.ai_cache = CacheManager(
-            host=os.getenv("REDIS_HOST", "localhost"),
-            port=int(os.getenv("REDIS_PORT", "6379")),
-            db=int(os.getenv("REDIS_DB", "0")),
-            ttl=int(os.getenv("AI_CACHE_TTL", "604800")),  # 7 jours
+            redis_host=os.getenv("REDIS_HOST", "localhost"),
+            redis_port=int(os.getenv("REDIS_PORT", "6379")),
+            redis_db=int(os.getenv("REDIS_DB", "0")),
+            enabled=cache_enabled,
         )
 
         # Pas d'initialisation immédiate - chargement paresseux uniquement
@@ -59,7 +62,7 @@ class AILogoGenerator(ArkaliaLunaLogo):
         }
 
         try:
-            import torch
+            import torch  # type: ignore[import-untyped,import-not-found]
 
             health["torch_available"] = True
             health["cuda_available"] = torch.cuda.is_available()
@@ -71,7 +74,7 @@ class AILogoGenerator(ArkaliaLunaLogo):
 
         try:
             # Test d'import sans stocker pour éviter warning
-            import diffusers  # noqa: F401
+            import diffusers  # type: ignore[import-untyped,import-not-found,unused-import] # noqa: F401
 
             health["diffusers_available"] = True
         except Exception:
@@ -79,18 +82,26 @@ class AILogoGenerator(ArkaliaLunaLogo):
 
         return health
 
-    def generate_svg_logo(self, variant_name: str, size: int = 200) -> Path:
+    def generate_svg_logo(
+        self,
+        variant_name: str,
+        size: int = 200,
+        generator_type: str = "ai",
+    ) -> Path:
         """Génère un logo IA pour une variante donnée avec fallback automatique"""
         try:
             # Vérifier le cache IA
-            cache_key = f"ai_logo:{variant_name}:{size}"
-            cached_path = self.ai_cache.get(cache_key)
-            if cached_path and Path(cached_path).exists():
+            cached_path = self.ai_cache.get_cached_logo_path(
+                generator_type=generator_type,
+                variant=variant_name,
+                size=size,
+            )
+            if cached_path and cached_path.exists():
                 self.logger.info(
                     f"✅ Cache hit pour logo IA '{variant_name}' "
                     f"en taille {size}x{size}"
                 )
-                return Path(cached_path)
+                return cached_path
 
             self.logger.info(
                 f"🤖 Génération IA du logo '{variant_name}' en taille {size}x{size}",
@@ -194,7 +205,7 @@ class AILogoGenerator(ArkaliaLunaLogo):
             return True
 
         # Vérifier dans la chaîne d'exception (cause)
-        current_error = error
+        current_error: Any = error
         for _ in range(5):  # Limiter la profondeur de recherche
             if hasattr(current_error, "__cause__") and current_error.__cause__:
                 cause_type = type(current_error.__cause__).__name__
@@ -238,7 +249,7 @@ class AILogoGenerator(ArkaliaLunaLogo):
         """Import paresseux des dépendances IA avec détection intelligente d'erreurs"""
         if self._torch is None:
             try:
-                import torch
+                import torch  # type: ignore[import-untyped,import-not-found]
 
                 self._torch = torch
             except ImportError as e:
@@ -246,15 +257,18 @@ class AILogoGenerator(ArkaliaLunaLogo):
                     "Torch n'est pas installé. Installez avec: pip install torch"
                 ) from e
             except Exception as e:
+                torch_error: Exception = e
                 raise RuntimeError(
-                    f"Erreur lors du chargement de torch: {e}. "
+                    f"Erreur lors du chargement de torch: {torch_error}. "
                     "Vérifiez votre installation."
-                ) from e
+                ) from torch_error
 
         if self._StableDiffusionPipeline is None:
             try:
                 # Tentative d'import avec gestion d'erreur améliorée
-                from diffusers import StableDiffusionPipeline
+                from diffusers import (
+                    StableDiffusionPipeline,  # type: ignore[import-untyped,import-not-found]
+                )
 
                 self._StableDiffusionPipeline = StableDiffusionPipeline
             except ImportError as e:
@@ -297,10 +311,11 @@ class AILogoGenerator(ArkaliaLunaLogo):
             except Exception as e:
                 # Gestion des erreurs d'encodage pour PIL aussi
                 if self._detect_utf8_error(e):
+                    pil_error: Exception = e
                     raise RuntimeError(
-                        f"Erreur d'encodage UTF-8 dans PIL: {e}. "
+                        f"Erreur d'encodage UTF-8 dans PIL: {pil_error}. "
                         "Réinstallez avec: pip install --force-reinstall pillow"
-                    ) from e
+                    ) from pil_error
                 raise
 
     def _initialize_ai_pipeline(self) -> None:
@@ -310,7 +325,7 @@ class AILogoGenerator(ArkaliaLunaLogo):
             self._lazy_import_ai_dependencies()
 
             # Détection du device si pas encore fait
-            if self.device is None:
+            if self.device is None and self._torch is not None:
                 self.device = "cuda" if self._torch.cuda.is_available() else "cpu"
 
             # Si le pipeline est déjà chargé, on le réutilise
@@ -322,6 +337,9 @@ class AILogoGenerator(ArkaliaLunaLogo):
             self.logger.info(f"🖥️ Device: {self.device}")
 
             # Chargement du pipeline avec optimisations mémoire
+            if self._torch is None or self._StableDiffusionPipeline is None:
+                raise RuntimeError("Dépendances IA non chargées")
+
             torch_dtype = (
                 self._torch.float16 if self.device == "cuda" else self._torch.float32
             )
@@ -370,7 +388,11 @@ class AILogoGenerator(ArkaliaLunaLogo):
                         pass  # Pas disponible sur tous les systèmes
 
             # Nettoyage du cache CUDA si disponible
-            if self.device == "cuda" and hasattr(self._torch.cuda, "empty_cache"):
+            if (
+                self.device == "cuda"
+                and self._torch is not None
+                and hasattr(self._torch.cuda, "empty_cache")
+            ):
                 self._torch.cuda.empty_cache()
 
             self._pipeline_loaded = True
@@ -524,8 +546,10 @@ class AILogoGenerator(ArkaliaLunaLogo):
                 image = image.convert("RGB")
 
             # Amélioration du contraste pour logos plus nets
-            enhancer = ImageEnhance.Contrast(image)
-            image = enhancer.enhance(1.2)  # +20% de contraste pour logos plus nets
+            contrast_enhancer = ImageEnhance.Contrast(image)
+            image = contrast_enhancer.enhance(
+                1.2
+            )  # +20% de contraste pour logos plus nets
 
             # Amélioration de la netteté (optimisée pour logos abstraits)
             image = image.filter(
@@ -533,12 +557,12 @@ class AILogoGenerator(ArkaliaLunaLogo):
             )
 
             # Amélioration de la saturation pour couleurs plus vives
-            enhancer = ImageEnhance.Color(image)
-            image = enhancer.enhance(1.15)  # +15% de saturation
+            color_enhancer = ImageEnhance.Color(image)
+            image = color_enhancer.enhance(1.15)  # +15% de saturation
 
             # Amélioration de la luminosité pour logos plus visibles
-            enhancer = ImageEnhance.Brightness(image)
-            image = enhancer.enhance(1.05)  # +5% de luminosité
+            brightness_enhancer = ImageEnhance.Brightness(image)
+            image = brightness_enhancer.enhance(1.05)  # +5% de luminosité
 
             # Auto-contrast pour optimiser la plage dynamique
             try:
@@ -612,6 +636,9 @@ class AILogoGenerator(ArkaliaLunaLogo):
             self.logger.info(f"📝 Prompt: {prompt}")
 
             # Génération de l'image avec paramètres optimisés
+            if self._torch is None:
+                raise RuntimeError("Torch non initialisé")
+
             with self._torch.no_grad():
                 # Paramètres adaptatifs selon la taille
                 # pour équilibrer qualité et mémoire
@@ -682,9 +709,12 @@ class AILogoGenerator(ArkaliaLunaLogo):
 
             # Nettoyage automatique après génération pour économiser la RAM
             # (on garde le pipeline en cache pour les prochaines générations)
-            if self.device == "cuda" and self._torch:
-                if hasattr(self._torch.cuda, "empty_cache"):
-                    self._torch.cuda.empty_cache()
+            if (
+                self.device == "cuda"
+                and self._torch is not None
+                and hasattr(self._torch.cuda, "empty_cache")
+            ):
+                self._torch.cuda.empty_cache()
 
             self.logger.info(f"✨ Logo IA généré avec succès : {output_path}")
             return output_path
@@ -798,6 +828,9 @@ class AILogoGenerator(ArkaliaLunaLogo):
             self.logger.info("🧪 Test de génération IA...")
 
             # Test simple avec optimisations mémoire
+            if self._torch is None:
+                return False
+
             with self._torch.no_grad():
                 test_image = self.ai_pipeline(
                     "simple logo, blue circle, white background",
@@ -811,7 +844,11 @@ class AILogoGenerator(ArkaliaLunaLogo):
             test_image.save(test_path, "PNG", optimize=True)
 
             # Nettoyage après test
-            if self.device == "cuda" and hasattr(self._torch.cuda, "empty_cache"):
+            if (
+                self.device == "cuda"
+                and self._torch is not None
+                and hasattr(self._torch.cuda, "empty_cache")
+            ):
                 self._torch.cuda.empty_cache()
 
             self.logger.info(f"✅ Test IA réussi : {test_path}")

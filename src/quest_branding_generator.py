@@ -61,7 +61,7 @@ class QuestBrandingGenerator(ArkaliaLunaLogo):
         self.variants_manager = LogoVariants()
 
         # Builder SVG Quest dédié (remplace le builder par défaut)
-        self.svg_builder = QuestSVGBuilder(self.variants_manager)
+        self.svg_builder = QuestSVGBuilder(self.variants_manager)  # type: ignore[assignment]
 
         # Configuration du logging
         self.logger.info("🎮 Quest Branding Generator initialisé avec builder dédié")
