@@ -1300,5 +1300,40 @@ def main() -> None:
         sys.exit(1)
 
 
+@cli.command()
+def bbia_interface() -> None:
+    """Ouvre l'interface BBIA Live (interface visage vivante)"""
+    try:
+        import webbrowser
+        from pathlib import Path
+
+        interface_path = Path(__file__).parent.parent / "demos" / "bbia_interface.html"
+
+        if not interface_path.exists():
+            print_error(f"Interface BBIA introuvable : {interface_path}")
+            console.print(
+                "[yellow]Vérifiez que le fichier demos/bbia_interface.html existe[/yellow]"
+            )
+            sys.exit(1)
+
+        console.print("[bold blue]🤖 Ouverture de l'interface BBIA Live...[/bold blue]")
+        console.print(f"📁 Fichier : {interface_path}")
+
+        # Ouvrir dans le navigateur
+        webbrowser.open(f"file://{interface_path.absolute()}")
+
+        console.print("\n[green]✅ Interface ouverte dans le navigateur ![/green]")
+        console.print(
+            "[cyan]💡 Utilisez les boutons pour tester les différents modes de BBIA[/cyan]"
+        )
+        console.print(
+            "[cyan]💡 Contrôlez depuis Python avec : window.bbia.setMood('curious')[/cyan]"
+        )
+
+    except Exception as e:
+        print_error(f"Impossible d'ouvrir l'interface : {e}")
+        sys.exit(1)
+
+
 if __name__ == "__main__":
     main()

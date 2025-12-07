@@ -392,6 +392,16 @@ class BBIABrandingGenerator(ArkaliaLunaLogo):
 
         # Utiliser les SVG Master si demandé
         if use_master:
+            # Déterminer automatiquement le master selon l'émotion
+            # Wireframe pour les émotions "énergiques" (power, stormy, explosive, mystery)
+            # Clean pour les émotions "calmes" (serenity, rainy, snowy, awakening)
+            if emotion_variant:
+                wireframe_emotions = ["power", "stormy", "explosive", "mystery", "creative"]
+                if emotion_variant in wireframe_emotions:
+                    master_type = "wireframe"
+                else:
+                    master_type = "clean"
+            
             try:
                 source_path = self._get_master_svg_path(master_type)
                 svg_content = self._load_svg_content(source_path)

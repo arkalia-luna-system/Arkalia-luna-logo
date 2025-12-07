@@ -1,31 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="500" height="500" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
-  <!-- BBIA Master SVG - Version Wireframe / System Debug -->
-  <!-- Pour mode config, chargement ou debug -->
+  <!-- BBIA Master SVG - Version Wireframe / Cyber-HUD (Style Hologramme) -->
+  <!-- Inspiré du guide : effet néon, grille, cercles de visée -->
   
   <defs>
+    <!-- Filtre néon pour effet hologramme -->
+    <filter id="neon-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <!-- Pattern de grille pour fond HUD -->
     <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
       <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#00FFFF" stroke-width="0.5" opacity="0.3"/>
     </pattern>
   </defs>
 
-  <!-- Fond avec grille -->
-  <rect id="debug-background" width="100%" height="100%" fill="url(#grid)" opacity="0.5"/>
+  <!-- Fond sombre avec grille HUD -->
+  <rect id="debug-background" width="100%" height="100%" fill="#05101a"/>
+  <rect width="100%" height="100%" fill="url(#grid)" opacity="0.3"/>
+  
+  <!-- Lignes de visée HUD -->
+  <path d="M0 250 L500 250 M250 0 L250 500" stroke="#00FFFF" stroke-width="0.5" opacity="0.2" stroke-dasharray="5,5"/>
+  <circle cx="250" cy="250" r="180" stroke="#00FFFF" stroke-width="0.5" opacity="0.1" fill="none"/>
 
-  <!-- Robot en wireframe -->
-  <g id="bbia-wireframe" stroke="#00AAFF" stroke-width="2" fill="none">
-    <path id="body-wireframe" d="M150 280 C 150 280, 140 450, 250 450 C 360 450, 350 280, 350 280 Z"/>
+  <!-- Robot en wireframe avec effet néon -->
+  <g id="bbia-wireframe" filter="url(#neon-glow)" stroke="#00F0FF" stroke-width="2" fill="none">
+    <!-- Corps avec opacité pour effet hologramme -->
+    <path id="body-wireframe" d="M150 280 C 150 280, 140 450, 250 450 C 360 450, 350 280, 350 280 Z" fill="#00F0FF" fill-opacity="0.1"/>
     
     <g id="head-wireframe" transform="rotate(-15 250 250)">
-      <rect id="head-case-wireframe" x="150" y="150" width="200" height="120" rx="30"/>
-      <circle id="eye-left-wireframe" cx="210" cy="210" r="28" stroke-dasharray="4 2"/>
-      <circle id="eye-right-wireframe" cx="290" cy="210" r="28" stroke-dasharray="4 2"/>
-      <line id="antenna-left-wireframe" x1="200" y1="150" x2="180" y2="80" />
-      <line id="antenna-right-wireframe" x1="300" y1="150" x2="320" y2="80" />
+      <!-- Tête avec fond semi-transparent -->
+      <rect id="head-case-wireframe" x="150" y="150" width="200" height="120" rx="30" fill="#001a25" fill-opacity="0.8"/>
+      
+      <!-- Œil gauche avec croix de visée -->
+      <g id="eye-left-group">
+        <circle id="eye-left-wireframe" cx="210" cy="210" r="28" stroke-width="3"/>
+        <line x1="210" y1="190" x2="210" y2="230" stroke-width="1"/>
+        <line x1="190" y1="210" x2="230" y2="210" stroke-width="1"/>
+        <circle id="pupil-left" cx="210" cy="210" r="10" fill="#00F0FF" fill-opacity="0.5" stroke="none"/>
+      </g>
+      
+      <!-- Œil droit avec point central -->
+      <g id="eye-right-group">
+        <circle id="eye-right-wireframe" cx="290" cy="210" r="28" stroke-width="3"/>
+        <circle id="pupil-right" cx="290" cy="210" r="10" fill="#00F0FF" fill-opacity="0.5" stroke="none"/>
+      </g>
+      
+      <!-- Antennes avec point de signal -->
+      <line id="antenna-left-wireframe" x1="200" y1="150" x2="180" y2="80" stroke-dasharray="2,2"/>
+      <circle id="antenna-left-signal" cx="180" cy="80" r="3" fill="#00F0FF"/>
+      <line id="antenna-right-wireframe" x1="300" y1="150" x2="320" y2="80" stroke-dasharray="2,2"/>
+      <circle id="antenna-right-signal" cx="320" cy="80" r="3" fill="#00F0FF"/>
     </g>
   </g>
   
-  <!-- Texte système -->
-  <text id="system-status" x="250" y="480" text-anchor="middle" font-family="monospace" font-size="20" fill="#00AAFF">SYSTEM_READY</text>
+  <!-- Texte système HUD -->
+  <text id="system-status" x="250" y="470" text-anchor="middle" font-family="monospace" font-size="24" fill="#00F0FF" letter-spacing="4">SYSTEM_READY</text>
+  <text x="450" y="40" text-anchor="end" font-family="Arial" font-size="12" fill="#00F0FF" opacity="0.6">v2.4.0</text>
 </svg>
 
