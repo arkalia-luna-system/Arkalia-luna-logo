@@ -39,7 +39,7 @@ pyparsing==3.2.5
     # via matplotlib
 python-dateutil==2.9.0.post0
     # via matplotlib
-rich==14.2.0
+rich==14.3.2
     # via arkalia-luna-logo (pyproject.toml)
 six==1.17.0
     # via python-dateutil
