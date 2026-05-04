@@ -27,7 +27,7 @@ numpy==2.2.6
     #   arkalia-luna-logo (pyproject.toml)
     #   contourpy
     #   matplotlib
-packaging==26.0
+packaging==26.2
     # via matplotlib
 pillow==11.3.0
     # via
