@@ -50,5 +50,5 @@ tqdm==4.67.3
 
 # Web API dependencies
 fastapi==0.128.8
-uvicorn[standard]==0.38.0
+uvicorn[standard]==0.49.0
 python-multipart==0.0.20
