@@ -4,7 +4,7 @@
 
 **Générateur de Logos Vectoriels avec Intelligence Artificielle**
 
-*11 Styles • 10 Variantes Émotionnelles • API REST • Production Ready*
+*11 Styles • 10 Variantes Émotionnelles • API REST • usage perso*
 
 [![Python](https://img.shields.io/badge/Python-3.8+-3776ab?style=flat-square&logo=python&logoColor=white)](https://python.org)
 [![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)](LICENSE)
@@ -64,7 +64,7 @@ Arkalia-LUNA Logo Generator combine **génération vectorielle ultra-rapide** et
 - 🚀 **Génération vectorielle** : < 10ms par logo (SVG haute qualité)
 - 🧠 **Génération IA** : ComfyUI + SDXL jusqu'à 1024×1024, Stable Diffusion v1.5
 - 🌐 **API REST** : FastAPI avec documentation Swagger complète
-- 🐳 **Production Ready** : Infrastructure Docker avec monitoring Prometheus/Grafana
+- Docker / monitoring optionnels (Prometheus/Grafana) pour un run local
 - 💻 **CLI & Batch** : Interface en ligne de commande et traitement par lots
 
 ## Quick Start
